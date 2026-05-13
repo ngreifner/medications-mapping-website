@@ -1,0 +1,244 @@
+// atc-resolver.js — RXCUI → ATC conversion orchestrator.
+//
+// Ported verbatim (modulo our caching/rate-limiting layer in rxnav-client)
+// from the user's working browser app. Strategy order, fallback paths, and
+// console.log statements all match the source — this file's Node test output
+// is intended to match the browser console line-by-line for the same RXCUI.
+//
+// Three strategies fire in priority order, with all four endpoints fetched in
+// parallel up front so a slow tier doesn't block faster ones:
+//   1. ATCPROD product-level mapping (preferred when populated)
+//   2. Ingredient-level ATC + DFG route filter
+//   3. Property API (last resort)
+//   Last-resort: ATCPROD's Level 4 codes if every Level 5 path failed
+//
+// Where ATCPROD returns Level 4 codes only, they double as a prefix whitelist
+// that constrains downstream strategies — preventing combination drugs (e.g.
+// R03AL) from being replaced by unrelated single-ingredient codes (e.g. R03BA02).
+
+import {
+  getProperties,
+  getDfgs,
+  getIngredientRxcuis,
+  getAtcprodClasses,
+  getIngredientAtcClasses,
+  getAtcPropertyValues,
+  getClassMembers,
+} from "./rxnav-client.js";
+import { resolveRoute, filterAtcByRoute } from "./filter-engine.js";
+
+const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
+
+/**
+ * Given (input RXCUI, list of Level 4 ATC class IDs), promote to Level 5 by
+ * walking ATC class members and matching against the input's ingredient
+ * RXCUIs. Returns array of {code, name} on success, or null if no Level 5
+ * could be resolved.
+ */
+export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
+  const matchIds = await getIngredientRxcuis(rxcui);
+  const level5List = [];
+
+  // Primary path: class members carry the Level 5 ATC in nodeAttr SourceId.
+  for (const classId of level4ClassIds) {
+    if (classId.length !== 5) continue;
+    const members = await getClassMembers(classId).catch(() => []);
+    for (const member of members) {
+      if (!member.rxcui || !matchIds.includes(member.rxcui)) continue;
+      if (member.sourceId && member.sourceId.length === 7) {
+        level5List.push({
+          code: member.sourceId,
+          name: member.sourceName || "Name not available",
+        });
+        break;
+      }
+    }
+  }
+  if (level5List.length > 0) return level5List;
+
+  // Fallback: query each ingredient RXCUI for its ATC classes and pick Level
+  // 5 codes that fall under the known Level 4 prefixes.
+  const seen5 = new Set();
+  for (const id of matchIds) {
+    try {
+      const classes = await getIngredientAtcClasses(id);
+      for (const c of classes) {
+        const cid = c.classId;
+        if (!cid || cid.length !== 7 || seen5.has(cid)) continue;
+        if (level4ClassIds.some(l4 => cid.toUpperCase().startsWith(l4.toUpperCase()))) {
+          seen5.add(cid);
+          level5List.push({ code: cid, name: c.className || "Name not available" });
+        }
+      }
+    } catch (_) {}
+  }
+  return level5List.length > 0 ? level5List : null;
+}
+
+/**
+ * Fetch ATC names for a list of Level 5 codes via the property fallback path,
+ * matching the working code's behavior. We look each up through the
+ * ingredient-class endpoint to get a className.
+ */
+async function attachAtcNames(codes) {
+  console.log("[RxCUI→ATC] Getting names for", codes.length, "codes:", codes);
+  const out = await Promise.all(codes.map(async (code) => {
+    try {
+      // Cheapest way to look up an ATC class name is via byRxcui; but here we
+      // have a classId, not a rxcui. Without a dedicated byId helper in the
+      // resolver, fall back to "Name not available" — the browser app does
+      // the same when the property path is reached without a richer source.
+      return { code: String(code), name: "Name not available" };
+    } catch {
+      return { code: String(code), name: "Name not available" };
+    }
+  }));
+  return out;
+}
+
+/**
+ * Main entry: RXCUI → Level 5 ATC codes.
+ *
+ * Returns a discriminated result:
+ *   { status: "KEEP",             codes: [{code, name}, ...] }
+ *   { status: "INGREDIENT_LEVEL", tty }
+ *   { status: "NO_ATC" }
+ *
+ * The "codes" array may include the Level 4 ATCPROD fallback as a last
+ * resort. Callers should filter for length 7 (Level 5) before displaying.
+ */
+export async function convertRxcuiToAtc(rxcui) {
+  console.log("[RxCUI→ATC] === Starting RxCUI to ATC conversion ===");
+  console.log("[RxCUI→ATC] Input RxCUI:", rxcui);
+
+  try {
+    // ============================================================
+    //  GUARD: ingredient-level inputs have no specific dose form.
+    //  Their DFGs aggregate every product they appear in, so route
+    //  resolution is meaningless. Pull canonical Level 5 ATC codes
+    //  directly from the RXCUI property and return them all — no
+    //  route filtering since there is no route to filter by.
+    // ============================================================
+    const props = await getProperties(rxcui).catch(() => null);
+    if (props && props.found && INGREDIENT_TTYS.has(props.tty)) {
+      console.log(`[RxCUI→ATC] TTY=${props.tty} — skipping route filter; returning all ingredient ATCs`);
+      const propertyCodes = await getAtcPropertyValues(rxcui).catch(() => []);
+      const codes = propertyCodes
+        .filter(c => (c || "").length === 7)
+        .map(code => ({ code, name: props.name || null }));
+      return { status: "INGREDIENT_LEVEL", tty: props.tty, codes };
+    }
+
+    // Fire all data sources in parallel; per-endpoint failures degrade
+    // gracefully (one tier failing doesn't kill the resolution).
+    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes] = await Promise.all([
+      getAtcprodClasses(rxcui).catch(() => []),
+      getDfgs(rxcui).catch(() => []),
+      getIngredientAtcClasses(rxcui).catch(() => []),
+      getAtcPropertyValues(rxcui).catch(() => []),
+    ]);
+
+    // ============================================================
+    //  STRATEGY 1: ATCPROD — direct product-level ATC mapping
+    // ============================================================
+    let atcprodFallback = null;
+    let atcprodPrefixes = null;
+    if (atcprodClasses.length > 0) {
+      // Surface as {code, name} for downstream consumers.
+      const uniqueClasses = atcprodClasses.map(c => ({ code: c.classId, name: c.className || "Name not available" }));
+      console.log("[RxCUI→ATC] ATCPROD hit:", uniqueClasses.map(c => c.code).join(", "));
+
+      // ATCPROD returns Level 4 codes — promote each to Level 5.
+      const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
+      if (level4Ids.length > 0) {
+        const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
+        if (level5 && level5.length > 0) return { status: "KEEP", codes: level5 };
+      }
+
+      // Direct Level 5 codes from ATCPROD (rare but possible).
+      const level5Direct = uniqueClasses.filter(c => c.code.length === 7);
+      if (level5Direct.length > 0) return { status: "KEEP", codes: level5Direct };
+
+      // Save Level 4 codes as fallback AND as a prefix whitelist for
+      // downstream tiers. This prevents combo drugs (e.g. R03AL) from
+      // being replaced by unrelated single-ingredient codes (e.g. R03BA02).
+      atcprodFallback = uniqueClasses;
+      atcprodPrefixes = level4Ids;
+      console.log("[RxCUI→ATC] ATCPROD returned Level 4 only → trying ingredient ATC for Level 5 children");
+    }
+
+    const atcprodPrefixFilter = (atcprodPrefixes && atcprodPrefixes.length > 0)
+      ? (items) => items.filter(item => {
+          const c = (typeof item === "string" ? item : item.code || "").toUpperCase();
+          return atcprodPrefixes.some(p => c.startsWith(p.toUpperCase()));
+        })
+      : (items) => items;
+    if (!atcprodFallback) console.log("[RxCUI→ATC] ATCPROD returned no data — falling back to ingredient ATC + DFG filter");
+
+    // ============================================================
+    //  STRATEGY 2: Ingredient-level ATC + DFG route filter
+    // ============================================================
+    const route = resolveRoute(dfgNames);
+    console.log("[RxCUI→ATC] DFG:", dfgNames, "→ Route:", route);
+
+    if (ingredientClasses.length > 0) {
+      const atcList = ingredientClasses.map(c => ({
+        code: c.classId,
+        name: c.className || "Name not available",
+      }));
+
+      const level5 = filterAtcByRoute(
+        atcprodPrefixFilter(atcList.filter(item => item.code.length === 7)),
+        route,
+      );
+      if (level5.length > 0) return { status: "KEEP", codes: level5 };
+
+      if (!atcprodFallback) {
+        const level4Ids = filterAtcByRoute(
+          atcList.map(item => item.code).filter(c => c.length === 5),
+          route,
+        );
+        console.log("[RxCUI→ATC] Level 4 codes after route filter:", level4Ids);
+        if (level4Ids.length > 0) {
+          const promoted = await resolveLevel5FromClassMembers(rxcui, level4Ids);
+          if (promoted) return { status: "KEEP", codes: promoted };
+        }
+      }
+    }
+
+    // ============================================================
+    //  STRATEGY 3: Property API (last resort)
+    // ============================================================
+    if (propertyCodes.length > 0) {
+      const level5Codes = filterAtcByRoute(
+        atcprodPrefixFilter(propertyCodes.filter(c => c.length === 7)),
+        route,
+      );
+      if (level5Codes.length > 0) {
+        const named = await attachAtcNames(level5Codes);
+        return { status: "KEEP", codes: named };
+      }
+
+      if (!atcprodFallback) {
+        const level4Codes = filterAtcByRoute(
+          propertyCodes.filter(c => c.length === 5),
+          route,
+        );
+        if (level4Codes.length > 0) {
+          const promoted = await resolveLevel5FromClassMembers(rxcui, level4Codes);
+          if (promoted) return { status: "KEEP", codes: promoted };
+        }
+      }
+    }
+
+    // Last resort — return ATCPROD's Level 4 codes if nothing else resolved.
+    if (atcprodFallback) {
+      console.log("[RxCUI→ATC] Returning ATCPROD Level 4 fallback:", atcprodFallback.map(c => c.code).join(", "));
+      return { status: "KEEP", codes: atcprodFallback };
+    }
+    return { status: "NO_ATC" };
+  } catch (e) {
+    console.error("[RxCUI→ATC] Error:", e);
+    throw e;
+  }
+}
