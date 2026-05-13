@@ -176,35 +176,8 @@ export function buildAtcAnatomyElement(code, hintName = "") {
     rows.appendChild(row);
   });
 
-  // Completeness bar
-  const levelToChars = { 1: 1, 2: 3, 3: 4, 4: 5, 5: 7 };
-  const currentChars = levelToChars[anatomy.maxLevel] || 1;
-  const pct = Math.round((currentChars / 7) * 100);
-  const isComplete = anatomy.maxLevel === 5;
-  const completeLabel = isComplete ? "Complete code (all 5 levels)" : `Level ${anatomy.maxLevel} of 5`;
-
-  const specChildren = [
-    el("div", { class: "ca-spec-header" }, [
-      el("span", { class: "ca-spec-icon" }, "\u{1F4CA}"),
-      el("span", { class: "ca-spec-title" }, `Completeness: ${currentChars} of 7 characters`),
-    ]),
-    el("div", { class: "ca-spec-bar-track" }, [
-      el("div", { class: "ca-spec-bar-fill", style: `width:${pct}%` }),
-    ]),
-    el("span", { class: "ca-spec-label" }, completeLabel),
-  ];
-  if (!isComplete) {
-    specChildren.push(el("span", { class: "ca-spec-hint" },
-      `\u{1F4A1} This is a Level ${anatomy.maxLevel} code. Full ATC codes have 7 characters (5 levels).`
-    ));
-  }
-  const spec = el("div", {
-    class: "ca-spec",
-    style: `animation-delay:${anatomy.levels.length * 80}ms`,
-  }, specChildren);
-
   // Toggle bar + content. Starts collapsed — user expands on demand.
-  const content = el("div", { class: "ca-content", style: "display:none" }, [visual, rows, spec]);
+  const content = el("div", { class: "ca-content", style: "display:none" }, [visual, rows]);
   const chevron = el("span", { class: "ca-chevron", "aria-hidden": "true" }, "▼");
   const toggle = el("button", {
     type: "button",
