@@ -203,13 +203,13 @@ export function buildAtcAnatomyElement(code, hintName = "") {
     style: `animation-delay:${anatomy.levels.length * 80}ms`,
   }, specChildren);
 
-  // Toggle bar + content (starts expanded)
-  const content = el("div", { class: "ca-content" }, [visual, rows, spec]);
+  // Toggle bar + content. Starts collapsed — user expands on demand.
+  const content = el("div", { class: "ca-content", style: "display:none" }, [visual, rows, spec]);
   const chevron = el("span", { class: "ca-chevron", "aria-hidden": "true" }, "▼");
   const toggle = el("button", {
     type: "button",
-    class: "ca-toggle is-open",
-    "aria-expanded": "true",
+    class: "ca-toggle",
+    "aria-expanded": "false",
   }, [
     el("span", { class: "ca-toggle-title" }, "\u{1F9EC} Code Anatomy"),
     el("span", { class: "ca-badge" }, "ATC"),
