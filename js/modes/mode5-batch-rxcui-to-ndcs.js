@@ -21,6 +21,13 @@ import {
   educationalBanner,
   statusInfoIcon,
 } from "../ui-components.js";
+import {
+  isProductTty,
+  explainNoNdcsForNonProduct,
+  explainNoNdcsForProduct,
+  noNdcsTooltipForNonProduct,
+  noNdcsTooltipForProduct,
+} from "../explanations.js";
 import { buildNdcTable } from "./mode4-rxcui-to-ndcs.js";
 import { downloadCsv } from "../csv-export.js";
 
@@ -44,7 +51,7 @@ const STATUS_INFO = {
     dot: "accent",
     name: "No NDCs",
     short: "RXCUI exists but no active NDCs",
-    long: "This RXCUI exists in RxNorm but has no active NDCs. Usually this means the product is unmarketed in the US, ingredient-level (TTY=IN), or recently retired.",
+    long: "This RXCUI exists in RxNorm but has no active NDCs. Two distinct reasons — see the banner below.",
   },
   NEEDS_REVIEW: {
     dot: "warning",
@@ -54,15 +61,31 @@ const STATUS_INFO = {
   },
 };
 
-function buildMode5Banner({ showDismiss = true, ignoreDismissed = false } = {}) {
+// Sub-categories of NO_NDCS — distinct reasons surfaced in the banner,
+// tooltips, and row-expand info card, but lumped under one filter chip.
+const NO_NDCS_INFO = {
+  NON_PRODUCT: {
+    name: "No NDCs · non-product TTY",
+    short: "Ingredients or brand-name concepts (TTY=IN/PIN/MIN/BN/DF/…). RxNorm only assigns NDCs to specific products — look up an SCD or SBD instead.",
+  },
+  PRODUCT: {
+    name: "No NDCs · product, none active",
+    short: "SCD/SBD/BPCK/GPCK that exists in RxNorm but has no active NDCs in the current release (retired, unmarketed in US, or not yet indexed).",
+  },
+};
+
+function buildMode5Banner({ showDismiss = true, ignoreDismissed = false, counts = null } = {}) {
+  const fmt = (key) => counts ? ` — ${counts[key] || 0} row${(counts[key] || 0) === 1 ? "" : "s"}` : "";
+  const items = [
+    { dot: STATUS_INFO.OK.dot,           name: STATUS_INFO.OK.name + fmt("OK"),                           desc: STATUS_INFO.OK.short },
+    { dot: STATUS_INFO.NO_NDCS.dot,      name: NO_NDCS_INFO.NON_PRODUCT.name + fmt("NO_NDCS_NON_PRODUCT"), desc: NO_NDCS_INFO.NON_PRODUCT.short },
+    { dot: STATUS_INFO.NO_NDCS.dot,      name: NO_NDCS_INFO.PRODUCT.name + fmt("NO_NDCS_PRODUCT"),         desc: NO_NDCS_INFO.PRODUCT.short },
+    { dot: STATUS_INFO.NEEDS_REVIEW.dot, name: STATUS_INFO.NEEDS_REVIEW.name + fmt("NEEDS_REVIEW"),       desc: STATUS_INFO.NEEDS_REVIEW.short },
+  ];
   return educationalBanner({
     storageKey: "medcode_mode5_status_banner_dismissed",
     title: "NDC lookup results",
-    items: STATUSES.map(k => ({
-      dot: STATUS_INFO[k].dot,
-      name: STATUS_INFO[k].name,
-      desc: STATUS_INFO[k].short,
-    })),
+    items,
     footnote: "Click any row to see all NDC details.",
     showDismiss,
     ignoreDismissed,
@@ -76,7 +99,9 @@ function buildMode5RowTooltip(record) {
     return `Returned ${record.ndcCount || 0} active NDC${(record.ndcCount || 0) === 1 ? "" : "s"} for ${record.name || "this RXCUI"} (TTY=${record.tty || "?"}).`;
   }
   if (s === "NO_NDCS") {
-    return `RXCUI exists (${record.name || "—"}, TTY=${record.tty || "?"}) but has no active NDCs in the current RxNorm release.`;
+    return record.subStatus === "NO_NDCS_PRODUCT"
+      ? noNdcsTooltipForProduct(record.tty || "?")
+      : noNdcsTooltipForNonProduct(record.tty || "?");
   }
   return record.reason || STATUS_INFO.NEEDS_REVIEW.long;
 }
@@ -242,7 +267,7 @@ async function runBatch(refs) {
     tbody.appendChild(rowApi.detailRow);
     rowApis.set(rxcui, rowApi);
     records.set(rxcui, {
-      rxcui, status: "PENDING",
+      rxcui, status: "PENDING", subStatus: null,
       tty: "", name: "", entries: [], reason: "",
       duplicate: duplicates.has(rxcui),
     });
@@ -284,9 +309,22 @@ async function runBatch(refs) {
     if (rec.status === "NEEDS_REVIEW" && rec.entries.length === 0) continue;
     rowApi.setOnExpand((container) => {
       if (rec.entries.length === 0) {
+        const body = rec.subStatus === "NO_NDCS_PRODUCT"
+          ? explainNoNdcsForProduct(rec.name, rec.tty)
+          : explainNoNdcsForNonProduct(rec.name, rec.tty);
+        const actions = [];
+        if (rec.subStatus === "NO_NDCS_NON_PRODUCT" && rec.name) {
+          const q = encodeURIComponent(rec.name);
+          actions.push({
+            label: `Search RxNav for products of ${rec.name}`,
+            primary: false,
+            onClick: () => window.open(`https://mor.nlm.nih.gov/RxNav/search?searchBy=String&searchTerm=${q}`, "_blank", "noopener"),
+          });
+        }
         container.appendChild(errorCard({
           title: `No active NDCs for ${rec.name || rxcui}`,
-          body: rec.reason || "RxNav returned no NDCs for this RXCUI.",
+          body,
+          actions,
           variant: "info",
         }));
         return;
@@ -334,11 +372,14 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
   record.entries = entries;
 
   if (entries.length === 0) {
-    const isIngredient = ["IN", "MIN", "PIN"].includes(props.tty);
     record.status = "NO_NDCS";
-    record.reason = isIngredient
-      ? "Ingredient-level RXCUI — no direct NDC associations"
-      : "RXCUI valid but no active NDCs in RxNorm";
+    if (isProductTty(props.tty)) {
+      record.subStatus = "NO_NDCS_PRODUCT";
+      record.reason = `Product (TTY=${props.tty}) with no active NDCs in current release`;
+    } else {
+      record.subStatus = "NO_NDCS_NON_PRODUCT";
+      record.reason = `Non-product TTY (${props.tty}) — RxNorm assigns NDCs only to SCD/SBD/BPCK/GPCK`;
+    }
   } else {
     record.status = "OK";
   }
@@ -458,15 +499,18 @@ function el(tag, attrs = {}, children = []) {
 function renderFilterChips(refs, table, records) {
   refs.filtersSlot.innerHTML = "";
 
-  // Layer 1 banner
-  const banner = buildMode5Banner();
-  if (banner) refs.filtersSlot.appendChild(banner);
-
-  const counts = { ALL: 0, OK: 0, NO_NDCS: 0, NEEDS_REVIEW: 0 };
+  const counts = { ALL: 0, OK: 0, NO_NDCS: 0, NEEDS_REVIEW: 0, NO_NDCS_PRODUCT: 0, NO_NDCS_NON_PRODUCT: 0 };
   for (const rec of records.values()) {
     counts.ALL++;
     if (counts[rec.status] != null) counts[rec.status]++;
+    if (rec.status === "NO_NDCS" && rec.subStatus && counts[rec.subStatus] != null) {
+      counts[rec.subStatus]++;
+    }
   }
+
+  // Layer 1 banner — pass sub-counts so the two NO_NDCS sub-rows are quantified.
+  const banner = buildMode5Banner({ counts });
+  if (banner) refs.filtersSlot.appendChild(banner);
   const chipBar = document.createElement("div");
   chipBar.className = "filter-chips";
   chipBar.dataset.filter = "ALL";
@@ -499,7 +543,7 @@ function renderFilterChips(refs, table, records) {
   const statusTh = refs.tableSlot.querySelector(".batch-table thead th:first-child");
   if (statusTh && !statusTh.querySelector(".col-info-btn")) {
     const { iconBtn } = statusInfoIcon({
-      buildBanner: () => buildMode5Banner({ showDismiss: false, ignoreDismissed: true }),
+      buildBanner: () => buildMode5Banner({ showDismiss: false, ignoreDismissed: true, counts }),
     });
     statusTh.appendChild(iconBtn);
   }
@@ -527,13 +571,20 @@ function applyFilter(table, chipBar, key) {
 function renderSummary(refs, total, records) {
   refs.summarySlot.innerHTML = "";
 
-  let ok = 0, noNdcs = 0, review = 0, totalNdcs = 0;
+  let ok = 0, noNdcs = 0, noNdcsProduct = 0, noNdcsNonProduct = 0, review = 0, totalNdcs = 0;
   for (const rec of records.values()) {
     if (rec.status === "OK") { ok++; totalNdcs += rec.entries.length; }
-    else if (rec.status === "NO_NDCS") noNdcs++;
+    else if (rec.status === "NO_NDCS") {
+      noNdcs++;
+      if (rec.subStatus === "NO_NDCS_PRODUCT") noNdcsProduct++;
+      else noNdcsNonProduct++;
+    }
     else review++;
   }
-  const summary = `Analyzed ${total} RXCUI${total === 1 ? "" : "s"}. ${totalNdcs} total active NDC${totalNdcs === 1 ? "" : "s"} across ${ok} with NDCs. ${noNdcs} had no NDCs. ${review} need${review === 1 ? "s" : ""} review.`;
+  const noNdcsBreakdown = noNdcs > 0
+    ? ` (${noNdcsNonProduct} non-product TTY, ${noNdcsProduct} product without active NDCs)`
+    : "";
+  const summary = `Analyzed ${total} RXCUI${total === 1 ? "" : "s"}. ${totalNdcs} total active NDC${totalNdcs === 1 ? "" : "s"} across ${ok} with NDCs. ${noNdcs} had no NDCs${noNdcsBreakdown}. ${review} need${review === 1 ? "s" : ""} review.`;
 
   const section = document.createElement("section");
   section.className = "summary-bar";

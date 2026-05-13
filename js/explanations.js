@@ -70,3 +70,64 @@ export function getClinicalContext(route, atc) {
   if (!key) return null;
   return clinicalContext[key] || null;
 }
+
+// ---------------- TTY descriptions + NDC explanations ----------------
+//
+// RxNorm only attaches NDCs to product-level concepts. Everything else
+// (ingredients, brand names, dose forms, groupings) is by design NDC-less.
+// These helpers + templates let Mode 4 / Mode 5 explain the distinction
+// instead of showing the same generic "no NDCs" message everywhere.
+
+export const TTY_DESCRIPTIONS = {
+  IN:   "Ingredient",
+  PIN:  "Precise Ingredient",
+  MIN:  "Multiple Ingredients",
+  BN:   "Brand Name",
+  SCD:  "Semantic Clinical Drug",
+  SBD:  "Semantic Branded Drug",
+  BPCK: "Branded Pack",
+  GPCK: "Generic Pack",
+  SCDG: "Semantic Clinical Drug Group",
+  SBDG: "Semantic Branded Drug Group",
+  SCDC: "Semantic Clinical Drug Component",
+  SBDC: "Semantic Branded Drug Component",
+  SCDF: "Semantic Clinical Drug Form",
+  SBDF: "Semantic Branded Drug Form",
+  DF:   "Dose Form",
+  DFG:  "Dose Form Group",
+};
+
+const PRODUCT_TTYS = new Set(["SCD", "SBD", "BPCK", "GPCK"]);
+
+export function isProductTty(tty) {
+  return PRODUCT_TTYS.has((tty || "").toUpperCase());
+}
+
+export function ttyDescription(tty) {
+  if (!tty) return "concept";
+  return TTY_DESCRIPTIONS[tty.toUpperCase()] || `TTY ${tty}`;
+}
+
+export function explainNoNdcsForNonProduct(name, tty) {
+  const desc = ttyDescription(tty);
+  const subject = name ? `${name} is a ${desc}` : `This is a ${desc}`;
+  return `${subject} (TTY=${tty}). RxNorm only assigns NDCs to specific product concepts (SCD, SBD, BPCK, GPCK). ` +
+    `To find NDCs, look up a specific formulation${name ? ` of ${name}` : ""}.`;
+}
+
+export function explainNoNdcsForProduct(name, tty) {
+  const subject = name ? `${name}` : "This product";
+  return `${subject} (TTY=${tty}) exists in RxNorm but has no active NDCs in the current release. ` +
+    `Typical reasons: unmarketed in the US, recently retired, generic without independent marketing, or not yet indexed.`;
+}
+
+export function noNdcsTooltipForNonProduct(tty) {
+  const desc = ttyDescription(tty);
+  return `TTY=${tty} is not a product type (${desc}). RxNorm reserves NDCs for specific clinical drugs (SCD/SBD) ` +
+    `or packaged products (BPCK/GPCK). To get NDCs, look up a specific formulation.`;
+}
+
+export function noNdcsTooltipForProduct(tty) {
+  return `This product (TTY=${tty}) exists in RxNorm but has no active NDCs in the current release. ` +
+    `Possible reasons: retired from market, generic without independent marketing, or international product not sold in the US.`;
+}

@@ -15,6 +15,11 @@ import {
   errorCard,
   skeletonCard,
 } from "../ui-components.js";
+import {
+  isProductTty,
+  explainNoNdcsForNonProduct,
+  explainNoNdcsForProduct,
+} from "../explanations.js";
 import { downloadCsv } from "../csv-export.js";
 
 let activeRunId = 0;
@@ -144,12 +149,23 @@ async function runSubmit(refs, raw) {
   }));
 
   if (entries.length === 0) {
-    const isIngredient = ["IN", "MIN", "PIN"].includes(props.tty);
+    const productTty = isProductTty(props.tty);
+    const body = productTty
+      ? explainNoNdcsForProduct(props.name, props.tty)
+      : explainNoNdcsForNonProduct(props.name, props.tty);
+    const actions = [];
+    if (!productTty && props.name) {
+      const q = encodeURIComponent(props.name);
+      actions.push({
+        label: `Search RxNav for products of ${props.name}`,
+        primary: false,
+        onClick: () => window.open(`https://mor.nlm.nih.gov/RxNav/search?searchBy=String&searchTerm=${q}`, "_blank", "noopener"),
+      });
+    }
     refs.result.appendChild(errorCard({
       title: `No active NDCs for ${props.name || `RXCUI ${trimmed}`}`,
-      body: isIngredient
-        ? "Ingredient-level RXCUIs (TTY=IN/MIN/PIN) typically have no direct NDC associations. Try a specific clinical drug (TTY=SCD or SBD) instead — for example, the SCD products on the example chips for atorvastatin or fluticasone."
-        : "This RXCUI exists in RxNorm but has no active NDCs. The product may be unmarketed in the US, ingredient-level only, or recently retired.",
+      body,
+      actions,
       variant: "info",
     }));
     return;
