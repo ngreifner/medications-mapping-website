@@ -69,12 +69,13 @@ export function routeCard({ route, dfgs = [], chosenDfg = null }) {
 
 // ---------------- kept / rejected ATCs ----------------
 
-export function keptAtcCard({ atc, name, reason }) {
+export function keptAtcCard({ atc, name, reason, overrideNote = null }) {
   return el("section", { class: "card card-kept", "aria-label": `Kept ATC ${atc}` }, [
     el("p", { class: "card-title" }, "Kept"),
     el("p", { class: "atc-code" }, atc),
     name ? el("p", { class: "atc-name" }, name) : null,
     reason ? el("p", { class: "reason" }, reason) : null,
+    overrideNote ? el("p", { class: "reason-override" }, overrideNote) : null,
   ]);
 }
 

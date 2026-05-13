@@ -25,7 +25,7 @@ import {
   getAtcPropertyValues,
   getClassMembers,
 } from "./rxnav-client.js";
-import { resolveRoute, filterAtcByRoute } from "./filter-engine.js";
+import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-engine.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -97,6 +97,32 @@ async function attachAtcNames(codes) {
 }
 
 /**
+ * Wrap a Strategy 1 (ATCPROD) keep-result with an optional `routeOverride`
+ * flag. We compare each kept Level-5 code against the route filter; if at
+ * least one kept code WOULD have been rejected by the matrix, we mark the
+ * result so the UI can surface a small explanation that NLM's product-level
+ * mapping intentionally crosses anatomical groups for clinical-intent reasons
+ * (e.g. inhaled levodopa → N04 nervous-system class, not respiratory).
+ *
+ * Returned shape:
+ *   { status: "KEEP", codes, routeOverride?: { route, codes: [{code, name, verdict}, ...] } }
+ */
+function buildAtcprodKeep(level5, route) {
+  if (!route || route === "unknown") return { status: "KEEP", codes: level5 };
+  const overrideCodes = [];
+  for (const c of level5) {
+    const v = classifyAtcForRoute(c.code, route);
+    if (!v.kept) overrideCodes.push({ code: c.code, name: c.name, verdict: v });
+  }
+  if (overrideCodes.length === 0) return { status: "KEEP", codes: level5 };
+  console.log(
+    `[RxCUI→ATC] Route override detected: ATCPROD kept ${overrideCodes.map(o => o.code).join(", ")} ` +
+    `which the route filter would have rejected for "${route}" route`
+  );
+  return { status: "KEEP", codes: level5, routeOverride: { route, codes: overrideCodes } };
+}
+
+/**
  * Main entry: RXCUI → Level 5 ATC codes.
  *
  * Returns a discriminated result:
@@ -138,6 +164,11 @@ export async function convertRxcuiToAtc(rxcui) {
       getAtcPropertyValues(rxcui).catch(() => []),
     ]);
 
+    // Resolve route once — used by Strategy 2/3 AND by Strategy 1's
+    // route-override detection (we want to flag when ATCPROD keeps a
+    // code that our matrix would have rejected).
+    const route = resolveRoute(dfgNames);
+
     // ============================================================
     //  STRATEGY 1: ATCPROD — direct product-level ATC mapping
     // ============================================================
@@ -152,12 +183,12 @@ export async function convertRxcuiToAtc(rxcui) {
       const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
       if (level4Ids.length > 0) {
         const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-        if (level5 && level5.length > 0) return { status: "KEEP", codes: level5 };
+        if (level5 && level5.length > 0) return buildAtcprodKeep(level5, route);
       }
 
       // Direct Level 5 codes from ATCPROD (rare but possible).
       const level5Direct = uniqueClasses.filter(c => c.code.length === 7);
-      if (level5Direct.length > 0) return { status: "KEEP", codes: level5Direct };
+      if (level5Direct.length > 0) return buildAtcprodKeep(level5Direct, route);
 
       // Save Level 4 codes as fallback AND as a prefix whitelist for
       // downstream tiers. This prevents combo drugs (e.g. R03AL) from
@@ -178,7 +209,6 @@ export async function convertRxcuiToAtc(rxcui) {
     // ============================================================
     //  STRATEGY 2: Ingredient-level ATC + DFG route filter
     // ============================================================
-    const route = resolveRoute(dfgNames);
     console.log("[RxCUI→ATC] DFG:", dfgNames, "→ Route:", route);
 
     if (ingredientClasses.length > 0) {

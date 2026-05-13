@@ -262,6 +262,21 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     }
   }
 
+  // Defensive invariant: a code in the kept list must never appear as
+  // rejected in the same result. The engine's strategies don't enforce
+  // this cross-strategy (Strategy 1 can KEEP a code Strategy 2 would
+  // REJECT — see the inhaled-levodopa case). Drop those duplicates here.
+  const keptCodesSet = new Set(keptCodes.map(c => c.code));
+  const dedupedRejected = rejectedRows.filter(r => !keptCodesSet.has(r.atc));
+
+  // Route-override note: if the engine flagged a kept code as having been
+  // anatomically-unusual for this route (i.e., ATCPROD overrode our matrix),
+  // attach a small explanation to that code's kept card.
+  const overrideByCode = new Map();
+  if (result && result.routeOverride && Array.isArray(result.routeOverride.codes)) {
+    for (const o of result.routeOverride.codes) overrideByCode.set(o.code, o);
+  }
+
   // Render kept cards (or empty state)
   if (keptCodes.length === 0) {
     resultEl.appendChild(errorCard({
@@ -271,15 +286,17 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     }));
   } else {
     for (const k of keptCodes) {
+      const ov = overrideByCode.get(k.code);
       resultEl.appendChild(keptAtcCard({
         atc: k.code,
         name: k.name,
         reason: keptReasonFor(k.code, route),
+        overrideNote: ov ? routeOverrideNote(k.code, route) : null,
       }));
       appendAnatomyCard(resultEl, k.code, k.name);
     }
   }
-  for (const r of rejectedRows) {
+  for (const r of dedupedRejected) {
     resultEl.appendChild(rejectedAtcCard(r));
   }
 
@@ -288,12 +305,55 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     onCopyJson: () => copyResultAsJson({
       rxcui: trimmed, props, route, dfgs,
       kept: keptCodes,
-      rejected: rejectedRows,
+      rejected: dedupedRejected,
+      routeOverride: result && result.routeOverride ? result.routeOverride : null,
     }),
     onLookupAnother,
   }));
 
   setPageTitle(trimmed, keptCodes[0]?.code);
+}
+
+// ATC Level 1 letter → human-readable anatomical class for the override note.
+const ATC_L1_PURPOSE = {
+  A: "alimentary tract & metabolism",
+  B: "blood & blood-forming organs",
+  C: "cardiovascular system",
+  D: "dermatological / skin",
+  G: "genito-urinary system & sex hormones",
+  H: "systemic hormonal preparations",
+  J: "anti-infectives",
+  L: "antineoplastic & immunomodulating",
+  M: "musculoskeletal system",
+  N: "nervous system",
+  P: "antiparasitic",
+  R: "respiratory system",
+  S: "sensory organs",
+  V: "various",
+};
+const ROUTE_EXPECTED_CLASS = {
+  inhalant:    "respiratory (R03/R07)",
+  nasal:       "nasal (R01)",
+  ophthalmic:  "ophthalmic (S01/S03)",
+  otic:        "otic (S02/S03)",
+  oral:        "the systemic ATC class for this drug",
+  injectable:  "the systemic ATC class for this drug",
+  topical:     "dermatological (D)",
+  transdermal: "dermatological (D)",
+  rectal:      "rectal-route ATC group",
+  vaginal:     "gynecological (G)",
+  buccal:      "stomatological (A01) or pharyngeal (R02)",
+  sublingual:  "stomatological (A01), pharyngeal (R02) or cardiac (C01)",
+  mucosal:     "the appropriate mucosal class",
+};
+
+function routeOverrideNote(atc, route) {
+  const l1 = (atc || "").charAt(0).toUpperCase();
+  const codeClass = ATC_L1_PURPOSE[l1] || "this anatomical group";
+  const expected = ROUTE_EXPECTED_CLASS[route] || "the route's expected anatomical group";
+  return `Note: ${l1} codes are anatomically for the ${codeClass}, not ${expected}. ` +
+    `NLM's ATCPROD mapping explicitly assigns this product to ${atc} because the clinical ` +
+    `intent of the medication (${codeClass}) overrides the formulation's route.`;
 }
 
 // Update the browser tab title so a result is identifiable in tab strips.

@@ -801,6 +801,17 @@ a:hover {
   font-style: italic;
   line-height: 1.5;
 }
+.reason-override {
+  font-size: var(--font-body-sm);
+  color: var(--text-soft);
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elevated);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--r-sm);
+  font-style: italic;
+  line-height: 1.55;
+}
 
 .action-row {
   display: flex; gap: var(--space-2); flex-wrap: wrap;
