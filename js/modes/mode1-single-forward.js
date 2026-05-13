@@ -8,7 +8,6 @@ import { detectCodeType } from "../code-detection.js";
 import {
   getProperties,
   getDfgs,
-  getIngredientAtcClasses,
 } from "../rxnav-client.js";
 import {
   resolveRoute,
@@ -137,12 +136,11 @@ export async function renderInto({ rxcui, resultEl }) {
 async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, onRetry }) {
   const trimmed = rxcui;
 
-  let props, dfgs, ingredientATC, result;
+  let props, dfgs, result;
   try {
-    [props, dfgs, ingredientATC, result] = await Promise.all([
+    [props, dfgs, result] = await Promise.all([
       getProperties(trimmed),
       getDfgs(trimmed),
-      getIngredientAtcClasses(trimmed),
       convertRxcuiToAtc(trimmed),
     ]);
   } catch (err) {
@@ -230,17 +228,13 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     ? result.codes.filter(c => (c.code || "").length === 7)
     : [];
 
-  // 5. Rejected ATCs — promote each route-rejected Level 4 to its Level 5
-  // equivalent for the same ingredient (using the same class-members
-  // mechanism the kept path uses). L4 codes never appear in the UI.
+  // 5. Rejected ATCs — read the deduped L4 list from the engine (single
+  // source of truth; same array Mode 2 counts for its "removed" column).
+  // Then promote each to its Level 5 equivalent for the same ingredient.
+  // L4 codes never appear in the UI.
+  const rejectedL4 = Array.isArray(result && result.rejectedL4) ? result.rejectedL4 : [];
   const rejectedRows = [];
-  if (route !== "unknown" && Array.isArray(ingredientATC)) {
-    const rejectedL4 = [];
-    for (const c of ingredientATC) {
-      if ((c.classId || "").length !== 5) continue; // skip non-L4 entries
-      const v = classifyAtcForRoute(c.classId, route);
-      if (!v.kept) rejectedL4.push({ classId: c.classId, className: c.className, verdict: v });
-    }
+  if (rejectedL4.length > 0) {
     const promotedLists = await Promise.all(rejectedL4.map(async (r) => {
       try {
         const promoted = await resolveLevel5FromClassMembers(trimmed, [r.classId]);
@@ -261,13 +255,6 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
       rejectedRows.push({ atc: row.atc, name: row.name, reason, clinical, l4: row.l4 });
     }
   }
-
-  // Defensive invariant: a code in the kept list must never appear as
-  // rejected in the same result. The engine's strategies don't enforce
-  // this cross-strategy (Strategy 1 can KEEP a code Strategy 2 would
-  // REJECT — see the inhaled-levodopa case). Drop those duplicates here.
-  const keptCodesSet = new Set(keptCodes.map(c => c.code));
-  const dedupedRejected = rejectedRows.filter(r => !keptCodesSet.has(r.atc));
 
   // Route-override note: if the engine flagged a kept code as having been
   // anatomically-unusual for this route (i.e., ATCPROD overrode our matrix),
@@ -296,7 +283,7 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
       appendAnatomyCard(resultEl, k.code, k.name);
     }
   }
-  for (const r of dedupedRejected) {
+  for (const r of rejectedRows) {
     resultEl.appendChild(rejectedAtcCard(r));
   }
 
@@ -305,7 +292,7 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     onCopyJson: () => copyResultAsJson({
       rxcui: trimmed, props, route, dfgs,
       kept: keptCodes,
-      rejected: dedupedRejected,
+      rejected: rejectedRows,
       routeOverride: result && result.routeOverride ? result.routeOverride : null,
     }),
     onLookupAnother,

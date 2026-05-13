@@ -11,12 +11,8 @@ import { detectCodeType } from "../code-detection.js";
 import {
   getProperties,
   getDfgs,
-  getIngredientAtcClasses,
 } from "../rxnav-client.js";
-import {
-  resolveRoute,
-  classifyAtcForRoute,
-} from "../filter-engine.js";
+import { resolveRoute } from "../filter-engine.js";
 import { convertRxcuiToAtc } from "../atc-resolver.js";
 import { renderInto as renderMode1Into } from "./mode1-single-forward.js";
 import {
@@ -348,12 +344,11 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     return;
   }
 
-  let props, dfgs, ingredientATC, result;
+  let props, dfgs, result;
   try {
-    [props, dfgs, ingredientATC, result] = await Promise.all([
+    [props, dfgs, result] = await Promise.all([
       getProperties(rxcui),
       getDfgs(rxcui),
-      getIngredientAtcClasses(rxcui),
       convertRxcuiToAtc(rxcui),
     ]);
   } catch (err) {
@@ -399,14 +394,11 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     : resolveRoute(dfgs);
   record.route = (route && route !== "unknown") ? route : "";
 
-  let removed = 0;
-  if (route && route !== "unknown" && Array.isArray(ingredientATC)) {
-    for (const c of ingredientATC) {
-      if ((c.classId || "").length !== 5) continue;
-      const v = classifyAtcForRoute(c.classId, route);
-      if (!v.kept) removed++;
-    }
-  }
+  // The engine attaches `rejectedL4` — the deduped final state of route-
+  // filter rejections (already excludes ATCPROD-overridden L4s and the
+  // L4 prefixes of kept L5 codes). This is the single source of truth;
+  // Mode 1's row-expand renders the same list as rejected cards.
+  const removed = Array.isArray(result && result.rejectedL4) ? result.rejectedL4.length : 0;
   record.removed = removed;
 
   const keptL5 = (Array.isArray(result.codes) ? result.codes : [])

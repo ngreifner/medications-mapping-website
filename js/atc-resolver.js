@@ -152,7 +152,7 @@ export async function convertRxcuiToAtc(rxcui) {
       const codes = propertyCodes
         .filter(c => (c || "").length === 7)
         .map(code => ({ code, name: props.name || null }));
-      return { status: "INGREDIENT_LEVEL", tty: props.tty, codes };
+      return { status: "INGREDIENT_LEVEL", tty: props.tty, codes, rejectedL4: [] };
     }
 
     // Fire all data sources in parallel; per-endpoint failures degrade
@@ -169,6 +169,43 @@ export async function convertRxcuiToAtc(rxcui) {
     // code that our matrix would have rejected).
     const route = resolveRoute(dfgNames);
 
+    // Single source of truth for the route filter's rejection list.
+    // After the engine produces a result, finalize() enriches it with
+    // `rejectedL4` — the set of L4 ATC subgroups that the route matrix
+    // rejected for this drug AND were NOT overridden by ATCPROD or
+    // already kept. Both Mode 1 (renders these as rejected cards after
+    // L4→L5 promotion) and Mode 2 (counts them for the "removed" column
+    // + status classification) read from this array.
+    const finalize = (result) => {
+      if (!result || !route || route === "unknown" || !Array.isArray(ingredientClasses)) {
+        return { ...result, rejectedL4: [] };
+      }
+      const exempt = new Set();
+      if (result.routeOverride && Array.isArray(result.routeOverride.codes)) {
+        for (const o of result.routeOverride.codes) {
+          if (o.code && o.code.length >= 5) exempt.add(o.code.slice(0, 5).toUpperCase());
+        }
+      }
+      // Any L4 prefix of a kept L5 is exempt — the route filter and the
+      // engine already agree on that prefix; no point listing it as rejected.
+      for (const c of (Array.isArray(result.codes) ? result.codes : [])) {
+        const code = (c.code || "").toUpperCase();
+        if (code.length >= 5) exempt.add(code.slice(0, 5));
+      }
+      const rejected = [];
+      const seen = new Set();
+      for (const c of ingredientClasses) {
+        const cid = (c.classId || "").toUpperCase();
+        if (cid.length !== 5 || seen.has(cid) || exempt.has(cid)) continue;
+        const v = classifyAtcForRoute(cid, route);
+        if (!v.kept) {
+          rejected.push({ classId: cid, className: c.className || "Name not available", verdict: v });
+          seen.add(cid);
+        }
+      }
+      return { ...result, rejectedL4: rejected };
+    };
+
     // ============================================================
     //  STRATEGY 1: ATCPROD — direct product-level ATC mapping
     // ============================================================
@@ -183,12 +220,12 @@ export async function convertRxcuiToAtc(rxcui) {
       const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
       if (level4Ids.length > 0) {
         const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-        if (level5 && level5.length > 0) return buildAtcprodKeep(level5, route);
+        if (level5 && level5.length > 0) return finalize(buildAtcprodKeep(level5, route));
       }
 
       // Direct Level 5 codes from ATCPROD (rare but possible).
       const level5Direct = uniqueClasses.filter(c => c.code.length === 7);
-      if (level5Direct.length > 0) return buildAtcprodKeep(level5Direct, route);
+      if (level5Direct.length > 0) return finalize(buildAtcprodKeep(level5Direct, route));
 
       // Save Level 4 codes as fallback AND as a prefix whitelist for
       // downstream tiers. This prevents combo drugs (e.g. R03AL) from
@@ -221,7 +258,7 @@ export async function convertRxcuiToAtc(rxcui) {
         atcprodPrefixFilter(atcList.filter(item => item.code.length === 7)),
         route,
       );
-      if (level5.length > 0) return { status: "KEEP", codes: level5 };
+      if (level5.length > 0) return finalize({ status: "KEEP", codes: level5 });
 
       if (!atcprodFallback) {
         const level4Ids = filterAtcByRoute(
@@ -231,7 +268,7 @@ export async function convertRxcuiToAtc(rxcui) {
         console.log("[RxCUI→ATC] Level 4 codes after route filter:", level4Ids);
         if (level4Ids.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-          if (promoted) return { status: "KEEP", codes: promoted };
+          if (promoted) return finalize({ status: "KEEP", codes: promoted });
         }
       }
     }
@@ -246,7 +283,7 @@ export async function convertRxcuiToAtc(rxcui) {
       );
       if (level5Codes.length > 0) {
         const named = await attachAtcNames(level5Codes);
-        return { status: "KEEP", codes: named };
+        return finalize({ status: "KEEP", codes: named });
       }
 
       if (!atcprodFallback) {
@@ -256,7 +293,7 @@ export async function convertRxcuiToAtc(rxcui) {
         );
         if (level4Codes.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Codes);
-          if (promoted) return { status: "KEEP", codes: promoted };
+          if (promoted) return finalize({ status: "KEEP", codes: promoted });
         }
       }
     }
@@ -264,9 +301,9 @@ export async function convertRxcuiToAtc(rxcui) {
     // Last resort — return ATCPROD's Level 4 codes if nothing else resolved.
     if (atcprodFallback) {
       console.log("[RxCUI→ATC] Returning ATCPROD Level 4 fallback:", atcprodFallback.map(c => c.code).join(", "));
-      return { status: "KEEP", codes: atcprodFallback };
+      return finalize({ status: "KEEP", codes: atcprodFallback });
     }
-    return { status: "NO_ATC" };
+    return { status: "NO_ATC", rejectedL4: [] };
   } catch (e) {
     console.error("[RxCUI→ATC] Error:", e);
     throw e;
