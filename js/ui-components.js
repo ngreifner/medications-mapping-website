@@ -137,9 +137,18 @@ export function codeDetectionBanner({ detectedType, value, suggestedModeLabel, o
 // ---------------- action row ----------------
 
 export function actionBarCard({ onCopyJson, onLookupAnother }) {
-  const buttons = [
-    el("button", { type: "button", class: "btn-secondary", onclick: onCopyJson }, "Copy as JSON"),
-  ];
+  const copyBtn = el("button", { type: "button", class: "btn-secondary" }, "Copy as JSON");
+  copyBtn.addEventListener("click", () => {
+    onCopyJson?.();
+    const original = copyBtn.textContent;
+    copyBtn.textContent = "Copied ✓";
+    copyBtn.classList.add("is-success");
+    setTimeout(() => {
+      copyBtn.textContent = original;
+      copyBtn.classList.remove("is-success");
+    }, 1500);
+  });
+  const buttons = [copyBtn];
   // onLookupAnother is omitted by Mode 2's row-expand — the batch UI has its
   // own Reset button, and "Look up another" would be misleading inline.
   if (onLookupAnother) {

@@ -212,6 +212,7 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
       onCopyJson: () => copyResultAsJson({ rxcui: trimmed, props, status: "INGREDIENT_LEVEL", codes }),
       onLookupAnother,
     }));
+    setPageTitle(trimmed, codes[0]?.code);
     return;
   }
 
@@ -291,6 +292,15 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     }),
     onLookupAnother,
   }));
+
+  setPageTitle(trimmed, keptCodes[0]?.code);
+}
+
+// Update the browser tab title so a result is identifiable in tab strips.
+function setPageTitle(rxcui, atc) {
+  document.title = atc
+    ? `MedCode · ${rxcui} → ${atc}`
+    : "MedCode Lookup — Route-aware drug code translator";
 }
 
 function appendAnatomyCard(resultEl, atcCode, hintName) {
@@ -307,6 +317,7 @@ function clearMode1State(resultEl, bannerEl) {
   if (input) { input.value = ""; input.focus(); }
   resultEl.innerHTML = "";
   bannerEl.innerHTML = "";
+  setPageTitle(null, null);
   const url = new URL(window.location.href);
   url.search = "?mode=1";
   window.history.pushState({}, "", url);
