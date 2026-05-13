@@ -26,6 +26,8 @@ import {
   batchSummaryBar,
   batchRow,
   errorCard,
+  educationalBanner,
+  statusInfoIcon,
 } from "../ui-components.js";
 import { downloadCsv } from "../csv-export.js";
 
@@ -38,6 +40,50 @@ const STATUS_CHIP_LABEL = {
   LEGIT_MULTI:  "Legit multi",
   NEEDS_REVIEW: "Needs review",
 };
+
+// Per-status copy used in Layer 1 banner, Layer 2 chip tooltips,
+// and Layer 3 fallback row tooltips. Single source of truth.
+const STATUS_INFO = {
+  CLEAN_FIX: {
+    dot: "success",
+    name: "Clean fix",
+    short: "The filter removed wrong-route codes",
+    long: "The route filter removed at least one wrong-route ATC code for this drug. The kept code matches the product's actual administration route.",
+  },
+  UNCHANGED: {
+    dot: "muted",
+    name: "Unchanged",
+    short: "Mapping was already correct",
+    long: "All ATC codes for the ingredient already matched this product's route. Nothing needed to be filtered out.",
+  },
+  LEGIT_MULTI: {
+    dot: "accent",
+    name: "Multi-route",
+    short: "Ingredient with multiple valid codes",
+    long: "This is an ingredient-level RXCUI (TTY=IN) with multiple valid Level 5 ATC codes across different routes. No filtering applied — all codes shown as kept.",
+  },
+  NEEDS_REVIEW: {
+    dot: "warning",
+    name: "Needs review",
+    short: "Couldn't be processed automatically",
+    long: "This RXCUI couldn't be processed automatically. Common causes: RXCUI not found, network error, invalid input format, or no ATC mapping in RxNorm.",
+  },
+};
+
+function buildMode2Banner({ showDismiss = true, ignoreDismissed = false } = {}) {
+  return educationalBanner({
+    storageKey: "medcode_mode2_status_banner_dismissed",
+    title: "Results categorized by what the route filter did",
+    items: STATUSES.map(k => ({
+      dot: STATUS_INFO[k].dot,
+      name: STATUS_INFO[k].name,
+      desc: STATUS_INFO[k].short,
+    })),
+    footnote: "Click any row for the full explanation.",
+    showDismiss,
+    ignoreDismissed,
+  });
+}
 
 let mobileWarningDismissed = false;
 let activeRunId = 0; // bump to invalidate any in-flight batch when a new one starts
@@ -297,6 +343,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
       kept: [],
       removed: 0,
       reason: record.reason,
+      tooltip: record.reason,
     });
     return;
   }
@@ -320,6 +367,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
       kept: [],
       removed: 0,
       reason: record.reason,
+      tooltip: record.reason,
     });
     return;
   }
@@ -335,6 +383,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
       kept: [],
       removed: 0,
       reason: record.reason,
+      tooltip: record.reason,
     });
     return;
   }
@@ -403,6 +452,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     kept: keptL5,
     removed,
     reason: record.reason,
+    tooltip: buildRowTooltip(record),
   });
 }
 
@@ -432,9 +482,19 @@ function renderSummary(refs, total, counts, records) {
 
 function renderFilterChips(refs, counts, tbody) {
   refs.filtersSlot.innerHTML = "";
+
+  // Layer 1 — educational banner above the chips (dismissible, persisted)
+  const banner = buildMode2Banner();
+  if (banner) refs.filtersSlot.appendChild(banner);
+
   const chips = [
-    { key: "ALL", label: "All", count: counts.CLEAN_FIX + counts.UNCHANGED + counts.LEGIT_MULTI + counts.NEEDS_REVIEW },
-    ...STATUSES.map(s => ({ key: s, label: STATUS_CHIP_LABEL[s], count: counts[s] })),
+    { key: "ALL", label: "All", count: counts.CLEAN_FIX + counts.UNCHANGED + counts.LEGIT_MULTI + counts.NEEDS_REVIEW, tooltip: "" },
+    ...STATUSES.map(s => ({
+      key: s,
+      label: STATUS_CHIP_LABEL[s],
+      count: counts[s],
+      tooltip: STATUS_INFO[s].long,
+    })),
   ];
   let active = "ALL";
 
@@ -451,7 +511,6 @@ function renderFilterChips(refs, counts, tbody) {
       const rowStatus = tr.dataset.status;
       const visible = key === "ALL" || rowStatus === key;
       tr.hidden = !visible;
-      // Hide the matching detail row too
       const detail = tr.nextElementSibling;
       if (detail && detail.classList.contains("batch-row-detail")) {
         if (!visible) detail.hidden = true;
@@ -465,11 +524,54 @@ function renderFilterChips(refs, counts, tbody) {
     btn.className = "filter-chip" + (c.key === active ? " is-active" : "");
     btn.dataset.key = c.key;
     btn.setAttribute("aria-pressed", c.key === active ? "true" : "false");
+    btn.setAttribute("data-tooltip-pos", "bottom");
+    if (c.tooltip) {
+      btn.setAttribute("data-tooltip", c.tooltip);
+      btn.setAttribute("aria-label", `${c.label} (${c.count}) — ${c.tooltip}`);
+    }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${c.count}</span>`;
     btn.addEventListener("click", () => applyFilter(c.key));
     chipBar.appendChild(btn);
   }
   refs.filtersSlot.appendChild(chipBar);
+
+  // Header info icon — re-open the banner content as a popover even if dismissed.
+  // The status column header is the first <th> in the rendered table.
+  const statusTh = refs.tableSlot.querySelector(".batch-table thead th:first-child");
+  if (statusTh && !statusTh.querySelector(".col-info-btn")) {
+    const { iconBtn } = statusInfoIcon({
+      buildBanner: (force) => buildMode2Banner({ showDismiss: false, ignoreDismissed: !!force || true }),
+    });
+    statusTh.appendChild(iconBtn);
+  }
+}
+
+// Build a per-row tooltip string. Called whenever a record is updated.
+function buildRowTooltip(record) {
+  const s = record.status;
+  if (!s || s === "PENDING") return "";
+
+  if (s === "CLEAN_FIX") {
+    const keptCodes = (record.kept || []).map(k => k.code).filter(Boolean);
+    const removed = record.removedAtcs || [];
+    const removedStr = removed.length
+      ? removed.map(r => r.code + (r.route ? ` (${r.route})` : "")).join(", ")
+      : `${record.removed || 0} wrong-route code${(record.removed || 0) === 1 ? "" : "s"}`;
+    const total = keptCodes.length + (record.removed || 0);
+    return `This drug had ${total} candidate ATC codes for its ingredient. The route filter kept ${keptCodes.join(", ") || "—"} (matches ${record.route} route) and removed ${removed.length || record.removed || 0} wrong-route code${(removed.length || record.removed || 0) === 1 ? "" : "s"}${removed.length ? ": " + removedStr : ""}.`;
+  }
+  if (s === "UNCHANGED") {
+    const n = (record.kept || []).length;
+    return `This drug had ${n} candidate ATC code${n === 1 ? "" : "s"} for its ingredient, all of which matched the ${record.route || "—"} route. No filtering needed.`;
+  }
+  if (s === "LEGIT_MULTI") {
+    const n = (record.kept || []).length;
+    return `Ingredient-level RXCUI (TTY=${record.tty || "IN"}). Returned ${n} canonical Level 5 ATC codes across multiple anatomical groups. Route filtering doesn't apply at ingredient level.`;
+  }
+  if (s === "NEEDS_REVIEW") {
+    return record.reason || STATUS_INFO.NEEDS_REVIEW.long;
+  }
+  return "";
 }
 
 // ---------------- CSV downloads ----------------

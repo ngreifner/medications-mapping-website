@@ -177,10 +177,156 @@ const STATUS_LABEL = {
   PENDING:        "Pending",
 };
 
-export function statusBadge(status) {
+export function statusBadge(status, tooltip = "") {
   const cls = `status-badge status-${String(status).toLowerCase()}`;
-  return el("span", { class: cls }, STATUS_LABEL[status] || status);
+  const attrs = { class: cls };
+  if (tooltip) {
+    attrs["data-tooltip"] = tooltip;
+    attrs["aria-label"] = `${STATUS_LABEL[status] || status} — ${tooltip}`;
+    attrs.tabindex = "0";
+  }
+  return el("span", attrs, STATUS_LABEL[status] || status);
 }
+
+// ---------------- educational banner ----------------
+
+/**
+ * Dismissible info banner above filter chips. Layer 1 of the
+ * three-layer status explanation system.
+ *
+ * @param {object} opts
+ * @param {string} opts.storageKey   localStorage key for dismissed state
+ * @param {string} opts.title        e.g. "Results categorized by what the route filter did"
+ * @param {Array<{dot:string,name:string,desc:string}>} opts.items
+ *        dot = one of "success" | "muted" | "accent" | "error" | "warning"
+ * @param {string} [opts.footnote]   small italic note below the list
+ * @returns {HTMLElement | null} returns null if user dismissed it previously
+ */
+export function educationalBanner({ storageKey, title, items, footnote = "", showDismiss = true, ignoreDismissed = false }) {
+  if (storageKey && !ignoreDismissed && safeStorage.get(storageKey) === "1") return null;
+
+  const children = [
+    el("h3", { class: "edu-banner-head" }, [
+      el("span", { class: "edu-banner-icon", "aria-hidden": "true" }, "i"),
+      title,
+    ]),
+    el("ul", { class: "edu-banner-list" }, items.map(it =>
+      el("li", { class: "edu-banner-item" }, [
+        el("span", { class: `status-dot status-dot-${it.dot}`, "aria-hidden": "true" }),
+        el("span", { class: "edu-banner-item-name" }, it.name),
+        el("span", { class: "edu-banner-item-desc" }, it.desc),
+      ])
+    )),
+    footnote ? el("p", { class: "edu-banner-footnote" }, footnote) : null,
+  ];
+
+  let dismissBtn = null;
+  if (showDismiss) {
+    dismissBtn = el("button", {
+      type: "button",
+      class: "edu-banner-dismiss",
+      "aria-label": "Dismiss",
+      title: "Dismiss",
+    }, "×");
+    children.push(dismissBtn);
+  }
+
+  const banner = el("section", {
+    class: "edu-banner",
+    role: "region",
+    "aria-label": title,
+  }, children);
+
+  if (dismissBtn) {
+    dismissBtn.addEventListener("click", () => {
+      if (storageKey) safeStorage.set(storageKey, "1");
+      banner.remove();
+    });
+  }
+
+  return banner;
+}
+
+/**
+ * Build the educational-banner element from a key + reuse it as a
+ * popover toggled by the column-header info button. Returns:
+ *   { iconBtn, openPopover, closePopover }
+ * where iconBtn is the ⓘ element and the popover anchors next to it.
+ *
+ * Use case: after the user dismisses the banner, this is the way back
+ * to the same content without clutter.
+ */
+export function statusInfoIcon({ buildBanner }) {
+  const iconBtn = el("button", {
+    type: "button",
+    class: "col-info-btn",
+    "aria-label": "Status explanations",
+    "aria-expanded": "false",
+    title: "Status explanations",
+  }, "i");
+
+  let popover = null;
+  let docHandler = null;
+  let escHandler = null;
+
+  function close() {
+    if (!popover) return;
+    popover.remove();
+    popover = null;
+    iconBtn.setAttribute("aria-expanded", "false");
+    if (docHandler) document.removeEventListener("mousedown", docHandler);
+    if (escHandler) document.removeEventListener("keydown", escHandler);
+  }
+
+  function open() {
+    if (popover) return;
+    popover = buildBanner();
+    if (!popover) {
+      // banner returns null if user dismissed it — force-render anyway
+      // by temporarily clearing the dismiss flag for this popover instance.
+      // We rebuild it without the storageKey check.
+      popover = buildBanner(true);
+    }
+    if (!popover) return;
+    // Position it as an absolute popover anchored below the icon button.
+    popover.classList.add("edu-banner-as-popover");
+    document.body.appendChild(popover);
+    positionPopover(popover, iconBtn);
+    iconBtn.setAttribute("aria-expanded", "true");
+
+    docHandler = (e) => {
+      if (popover && !popover.contains(e.target) && e.target !== iconBtn) close();
+    };
+    escHandler = (e) => { if (e.key === "Escape") close(); };
+    // Defer so the click that opened the popover doesn't immediately close it
+    setTimeout(() => {
+      document.addEventListener("mousedown", docHandler);
+      document.addEventListener("keydown", escHandler);
+    }, 0);
+  }
+
+  iconBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (popover) close(); else open();
+  });
+
+  return { iconBtn };
+}
+
+function positionPopover(popover, anchor) {
+  const r = anchor.getBoundingClientRect();
+  popover.style.position = "absolute";
+  popover.style.top = `${window.scrollY + r.bottom + 8}px`;
+  popover.style.left = `${Math.max(8, window.scrollX + r.left - 24)}px`;
+  popover.style.maxWidth = "440px";
+  popover.style.zIndex = "300";
+}
+
+// Small localStorage shim — JSON-safe and tolerant of disabled storage
+const safeStorage = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch { /* ignore */ } },
+};
 
 export function progressBar({ done = 0, total = 0, eta = "" } = {}) {
   const pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
@@ -283,9 +429,12 @@ export function batchRow({ rxcui, isDuplicate = false }) {
     }
   });
 
-  function update({ status, name, route, kept, removed, reason }) {
+  function update({ status, name, route, kept, removed, reason, tooltip }) {
     statusCell.innerHTML = "";
-    statusCell.appendChild(statusBadge(status));
+    const badge = statusBadge(status, tooltip || "");
+    // Align tooltip to the start so it doesn't get clipped by the table edge
+    if (tooltip) badge.setAttribute("data-tooltip-align", "start");
+    statusCell.appendChild(badge);
     tr.dataset.status = status;
 
     nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "—" : "(unknown)");
@@ -458,10 +607,12 @@ export function memberRow({ rxcui, groupKey }) {
     }
   });
 
-  function update({ status, tty, name, reason }) {
+  function update({ status, tty, name, reason, tooltip }) {
     if (status !== undefined) {
       statusCell.innerHTML = "";
-      statusCell.appendChild(statusBadge(status));
+      const badge = statusBadge(status, tooltip || "");
+      if (tooltip) badge.setAttribute("data-tooltip-align", "start");
+      statusCell.appendChild(badge);
       tr.dataset.status = status;
       // Enable expand for any row with substantive data; NEEDS_REVIEW without
       // a name is the only case where there's nothing to show.

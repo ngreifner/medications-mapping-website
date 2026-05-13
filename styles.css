@@ -854,6 +854,177 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
+   11b. Tooltip — CSS-only, 300ms reveal delay, 150ms fade.
+   Apply [data-tooltip="..."] to any element. Hover, focus,
+   or keyboard tab to show. Triangle arrow below the bubble.
+   ---------------------------------------------------------- */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::before,
+[data-tooltip]::after {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms var(--ease-out-quad) 300ms;
+  z-index: 200;
+}
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 14px;
+  border-radius: var(--r);
+  font-size: var(--font-body-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.45;
+  white-space: normal;
+  width: max-content;
+  max-width: 320px;
+  text-align: left;
+  letter-spacing: -0.005em;
+  box-shadow: var(--shadow-lg);
+}
+[data-tooltip]::after {
+  content: "";
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--text);
+}
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::before,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+/* Variant: tooltip below the trigger (for elements near top of viewport) */
+[data-tooltip-pos="bottom"]::before {
+  bottom: auto;
+  top: calc(100% + 10px);
+}
+[data-tooltip-pos="bottom"]::after {
+  bottom: auto;
+  top: calc(100% + 4px);
+  border-top-color: transparent;
+  border-bottom-color: var(--text);
+}
+/* Variant: anchor tooltip to the right edge instead of centered (table cells) */
+[data-tooltip-align="start"]::before {
+  left: 0;
+  transform: none;
+}
+[data-tooltip-align="start"]::after {
+  left: 18px;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-tooltip]::before,
+  [data-tooltip]::after { transition: none; }
+}
+
+/* ----------------------------------------------------------
+   11c. Educational banner — dismissible info card above
+   filter chips. Layer 1 of the explanation system.
+   ---------------------------------------------------------- */
+.edu-banner {
+  position: relative;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--inner-highlight);
+}
+.edu-banner-head {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--font-meta);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+}
+.edu-banner-head .edu-banner-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent-text);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+.edu-banner-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+.edu-banner-item {
+  display: flex; align-items: baseline; gap: var(--space-3);
+  font-size: var(--font-body-sm);
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+.edu-banner-item .status-dot {
+  margin-top: 5px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.edu-banner-item-name {
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  min-width: 110px;
+}
+.edu-banner-item-desc {
+  color: var(--text-muted);
+}
+.edu-banner-footnote {
+  margin: var(--space-3) 0 0;
+  font-size: var(--font-meta);
+  color: var(--text-subtle);
+}
+.edu-banner-dismiss {
+  position: absolute;
+  top: var(--space-3); right: var(--space-3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-subtle);
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--r-sm);
+  font-size: 16px;
+  line-height: 1;
+  transition: color var(--duration-fast) var(--ease-out-quad), background var(--duration-fast) var(--ease-out-quad);
+}
+.edu-banner-dismiss:hover { color: var(--text); background: var(--bg-tinted); }
+.edu-banner-dismiss:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* Header info icon — small ⓘ next to the Status column header */
+.col-info-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 16px; height: 16px;
+  margin-left: 6px;
+  border-radius: 999px;
+  color: var(--text-subtle);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  font-family: var(--font-sans);
+  vertical-align: -1px;
+  transition: color var(--duration-fast) var(--ease-out-quad);
+}
+.col-info-btn:hover { color: var(--accent-text); }
+.col-info-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* ----------------------------------------------------------
    12. Detection banner
    ---------------------------------------------------------- */
 .detect-banner {

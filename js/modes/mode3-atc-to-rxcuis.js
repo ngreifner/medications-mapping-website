@@ -39,6 +39,8 @@ import {
   progressBar,
   updateProgressBar,
   errorCard,
+  educationalBanner,
+  statusInfoIcon,
 } from "../ui-components.js";
 
 const STATUSES = ["KEPT", "ROUTE_MISMATCH", "NEEDS_REVIEW"];
@@ -47,6 +49,56 @@ const STATUS_CHIP_LABEL = {
   ROUTE_MISMATCH: "Mismatch",
   NEEDS_REVIEW:   "Needs review",
 };
+
+const STATUS_INFO = {
+  KEPT: {
+    dot: "success",
+    name: "Kept",
+    short: "Member resolves back to this ATC",
+    long: "This RXCUI is listed as a member of the queried ATC class, AND the route-aware resolver agrees — confirming the mapping in both directions.",
+  },
+  ROUTE_MISMATCH: {
+    dot: "error",
+    name: "Route mismatch",
+    short: "Member resolves to a different ATC",
+    long: "RxNorm's classMembers list includes this RXCUI under the queried ATC, but the route-aware resolver maps it to a different L5 ATC code. This indicates a potential discrepancy between source data and product-level classification.",
+  },
+  NEEDS_REVIEW: {
+    dot: "warning",
+    name: "Needs review",
+    short: "Could not verify automatically",
+    long: "This RXCUI couldn't be auto-verified. See the row's reason field — common causes are missing properties, no DFG, or no ATC mapping returned by the resolver.",
+  },
+};
+
+function buildMode3Banner({ showDismiss = true, ignoreDismissed = false } = {}) {
+  return educationalBanner({
+    storageKey: "medcode_mode3_status_banner_dismissed",
+    title: "ATC class members — verification results",
+    items: STATUSES.map(k => ({
+      dot: STATUS_INFO[k].dot,
+      name: STATUS_INFO[k].name,
+      desc: STATUS_INFO[k].short,
+    })),
+    footnote: "Click any row for the full Mode 1 explanation.",
+    showDismiss,
+    ignoreDismissed,
+  });
+}
+
+function buildMode3RowTooltip(rec) {
+  if (!rec.status) return "";
+  if (rec.status === "KEPT") {
+    return `${rec.name || rec.rxcui} resolves back to the queried ATC. Both the source list and the route-aware resolver agree.`;
+  }
+  if (rec.status === "ROUTE_MISMATCH") {
+    const resolved = rec.resolvedAtcs && rec.resolvedAtcs.length
+      ? rec.resolvedAtcs.join(", ")
+      : "a different L5 ATC";
+    return `RxNorm lists ${rec.name || rec.rxcui} under this class, but the route-aware resolver maps it to ${resolved}.`;
+  }
+  return rec.reason || STATUS_INFO.NEEDS_REVIEW.long;
+}
 
 let activeRunId = 0;
 
@@ -358,6 +410,7 @@ function appendRowForRecord(rec, tbody) {
     name: rec.name || (rec.status === "NEEDS_REVIEW" ? "—" : "(unknown)"),
     tty: rec.tty || "—",
     reason: rec.reason,
+    tooltip: buildMode3RowTooltip(rec),
   });
   rowApi.setOnExpand((container) => {
     renderMode1Into({ rxcui: rec.rxcui, resultEl: container }).catch(() => {});
@@ -386,6 +439,11 @@ function buildTableShell() {
 
 function renderFilterChips(refs, visibleRecords) {
   refs.filters.innerHTML = "";
+
+  // Layer 1 banner
+  const banner = buildMode3Banner();
+  if (banner) refs.filters.appendChild(banner);
+
   const counts = { ALL: 0, KEPT: 0, ROUTE_MISMATCH: 0, NEEDS_REVIEW: 0 };
   for (const rec of visibleRecords) {
     counts.ALL++;
@@ -396,8 +454,12 @@ function renderFilterChips(refs, visibleRecords) {
   chipBar.dataset.filter = "ALL";
 
   const chips = [
-    { key: "ALL", label: "All" },
-    ...STATUSES.map(s => ({ key: s, label: STATUS_CHIP_LABEL[s] })),
+    { key: "ALL", label: "All", tooltip: "" },
+    ...STATUSES.map(s => ({
+      key: s,
+      label: STATUS_CHIP_LABEL[s],
+      tooltip: STATUS_INFO[s].long,
+    })),
   ];
   for (const c of chips) {
     const btn = document.createElement("button");
@@ -405,11 +467,25 @@ function renderFilterChips(refs, visibleRecords) {
     btn.className = "filter-chip" + (c.key === "ALL" ? " is-active" : "");
     btn.dataset.key = c.key;
     btn.setAttribute("aria-pressed", c.key === "ALL" ? "true" : "false");
+    btn.setAttribute("data-tooltip-pos", "bottom");
+    if (c.tooltip) {
+      btn.setAttribute("data-tooltip", c.tooltip);
+      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}) — ${c.tooltip}`);
+    }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${counts[c.key] || 0}</span>`;
     btn.addEventListener("click", () => applyFilter(refs, c.key));
     chipBar.appendChild(btn);
   }
   refs.filters.appendChild(chipBar);
+
+  // Header info icon — Mode 3 uses .member-table, first column is Status.
+  const statusTh = refs.table && refs.table.querySelector("thead th:first-child");
+  if (statusTh && !statusTh.querySelector(".col-info-btn")) {
+    const { iconBtn } = statusInfoIcon({
+      buildBanner: () => buildMode3Banner({ showDismiss: false, ignoreDismissed: true }),
+    });
+    statusTh.appendChild(iconBtn);
+  }
 }
 
 function applyFilter(refs, key) {

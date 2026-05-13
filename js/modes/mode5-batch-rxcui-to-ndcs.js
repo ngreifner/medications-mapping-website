@@ -18,6 +18,8 @@ import {
   updateProgressBar,
   batchSummaryBar,
   errorCard,
+  educationalBanner,
+  statusInfoIcon,
 } from "../ui-components.js";
 import { buildNdcTable } from "./mode4-rxcui-to-ndcs.js";
 import { downloadCsv } from "../csv-export.js";
@@ -30,6 +32,54 @@ const STATUS_CHIP_LABEL = {
   NO_NDCS:      "No NDCs",
   NEEDS_REVIEW: "Needs review",
 };
+
+const STATUS_INFO = {
+  OK: {
+    dot: "success",
+    name: "OK",
+    short: "Valid RXCUI with active NDCs",
+    long: "This RXCUI returned at least one active NDC from RxNorm. Active NDCs are those present in the current RxNorm release.",
+  },
+  NO_NDCS: {
+    dot: "accent",
+    name: "No NDCs",
+    short: "RXCUI exists but no active NDCs",
+    long: "This RXCUI exists in RxNorm but has no active NDCs. Usually this means the product is unmarketed in the US, ingredient-level (TTY=IN), or recently retired.",
+  },
+  NEEDS_REVIEW: {
+    dot: "warning",
+    name: "Needs review",
+    short: "Couldn't be processed automatically",
+    long: "This RXCUI couldn't be processed automatically. Check the row for the specific reason (RXCUI not found, network error, or invalid input format).",
+  },
+};
+
+function buildMode5Banner({ showDismiss = true, ignoreDismissed = false } = {}) {
+  return educationalBanner({
+    storageKey: "medcode_mode5_status_banner_dismissed",
+    title: "NDC lookup results",
+    items: STATUSES.map(k => ({
+      dot: STATUS_INFO[k].dot,
+      name: STATUS_INFO[k].name,
+      desc: STATUS_INFO[k].short,
+    })),
+    footnote: "Click any row to see all NDC details.",
+    showDismiss,
+    ignoreDismissed,
+  });
+}
+
+function buildMode5RowTooltip(record) {
+  const s = record.status;
+  if (!s || s === "PENDING") return "";
+  if (s === "OK") {
+    return `Returned ${record.ndcCount || 0} active NDC${(record.ndcCount || 0) === 1 ? "" : "s"} for ${record.name || "this RXCUI"} (TTY=${record.tty || "?"}).`;
+  }
+  if (s === "NO_NDCS") {
+    return `RXCUI exists (${record.name || "—"}, TTY=${record.tty || "?"}) but has no active NDCs in the current RxNorm release.`;
+  }
+  return record.reason || STATUS_INFO.NEEDS_REVIEW.long;
+}
 
 let activeRunId = 0;
 
@@ -253,7 +303,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
   if (!isLikelyRxcui(rxcui)) {
     record.status = "NEEDS_REVIEW";
     record.reason = "Token doesn't look like an RXCUI";
-    rowApi.update({ status: "NEEDS_REVIEW", name: record.reason, tty: "", ndcCount: "—" });
+    rowApi.update({ status: "NEEDS_REVIEW", name: record.reason, tty: "", ndcCount: "—", tooltip: record.reason });
     return;
   }
 
@@ -267,7 +317,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
     if (!isStillActive()) return;
     record.status = "NEEDS_REVIEW";
     record.reason = "Network error reaching RxNav";
-    rowApi.update({ status: "NEEDS_REVIEW", name: "Network error", tty: "", ndcCount: "—" });
+    rowApi.update({ status: "NEEDS_REVIEW", name: "Network error", tty: "", ndcCount: "—", tooltip: record.reason || "Network error reaching RxNav" });
     return;
   }
   if (!isStillActive()) return;
@@ -275,7 +325,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
   if (!props || !props.found) {
     record.status = "NEEDS_REVIEW";
     record.reason = `RXCUI ${rxcui} not found in RxNav`;
-    rowApi.update({ status: "NEEDS_REVIEW", name: "Not in RxNav", tty: "", ndcCount: "—" });
+    rowApi.update({ status: "NEEDS_REVIEW", name: "Not in RxNav", tty: "", ndcCount: "—", tooltip: record.reason });
     return;
   }
 
@@ -298,6 +348,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
     name: record.name,
     tty: record.tty,
     ndcCount: entries.length,
+    tooltip: buildMode5RowTooltip({ ...record, ndcCount: entries.length }),
   });
 }
 
@@ -368,9 +419,11 @@ function makePendingRow({ rxcui, isDuplicate }) {
     }
   });
 
-  function update({ status, name, tty, ndcCount }) {
+  function update({ status, name, tty, ndcCount, tooltip }) {
     statusCell.innerHTML = "";
-    statusCell.appendChild(statusBadge(status));
+    const badge = statusBadge(status, tooltip || "");
+    if (tooltip) badge.setAttribute("data-tooltip-align", "start");
+    statusCell.appendChild(badge);
     tr.dataset.status = status;
     nameCell.textContent = name || "—";
     nameCell.title = name || "";
@@ -404,6 +457,11 @@ function el(tag, attrs = {}, children = []) {
 
 function renderFilterChips(refs, table, records) {
   refs.filtersSlot.innerHTML = "";
+
+  // Layer 1 banner
+  const banner = buildMode5Banner();
+  if (banner) refs.filtersSlot.appendChild(banner);
+
   const counts = { ALL: 0, OK: 0, NO_NDCS: 0, NEEDS_REVIEW: 0 };
   for (const rec of records.values()) {
     counts.ALL++;
@@ -413,8 +471,12 @@ function renderFilterChips(refs, table, records) {
   chipBar.className = "filter-chips";
   chipBar.dataset.filter = "ALL";
   const chips = [
-    { key: "ALL", label: "All" },
-    ...STATUSES.map(s => ({ key: s, label: STATUS_CHIP_LABEL[s] })),
+    { key: "ALL", label: "All", tooltip: "" },
+    ...STATUSES.map(s => ({
+      key: s,
+      label: STATUS_CHIP_LABEL[s],
+      tooltip: STATUS_INFO[s].long,
+    })),
   ];
   for (const c of chips) {
     const btn = document.createElement("button");
@@ -422,11 +484,25 @@ function renderFilterChips(refs, table, records) {
     btn.className = "filter-chip" + (c.key === "ALL" ? " is-active" : "");
     btn.dataset.key = c.key;
     btn.setAttribute("aria-pressed", c.key === "ALL" ? "true" : "false");
+    btn.setAttribute("data-tooltip-pos", "bottom");
+    if (c.tooltip) {
+      btn.setAttribute("data-tooltip", c.tooltip);
+      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}) — ${c.tooltip}`);
+    }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${counts[c.key] || 0}</span>`;
     btn.addEventListener("click", () => applyFilter(table, chipBar, c.key));
     chipBar.appendChild(btn);
   }
   refs.filtersSlot.appendChild(chipBar);
+
+  // Header info icon next to the Status column header
+  const statusTh = refs.tableSlot.querySelector(".batch-table thead th:first-child");
+  if (statusTh && !statusTh.querySelector(".col-info-btn")) {
+    const { iconBtn } = statusInfoIcon({
+      buildBanner: () => buildMode5Banner({ showDismiss: false, ignoreDismissed: true }),
+    });
+    statusTh.appendChild(iconBtn);
+  }
 }
 
 function applyFilter(table, chipBar, key) {
