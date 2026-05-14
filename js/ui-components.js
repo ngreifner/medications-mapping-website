@@ -414,6 +414,80 @@ export function updateProgressBar(progEl, { done, total, eta }) {
   if (etaEl) etaEl.textContent = eta || "";
 }
 
+/**
+ * Rich progress card for Mode 3 — shows immediately on submit, transitions
+ * through phases, surfaces per-member activity, and exposes a Stop button.
+ *
+ * Returns { el, update, setOnStop, finish }
+ *   update({ phase, title, status, current, total, eta, lastName, stopped })
+ *   setOnStop(fn) — wires Stop button
+ *   finish({ stopped }) — disables Stop, freezes UI for final state
+ */
+export function mode3ProgressCard({ title = "Looking up…", status = "Fetching family roster…" } = {}) {
+  const titleEl   = el("h3", { class: "m3-prog-title" }, title);
+  const statusEl  = el("p",  { class: "m3-prog-status" }, status);
+  const fillEl    = el("div", { class: "progress-fill", style: "width:0%" });
+  const trackEl   = el("div", { class: "progress-track" }, [fillEl]);
+  const countEl   = el("span", { class: "progress-count" }, "");
+  const etaEl     = el("span", { class: "progress-eta" }, "");
+  const metaEl    = el("div", { class: "progress-meta" }, [countEl, etaEl]);
+  const lastEl    = el("p",  { class: "m3-prog-last" }, "");
+  const stopBtn   = el("button", { type: "button", class: "btn-stop" }, [
+    el("span", { class: "btn-stop-glyph", "aria-hidden": "true" }, "■"),
+    " Stop lookup",
+  ]);
+  const actionRow = el("div", { class: "m3-prog-actions" }, [stopBtn]);
+
+  const card = el("section", {
+    class: "card m3-progress-card",
+    role: "status",
+    "aria-live": "polite",
+    "aria-label": "Lookup progress",
+  }, [titleEl, statusEl, trackEl, metaEl, lastEl, actionRow]);
+
+  let onStop = null;
+  stopBtn.addEventListener("click", () => {
+    if (stopBtn.disabled) return;
+    if (onStop) onStop();
+  });
+
+  function update({ phase, title, status, current, total, eta, lastName, stopped } = {}) {
+    if (title  !== undefined) titleEl.textContent = title;
+    if (status !== undefined) statusEl.textContent = status;
+    if (typeof current === "number" && typeof total === "number" && total > 0) {
+      const pct = Math.min(100, Math.round((current / total) * 100));
+      fillEl.style.width = `${pct}%`;
+      countEl.textContent = `${current} of ${total}`;
+    } else if (typeof total === "number" && total === 0) {
+      countEl.textContent = "";
+    }
+    if (eta !== undefined) etaEl.textContent = eta || "";
+    if (lastName !== undefined) {
+      if (lastName) {
+        lastEl.textContent = `Last completed: ${lastName}`;
+        lastEl.style.visibility = "visible";
+      } else {
+        lastEl.textContent = "";
+        lastEl.style.visibility = "hidden";
+      }
+    }
+    if (stopped) card.classList.add("is-stopped");
+    if (phase) card.dataset.phase = phase;
+  }
+
+  function setOnStop(fn) { onStop = fn; }
+
+  function finish({ stopped = false } = {}) {
+    stopBtn.disabled = true;
+    stopBtn.classList.add("is-disabled");
+    if (stopped) {
+      card.classList.add("is-stopped");
+    }
+  }
+
+  return { el: card, update, setOnStop, finish };
+}
+
 export function batchSummaryBar({
   total, cleanFix, unchanged, legitMulti, needsReview,
   onDownloadCleaned, onDownloadAudit, onReset,

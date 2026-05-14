@@ -101,6 +101,14 @@ The cousin source is `getLevel5ChildrenForL4(L4)` → `getClassMembers(L4, "ATC"
 
 Combinations are flagged with a soft italic "combination" tag using two signals: WHO's L5 numbering convention (6th character is 5 or 7) or the L4's class name containing "combinations of". For J01EE — whose L4 name is "Combinations of sulfonamides and trimethoprim" — every cousin is correctly tagged even though the L5 numbering doesn't flip into the combination range until index 50.
 
+**Mode 3 progress + cancellation (v8):** Mode 3 mounts a rich progress card (`mode3ProgressCard`) the moment the user clicks Look up — before the roster fetch returns — so the user always has feedback within ~100ms. The card shows a status line ("Fetching family roster…" → "Verifying N members…"), a smoothly animated bar, count (`done of total`), an ETA (rolling 5-completion average; "Estimating…" until five members complete), the most-recent completed member, and a soft-amber Stop button.
+
+Per-member completion drives progress. `verifyAndRender` fires all member promises in parallel through the shared rate limiter and attaches a `.then()` handler that records the result into `records[i]`, pushes a timestamp, and updates the card. The function awaits `Promise.race([allDonePromise, cancel.promise])` so it wakes immediately on either condition.
+
+Cancellation uses a per-run token (`makeCancelToken()`) — Stop fires the token, which both sets `cancelled` and resolves the promise. Late-arriving member handlers check the flag and bail without touching the records array. The function then renders whatever partial results exist with a "Stopped at X of N. Showing partial results." status. In-flight fetches are NOT aborted — they continue in the background, fill the cache, and their results are simply ignored.
+
+A new submit calls `startRun()`, which fires the previous run's cancel token; this keeps superseded `verifyAndRender` awaiters from leaking (they wake via `cancel.promise`, see the `runId !== activeRunId` check, and return). ETA derives from inter-completion intervals (`(timestamps[end] − timestamps[end−5]) / 5 × remaining`) — under parallel rate-limited fetches, throughput-per-completion is a more honest signal than per-member wall time.
+
 **Modes 4 + 5 (v7):** the previous "NDC → ATC" placeholders have been repurposed. Mode 4 takes a single RXCUI and returns its active NDCs with rich metadata (labeler, packaging, marketing category, FDA approval number) in a sortable table. Mode 5 is the batch version, capped at 20 RXCUIs (each can produce hundreds of NDC rows; 20 is the practical export ceiling). Both call `/ndcproperties.json?id={rxcui}` via the new `getNdcPropertiesForRxcui` helper in `rxnav-client.js`. Mode 5 ships two CSV variants: compact (one row per RXCUI) and exploded (one row per NDC).
 
 ### Mode 1 — Single Forward (as built)

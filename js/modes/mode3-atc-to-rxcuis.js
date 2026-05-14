@@ -37,8 +37,7 @@ import { downloadCsv } from "../csv-export.js";
 import {
   atcBreadcrumbCard,
   memberRow,
-  progressBar,
-  updateProgressBar,
+  mode3ProgressCard,
   errorCard,
   educationalBanner,
   statusInfoIcon,
@@ -103,6 +102,38 @@ function buildMode3RowTooltip(rec) {
 }
 
 let activeRunId = 0;
+let activeCancel = null; // cancel token of the in-flight run; fired on supersession
+
+// Per-run cancellation token. The user's Stop button fires `cancel.fire()`,
+// which both sets the `cancelled` flag AND resolves the promise so any waiter
+// in Promise.race wakes up immediately. New submits also fire the previous
+// run's token so its Promise.race wakes and the function returns cleanly.
+function makeCancelToken() {
+  let resolveIt;
+  const promise = new Promise(r => { resolveIt = r; });
+  const token = {
+    cancelled: false,
+    promise,
+    fire() {
+      if (token.cancelled) return;
+      token.cancelled = true;
+      resolveIt();
+    },
+  };
+  return token;
+}
+
+// Begin a new run: bumps the run id, fires any previous cancel, hands back
+// a fresh runId + cancel token. Callers use this at the top of submit-style
+// functions so superseded runs don't leak pending Promise.race awaiters.
+function startRun() {
+  activeRunId++;
+  const runId = activeRunId;
+  if (activeCancel) activeCancel.fire();
+  const cancel = makeCancelToken();
+  activeCancel = cancel;
+  return { runId, cancel };
+}
 
 // ---------------- public entry ----------------
 
@@ -205,8 +236,7 @@ function bindExamples(refs) {
 // ---------------- main submit ----------------
 
 async function runSubmit(refs, rawAtc) {
-  activeRunId++;
-  const runId = activeRunId;
+  const { runId, cancel } = startRun();
   clearOutput(refs);
 
   const trimmed = (rawAtc || "").trim().toUpperCase();
@@ -246,6 +276,17 @@ async function runSubmit(refs, rawAtc) {
 
   renderBreadcrumb(refs, trimmed);
 
+  // Mount the progress card immediately — before the roster fetch — so the
+  // user sees something moving within the first ~100ms of clicking Look up.
+  // The cancel token was created in startRun(); wire its Stop button now.
+  const progCard = mode3ProgressCard({
+    title: `Looking up ${trimmed}`,
+    status: "Fetching family roster…",
+  });
+  progCard.setOnStop(() => cancel.fire());
+  refs.progress.innerHTML = "";
+  refs.progress.appendChild(progCard.el);
+
   // RxNav's /classMembers is L4-only. For our L5 query, fetch the L4 parent
   // and post-filter (the actual filtering happens in verifyAndRender via the
   // resolver-verdict check).
@@ -266,6 +307,8 @@ async function runSubmit(refs, rawAtc) {
     }
   } catch (e) {
     if (runId !== activeRunId) return;
+    progCard.finish({ stopped: false });
+    refs.progress.innerHTML = "";
     refs.table.appendChild(errorCard({
       title: "Couldn't reach RxNav",
       body: "The NIH API isn't responding. Check your connection and try again.",
@@ -275,7 +318,15 @@ async function runSubmit(refs, rawAtc) {
     return;
   }
 
+  // Stop pressed during roster fetch — nothing to render, just close cleanly.
+  if (cancel.cancelled) {
+    progCard.finish({ stopped: true });
+    progCard.update({ status: "Stopped before any members were verified." });
+    return;
+  }
+
   if (members.length === 0) {
+    refs.progress.innerHTML = "";
     refs.table.appendChild(errorCard({
       title: `No members found for ${trimmed}`,
       body: `RxNav returned no drug members under either ATCPROD or ATC source for ${fetchClassId} (the L4 parent of ${trimmed}). The code may be unused or refer to a non-pharmaceutical class.`,
@@ -284,7 +335,7 @@ async function runSubmit(refs, rawAtc) {
     return;
   }
 
-  await verifyAndRender(refs, { atc: trimmed, members, source, runId });
+  await verifyAndRender(refs, { atc: trimmed, members, source, runId, progCard, cancel });
 }
 
 // ---------------- Level 4 family expansion ----------------
@@ -389,9 +440,20 @@ function buildFamilyCsv(l4code, l4name, cousins) {
 // across cousins), verify every member, and bucket KEPT rows by the L5 each
 // resolves to. This is a thin wrapper over the existing verify path; no
 // duplicate resolver logic.
-async function runL4FamilyBatch(refs, l4code, l4name, cousins, runId) {
+async function runL4FamilyBatch(refs, l4code, l4name, cousins, _outerRunId) {
+  // Query-all-cousins is a separate run from the L4 expansion that spawned
+  // it. Start a fresh run so a previous in-flight verify (if any) is fired.
+  const { runId, cancel } = startRun();
   clearOutput(refs);
   renderBreadcrumb(refs, l4code);
+
+  const progCard = mode3ProgressCard({
+    title: `Looking up all of ${l4code}`,
+    status: "Fetching family roster…",
+  });
+  progCard.setOnStop(() => cancel.fire());
+  refs.progress.innerHTML = "";
+  refs.progress.appendChild(progCard.el);
 
   let members = [];
   let source = "ATCPROD";
@@ -405,6 +467,7 @@ async function runL4FamilyBatch(refs, l4code, l4name, cousins, runId) {
     }
   } catch {
     if (runId !== activeRunId) return;
+    refs.progress.innerHTML = "";
     refs.table.appendChild(errorCard({
       title: "Couldn't reach RxNav",
       body: "Failed to fetch the L4 class members.",
@@ -412,7 +475,15 @@ async function runL4FamilyBatch(refs, l4code, l4name, cousins, runId) {
     }));
     return;
   }
+
+  if (cancel.cancelled) {
+    progCard.finish({ stopped: true });
+    progCard.update({ status: "Stopped before any members were verified." });
+    return;
+  }
+
   if (members.length === 0) {
+    refs.progress.innerHTML = "";
     refs.table.appendChild(errorCard({
       title: `No members found for ${l4code}`,
       body: "RxNav returned no drug members under either ATCPROD or ATC source.",
@@ -427,6 +498,8 @@ async function runL4FamilyBatch(refs, l4code, l4name, cousins, runId) {
     source,                // this prefix, see acceptedL5Prefix below.
     runId,
     acceptedL5Prefix: l4code,
+    progCard,
+    cancel,
   });
 }
 
@@ -470,25 +543,35 @@ async function renderBreadcrumb(refs, atc) {
 
 // ---------------- verify + render ----------------
 
-async function verifyAndRender(refs, { atc, members, source, runId, acceptedL5Prefix = null }) {
-  // Phase 1: verify all members in parallel; progress bar visible.
-  refs.progress.innerHTML = "";
-  const progEl = progressBar({ done: 0, total: members.length, eta: "Estimating…" });
-  refs.progress.appendChild(progEl);
+async function verifyAndRender(refs, {
+  atc, members, source, runId,
+  acceptedL5Prefix = null,
+  progCard = null,
+  cancel = null,
+}) {
+  // If a caller didn't pre-mount the progress card (legacy paths), build one
+  // now so the user always gets a Stop button + live count.
+  if (!progCard) {
+    cancel = cancel || makeCancelToken();
+    progCard = mode3ProgressCard({
+      title: `Verifying members of ${atc}`,
+      status: "Verifying members…",
+    });
+    progCard.setOnStop(() => cancel.fire());
+    refs.progress.innerHTML = "";
+    refs.progress.appendChild(progCard.el);
+  }
+  if (!cancel) cancel = makeCancelToken();
 
-  const startTs = Date.now();
-  let done = 0;
-  const tick = () => {
-    if (runId !== activeRunId) return;
-    const elapsed = Date.now() - startTs;
-    const avg = done > 0 ? elapsed / done : 0;
-    const remaining = avg * (members.length - done);
-    const eta = done === 0 ? "Estimating…"
-              : done >= members.length ? `Done in ${formatDuration(elapsed)}`
-              : `~${formatDuration(remaining)} remaining`;
-    updateProgressBar(progEl, { done, total: members.length, eta });
-  };
-  tick();
+  // Transition the card from "Fetching family roster…" into per-member mode.
+  progCard.update({
+    phase: "verifying",
+    status: `Verifying ${members.length} member${members.length === 1 ? "" : "s"}…`,
+    current: 0,
+    total: members.length,
+    eta: "Estimating…",
+    lastName: "",
+  });
 
   // Normal L5 query: KEPT when resolver returns the queried L5 exactly.
   // L4 family batch: KEPT when resolver returns any L5 under the L4 prefix.
@@ -496,32 +579,105 @@ async function verifyAndRender(refs, { atc, members, source, runId, acceptedL5Pr
     ? (code) => (code || "").toUpperCase().startsWith(acceptedL5Prefix.toUpperCase())
     : (code) => code === atc;
 
-  const records = await Promise.all(members.map(async (m) => {
-    const rec = await verifyMember({ atc, member: m, acceptCode });
-    if (runId !== activeRunId) return rec;
-    done++; tick();
-    return rec;
-  }));
+  const startTs = Date.now();
+  const records = new Array(members.length).fill(null);
+  const completionTs = []; // wall-clock timestamps of each completion
+  let done = 0;
+  let lastCompletedName = "";
+
+  // Rolling ETA: average inter-completion interval over the most recent
+  // window. Per-member execution time is meaningless under parallel
+  // throttled fetch — what matters is the rate at which the rate-limited
+  // queue is producing completions.
+  const tick = () => {
+    if (runId !== activeRunId) return;
+    const total = members.length;
+    let etaText = "";
+    if (done >= total) {
+      etaText = `Done in ${formatDuration(Date.now() - startTs)}`;
+    } else if (completionTs.length >= 5) {
+      const w = Math.min(5, completionTs.length - 1);
+      const span = completionTs[completionTs.length - 1] - completionTs[completionTs.length - 1 - w];
+      const perItem = span / w;
+      const remaining = total - done;
+      etaText = `About ${formatDuration(perItem * remaining)} remaining`;
+    } else if (done > 0) {
+      etaText = "Estimating…";
+    } else {
+      etaText = "Verifying…";
+    }
+    progCard.update({ current: done, total, eta: etaText, lastName: lastCompletedName });
+  };
+  tick();
+
+  // Allow Promise.race to wake immediately when all members complete.
+  let resolveAllDone;
+  const allDonePromise = new Promise(r => { resolveAllDone = r; });
+
+  // Fire all member verifications. Track each completion individually so
+  // the progress card advances on every result, not after the batch.
+  members.forEach((m, i) => {
+    verifyMember({ atc, member: m, acceptCode })
+      .catch(() => ({
+        rxcui: m.rxcui,
+        status: "NEEDS_REVIEW", reason: "Network error",
+        name: "", tty: m.tty || "",
+        route: "", resolvedAtc: "", resolvedAtcName: "",
+        keptCodes: [],
+      }))
+      .then(rec => {
+        if (runId !== activeRunId) return;
+        if (cancel.cancelled) return; // ignore late arrivals after Stop
+        records[i] = rec;
+        done++;
+        completionTs.push(Date.now());
+        lastCompletedName = rec.name ? `${rec.name} (RxCUI ${rec.rxcui})` : `RxCUI ${rec.rxcui}`;
+        tick();
+        if (done >= members.length) resolveAllDone();
+      });
+  });
+
+  // Race: either every member completed, or the user clicked Stop.
+  await Promise.race([allDonePromise, cancel.promise]);
   if (runId !== activeRunId) return;
 
-  // Render every verified member. Rows resolved to a different L5 inside the
-  // same L4 parent appear as ROUTE_MISMATCH so the filter chips can narrow
-  // the table to just the queried L5.
-  const visibleRecords = records;
+  const wasCancelled = cancel.cancelled;
+  const finalRecords = records.filter(r => r !== null);
+  const elapsedMs = Date.now() - startTs;
 
-  if (visibleRecords.length === 0) {
+  if (wasCancelled) {
+    progCard.update({
+      status: `Stopped at ${finalRecords.length} of ${members.length}. Showing partial results below.`,
+      eta: "",
+      lastName: "",
+      stopped: true,
+    });
+    progCard.finish({ stopped: true });
+  } else {
+    progCard.update({
+      status: `Verified ${finalRecords.length} of ${members.length} member${members.length === 1 ? "" : "s"} in ${formatDuration(elapsedMs)}.`,
+      eta: "",
+      lastName: "",
+    });
+    progCard.finish({ stopped: false });
+  }
+
+  if (finalRecords.length === 0) {
     refs.table.appendChild(errorCard({
-      title: `No matching RXCUIs for ${atc}`,
-      body: `The L4 parent has ${members.length} member${members.length === 1 ? "" : "s"}, but none of them resolved to ${atc} via the route-validation engine.`,
+      title: wasCancelled
+        ? "Stopped before any members were verified"
+        : `No matching RXCUIs for ${atc}`,
+      body: wasCancelled
+        ? "Click 'Look up' to start a fresh query."
+        : `The L4 parent has ${members.length} member${members.length === 1 ? "" : "s"}, but none of them resolved to ${atc} via the route-validation engine.`,
       variant: "info",
     }));
-    refs.progress.innerHTML = "";
     return;
   }
 
-  buildAndRenderTable(refs, { records, visibleRecords });
-  renderFilterChips(refs, visibleRecords);
-  renderSummary(refs, { atc, members, records, visibleRecords, source });
+  buildAndRenderTable(refs, { records: finalRecords, visibleRecords: finalRecords });
+  renderFilterChips(refs, finalRecords);
+  renderSummary(refs, { atc, members, records: finalRecords, visibleRecords: finalRecords, source });
 }
 
 async function verifyMember({ atc, member, acceptCode = null }) {

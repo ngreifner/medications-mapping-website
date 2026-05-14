@@ -1554,6 +1554,65 @@ a:hover {
   font-family: var(--font-mono);
 }
 
+/* Mode 3 rich progress card — pre-roster status, ETA, last-completed,
+   and a Stop button styled as a safe amber action (not alarming red). */
+.m3-progress-card {
+  margin-bottom: var(--space-4);
+  border-left: 3px solid var(--accent);
+}
+.m3-progress-card .m3-prog-title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+}
+.m3-progress-card .m3-prog-status {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-body-sm);
+  color: var(--text-muted);
+}
+.m3-progress-card .progress-track { height: 8px; border-radius: 4px; }
+.m3-progress-card .progress-fill  { transition: width 250ms ease-out; }
+.m3-progress-card .m3-prog-last {
+  margin: var(--space-2) 0 0;
+  font-size: var(--font-body-sm);
+  font-style: italic;
+  color: var(--text-muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  max-width: 100%;
+  visibility: hidden;
+  min-height: 1.4em;
+}
+.m3-progress-card .m3-prog-actions {
+  display: flex; justify-content: flex-end;
+  margin-top: var(--space-3);
+}
+.m3-progress-card.is-stopped .progress-fill {
+  background: var(--warning);
+}
+.m3-progress-card.is-stopped .m3-prog-status {
+  color: var(--warning);
+}
+.btn-stop {
+  font-family: inherit;
+  font-size: var(--font-body-sm);
+  font-weight: var(--fw-medium);
+  padding: var(--space-2) var(--space-4);
+  background: var(--warning-bg);
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.btn-stop:hover { background: rgba(245, 158, 11, 0.16); }
+.btn-stop.is-disabled, .btn-stop[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-stop-glyph { font-size: 10px; line-height: 1; }
+
 .summary-bar {
   background: var(--accent-bg);
   border: 1px solid var(--accent);
