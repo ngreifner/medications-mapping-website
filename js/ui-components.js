@@ -627,6 +627,7 @@ export function memberRow({ rxcui, groupKey }) {
   const rxcuiCell = el("td", { class: "cell-rxcui" }, el("span", { class: "code" }, rxcui));
   const ttyCell = el("td", { class: "cell-tty" }, "…");
   const nameCell = el("td", { class: "cell-name" }, "…");
+  const resolvedCell = el("td", { class: "cell-resolved" }, "…");
   const chevron = el("button", {
     type: "button",
     class: "row-toggle",
@@ -641,14 +642,14 @@ export function memberRow({ rxcui, groupKey }) {
     "data-status": "PENDING",
     "data-rxcui": rxcui,
     "data-group": groupKey || "",
-  }, [statusCell, rxcuiCell, ttyCell, nameCell, togCell]);
+  }, [statusCell, rxcuiCell, ttyCell, nameCell, resolvedCell, togCell]);
 
   const detailContainer = el("div", { class: "row-detail-inner" });
   const detailRow = el("tr", {
     class: "member-row-detail",
     hidden: true,
     "data-group": groupKey || "",
-  }, [el("td", { colspan: "5" }, detailContainer)]);
+  }, [el("td", { colspan: "6" }, detailContainer)]);
 
   let isOpen = false;
   let detailRendered = false;
@@ -667,7 +668,7 @@ export function memberRow({ rxcui, groupKey }) {
     }
   });
 
-  function update({ status, tty, name, reason, tooltip }) {
+  function update({ status, tty, name, reason, tooltip, resolvedAtc, resolvedAtcName }) {
     if (status !== undefined) {
       statusCell.innerHTML = "";
       const badge = statusBadge(status, tooltip || "");
@@ -684,6 +685,17 @@ export function memberRow({ rxcui, groupKey }) {
     if (name !== undefined) {
       nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "—" : "(unknown)");
       nameCell.title = name || "";
+    }
+    if (resolvedAtc !== undefined) {
+      resolvedCell.innerHTML = "";
+      if (resolvedAtc) {
+        resolvedCell.appendChild(el("span", { class: "code" }, resolvedAtc));
+        if (resolvedAtcName) {
+          resolvedCell.title = resolvedAtcName;
+        }
+      } else {
+        resolvedCell.textContent = "—";
+      }
     }
   }
 

@@ -598,6 +598,8 @@ function appendRowForRecord(rec, tbody) {
     tty: rec.tty || "—",
     reason: rec.reason,
     tooltip: buildMode3RowTooltip(rec),
+    resolvedAtc: rec.resolvedAtc || "",
+    resolvedAtcName: rec.resolvedAtcName || "",
   });
   rowApi.setOnExpand((container) => {
     renderMode1Into({ rxcui: rec.rxcui, resultEl: container }).catch(() => {});
@@ -616,6 +618,7 @@ function buildTableShell() {
       <th scope="col">RXCUI</th>
       <th scope="col">TTY</th>
       <th scope="col">Drug</th>
+      <th scope="col">Resolved L5</th>
       <th scope="col" aria-label="Expand"></th>
     </tr>`;
   table.appendChild(thead);

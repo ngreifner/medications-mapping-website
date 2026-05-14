@@ -1837,6 +1837,12 @@ a:hover {
   color: var(--text);
 }
 .member-row .cell-ndcs { font-family: var(--font-mono); white-space: nowrap; }
+.member-row .cell-resolved {
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  color: var(--text);
+}
+.member-row .cell-resolved .code { font-size: 12px; }
 .member-row .cell-toggle { width: 40px; text-align: center; }
 .member-row-detail > td {
   padding: 0;
