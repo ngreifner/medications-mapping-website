@@ -2037,6 +2037,11 @@ a:hover {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   color: var(--text);
 }
+.ndc-table tbody td.cell-atcName {
+  max-width: 220px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  color: var(--text-soft);
+}
 .ndc-table tbody td.cell-firstMarketedYear,
 .ndc-table tbody td.cell-marketingStatus {
   font-size: var(--fs-meta);

@@ -1319,7 +1319,8 @@ function buildNdcLevelTable(snapshot) {
 
   const thead = el("thead");
   const COLUMNS = [
-    { key: "atc",      label: "ATC L5" },
+    { key: "atc",      label: "ATC" },
+    { key: "atcName",  label: "ATC name" },
     { key: "rxcui",    label: "RxCUI" },
     { key: "drugName", label: "Drug" },
     { key: "ndc11",    label: "NDC (11-digit)" },
@@ -1337,15 +1338,26 @@ function buildNdcLevelTable(snapshot) {
   const tbody = el("tbody");
   table.appendChild(tbody);
 
+  // Best ATC class name we can put in the on-screen "ATC name" column.
+  // L5-byId returns empty, so for L5 queries we fall back to the resolver's
+  // substance name on KEPT rows (resolvedAtc === query on those rows).
+  const atcNameFor = (rec) => {
+    if (snapshot.className) return snapshot.className;
+    if (rec && rec.resolvedAtc === snapshot.atc && rec.resolvedAtcName) return rec.resolvedAtcName;
+    return "";
+  };
+
   // One row per (KEPT record × NDC). RxCUIs whose KEPT record has no NDCs
   // still emit one row with an empty NDC cell and a soft note, so they're
   // not silently dropped from the view.
   for (const rec of snapshot.records) {
     if (rec.status !== "KEPT") continue;
     const entries = snapshot.ndcs.get(rec.rxcui) || [];
+    const aName = atcNameFor(rec);
     if (entries.length === 0) {
       const tr = el("tr", { class: "ndc-row", "data-no-ndcs": "true" });
       tr.appendChild(el("td", { class: "cell-atc" }, el("span", { class: "code" }, snapshot.atc)));
+      tr.appendChild(el("td", { class: "cell-atcName" }, aName || "–"));
       tr.appendChild(el("td", { class: "cell-rxcui" }, el("span", { class: "code" }, rec.rxcui)));
       tr.appendChild(el("td", { class: "cell-drugName" }, rec.name || "(unknown)"));
       tr.appendChild(el("td", { class: "cell-ndc11 cell-empty" }, "no active NDCs"));
@@ -1358,6 +1370,7 @@ function buildNdcLevelTable(snapshot) {
     for (const e of entries) {
       const tr = el("tr", { class: "ndc-row" });
       tr.appendChild(el("td", { class: "cell-atc" }, el("span", { class: "code" }, snapshot.atc)));
+      tr.appendChild(el("td", { class: "cell-atcName" }, aName || "–"));
       tr.appendChild(el("td", { class: "cell-rxcui" }, el("span", { class: "code" }, rec.rxcui)));
       tr.appendChild(el("td", { class: "cell-drugName" }, rec.name || "(unknown)"));
       tr.appendChild(el("td", { class: "cell-ndc11" }, el("span", { class: "code" }, e.ndc11 || "")));
@@ -1375,38 +1388,50 @@ function buildNdcLevelTable(snapshot) {
 
 function buildThreeLevelCsv(snapshot) {
   const rows = [[
-    "atc_l5", "atc_l5_name",
+    "query_atc", "query_atc_name",
+    "resolved_atc", "resolved_atc_name",
     "rxcui", "rxcui_name", "rxcui_tty", "route",
     "ndc_11", "ndc_10", "labeler", "packaging",
     "marketing_category", "marketing_status",
     "fda_approval_number",
     "marketing_start_date", "first_marketed_year",
-    "resolved_atc", "status",
+    "status",
   ]];
+  // Best available class name for the queried ATC. For L5 inputs, RxClass's
+  // byId returns nothing, so the breadcrumb's name stays empty — fall back to
+  // the resolver's substance name when the resolved code matches the query.
+  const queryAtcName = (rec) => {
+    if (snapshot.className) return snapshot.className;
+    if (rec && rec.resolvedAtc === snapshot.atc && rec.resolvedAtcName) return rec.resolvedAtcName;
+    return "";
+  };
   for (const rec of snapshot.records) {
     if (rec.status !== "KEPT") continue;
     const entries = snapshot.ndcs.get(rec.rxcui) || [];
+    const qName = queryAtcName(rec);
     if (entries.length === 0) {
       rows.push([
-        snapshot.atc, snapshot.className || "",
+        snapshot.atc, qName,
+        rec.resolvedAtc || "", rec.resolvedAtcName || "",
         rec.rxcui, rec.name || "", rec.tty || "", rec.route || "",
         "", "", "", "",
         "", "",
         "",
         "", "",
-        rec.resolvedAtc || "", rec.status,
+        rec.status,
       ]);
       continue;
     }
     for (const e of entries) {
       rows.push([
-        snapshot.atc, snapshot.className || "",
+        snapshot.atc, qName,
+        rec.resolvedAtc || "", rec.resolvedAtcName || "",
         rec.rxcui, rec.name || "", rec.tty || "", rec.route || "",
         e.ndc11 || "", e.ndc10 || "", e.labeler || "", e.packaging || "",
         e.marketingCategory || "", e.marketingStatus || "",
         e.fdaApprovalNumber || "",
         e.marketingStartDate || "", yearFromYyyymmdd(e.marketingStartDate),
-        rec.resolvedAtc || "", rec.status,
+        rec.status,
       ]);
     }
   }
