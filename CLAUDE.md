@@ -178,7 +178,41 @@ Given an input RXCUI and a list of Level 4 class IDs, returns the matching Level
 
 3. **Fallback:** If both passes fail across all L4 classes, iterate over each ingredient RXCUI and call `/rxclass/class/byRxcui.json?rxcui={ing}&relaSource=ATC`. Pick Level 5 codes (length 7) whose value starts with one of the target Level 4 prefixes.
 
-**Known limitation:** Pass 2 only succeeds when RxClass's ATC source has a MIN concept with the exact L5 attribution we need. Coverage is uneven — J01EE has full MIN-to-L5 coverage (6 MINs, 6 L5s), but N04BA has only an IN-level levodopa member with SourceId=N04BA01 (no MIN for carbidopa+levodopa at N04BA02). For combos in classes lacking MIN-L5 attribution, the resolver still promotes to the singleton ingredient's L5 (N04BA01 for Sinemet) rather than the combo L5 (N04BA02). This is a RxClass coverage gap, not an algorithm gap.
+#### What Pass 2 does and why
+
+Pass 2 closes the engine's biggest gap on combination products. Before it, every combo whose L4 was returned by ATCPROD failed to resolve to its specific L5 because the L4's classMembers are MIN concepts (RXCUIs like 10831 = "sulfamethoxazole/trimethoprim") and the combo product's ingredient set (e.g. {10180, 10829}) never contains those MIN RXCUIs directly. Pass 2 reframes the match: it asks "does this MIN combine the same ingredients my product does?" rather than "is this MIN one of my ingredients?" That's the right question for combos.
+
+Concrete impact: Mode 3 for J01EE01 (sulfa+TMP) previously showed every Bactrim product flagged because the resolver couldn't link them back. Pass 2 makes those products KEPT.
+
+#### Known limitation — when Pass 2 cannot help
+
+Pass 2 only succeeds when RxClass's ATC source has a MIN concept attributed at the L5 we need. Coverage is uneven across the ATC tree:
+
+- **Good coverage:** J01EE returns six MIN concepts in classMembers, one per WHO L5 (J01EE01…J01EE07). Every WHO combo in this class is reachable through Pass 2.
+- **Sparse coverage:** N04BA returns one member — levodopa as an IN — with SourceId=N04BA01. There is no MIN for carbidopa+levodopa at N04BA02, even though WHO defines N04BA02. So Sinemet products resolve to N04BA01 (single-ingredient levodopa class) instead of N04BA02 (the combo class). Pass 2 cannot rescue this because the data simply isn't in RxClass's ATC mapping.
+
+Cases like N04BA02 will continue to surface in Mode 3 as ROUTE_MISMATCH or NEEDS_REVIEW. That's a faithful reflection of the public infrastructure, not an engine bug.
+
+#### What it would take to close that gap
+
+Three plausible paths, in increasing complexity:
+
+1. **Accept NEEDS_REVIEW as the long-term answer for these cases.** RxClass's mapping is what it is. We document the limitation (this file + Mode 3's status copy) and leave it to the human reviewer. Lowest cost, lowest false-positive risk.
+2. **Curated supplementary table.** Ship a small hand-maintained map of `(L5 ATC, [ingredient RXCUI set])` for combos that RxClass doesn't carry — e.g. `N04BA02 ↔ {levodopa, carbidopa}`. Pass 2's match logic would then fall back to this table when classMembers comes up short. Real cost is governance (who updates it when WHO publishes a new L5, how do we audit drift).
+3. **Fuzzy name match against WHO ATC.** Pull the official WHO ATC L5 catalog (offline, periodically refreshed), match the combo product's ingredient names against the L5 description text. More automated but introduces a string-matching layer with its own false-positive surface; only worth the investment if the curated table grows beyond a few dozen entries.
+
+The current choice is path 1, with the algorithm in place to take path 2 if and when the limitation becomes a real problem in practice.
+
+#### Regression coverage for single-ingredient queries
+
+Pass 2 is skipped whenever `inputIngredients.size < 2`, so single-ingredient drugs cannot be affected by it. Verified on every fixture and the standard example chips:
+
+- **1797907** (fluticasone nasal spray, SCD): Pass 1 matches fluticasone IN under R01AD → R01AD08. Unchanged.
+- **2702393** (timolol ophthalmic): Pass 1 matches timolol IN under S01ED → S01ED01. Unchanged.
+- **617310** (atorvastatin oral): Pass 1 matches atorvastatin IN under C10AA → C10AA05. Unchanged.
+- **41126** (fluticasone IN): early-exit via the ingredient guard; never reaches the L4 promotion path at all. Unchanged.
+
+For combos, the only behavior change is *adding* matches that previously failed — Pass 2 cannot produce a different match than Pass 1 because Pass 1 always runs first.
 
 ### Ingredient-level handling (TTY = IN, MIN, PIN)
 **Before any of the three strategies run, the engine checks the input's TTY.** If it's IN, MIN, or PIN:
