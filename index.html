@@ -48,11 +48,11 @@
 
   <nav class="tab-bar" role="tablist" aria-label="Modes">
     <button class="tab is-active" type="button" role="tab" aria-selected="true" data-mode="1">RXCUI → ATC</button>
-    <button class="tab" type="button" role="tab" aria-selected="false" data-mode="2">Batch RXCUI</button>
+    <button class="tab" type="button" role="tab" aria-selected="false" data-mode="2">Batch RXCUI → ATC</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="3">ATC → RXCUI</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="4">RXCUI → NDCs</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="5">Batch RXCUI → NDCs</button>
-    <button class="tab" type="button" role="tab" aria-selected="false" data-mode="6">Batch NDC details</button>
+    <button class="tab" type="button" role="tab" aria-selected="false" data-mode="6">Batch NDC → FDA details</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="7">Batch NDC → RXCUI</button>
   </nav>
 
@@ -86,7 +86,7 @@
     <div id="mode1-result" class="result-area" aria-live="polite"></div>
   </section>
 
-  <section class="mode-panel" data-mode="2" role="tabpanel" aria-label="Mode 2: Batch RXCUI" hidden>
+  <section class="mode-panel" data-mode="2" role="tabpanel" aria-label="Mode 2: Batch RXCUI to ATC" hidden>
     <div class="input-card batch-input-card">
       <div class="batch-input-header">
         <h2 class="batch-input-title">Paste RXCUIs</h2>
@@ -215,7 +215,7 @@
     <div id="mode5-table" class="batch-table-wrap" aria-live="polite"></div>
   </section>
 
-  <section class="mode-panel" data-mode="6" role="tabpanel" aria-label="Mode 6: Batch NDC details" hidden>
+  <section class="mode-panel" data-mode="6" role="tabpanel" aria-label="Mode 6: Batch NDC to FDA details" hidden>
     <div class="input-card batch-input-card">
       <div class="batch-input-header">
         <h2 class="batch-input-title">Paste NDCs</h2>
