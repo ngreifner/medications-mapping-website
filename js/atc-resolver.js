@@ -34,25 +34,76 @@ const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
  * walking ATC class members and matching against the input's ingredient
  * RXCUIs. Returns array of {code, name} on success, or null if no Level 5
  * could be resolved.
+ *
+ * The walk has three matching passes per Level 4 class. The first hit wins:
+ *
+ *   1. Single-ingredient direct match — member's RXCUI is in the input's
+ *      ingredient set. Handles the common case (e.g. fluticasone nasal SCD
+ *      → R01AD08 because R01AD's members include fluticasone IN).
+ *
+ *   2. MIN-equality match — RxClass returns Multiple Ingredient (TTY=MIN)
+ *      members for combination L4 classes (e.g. J01EE returns six MIN
+ *      concepts, one per WHO L5 combo). Pass 1 fails for combos because
+ *      the MIN's RXCUI is its own (e.g. 10831 for sulfamethoxazole/
+ *      trimethoprim), which is NOT in a Bactrim product's ingredient set
+ *      ({sulfamethoxazole, trimethoprim}). Pass 2 resolves this: for each
+ *      MIN member, compare the input's ingredient set to the MIN's
+ *      ingredient set; on equality, take the MIN's sourceId as the L5.
+ *
+ *      This is the clinically correct rule — a combination product
+ *      belongs to the multi-ingredient concept that combines exactly the
+ *      same ingredients, not to any one ingredient's standalone class.
+ *
+ *      Skipped for single-ingredient inputs (no benefit + can't false-
+ *      positive into a wider MIN).
+ *
+ *   3. (Bottom-of-function fallback) Walk each ingredient's ATC classes
+ *      and pick Level 5 codes whose value starts with one of the target
+ *      Level 4 prefixes. Only fires when both Pass 1 and Pass 2 fail for
+ *      every L4 in the input.
  */
 export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
   const matchIds = await getIngredientRxcuis(rxcui);
+  const selfId = String(rxcui);
+  const inputIngredients = new Set(matchIds.filter(id => id !== selfId));
   const level5List = [];
 
-  // Primary path: class members carry the Level 5 ATC in nodeAttr SourceId.
   for (const classId of level4ClassIds) {
     if (classId.length !== 5) continue;
     const members = await getClassMembers(classId).catch(() => []);
+
+    // Pass 1: single-ingredient direct match.
+    let hit = null;
     for (const member of members) {
       if (!member.rxcui || !matchIds.includes(member.rxcui)) continue;
       if (member.sourceId && member.sourceId.length === 7) {
-        level5List.push({
-          code: member.sourceId,
-          name: member.sourceName || "Name not available",
-        });
+        hit = { code: member.sourceId, name: member.sourceName || "Name not available" };
         break;
       }
     }
+
+    // Pass 2: MIN-equality match for combination products. Only meaningful
+    // when the input has at least two ingredients — otherwise there's no
+    // combo to match against.
+    if (!hit && inputIngredients.size >= 2) {
+      for (const member of members) {
+        if (!member.rxcui || member.tty !== "MIN") continue;
+        if (!member.sourceId || member.sourceId.length !== 7) continue;
+        const minRelated = await getIngredientRxcuis(member.rxcui).catch(() => null);
+        if (!minRelated) continue;
+        const minIngredients = new Set(minRelated.filter(id => id !== String(member.rxcui)));
+        if (minIngredients.size !== inputIngredients.size) continue;
+        let equal = true;
+        for (const id of inputIngredients) if (!minIngredients.has(id)) { equal = false; break; }
+        if (equal) {
+          hit = { code: member.sourceId, name: member.sourceName || "Name not available" };
+          console.log(`[RxCUI→ATC] MIN-equality match for ${rxcui} under ${classId}: ingredients=${[...inputIngredients].join(",")} → ${hit.code}`);
+          break;
+        }
+      }
+    }
+
+    if (hit) level5List.push(hit);
   }
   if (level5List.length > 0) return level5List;
 

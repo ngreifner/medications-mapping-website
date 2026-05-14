@@ -164,12 +164,21 @@ If all Level 5 paths failed but ATCPROD returned Level 4 codes, return those Lev
 Given an input RXCUI and a list of Level 4 class IDs, returns the matching Level 5 codes by:
 
 1. **Get matchIds:** input RXCUI plus all its ingredient RXCUIs (via `/rxcui/{rxcui}/related.json?tty=IN`)
-2. **For each Level 4 class:**
-   - Call `/rxclass/classMembers.json?classId={l4}&relaSource=ATC`
-   - Walk members; find one whose `minConcept.rxcui` is in `matchIds`
-   - Read `nodeAttr[SourceId]` (the 7-char Level 5 code) and `nodeAttr[SourceName]`
-   - Push to result, break inner loop
-3. **Fallback:** If primary path returned nothing, iterate over each ingredient RXCUI and call `/rxclass/class/byRxcui.json?rxcui={ing}&relaSource=ATC`. Pick Level 5 codes (length 7) whose value starts with one of the target Level 4 prefixes.
+2. **For each Level 4 class:** call `/rxclass/classMembers.json?classId={l4}&relaSource=ATC` and try three matching passes (first hit wins):
+
+   **Pass 1 — single-ingredient direct match.** Find a member whose `minConcept.rxcui` is in `matchIds`. Read `nodeAttr[SourceId]` (7-char L5) and `SourceName`. This handles every single-ingredient drug (e.g. fluticasone nasal SCD → R01AD08 because R01AD's members include fluticasone IN).
+
+   **Pass 2 — MIN-equality match for combination products.** For combination L4 classes, RxClass returns Multiple Ingredient (TTY=MIN) members — e.g. J01EE returns six MIN concepts (sulfamethoxazole/trimethoprim, sulfadiazine/tetroxoprim, etc.), each with its own L5 SourceId. Pass 1 fails for combos because the MIN's RXCUI (e.g. 10831) isn't in the input's ingredient set ({10180, 10829}). Pass 2 resolves this: for each MIN member, fetch its ingredient RXCUIs and compare the set; if **equal** to the input's ingredient set, take the MIN's SourceId as L5.
+
+   *Clinical rationale:* a combination product belongs to the multi-ingredient concept that combines exactly the same ingredients, not to any one ingredient's standalone class. Bactrim ({sulfa, TMP}) belongs to J01EE01 (sulfa+TMP), not J01EC01 (sulfa) or J01EA01 (TMP).
+
+   *Why equality (not subset):* a single-ingredient drug whose ingredient appears in a wider MIN would false-positive match (e.g. sulfa alone matching the sulfa+TMP MIN as a subset). Equality is safe; subset isn't.
+
+   Pass 2 is skipped when the input has fewer than 2 ingredients — no benefit and no risk of false positives.
+
+3. **Fallback:** If both passes fail across all L4 classes, iterate over each ingredient RXCUI and call `/rxclass/class/byRxcui.json?rxcui={ing}&relaSource=ATC`. Pick Level 5 codes (length 7) whose value starts with one of the target Level 4 prefixes.
+
+**Known limitation:** Pass 2 only succeeds when RxClass's ATC source has a MIN concept with the exact L5 attribution we need. Coverage is uneven — J01EE has full MIN-to-L5 coverage (6 MINs, 6 L5s), but N04BA has only an IN-level levodopa member with SourceId=N04BA01 (no MIN for carbidopa+levodopa at N04BA02). For combos in classes lacking MIN-L5 attribution, the resolver still promotes to the singleton ingredient's L5 (N04BA01 for Sinemet) rather than the combo L5 (N04BA02). This is a RxClass coverage gap, not an algorithm gap.
 
 ### Ingredient-level handling (TTY = IN, MIN, PIN)
 **Before any of the three strategies run, the engine checks the input's TTY.** If it's IN, MIN, or PIN:
