@@ -8,6 +8,7 @@ import * as mode3 from "./modes/mode3-atc-to-rxcuis.js";
 import * as mode4 from "./modes/mode4-rxcui-to-ndcs.js";
 import * as mode5 from "./modes/mode5-batch-rxcui-to-ndcs.js";
 import * as mode6 from "./modes/mode6-batch-ndc-details.js";
+import * as mode7 from "./modes/mode7-batch-ndc-to-rxcui.js";
 import { clearCache } from "./rxnav-client.js";
 import { detectCodeType } from "./code-detection.js";
 import { codeDetectionBanner } from "./ui-components.js";
@@ -77,7 +78,7 @@ function readUrlState() {
   const params = new URLSearchParams(window.location.search);
   const mode = params.get("mode") || "1";
   // Accept "about" alongside the numeric modes; everything else falls back to "1".
-  const valid = ["1", "2", "3", "4", "5", "6", "about"];
+  const valid = ["1", "2", "3", "4", "5", "6", "7", "about"];
   return {
     mode:  valid.includes(mode) ? mode : "1",
     rxcui: params.get("rxcui") || "",
@@ -281,6 +282,13 @@ function bindMode6() {
   const panel = getMode6Panel();
   if (panel) mode6.init(panel);
 }
+function getMode7Panel() {
+  return document.querySelector('.mode-panel[data-mode="7"]');
+}
+function bindMode7() {
+  const panel = getMode7Panel();
+  if (panel) mode7.init(panel);
+}
 
 // ---------------- boot ----------------
 applyTheme(getTheme());
@@ -293,6 +301,7 @@ bindMode3();
 bindMode4();
 bindMode5();
 bindMode6();
+bindMode7();
 
 const initial = readUrlState();
 activateTab(initial.mode, { pushUrl: false });

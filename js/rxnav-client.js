@@ -11,10 +11,11 @@ const CACHE_VERSION = 1;
 const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 const CACHE_KEYS = {
-  rxcui:    "medcode_cache_rxcui_v1",
-  ndc:      "medcode_cache_ndc_v1",
-  atc:      "medcode_cache_atc_v1",
-  ndcprops: "medcode_cache_ndcprops_v1",
+  rxcui:     "medcode_cache_rxcui_v1",
+  ndc:       "medcode_cache_ndc_v1",
+  atc:       "medcode_cache_atc_v1",
+  ndcprops:  "medcode_cache_ndcprops_v1",
+  ndcstatus: "medcode_cache_ndcstatus_v1",
 };
 
 const MAX_CONCURRENT = 6;
@@ -439,6 +440,65 @@ export async function getNdcPropertiesForRxcui(rxcui) {
 export async function getNdcsForRxcui(rxcui) {
   const entries = await getNdcPropertiesForRxcui(rxcui);
   return entries.map(e => e.ndc11);
+}
+
+/**
+ * /ndcstatus.json?ndc={ndc}, RxNav's reverse lookup: NDC → RxCUI plus the
+ * drug's concept name, RxNorm status (ACTIVE / OBSOLETE / ALIEN), the
+ * canonical 11-digit form, the source list, and the marketing-range history
+ * window. Returns a normalized record:
+ *   {
+ *     found:           bool,
+ *     input:           string,        // original input
+ *     ndc11:           string,        // canonical 11-digit, no dashes
+ *     status:          "ACTIVE" | "OBSOLETE" | "ALIEN" | "" ,
+ *     active:          "YES" | "NO" | "",
+ *     rxnormNdc:       "YES" | "NO" | "",
+ *     rxcui:           string,
+ *     conceptName:     string,
+ *     conceptStatus:   string,
+ *     altNdc:          "Y" | "N" | "",
+ *     sourceList:      string[],
+ *     marketingStart:  string,       // YYYYMM from ndcHistory[0].startDate
+ *     marketingEnd:    string,       // YYYYMM, or "" if still active
+ *   }
+ *
+ * Cached under CACHE_KEYS.ndcstatus keyed by the user's raw input (so the
+ * same cache row is reused whether the caller normalized the NDC or not).
+ * 30-day TTL like the other rxnav-client caches.
+ */
+export async function getNdcStatus(ndc) {
+  const input = String(ndc).trim();
+  const cached = cacheGet(CACHE_KEYS.ndcstatus, input);
+  if (cached) return cached;
+
+  const url = `${BASE}/ndcstatus.json?ndc=${encodeURIComponent(input)}`;
+  const data = await schedule(() => fetchJson(url));
+  let result;
+  if (data.__notFound || !data?.ndcStatus) {
+    result = { found: false, input };
+  } else {
+    const s = data.ndcStatus;
+    const hist = asArray(s.ndcHistory)[0] || {};
+    const sources = asArray(s.sourceList?.sourceName).map(x => String(x));
+    result = {
+      found: !!s.rxcui,
+      input,
+      ndc11: s.ndc11 ? String(s.ndc11) : "",
+      status: s.status || "",
+      active: s.active || "",
+      rxnormNdc: s.rxnormNdc || "",
+      rxcui: s.rxcui ? String(s.rxcui) : "",
+      conceptName: s.conceptName || "",
+      conceptStatus: s.conceptStatus || "",
+      altNdc: s.altNdc || "",
+      sourceList: sources,
+      marketingStart: hist.startDate ? String(hist.startDate) : "",
+      marketingEnd: hist.endDate ? String(hist.endDate) : "",
+    };
+  }
+  cachePut(CACHE_KEYS.ndcstatus, input, result);
+  return result;
 }
 
 /**
