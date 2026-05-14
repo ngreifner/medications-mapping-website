@@ -1033,13 +1033,12 @@ function renderSummary(refs, { atc, members, records, visibleRecords, source }) 
 // row. A view toggle lets the user switch back to the RxCUI-level view; the
 // fetched NDC data is cached in currentRun.ndcs so the toggle is instant.
 
-// A row is "extendable" if it carries a real RxCUI we can fetch NDCs for.
-// That's everything except NEEDS_REVIEW (RxCUI-not-found, network error,
-// invalid token). ROUTE_MISMATCH rows count too: they're valid RxCUIs that
-// happen to resolve to a different L5 in the same L4 family, and users want
-// their NDCs even if the L5 attribution disagrees.
+// A row is "extendable" only when the resolver confirmed the queried ATC.
+// ROUTE_MISMATCH rows are siblings under the same L4 that resolved to a
+// different L5; their NDCs don't belong under the user's queried code, so
+// the three-level mapping (queried_atc → rxcui → ndc) would be dishonest.
 function isExtendable(rec) {
-  return rec && rec.rxcui && rec.status !== "NEEDS_REVIEW";
+  return rec && rec.rxcui && rec.status === "KEPT";
 }
 
 function renderExtendCard(refs) {
@@ -1078,13 +1077,13 @@ function renderExtendCard(refs) {
     const muted = document.createElement("p");
     muted.className = "card-body";
     muted.style.color = "var(--text-muted)";
-    muted.textContent = "No RxCUIs to extend. Every member is flagged as needs review.";
+    muted.textContent = "No verified RxCUIs to extend. Every member resolved to a different L5 or needs review.";
     card.appendChild(muted);
   } else {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn-primary";
-    btn.textContent = `→ Extend with NDCs (${keptCount} RxCUI${keptCount === 1 ? "" : "s"})`;
+    btn.textContent = `→ Extend with NDCs (${keptCount} verified RxCUI${keptCount === 1 ? "" : "s"})`;
     btn.addEventListener("click", () => runNdcExtension(refs));
     row.appendChild(btn);
 
@@ -1117,7 +1116,7 @@ async function runNdcExtension(refs) {
       source: currentRun.source,
     });
     refs.summary.appendChild(errorCard({
-      title: `Result has ${allKept.length} RxCUIs`,
+      title: `Result has ${allKept.length} verified RxCUIs`,
       body: `The NDC extension processes up to ${NDC_EXTENSION_CAP} at a time. Process the first ${NDC_EXTENSION_CAP} now and skip the rest?`,
       actions: [
         {
@@ -1161,7 +1160,7 @@ async function runNdcExtensionInner(refs, keptToProcess) {
   });
 
   const progCard = mode3ProgressCard({
-    title: `Fetching NDCs for ${keptToProcess.length} RxCUI${keptToProcess.length === 1 ? "" : "s"}`,
+    title: `Fetching NDCs for ${keptToProcess.length} verified RxCUI${keptToProcess.length === 1 ? "" : "s"}`,
     status: "Verifying NDC properties…",
   });
   progCard.setOnStop(() => cancel.fire());
