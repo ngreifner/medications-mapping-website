@@ -189,12 +189,15 @@ function updateInputHint(refs) {
 }
 
 function bindExamples(refs) {
+  // Example chips prefill the input only; the user runs the lookup with
+  // the Look up button or Enter. updateInputHint still fires so the live
+  // L4/L5 hint reflects the new value.
   refs.panel.querySelectorAll(".examples-chips .chip[data-atc]").forEach((chip) => {
     chip.addEventListener("click", () => {
       const atc = chip.dataset.atc;
       refs.input.value = atc;
       updateInputHint(refs);
-      runSubmit(refs, atc);
+      refs.input.focus();
     });
   });
 }

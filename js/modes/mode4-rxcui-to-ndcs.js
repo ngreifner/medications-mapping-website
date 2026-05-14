@@ -69,11 +69,13 @@ function bindInput(refs) {
 }
 
 function bindExamples(refs) {
+  // Example chips prefill the input only; the user runs the lookup with
+  // the Look up button or Enter.
   refs.panel.querySelectorAll(".examples-chips .chip[data-rxcui]").forEach((chip) => {
     chip.addEventListener("click", () => {
       const rx = chip.dataset.rxcui;
       refs.input.value = rx;
-      runSubmit(refs, rx);
+      refs.input.focus();
     });
   });
 }
