@@ -1,4 +1,4 @@
-// ui-components.js — reusable card renderers.
+// ui-components.js, reusable card renderers.
 // Each function takes plain data and returns an HTMLElement. No fetch, no
 // global state. The mode files compose these into the result area.
 
@@ -50,7 +50,7 @@ export function routeCard({ route, dfgs = [], chosenDfg = null }) {
       ))
     : null;
   const why = (() => {
-    if (route === "unknown") return "No dose form group returned by RxNav — route could not be resolved.";
+    if (route === "unknown") return "No dose form group returned by RxNav, route could not be resolved.";
     if (dfgs.length > 1 && chosenDfg) {
       return `Selected "${chosenDfg}" as the highest-priority DFG. The most-specific local route wins over more general ones.`;
     }
@@ -115,7 +115,7 @@ export function atcFamilyCard({
     return el("li", { class: "family-cousin" + (c.isCombination ? " is-combination" : "") }, [
       el("span", { class: "family-cousin-marker", "aria-hidden": "true" }, "▸"),
       el("span", { class: "family-cousin-code" }, c.code),
-      el("span", { class: "family-cousin-sep", "aria-hidden": "true" }, "—"),
+      el("span", { class: "family-cousin-sep", "aria-hidden": "true" }, "·"),
       el("span", { class: "family-cousin-name" }, c.name || "(name unavailable)"),
       c.isCombination ? el("span", { class: "family-cousin-tag" }, "combination") : null,
       queryBtn,
@@ -123,7 +123,7 @@ export function atcFamilyCard({
   });
 
   const total = cousins.length;
-  const batchNote = total >= 10 ? `This will query ${total} classes — may take a moment.` : "";
+  const batchNote = total >= 10 ? `This will query ${total} classes, may take a moment.` : "";
 
   const exportBtn = el("button", { type: "button", class: "btn-secondary" }, "⬇ Export this list");
   if (onExport) exportBtn.addEventListener("click", () => onExport());
@@ -138,7 +138,7 @@ export function atcFamilyCard({
     el("div", { class: "family-header" }, [
       el("span", { class: "family-glyph", "aria-hidden": "true" }, "🌳"),
       el("span", { class: "family-parent-code" }, parentCode),
-      el("span", { class: "family-parent-sep", "aria-hidden": "true" }, "—"),
+      el("span", { class: "family-parent-sep", "aria-hidden": "true" }, "·"),
       el("span", { class: "family-parent-name" }, parentName || "(name loading…)"),
     ]),
     el("p", { class: "family-sub" }, `Level 5 cousins in this family (${total})`),
@@ -209,7 +209,7 @@ export function actionBarCard({ onCopyJson, onLookupAnother }) {
     }, 1500);
   });
   const buttons = [copyBtn];
-  // onLookupAnother is omitted by Mode 2's row-expand — the batch UI has its
+  // onLookupAnother is omitted by Mode 2's row-expand, the batch UI has its
   // own Reset button, and "Look up another" would be misleading inline.
   if (onLookupAnother) {
     buttons.push(el("button", { type: "button", class: "btn-secondary", onclick: onLookupAnother }, "Look up another"));
@@ -242,7 +242,7 @@ export function statusBadge(status, tooltip = "") {
   const attrs = { class: cls };
   if (tooltip) {
     attrs["data-tooltip"] = tooltip;
-    attrs["aria-label"] = `${STATUS_LABEL[status] || status} — ${tooltip}`;
+    attrs["aria-label"] = `${STATUS_LABEL[status] || status}, ${tooltip}`;
     attrs.tabindex = "0";
   }
   return el("span", attrs, STATUS_LABEL[status] || status);
@@ -342,7 +342,7 @@ export function statusInfoIcon({ buildBanner }) {
     if (popover) return;
     popover = buildBanner();
     if (!popover) {
-      // banner returns null if user dismissed it — force-render anyway
+      // banner returns null if user dismissed it, force-render anyway
       // by temporarily clearing the dismiss flag for this popover instance.
       // We rebuild it without the storageKey check.
       popover = buildBanner(true);
@@ -382,7 +382,7 @@ function positionPopover(popover, anchor) {
   popover.style.zIndex = "300";
 }
 
-// Small localStorage shim — JSON-safe and tolerant of disabled storage
+// Small localStorage shim, JSON-safe and tolerant of disabled storage
 const safeStorage = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* ignore */ } },
@@ -401,7 +401,7 @@ export function progressBar({ done = 0, total = 0, eta = "" } = {}) {
   ]);
 }
 
-/** Mutate an existing progressBar element in place — avoids replacing the
+/** Mutate an existing progressBar element in place, avoids replacing the
  * node (and losing focus or screen-reader continuity) on every tick. */
 export function updateProgressBar(progEl, { done, total, eta }) {
   if (!progEl) return;
@@ -415,13 +415,13 @@ export function updateProgressBar(progEl, { done, total, eta }) {
 }
 
 /**
- * Rich progress card for Mode 3 — shows immediately on submit, transitions
+ * Rich progress card for Mode 3, shows immediately on submit, transitions
  * through phases, surfaces per-member activity, and exposes a Stop button.
  *
  * Returns { el, update, setOnStop, finish }
  *   update({ phase, title, status, current, total, eta, lastName, stopped })
- *   setOnStop(fn) — wires Stop button
- *   finish({ stopped }) — disables Stop, freezes UI for final state
+ *   setOnStop(fn), wires Stop button
+ *   finish({ stopped }), disables Stop, freezes UI for final state
  */
 export function mode3ProgressCard({ title = "Looking up…", status = "Fetching family roster…" } = {}) {
   const titleEl   = el("h3", { class: "m3-prog-title" }, title);
@@ -522,7 +522,7 @@ export function batchRow({ rxcui, isDuplicate = false }) {
   const statusCell = el("td", { class: "cell-status" }, statusBadge("PENDING"));
   const rxcuiCell = el("td", { class: "cell-rxcui" }, [
     el("span", { class: "code" }, rxcui),
-    isDuplicate ? el("span", { class: "dup-tag", title: "Appeared more than once in your input — counted once" }, "dup") : null,
+    isDuplicate ? el("span", { class: "dup-tag", title: "Appeared more than once in your input, counted once" }, "dup") : null,
   ]);
   const nameCell = el("td", { class: "cell-name" }, "…");
   const routeCell = el("td", { class: "cell-route" }, "…");
@@ -571,8 +571,8 @@ export function batchRow({ rxcui, isDuplicate = false }) {
     statusCell.appendChild(badge);
     tr.dataset.status = status;
 
-    nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "—" : "(unknown)");
-    routeCell.textContent = route || "—";
+    nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "–" : "(unknown)");
+    routeCell.textContent = route || "–";
 
     keptCell.innerHTML = "";
     if (kept && kept.length > 0) {
@@ -580,7 +580,7 @@ export function batchRow({ rxcui, isDuplicate = false }) {
         keptCell.appendChild(el("span", { class: "code-pill", title: k.name || "" }, k.code));
       }
     } else {
-      keptCell.textContent = reason ? "—" : "—";
+      keptCell.textContent = reason ? "–" : "–";
     }
 
     removedCell.textContent = String(removed != null ? removed : 0);
@@ -755,9 +755,9 @@ export function memberRow({ rxcui, groupKey }) {
       chevron.disabled = !hasDetail;
       chevron.title = hasDetail ? "Show full Mode 1 detail" : (reason || "No detail available");
     }
-    if (tty !== undefined) ttyCell.textContent = tty || "—";
+    if (tty !== undefined) ttyCell.textContent = tty || "–";
     if (name !== undefined) {
-      nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "—" : "(unknown)");
+      nameCell.textContent = name || (status === "NEEDS_REVIEW" ? "–" : "(unknown)");
       nameCell.title = name || "";
     }
     if (resolvedAtc !== undefined) {
@@ -768,7 +768,7 @@ export function memberRow({ rxcui, groupKey }) {
           resolvedCell.title = resolvedAtcName;
         }
       } else {
-        resolvedCell.textContent = "—";
+        resolvedCell.textContent = "–";
       }
     }
   }

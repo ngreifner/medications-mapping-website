@@ -1,4 +1,4 @@
-// rxnav-client.js — the ONLY module allowed to call fetch().
+// rxnav-client.js, the ONLY module allowed to call fetch().
 // Owns: RxNav requests, localStorage caching (30-day TTL), retry+backoff,
 // rate limiting (15 req/sec), and a 6-concurrent Promise pool.
 //
@@ -40,7 +40,7 @@ function saveCache(key, obj) {
     obj.__cache_version = CACHE_VERSION;
     localStorage.setItem(key, JSON.stringify(obj));
   } catch {
-    // Storage full / disabled — silently continue; network calls still work.
+    // Storage full / disabled, silently continue; network calls still work.
   }
 }
 
@@ -137,7 +137,7 @@ function asArray(x) {
 // ---------------- public API ----------------
 
 /**
- * /rxcui/{rxcui}/properties.json — returns { found, rxcui, name, tty, synonym }.
+ * /rxcui/{rxcui}/properties.json, returns { found, rxcui, name, tty, synonym }.
  */
 export async function getProperties(rxcui) {
   const id = String(rxcui).trim();
@@ -163,7 +163,7 @@ export async function getProperties(rxcui) {
 }
 
 /**
- * /rxcui/{rxcui}/related.json?tty=DFG — returns string[] of DFG names (e.g.
+ * /rxcui/{rxcui}/related.json?tty=DFG, returns string[] of DFG names (e.g.
  * ["Nasal Product", "Inhalant Product"]). Empty array if the request fails or
  * none returned.
  */
@@ -195,7 +195,7 @@ export async function getDfgs(rxcui) {
 }
 
 /**
- * /rxcui/{rxcui}/related.json?tty=IN — returns string[] of RXCUIs containing
+ * /rxcui/{rxcui}/related.json?tty=IN, returns string[] of RXCUIs containing
  * both the input itself and all related ingredient RXCUIs. Used to match the
  * input drug against ATC class members in resolveLevel5FromClassMembers.
  */
@@ -263,7 +263,7 @@ export function getIngredientAtcClasses(rxcui) {
 }
 
 /**
- * /rxcui/{rxcui}/property.json?propName=ATC — returns string[] of ATC codes
+ * /rxcui/{rxcui}/property.json?propName=ATC, returns string[] of ATC codes
  * stored directly as an RxNorm property. Often empty.
  */
 export async function getAtcPropertyValues(rxcui) {
@@ -284,7 +284,7 @@ export async function getAtcPropertyValues(rxcui) {
 }
 
 /**
- * /rxclass/classMembers.json?classId={x}&relaSource={ATC|ATCPROD} — returns the
+ * /rxclass/classMembers.json?classId={x}&relaSource={ATC|ATCPROD}, returns the
  * drug members of an ATC class. For each member we surface:
  *   - rxcui:    the member's minConcept.rxcui
  *   - tty:      the member's TTY (when present)
@@ -334,14 +334,14 @@ export async function getClassMembers(classId, relaSource = "ATC") {
 /**
  * Enumerate the Level 5 ATC codes that exist under a Level 4 class, as
  * observed via classMembers(L4, "ATC"). RxClass does not expose L5 codes as
- * classes — they only appear as the SourceId attribute on drug members. This
+ * classes, they only appear as the SourceId attribute on drug members. This
  * helper collects the distinct (sourceId, sourceName) pairs.
  *
  * Coverage note: this returns "L5s for which RxNorm has at least one drug
  * member," which is a subset of WHO's full ATC catalog. L5s that WHO has
  * defined but RxNorm hasn't classified any drug under will not appear. For
  * Mode 3's "show me the cousins in this family" feature, that's the right
- * scope — querying a no-coverage L5 downstream would return zero RxCUIs
+ * scope, querying a no-coverage L5 downstream would return zero RxCUIs
  * anyway, so omitting it doesn't lose anything actionable.
  *
  * Backed by getClassMembers' existing 30-day cache; no extra cache layer.
@@ -362,7 +362,7 @@ export async function getLevel5ChildrenForL4(level4Code) {
 }
 
 /**
- * /ndcproperties.json?id={rxcui} — rich active-NDC metadata for an RXCUI.
+ * /ndcproperties.json?id={rxcui}, rich active-NDC metadata for an RXCUI.
  *
  * Returns an array of normalized records:
  *   {
@@ -373,7 +373,7 @@ export async function getLevel5ChildrenForL4(level4Code) {
  *     color, imprint, shape, size,
  *   }
  *
- * Dedupes by ndcItem — when an NDC has been remapped between RXCUIs in
+ * Dedupes by ndcItem, when an NDC has been remapped between RXCUIs in
  * RxNorm's history, the response can include duplicate entries for the
  * same ndcItem. First-seen wins.
  *
@@ -424,7 +424,7 @@ export async function getNdcPropertiesForRxcui(rxcui) {
 }
 
 /**
- * Backward-compat shim — Mode 3 previously called this to get a flat list of
+ * Backward-compat shim, Mode 3 previously called this to get a flat list of
  * NDC strings. After the Mode-3-NDC removal it's unused in-tree, but kept
  * exported so external callers (the previous /ndcs.json shape) keep working.
  * Returns just the 11-digit NDC codes from the richer ndcproperties dataset.
@@ -435,7 +435,7 @@ export async function getNdcsForRxcui(rxcui) {
 }
 
 /**
- * /rxclass/byId.json?classId={id} — returns the className for an ATC class.
+ * /rxclass/byId.json?classId={id}, returns the className for an ATC class.
  * Cached in the atc cache (class names rarely change between monthly RxNorm
  * releases, so the 30-day TTL is generous-but-fine). Returns null if not found.
  */

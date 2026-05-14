@@ -1,4 +1,4 @@
-// ndc-normalizer.js — convert any NDC format to 11-digit no-hyphens (HIPAA canonical).
+// ndc-normalizer.js, convert any NDC format to 11-digit no-hyphens (HIPAA canonical).
 //
 // Accepted inputs (per CLAUDE.md Section 5):
 //   00781-0001-01    10-digit 4-4-2
@@ -57,7 +57,7 @@ export function normalizeNdc(input) {
     }
   }
 
-  // 10 digits, no hyphens — segmentation is ambiguous. Default to assuming the
+  // 10 digits, no hyphens, segmentation is ambiguous. Default to assuming the
   // labeler is the short segment (4-4-2 → pad first), which is the most common
   // case for old-style FDA NDCs. Surface the assumption to the caller so the UI
   // can show "Normalized X → Y. If wrong, enter with hyphens."

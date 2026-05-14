@@ -1,4 +1,4 @@
-// explanations.js — ALL human-readable reason templates and clinical-context strings.
+// explanations.js: all human-readable reason templates and clinical-context strings.
 // Pure functions, no side effects. Every mode pulls from here; no inline strings elsewhere.
 
 export const explainKept = (atc, route, prefix) =>
@@ -11,7 +11,7 @@ export const explainWrongRouteAllow = (atc, route, allowedPrefixes) =>
   `${atc} does not match the ${route} route. The ATC anatomical group for ${route} products is limited to ${allowedPrefixes.join(", ")}. This code likely came from the ingredient's use in a different formulation.`;
 
 export const explainWrongRouteExclude = (atc, route, matchedPrefix) =>
-  `${atc} starts with ${matchedPrefix}, which is reserved for local routes. A ${route} product should not have this code — it suggests ingredient-level pollution from a different formulation.`;
+  `${atc} starts with ${matchedPrefix}, which is reserved for local routes. A ${route} product should not have this code; it suggests ingredient-level pollution from a different formulation.`;
 
 export const explainLevelNot5 = (atc) =>
   `${atc} is an ATC hierarchy ancestor, not a specific drug class. Only Level 5 codes (7 characters) are actionable.`;
@@ -39,24 +39,24 @@ export const explainNdcNotFound = (ndc) =>
   `NDC ${ndc} is not in RxNorm's NDC index. This may be a newly registered product, a custom compound, or a non-standard format.`;
 
 export const explainNoRxcuiMapped = (ndc) =>
-  `NDC ${ndc} is in RxNorm's index but doesn't map to a clinical RXCUI. This is unusual — typically packaging-only entries.`;
+  `NDC ${ndc} is in RxNorm's index but doesn't map to a clinical RXCUI. This is unusual, typically packaging-only entries.`;
 
 export const explainRxcuiNotFound = (rxcui) =>
   `RXCUI ${rxcui} was not found in RxNav. It may be retired, from a different code system, or a typo.`;
 
 // Clinical context keyed by `${route}_${ATC anatomical letter + first 2 digits}`.
-// Looked up after a rejection to add a plain-English clinical reason. Optional —
-// falls back to no clinical line if no match.
+// Looked up after a rejection to add a plain-English clinical reason.
+// Optional; falls back to no clinical line if no match.
 export const clinicalContext = {
-  "nasal_R03":     "This ingredient is also formulated as an asthma inhaler — but a nasal spray treats allergies, not asthma.",
-  "nasal_D07":     "This ingredient is also formulated as a skin cream — but a nasal spray is not for skin conditions.",
-  "ophthalmic_H02":"This ingredient is also formulated as a systemic steroid pill — but an eye drop acts locally.",
-  "ophthalmic_C07":"This ingredient is also formulated as a cardiac beta blocker — but eye drops for glaucoma act locally on the eye.",
-  "ophthalmic_J01":"This ingredient is also formulated as a systemic antibiotic — but eye drops treat ocular infection locally.",
-  "topical_C01":   "This ingredient is also formulated as a systemic cardiac drug — but a patch or cream acts locally.",
-  "otic_J01":      "This ingredient is also formulated as a systemic antibiotic — but ear drops act locally.",
-  "rectal_H02":    "This ingredient is also formulated as a systemic steroid — but a suppository or rectal foam acts locally.",
-  "vaginal_G03":   "This ingredient is also used as systemic hormone replacement — but a vaginal preparation acts locally.",
+  "nasal_R03":     "This ingredient is also formulated as an asthma inhaler, but a nasal spray treats allergies, not asthma.",
+  "nasal_D07":     "This ingredient is also formulated as a skin cream, but a nasal spray is not for skin conditions.",
+  "ophthalmic_H02":"This ingredient is also formulated as a systemic steroid pill, but an eye drop acts locally.",
+  "ophthalmic_C07":"This ingredient is also formulated as a cardiac beta blocker, but eye drops for glaucoma act locally on the eye.",
+  "ophthalmic_J01":"This ingredient is also formulated as a systemic antibiotic, but eye drops treat ocular infection locally.",
+  "topical_C01":   "This ingredient is also formulated as a systemic cardiac drug, but a patch or cream acts locally.",
+  "otic_J01":      "This ingredient is also formulated as a systemic antibiotic, but ear drops act locally.",
+  "rectal_H02":    "This ingredient is also formulated as a systemic steroid, but a suppository or rectal foam acts locally.",
+  "vaginal_G03":   "This ingredient is also used as systemic hormone replacement, but a vaginal preparation acts locally.",
 };
 
 // Build the clinical key from a route + ATC (first 3 chars, e.g. "R03").

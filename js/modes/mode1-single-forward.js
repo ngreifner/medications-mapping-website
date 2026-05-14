@@ -1,4 +1,4 @@
-// modes/mode1-single-forward.js — Mode 1 UI logic.
+// modes/mode1-single-forward.js, Mode 1 UI logic.
 // Owns the input → engine → render flow for a single RXCUI.
 //
 // Mode files are thin: validate, call client/resolver, render via ui-components.
@@ -96,7 +96,7 @@ export async function submit({ rxcui, resultEl, bannerEl, onSwitchMode }) {
     return;
   }
 
-  // Loading state — three skeleton cards mirroring the result shape.
+  // Loading state, three skeleton cards mirroring the result shape.
   resultEl.appendChild(skeletonCard());
   resultEl.appendChild(skeletonCard());
   resultEl.appendChild(skeletonCard());
@@ -182,7 +182,7 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
   // 2. Ingredient-level inputs: skip route resolution and route filtering.
   if (result && result.status === "INGREDIENT_LEVEL") {
     resultEl.appendChild(errorCard({
-      title: "Ingredient-level lookup — no route filtering",
+      title: "Ingredient-level lookup, no route filtering",
       body: "Showing the canonical Level 5 ATC code(s) for this substance. No route filter was applied since no specific dose form was given. For a route-validated mapping, look up a specific clinical drug (SCD or SBD).",
       variant: "info",
     }));
@@ -223,12 +223,12 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     chosenDfg,
   }));
 
-  // 4. Kept ATCs — only Level 5 codes (length 7) are user-facing.
+  // 4. Kept ATCs, only Level 5 codes (length 7) are user-facing.
   const keptCodes = (result && result.status === "KEEP" && Array.isArray(result.codes))
     ? result.codes.filter(c => (c.code || "").length === 7)
     : [];
 
-  // 5. Rejected ATCs — read the deduped L4 list from the engine (single
+  // 5. Rejected ATCs, read the deduped L4 list from the engine (single
   // source of truth; same array Mode 2 counts for its "removed" column).
   // Then promote each to its Level 5 equivalent for the same ingredient.
   // L4 codes never appear in the UI.
@@ -347,7 +347,7 @@ function routeOverrideNote(atc, route) {
 function setPageTitle(rxcui, atc) {
   document.title = atc
     ? `MedCode · ${rxcui} → ${atc}`
-    : "MedCode Lookup — Route-aware drug code translator";
+    : "MedCode Lookup, Route-aware drug code translator";
 }
 
 function appendAnatomyCard(resultEl, atcCode, hintName) {
@@ -372,7 +372,7 @@ function clearMode1State(resultEl, bannerEl) {
 
 function pickChosenDfg(dfgs, route) {
   // routeCard wants to highlight the DFG the resolver chose. We re-pick it
-  // here using the same DFG_PRIORITY logic in resolveRoute — but resolveRoute
+  // here using the same DFG_PRIORITY logic in resolveRoute, but resolveRoute
   // returns just the route. Recompute the DFG by route-mapping each DFG and
   // picking the first one whose route matches.
   if (!route || route === "unknown" || !Array.isArray(dfgs)) return null;

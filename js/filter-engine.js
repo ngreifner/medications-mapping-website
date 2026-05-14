@@ -1,8 +1,8 @@
-// filter-engine.js — pure logic for DFG → route resolution and route → ATC filtering.
+// filter-engine.js, pure logic for DFG → route resolution and route → ATC filtering.
 //
 // All tables (DFG_ROUTE_MAP, DFG_PRIORITY, ROUTE_ATC_MATRIX) are ported verbatim
 // from the user's working browser app (index.html). They have been tested
-// against real drugs and are the source of truth — not CLAUDE.md, which is
+// against real drugs and are the source of truth, not CLAUDE.md, which is
 // being rewritten to match this file.
 //
 // No network calls. No DOM. Console logs use the [RxCUI→ATC] prefix to match
@@ -45,7 +45,7 @@ export const DFG_ROUTE_MAP = {
 };
 
 /**
- * DFG priority — when multiple DFGs are returned (e.g. "Nasal Product" +
+ * DFG priority, when multiple DFGs are returned (e.g. "Nasal Product" +
  * "Inhalant Product"), pick the most specific route. Lower index = higher
  * priority. Routes not listed here have lowest priority.
  */
@@ -58,14 +58,14 @@ export const DFG_PRIORITY = [
 /**
  * Route → ATC Prefix Matrix.
  *
- * Local routes use `allow` mode — only ATC codes starting with one of the
+ * Local routes use `allow` mode, only ATC codes starting with one of the
  * listed prefixes survive. Everything else is removed.
  *
- * Systemic routes use `exclude` mode — codes starting with any listed prefix
+ * Systemic routes use `exclude` mode, codes starting with any listed prefix
  * (local/route-specific anatomical groups) are removed. Everything else passes.
  *
  * Prefixes are sorted longest-first on module load so e.g. R03 is checked
- * before R, S03 before S — preventing accidental short-prefix matches.
+ * before R, S03 before S, preventing accidental short-prefix matches.
  */
 export const ROUTE_ATC_MATRIX = {
   [ROUTE.TOPICAL]:     { mode: 'allow', prefixes: ['D', 'M02', 'N01B', 'C05'] },
@@ -92,7 +92,7 @@ function matchesAnyPrefix(atcCode, prefixes) {
 }
 
 /**
- * Per-code matrix verdict — same logic as filterAtcByRoute but for a single
+ * Per-code matrix verdict, same logic as filterAtcByRoute but for a single
  * code, without the bulk safety fallback. UI surfaces use this to label
  * individual codes as kept or rejected (with the matched/blocked prefix).
  *
@@ -144,7 +144,7 @@ export function resolveRoute(dfgNames) {
  *
  * Accepts items as either bare strings or `{code, ...}` objects. For UNKNOWN
  * route, or when filtering would remove every code, returns the unfiltered
- * list — the engine never returns zero codes purely from filtering.
+ * list, the engine never returns zero codes purely from filtering.
  */
 export function filterAtcByRoute(atcCodes, route) {
   if (atcCodes.length <= 1 || route === ROUTE.UNKNOWN) return atcCodes;

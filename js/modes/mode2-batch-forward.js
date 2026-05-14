@@ -1,10 +1,10 @@
-// modes/mode2-batch-forward.js — Mode 2 UI logic.
+// modes/mode2-batch-forward.js, Mode 2 UI logic.
 // Batch validation of up to 200 RXCUIs at a time. Reuses the Mode 1 resolver
-// and Mode 1 detail rendering verbatim — Mode 2 owns only batch plumbing:
+// and Mode 1 detail rendering verbatim, Mode 2 owns only batch plumbing:
 // parsing, dedupe, table assembly, status classification, progress + ETA,
 // filter chips, CSV exports.
 //
-// No fetch() here; no filter logic here; no inline reason strings — those
+// No fetch() here; no filter logic here; no inline reason strings, those
 // rules from CLAUDE.md still apply.
 
 import { detectCodeType } from "../code-detection.js";
@@ -56,7 +56,7 @@ const STATUS_INFO = {
     dot: "accent",
     name: "Multi-route",
     short: "Ingredient with multiple valid codes",
-    long: "This is an ingredient-level RXCUI (TTY=IN) with multiple valid Level 5 ATC codes across different routes. No filtering applied — all codes shown as kept.",
+    long: "This is an ingredient-level RXCUI (TTY=IN) with multiple valid Level 5 ATC codes across different routes. No filtering applied, all codes shown as kept.",
   },
   NEEDS_REVIEW: {
     dot: "warning",
@@ -290,7 +290,7 @@ async function runBatch(refs) {
   };
   tick();
 
-  // Fire all tasks in parallel — the rxnav-client's internal Promise pool
+  // Fire all tasks in parallel, the rxnav-client's internal Promise pool
   // (6 concurrent) and rate limiter (15 req/sec) keep this from melting the API.
   const tasks = ordered.map((rxcui) => processOne({
     rxcui,
@@ -394,7 +394,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     : resolveRoute(dfgs);
   record.route = (route && route !== "unknown") ? route : "";
 
-  // The engine attaches `rejectedL4` — the deduped final state of route-
+  // The engine attaches `rejectedL4`, the deduped final state of route-
   // filter rejections (already excludes ATCPROD-overridden L4s and the
   // L4 prefixes of kept L5 codes). This is the single source of truth;
   // Mode 1's row-expand renders the same list as rejected cards.
@@ -405,7 +405,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     .filter(c => (c.code || "").length === 7);
   record.kept = keptL5;
 
-  // Status classification — per the revised rule:
+  // Status classification, per the revised rule:
   //   KEEP, has rejections          → CLEAN_FIX
   //   KEEP, no rejections           → UNCHANGED
   //   INGREDIENT_LEVEL, kept == 1   → UNCHANGED
@@ -440,7 +440,7 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
   rowApi.update({
     status,
     name: record.name || "(unknown)",
-    route: record.route || (result.status === "INGREDIENT_LEVEL" ? "ingredient" : "—"),
+    route: record.route || (result.status === "INGREDIENT_LEVEL" ? "ingredient" : "–"),
     kept: keptL5,
     removed,
     reason: record.reason,
@@ -475,7 +475,7 @@ function renderSummary(refs, total, counts, records) {
 function renderFilterChips(refs, counts, tbody) {
   refs.filtersSlot.innerHTML = "";
 
-  // Layer 1 — educational banner above the chips (dismissible, persisted)
+  // Layer 1, educational banner above the chips (dismissible, persisted)
   const banner = buildMode2Banner();
   if (banner) refs.filtersSlot.appendChild(banner);
 
@@ -519,7 +519,7 @@ function renderFilterChips(refs, counts, tbody) {
     btn.setAttribute("data-tooltip-pos", "bottom");
     if (c.tooltip) {
       btn.setAttribute("data-tooltip", c.tooltip);
-      btn.setAttribute("aria-label", `${c.label} (${c.count}) — ${c.tooltip}`);
+      btn.setAttribute("aria-label", `${c.label} (${c.count}), ${c.tooltip}`);
     }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${c.count}</span>`;
     btn.addEventListener("click", () => applyFilter(c.key));
@@ -527,7 +527,7 @@ function renderFilterChips(refs, counts, tbody) {
   }
   refs.filtersSlot.appendChild(chipBar);
 
-  // Header info icon — re-open the banner content as a popover even if dismissed.
+  // Header info icon, re-open the banner content as a popover even if dismissed.
   // The status column header is the first <th> in the rendered table.
   const statusTh = refs.tableSlot.querySelector(".batch-table thead th:first-child");
   if (statusTh && !statusTh.querySelector(".col-info-btn")) {
@@ -550,11 +550,11 @@ function buildRowTooltip(record) {
       ? removed.map(r => r.code + (r.route ? ` (${r.route})` : "")).join(", ")
       : `${record.removed || 0} wrong-route code${(record.removed || 0) === 1 ? "" : "s"}`;
     const total = keptCodes.length + (record.removed || 0);
-    return `This drug had ${total} candidate ATC codes for its ingredient. The route filter kept ${keptCodes.join(", ") || "—"} (matches ${record.route} route) and removed ${removed.length || record.removed || 0} wrong-route code${(removed.length || record.removed || 0) === 1 ? "" : "s"}${removed.length ? ": " + removedStr : ""}.`;
+    return `This drug had ${total} candidate ATC codes for its ingredient. The route filter kept ${keptCodes.join(", ") || "–"} (matches ${record.route} route) and removed ${removed.length || record.removed || 0} wrong-route code${(removed.length || record.removed || 0) === 1 ? "" : "s"}${removed.length ? ": " + removedStr : ""}.`;
   }
   if (s === "UNCHANGED") {
     const n = (record.kept || []).length;
-    return `This drug had ${n} candidate ATC code${n === 1 ? "" : "s"} for its ingredient, all of which matched the ${record.route || "—"} route. No filtering needed.`;
+    return `This drug had ${n} candidate ATC code${n === 1 ? "" : "s"} for its ingredient, all of which matched the ${record.route || "–"} route. No filtering needed.`;
   }
   if (s === "LEGIT_MULTI") {
     const n = (record.kept || []).length;

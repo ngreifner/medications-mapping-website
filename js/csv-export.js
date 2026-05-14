@@ -1,4 +1,4 @@
-// csv-export.js — tiny CSV writer + browser download trigger.
+// csv-export.js, tiny CSV writer + browser download trigger.
 // Shared by Mode 2 (batch RXCUI) and (eventually) Mode 5 (batch NDC).
 //
 // rows = [[header1, header2, ...], [val1, val2, ...], ...]

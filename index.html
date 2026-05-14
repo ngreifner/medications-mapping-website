@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MedCode Lookup — Route-aware drug code translator</title>
+  <title>MedCode Lookup · Route-aware drug code resolver</title>
   <meta name="description" content="Route-aware translation between RxNorm, ATC, and NDC drug codes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +41,8 @@
 
 <main>
   <section class="hero">
-    <p class="hero-eyebrow">Route-aware drug code mapping</p>
-    <h1>Translate RXCUI, ATC, and NDC — without the route pollution.</h1>
+    <p class="hero-eyebrow">Clinical drug code resolver</p>
+    <h1>The first route-aware translator for RxNorm, WHO ATC, and FDA NDC. Every keep and reject decision is fully audited.</h1>
   </section>
 
   <nav class="tab-bar" role="tablist" aria-label="Modes">
@@ -73,9 +73,9 @@
       <div class="examples">
         <p class="examples-label">Try these examples:</p>
         <div class="examples-chips">
-          <button class="chip" type="button" data-rxcui="1797907">1797907 <span class="chip-sub">— fluticasone nasal spray</span></button>
-          <button class="chip" type="button" data-rxcui="2702393">2702393 <span class="chip-sub">— timolol eye drops</span></button>
-          <button class="chip" type="button" data-rxcui="617310">617310 <span class="chip-sub">— atorvastatin oral</span></button>
+          <button class="chip" type="button" data-rxcui="1797907">1797907 <span class="chip-sub">· fluticasone nasal spray</span></button>
+          <button class="chip" type="button" data-rxcui="2702393">2702393 <span class="chip-sub">· timolol eye drops</span></button>
+          <button class="chip" type="button" data-rxcui="617310">617310 <span class="chip-sub">· atorvastatin oral</span></button>
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
     <div class="input-card batch-input-card">
       <div class="batch-input-header">
         <h2 class="batch-input-title">Paste RXCUIs</h2>
-        <p class="batch-input-hint">Up to 200 RXCUIs — one per line or comma-separated.</p>
+        <p class="batch-input-hint">Up to 200 RXCUIs, one per line or comma-separated.</p>
       </div>
       <label for="mode2-input" class="visually-hidden">Paste a list of RXCUIs</label>
       <textarea
@@ -136,9 +136,9 @@
       <div class="examples">
         <p class="examples-label">Try these examples:</p>
         <div class="examples-chips">
-          <button class="chip" type="button" data-atc="R01AD08">R01AD08 <span class="chip-sub">— fluticasone (nasal corticosteroid)</span></button>
-          <button class="chip" type="button" data-atc="C10AA05">C10AA05 <span class="chip-sub">— atorvastatin</span></button>
-          <button class="chip" type="button" data-atc="M01AE">M01AE <span class="chip-sub">— L4 family (propionic acid NSAIDs)</span></button>
+          <button class="chip" type="button" data-atc="R01AD08">R01AD08 <span class="chip-sub">· fluticasone (nasal corticosteroid)</span></button>
+          <button class="chip" type="button" data-atc="C10AA05">C10AA05 <span class="chip-sub">· atorvastatin</span></button>
+          <button class="chip" type="button" data-atc="M01AE">M01AE <span class="chip-sub">· L4 family (propionic acid NSAIDs)</span></button>
         </div>
       </div>
     </div>
@@ -169,9 +169,9 @@
       <div class="examples">
         <p class="examples-label">Try these examples:</p>
         <div class="examples-chips">
-          <button class="chip" type="button" data-rxcui="259255">259255 <span class="chip-sub">— atorvastatin 80 MG (~294 NDCs)</span></button>
-          <button class="chip" type="button" data-rxcui="1797907">1797907 <span class="chip-sub">— fluticasone nasal spray</span></button>
-          <button class="chip" type="button" data-rxcui="617310">617310 <span class="chip-sub">— atorvastatin 20 MG</span></button>
+          <button class="chip" type="button" data-rxcui="259255">259255 <span class="chip-sub">· atorvastatin 80 MG (~294 NDCs)</span></button>
+          <button class="chip" type="button" data-rxcui="1797907">1797907 <span class="chip-sub">· fluticasone nasal spray</span></button>
+          <button class="chip" type="button" data-rxcui="617310">617310 <span class="chip-sub">· atorvastatin 20 MG</span></button>
         </div>
       </div>
     </div>
@@ -183,7 +183,7 @@
     <div class="input-card batch-input-card">
       <div class="batch-input-header">
         <h2 class="batch-input-title">Paste RXCUIs</h2>
-        <p class="batch-input-hint">Up to 20 RXCUIs — one per line or comma-separated. Each RXCUI can return hundreds of NDC rows, so the cap is tighter than Mode 2.</p>
+        <p class="batch-input-hint">Up to 20 RXCUIs, one per line or comma-separated. Each RXCUI can return hundreds of NDC rows, so the cap is tighter than Mode 2.</p>
       </div>
       <label for="mode5-input" class="visually-hidden">Paste a list of RXCUIs</label>
       <textarea
@@ -218,7 +218,7 @@
       <h1 class="about-display">Route-aware ATC mapping.</h1>
       <p class="about-subhead">
         Stop polluting your medication index with wrong-route codes. Validate any
-        RxNorm&nbsp;→&nbsp;ATC mapping in seconds — with the reasoning shown.
+        RxNorm&nbsp;→&nbsp;ATC mapping in seconds, with the reasoning shown.
       </p>
     </header>
 
@@ -234,10 +234,10 @@
     <section id="what-is-this" class="about-section">
       <h1 class="about-h1">What is this tool?</h1>
       <p class="about-lede">
-        Medications come with multiple identifiers — <strong>RXCUI</strong> for clinical concepts,
+        Medications come with multiple identifiers: <strong>RXCUI</strong> for clinical concepts,
         <strong>NDC</strong> for packaging, <strong>ATC</strong> for therapeutic classification.
-        Translating between them sounds simple but hides a real problem: a single ingredient like
-        <em>fluticasone</em> is sold as a nasal spray, a skin cream, <em>and</em> an asthma inhaler —
+        Translating between them sounds simple but hides a real problem. A single ingredient like
+        <em>fluticasone</em> is sold as a nasal spray, a skin cream, <em>and</em> an asthma inhaler,
         each with a different correct ATC code. Standard mapping tools return all three, polluting
         your data with wrong-route codes. <strong>MedCode Lookup</strong> fixes that by validating
         the route before choosing.
@@ -245,9 +245,9 @@
 
       <!-- Drug background: what fluticasone actually is -->
       <aside class="example-context" aria-label="About fluticasone">
-        <p class="example-context-title">A concrete example — what is <em>fluticasone</em>?</p>
+        <p class="example-context-title">A concrete example: what is <em>fluticasone</em>?</p>
         <p class="example-context-body">
-          Fluticasone is a corticosteroid — a potent anti-inflammatory drug. The exact same
+          Fluticasone is a corticosteroid, a potent anti-inflammatory drug. The exact same
           molecule is formulated three different ways for three different conditions, and
           each formulation gets its own ATC code:
         </p>
@@ -269,7 +269,7 @@
           </li>
         </ul>
         <p class="example-context-body">
-          The right ATC depends on which product you're looking at — not just the ingredient.
+          The right ATC depends on which product you're looking at, not just the ingredient.
           That's the gap MedCode Lookup closes.
         </p>
       </aside>
@@ -286,15 +286,15 @@
               <span class="code code-mono">RXCUI 41126</span>
               <span class="tty-badge">IN</span>
             </p>
-            <p class="pane-block-desc">fluticasone — the ingredient, no formulation specified</p>
+            <p class="pane-block-desc">fluticasone, the ingredient, no formulation specified</p>
           </div>
 
           <div class="pane-block pane-block-output">
-            <span class="pane-block-label">Returns 3 ATCs — all of them, ambiguously</span>
+            <span class="pane-block-label">Returns 3 ATCs, all of them, ambiguously</span>
             <ul class="pane-codes">
               <li>
                 <span class="code">D07AC17</span>
-                <span class="cmp-note">fluticasone (dermatological — skin cream)</span>
+                <span class="cmp-note">fluticasone (dermatological, skin cream)</span>
               </li>
               <li>
                 <span class="code">R01AD08</span>
@@ -302,7 +302,7 @@
               </li>
               <li>
                 <span class="code">R03BA05</span>
-                <span class="cmp-note">fluticasone (inhaled glucocorticoid — asthma)</span>
+                <span class="cmp-note">fluticasone (inhaled glucocorticoid for asthma)</span>
               </li>
             </ul>
           </div>
@@ -317,7 +317,7 @@
 
         <!-- RIGHT: MedCode Lookup, route-aware -->
         <div class="comparison-pane comparison-good">
-          <p class="pane-title">MedCode Lookup — route-aware</p>
+          <p class="pane-title">MedCode Lookup: route-aware</p>
 
           <div class="pane-block pane-block-input">
             <span class="pane-block-label">Input</span>
@@ -349,7 +349,7 @@
           </div>
 
           <p class="pane-footnote">
-            D07AC17 and R03BA05 are filtered out — they belong to skin and inhaler formulations of the same ingredient, not to this nasal spray.
+            D07AC17 and R03BA05 are filtered out, because they belong to skin and inhaler formulations of the same ingredient, not to this nasal spray.
           </p>
         </div>
 
@@ -376,7 +376,7 @@
             <p class="example-note">fluticasone propionate 0.05 MG/ACTUAT Metered Dose Nasal Spray</p>
           </div>
           <p class="code-card-source"><strong>Maintained by</strong> U.S. National Library of Medicine · updated monthly</p>
-          <p class="code-card-blurb">RxNorm normalizes the many ways a drug can be named — generic, branded, abbreviated — into one ID.</p>
+          <p class="code-card-blurb">RxNorm normalizes the many ways a drug can be named (generic, branded, abbreviated) into one ID.</p>
         </article>
 
         <article class="code-card code-card-atc">
@@ -387,7 +387,7 @@
           <h3 class="code-card-title">Anatomical Therapeutic Chemical</h3>
           <p class="code-card-meta"><strong>Identifies:</strong> a drug's therapeutic and chemical classification.</p>
           <div class="code-card-example">
-            <span class="example-label">Example — R01AD08</span>
+            <span class="example-label">Example: R01AD08</span>
             <div class="atc-levels-mini">
               <div class="atc-level-row"><span class="atc-mini-tag ca-color-atc1">R</span> <span class="atc-mini-name">Respiratory system</span></div>
               <div class="atc-level-row"><span class="atc-mini-tag ca-color-atc2">01</span> <span class="atc-mini-name">Nasal preparations</span></div>
@@ -397,7 +397,7 @@
             </div>
           </div>
           <p class="code-card-source"><strong>Maintained by</strong> WHO Collaborating Centre for Drug Statistics Methodology · updated annually</p>
-          <p class="code-card-blurb">ATC organizes drugs by where they act and how they work — making class-level analysis possible.</p>
+          <p class="code-card-blurb">ATC organizes drugs by where they act and how they work, making class-level analysis possible.</p>
         </article>
 
         <article class="code-card code-card-ndc">
@@ -408,7 +408,7 @@
           <h3 class="code-card-title">National Drug Code</h3>
           <p class="code-card-meta"><strong>Identifies:</strong> a specific drug packaging from a specific labeler.</p>
           <div class="code-card-example">
-            <span class="example-label">Example — 00378-4517-93</span>
+            <span class="example-label">Example: 00378-4517-93</span>
             <div class="ndc-breakdown">
               <span class="ndc-seg ndc-seg-labeler" title="Labeler">00378</span>
               <span class="ndc-seg-sep">–</span>
@@ -457,7 +457,7 @@
       <div class="flow-diagram">
         <div class="flow-step flow-input">
           <span class="flow-step-label">Input</span>
-          <p class="flow-step-body"><span class="code code-mono">RXCUI 1797907</span> — fluticasone propionate nasal spray</p>
+          <p class="flow-step-body"><span class="code code-mono">RXCUI 1797907</span>: fluticasone propionate nasal spray</p>
         </div>
         <div class="flow-arrow" aria-hidden="true">↓</div>
 
@@ -477,7 +477,7 @@
 
         <div class="flow-step flow-step-3">
           <span class="flow-step-label">Step 3</span>
-          <p class="flow-step-body">Filter by route — keep only codes whose anatomical group is valid for "nasal" (R01).</p>
+          <p class="flow-step-body">Filter by route: keep only codes whose anatomical group is valid for "nasal" (R01).</p>
         </div>
         <div class="flow-arrow" aria-hidden="true">↓</div>
 
@@ -528,7 +528,7 @@
       <div class="limitations-list">
         <div class="limitation">
           <h4 class="limitation-title">Combination products</h4>
-          <p>Drugs with multiple active ingredients may produce multiple ATC codes — one per component. This is expected behavior.</p>
+          <p>Drugs with multiple active ingredients may produce multiple ATC codes, one per component. This is expected behavior.</p>
         </div>
         <div class="limitation">
           <h4 class="limitation-title">Coverage gaps</h4>
@@ -559,7 +559,7 @@
       systems. Not for use in patient care decisions.
     </p>
     <p class="footer-meta">
-      <span class="footer-attribution">Built by Netanel Greifner, MD MHA — <a href="https://navina.ai" target="_blank" rel="noopener noreferrer">Navina.ai</a></span>
+      <span class="footer-attribution">Built by Netanel Greifner, MD MHA · <a href="https://navina.ai" target="_blank" rel="noopener noreferrer">Navina.ai</a></span>
       <span class="footer-sep" aria-hidden="true">·</span>
       Data via <a href="https://rxnav.nlm.nih.gov" target="_blank" rel="noopener noreferrer">RxNav (NIH/NLM)</a>
       <button type="button" id="clear-cache" class="link-btn">Clear cache</button>

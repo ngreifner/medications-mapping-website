@@ -1,7 +1,7 @@
-// modes/mode5-batch-rxcui-to-ndcs.js — Mode 5 UI logic.
+// modes/mode5-batch-rxcui-to-ndcs.js, Mode 5 UI logic.
 // Batch RXCUI → active NDCs for up to 20 RXCUIs at a time. Hard cap is
 // intentionally tighter than Mode 2's (200) because each RXCUI can produce
-// hundreds of NDCs in the exploded CSV — 20 × ~300 avg ≈ 6,000 rows; 200
+// hundreds of NDCs in the exploded CSV, 20 × ~300 avg ≈ 6,000 rows; 200
 // would balloon to 60k+.
 //
 // Reuses Mode 2's parser shape (textarea + dedupe + counter) and Mode 4's
@@ -51,7 +51,7 @@ const STATUS_INFO = {
     dot: "accent",
     name: "No NDCs",
     short: "RXCUI exists but no active NDCs",
-    long: "This RXCUI exists in RxNorm but has no active NDCs. Two distinct reasons — see the banner below.",
+    long: "This RXCUI exists in RxNorm but has no active NDCs. Two distinct reasons, see the banner below.",
   },
   NEEDS_REVIEW: {
     dot: "warning",
@@ -61,12 +61,12 @@ const STATUS_INFO = {
   },
 };
 
-// Sub-categories of NO_NDCS — distinct reasons surfaced in the banner,
+// Sub-categories of NO_NDCS, distinct reasons surfaced in the banner,
 // tooltips, and row-expand info card, but lumped under one filter chip.
 const NO_NDCS_INFO = {
   NON_PRODUCT: {
     name: "No NDCs · non-product TTY",
-    short: "Ingredients or brand-name concepts (TTY=IN/PIN/MIN/BN/DF/…). RxNorm only assigns NDCs to specific products — look up an SCD or SBD instead.",
+    short: "Ingredients or brand-name concepts (TTY=IN/PIN/MIN/BN/DF/…). RxNorm only assigns NDCs to specific products, look up an SCD or SBD instead.",
   },
   PRODUCT: {
     name: "No NDCs · product, none active",
@@ -75,7 +75,7 @@ const NO_NDCS_INFO = {
 };
 
 function buildMode5Banner({ showDismiss = true, ignoreDismissed = false, counts = null } = {}) {
-  const fmt = (key) => counts ? ` — ${counts[key] || 0} row${(counts[key] || 0) === 1 ? "" : "s"}` : "";
+  const fmt = (key) => counts ? `, ${counts[key] || 0} row${(counts[key] || 0) === 1 ? "" : "s"}` : "";
   const items = [
     { dot: STATUS_INFO.OK.dot,           name: STATUS_INFO.OK.name + fmt("OK"),                           desc: STATUS_INFO.OK.short },
     { dot: STATUS_INFO.NO_NDCS.dot,      name: NO_NDCS_INFO.NON_PRODUCT.name + fmt("NO_NDCS_NON_PRODUCT"), desc: NO_NDCS_INFO.NON_PRODUCT.short },
@@ -220,7 +220,7 @@ function updateCounter(refs) {
   if (n > MAX_BATCH) {
     refs.warningSlot.appendChild(errorCard({
       title: `Over the ${MAX_BATCH}-RXCUI cap`,
-      body: `Mode 5 caps at ${MAX_BATCH} RXCUIs per batch — each can produce hundreds of NDC rows. You have ${n}.`,
+      body: `Mode 5 caps at ${MAX_BATCH} RXCUIs per batch, each can produce hundreds of NDC rows. You have ${n}.`,
       variant: "warning",
     }));
     return;
@@ -341,7 +341,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
   if (!isLikelyRxcui(rxcui)) {
     record.status = "NEEDS_REVIEW";
     record.reason = "Token doesn't look like an RXCUI";
-    rowApi.update({ status: "NEEDS_REVIEW", name: record.reason, tty: "", ndcCount: "—", tooltip: record.reason });
+    rowApi.update({ status: "NEEDS_REVIEW", name: record.reason, tty: "", ndcCount: "–", tooltip: record.reason });
     return;
   }
 
@@ -355,7 +355,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
     if (!isStillActive()) return;
     record.status = "NEEDS_REVIEW";
     record.reason = "Network error reaching RxNav";
-    rowApi.update({ status: "NEEDS_REVIEW", name: "Network error", tty: "", ndcCount: "—", tooltip: record.reason || "Network error reaching RxNav" });
+    rowApi.update({ status: "NEEDS_REVIEW", name: "Network error", tty: "", ndcCount: "–", tooltip: record.reason || "Network error reaching RxNav" });
     return;
   }
   if (!isStillActive()) return;
@@ -363,7 +363,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
   if (!props || !props.found) {
     record.status = "NEEDS_REVIEW";
     record.reason = `RXCUI ${rxcui} not found in RxNav`;
-    rowApi.update({ status: "NEEDS_REVIEW", name: "Not in RxNav", tty: "", ndcCount: "—", tooltip: record.reason });
+    rowApi.update({ status: "NEEDS_REVIEW", name: "Not in RxNav", tty: "", ndcCount: "–", tooltip: record.reason });
     return;
   }
 
@@ -378,7 +378,7 @@ async function processOne({ rxcui, rowApi, record, isStillActive }) {
       record.reason = `Product (TTY=${props.tty}) with no active NDCs in current release`;
     } else {
       record.subStatus = "NO_NDCS_NON_PRODUCT";
-      record.reason = `Non-product TTY (${props.tty}) — RxNorm assigns NDCs only to SCD/SBD/BPCK/GPCK`;
+      record.reason = `Non-product TTY (${props.tty}), RxNorm assigns NDCs only to SCD/SBD/BPCK/GPCK`;
     }
   } else {
     record.status = "OK";
@@ -466,10 +466,10 @@ function makePendingRow({ rxcui, isDuplicate }) {
     if (tooltip) badge.setAttribute("data-tooltip-align", "start");
     statusCell.appendChild(badge);
     tr.dataset.status = status;
-    nameCell.textContent = name || "—";
+    nameCell.textContent = name || "–";
     nameCell.title = name || "";
-    ttyCell.textContent = tty || "—";
-    ndcCell.textContent = ndcCount == null ? "—" : String(ndcCount);
+    ttyCell.textContent = tty || "–";
+    ndcCell.textContent = ndcCount == null ? "–" : String(ndcCount);
     const hasDetail = status === "OK" || (status === "NO_NDCS" && !!name);
     chevron.disabled = !hasDetail;
   }
@@ -508,7 +508,7 @@ function renderFilterChips(refs, table, records) {
     }
   }
 
-  // Layer 1 banner — pass sub-counts so the two NO_NDCS sub-rows are quantified.
+  // Layer 1 banner, pass sub-counts so the two NO_NDCS sub-rows are quantified.
   const banner = buildMode5Banner({ counts });
   if (banner) refs.filtersSlot.appendChild(banner);
   const chipBar = document.createElement("div");
@@ -531,7 +531,7 @@ function renderFilterChips(refs, table, records) {
     btn.setAttribute("data-tooltip-pos", "bottom");
     if (c.tooltip) {
       btn.setAttribute("data-tooltip", c.tooltip);
-      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}) — ${c.tooltip}`);
+      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}), ${c.tooltip}`);
     }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${counts[c.key] || 0}</span>`;
     btn.addEventListener("click", () => applyFilter(table, chipBar, c.key));
@@ -610,7 +610,7 @@ function renderSummary(refs, total, records) {
   const explodedBtn = document.createElement("button");
   explodedBtn.type = "button";
   explodedBtn.className = "btn-secondary";
-  explodedBtn.textContent = `⬇ Download CSV (with NDC codes — ${totalNdcs} rows)`;
+  explodedBtn.textContent = `⬇ Download CSV (with NDC codes, ${totalNdcs} rows)`;
   explodedBtn.addEventListener("click", () => {
     const rows = buildExplodedCsv(records);
     downloadCsv(`medcode-mode5-batch-ndc-exploded-${stamp}.csv`, rows);

@@ -1,8 +1,8 @@
-// atc-resolver.js — RXCUI → ATC conversion orchestrator.
+// atc-resolver.js, RXCUI → ATC conversion orchestrator.
 //
 // Ported verbatim (modulo our caching/rate-limiting layer in rxnav-client)
 // from the user's working browser app. Strategy order, fallback paths, and
-// console.log statements all match the source — this file's Node test output
+// console.log statements all match the source, this file's Node test output
 // is intended to match the browser console line-by-line for the same RXCUI.
 //
 // Three strategies fire in priority order, with all four endpoints fetched in
@@ -13,7 +13,7 @@
 //   Last-resort: ATCPROD's Level 4 codes if every Level 5 path failed
 //
 // Where ATCPROD returns Level 4 codes only, they double as a prefix whitelist
-// that constrains downstream strategies — preventing combination drugs (e.g.
+// that constrains downstream strategies, preventing combination drugs (e.g.
 // R03AL) from being replaced by unrelated single-ingredient codes (e.g. R03BA02).
 
 import {
@@ -37,11 +37,11 @@ const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
  *
  * The walk has three matching passes per Level 4 class. The first hit wins:
  *
- *   1. Single-ingredient direct match — member's RXCUI is in the input's
+ *   1. Single-ingredient direct match, member's RXCUI is in the input's
  *      ingredient set. Handles the common case (e.g. fluticasone nasal SCD
  *      → R01AD08 because R01AD's members include fluticasone IN).
  *
- *   2. MIN-equality match — RxClass returns Multiple Ingredient (TTY=MIN)
+ *   2. MIN-equality match, RxClass returns Multiple Ingredient (TTY=MIN)
  *      members for combination L4 classes (e.g. J01EE returns six MIN
  *      concepts, one per WHO L5 combo). Pass 1 fails for combos because
  *      the MIN's RXCUI is its own (e.g. 10831 for sulfamethoxazole/
@@ -50,7 +50,7 @@ const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
  *      MIN member, compare the input's ingredient set to the MIN's
  *      ingredient set; on equality, take the MIN's sourceId as the L5.
  *
- *      This is the clinically correct rule — a combination product
+ *      This is the clinically correct rule, a combination product
  *      belongs to the multi-ingredient concept that combines exactly the
  *      same ingredients, not to any one ingredient's standalone class.
  *
@@ -83,7 +83,7 @@ export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
     }
 
     // Pass 2: MIN-equality match for combination products. Only meaningful
-    // when the input has at least two ingredients — otherwise there's no
+    // when the input has at least two ingredients, otherwise there's no
     // combo to match against.
     if (!hit && inputIngredients.size >= 2) {
       for (const member of members) {
@@ -137,7 +137,7 @@ async function attachAtcNames(codes) {
     try {
       // Cheapest way to look up an ATC class name is via byRxcui; but here we
       // have a classId, not a rxcui. Without a dedicated byId helper in the
-      // resolver, fall back to "Name not available" — the browser app does
+      // resolver, fall back to "Name not available", the browser app does
       // the same when the property path is reached without a richer source.
       return { code: String(code), name: "Name not available" };
     } catch {
@@ -193,12 +193,12 @@ export async function convertRxcuiToAtc(rxcui) {
     //  GUARD: ingredient-level inputs have no specific dose form.
     //  Their DFGs aggregate every product they appear in, so route
     //  resolution is meaningless. Pull canonical Level 5 ATC codes
-    //  directly from the RXCUI property and return them all — no
+    //  directly from the RXCUI property and return them all, no
     //  route filtering since there is no route to filter by.
     // ============================================================
     const props = await getProperties(rxcui).catch(() => null);
     if (props && props.found && INGREDIENT_TTYS.has(props.tty)) {
-      console.log(`[RxCUI→ATC] TTY=${props.tty} — skipping route filter; returning all ingredient ATCs`);
+      console.log(`[RxCUI→ATC] TTY=${props.tty}, skipping route filter; returning all ingredient ATCs`);
       const propertyCodes = await getAtcPropertyValues(rxcui).catch(() => []);
       const codes = propertyCodes
         .filter(c => (c || "").length === 7)
@@ -215,14 +215,14 @@ export async function convertRxcuiToAtc(rxcui) {
       getAtcPropertyValues(rxcui).catch(() => []),
     ]);
 
-    // Resolve route once — used by Strategy 2/3 AND by Strategy 1's
+    // Resolve route once, used by Strategy 2/3 AND by Strategy 1's
     // route-override detection (we want to flag when ATCPROD keeps a
     // code that our matrix would have rejected).
     const route = resolveRoute(dfgNames);
 
     // Single source of truth for the route filter's rejection list.
     // After the engine produces a result, finalize() enriches it with
-    // `rejectedL4` — the set of L4 ATC subgroups that the route matrix
+    // `rejectedL4`, the set of L4 ATC subgroups that the route matrix
     // rejected for this drug AND were NOT overridden by ATCPROD or
     // already kept. Both Mode 1 (renders these as rejected cards after
     // L4→L5 promotion) and Mode 2 (counts them for the "removed" column
@@ -237,7 +237,7 @@ export async function convertRxcuiToAtc(rxcui) {
           if (o.code && o.code.length >= 5) exempt.add(o.code.slice(0, 5).toUpperCase());
         }
       }
-      // Any L4 prefix of a kept L5 is exempt — the route filter and the
+      // Any L4 prefix of a kept L5 is exempt, the route filter and the
       // engine already agree on that prefix; no point listing it as rejected.
       for (const c of (Array.isArray(result.codes) ? result.codes : [])) {
         const code = (c.code || "").toUpperCase();
@@ -258,7 +258,7 @@ export async function convertRxcuiToAtc(rxcui) {
     };
 
     // ============================================================
-    //  STRATEGY 1: ATCPROD — direct product-level ATC mapping
+    //  STRATEGY 1: ATCPROD, direct product-level ATC mapping
     // ============================================================
     let atcprodFallback = null;
     let atcprodPrefixes = null;
@@ -267,7 +267,7 @@ export async function convertRxcuiToAtc(rxcui) {
       const uniqueClasses = atcprodClasses.map(c => ({ code: c.classId, name: c.className || "Name not available" }));
       console.log("[RxCUI→ATC] ATCPROD hit:", uniqueClasses.map(c => c.code).join(", "));
 
-      // ATCPROD returns Level 4 codes — promote each to Level 5.
+      // ATCPROD returns Level 4 codes, promote each to Level 5.
       const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
       if (level4Ids.length > 0) {
         const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
@@ -292,7 +292,7 @@ export async function convertRxcuiToAtc(rxcui) {
           return atcprodPrefixes.some(p => c.startsWith(p.toUpperCase()));
         })
       : (items) => items;
-    if (!atcprodFallback) console.log("[RxCUI→ATC] ATCPROD returned no data — falling back to ingredient ATC + DFG filter");
+    if (!atcprodFallback) console.log("[RxCUI→ATC] ATCPROD returned no data, falling back to ingredient ATC + DFG filter");
 
     // ============================================================
     //  STRATEGY 2: Ingredient-level ATC + DFG route filter
@@ -349,7 +349,7 @@ export async function convertRxcuiToAtc(rxcui) {
       }
     }
 
-    // Last resort — return ATCPROD's Level 4 codes if nothing else resolved.
+    // Last resort, return ATCPROD's Level 4 codes if nothing else resolved.
     if (atcprodFallback) {
       console.log("[RxCUI→ATC] Returning ATCPROD Level 4 fallback:", atcprodFallback.map(c => c.code).join(", "));
       return finalize({ status: "KEEP", codes: atcprodFallback });

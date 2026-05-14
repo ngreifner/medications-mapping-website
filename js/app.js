@@ -1,4 +1,4 @@
-// app.js — main controller.
+// app.js, main controller.
 // Wires up theme cycling, tab switching, URL query state, code-detection
 // hand-off, and keyboard handlers. Delegates mode-specific work to mode files.
 
@@ -58,7 +58,7 @@ function activateTab(modeNum, { pushUrl = true } = {}) {
     else p.setAttribute("hidden", "");
   });
 
-  // Sync the mode onto <html> — the inline head script sets it on first
+  // Sync the mode onto <html>, the inline head script sets it on first
   // paint; we keep it in sync as the user switches tabs in-app.
   document.documentElement.dataset.mode = mode;
 
@@ -144,7 +144,7 @@ function bindMode1() {
     }
   });
 
-  // Live paste detection — switch banner for ATC, passive notice for NDC.
+  // Live paste detection, switch banner for ATC, passive notice for NDC.
   input.addEventListener("paste", (e) => {
     const pasted = (e.clipboardData || window.clipboardData)?.getData("text") || "";
     if (!pasted.trim()) return;
@@ -160,12 +160,12 @@ function bindMode1() {
         onContinue: () => { banner.innerHTML = ""; },
       }));
     }
-    // NDC paste: don't surface a switch banner — no mode accepts NDC input
+    // NDC paste: don't surface a switch banner, no mode accepts NDC input
     // in this build. The submit-time path shows a passive notice if the user
     // actually presses Enter / Look up.
   });
 
-  // Example chips — prefill the input only; the user runs the lookup
+  // Example chips, prefill the input only; the user runs the lookup
   // themselves with the Look up button or Enter.
   document.querySelectorAll(".examples-chips .chip").forEach(chip => {
     chip.addEventListener("click", () => {

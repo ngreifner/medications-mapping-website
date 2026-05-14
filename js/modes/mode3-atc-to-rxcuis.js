@@ -1,4 +1,4 @@
-// modes/mode3-atc-to-rxcuis.js — Mode 3 UI logic.
+// modes/mode3-atc-to-rxcuis.js, Mode 3 UI logic.
 // ATC → RXCUIs + NDC drill-down for a single Level 4 or Level 5 ATC code.
 //
 // API quirks (verified empirically against RxNav, Jan 2026):
@@ -8,14 +8,14 @@
 //   2. ATCPROD vs ATC schemas differ:
 //        ATCPROD members  → product RXCUIs; nodeAttr.SourceId = the RXCUI
 //        ATC     members  → ingredient RXCUIs; nodeAttr.SourceId = L5 ATC
-//      ATCPROD has no "declared L5" attribution — so L5 grouping uses the
+//      ATCPROD has no "declared L5" attribution, so L5 grouping uses the
 //      resolver's first kept L5 (post-verification), not member.sourceId.
 //
 // Flow:
 //   1. validate format + level
 //   2. render breadcrumb
 //   3. fetch L4 parent's members (ATCPROD primary, ATC fallback)
-//   4. (L4 gate removed — Mode 3 only accepts Level 5 codes)
+//   4. (L4 gate removed, Mode 3 only accepts Level 5 codes)
 //   5. verify every member via convertRxcuiToAtc + getProperties (progress bar)
 //   6. fetch active NDCs for KEPT rows
 //   7. render the table (grouped for L4, flat for L5)
@@ -56,7 +56,7 @@ const STATUS_INFO = {
     dot: "success",
     name: "Kept",
     short: "Member resolves back to this ATC",
-    long: "This RXCUI is listed as a member of the queried ATC class, AND the route-aware resolver agrees — confirming the mapping in both directions.",
+    long: "This RXCUI is listed as a member of the queried ATC class, AND the route-aware resolver agrees, confirming the mapping in both directions.",
   },
   ROUTE_MISMATCH: {
     dot: "error",
@@ -68,14 +68,14 @@ const STATUS_INFO = {
     dot: "warning",
     name: "Needs review",
     short: "Could not verify automatically",
-    long: "This RXCUI couldn't be auto-verified. See the row's reason field — common causes are missing properties, no DFG, or no ATC mapping returned by the resolver.",
+    long: "This RXCUI couldn't be auto-verified. See the row's reason field, common causes are missing properties, no DFG, or no ATC mapping returned by the resolver.",
   },
 };
 
 function buildMode3Banner({ showDismiss = true, ignoreDismissed = false } = {}) {
   return educationalBanner({
     storageKey: "medcode_mode3_status_banner_dismissed",
-    title: "ATC class members — verification results",
+    title: "ATC class members, verification results",
     items: STATUSES.map(k => ({
       dot: STATUS_INFO[k].dot,
       name: STATUS_INFO[k].name,
@@ -188,7 +188,7 @@ function bindInput(refs) {
     if (e.key === "Enter") { e.preventDefault(); runSubmit(refs, refs.input.value); }
     else if (e.key === "Escape") { e.preventDefault(); reset(refs.panel); }
   });
-  // Live level hint — updates as the user types.
+  // Live level hint, updates as the user types.
   const update = () => updateInputHint(refs);
   refs.input.addEventListener("input", update);
   refs.input.addEventListener("paste", () => setTimeout(update, 0));
@@ -203,19 +203,19 @@ function updateInputHint(refs) {
   const det = detectCodeType(raw);
   if (det.type !== "ATC") {
     refs.hint.classList.add("is-error");
-    refs.hint.textContent = `"${raw}" doesn't look like an ATC code yet — keep typing.`;
+    refs.hint.textContent = `"${raw}" doesn't look like an ATC code yet, keep typing.`;
     return;
   }
   const lvl = atcLevel(raw);
   if (lvl === 4) {
     refs.hint.classList.add("is-l4");
-    refs.hint.textContent = `Level 4 family code — pressing Look up will show the Level 5 cousins in this family.`;
+    refs.hint.textContent = `Level 4 family code, pressing Look up will show the Level 5 cousins in this family.`;
   } else if (lvl === 5) {
     refs.hint.classList.add("is-l5");
-    refs.hint.textContent = `Level 5 code — pressing Look up will fetch all RxCUIs in this class.`;
+    refs.hint.textContent = `Level 5 code, pressing Look up will fetch all RxCUIs in this class.`;
   } else {
     refs.hint.classList.add("is-error");
-    refs.hint.textContent = `Level ${lvl} code detected — only Level 4 (5 chars) and Level 5 (7 chars) are supported.`;
+    refs.hint.textContent = `Level ${lvl} code detected, only Level 4 (5 chars) and Level 5 (7 chars) are supported.`;
   }
 }
 
@@ -276,7 +276,7 @@ async function runSubmit(refs, rawAtc) {
 
   renderBreadcrumb(refs, trimmed);
 
-  // Mount the progress card immediately — before the roster fetch — so the
+  // Mount the progress card immediately, before the roster fetch, so the
   // user sees something moving within the first ~100ms of clicking Look up.
   // The cancel token was created in startRun(); wire its Stop button now.
   const progCard = mode3ProgressCard({
@@ -318,7 +318,7 @@ async function runSubmit(refs, rawAtc) {
     return;
   }
 
-  // Stop pressed during roster fetch — nothing to render, just close cleanly.
+  // Stop pressed during roster fetch, nothing to render, just close cleanly.
   if (cancel.cancelled) {
     progCard.finish({ stopped: true });
     progCard.update({ status: "Stopped before any members were verified." });
@@ -342,7 +342,7 @@ async function runSubmit(refs, rawAtc) {
 //
 // For an L4 input (e.g. M01AE), enumerate the L5 cousins observable through
 // RxClass's ATC source and render the family card. Each cousin gets a "Query"
-// button that re-runs Mode 3 on that specific L5 — the standard L5 path is
+// button that re-runs Mode 3 on that specific L5, the standard L5 path is
 // completely unchanged, this is purely a navigation aid.
 //
 // Coverage caveat (documented in CLAUDE.md): the cousin list reflects "L5s
@@ -404,7 +404,7 @@ async function runL4Family(refs, l4code, runId) {
   refs.table.appendChild(card);
 }
 
-// Combination L5s — surface a soft visual marker. Heuristic combines two
+// Combination L5s, surface a soft visual marker. Heuristic combines two
 // signals: (a) standard WHO ATC numbering where digits 5x and 7x mean
 // combinations, and (b) name/parent name containing "combination(s)".
 function isCombinationL5(code, name, parentName) {
@@ -420,7 +420,7 @@ function isCombinationL5(code, name, parentName) {
   return false;
 }
 
-// Family CSV — one row per cousin with the parent for context. Lets users
+// Family CSV, one row per cousin with the parent for context. Lets users
 // drop the list straight into a reference document.
 function buildFamilyCsv(l4code, l4name, cousins) {
   const rows = [["parent_atc", "parent_name", "child_atc", "child_name", "is_combination"]];
@@ -436,7 +436,7 @@ function buildFamilyCsv(l4code, l4name, cousins) {
   return rows;
 }
 
-// Query all cousins as one batch — fetch the L4's classMembers once (reused
+// Query all cousins as one batch, fetch the L4's classMembers once (reused
 // across cousins), verify every member, and bucket KEPT rows by the L5 each
 // resolves to. This is a thin wrapper over the existing verify path; no
 // duplicate resolver logic.
@@ -493,7 +493,7 @@ async function runL4FamilyBatch(refs, l4code, l4name, cousins, _outerRunId) {
   }
 
   await verifyAndRender(refs, {
-    atc: l4code,           // queried "atc" carries the L4 — verifyMember
+    atc: l4code,           // queried "atc" carries the L4, verifyMember
     members,               // accepts a record where resolvedAtc starts with
     source,                // this prefix, see acceptedL5Prefix below.
     runId,
@@ -587,7 +587,7 @@ async function verifyAndRender(refs, {
 
   // Rolling ETA: average inter-completion interval over the most recent
   // window. Per-member execution time is meaningless under parallel
-  // throttled fetch — what matters is the rate at which the rate-limited
+  // throttled fetch, what matters is the rate at which the rate-limited
   // queue is producing completions.
   const tick = () => {
     if (runId !== activeRunId) return;
@@ -711,7 +711,7 @@ async function verifyMember({ atc, member, acceptCode = null }) {
     if (!matches) reason = `Resolver returned ${keptL5.map(c => c.code).join(", ")} (not ${atc})`;
   }
 
-  // Pick the resolver's "primary" L5 — the first code that satisfies the
+  // Pick the resolver's "primary" L5, the first code that satisfies the
   // accept predicate, else whatever the resolver returned first.
   const matchedCode = keptL5.find(c => accept(c.code));
   const primaryCode = matchedCode || keptL5[0] || null;
@@ -753,8 +753,8 @@ function appendRowForRecord(rec, tbody) {
   const rowApi = memberRow({ rxcui: rec.rxcui });
   rowApi.update({
     status: rec.status,
-    name: rec.name || (rec.status === "NEEDS_REVIEW" ? "—" : "(unknown)"),
-    tty: rec.tty || "—",
+    name: rec.name || (rec.status === "NEEDS_REVIEW" ? "–" : "(unknown)"),
+    tty: rec.tty || "–",
     reason: rec.reason,
     tooltip: buildMode3RowTooltip(rec),
     resolvedAtc: rec.resolvedAtc || "",
@@ -819,7 +819,7 @@ function renderFilterChips(refs, visibleRecords) {
     btn.setAttribute("data-tooltip-pos", "bottom");
     if (c.tooltip) {
       btn.setAttribute("data-tooltip", c.tooltip);
-      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}) — ${c.tooltip}`);
+      btn.setAttribute("aria-label", `${c.label} (${counts[c.key] || 0}), ${c.tooltip}`);
     }
     btn.innerHTML = `${c.label} <span class="filter-chip-count">${counts[c.key] || 0}</span>`;
     btn.addEventListener("click", () => applyFilter(refs, c.key));
@@ -827,7 +827,7 @@ function renderFilterChips(refs, visibleRecords) {
   }
   refs.filters.appendChild(chipBar);
 
-  // Header info icon — Mode 3 uses .member-table, first column is Status.
+  // Header info icon, Mode 3 uses .member-table, first column is Status.
   const statusTh = refs.table && refs.table.querySelector("thead th:first-child");
   if (statusTh && !statusTh.querySelector(".col-info-btn")) {
     const { iconBtn } = statusInfoIcon({
@@ -880,7 +880,7 @@ function renderSummary(refs, { atc, members, records, visibleRecords, source }) 
   const className = refs.breadcrumb.querySelector(".atc-crumb.is-current .atc-crumb-name")?.textContent || "";
   const headerLine = className ? `${atc} (${className})` : atc;
   const memberNote = `${visibleRecords.length} RXCUI${visibleRecords.length === 1 ? "" : "s"} verified`;
-  const summary = `${headerLine} — ${memberNote}. ${kept} kept · ${mismatch} mismatch · ${review} need review. Source: ${source}.`;
+  const summary = `${headerLine}, ${memberNote}. ${kept} kept · ${mismatch} mismatch · ${review} need review. Source: ${source}.`;
 
   const section = document.createElement("section");
   section.className = "summary-bar";

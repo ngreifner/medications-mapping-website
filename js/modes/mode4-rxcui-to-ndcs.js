@@ -1,4 +1,4 @@
-// modes/mode4-rxcui-to-ndcs.js — Mode 4 UI logic.
+// modes/mode4-rxcui-to-ndcs.js, Mode 4 UI logic.
 // Single RXCUI → active NDC table with rich metadata (labeler, packaging,
 // marketing category, FDA approval number, etc.). Sortable columns.
 //
@@ -215,7 +215,7 @@ export function buildNdcTable(entries) {
   wrap.className = "card ndc-table-card";
   wrap.setAttribute("aria-label", "NDC table");
 
-  // Local state — current sort key + direction
+  // Local state, current sort key + direction
   let sortKey = "labeler";
   let sortDir = "asc";
 

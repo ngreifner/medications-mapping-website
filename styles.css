@@ -1,13 +1,13 @@
 /* ============================================================
-   MedCode Lookup — styles.css
-   Design system v8 — "Quiet Indigo, violet accent"
+   MedCode Lookup, styles.css
+   Design system v8, "Quiet Indigo, violet accent"
    - Dark-default. Light is a high-quality alternate.
    - Tokens drive everything. Components consume tokens.
    - Inter for UI, JetBrains Mono for code.
    ============================================================ */
 
 /* ----------------------------------------------------------
-   1. Design tokens — dark is canonical. Apple-tier polish pass.
+   1. Design tokens, dark is canonical. Apple-tier polish pass.
    ---------------------------------------------------------- */
 :root {
   /* ---- Accent: Navina-style purple (dark = softer lavender) ---- */
@@ -35,7 +35,7 @@
   --info-bg:       var(--accent-bg);
   --info-border:   var(--accent);
 
-  /* ---- Neutrals — near-black, hint of warmth ---- */
+  /* ---- Neutrals, near-black, hint of warmth ---- */
   --bg:            #0B0B0E;
   --bg-elevated:   #131318;
   --bg-tinted:     #1A1A21;
@@ -49,7 +49,7 @@
   --border-subtle: rgba(255, 255, 255, 0.04);
   --border-strong: rgba(255, 255, 255, 0.14);
 
-  /* "Lit from above" inner highlight — dark mode only */
+  /* "Lit from above" inner highlight, dark mode only */
   --inner-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
   --inner-highlight-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
 
@@ -94,7 +94,7 @@
   --fw-bold:     700;
   --fw-black:    800;
 
-  /* ---- Spacing — 4px base ---- */
+  /* ---- Spacing, 4px base ---- */
   --space-0:   0;
   --space-1:   4px;
   --space-2:   8px;
@@ -117,7 +117,7 @@
   --r-xl:   16px;
   --r-full: 999px;
 
-  /* ---- Shadows — barely-there in dark ---- */
+  /* ---- Shadows, barely-there in dark ---- */
   --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow:     0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
   --shadow-lg:  0 8px 32px -4px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.45);
@@ -145,7 +145,7 @@
 }
 
 [data-theme="light"] {
-  /* ---- Accent: Navina deep purple — bold, confident, restrained ---- */
+  /* ---- Accent: Navina deep purple, bold, confident, restrained ---- */
   --accent:           #4C1D95;
   --accent-hover:     #5B21B6;
   --accent-active:    #3B0F75;
@@ -155,7 +155,7 @@
   --accent-text:      #4C1D95;
   --accent-strong:    var(--accent-hover);
 
-  /* ---- Semantic — calibrated for white backgrounds ---- */
+  /* ---- Semantic, calibrated for white backgrounds ---- */
   --success:       #10B981;
   --success-text:  #047857;
   --success-bg:    rgba(16, 185, 129, 0.08);
@@ -207,7 +207,7 @@ html, body { margin: 0; padding: 0; }
 html {
   background: var(--bg);
   scroll-behavior: smooth;
-  /* Caret color cascades from html — every input gets it for free */
+  /* Caret color cascades from html, every input gets it for free */
   caret-color: var(--accent);
 }
 body {
@@ -218,7 +218,7 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Inter stylistic alternates — single-story g, taller l, etc. The "Apple feel" detail. */
+  /* Inter stylistic alternates, single-story g, taller l, etc. The "Apple feel" detail. */
   font-feature-settings: 'cv11', 'ss01', 'ss03';
   text-rendering: optimizeLegibility;
 }
@@ -238,7 +238,7 @@ a:hover {
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
-/* Selection — purple at low opacity, never the harsh OS default */
+/* Selection, purple at low opacity, never the harsh OS default */
 ::selection {
   background: var(--accent-bg-hover);
   color: var(--accent-text);
@@ -248,7 +248,7 @@ a:hover {
   color: var(--accent-text);
 }
 
-/* Native-mac-style scrollbar — barely visible until you use it */
+/* Native-mac-style scrollbar, barely visible until you use it */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -339,7 +339,7 @@ a:hover {
 .icon-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
 /* ----------------------------------------------------------
-   4. Hero — Apple-tier display typography
+   4. Hero, Apple-tier display typography
    ---------------------------------------------------------- */
 .hero {
   max-width: 1100px;
@@ -385,7 +385,7 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-   5. Tab bar — Apple-style pills with sliding active background
+   5. Tab bar, Apple-style pills with sliding active background
    ---------------------------------------------------------- */
 .tab-bar {
   position: sticky; top: 57px; z-index: 40;
@@ -514,7 +514,7 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-   8. Buttons — Apple-tier press feedback + inner highlight
+   8. Buttons, Apple-tier press feedback + inner highlight
    ---------------------------------------------------------- */
 .btn-primary {
   display: inline-flex; align-items: center; gap: var(--space-2);
@@ -529,7 +529,7 @@ a:hover {
   cursor: pointer;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  /* Inner highlight — the subtle "shine" that makes flat color feel 3D */
+  /* Inner highlight, the subtle "shine" that makes flat color feel 3D */
   box-shadow: var(--inner-highlight-strong);
   transition:
     background var(--duration-fast) var(--ease-out-quad),
@@ -651,7 +651,7 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-   10. Cards & status variants — Apple-tier elevation
+   10. Cards & status variants, Apple-tier elevation
    ---------------------------------------------------------- */
 .result-area { display: flex; flex-direction: column; gap: var(--space-4); }
 
@@ -691,7 +691,7 @@ a:hover {
   background: var(--accent-bg);
 }
 
-/* ATC L4 family card — visually distinct from RxCUI result cards.
+/* ATC L4 family card, visually distinct from RxCUI result cards.
    Soft accent-tinted background + thicker left band signals
    "you're looking at family structure, not products". */
 .card-family {
@@ -789,7 +789,7 @@ a:hover {
   font-style: italic;
 }
 
-/* Live hint below Mode 3 input — soft, non-intrusive. */
+/* Live hint below Mode 3 input, soft, non-intrusive. */
 .input-hint {
   font-size: var(--font-body-sm);
   color: var(--text-muted);
@@ -975,7 +975,7 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-   11b. Tooltip — CSS-only, 300ms reveal delay, 150ms fade.
+   11b. Tooltip, CSS-only, 300ms reveal delay, 150ms fade.
    Apply [data-tooltip="..."] to any element. Hover, focus,
    or keyboard tab to show. Triangle arrow below the bubble.
    ---------------------------------------------------------- */
@@ -1049,7 +1049,7 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-   11c. Educational banner — dismissible info card above
+   11c. Educational banner, dismissible info card above
    filter chips. Layer 1 of the explanation system.
    ---------------------------------------------------------- */
 .edu-banner {
@@ -1126,7 +1126,7 @@ a:hover {
 .edu-banner-dismiss:hover { color: var(--text); background: var(--bg-tinted); }
 .edu-banner-dismiss:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
-/* Header info icon — small ⓘ next to the Status column header */
+/* Header info icon, small ⓘ next to the Status column header */
 .col-info-btn {
   display: inline-flex; align-items: center; justify-content: center;
   background: transparent;
@@ -1163,7 +1163,7 @@ a:hover {
 .detect-banner .banner-actions { display: flex; gap: var(--space-2); }
 
 /* ----------------------------------------------------------
-   12b. Reveal animations — Apple-tier timing.
+   12b. Reveal animations, Apple-tier timing.
    ---------------------------------------------------------- */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(8px); }
@@ -1191,7 +1191,7 @@ a:hover {
 .result-area > *:nth-child(7) { animation-delay: 360ms; }
 .result-area > *:nth-child(n+8) { animation-delay: 420ms; }
 
-/* Skeletons appear instantly — they read as "we heard you" not as a reveal */
+/* Skeletons appear instantly, they read as "we heard you" not as a reveal */
 .result-area > .skeleton { animation: none; opacity: 1; }
 
 .mode-panel.is-active {
@@ -1424,7 +1424,7 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Five level colors — dark default, light overrides below */
+/* Five level colors, dark default, light overrides below */
 .ca-color-atc1 { background: #a78bfa; }
 .ca-color-atc2 { background: #60a5fa; }
 .ca-color-atc3 { background: #2dd4bf; }
@@ -1461,7 +1461,7 @@ a:hover {
 }
 
 /* ============================================================
-   16. Mode 2 — Batch RXCUI
+   16. Mode 2, Batch RXCUI
    ============================================================ */
 
 .mode-panel[data-mode="2"] { max-width: 1180px; }
@@ -1554,7 +1554,7 @@ a:hover {
   font-family: var(--font-mono);
 }
 
-/* Mode 3 rich progress card — pre-roster status, ETA, last-completed,
+/* Mode 3 rich progress card, pre-roster status, ETA, last-completed,
    and a Stop button styled as a safe amber action (not alarming red). */
 .m3-progress-card {
   margin-bottom: var(--space-4);
@@ -1749,7 +1749,7 @@ a:hover {
   display: flex; flex-direction: column; gap: var(--space-4);
 }
 
-/* Status dot — 8px solid circle, inline before label.
+/* Status dot, 8px solid circle, inline before label.
    Use as <span class="status-dot status-dot-success"></span> next to text. */
 .status-dot {
   display: inline-block;
@@ -1771,7 +1771,7 @@ a:hover {
   50%      { transform: scale(1.15); opacity: 0.75; }
 }
 
-/* Status badges — small rounded pills with a dot prefix */
+/* Status badges, small rounded pills with a dot prefix */
 .status-badge {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 10px;
@@ -1799,7 +1799,7 @@ a:hover {
 }
 
 /* ============================================================
-   17. Mode 3 — ATC → RXCUIs
+   17. Mode 3, ATC → RXCUIs
    ============================================================ */
 
 .mode-panel[data-mode="3"] { max-width: 1180px; }
@@ -1979,7 +1979,7 @@ a:hover {
 }
 
 /* ============================================================
-   18. Modes 4 + 5 — NDC tables
+   18. Modes 4 + 5, NDC tables
    ============================================================ */
 
 .mode-panel[data-mode="4"] { max-width: 1180px; }
@@ -2078,7 +2078,7 @@ html[data-mode="about"] .tab-bar { display: none; }
   padding: var(--space-12) var(--space-6) var(--space-24);
 }
 
-/* Apple-style About hero — the moment when the page introduces itself */
+/* Apple-style About hero, the moment when the page introduces itself */
 .about-hero {
   margin: 0 0 var(--space-16);
   max-width: 880px;

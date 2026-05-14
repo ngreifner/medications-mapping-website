@@ -1,4 +1,4 @@
-// code-detection.js — detect whether pasted input is RXCUI, ATC, or NDC.
+// code-detection.js, detect whether pasted input is RXCUI, ATC, or NDC.
 // Used in two places:
 //   1. Auto-switch banner when user pastes wrong type in current mode
 //   2. Batch input validation to filter malformed lines before fetching
@@ -37,7 +37,7 @@ export function detectCodeType(input) {
 
   const upper = trimmed.toUpperCase();
 
-  // ATC check first — ATC codes start with a letter so they can't collide with NDC/RXCUI.
+  // ATC check first, ATC codes start with a letter so they can't collide with NDC/RXCUI.
   if (ATC_RE.test(upper)) {
     return { type: "ATC", value: upper, level: atcLevel(upper) };
   }

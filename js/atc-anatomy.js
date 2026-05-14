@@ -1,14 +1,14 @@
-// atc-anatomy.js — ATC Code Anatomy renderer.
+// atc-anatomy.js, ATC Code Anatomy renderer.
 //
 // Ported (DOM-based) from the original browser app's buildAtcAnatomy /
 // enrichAtcAnatomy pair. Visually decomposes an ATC code into its 5
 // hierarchical levels:
 //
-//   Level 1 — Anatomical main group        (1 letter)        e.g. R
-//   Level 2 — Therapeutic subgroup          (2 digits)        e.g. 01
-//   Level 3 — Pharmacological subgroup      (1 letter)        e.g. A
-//   Level 4 — Chemical subgroup             (1 letter)        e.g. D
-//   Level 5 — Individual chemical substance (2 digits)        e.g. 08
+//   Level 1, Anatomical main group        (1 letter)        e.g. R
+//   Level 2, Therapeutic subgroup          (2 digits)        e.g. 01
+//   Level 3, Pharmacological subgroup      (1 letter)        e.g. A
+//   Level 4, Chemical subgroup             (1 letter)        e.g. D
+//   Level 5, Individual chemical substance (2 digits)        e.g. 08
 //
 // buildAtcAnatomyElement(code, hintName) returns an HTMLElement.
 // enrichAtcAnatomy(element, code) async-patches L2–L5 class names into
@@ -18,7 +18,7 @@ import { getAtcClassName } from "./rxnav-client.js";
 
 // ---------------- pure data ----------------
 
-/** Anatomical main groups (ATC Level 1) — letter → { title, emoji }. */
+/** Anatomical main groups (ATC Level 1), letter → { title, emoji }. */
 export const ATC_LEVEL1 = {
   A: { title: "Alimentary tract and metabolism", emoji: "\u{1FAC4}" },
   B: { title: "Blood and blood forming organs", emoji: "\u{1FA78}" },
@@ -54,7 +54,7 @@ export function parseAtcAnatomy(code) {
     level: 1,
     color: "atc1",
     title: `${l1.emoji} ${l1.title}`,
-    sub: "Level 1 — Anatomical main group",
+    sub: "Level 1, Anatomical main group",
   });
   if (c.length >= 3) {
     levels.push({
@@ -62,7 +62,7 @@ export function parseAtcAnatomy(code) {
       level: 2,
       color: "atc2",
       title: "Therapeutic/Pharmacological subgroup",
-      sub: "Level 2 — 2-digit therapeutic subgroup",
+      sub: "Level 2, 2-digit therapeutic subgroup",
     });
   }
   if (c.length >= 4) {
@@ -71,7 +71,7 @@ export function parseAtcAnatomy(code) {
       level: 3,
       color: "atc3",
       title: "Pharmacological/Therapeutic subgroup",
-      sub: "Level 3 — Pharmacological subgroup",
+      sub: "Level 3, Pharmacological subgroup",
     });
   }
   if (c.length >= 5) {
@@ -80,7 +80,7 @@ export function parseAtcAnatomy(code) {
       level: 4,
       color: "atc4",
       title: "Chemical/Pharmacological/Therapeutic subgroup",
-      sub: "Level 4 — Chemical subgroup",
+      sub: "Level 4, Chemical subgroup",
     });
   }
   if (c.length >= 7) {
@@ -89,7 +89,7 @@ export function parseAtcAnatomy(code) {
       level: 5,
       color: "atc5",
       title: "Chemical substance",
-      sub: "Level 5 — Individual chemical substance",
+      sub: "Level 5, Individual chemical substance",
     });
   }
   const maxLevel = levels[levels.length - 1].level;
@@ -134,8 +134,8 @@ function el(tag, attrs = {}, children = []) {
 /**
  * Build the anatomy card for an ATC code as an HTMLElement.
  *
- * @param {string} code — the ATC code (any level)
- * @param {string} [hintName] — optional name to use as the deepest level's
+ * @param {string} code, the ATC code (any level)
+ * @param {string} [hintName], optional name to use as the deepest level's
  *   title until async enrichment fills in the canonical class name. Mode 1
  *   passes the kept ATC's name here (e.g. "fluticasone").
  */
@@ -176,7 +176,7 @@ export function buildAtcAnatomyElement(code, hintName = "") {
     rows.appendChild(row);
   });
 
-  // Toggle bar + content. Starts collapsed — user expands on demand.
+  // Toggle bar + content. Starts collapsed, user expands on demand.
   const content = el("div", { class: "ca-content", style: "display:none" }, [visual, rows]);
   const chevron = el("span", { class: "ca-chevron", "aria-hidden": "true" }, "▼");
   const toggle = el("button", {

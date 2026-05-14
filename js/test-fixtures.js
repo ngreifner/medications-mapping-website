@@ -1,11 +1,11 @@
-// test-fixtures.js — reference codes for smoke testing the filter engine.
+// test-fixtures.js, reference codes for smoke testing the filter engine.
 //
 // Fixtures are anchored by drug NAME, not RXCUI. The RXCUI column was resolved
 // via /approximateTerm.json against the recorded name; to regenerate after a
 // RxNorm release, run `node scratch/regen-fixtures.js` and paste the output.
 
 export const TEST_CASES_RXCUI = [
-  // CLEAN_FIX expected — ingredient maps to multiple ATCs, route filter keeps one
+  // CLEAN_FIX expected, ingredient maps to multiple ATCs, route filter keeps one
   { rxcui: "1797907", name: "fluticasone propionate 0.05 MG/ACTUAT Metered Dose Nasal Spray", expectedRoute: "nasal",      expectedKeptStartsWith: "R01" },
   { rxcui: "2702393", name: "timolol hemihydrate 5 MG/ML Ophthalmic Solution",                expectedRoute: "ophthalmic", expectedKeptStartsWith: "S01" },
   { rxcui: "861204",  name: "brimonidine tartrate 1 MG/ML Ophthalmic Solution",               expectedRoute: "ophthalmic", expectedKeptStartsWith: "S01" },
@@ -15,7 +15,7 @@ export const TEST_CASES_RXCUI = [
   { rxcui: "1797929", name: "budesonide 0.032 MG/ACTUAT Metered Dose Nasal Spray",            expectedRoute: "nasal",      expectedKeptStartsWith: "R01" },
   { rxcui: "848956",  name: "ciprofloxacin 0.2 % Otic Solution",                              expectedRoute: "otic",       expectedKeptStartsWith: "S02" },
 
-  // UNCHANGED expected — systemic-only mapping
+  // UNCHANGED expected, systemic-only mapping
   { rxcui: "617310",  name: "atorvastatin 20 MG Oral Tablet",                                 expectedRoute: "oral",       expectedKeptStartsWith: "C10" },
   { rxcui: "314076",  name: "LISINOPRIL 10 mg ORAL TABLET",                                   expectedRoute: "oral",       expectedKeptStartsWith: "C09" },
   { rxcui: "197361",  name: "amlodipine 5 MG Oral Tablet",                                    expectedRoute: "oral",       expectedKeptStartsWith: "C08" },
@@ -24,7 +24,7 @@ export const TEST_CASES_RXCUI = [
   { rxcui: "630208",  name: "albuterol 0.83 MG/ML Inhalation Solution",                       expectedRoute: "inhalant",   expectedKeptStartsWith: "R03" },
   { rxcui: "283504",  name: "ondansetron 2 MG/ML Injectable Solution",                        expectedRoute: "injectable" },
 
-  // INGREDIENT_LEVEL — TTY=IN, no route resolvable
+  // INGREDIENT_LEVEL, TTY=IN, no route resolvable
   { rxcui: "41126",   name: "fluticasone",                                                    expectedVerdict: "INGREDIENT_LEVEL" },
   { rxcui: "10600",   name: "timolol",                                                        expectedVerdict: "INGREDIENT_LEVEL" },
 ];
