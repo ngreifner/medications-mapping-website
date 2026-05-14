@@ -403,6 +403,11 @@ export async function getNdcPropertiesForRxcui(rxcui) {
 
       const fdaApprovalNumber = propMap.ANDA || propMap.NDA || propMap.BLA || propMap.NDAAUTHORIZEDGENERIC || "";
 
+      // FDA marketing window. Format on the wire is YYYYMMDD; we keep it
+      // raw and let the UI extract the year on display.
+      const marketingStartDate = propMap.MARKETING_EFFECTIVE_TIME_LOW  || "";
+      const marketingEndDate   = propMap.MARKETING_EFFECTIVE_TIME_HIGH || "";
+
       out.push({
         ndc11,
         ndc10: item.ndc10 ? String(item.ndc10) : "",
@@ -410,6 +415,8 @@ export async function getNdcPropertiesForRxcui(rxcui) {
         labeler: propMap.LABELER || "",
         marketingCategory: propMap.MARKETING_CATEGORY || "",
         marketingStatus:   propMap.MARKETING_STATUS || "",
+        marketingStartDate,
+        marketingEndDate,
         fdaApprovalNumber,
         packaging,
         color:   propMap.COLORTEXT || propMap.COLOR || "",

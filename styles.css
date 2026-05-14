@@ -2031,7 +2031,42 @@ a:hover {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .ndc-table tbody td.cell-marketingCategory { font-size: var(--fs-meta); color: var(--text-muted); }
+.ndc-table tbody td.cell-rxcui { font-family: var(--font-mono); white-space: nowrap; }
+.ndc-table tbody td.cell-drugName {
+  max-width: 320px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  color: var(--text);
+}
+.ndc-table tbody td.cell-firstMarketedYear,
+.ndc-table tbody td.cell-marketingStatus {
+  font-size: var(--fs-meta);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
 .ndc-row:hover td { background: var(--bg-tinted); }
+
+/* Mode 5: non-OK RXCUIs surfaced below the flat NDC table. */
+.non-ok-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  display: flex; flex-direction: column;
+  gap: var(--space-2);
+}
+.non-ok-row {
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.non-ok-row:last-child { border-bottom: none; }
+.non-ok-name { color: var(--text); }
+.non-ok-reason {
+  color: var(--text-muted);
+  font-size: var(--font-body-sm);
+  font-style: italic;
+  flex: 1; min-width: 200px;
+}
 
 .sortable-th .th-sort-btn {
   background: transparent;
