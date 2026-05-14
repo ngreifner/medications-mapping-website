@@ -29,6 +29,7 @@ import {
   getProperties,
   getDfgs,
   getLevel5ChildrenForL4,
+  getNdcPropertiesForRxcui,
 } from "../rxnav-client.js";
 import { convertRxcuiToAtc } from "../atc-resolver.js";
 import { resolveRoute } from "../filter-engine.js";
@@ -104,6 +105,16 @@ function buildMode3RowTooltip(rec) {
 let activeRunId = 0;
 let activeCancel = null; // cancel token of the in-flight run; fired on supersession
 
+// Snapshot of the most-recently-completed query, used by the optional NDC
+// extension and the RxCUI/NDC view toggle. Reset on every new submit. Holds
+// the records array, the original ATC code + L4 source, and a Map keyed by
+// RxCUI carrying the NDC entries fetched during the extension phase.
+let currentRun = null;
+
+// Mode 5's batch cap inherits here, since the NDC extension calls the same
+// underlying NDC-properties endpoint per RxCUI.
+const NDC_EXTENSION_CAP = 200;
+
 // Per-run cancellation token. The user's Stop button fires `cancel.fire()`,
 // which both sets the `cancelled` flag AND resolves the promise so any waiter
 // in Promise.race wakes up immediately. New submits also fire the previous
@@ -126,13 +137,27 @@ function makeCancelToken() {
 // Begin a new run: bumps the run id, fires any previous cancel, hands back
 // a fresh runId + cancel token. Callers use this at the top of submit-style
 // functions so superseded runs don't leak pending Promise.race awaiters.
-function startRun() {
+function bumpRunAndSupersede() {
   activeRunId++;
   const runId = activeRunId;
   if (activeCancel) activeCancel.fire();
   const cancel = makeCancelToken();
   activeCancel = cancel;
   return { runId, cancel };
+}
+
+function startRun() {
+  const out = bumpRunAndSupersede();
+  // A fresh ATC query supersedes any cached run snapshot, including NDC data.
+  currentRun = null;
+  return out;
+}
+
+function startExtensionRun() {
+  // NDC extension runs against the existing currentRun snapshot. We still
+  // want a fresh runId + cancel token so Stop / a new ATC query can wake
+  // this phase, but the snapshot itself is preserved.
+  return bumpRunAndSupersede();
 }
 
 // ---------------- public entry ----------------
@@ -631,7 +656,7 @@ async function verifyAndRender(refs, {
   };
 
   // Drive the visual fill on a 100ms timer. Eases 25% of the gap each tick
-  // toward the target — gives smooth motion from t=0 without ever regressing.
+  // toward the target, gives smooth motion from t=0 without ever regressing.
   const visualTimer = setInterval(() => {
     if (runId !== activeRunId) return;
     if (cancel.cancelled || done >= members.length) return;
@@ -712,9 +737,40 @@ async function verifyAndRender(refs, {
     return;
   }
 
-  buildAndRenderTable(refs, { records: finalRecords, visibleRecords: finalRecords });
-  renderFilterChips(refs, finalRecords);
-  renderSummary(refs, { atc, members, records: finalRecords, visibleRecords: finalRecords, source });
+  // Snapshot for the optional NDC extension. The view toggle and the
+  // re-render path both read from this.
+  const className = refs.breadcrumb.querySelector(".atc-crumb.is-current .atc-crumb-name")?.textContent || "";
+  currentRun = {
+    atc, members, source, className,
+    records: finalRecords,
+    ndcs: new Map(),
+    ndcTrimNote: null,
+    extensionRan: false,
+    view: "rxcui",
+  };
+  renderResultsInCurrentView(refs);
+}
+
+// Re-render the table + filters + summary for whichever view the run is in.
+// Called after the initial verify completes, after the NDC extension
+// finishes, and when the user flips the view toggle.
+function renderResultsInCurrentView(refs) {
+  if (!currentRun) return;
+  refs.summary.innerHTML = "";
+  refs.filters.innerHTML = "";
+  refs.table.innerHTML = "";
+  if (currentRun.view === "ndc") {
+    renderNdcLevelView(refs);
+  } else {
+    buildAndRenderTable(refs, { records: currentRun.records, visibleRecords: currentRun.records });
+    renderFilterChips(refs, currentRun.records);
+    renderSummary(refs, {
+      atc: currentRun.atc, members: currentRun.members,
+      records: currentRun.records, visibleRecords: currentRun.records,
+      source: currentRun.source,
+    });
+    renderExtendCard(refs);
+  }
 }
 
 async function verifyMember({ atc, member, acceptCode = null }) {
@@ -956,9 +1012,428 @@ function renderSummary(refs, { atc, members, records, visibleRecords, source }) 
 
   actionRow.appendChild(compactBtn);
   actionRow.appendChild(auditBtn);
+
+  // After the NDC extension has run once, surface a view toggle so the user
+  // can flip back to the three-level table without re-running anything.
+  if (currentRun && currentRun.extensionRan) {
+    actionRow.appendChild(buildViewToggle(refs, "rxcui"));
+  }
+
   section.appendChild(actionRow);
 
   refs.summary.appendChild(section);
+}
+
+// ---------------- NDC extension (optional second phase) ----------------
+//
+// Adds an "Extend with NDCs" action below the summary. When the user clicks
+// it, every KEPT RxCUI is run through getNdcPropertiesForRxcui (the same
+// client helper Mode 5 uses) and the table flips to an NDC-level view: one
+// row per RxCUI/NDC pair, with the originally queried ATC L5 stamped on each
+// row. A view toggle lets the user switch back to the RxCUI-level view; the
+// fetched NDC data is cached in currentRun.ndcs so the toggle is instant.
+
+function renderExtendCard(refs) {
+  if (!currentRun) return;
+  const keptCount = currentRun.records.filter(r => r.status === "KEPT").length;
+  const card = document.createElement("section");
+  card.className = "card card-extend";
+  card.setAttribute("aria-label", "Extend with NDCs");
+
+  if (currentRun.extensionRan) {
+    // After the extension has run once, the card collapses into a small
+    // status line. The user can re-flip the view toggle instead of re-running.
+    const note = document.createElement("p");
+    note.className = "card-body";
+    const fetched = [...currentRun.ndcs.values()].reduce((a, b) => a + b.length, 0);
+    note.textContent = `NDC extension complete: ${fetched} NDC row${fetched === 1 ? "" : "s"} cached across ${currentRun.ndcs.size} RxCUI${currentRun.ndcs.size === 1 ? "" : "s"}.`;
+    card.appendChild(note);
+    refs.summary.appendChild(card);
+    return;
+  }
+
+  const title = document.createElement("h3");
+  title.className = "card-title";
+  title.textContent = "Extend this result with NDC mappings";
+  card.appendChild(title);
+
+  const body = document.createElement("p");
+  body.className = "card-body";
+  body.textContent = `Fetch the current FDA NDCs for each verified RxCUI. The table becomes a three-level view (ATC L5 → RxCUI → NDC) and the CSV export follows.`;
+  card.appendChild(body);
+
+  const row = document.createElement("div");
+  row.className = "action-row";
+
+  if (keptCount === 0) {
+    const muted = document.createElement("p");
+    muted.className = "card-body";
+    muted.style.color = "var(--text-muted)";
+    muted.textContent = "No verified RxCUIs to extend. Resolve the flagged members first, or refine the query.";
+    card.appendChild(muted);
+  } else {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn-primary";
+    btn.textContent = `→ Extend with NDCs (${keptCount} verified RxCUI${keptCount === 1 ? "" : "s"})`;
+    btn.addEventListener("click", () => runNdcExtension(refs));
+    row.appendChild(btn);
+
+    const hint = document.createElement("span");
+    hint.className = "card-aside";
+    const est = Math.max(1, Math.round((keptCount * 300) / 1000));
+    hint.textContent = `Estimated ~${est}s for ${keptCount} RxCUI${keptCount === 1 ? "" : "s"}.`;
+    row.appendChild(hint);
+    card.appendChild(row);
+  }
+  refs.summary.appendChild(card);
+}
+
+async function runNdcExtension(refs) {
+  if (!currentRun) return;
+  const allKept = currentRun.records.filter(r => r.status === "KEPT");
+  if (allKept.length === 0) return;
+
+  // 200-cap inheritance from Mode 5. Render a confirm prompt that replaces
+  // the extend card; "Trim and run" continues with the first 200, "Cancel"
+  // restores the extend card untouched.
+  if (allKept.length > NDC_EXTENSION_CAP) {
+    refs.summary.innerHTML = "";
+    // Re-render summary bar + a prompt card. Calling renderResultsInCurrentView
+    // here would re-mount the full RxCUI view; instead just re-add summary +
+    // a custom prompt.
+    renderSummary(refs, {
+      atc: currentRun.atc, members: currentRun.members,
+      records: currentRun.records, visibleRecords: currentRun.records,
+      source: currentRun.source,
+    });
+    refs.summary.appendChild(errorCard({
+      title: `Result has ${allKept.length} verified RxCUIs`,
+      body: `The NDC extension processes up to ${NDC_EXTENSION_CAP} at a time. Process the first ${NDC_EXTENSION_CAP} now and skip the rest?`,
+      actions: [
+        {
+          label: `Process first ${NDC_EXTENSION_CAP}`,
+          primary: true,
+          onClick: () => {
+            currentRun._trimmedTo = NDC_EXTENSION_CAP;
+            currentRun._trimmedFrom = allKept.length;
+            runNdcExtensionInner(refs, allKept.slice(0, NDC_EXTENSION_CAP));
+          },
+        },
+        {
+          label: "Cancel",
+          primary: false,
+          onClick: () => renderResultsInCurrentView(refs),
+        },
+      ],
+      variant: "warning",
+    }));
+    return;
+  }
+
+  await runNdcExtensionInner(refs, allKept);
+}
+
+async function runNdcExtensionInner(refs, keptToProcess) {
+  // startExtensionRun preserves currentRun (unlike startRun, which clears it).
+  const { runId, cancel } = startExtensionRun();
+  const snapshot = currentRun;
+  if (!snapshot) return;
+
+  // Replace the action card area with a fresh progress card. The RxCUI table
+  // stays mounted underneath so the user keeps context while NDCs fetch.
+  refs.summary.innerHTML = "";
+  // Re-mount the (existing) summary bar so the user still sees the verdict
+  // summary above the new progress card.
+  renderSummary(refs, {
+    atc: snapshot.atc, members: snapshot.members,
+    records: snapshot.records, visibleRecords: snapshot.records,
+    source: snapshot.source,
+  });
+
+  const progCard = mode3ProgressCard({
+    title: `Fetching NDCs for ${keptToProcess.length} verified RxCUI${keptToProcess.length === 1 ? "" : "s"}`,
+    status: "Verifying NDC properties…",
+  });
+  progCard.setOnStop(() => cancel.fire());
+  refs.summary.appendChild(progCard.el);
+  progCard.update({
+    phase: "verifying",
+    current: 0, total: keptToProcess.length,
+    eta: "Estimating…", lastName: "",
+  });
+
+  const startTs = Date.now();
+  const completionTs = [];
+  let done = 0;
+  let lastName = "";
+  let visualPct = 0;
+  const EST_MS_PER_RXCUI = 300;
+
+  const recomputeTarget = () => {
+    const total = keptToProcess.length;
+    const elapsed = Date.now() - startTs;
+    const measured = done >= 3 ? elapsed / done : null;
+    const perItem = measured || EST_MS_PER_RXCUI;
+    const timePct = Math.min(95, (elapsed / (perItem * total)) * 100);
+    const realPct = (done / total) * 100;
+    return Math.max(visualPct, realPct, timePct);
+  };
+
+  const tick = () => {
+    if (runId !== activeRunId) return;
+    const total = keptToProcess.length;
+    let eta = "";
+    if (done >= total) {
+      eta = `Done in ${formatDuration(Date.now() - startTs)}`;
+      visualPct = 100;
+    } else if (completionTs.length >= 5) {
+      const w = Math.min(5, completionTs.length - 1);
+      const span = completionTs[completionTs.length - 1] - completionTs[completionTs.length - 1 - w];
+      const perItem = span / w;
+      eta = `About ${formatDuration(perItem * (total - done))} remaining`;
+    } else if (done > 0) {
+      eta = "Estimating…";
+    } else {
+      eta = "Fetching…";
+    }
+    progCard.update({ current: done, total, fillPct: visualPct, eta, lastName: lastName });
+  };
+
+  const visualTimer = setInterval(() => {
+    if (runId !== activeRunId || cancel.cancelled || done >= keptToProcess.length) return;
+    visualPct = Math.max(visualPct, visualPct + (recomputeTarget() - visualPct) * 0.25);
+    tick();
+  }, 100);
+
+  tick();
+
+  let resolveAllDone;
+  const allDone = new Promise(r => { resolveAllDone = r; });
+
+  keptToProcess.forEach(rec => {
+    getNdcPropertiesForRxcui(rec.rxcui)
+      .catch(() => [])
+      .then(entries => {
+        if (runId !== activeRunId || cancel.cancelled) return;
+        snapshot.ndcs.set(rec.rxcui, Array.isArray(entries) ? entries : []);
+        done++;
+        completionTs.push(Date.now());
+        lastName = rec.name ? `${rec.name} (RxCUI ${rec.rxcui})` : `RxCUI ${rec.rxcui}`;
+        tick();
+        if (done >= keptToProcess.length) resolveAllDone();
+      });
+  });
+
+  await Promise.race([allDone, cancel.promise]);
+  clearInterval(visualTimer);
+  if (runId !== activeRunId) return;
+
+  const wasCancelled = cancel.cancelled;
+  if (wasCancelled) {
+    visualPct = Math.min(95, (done / keptToProcess.length) * 100);
+    progCard.update({
+      status: `Stopped at ${done} of ${keptToProcess.length}. Partial NDC data available.`,
+      eta: "", lastName: "", stopped: true, fillPct: visualPct,
+    });
+    progCard.finish({ stopped: true });
+  } else {
+    progCard.update({
+      status: `Fetched NDCs for ${done} of ${keptToProcess.length} RxCUI${keptToProcess.length === 1 ? "" : "s"}.`,
+      eta: "", lastName: "", fillPct: 100,
+    });
+    progCard.finish({ stopped: false });
+  }
+
+  snapshot.extensionRan = true;
+  snapshot.view = "ndc";
+  if (snapshot._trimmedFrom && snapshot._trimmedTo) {
+    snapshot.ndcTrimNote = `Showing NDCs for the first ${snapshot._trimmedTo} of ${snapshot._trimmedFrom} verified RxCUIs. Refine the query to cover the remainder.`;
+  }
+  renderResultsInCurrentView(refs);
+}
+
+// ---------------- NDC-level view ----------------
+
+function renderNdcLevelView(refs) {
+  if (!currentRun) return;
+  const snapshot = currentRun;
+
+  // 1. Summary bar + view toggle + CSV download.
+  const section = document.createElement("section");
+  section.className = "summary-bar";
+
+  const fetchedRxcuis = snapshot.ndcs.size;
+  const totalRows = [...snapshot.ndcs.values()].reduce((a, b) => a + Math.max(1, b.length), 0);
+  const summaryText = `${snapshot.atc} · ${fetchedRxcuis} RxCUI${fetchedRxcuis === 1 ? "" : "s"} extended · ${totalRows} NDC row${totalRows === 1 ? "" : "s"}.`;
+  section.appendChild(el("p", { class: "summary-text" }, summaryText));
+
+  if (snapshot.ndcTrimNote) {
+    section.appendChild(el("p", { class: "summary-trim-note" }, snapshot.ndcTrimNote));
+  }
+
+  // Action row: view toggle + CSV download.
+  const actions = el("div", { class: "action-row" });
+  actions.appendChild(buildViewToggle(refs, "ndc"));
+  const stamp = todayStamp();
+  const fnameSafe = snapshot.atc.replace(/[^A-Z0-9]/g, "");
+  const csvBtn = el("button", { type: "button", class: "btn-primary" }, `⬇ Download CSV (three-level, ${totalRows} row${totalRows === 1 ? "" : "s"})`);
+  csvBtn.addEventListener("click", () => {
+    downloadCsv(`medcode-mode3-with-ndcs-${fnameSafe}-${stamp}.csv`, buildThreeLevelCsv(snapshot));
+  });
+  actions.appendChild(csvBtn);
+  section.appendChild(actions);
+  refs.summary.appendChild(section);
+
+  // 2. The three-level table.
+  refs.table.appendChild(buildNdcLevelTable(snapshot));
+}
+
+function buildViewToggle(refs, currentView) {
+  const wrap = el("div", { class: "view-toggle", "aria-label": "View" });
+  wrap.appendChild(el("span", { class: "view-toggle-label" }, "View:"));
+  const opts = [
+    { key: "rxcui", label: "RxCUI-level" },
+    { key: "ndc",   label: "NDC-level" },
+  ];
+  for (const o of opts) {
+    const btn = el("button", {
+      type: "button",
+      class: "view-toggle-btn" + (o.key === currentView ? " is-active" : ""),
+      "aria-pressed": o.key === currentView ? "true" : "false",
+    }, o.label);
+    btn.addEventListener("click", () => {
+      if (!currentRun || currentRun.view === o.key) return;
+      currentRun.view = o.key;
+      renderResultsInCurrentView(refs);
+    });
+    wrap.appendChild(btn);
+  }
+  return wrap;
+}
+
+function buildNdcLevelTable(snapshot) {
+  const card = el("section", { class: "card ndc-table-card", "aria-label": "Three-level mapping table" });
+  const tableWrap = el("div", { class: "batch-table-wrap" });
+  const table = el("table", { class: "ndc-table" });
+
+  const thead = el("thead");
+  const COLUMNS = [
+    { key: "atc",      label: "ATC L5" },
+    { key: "rxcui",    label: "RxCUI" },
+    { key: "drugName", label: "Drug" },
+    { key: "ndc11",    label: "NDC (11-digit)" },
+    { key: "labeler",  label: "Labeler" },
+    { key: "route",    label: "Route" },
+    { key: "status",   label: "Member status" },
+  ];
+  const headerRow = el("tr");
+  for (const c of COLUMNS) {
+    headerRow.appendChild(el("th", { scope: "col", class: `cell-${c.key}` }, c.label));
+  }
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  const tbody = el("tbody");
+  table.appendChild(tbody);
+
+  // One row per (KEPT record × NDC). RxCUIs whose KEPT record has no NDCs
+  // still emit one row with an empty NDC cell and a soft note, so they're
+  // not silently dropped from the view.
+  for (const rec of snapshot.records) {
+    if (rec.status !== "KEPT") continue;
+    const entries = snapshot.ndcs.get(rec.rxcui) || [];
+    if (entries.length === 0) {
+      const tr = el("tr", { class: "ndc-row", "data-no-ndcs": "true" });
+      tr.appendChild(el("td", { class: "cell-atc" }, el("span", { class: "code" }, snapshot.atc)));
+      tr.appendChild(el("td", { class: "cell-rxcui" }, el("span", { class: "code" }, rec.rxcui)));
+      tr.appendChild(el("td", { class: "cell-drugName" }, rec.name || "(unknown)"));
+      tr.appendChild(el("td", { class: "cell-ndc11 cell-empty" }, "no active NDCs"));
+      tr.appendChild(el("td", { class: "cell-labeler" }, "–"));
+      tr.appendChild(el("td", { class: "cell-route" }, rec.route || "–"));
+      tr.appendChild(el("td", { class: "cell-status" }, rec.status));
+      tbody.appendChild(tr);
+      continue;
+    }
+    for (const e of entries) {
+      const tr = el("tr", { class: "ndc-row" });
+      tr.appendChild(el("td", { class: "cell-atc" }, el("span", { class: "code" }, snapshot.atc)));
+      tr.appendChild(el("td", { class: "cell-rxcui" }, el("span", { class: "code" }, rec.rxcui)));
+      tr.appendChild(el("td", { class: "cell-drugName" }, rec.name || "(unknown)"));
+      tr.appendChild(el("td", { class: "cell-ndc11" }, el("span", { class: "code" }, e.ndc11 || "")));
+      tr.appendChild(el("td", { class: "cell-labeler" }, e.labeler || "–"));
+      tr.appendChild(el("td", { class: "cell-route" }, rec.route || "–"));
+      tr.appendChild(el("td", { class: "cell-status" }, rec.status));
+      tbody.appendChild(tr);
+    }
+  }
+
+  tableWrap.appendChild(table);
+  card.appendChild(tableWrap);
+  return card;
+}
+
+function buildThreeLevelCsv(snapshot) {
+  const rows = [[
+    "atc_l5", "atc_l5_name",
+    "rxcui", "rxcui_name", "rxcui_tty", "route",
+    "ndc_11", "ndc_10", "labeler", "packaging",
+    "marketing_category", "marketing_status",
+    "fda_approval_number",
+    "marketing_start_date", "first_marketed_year",
+    "resolved_atc", "status",
+  ]];
+  for (const rec of snapshot.records) {
+    if (rec.status !== "KEPT") continue;
+    const entries = snapshot.ndcs.get(rec.rxcui) || [];
+    if (entries.length === 0) {
+      rows.push([
+        snapshot.atc, snapshot.className || "",
+        rec.rxcui, rec.name || "", rec.tty || "", rec.route || "",
+        "", "", "", "",
+        "", "",
+        "",
+        "", "",
+        rec.resolvedAtc || "", rec.status,
+      ]);
+      continue;
+    }
+    for (const e of entries) {
+      rows.push([
+        snapshot.atc, snapshot.className || "",
+        rec.rxcui, rec.name || "", rec.tty || "", rec.route || "",
+        e.ndc11 || "", e.ndc10 || "", e.labeler || "", e.packaging || "",
+        e.marketingCategory || "", e.marketingStatus || "",
+        e.fdaApprovalNumber || "",
+        e.marketingStartDate || "", yearFromYyyymmdd(e.marketingStartDate),
+        rec.resolvedAtc || "", rec.status,
+      ]);
+    }
+  }
+  return rows;
+}
+
+function yearFromYyyymmdd(s) {
+  if (!s) return "";
+  const m = /^(\d{4})/.exec(String(s));
+  return m ? m[1] : "";
+}
+
+// Tiny DOM helper, scoped to Mode 3 (mirrors the one in Mode 5).
+function el(tag, attrs = {}, children = []) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") node.className = v;
+    else if (typeof v === "function" && k.startsWith("on")) node.addEventListener(k.slice(2).toLowerCase(), v);
+    else node.setAttribute(k, v);
+  }
+  for (const c of [].concat(children)) {
+    if (c == null || c === false) continue;
+    if (typeof c === "string") node.appendChild(document.createTextNode(c));
+    else node.appendChild(c);
+  }
+  return node;
 }
 
 // ---------------- CSV builders ----------------

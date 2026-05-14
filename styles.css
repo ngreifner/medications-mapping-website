@@ -2045,6 +2045,67 @@ a:hover {
 }
 .ndc-row:hover td { background: var(--bg-tinted); }
 
+/* Mode 3 "Extend with NDCs" action card and view toggle. */
+.card-extend {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--bg-elevated) 60%);
+  margin-top: var(--space-3);
+}
+.card-extend .card-title { font-size: var(--fs-h3); margin: 0 0 var(--space-1); }
+.card-extend .card-body { color: var(--text-soft); }
+.card-extend .action-row {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.card-extend .card-aside {
+  color: var(--text-muted);
+  font-size: var(--font-body-sm);
+  font-style: italic;
+}
+.summary-trim-note {
+  color: var(--warning);
+  font-size: var(--font-body-sm);
+  font-style: italic;
+  margin: var(--space-2) 0 0;
+}
+.view-toggle {
+  display: inline-flex; align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+.view-toggle-label {
+  font-size: var(--font-body-sm);
+  color: var(--text-muted);
+}
+.view-toggle-btn {
+  font-family: inherit;
+  font-size: var(--font-body-sm);
+  font-weight: var(--fw-medium);
+  padding: var(--space-1) var(--space-3);
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.view-toggle-btn:hover {
+  background: var(--accent-bg);
+  color: var(--text);
+  border-color: var(--accent-border);
+}
+.view-toggle-btn.is-active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.ndc-row[data-no-ndcs] .cell-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: var(--font-body-sm);
+}
+
 /* Mode 5: non-OK RXCUIs surfaced below the flat NDC table. */
 .non-ok-list {
   list-style: none;
