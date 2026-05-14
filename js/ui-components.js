@@ -451,10 +451,17 @@ export function mode3ProgressCard({ title = "Looking up…", status = "Fetching 
     if (onStop) onStop();
   });
 
-  function update({ phase, title, status, current, total, eta, lastName, stopped } = {}) {
+  function update({ phase, title, status, current, total, eta, lastName, stopped, fillPct } = {}) {
     if (title  !== undefined) titleEl.textContent = title;
     if (status !== undefined) statusEl.textContent = status;
-    if (typeof current === "number" && typeof total === "number" && total > 0) {
+    // fillPct (0..100) lets the caller drive a time-based interpolated bar
+    // independently of the real count text below; falls back to current/total.
+    if (typeof fillPct === "number") {
+      fillEl.style.width = `${Math.max(0, Math.min(100, fillPct))}%`;
+      if (typeof current === "number" && typeof total === "number" && total > 0) {
+        countEl.textContent = `${current} of ${total}`;
+      }
+    } else if (typeof current === "number" && typeof total === "number" && total > 0) {
       const pct = Math.min(100, Math.round((current / total) * 100));
       fillEl.style.width = `${pct}%`;
       countEl.textContent = `${current} of ${total}`;

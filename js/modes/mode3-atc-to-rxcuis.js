@@ -585,6 +585,26 @@ async function verifyAndRender(refs, {
   let done = 0;
   let lastCompletedName = "";
 
+  // Visual fill percentage, interpolated independently of real completions so
+  // the bar always shows motion. Targets the max of (a) real done/total,
+  // (b) a time-based projection using the current best estimate of total
+  // duration, and (c) its own prior value (monotonic). Initial duration
+  // estimate is 500ms/member; once at least three members have completed we
+  // switch to the measured pace. Capped at 95% so the final snap to 100%
+  // still reads as completion.
+  let visualPct = 0;
+  const INITIAL_MS_PER_MEMBER = 500;
+
+  const recomputeVisualTarget = () => {
+    const total = members.length;
+    const elapsed = Date.now() - startTs;
+    const measuredPace = done >= 3 ? elapsed / done : null;
+    const estTotalMs = (measuredPace || INITIAL_MS_PER_MEMBER) * total;
+    const timePct = Math.min(95, (elapsed / Math.max(1, estTotalMs)) * 100);
+    const realPct = (done / total) * 100;
+    return Math.max(visualPct, realPct, timePct);
+  };
+
   // Rolling ETA: average inter-completion interval over the most recent
   // window. Per-member execution time is meaningless under parallel
   // throttled fetch, what matters is the rate at which the rate-limited
@@ -595,6 +615,7 @@ async function verifyAndRender(refs, {
     let etaText = "";
     if (done >= total) {
       etaText = `Done in ${formatDuration(Date.now() - startTs)}`;
+      visualPct = 100;
     } else if (completionTs.length >= 5) {
       const w = Math.min(5, completionTs.length - 1);
       const span = completionTs[completionTs.length - 1] - completionTs[completionTs.length - 1 - w];
@@ -606,8 +627,19 @@ async function verifyAndRender(refs, {
     } else {
       etaText = "Verifying…";
     }
-    progCard.update({ current: done, total, eta: etaText, lastName: lastCompletedName });
+    progCard.update({ current: done, total, fillPct: visualPct, eta: etaText, lastName: lastCompletedName });
   };
+
+  // Drive the visual fill on a 100ms timer. Eases 25% of the gap each tick
+  // toward the target — gives smooth motion from t=0 without ever regressing.
+  const visualTimer = setInterval(() => {
+    if (runId !== activeRunId) return;
+    if (cancel.cancelled || done >= members.length) return;
+    const target = recomputeVisualTarget();
+    visualPct = Math.max(visualPct, visualPct + (target - visualPct) * 0.25);
+    tick();
+  }, 100);
+
   tick();
 
   // Allow Promise.race to wake immediately when all members complete.
@@ -639,11 +671,14 @@ async function verifyAndRender(refs, {
 
   // Race: either every member completed, or the user clicked Stop.
   await Promise.race([allDonePromise, cancel.promise]);
+  clearInterval(visualTimer);
   if (runId !== activeRunId) return;
 
   const wasCancelled = cancel.cancelled;
   const finalRecords = records.filter(r => r !== null);
   const elapsedMs = Date.now() - startTs;
+  // Snap the bar to its final position so the freeze state is honest.
+  visualPct = wasCancelled ? Math.min(95, (finalRecords.length / members.length) * 100) : 100;
 
   if (wasCancelled) {
     progCard.update({
@@ -651,6 +686,7 @@ async function verifyAndRender(refs, {
       eta: "",
       lastName: "",
       stopped: true,
+      fillPct: visualPct,
     });
     progCard.finish({ stopped: true });
   } else {
@@ -658,6 +694,7 @@ async function verifyAndRender(refs, {
       status: `Verified ${finalRecords.length} of ${members.length} member${members.length === 1 ? "" : "s"} in ${formatDuration(elapsedMs)}.`,
       eta: "",
       lastName: "",
+      fillPct: 100,
     });
     progCard.finish({ stopped: false });
   }
