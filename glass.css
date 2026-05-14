@@ -1,0 +1,575 @@
+/* ============================================================
+   Apple Liquid Glass × calm editorial — 2026 aesthetic overlay.
+   Loaded AFTER styles.css so it composes on top of the existing
+   layout / token system without replacing it.
+   ============================================================ */
+
+/* ---- Typography: Instrument Serif (display, italic moments)
+        + Geist (body) + Geist Mono (code) ---- */
+:root {
+  --font-display-serif: 'Instrument Serif', 'EB Garamond', Georgia, serif;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* Glass material */
+  --glass-tint:        rgba(255, 255, 255, 0.025);
+  --glass-tint-strong: rgba(255, 255, 255, 0.045);
+  --glass-edge:        rgba(255, 255, 255, 0.08);
+  --glass-edge-bright: rgba(255, 255, 255, 0.16);
+  --glass-blur:        28px;
+  --glass-blur-deep:   44px;
+
+  /* Atmospheric tints — warm violet, soft amber, gentle sage */
+  --air-violet: rgba(167, 139, 250, 0.12);
+  --air-amber:  rgba(245, 207, 195, 0.07);
+  --air-sage:   rgba(154, 196, 184, 0.06);
+  --air-rose:   rgba(244, 194, 220, 0.05);
+
+  /* Cursor-tracked sheen colour */
+  --sheen-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="light"] {
+  --glass-tint:        rgba(255, 255, 255, 0.55);
+  --glass-tint-strong: rgba(255, 255, 255, 0.72);
+  --glass-edge:        rgba(15, 15, 25, 0.06);
+  --glass-edge-bright: rgba(15, 15, 25, 0.12);
+  --air-violet: rgba(124, 89, 250, 0.10);
+  --air-amber:  rgba(255, 191, 138, 0.10);
+  --air-sage:   rgba(120, 180, 160, 0.08);
+  --air-rose:   rgba(220, 150, 190, 0.06);
+  --sheen-color: rgba(70, 60, 130, 0.06);
+}
+
+/* ---- Atmospheric backdrop: large soft gradient orbs anchored to
+        the viewport. The whole interface floats above them. ---- */
+html, body { background: transparent !important; }
+html { background-color: #07070C !important; }
+html[data-theme="light"] { background-color: #F6F4F0 !important; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10vmax;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(60vmax 50vmax at 18% 18%, var(--air-violet), transparent 55%),
+    radial-gradient(50vmax 40vmax at 88% 78%, var(--air-amber),  transparent 60%),
+    radial-gradient(45vmax 35vmax at 50% 110%, var(--air-sage),  transparent 55%),
+    radial-gradient(40vmax 30vmax at 92% 8%,  var(--air-rose),   transparent 55%);
+  filter: blur(2px);
+  animation: drift 28s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(2vmax, -1.5vmax, 0) scale(1.04); }
+}
+
+/* Subtle grain so the glass surfaces have material, not vacuum. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    repeating-radial-gradient(circle at 30% 40%, rgba(255,255,255,0.6) 0, rgba(255,255,255,0) 1.2px),
+    repeating-radial-gradient(circle at 70% 70%, rgba(255,255,255,0.4) 0, rgba(255,255,255,0) 1.6px);
+  mix-blend-mode: overlay;
+}
+
+/* ---- Refined typography ---- */
+body { font-family: var(--font-sans); letter-spacing: -0.005em; }
+
+/* The hero h1 + the about display h1 become Instrument Serif —
+   warm, editorial, calm. The italic of Instrument Serif is the
+   one that really sings, so the display sets style:italic.
+   Tracking pulled in tighter for serif elegance. */
+.hero h1,
+.about-display {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  /* Push the display size so the serif italic sings. Scales softly
+     from phone to widescreen — calm, not shouty. */
+  font-size: clamp(48px, 7.5vw, 96px) !important;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  /* Soft warm gradient so the headline catches the ambient light */
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--text) 95%, transparent) 0%,
+    color-mix(in oklab, var(--text) 70%, var(--accent)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Light leak — gives the title a paper-thin glow */
+  text-shadow: 0 1px 30px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  /* Refined glass-pill eyebrow */
+  background: var(--glass-tint);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-edge);
+}
+.hero-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--text-soft);
+  /* Sit the subhead in italic-serif when it's part of the hero so
+     the whole stack feels editorial. */
+}
+.hero-body {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 1.6vw, 22px);
+  letter-spacing: -0.005em;
+  color: color-mix(in oklab, var(--text) 60%, var(--accent) 25%);
+}
+
+/* The about page H1 was previously also display; keep it serif. */
+h1, h2, .about-h1 {
+  font-family: var(--font-display-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.batch-input-title { font-family: var(--font-display-serif); font-weight: 400; font-style: italic; letter-spacing: -0.015em; font-size: 22px; }
+
+/* Monospace gets the new Geist Mono */
+.code, .atc-code, .ndc-code, code, pre, .code-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: 'ss01';
+}
+
+/* ---- The Glass material: applied to every card surface and the tab bar.
+        These are visual upgrades, layout untouched. ---- */
+.card,
+.input-card,
+.batch-input-card,
+.summary-bar,
+.tab-bar,
+.m3-progress-card,
+.ndc-table-card,
+header,
+footer {
+  position: relative;
+  /* Translucent body */
+  background: var(--glass-tint) !important;
+  /* The blur that makes this "glass" */
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  /* Hairline border that catches light */
+  border: 1px solid var(--glass-edge) !important;
+  /* Soft drop + an inner top highlight (the "lit from above" hint) */
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 10px 30px -12px rgba(0, 0, 0, 0.35),
+    0 30px 60px -30px rgba(0, 0, 0, 0.5);
+  border-radius: 18px;
+  transition:
+    border-color 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform    600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow   600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden; /* clips the sheen radial */
+}
+
+/* Status cards keep their semantic colour as a subtle wash, but
+   still feel like glass underneath. */
+.card.card-kept     { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--success-bg) 40%, transparent) !important; }
+.card.card-rejected { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--error-bg) 40%, transparent) !important; }
+.card.card-warning  { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--warning-bg) 40%, transparent) !important; }
+.card.card-info     { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--accent-bg) 50%, transparent) !important; }
+
+/* Light theme: glass becomes lighter, edges become darker */
+html[data-theme="light"] .card,
+html[data-theme="light"] .input-card,
+html[data-theme="light"] .batch-input-card,
+html[data-theme="light"] .summary-bar,
+html[data-theme="light"] .tab-bar,
+html[data-theme="light"] .m3-progress-card,
+html[data-theme="light"] .ndc-table-card,
+html[data-theme="light"] header,
+html[data-theme="light"] footer {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.5) inset,
+    0 10px 30px -16px rgba(50, 40, 80, 0.18),
+    0 20px 50px -30px rgba(50, 40, 80, 0.20);
+}
+
+/* Cursor-tracked sheen — fades in on hover, fades out on leave.
+   The radial origin (--mx, --my) is set by glass-shimmer.js. */
+.card::after,
+.input-card::after,
+.tab-bar::after,
+.m3-progress-card::after,
+.ndc-table-card::after,
+.summary-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(
+    520px circle at var(--mx, 50%) var(--my, 30%),
+    var(--sheen-color),
+    transparent 45%);
+  transition: opacity 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+.card:hover::after,
+.input-card:hover::after,
+.tab-bar:hover::after,
+.m3-progress-card:hover::after,
+.ndc-table-card:hover::after,
+.summary-bar:hover::after {
+  opacity: 1;
+}
+/* All card children stay above the sheen overlay. */
+.card > *, .input-card > *, .tab-bar > *, .m3-progress-card > *,
+.ndc-table-card > *, .summary-bar > * { position: relative; z-index: 2; }
+
+/* Cards lift subtly on hover */
+.card:hover,
+.input-card:hover {
+  border-color: var(--glass-edge-bright) !important;
+  transform: translateY(-1px);
+}
+
+/* ---- Header + tab-bar refinements ---- */
+header {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  background: color-mix(in oklab, var(--glass-tint) 80%, transparent) !important;
+}
+.tab-bar {
+  border-radius: 999px !important;
+  padding: 6px;
+  /* Tab bar sits a hair tighter to the surface than full cards */
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+    0 12px 28px -16px rgba(0, 0, 0, 0.45);
+}
+.tab {
+  border-radius: 999px !important;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background 380ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 380ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tab:hover { background: var(--glass-tint-strong) !important; transform: translateY(-0.5px); }
+.tab.is-active {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent-bg) 70%, var(--glass-tint-strong) 30%),
+    var(--accent-bg)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.02),
+    0 4px 14px -6px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* ---- Buttons: glassy, with a refined hover sheen ---- */
+.btn-primary,
+.btn-secondary,
+.btn-stop,
+.family-query-btn,
+.view-toggle-btn,
+.filter-chip,
+.chip {
+  position: relative;
+  isolation: isolate;
+  transition:
+    background 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color      360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform  360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 92%, white 8%),
+    var(--accent)) !important;
+  border: 1px solid color-mix(in oklab, var(--accent) 60%, white 10%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 8px 20px -8px color-mix(in oklab, var(--accent) 70%, transparent);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 14px 28px -8px color-mix(in oklab, var(--accent) 80%, transparent);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary,
+.family-query-btn,
+.view-toggle-btn,
+.filter-chip,
+.chip {
+  background: var(--glass-tint) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-edge) !important;
+}
+.btn-secondary:hover,
+.family-query-btn:hover,
+.view-toggle-btn:hover,
+.filter-chip:hover,
+.chip:hover {
+  background: var(--glass-tint-strong) !important;
+  border-color: var(--glass-edge-bright) !important;
+  transform: translateY(-1px);
+}
+.filter-chip.is-active,
+.view-toggle-btn.is-active {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent-bg) 90%, white 6%),
+    var(--accent-bg)) !important;
+  border-color: var(--accent-border) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 4px 14px -6px color-mix(in oklab, var(--accent) 50%, transparent);
+}
+
+/* ---- Inputs: glass with focus glow ---- */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea,
+#mode2-input, #mode5-input, #mode6-input, #mode7-input {
+  background: var(--glass-tint) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-edge) !important;
+  transition:
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow   360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background   360ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+#mode2-input:focus, #mode5-input:focus, #mode6-input:focus, #mode7-input:focus {
+  border-color: color-mix(in oklab, var(--accent) 70%, transparent) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent) 70%, transparent),
+    0 0 30px -8px color-mix(in oklab, var(--accent) 60%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ---- Table rows: subtle row-level glass hover ---- */
+.member-row td,
+.batch-row td,
+.ndc-row td,
+.non-ok-row { transition: background 360ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.member-row:hover td,
+.batch-row:hover td,
+.ndc-row:hover td { background: var(--glass-tint-strong) !important; }
+
+/* ---- The progress card gets a stronger glow when active ---- */
+.m3-progress-card {
+  background:
+    linear-gradient(180deg, var(--glass-tint-strong), var(--glass-tint)),
+    color-mix(in oklab, var(--accent-bg) 30%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 0 60px -20px color-mix(in oklab, var(--accent) 55%, transparent),
+    0 18px 50px -24px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Status badges & pill tags: glass-tinted ---- */
+.tty-badge,
+.dfg-pill,
+.route-pill,
+.family-cousin-tag {
+  background: var(--glass-tint-strong) !important;
+  border: 1px solid var(--glass-edge) !important;
+  backdrop-filter: blur(14px);
+}
+
+/* ---- Theme toggle + brand chrome stay refined ---- */
+#theme-toggle {
+  background: var(--glass-tint) !important;
+  border: 1px solid var(--glass-edge) !important;
+  backdrop-filter: blur(16px);
+}
+#theme-toggle:hover { background: var(--glass-tint-strong) !important; }
+
+/* ---- Footer: blends back into the atmosphere ---- */
+footer {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: color-mix(in oklab, var(--glass-tint) 60%, transparent) !important;
+  box-shadow: none !important;
+}
+
+/* ---- Selection: warm violet ---- */
+::selection { background: color-mix(in oklab, var(--accent) 35%, transparent); color: var(--text); }
+
+/* ---- Reduce motion respect ---- */
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+  .card, .input-card, .btn-primary, .btn-secondary,
+  .filter-chip, .chip, .tab, .view-toggle-btn,
+  .family-query-btn, .btn-stop { transition: none !important; }
+  .card::after { display: none; }
+}
+
+/* ============================================================
+   POLISH LAYER — page-load reveal + body-level cursor spotlight
+   + a few refinements that make the first 800ms unforgettable.
+   ============================================================ */
+
+/* ---- Body-level cursor spotlight ----
+   Sits above the ambient orbs but below all content. The JS module
+   sets --cx / --cy on <html> on every mousemove; this layer paints a
+   soft warm glow wherever the cursor is, so the whole canvas feels
+   alive, not just the hovered surface. */
+html { --cx: 50vw; --cy: 50vh; }
+
+body {
+  /* The spotlight rides above the existing body::before atmosphere. */
+  background-image:
+    radial-gradient(
+      28vmax 22vmax at var(--cx) var(--cy),
+      color-mix(in oklab, var(--accent) 7%, transparent),
+      transparent 65%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  transition: background-position 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-theme="light"] body {
+  background-image:
+    radial-gradient(
+      28vmax 22vmax at var(--cx) var(--cy),
+      color-mix(in oklab, var(--accent) 4%, transparent),
+      transparent 65%);
+}
+
+/* ---- Page-load reveal ----
+   A short, slow curtain rise. Hero first, then the tab bar, then the
+   active panel. The blur fade is the trick — content arrives like
+   it's coming into focus. */
+@keyframes glass-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.site-header {
+  animation: glass-rise 700ms 80ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.hero {
+  animation: glass-rise 900ms 220ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.hero-eyebrow { animation: glass-rise 900ms 180ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.hero h1      { animation: glass-rise 1100ms 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.hero-body    { animation: glass-rise 1100ms 380ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+.tab-bar {
+  animation: glass-rise 900ms 460ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.mode-panel.is-active > .input-card,
+.mode-panel.is-active > .batch-input-card {
+  animation: glass-rise 900ms 600ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.mode-panel.is-active > #mode1-result,
+.mode-panel.is-active > [id$="-result"],
+.mode-panel.is-active > [id$="-progress"],
+.mode-panel.is-active > [id$="-summary"],
+.mode-panel.is-active > [id$="-filters"],
+.mode-panel.is-active > [id$="-table"] {
+  animation: glass-rise 900ms 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+footer { animation: glass-rise 900ms 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+/* ---- Active tab gentle magnification ----
+   The .is-active pill grows a hair so the eye knows where you are
+   without the bg needing to scream. */
+.tab.is-active {
+  transform: scale(1.03);
+  transform-origin: center;
+}
+.tab { will-change: transform; }
+
+/* ---- Refine the global h1/h2 ----
+   Some places (status banner titles, etc.) use h2 / h3 with very
+   specific tone; let them stay sans. Only force serif on the named
+   editorial moments. */
+.card .card-title,
+.card h2,
+.card h3,
+.batch-input-header h2:not(.batch-input-title) {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.005em;
+}
+
+/* ---- Result-card hover lift ----
+   Subtle vertical motion + extra glow on the kept/rejected status
+   cards. These are the emotional hits in Mode 1 — let them breathe. */
+.card-kept:hover,
+.card-rejected:hover,
+.card-warning:hover,
+.card-info:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+    0 22px 50px -22px rgba(0, 0, 0, 0.55),
+    0 0 60px -20px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+/* ---- Reduced motion: cut the reveal and the spotlight ---- */
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .hero, .hero-eyebrow, .hero h1, .hero-body,
+  .tab-bar, footer,
+  .mode-panel.is-active > .input-card,
+  .mode-panel.is-active > .batch-input-card,
+  .mode-panel.is-active > #mode1-result,
+  .mode-panel.is-active > [id$="-result"],
+  .mode-panel.is-active > [id$="-progress"],
+  .mode-panel.is-active > [id$="-summary"],
+  .mode-panel.is-active > [id$="-filters"],
+  .mode-panel.is-active > [id$="-table"] {
+    animation: none;
+  }
+  body {
+    background-image: none;
+    transition: none;
+  }
+  .tab.is-active { transform: none; }
+}
