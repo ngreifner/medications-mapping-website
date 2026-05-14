@@ -1481,7 +1481,8 @@ a:hover {
   margin: 0;
 }
 #mode2-input,
-#mode5-input {
+#mode5-input,
+#mode6-input {
   width: 100%;
   min-height: 140px;
   resize: vertical;
@@ -1497,9 +1498,10 @@ a:hover {
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 #mode2-input::placeholder,
-#mode5-input::placeholder { color: var(--text-subtle); font-family: var(--font-sans); }
-#mode2-input:hover, #mode5-input:hover { border-color: var(--border-strong); }
-#mode2-input:focus, #mode5-input:focus {
+#mode5-input::placeholder,
+#mode6-input::placeholder { color: var(--text-subtle); font-family: var(--font-sans); }
+#mode2-input:hover, #mode5-input:hover, #mode6-input:hover { border-color: var(--border-strong); }
+#mode2-input:focus, #mode5-input:focus, #mode6-input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-bg);
 }
