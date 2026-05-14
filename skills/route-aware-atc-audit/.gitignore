@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+cache.sqlite
+progress.jsonl
+output/
+smoke_output/
