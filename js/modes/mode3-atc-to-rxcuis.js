@@ -28,6 +28,7 @@ import {
   getClassMembers,
   getProperties,
   getDfgs,
+  getLevel5ChildrenForL4,
 } from "../rxnav-client.js";
 import { convertRxcuiToAtc } from "../atc-resolver.js";
 import { resolveRoute } from "../filter-engine.js";
@@ -41,6 +42,7 @@ import {
   errorCard,
   educationalBanner,
   statusInfoIcon,
+  atcFamilyCard,
 } from "../ui-components.js";
 
 const STATUSES = ["KEPT", "ROUTE_MISMATCH", "NEEDS_REVIEW"];
@@ -134,6 +136,7 @@ function getRefs(panelEl) {
     panel:        panelEl,
     input:        panelEl.querySelector("#mode3-input"),
     submit:       panelEl.querySelector("#mode3-submit"),
+    hint:         panelEl.querySelector("#mode3-input-hint"),
     breadcrumb:   panelEl.querySelector("#mode3-breadcrumb"),
     progress:     panelEl.querySelector("#mode3-progress"),
     summary:      panelEl.querySelector("#mode3-summary"),
@@ -154,6 +157,35 @@ function bindInput(refs) {
     if (e.key === "Enter") { e.preventDefault(); runSubmit(refs, refs.input.value); }
     else if (e.key === "Escape") { e.preventDefault(); reset(refs.panel); }
   });
+  // Live level hint — updates as the user types.
+  const update = () => updateInputHint(refs);
+  refs.input.addEventListener("input", update);
+  refs.input.addEventListener("paste", () => setTimeout(update, 0));
+  update();
+}
+
+function updateInputHint(refs) {
+  if (!refs.hint) return;
+  const raw = (refs.input.value || "").trim().toUpperCase();
+  refs.hint.classList.remove("is-l4", "is-l5", "is-error");
+  if (!raw) { refs.hint.textContent = ""; return; }
+  const det = detectCodeType(raw);
+  if (det.type !== "ATC") {
+    refs.hint.classList.add("is-error");
+    refs.hint.textContent = `"${raw}" doesn't look like an ATC code yet — keep typing.`;
+    return;
+  }
+  const lvl = atcLevel(raw);
+  if (lvl === 4) {
+    refs.hint.classList.add("is-l4");
+    refs.hint.textContent = `Level 4 family code — pressing Look up will show the Level 5 cousins in this family.`;
+  } else if (lvl === 5) {
+    refs.hint.classList.add("is-l5");
+    refs.hint.textContent = `Level 5 code — pressing Look up will fetch all RxCUIs in this class.`;
+  } else {
+    refs.hint.classList.add("is-error");
+    refs.hint.textContent = `Level ${lvl} code detected — only Level 4 (5 chars) and Level 5 (7 chars) are supported.`;
+  }
 }
 
 function bindExamples(refs) {
@@ -161,6 +193,7 @@ function bindExamples(refs) {
     chip.addEventListener("click", () => {
       const atc = chip.dataset.atc;
       refs.input.value = atc;
+      updateInputHint(refs);
       runSubmit(refs, atc);
     });
   });
@@ -195,10 +228,14 @@ async function runSubmit(refs, rawAtc) {
     return;
   }
   const lvl = atcLevel(trimmed);
+  if (lvl === 4) {
+    await runL4Family(refs, trimmed, runId);
+    return;
+  }
   if (lvl !== 5) {
     refs.table.appendChild(errorCard({
-      title: "Mode 3 requires a Level 5 ATC code",
-      body: `"${trimmed}" is a Level ${lvl || "?"} code. Mode 3 requires a Level 5 ATC code (7 characters, e.g., R01AD08). Shorter codes return too many results to be useful — drill down to a specific substance code instead.`,
+      title: "Mode 3 supports Level 4 and Level 5 ATC codes",
+      body: `"${trimmed}" is a Level ${lvl || "?"} code. Only Level 4 (5 chars, e.g., M01AE) and Level 5 (7 chars, e.g., R01AD08) are supported.`,
       variant: "warning",
     }));
     return;
@@ -247,6 +284,149 @@ async function runSubmit(refs, rawAtc) {
   await verifyAndRender(refs, { atc: trimmed, members, source, runId });
 }
 
+// ---------------- Level 4 family expansion ----------------
+//
+// For an L4 input (e.g. M01AE), enumerate the L5 cousins observable through
+// RxClass's ATC source and render the family card. Each cousin gets a "Query"
+// button that re-runs Mode 3 on that specific L5 — the standard L5 path is
+// completely unchanged, this is purely a navigation aid.
+//
+// Coverage caveat (documented in CLAUDE.md): the cousin list reflects "L5s
+// for which RxNorm has at least one drug member," which is a subset of WHO's
+// official catalog. L5s WHO has defined but RxNorm doesn't classify any drug
+// under will not appear.
+
+async function runL4Family(refs, l4code, runId) {
+  renderBreadcrumb(refs, l4code);
+
+  let cousins, l4name;
+  try {
+    [cousins, l4name] = await Promise.all([
+      getLevel5ChildrenForL4(l4code),
+      getAtcClassName(l4code).catch(() => ""),
+    ]);
+  } catch (e) {
+    if (runId !== activeRunId) return;
+    refs.table.appendChild(errorCard({
+      title: "Couldn't retrieve Level 5 cousins",
+      body: "The NIH API isn't responding. Please try again, or enter a Level 5 code directly.",
+      actions: [{ label: "Retry", primary: true, onClick: () => runL4Family(refs, l4code, runId) }],
+      variant: "error",
+    }));
+    return;
+  }
+  if (runId !== activeRunId) return;
+
+  if (!cousins || cousins.length === 0) {
+    refs.table.appendChild(errorCard({
+      title: `${l4code} has no Level 5 cousins indexed in RxClass`,
+      body: "The class may exist in WHO's ATC taxonomy but not be exposed through the public API. Try a Level 5 code directly if you know one.",
+      variant: "info",
+    }));
+    return;
+  }
+
+  const annotated = cousins.map(c => ({
+    code: c.code,
+    name: c.name,
+    isCombination: isCombinationL5(c.code, c.name, l4name),
+  }));
+
+  const card = atcFamilyCard({
+    parentCode: l4code,
+    parentName: l4name || "(name unavailable)",
+    cousins: annotated,
+    onQueryCousin: (l5) => {
+      refs.input.value = l5;
+      updateInputHint(refs);
+      runSubmit(refs, l5);
+    },
+    onExport: () => {
+      const rows = buildFamilyCsv(l4code, l4name, annotated);
+      downloadCsv(`medcode-mode3-family-${l4code}-${todayStamp()}.csv`, rows);
+    },
+    onQueryAll: () => runL4FamilyBatch(refs, l4code, l4name, annotated, runId),
+  });
+  refs.table.appendChild(card);
+}
+
+// Combination L5s — surface a soft visual marker. Heuristic combines two
+// signals: (a) standard WHO ATC numbering where digits 5x and 7x mean
+// combinations, and (b) name/parent name containing "combination(s)".
+function isCombinationL5(code, name, parentName) {
+  const c = (code || "").toUpperCase();
+  if (c.length === 7) {
+    const sixth = c.charAt(5);
+    if (sixth === "5" || sixth === "7") return true;
+  }
+  const n = (name || "").toLowerCase();
+  if (n.includes("combination")) return true;
+  const p = (parentName || "").toLowerCase();
+  if (p.includes("combinations of") || /\bcombinations\b/.test(p)) return true;
+  return false;
+}
+
+// Family CSV — one row per cousin with the parent for context. Lets users
+// drop the list straight into a reference document.
+function buildFamilyCsv(l4code, l4name, cousins) {
+  const rows = [["parent_atc", "parent_name", "child_atc", "child_name", "is_combination"]];
+  for (const c of cousins) {
+    rows.push([
+      l4code,
+      l4name || "",
+      c.code,
+      c.name || "",
+      c.isCombination ? "true" : "false",
+    ]);
+  }
+  return rows;
+}
+
+// Query all cousins as one batch — fetch the L4's classMembers once (reused
+// across cousins), verify every member, and bucket KEPT rows by the L5 each
+// resolves to. This is a thin wrapper over the existing verify path; no
+// duplicate resolver logic.
+async function runL4FamilyBatch(refs, l4code, l4name, cousins, runId) {
+  clearOutput(refs);
+  renderBreadcrumb(refs, l4code);
+
+  let members = [];
+  let source = "ATCPROD";
+  try {
+    members = await getClassMembers(l4code, "ATCPROD");
+    if (runId !== activeRunId) return;
+    if (members.length === 0) {
+      const fallback = await getClassMembers(l4code, "ATC");
+      if (runId !== activeRunId) return;
+      if (fallback.length > 0) { members = fallback; source = "ATC"; }
+    }
+  } catch {
+    if (runId !== activeRunId) return;
+    refs.table.appendChild(errorCard({
+      title: "Couldn't reach RxNav",
+      body: "Failed to fetch the L4 class members.",
+      variant: "error",
+    }));
+    return;
+  }
+  if (members.length === 0) {
+    refs.table.appendChild(errorCard({
+      title: `No members found for ${l4code}`,
+      body: "RxNav returned no drug members under either ATCPROD or ATC source.",
+      variant: "info",
+    }));
+    return;
+  }
+
+  await verifyAndRender(refs, {
+    atc: l4code,           // queried "atc" carries the L4 — verifyMember
+    members,               // accepts a record where resolvedAtc starts with
+    source,                // this prefix, see acceptedL5Prefix below.
+    runId,
+    acceptedL5Prefix: l4code,
+  });
+}
+
 // ---------------- breadcrumb ----------------
 
 async function renderBreadcrumb(refs, atc) {
@@ -287,7 +467,7 @@ async function renderBreadcrumb(refs, atc) {
 
 // ---------------- verify + render ----------------
 
-async function verifyAndRender(refs, { atc, members, source, runId }) {
+async function verifyAndRender(refs, { atc, members, source, runId, acceptedL5Prefix = null }) {
   // Phase 1: verify all members in parallel; progress bar visible.
   refs.progress.innerHTML = "";
   const progEl = progressBar({ done: 0, total: members.length, eta: "Estimating…" });
@@ -307,8 +487,14 @@ async function verifyAndRender(refs, { atc, members, source, runId }) {
   };
   tick();
 
+  // Normal L5 query: KEPT when resolver returns the queried L5 exactly.
+  // L4 family batch: KEPT when resolver returns any L5 under the L4 prefix.
+  const acceptCode = acceptedL5Prefix
+    ? (code) => (code || "").toUpperCase().startsWith(acceptedL5Prefix.toUpperCase())
+    : (code) => code === atc;
+
   const records = await Promise.all(members.map(async (m) => {
-    const rec = await verifyMember({ atc, member: m });
+    const rec = await verifyMember({ atc, member: m, acceptCode });
     if (runId !== activeRunId) return rec;
     done++; tick();
     return rec;
@@ -335,7 +521,8 @@ async function verifyAndRender(refs, { atc, members, source, runId }) {
   renderSummary(refs, { atc, members, records, visibleRecords, source });
 }
 
-async function verifyMember({ atc, member }) {
+async function verifyMember({ atc, member, acceptCode = null }) {
+  const accept = acceptCode || ((code) => code === atc);
   let result, props, dfgs;
   try {
     [result, props, dfgs] = await Promise.all([
@@ -360,14 +547,14 @@ async function verifyMember({ atc, member }) {
   } else if (keptL5.length === 0) {
     status = "NEEDS_REVIEW"; reason = "No Level 5 ATC resolved";
   } else {
-    const matches = keptL5.some(c => c.code === atc);
+    const matches = keptL5.some(c => accept(c.code));
     status = matches ? "KEPT" : "ROUTE_MISMATCH";
     if (!matches) reason = `Resolver returned ${keptL5.map(c => c.code).join(", ")} (not ${atc})`;
   }
 
-  // Pick the resolver's "primary" L5 — the queried code on a KEPT row, else
-  // whatever the resolver returned first.
-  const matchedCode = keptL5.find(c => c.code === atc);
+  // Pick the resolver's "primary" L5 — the first code that satisfies the
+  // accept predicate, else whatever the resolver returned first.
+  const matchedCode = keptL5.find(c => accept(c.code));
   const primaryCode = matchedCode || keptL5[0] || null;
 
   // Route from DFGs (or "ingredient" for INGREDIENT_LEVEL inputs).

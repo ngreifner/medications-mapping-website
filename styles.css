@@ -691,6 +691,116 @@ a:hover {
   background: var(--accent-bg);
 }
 
+/* ATC L4 family card — visually distinct from RxCUI result cards.
+   Soft accent-tinted background + thicker left band signals
+   "you're looking at family structure, not products". */
+.card-family {
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--bg-elevated) 60%);
+}
+.family-header {
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.family-glyph { font-size: 18px; line-height: 1; }
+.family-parent-code {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  color: var(--text);
+}
+.family-parent-sep { color: var(--text-muted); }
+.family-parent-name {
+  font-size: var(--fs-h3);
+  color: var(--text);
+  font-weight: var(--fw-medium);
+}
+.family-sub {
+  font-size: var(--font-body-sm);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.family-cousin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-3);
+  border-top: 1px solid var(--border);
+}
+.family-cousin {
+  display: flex; align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.family-cousin.is-combination {
+  background: rgba(167, 139, 250, 0.04);
+}
+.family-cousin-marker {
+  color: var(--accent);
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+}
+.family-cousin-code {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  min-width: 80px;
+}
+.family-cousin-sep { color: var(--text-muted); }
+.family-cousin-name {
+  flex: 1;
+  color: var(--text);
+}
+.family-cousin-tag {
+  font-size: var(--font-body-sm);
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 2px var(--space-2);
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.family-query-btn {
+  font-family: inherit;
+  font-size: var(--font-body-sm);
+  font-weight: var(--fw-medium);
+  padding: var(--space-1) var(--space-3);
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.family-query-btn:hover {
+  background: var(--accent-bg-hover);
+  border-color: var(--accent);
+}
+.family-batch-note {
+  font-size: var(--font-body-sm);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+  font-style: italic;
+}
+
+/* Live hint below Mode 3 input — soft, non-intrusive. */
+.input-hint {
+  font-size: var(--font-body-sm);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+  min-height: 1.4em;
+  font-style: italic;
+}
+.input-hint.is-l4 { color: var(--accent); font-style: normal; }
+.input-hint.is-l5 { color: var(--success); font-style: normal; }
+.input-hint.is-error { color: var(--warning); font-style: normal; }
+
 .card-header {
   display: flex; align-items: center; justify-content: space-between;
   gap: var(--space-3);

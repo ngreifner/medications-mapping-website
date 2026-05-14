@@ -89,6 +89,65 @@ export function rejectedAtcCard({ atc, name, reason, clinical }) {
   ]);
 }
 
+// ---------------- ATC L4 family card (Mode 3 L4 expansion) ----------------
+//
+// Renders the L4 parent + a list of L5 cousins (each with a Query button),
+// followed by Export CSV and Query-all-cousins actions in the footer.
+//
+// Visual scope: distinct from RxCUI result cards. Family card uses the
+// `card-family` modifier (CSS picks up a soft accent-tinted background).
+
+export function atcFamilyCard({
+  parentCode,
+  parentName,
+  cousins,        // [{code, name, isCombination}]
+  onQueryCousin,  // (code) => void
+  onExport,       // () => void
+  onQueryAll,     // () => void
+}) {
+  const rows = cousins.map(c => {
+    const queryBtn = el("button", {
+      type: "button",
+      class: "family-query-btn",
+      "aria-label": `Query ${c.code}`,
+    }, ["Query ", el("span", { "aria-hidden": "true" }, "→")]);
+    queryBtn.addEventListener("click", () => onQueryCousin && onQueryCousin(c.code));
+    return el("li", { class: "family-cousin" + (c.isCombination ? " is-combination" : "") }, [
+      el("span", { class: "family-cousin-marker", "aria-hidden": "true" }, "▸"),
+      el("span", { class: "family-cousin-code" }, c.code),
+      el("span", { class: "family-cousin-sep", "aria-hidden": "true" }, "—"),
+      el("span", { class: "family-cousin-name" }, c.name || "(name unavailable)"),
+      c.isCombination ? el("span", { class: "family-cousin-tag" }, "combination") : null,
+      queryBtn,
+    ]);
+  });
+
+  const total = cousins.length;
+  const batchNote = total >= 10 ? `This will query ${total} classes — may take a moment.` : "";
+
+  const exportBtn = el("button", { type: "button", class: "btn-secondary" }, "⬇ Export this list");
+  if (onExport) exportBtn.addEventListener("click", () => onExport());
+
+  const batchBtn = el("button", { type: "button", class: "btn-primary" }, `Query all ${total} cousin${total === 1 ? "" : "s"} as batch`);
+  if (onQueryAll) batchBtn.addEventListener("click", () => onQueryAll());
+
+  return el("section", {
+    class: "card card-family",
+    "aria-label": `ATC family ${parentCode}`,
+  }, [
+    el("div", { class: "family-header" }, [
+      el("span", { class: "family-glyph", "aria-hidden": "true" }, "🌳"),
+      el("span", { class: "family-parent-code" }, parentCode),
+      el("span", { class: "family-parent-sep", "aria-hidden": "true" }, "—"),
+      el("span", { class: "family-parent-name" }, parentName || "(name loading…)"),
+    ]),
+    el("p", { class: "family-sub" }, `Level 5 cousins in this family (${total})`),
+    el("ul", { class: "family-cousin-list" }, rows),
+    batchNote ? el("p", { class: "family-batch-note" }, batchNote) : null,
+    el("div", { class: "action-row" }, [exportBtn, batchBtn]),
+  ]);
+}
+
 // ---------------- error / empty / loading ----------------
 
 export function errorCard({ title, body, actions = [], variant = "warning" }) {

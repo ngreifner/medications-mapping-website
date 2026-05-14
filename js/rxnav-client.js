@@ -332,6 +332,36 @@ export async function getClassMembers(classId, relaSource = "ATC") {
 }
 
 /**
+ * Enumerate the Level 5 ATC codes that exist under a Level 4 class, as
+ * observed via classMembers(L4, "ATC"). RxClass does not expose L5 codes as
+ * classes — they only appear as the SourceId attribute on drug members. This
+ * helper collects the distinct (sourceId, sourceName) pairs.
+ *
+ * Coverage note: this returns "L5s for which RxNorm has at least one drug
+ * member," which is a subset of WHO's full ATC catalog. L5s that WHO has
+ * defined but RxNorm hasn't classified any drug under will not appear. For
+ * Mode 3's "show me the cousins in this family" feature, that's the right
+ * scope — querying a no-coverage L5 downstream would return zero RxCUIs
+ * anyway, so omitting it doesn't lose anything actionable.
+ *
+ * Backed by getClassMembers' existing 30-day cache; no extra cache layer.
+ */
+export async function getLevel5ChildrenForL4(level4Code) {
+  const id = String(level4Code).trim().toUpperCase();
+  if (!/^[A-Z]\d{2}[A-Z]{2}$/.test(id)) return [];
+  const members = await getClassMembers(id, "ATC").catch(() => []);
+  const map = new Map(); // code → name
+  for (const m of members) {
+    const sid = (m.sourceId || "").toUpperCase();
+    if (sid.length !== 7 || !sid.startsWith(id)) continue;
+    if (!map.has(sid)) map.set(sid, m.sourceName || "");
+  }
+  return [...map.entries()]
+    .map(([code, name]) => ({ code, name }))
+    .sort((a, b) => a.code.localeCompare(b.code));
+}
+
+/**
  * /ndcproperties.json?id={rxcui} — rich active-NDC metadata for an RXCUI.
  *
  * Returns an array of normalized records:

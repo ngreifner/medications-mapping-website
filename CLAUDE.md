@@ -95,6 +95,12 @@ medications mapping website/
 
 **Mode 3 narrowing (v7):** Mode 3 now only accepts Level 5 ATC codes (7 characters, e.g. R01AD08). Level 1–4 inputs are rejected at validation with an amber info card. The earlier L4 expansion gate and "Group by Level 5" toggle have been removed — the L5-only constraint makes them obsolete.
 
+**Mode 3 L4 family expansion (v8):** Level 4 inputs are now accepted again, but with a different output shape. Auto-detected by length: 5 chars → L4 family card; 7 chars → existing L5 RxCUI lookup (unchanged). The L4 path renders a distinct `card-family` showing the L4 header + a list of Level 5 "cousins" observable through RxClass's ATC source. Each cousin row has a `Query →` button that re-runs Mode 3 on that specific L5, an `Export this list` CSV download (`parent_atc, parent_name, child_atc, child_name, is_combination`), and a `Query all N cousins as batch` button that runs the standard verify path against the L4's classMembers with an L4-prefix acceptance predicate.
+
+The cousin source is `getLevel5ChildrenForL4(L4)` → `getClassMembers(L4, "ATC")` distinct `SourceId` values. RxClass's `classTree.json` only exposes L1–L4 as classes, so it cannot enumerate L5 children directly. The cousin list therefore reflects "L5s with at least one drug member in RxNorm," which is a subset of WHO's full L5 catalog — same coverage shape documented for MIN-matching in §4. The live input hint below the field updates as the user types to indicate which mode the engine will use ("Level 4 family code…" vs. "Level 5 code…").
+
+Combinations are flagged with a soft italic "combination" tag using two signals: WHO's L5 numbering convention (6th character is 5 or 7) or the L4's class name containing "combinations of". For J01EE — whose L4 name is "Combinations of sulfonamides and trimethoprim" — every cousin is correctly tagged even though the L5 numbering doesn't flip into the combination range until index 50.
+
 **Modes 4 + 5 (v7):** the previous "NDC → ATC" placeholders have been repurposed. Mode 4 takes a single RXCUI and returns its active NDCs with rich metadata (labeler, packaging, marketing category, FDA approval number) in a sortable table. Mode 5 is the batch version, capped at 20 RXCUIs (each can produce hundreds of NDC rows; 20 is the practical export ceiling). Both call `/ndcproperties.json?id={rxcui}` via the new `getNdcPropertiesForRxcui` helper in `rxnav-client.js`. Mode 5 ships two CSV variants: compact (one row per RXCUI) and exploded (one row per NDC).
 
 ### Mode 1 — Single Forward (as built)
