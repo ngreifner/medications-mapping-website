@@ -2110,6 +2110,12 @@ a:hover {
   font-style: italic;
   font-size: var(--font-body-sm);
 }
+.ndc-row.is-missing td { color: var(--text-muted); }
+.ndc-row.is-missing .cell-brandName.cell-empty {
+  color: var(--warning);
+  font-style: italic;
+  font-size: var(--font-body-sm);
+}
 
 /* Mode 5: non-OK RXCUIs surfaced below the flat NDC table. */
 .non-ok-list {

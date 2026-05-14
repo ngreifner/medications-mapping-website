@@ -52,6 +52,7 @@
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="3">ATC → RXCUI</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="4">RXCUI → NDCs</button>
     <button class="tab" type="button" role="tab" aria-selected="false" data-mode="5">Batch RXCUI → NDCs</button>
+    <button class="tab" type="button" role="tab" aria-selected="false" data-mode="6">Batch NDC details</button>
   </nav>
 
   <section class="mode-panel is-active" data-mode="1" role="tabpanel" aria-label="Mode 1: RXCUI to ATC">
@@ -211,6 +212,38 @@
     <div id="mode5-summary" aria-live="polite"></div>
     <div id="mode5-filters" aria-live="polite"></div>
     <div id="mode5-table" class="batch-table-wrap" aria-live="polite"></div>
+  </section>
+
+  <section class="mode-panel" data-mode="6" role="tabpanel" aria-label="Mode 6: Batch NDC details" hidden>
+    <div class="input-card batch-input-card">
+      <div class="batch-input-header">
+        <h2 class="batch-input-title">Paste NDCs</h2>
+        <p class="batch-input-hint">Up to 200 NDCs, one per line or comma-separated. Accepts 10- or 11-digit, dashed or undashed. Looks up brand name, generic name, labeler, dosage form, route, strength, and FDA marketing dates via OpenFDA.</p>
+      </div>
+      <label for="mode6-input" class="visually-hidden">Paste a list of NDCs</label>
+      <textarea
+        id="mode6-input"
+        rows="6"
+        spellcheck="false"
+        autocomplete="off"
+        placeholder="58151-155-77&#10;0078-0357-15&#10;00378-4517-93"></textarea>
+      <div class="batch-input-meta">
+        <span id="mode6-counter" class="batch-counter">0 / 200</span>
+        <span class="batch-input-actions">
+          <input type="file" id="mode6-upload" accept=".csv,text/csv" hidden>
+          <button type="button" id="mode6-upload-link" class="link-btn">Upload CSV</button>
+          <button id="mode6-analyze" class="btn-primary" type="button" disabled>
+            <span class="btn-label">Look up</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </button>
+        </span>
+      </div>
+      <div id="mode6-input-warning" aria-live="polite"></div>
+    </div>
+
+    <div id="mode6-progress" aria-live="polite"></div>
+    <div id="mode6-summary" aria-live="polite"></div>
+    <div id="mode6-table" class="batch-table-wrap" aria-live="polite"></div>
   </section>
 
   <section class="mode-panel about-panel" data-mode="about" role="tabpanel" aria-label="About MedCode Lookup" hidden>
