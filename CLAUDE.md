@@ -189,7 +189,7 @@ If all Level 5 paths failed but ATCPROD returned Level 4 codes, return those Lev
 ### `resolveLevel5FromClassMembers(rxcui, level4ClassIds)` — the key mechanism
 Given an input RXCUI and a list of Level 4 class IDs, returns the matching Level 5 codes by:
 
-1. **Get matchIds:** input RXCUI plus all its ingredient RXCUIs (via `/rxcui/{rxcui}/related.json?tty=IN`)
+1. **Get matchIds:** input RXCUI plus its IN ingredients **and** its PIN ingredients (parallel fetches of `/rxcui/{rxcui}/related.json?tty=IN` and `tty=PIN`, unioned). Including the PIN form matters because RxClass routinely attributes L5 SourceIds to the salt-named PIN rather than the bare IN — e.g. clorazepate dipotassium PIN 2607 carries N05BA05 while the bare clorazepate IN 2353 carries only L4 N05BA. Pass 2's "is this a combination?" guard still counts IN ingredients only, so a single-ingredient salt product can't be misread as a combo.
 2. **For each Level 4 class:** call `/rxclass/classMembers.json?classId={l4}&relaSource=ATC` and try three matching passes (first hit wins):
 
    **Pass 1 — single-ingredient direct match.** Find a member whose `minConcept.rxcui` is in `matchIds`. Read `nodeAttr[SourceId]` (7-char L5) and `SourceName`. This handles every single-ingredient drug (e.g. fluticasone nasal SCD → R01AD08 because R01AD's members include fluticasone IN).
@@ -218,6 +218,8 @@ Pass 2 only succeeds when RxClass's ATC source has a MIN concept attributed at t
 - **Sparse coverage:** N04BA returns one member — levodopa as an IN — with SourceId=N04BA01. There is no MIN for carbidopa+levodopa at N04BA02, even though WHO defines N04BA02. So Sinemet products resolve to N04BA01 (single-ingredient levodopa class) instead of N04BA02 (the combo class). Pass 2 cannot rescue this because the data simply isn't in RxClass's ATC mapping.
 
 Cases like N04BA02 will continue to surface in Mode 3 as ROUTE_MISMATCH or NEEDS_REVIEW. That's a faithful reflection of the public infrastructure, not an engine bug.
+
+PIN-attributed L5 codes are a *different* shape of coverage gap that we **do** handle. Some L5 SourceIds in RxClass live on the PIN (salt) form rather than the IN — clorazepate is the canonical example: RxCUI 2607 (PIN, "clorazepate dipotassium") carries N05BA05, while RxCUI 2353 (IN, "clorazepate") carries only L4 N05BA. The Pass 1 matchIds set therefore unions IN + PIN ingredients, so SCDs like 197464 ("clorazepate dipotassium 15 MG Oral Tablet") resolve to N05BA05 instead of falling back to the L4 fallback. Watch for this same pattern in salt-named CNS / cardio / antibiotic / antineoplastic classes.
 
 #### What it would take to close that gap
 

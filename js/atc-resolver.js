@@ -20,6 +20,7 @@ import {
   getProperties,
   getDfgs,
   getIngredientRxcuis,
+  getPinRxcuis,
   getAtcprodClasses,
   getIngredientAtcClasses,
   getAtcPropertyValues,
@@ -63,9 +64,21 @@ const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
  *      every L4 in the input.
  */
 export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
-  const matchIds = await getIngredientRxcuis(rxcui);
+  // matchIds is the set of RxCUIs we accept as "this drug" when walking
+  // class members in Pass 1. We pull both IN and PIN forms in parallel so
+  // we can match members whose L5 SourceId is attributed at the salt
+  // (PIN) level — e.g. clorazepate dipotassium PIN 2607 carries N05BA05
+  // while the bare clorazepate IN 2353 carries only L4 N05BA.
+  const [inIds, pinIds] = await Promise.all([
+    getIngredientRxcuis(rxcui),
+    getPinRxcuis(rxcui),
+  ]);
+  const matchIds = Array.from(new Set([...inIds, ...pinIds]));
   const selfId = String(rxcui);
-  const inputIngredients = new Set(matchIds.filter(id => id !== selfId));
+  // Pass 2's "is this a combo?" check uses the IN count only — adding the
+  // PIN form shouldn't make a single-ingredient salt product look like a
+  // multi-ingredient combo.
+  const inputIngredients = new Set(inIds.filter(id => id !== selfId));
   const level5List = [];
 
   for (const classId of level4ClassIds) {

@@ -221,6 +221,33 @@ export async function getIngredientRxcuis(rxcui) {
 }
 
 /**
+ * /rxcui/{rxcui}/related.json?tty=PIN, returns string[] of Precise Ingredient
+ * RxCUIs related to the input. Includes the input itself, like
+ * getIngredientRxcuis. Used by resolveLevel5FromClassMembers to widen the
+ * match set so PIN-attributed L5 codes (e.g. salt forms like "clorazepate
+ * dipotassium" at N05BA05) are reachable from a parent SCD.
+ */
+export async function getPinRxcuis(rxcui) {
+  const id = String(rxcui).trim();
+  const cached = cacheGet(CACHE_KEYS.rxcui, id);
+  if (cached && cached.pinRxcuis) return cached.pinRxcuis.values;
+
+  const url = `${BASE}/rxcui/${encodeURIComponent(id)}/related.json?tty=PIN`;
+  const data = await schedule(() => fetchJson(url));
+  const ids = new Set([id]);
+  if (!data.__notFound && data?.relatedGroup?.conceptGroup) {
+    for (const g of asArray(data.relatedGroup.conceptGroup)) {
+      for (const p of asArray(g.conceptProperties)) {
+        if (p && p.rxcui) ids.add(String(p.rxcui));
+      }
+    }
+  }
+  const values = Array.from(ids);
+  cacheMergeRxcui(id, { pinRxcuis: { values } });
+  return values;
+}
+
+/**
  * Fetch ATC classes attached to an RXCUI via the rxclass byRxcui endpoint.
  * RxClass exposes ATC at Level 4 (classType="ATC1-4"); some endpoints
  * occasionally include Level 5 codes.

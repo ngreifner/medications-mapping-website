@@ -20,6 +20,12 @@ export const TEST_CASES_RXCUI = [
   { rxcui: "314076",  name: "LISINOPRIL 10 mg ORAL TABLET",                                   expectedRoute: "oral",       expectedKeptStartsWith: "C09" },
   { rxcui: "197361",  name: "amlodipine 5 MG Oral Tablet",                                    expectedRoute: "oral",       expectedKeptStartsWith: "C08" },
 
+  // PIN-attributed L5: clorazepate dipotassium is a salt form whose L5 sits
+  // on the PIN concept (RxCUI 2607) instead of the bare IN (2353). Without
+  // the IN+PIN union in resolveLevel5FromClassMembers, this falls through
+  // to the L4 fallback (N05BA only). With the fix it resolves to N05BA05.
+  { rxcui: "197464",  name: "clorazepate dipotassium 15 MG Oral Tablet",                      expectedRoute: "oral",       expectedKeptStartsWith: "N05BA" },
+
   // Other route resolutions
   { rxcui: "630208",  name: "albuterol 0.83 MG/ML Inhalation Solution",                       expectedRoute: "inhalant",   expectedKeptStartsWith: "R03" },
   { rxcui: "283504",  name: "ondansetron 2 MG/ML Injectable Solution",                        expectedRoute: "injectable" },

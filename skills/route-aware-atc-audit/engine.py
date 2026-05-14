@@ -320,12 +320,22 @@ class AtcResolver:
     def get_ingredient_rxcuis(self, rxcui: str) -> List[str]:
         """Returns the RxCUI itself plus its IN-related RxCUIs (or just the
         input if related fetch fails)."""
-        cached = self._cache.get("rxcui_in", rxcui)
+        return self._get_related_rxcuis(rxcui, tty="IN", cache_ns="rxcui_in")
+
+    def get_pin_rxcuis(self, rxcui: str) -> List[str]:
+        """Returns the RxCUI itself plus its PIN-related RxCUIs. RxClass
+        sometimes attributes L5 SourceIds to the PIN (salt) form rather than
+        the bare IN — e.g. clorazepate dipotassium PIN 2607 carries N05BA05
+        while clorazepate IN 2353 carries only L4 N05BA."""
+        return self._get_related_rxcuis(rxcui, tty="PIN", cache_ns="rxcui_pin")
+
+    def _get_related_rxcuis(self, rxcui: str, tty: str, cache_ns: str) -> List[str]:
+        cached = self._cache.get(cache_ns, rxcui)
         if cached is not None:
             return cached
         ids: Set[str] = {str(rxcui)}
         try:
-            data = self._fetch(f"{BASE}/rxcui/{rxcui}/related.json?tty=IN")
+            data = self._fetch(f"{BASE}/rxcui/{rxcui}/related.json?tty={tty}")
         except RuntimeError:
             data = {}
         if not data.get("__not_found"):
@@ -334,7 +344,7 @@ class AtcResolver:
                     if p and p.get("rxcui"):
                         ids.add(str(p["rxcui"]))
         values = list(ids)
-        self._cache.put("rxcui_in", rxcui, values)
+        self._cache.put(cache_ns, rxcui, values)
         return values
 
     def _get_atc_by_rxcui(self, rxcui: str, rela_source: str) -> List[Dict[str, str]]:
@@ -430,9 +440,16 @@ class AtcResolver:
                ATC classes and pick L5 codes starting with one of the
                target L4 prefixes.
         """
-        match_ids = self.get_ingredient_rxcuis(rxcui)
+        # Widen matchIds to include PIN-level ingredients so RxClass members
+        # whose L5 SourceId is attributed at the salt (PIN) form are reachable
+        # from the parent SCD. Pass 2's combo guard still uses the IN count
+        # only — adding the PIN form shouldn't make a salt product look like
+        # a combo.
+        in_ids  = self.get_ingredient_rxcuis(rxcui)
+        pin_ids = self.get_pin_rxcuis(rxcui)
+        match_ids = list({*in_ids, *pin_ids})
         self_id = str(rxcui)
-        input_ings = {i for i in match_ids if i != self_id}
+        input_ings = {i for i in in_ids if i != self_id}
         level5: List[Dict[str, str]] = []
 
         for class_id in level4_class_ids:
