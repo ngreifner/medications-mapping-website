@@ -184,7 +184,7 @@
     <div class="input-card batch-input-card">
       <div class="batch-input-header">
         <h2 class="batch-input-title">Paste RXCUIs</h2>
-        <p class="batch-input-hint">Up to 20 RXCUIs, one per line or comma-separated. Each RXCUI can return hundreds of NDC rows, so the cap is tighter than Mode 2.</p>
+        <p class="batch-input-hint">Up to 200 RXCUIs, one per line or comma-separated. Long runs are interruptible.</p>
       </div>
       <label for="mode5-input" class="visually-hidden">Paste a list of RXCUIs</label>
       <textarea
@@ -194,7 +194,7 @@
         autocomplete="off"
         placeholder="259255&#10;617310&#10;1797907"></textarea>
       <div class="batch-input-meta">
-        <span id="mode5-counter" class="batch-counter">0 / 20</span>
+        <span id="mode5-counter" class="batch-counter">0 / 200</span>
         <span class="batch-input-actions">
           <input type="file" id="mode5-upload" accept=".csv,text/csv" hidden>
           <button type="button" id="mode5-upload-link" class="link-btn">Upload CSV</button>

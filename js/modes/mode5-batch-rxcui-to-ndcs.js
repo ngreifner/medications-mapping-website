@@ -1,11 +1,10 @@
 // modes/mode5-batch-rxcui-to-ndcs.js, Mode 5 UI logic.
-// Batch RXCUI → active NDCs for up to 20 RXCUIs at a time. Hard cap is
-// intentionally tighter than Mode 2's (200) because each RXCUI can produce
-// hundreds of NDCs in the exploded CSV, 20 × ~300 avg ≈ 6,000 rows; 200
-// would balloon to 60k+.
-//
-// Reuses Mode 2's parser shape (textarea + dedupe + counter) and Mode 4's
-// sortable NDC table (via buildNdcTable export) for row-expand detail.
+// Batch RXCUI → active NDCs, up to 200 RXCUIs at a time. The cap matches
+// Mode 2's because Mode 5's per-item API cost is actually lighter
+// (2 fetches: getProperties + getNdcPropertiesForRxcui) than Mode 2's
+// (3-5 fetches per RXCUI through the full resolver chain). The progress
+// card carries a Stop button and surfaces partial results on cancel, so
+// long runs are interruptible.
 
 import { detectCodeType } from "../code-detection.js";
 import {
@@ -13,8 +12,7 @@ import {
   getNdcPropertiesForRxcui,
 } from "../rxnav-client.js";
 import {
-  progressBar,
-  updateProgressBar,
+  mode3ProgressCard,
   errorCard,
 } from "../ui-components.js";
 import {
@@ -24,9 +22,38 @@ import {
 } from "../explanations.js";
 import { downloadCsv } from "../csv-export.js";
 
-const MAX_BATCH = 20;
+const MAX_BATCH = 200;
+// Rough calibration: under our 15-req/sec rate limit + parallel fetch
+// pool, each RXCUI in Mode 5 settles around 250-350ms in steady state.
+// 300ms is a reasonable middle estimate for the pre-submit duration hint.
+const EST_MS_PER_RXCUI = 300;
+const DURATION_HINT_THRESHOLD = 5;
 
 let activeRunId = 0;
+let activeCancel = null;
+
+// Per-run cancel token (same shape as Mode 3): a flag + a promise that
+// resolves when Stop fires. Used by Promise.race so the run wakes
+// immediately on cancel instead of waiting for the next member.
+function makeCancelToken() {
+  let resolveIt;
+  const promise = new Promise(r => { resolveIt = r; });
+  const token = {
+    cancelled: false,
+    promise,
+    fire() { if (!token.cancelled) { token.cancelled = true; resolveIt(); } },
+  };
+  return token;
+}
+
+function startRun() {
+  activeRunId++;
+  const runId = activeRunId;
+  if (activeCancel) activeCancel.fire();
+  const cancel = makeCancelToken();
+  activeCancel = cancel;
+  return { runId, cancel };
+}
 
 // ---------------- public ----------------
 
@@ -134,18 +161,37 @@ function updateCounter(refs) {
   const n = ordered.length;
   refs.counter.textContent = `${n} / ${MAX_BATCH}`;
   refs.counter.classList.toggle("over", n > MAX_BATCH);
+  // Analyze stays enabled in the over-cap case: the warning card carries
+  // a "Trim to 200 and run" button that drives the actual submission.
   refs.analyze.disabled = n === 0 || n > MAX_BATCH;
 
   refs.warningSlot.innerHTML = "";
+
   if (n > MAX_BATCH) {
+    // Friendly trim-and-run prompt instead of a hard block. Lets the user
+    // proceed with the first 200 in one click, or edit the input manually.
     refs.warningSlot.appendChild(errorCard({
-      title: `Over the ${MAX_BATCH}-RXCUI cap`,
-      body: `Mode 5 caps at ${MAX_BATCH} RXCUIs per batch, each can produce hundreds of NDC rows. You have ${n}.`,
+      title: `You pasted ${n} items, current limit is ${MAX_BATCH} per batch`,
+      body: `Process the first ${MAX_BATCH} now and skip the rest?`,
+      actions: [
+        {
+          label: `Trim to ${MAX_BATCH} and run`,
+          primary: true,
+          onClick: () => {
+            const first = ordered.slice(0, MAX_BATCH);
+            refs.input.value = first.join("\n");
+            updateCounter(refs);
+            runBatch(refs);
+          },
+        },
+      ],
       variant: "warning",
     }));
     return;
   }
+
   if (n === 0) return;
+
   const invalid = ordered.filter(t => !isLikelyRxcui(t));
   if (invalid.length > 0) {
     const sample = invalid.slice(0, 3).join(", ");
@@ -156,6 +202,17 @@ function updateCounter(refs) {
       variant: "warning",
     }));
   }
+
+  // Soft duration estimate above the threshold. Cheap to recompute and
+  // gives the user a heads-up before kicking off a multi-minute run.
+  if (n > DURATION_HINT_THRESHOLD) {
+    const secs = Math.max(1, Math.round((n * EST_MS_PER_RXCUI) / 1000));
+    const text = secs < 60 ? `Estimated time: ~${secs}s` : `Estimated time: ~${Math.round(secs / 60)} min`;
+    const hint = document.createElement("p");
+    hint.className = "input-hint";
+    hint.textContent = text;
+    refs.warningSlot.appendChild(hint);
+  }
 }
 
 // ---------------- batch run ----------------
@@ -164,16 +221,24 @@ async function runBatch(refs) {
   const { ordered, duplicates } = parseTokens(refs.input.value);
   if (ordered.length === 0 || ordered.length > MAX_BATCH) return;
 
-  activeRunId++;
-  const runId = activeRunId;
+  const { runId, cancel } = startRun();
 
   refs.summarySlot.innerHTML = "";
   refs.filtersSlot.innerHTML = "";
   refs.tableSlot.innerHTML = "";
 
   refs.progressSlot.innerHTML = "";
-  const progEl = progressBar({ done: 0, total: ordered.length, eta: "Estimating…" });
-  refs.progressSlot.appendChild(progEl);
+  const progCard = mode3ProgressCard({
+    title: `Looking up NDCs for ${ordered.length} RXCUI${ordered.length === 1 ? "" : "s"}`,
+    status: "Fetching NDC properties…",
+  });
+  progCard.setOnStop(() => cancel.fire());
+  refs.progressSlot.appendChild(progCard.el);
+  progCard.update({
+    phase: "verifying",
+    current: 0, total: ordered.length,
+    eta: "Estimating…", lastName: "",
+  });
 
   const records = new Map();
   for (const rxcui of ordered) {
@@ -184,34 +249,105 @@ async function runBatch(refs) {
     });
   }
 
+  // Visual interpolation: bar starts moving immediately based on EST_MS_PER_RXCUI
+  // and refines once real completions arrive. Same shape as Mode 3.
   const startTs = Date.now();
+  const completionTs = [];
   let done = 0;
+  let lastCompletedName = "";
+  let visualPct = 0;
+
+  const recomputeTarget = () => {
+    const total = ordered.length;
+    const elapsed = Date.now() - startTs;
+    const measured = done >= 3 ? elapsed / done : null;
+    const perItem = measured || EST_MS_PER_RXCUI;
+    const timePct = Math.min(95, (elapsed / (perItem * total)) * 100);
+    const realPct = (done / total) * 100;
+    return Math.max(visualPct, realPct, timePct);
+  };
+
   const tick = () => {
     if (runId !== activeRunId) return;
-    const elapsed = Date.now() - startTs;
-    const avg = done > 0 ? elapsed / done : 0;
-    const remaining = avg * (ordered.length - done);
-    const eta = done === 0 ? "Estimating…"
-              : done >= ordered.length ? `Done in ${formatDuration(elapsed)}`
-              : `~${formatDuration(remaining)} remaining`;
-    updateProgressBar(progEl, { done, total: ordered.length, eta });
+    const total = ordered.length;
+    let eta = "";
+    if (done >= total) {
+      eta = `Done in ${formatDuration(Date.now() - startTs)}`;
+      visualPct = 100;
+    } else if (completionTs.length >= 5) {
+      const w = Math.min(5, completionTs.length - 1);
+      const span = completionTs[completionTs.length - 1] - completionTs[completionTs.length - 1 - w];
+      const perItem = span / w;
+      eta = `About ${formatDuration(perItem * (total - done))} remaining`;
+    } else if (done > 0) {
+      eta = "Estimating…";
+    } else {
+      eta = "Verifying…";
+    }
+    progCard.update({ current: done, total, fillPct: visualPct, eta, lastName: lastCompletedName });
   };
+
+  const visualTimer = setInterval(() => {
+    if (runId !== activeRunId || cancel.cancelled || done >= ordered.length) return;
+    visualPct = Math.max(visualPct, visualPct + (recomputeTarget() - visualPct) * 0.25);
+    tick();
+  }, 100);
+
   tick();
 
-  const tasks = ordered.map(rxcui => processOne({
-    rxcui,
-    record: records.get(rxcui),
-    isStillActive: () => runId === activeRunId,
-  }).then(() => {
-    if (runId !== activeRunId) return;
-    done++; tick();
-  }).catch(() => {
-    if (runId !== activeRunId) return;
-    done++; tick();
-  }));
+  let resolveAllDone;
+  const allDone = new Promise(r => { resolveAllDone = r; });
 
-  await Promise.all(tasks);
+  ordered.forEach(rxcui => {
+    processOne({
+      rxcui,
+      record: records.get(rxcui),
+      isStillActive: () => runId === activeRunId && !cancel.cancelled,
+    })
+      .catch(() => {})
+      .then(() => {
+        if (runId !== activeRunId || cancel.cancelled) return;
+        done++;
+        completionTs.push(Date.now());
+        const rec = records.get(rxcui);
+        lastCompletedName = rec.name ? `${rec.name} (RxCUI ${rxcui})` : `RxCUI ${rxcui}`;
+        tick();
+        if (done >= ordered.length) resolveAllDone();
+      });
+  });
+
+  await Promise.race([allDone, cancel.promise]);
+  clearInterval(visualTimer);
   if (runId !== activeRunId) return;
+
+  const wasCancelled = cancel.cancelled;
+  // Re-compute completed count from records since the tick `done` value may
+  // race with late .then() callbacks on the very last completion.
+  let completed = 0;
+  for (const rec of records.values()) if (rec.status !== "PENDING") completed++;
+
+  if (wasCancelled) {
+    // Records mid-flight when Stop fired stay PENDING; surface them in the
+    // non-OK section with a clear reason rather than blank cells.
+    for (const rec of records.values()) {
+      if (rec.status === "PENDING") {
+        rec.status = "NEEDS_REVIEW";
+        rec.reason = "Cancelled before processing";
+      }
+    }
+    visualPct = Math.min(95, (completed / ordered.length) * 100);
+    progCard.update({
+      status: `Stopped at ${completed} of ${ordered.length}. Showing partial results below.`,
+      eta: "", lastName: "", stopped: true, fillPct: visualPct,
+    });
+    progCard.finish({ stopped: true });
+  } else {
+    progCard.update({
+      status: `Verified ${completed} of ${ordered.length} RXCUI${ordered.length === 1 ? "" : "s"} in ${formatDuration(Date.now() - startTs)}.`,
+      eta: "", lastName: "", fillPct: 100,
+    });
+    progCard.finish({ stopped: false });
+  }
 
   renderResults(refs, ordered.length, records);
 }

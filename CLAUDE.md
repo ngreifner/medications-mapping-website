@@ -90,7 +90,7 @@ medications mapping website/
 | 2 | RXCUI → ATC (batch) | ✅ BUILT | RXCUIs list | 200 | ~30 sec |
 | 3 | ATC → RXCUIs | ✅ BUILT | 1 Level-5 ATC | — | 15-60 sec |
 | 4 | RXCUI → NDCs (single) | ✅ BUILT | 1 RXCUI | — | ~2 sec |
-| 5 | RXCUI → NDCs (batch) | ✅ BUILT | RXCUIs list | 20 | ~10-30 sec |
+| 5 | RXCUI → NDCs (batch) | ✅ BUILT | RXCUIs list | 200 | ~30-90 sec |
 | About | Educational explainer | ✅ BUILT | n/a | n/a | static page |
 
 **Mode 3 narrowing (v7):** Mode 3 now only accepts Level 5 ATC codes (7 characters, e.g. R01AD08). Level 1–4 inputs are rejected at validation with an amber info card. The earlier L4 expansion gate and "Group by Level 5" toggle have been removed — the L5-only constraint makes them obsolete.
@@ -109,7 +109,9 @@ Cancellation uses a per-run token (`makeCancelToken()`) — Stop fires the token
 
 A new submit calls `startRun()`, which fires the previous run's cancel token; this keeps superseded `verifyAndRender` awaiters from leaking (they wake via `cancel.promise`, see the `runId !== activeRunId` check, and return). ETA derives from inter-completion intervals (`(timestamps[end] − timestamps[end−5]) / 5 × remaining`) — under parallel rate-limited fetches, throughput-per-completion is a more honest signal than per-member wall time.
 
-**Modes 4 + 5 (v7):** the previous "NDC → ATC" placeholders have been repurposed. Mode 4 takes a single RXCUI and returns its active NDCs with rich metadata (labeler, packaging, marketing category, FDA approval number) in a sortable table. Mode 5 is the batch version, capped at 20 RXCUIs (each can produce hundreds of NDC rows; 20 is the practical export ceiling). Both call `/ndcproperties.json?id={rxcui}` via the new `getNdcPropertiesForRxcui` helper in `rxnav-client.js`. Mode 5 ships two CSV variants: compact (one row per RXCUI) and exploded (one row per NDC).
+**Modes 4 + 5 (v7):** the previous "NDC → ATC" placeholders have been repurposed. Mode 4 takes a single RXCUI and returns its active NDCs with rich metadata (labeler, packaging, marketing category, FDA approval number) in a sortable table. Mode 5 is the batch version. Both call `/ndcproperties.json?id={rxcui}` via the `getNdcPropertiesForRxcui` helper in `rxnav-client.js`.
+
+**Mode 5 cap raised to 200 (v8):** Mode 5's cap matches Mode 2's. Per-item API cost is lighter than Mode 2's: each RXCUI in Mode 5 makes 2 fetches (`getProperties` + `getNdcPropertiesForRxcui`) versus 3-5 fetches per RXCUI through Mode 2's resolver chain, so the previous 20-item cap was overly conservative. The progress card now uses `mode3ProgressCard` so long runs are interruptible: Stop button preserves partial results, a new submit fires the previous run's cancel token via `startRun()` to prevent leaked Promise.race awaiters, and the bar uses the same time-based interpolation as Mode 3 (`EST_MS_PER_RXCUI` initial guess, switches to measured pace after 3 completions). When the pasted input exceeds the cap, the warning card carries a "Trim to 200 and run" action instead of just blocking submission. A duration hint (`Estimated time: ~Xs`) appears below the input when the count crosses `DURATION_HINT_THRESHOLD` (5). Mode 5's output is a single flat NDC table (one row per NDC across all input RXCUIs) with parent RXCUI/drug/TTY columns; zero-NDC inputs surface in a separate "RXCUIs without NDC rows" section below.
 
 ### Mode 1 — Single Forward (as built)
 
