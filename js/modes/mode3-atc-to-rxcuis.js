@@ -1033,9 +1033,18 @@ function renderSummary(refs, { atc, members, records, visibleRecords, source }) 
 // row. A view toggle lets the user switch back to the RxCUI-level view; the
 // fetched NDC data is cached in currentRun.ndcs so the toggle is instant.
 
+// A row is "extendable" if it carries a real RxCUI we can fetch NDCs for.
+// That's everything except NEEDS_REVIEW (RxCUI-not-found, network error,
+// invalid token). ROUTE_MISMATCH rows count too: they're valid RxCUIs that
+// happen to resolve to a different L5 in the same L4 family, and users want
+// their NDCs even if the L5 attribution disagrees.
+function isExtendable(rec) {
+  return rec && rec.rxcui && rec.status !== "NEEDS_REVIEW";
+}
+
 function renderExtendCard(refs) {
   if (!currentRun) return;
-  const keptCount = currentRun.records.filter(r => r.status === "KEPT").length;
+  const keptCount = currentRun.records.filter(isExtendable).length;
   const card = document.createElement("section");
   card.className = "card card-extend";
   card.setAttribute("aria-label", "Extend with NDCs");
@@ -1069,13 +1078,13 @@ function renderExtendCard(refs) {
     const muted = document.createElement("p");
     muted.className = "card-body";
     muted.style.color = "var(--text-muted)";
-    muted.textContent = "No verified RxCUIs to extend. Resolve the flagged members first, or refine the query.";
+    muted.textContent = "No RxCUIs to extend. Every member is flagged as needs review.";
     card.appendChild(muted);
   } else {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn-primary";
-    btn.textContent = `→ Extend with NDCs (${keptCount} verified RxCUI${keptCount === 1 ? "" : "s"})`;
+    btn.textContent = `→ Extend with NDCs (${keptCount} RxCUI${keptCount === 1 ? "" : "s"})`;
     btn.addEventListener("click", () => runNdcExtension(refs));
     row.appendChild(btn);
 
@@ -1091,7 +1100,7 @@ function renderExtendCard(refs) {
 
 async function runNdcExtension(refs) {
   if (!currentRun) return;
-  const allKept = currentRun.records.filter(r => r.status === "KEPT");
+  const allKept = currentRun.records.filter(isExtendable);
   if (allKept.length === 0) return;
 
   // 200-cap inheritance from Mode 5. Render a confirm prompt that replaces
@@ -1108,7 +1117,7 @@ async function runNdcExtension(refs) {
       source: currentRun.source,
     });
     refs.summary.appendChild(errorCard({
-      title: `Result has ${allKept.length} verified RxCUIs`,
+      title: `Result has ${allKept.length} RxCUIs`,
       body: `The NDC extension processes up to ${NDC_EXTENSION_CAP} at a time. Process the first ${NDC_EXTENSION_CAP} now and skip the rest?`,
       actions: [
         {
@@ -1152,7 +1161,7 @@ async function runNdcExtensionInner(refs, keptToProcess) {
   });
 
   const progCard = mode3ProgressCard({
-    title: `Fetching NDCs for ${keptToProcess.length} verified RxCUI${keptToProcess.length === 1 ? "" : "s"}`,
+    title: `Fetching NDCs for ${keptToProcess.length} RxCUI${keptToProcess.length === 1 ? "" : "s"}`,
     status: "Verifying NDC properties…",
   });
   progCard.setOnStop(() => cancel.fire());
@@ -1347,11 +1356,12 @@ function buildNdcLevelTable(snapshot) {
     return "";
   };
 
-  // One row per (KEPT record × NDC). RxCUIs whose KEPT record has no NDCs
-  // still emit one row with an empty NDC cell and a soft note, so they're
-  // not silently dropped from the view.
+  // One row per (extendable record × NDC). Extendable = any row with a real
+  // RxCUI (KEPT or ROUTE_MISMATCH). RxCUIs whose record has no NDCs still
+  // emit one row with an empty NDC cell and a soft note, so they're not
+  // silently dropped from the view.
   for (const rec of snapshot.records) {
-    if (rec.status !== "KEPT") continue;
+    if (!isExtendable(rec)) continue;
     const entries = snapshot.ndcs.get(rec.rxcui) || [];
     const aName = atcNameFor(rec);
     if (entries.length === 0) {
@@ -1406,7 +1416,7 @@ function buildThreeLevelCsv(snapshot) {
     return "";
   };
   for (const rec of snapshot.records) {
-    if (rec.status !== "KEPT") continue;
+    if (!isExtendable(rec)) continue;
     const entries = snapshot.ndcs.get(rec.rxcui) || [];
     const qName = queryAtcName(rec);
     if (entries.length === 0) {
