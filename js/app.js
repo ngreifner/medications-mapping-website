@@ -48,11 +48,20 @@ function cycleTheme() {
 // ---------------- tabs ----------------
 function activateTab(modeNum, { pushUrl = true } = {}) {
   const mode = String(modeNum);
+  let activeTabEl = null;
   document.querySelectorAll(".tab").forEach(t => {
     const isActive = t.dataset.mode === mode;
     t.classList.toggle("is-active", isActive);
     t.setAttribute("aria-selected", isActive ? "true" : "false");
+    if (isActive) activeTabEl = t;
   });
+  // Slide the active tab into the visible area of the bar (so hidden
+  // tabs on mobile aren't a dead end when picked via URL or example).
+  if (activeTabEl && typeof activeTabEl.scrollIntoView === "function") {
+    try {
+      activeTabEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    } catch { /* older browsers without smooth-scroll options */ }
+  }
   document.querySelectorAll(".mode-panel").forEach(p => {
     const isActive = p.dataset.mode === mode;
     p.classList.toggle("is-active", isActive);

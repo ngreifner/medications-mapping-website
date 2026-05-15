@@ -185,12 +185,64 @@ footer {
   overflow: hidden; /* clips the sheen radial */
 }
 
-/* Status cards keep their semantic colour as a subtle wash, but
-   still feel like glass underneath. */
-.card.card-kept     { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--success-bg) 40%, transparent) !important; }
-.card.card-rejected { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--error-bg) 40%, transparent) !important; }
-.card.card-warning  { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--warning-bg) 40%, transparent) !important; }
-.card.card-info     { background: linear-gradient(180deg, var(--glass-tint), transparent), color-mix(in oklab, var(--accent-bg) 50%, transparent) !important; }
+/* Status cards keep the glass material BUT carry a stronger
+   semantic wash bleeding from the left, plus a saturated coloured
+   border so kept-green / rejected-red read at a glance — even
+   through the frosted veil. */
+.card.card-kept {
+  background:
+    linear-gradient(95deg,
+      color-mix(in oklab, var(--success) 24%, transparent) 0%,
+      color-mix(in oklab, var(--success) 8%,  transparent) 28%,
+      transparent 55%),
+    var(--glass-tint) !important;
+  border-left: 3px solid color-mix(in oklab, var(--success) 90%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 0 28px -10px color-mix(in oklab, var(--success) 35%, transparent),
+    0 18px 40px -22px rgba(0, 0, 0, 0.5);
+}
+.card.card-rejected {
+  background:
+    linear-gradient(95deg,
+      color-mix(in oklab, var(--error) 24%, transparent) 0%,
+      color-mix(in oklab, var(--error) 8%,  transparent) 28%,
+      transparent 55%),
+    var(--glass-tint) !important;
+  border-left: 3px solid color-mix(in oklab, var(--error) 90%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 0 28px -10px color-mix(in oklab, var(--error) 35%, transparent),
+    0 18px 40px -22px rgba(0, 0, 0, 0.5);
+}
+.card.card-warning {
+  background:
+    linear-gradient(95deg,
+      color-mix(in oklab, var(--warning) 24%, transparent) 0%,
+      color-mix(in oklab, var(--warning) 8%,  transparent) 28%,
+      transparent 55%),
+    var(--glass-tint) !important;
+  border-left: 3px solid color-mix(in oklab, var(--warning) 90%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 0 28px -10px color-mix(in oklab, var(--warning) 35%, transparent),
+    0 18px 40px -22px rgba(0, 0, 0, 0.5);
+}
+.card.card-info {
+  background:
+    linear-gradient(95deg,
+      color-mix(in oklab, var(--accent) 22%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 8%,  transparent) 28%,
+      transparent 55%),
+    var(--glass-tint) !important;
+  border-left: 3px solid color-mix(in oklab, var(--accent) 80%, transparent) !important;
+}
+
+/* Bump the status pill ("Kept" / "Rejected") so the colored word
+   reads more boldly against the stronger wash. */
+.card-kept     .card-title { color: var(--success-text) !important; letter-spacing: 0.10em; font-weight: 600; }
+.card-rejected .card-title { color: var(--error-text)   !important; letter-spacing: 0.10em; font-weight: 600; }
+.card-warning  .card-title { color: var(--warning-text) !important; letter-spacing: 0.10em; font-weight: 600; }
 
 /* Light theme: glass becomes lighter, edges become darker */
 html[data-theme="light"] .card,
@@ -263,6 +315,53 @@ header {
   box-shadow:
     0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
     0 12px 28px -16px rgba(0, 0, 0, 0.45);
+  /* Smooth horizontal swipe on iOS Safari */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Mobile + narrow desktop: the tab bar has 7 tabs and they will not
+   all fit. Make the scroll affordance obvious: fade the leading and
+   trailing edges so users SEE there's more content past the rim. Snap
+   each tab into view when the user lets go of a swipe so the bar
+   never lands awkwardly. */
+@media (max-width: 880px) {
+  .tab-bar {
+    border-radius: var(--r-lg) !important;
+    padding: 4px 6px;
+    margin-left: var(--space-3);
+    margin-right: var(--space-3);
+    /* Soft fade on each end so hidden tabs feel within reach */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 18px,
+      black calc(100% - 18px),
+      transparent 100%);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 18px,
+      black calc(100% - 18px),
+      transparent 100%);
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 18px;
+  }
+  .tab { scroll-snap-align: center; }
+}
+
+/* Below 480px (real phones), open the tabs up so the labels stay
+   legible. Reduce horizontal padding inside each pill so more tabs
+   peek in at once before scrolling kicks in. */
+@media (max-width: 480px) {
+  .tab {
+    padding: 6px 10px !important;
+    font-size: 12.5px !important;
+  }
+  .tab-bar {
+    margin-left: var(--space-2);
+    margin-right: var(--space-2);
+  }
 }
 .tab {
   border-radius: 999px !important;
