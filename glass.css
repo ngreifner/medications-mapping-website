@@ -528,6 +528,132 @@ footer {
 /* ---- Selection: warm violet ---- */
 ::selection { background: color-mix(in oklab, var(--accent) 35%, transparent); color: var(--text); }
 
+/* ============================================================
+   ATC family pill — glyph + short anatomical name + letter
+   ------------------------------------------------------------
+   Used on kept / rejected / drug-identity cards so the user reads
+   the anatomical family (Respiratory, Dermatological, etc.) at a
+   glance — and immediately understands *why* a code was rejected.
+   ============================================================ */
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+.atc-family-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  background: var(--glass-tint-strong);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.atc-family-pill:hover { transform: translateY(-1px); }
+
+.atc-family-glyph {
+  font-size: 14px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atc-family-short {
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.atc-family-letter {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent) 25%, transparent);
+  color: var(--accent-text);
+  letter-spacing: 0;
+}
+
+/* Kept variant — soft success glow */
+.atc-family-pill.atc-family-kept {
+  border-color: color-mix(in oklab, var(--success) 45%, var(--glass-edge)) !important;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--success) 14%, transparent),
+      color-mix(in oklab, var(--success) 6%, transparent)),
+    var(--glass-tint-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 14px -4px color-mix(in oklab, var(--success) 35%, transparent);
+}
+.atc-family-pill.atc-family-kept .atc-family-short { color: var(--success-text); }
+.atc-family-pill.atc-family-kept .atc-family-letter {
+  background: color-mix(in oklab, var(--success) 22%, transparent);
+  border-color: color-mix(in oklab, var(--success) 40%, transparent);
+  color: var(--success-text);
+}
+
+/* Rejected variant — soft error glow. This is the one that
+   educates: a nasal spray that hit a Dermatological code now
+   reads "🧴 Dermatological · D" in warm red, so the user instantly
+   sees the route mismatch story. */
+.atc-family-pill.atc-family-rejected {
+  border-color: color-mix(in oklab, var(--error) 45%, var(--glass-edge)) !important;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--error) 14%, transparent),
+      color-mix(in oklab, var(--error) 6%, transparent)),
+    var(--glass-tint-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 14px -4px color-mix(in oklab, var(--error) 35%, transparent);
+}
+.atc-family-pill.atc-family-rejected .atc-family-short { color: var(--error-text); }
+.atc-family-pill.atc-family-rejected .atc-family-letter {
+  background: color-mix(in oklab, var(--error) 22%, transparent);
+  border-color: color-mix(in oklab, var(--error) 40%, transparent);
+  color: var(--error-text);
+}
+
+/* Neutral variant — used on the drug identity card. Picks up the
+   accent so it reads as "this drug's primary anatomical class" */
+.atc-family-pill.atc-family-neutral {
+  border-color: color-mix(in oklab, var(--accent) 35%, var(--glass-edge)) !important;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--accent) 12%, transparent),
+      color-mix(in oklab, var(--accent) 5%, transparent)),
+    var(--glass-tint-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 14px -4px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+@media (max-width: 480px) {
+  .atc-family-pill { font-size: 11px; padding: 4px 8px 4px 6px; }
+  .atc-family-glyph { font-size: 12px; }
+  .atc-family-letter { font-size: 10px; padding: 1px 5px; }
+}
+
 /* ---- Reduce motion respect ---- */
 @media (prefers-reduced-motion: reduce) {
   body::before { animation: none; }

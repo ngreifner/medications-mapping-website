@@ -20,21 +20,41 @@ import { getAtcClassName } from "./rxnav-client.js";
 
 /** Anatomical main groups (ATC Level 1), letter → { title, emoji }. */
 export const ATC_LEVEL1 = {
-  A: { title: "Alimentary tract and metabolism", emoji: "\u{1FAC4}" },
-  B: { title: "Blood and blood forming organs", emoji: "\u{1FA78}" },
-  C: { title: "Cardiovascular system", emoji: "❤️" },
-  D: { title: "Dermatologicals", emoji: "\u{1F9F4}" },
-  G: { title: "Genito urinary system and sex hormones", emoji: "\u{1FAD8}" },
-  H: { title: "Systemic hormonal preparations, excl. sex hormones and insulins", emoji: "\u{1F489}" },
-  J: { title: "Antiinfectives for systemic use", emoji: "\u{1F9A0}" },
-  L: { title: "Antineoplastic and immunomodulating agents", emoji: "\u{1F397}️" },
-  M: { title: "Musculo-skeletal system", emoji: "\u{1F9B4}" },
-  N: { title: "Nervous system", emoji: "\u{1F9E0}" },
-  P: { title: "Antiparasitic products, insecticides and repellents", emoji: "\u{1FAB2}" },
-  R: { title: "Respiratory system", emoji: "\u{1FAC1}" },
-  S: { title: "Sensory organs", emoji: "\u{1F441}️" },
-  V: { title: "Various", emoji: "\u{1F4E6}" },
+  A: { title: "Alimentary tract and metabolism", emoji: "\u{1FAC4}", short: "Digestive / metabolic" },
+  B: { title: "Blood and blood forming organs", emoji: "\u{1FA78}", short: "Blood" },
+  C: { title: "Cardiovascular system", emoji: "❤️", short: "Cardiovascular" },
+  D: { title: "Dermatologicals", emoji: "\u{1F9F4}", short: "Dermatological" },
+  G: { title: "Genito urinary system and sex hormones", emoji: "\u{1FAD8}", short: "Genito-urinary / hormones" },
+  H: { title: "Systemic hormonal preparations, excl. sex hormones and insulins", emoji: "\u{1F489}", short: "Systemic hormones" },
+  J: { title: "Antiinfectives for systemic use", emoji: "\u{1F9A0}", short: "Anti-infective" },
+  L: { title: "Antineoplastic and immunomodulating agents", emoji: "\u{1F397}️", short: "Oncology / immunology" },
+  M: { title: "Musculo-skeletal system", emoji: "\u{1F9B4}", short: "Musculoskeletal" },
+  N: { title: "Nervous system", emoji: "\u{1F9E0}", short: "Nervous system" },
+  P: { title: "Antiparasitic products, insecticides and repellents", emoji: "\u{1FAB2}", short: "Antiparasitic" },
+  R: { title: "Respiratory system", emoji: "\u{1FAC1}", short: "Respiratory" },
+  S: { title: "Sensory organs", emoji: "\u{1F441}️", short: "Sensory organs" },
+  V: { title: "Various", emoji: "\u{1F4E6}", short: "Various" },
 };
+
+/**
+ * Return the Level-1 anatomical family for an ATC code (any level).
+ * Returns { letter, glyph, short, title } or null if the leading letter
+ * isn't a known L1 group. Used by ui-components to render a small "family
+ * pill" on kept / rejected / drug-identity cards so the user sees at a
+ * glance which anatomical class a code belongs to.
+ */
+export function familyForAtc(atc) {
+  if (!atc) return null;
+  const letter = String(atc).charAt(0).toUpperCase();
+  const entry = ATC_LEVEL1[letter];
+  if (!entry) return null;
+  return {
+    letter,
+    glyph: entry.emoji,
+    short: entry.short,
+    title: entry.title,
+  };
+}
 
 /**
  * Parse an ATC code into its hierarchical levels.

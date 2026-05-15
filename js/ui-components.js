@@ -2,6 +2,8 @@
 // Each function takes plain data and returns an HTMLElement. No fetch, no
 // global state. The mode files compose these into the result area.
 
+import { familyForAtc } from "./atc-anatomy.js";
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
@@ -28,11 +30,32 @@ function code(text) {
   return el("span", { class: "code" }, text);
 }
 
+// Small "family pill" — glyph + L1 group name + ATC letter. Rendered on
+// kept / rejected / drug-identity cards so the user can read the
+// anatomical family at a glance and immediately see *why* an ATC was
+// rejected (e.g. nasal spray hit a Dermatological code).
+function familyPill(atc, { variant = "neutral" } = {}) {
+  const fam = familyForAtc(atc);
+  if (!fam) return null;
+  return el("span", {
+    class: `atc-family-pill atc-family-${variant} atc-family-letter-${fam.letter}`,
+    title: fam.title,
+    "aria-label": `ATC family ${fam.letter} — ${fam.title}`,
+  }, [
+    el("span", { class: "atc-family-glyph", "aria-hidden": "true" }, fam.glyph),
+    el("span", { class: "atc-family-short" }, fam.short),
+    el("span", { class: "atc-family-letter", "aria-hidden": "true" }, fam.letter),
+  ]);
+}
+
 // ---------------- drug identity ----------------
 
-export function drugIdentityCard({ rxcui, name, tty }) {
+export function drugIdentityCard({ rxcui, name, tty, primaryAtc = null }) {
   return el("section", { class: "card", "aria-label": "Drug identity" }, [
-    el("p", { class: "card-title" }, "Drug"),
+    el("div", { class: "card-header-row" }, [
+      el("p", { class: "card-title" }, "Drug"),
+      primaryAtc ? familyPill(primaryAtc, { variant: "neutral" }) : null,
+    ]),
     el("h2", { class: "drug-name" }, name || "(unknown)"),
     el("div", { class: "identity-meta" }, [
       el("span", {}, [el("strong", {}, "RXCUI:"), " ", code(rxcui)]),
@@ -71,7 +94,10 @@ export function routeCard({ route, dfgs = [], chosenDfg = null }) {
 
 export function keptAtcCard({ atc, name, reason, overrideNote = null }) {
   return el("section", { class: "card card-kept", "aria-label": `Kept ATC ${atc}` }, [
-    el("p", { class: "card-title" }, "Kept"),
+    el("div", { class: "card-header-row" }, [
+      el("p", { class: "card-title" }, "Kept"),
+      familyPill(atc, { variant: "kept" }),
+    ]),
     el("p", { class: "atc-code" }, atc),
     name ? el("p", { class: "atc-name" }, name) : null,
     reason ? el("p", { class: "reason" }, reason) : null,
@@ -81,7 +107,10 @@ export function keptAtcCard({ atc, name, reason, overrideNote = null }) {
 
 export function rejectedAtcCard({ atc, name, reason, clinical }) {
   return el("section", { class: "card card-rejected", "aria-label": `Rejected ATC ${atc}` }, [
-    el("p", { class: "card-title" }, "Rejected"),
+    el("div", { class: "card-header-row" }, [
+      el("p", { class: "card-title" }, "Rejected"),
+      familyPill(atc, { variant: "rejected" }),
+    ]),
     el("p", { class: "atc-code" }, atc),
     name ? el("p", { class: "atc-name" }, name) : null,
     reason ? el("p", { class: "reason" }, reason) : null,

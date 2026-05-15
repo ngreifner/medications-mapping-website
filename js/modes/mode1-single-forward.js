@@ -172,11 +172,17 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     return;
   }
 
-  // 1. Drug identity
+  // 1. Drug identity. Pass the first resolvable L5 ATC so the card can
+  // surface the anatomical family pill (e.g. "🫁 Respiratory · R") right
+  // next to the RxCUI — the user sees the family before scrolling.
+  const primaryAtc = (result && Array.isArray(result.codes))
+    ? (result.codes.find(c => (c.code || "").length === 7)?.code || null)
+    : null;
   resultEl.appendChild(drugIdentityCard({
     rxcui: props.rxcui,
     name: props.name,
     tty: props.tty,
+    primaryAtc,
   }));
 
   // 2. Ingredient-level inputs: skip route resolution and route filtering.
