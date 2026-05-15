@@ -23,6 +23,20 @@
         const stored = localStorage.getItem("medcode_theme");
         const theme = (stored === "light" || stored === "dark") ? stored : "dark";
         document.documentElement.setAttribute("data-theme", theme);
+        // Entrance reveal is scoped to html.is-first-load. Once the first
+        // paint settles OR the user touches anything (tab click, key
+        // press), the class drops and every subsequent panel swap is
+        // instant.
+        document.documentElement.classList.add("is-first-load");
+        let stripped = false;
+        function strip() {
+          if (stripped) return;
+          stripped = true;
+          document.documentElement.classList.remove("is-first-load");
+        }
+        window.addEventListener("load", function () { setTimeout(strip, 1700); });
+        document.addEventListener("pointerdown", strip, { once: true, capture: true });
+        document.addEventListener("keydown",     strip, { once: true, capture: true });
       } catch (e) {}
     })();
   </script>

@@ -712,34 +712,38 @@ html[data-theme="light"] body {
   }
 }
 
-.site-header {
+/* All scoped under html.is-first-load. The inline head script removes
+   the class on the first user interaction OR ~1.7s after window.load,
+   so tab clicks AFTER the first paint switch instantly with no
+   re-trigger of the curtain. */
+html.is-first-load .site-header {
   animation: glass-rise 700ms 80ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
-.hero {
+html.is-first-load .hero {
   animation: glass-rise 900ms 220ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
-.hero-eyebrow { animation: glass-rise 900ms 180ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-.hero h1      { animation: glass-rise 1100ms 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-.hero-body    { animation: glass-rise 1100ms 380ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+html.is-first-load .hero-eyebrow { animation: glass-rise 900ms 180ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+html.is-first-load .hero h1      { animation: glass-rise 1100ms 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+html.is-first-load .hero-body    { animation: glass-rise 1100ms 380ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 
-.tab-bar {
+html.is-first-load .tab-bar {
   animation: glass-rise 900ms 460ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
-.mode-panel.is-active > .input-card,
-.mode-panel.is-active > .batch-input-card {
+html.is-first-load .mode-panel.is-active > .input-card,
+html.is-first-load .mode-panel.is-active > .batch-input-card {
   animation: glass-rise 900ms 600ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
-.mode-panel.is-active > #mode1-result,
-.mode-panel.is-active > [id$="-result"],
-.mode-panel.is-active > [id$="-progress"],
-.mode-panel.is-active > [id$="-summary"],
-.mode-panel.is-active > [id$="-filters"],
-.mode-panel.is-active > [id$="-table"] {
+html.is-first-load .mode-panel.is-active > #mode1-result,
+html.is-first-load .mode-panel.is-active > [id$="-result"],
+html.is-first-load .mode-panel.is-active > [id$="-progress"],
+html.is-first-load .mode-panel.is-active > [id$="-summary"],
+html.is-first-load .mode-panel.is-active > [id$="-filters"],
+html.is-first-load .mode-panel.is-active > [id$="-table"] {
   animation: glass-rise 900ms 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
-footer { animation: glass-rise 900ms 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+html.is-first-load footer { animation: glass-rise 900ms 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 
 /* ---- Active tab gentle magnification ----
    The .is-active pill grows a hair so the eye knows where you are
