@@ -92,3 +92,92 @@
     }
   });
 })();
+
+// ============================================================
+// Sliding tab indicator — a single morphing glass pill that
+// follows the active tab. CSS in glass.css paints the pill via
+// .tab-bar::before, sized by --tab-ind-w and translated by
+// --tab-ind-x. This module sets both, on every change.
+//
+// Why a MutationObserver, not a click listener: the existing
+// app.js owns activateTab() and may also be called programmatically
+// (URL state, keyboard shortcut, etc.). Watching aria-selected on
+// the buttons gives us a single source of truth.
+// ============================================================
+(function () {
+  if (typeof document === "undefined") return;
+  let bar = null;
+  let rafToken = 0;
+  let observer = null;
+
+  function update() {
+    if (!bar) return;
+    const active = bar.querySelector(".tab.is-active") ||
+                   bar.querySelector('.tab[aria-selected="true"]');
+    if (!active) {
+      bar.classList.remove("is-indicator-ready");
+      return;
+    }
+    // offsetLeft / offsetTop are from the .tab-bar's padding box (the
+    // tabs are direct children). Subtract scrollLeft so the indicator
+    // tracks the visible position when the bar is horizontally
+    // scrolled on narrow screens. offsetHeight tracks the active
+    // tab's height across desktop / mobile padding rules without
+    // re-deriving them in CSS.
+    const x = active.offsetLeft - bar.scrollLeft;
+    const y = active.offsetTop;
+    const w = active.offsetWidth;
+    const h = active.offsetHeight;
+    bar.style.setProperty("--tab-ind-x", x + "px");
+    bar.style.setProperty("--tab-ind-y", y + "px");
+    bar.style.setProperty("--tab-ind-w", w + "px");
+    bar.style.setProperty("--tab-ind-h", h + "px");
+    bar.classList.add("is-indicator-ready");
+  }
+
+  function schedule() {
+    if (rafToken) return;
+    rafToken = requestAnimationFrame(() => {
+      rafToken = 0;
+      update();
+    });
+  }
+
+  function init() {
+    bar = document.querySelector(".tab-bar");
+    if (!bar) return;
+
+    // Observe aria-selected (the authoritative state on role=tab
+    // elements) AND is-active (the visual class app.js applies).
+    observer = new MutationObserver(schedule);
+    bar.querySelectorAll(".tab").forEach((tab) => {
+      observer.observe(tab, {
+        attributes: true,
+        attributeFilter: ["aria-selected", "class"],
+      });
+    });
+
+    // Reposition on scroll (mobile/narrow tab-bar) + on resize.
+    bar.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+
+    // Fonts can shift tab widths on late paint; recompute when fonts
+    // finish loading.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(schedule).catch(() => {});
+    }
+
+    // First paint — wait a frame so layout is final.
+    requestAnimationFrame(schedule);
+    // And once more after a beat in case the first-load animation
+    // mid-flight tab widths haven't settled.
+    setTimeout(schedule, 400);
+    setTimeout(schedule, 1200);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+})();

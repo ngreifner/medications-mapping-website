@@ -802,3 +802,696 @@ html.is-first-load footer { animation: glass-rise 900ms 800ms cubic-bezier(0.22,
   }
   .tab.is-active { transform: none; }
 }
+
+/* ============================================================
+   REFINEMENT LAYER v2 — Editor's pass.
+   ------------------------------------------------------------
+   This block is appended last so every rule wins the cascade.
+   It adds: sliding tab indicator, polished tables, refined
+   buttons + inputs, status-card serif anchors, hero ornament,
+   footer hairline, glass scrollbars, anatomy stagger, focus
+   halo, chip arrow reveal. Pure CSS + one helper in
+   glass-shimmer.js. The engine is untouched.
+   ============================================================ */
+
+/* -----------------------------------------------------------
+   1. Sliding tab indicator
+   ------------------------------------------------------------
+   A single morphing glass pill that slides between active tabs.
+   Position + width are set by glass-shimmer.js via two custom
+   props on .tab-bar: --tab-ind-x and --tab-ind-w. Until the JS
+   runs, the indicator stays hidden (opacity 0); once .tab-bar
+   gains .is-indicator-ready, the static .tab.is-active background
+   is suppressed and the pill takes over.
+   ----------------------------------------------------------- */
+.tab-bar { isolation: isolate; }
+.tab-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--tab-ind-h, 32px);
+  width: var(--tab-ind-w, 0px);
+  transform: translate(var(--tab-ind-x, 0px), var(--tab-ind-y, 0px));
+  border-radius: 999px;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent-bg) 70%, white 8%),
+    color-mix(in oklab, var(--accent-bg) 100%, transparent));
+  border: 1px solid color-mix(in oklab, var(--accent) 24%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.06),
+    0 6px 18px -8px color-mix(in oklab, var(--accent) 55%, transparent);
+  transition:
+    transform 460ms cubic-bezier(0.34, 1.18, 0.64, 1),
+    width    460ms cubic-bezier(0.34, 1.18, 0.64, 1),
+    height   460ms cubic-bezier(0.34, 1.18, 0.64, 1),
+    opacity  240ms ease-out;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, width, height;
+}
+.tab-bar.is-indicator-ready::before { opacity: 1; }
+.tab-bar.is-indicator-ready .tab.is-active {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+/* Tabs sit above the indicator so the label paints over it. */
+.tab-bar .tab { position: relative; z-index: 1; }
+@media (max-width: 880px) {
+  .tab-bar::before { border-radius: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-bar::before { transition: opacity 200ms ease-out; }
+}
+
+/* -----------------------------------------------------------
+   2. Sticky frosted table heads + tabular-nums + row rail
+   ------------------------------------------------------------
+   Every batch table (Modes 2/3/5/6/7) gets a frosted sticky
+   header, tabular-nums on numeric cells, a subtle zebra, and
+   a faint accent rail on row hover so the eye tracks the row.
+   ----------------------------------------------------------- */
+.batch-table {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'ss01' 1;
+}
+.batch-table thead th {
+  background: color-mix(in oklab, var(--glass-tint-strong) 90%, transparent) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  font-family: var(--font-sans);
+  font-weight: 600 !important;
+  letter-spacing: 0.10em !important;
+  font-size: 10.5px !important;
+  color: var(--text-soft) !important;
+  border-bottom: 1px solid var(--glass-edge-bright) !important;
+}
+.batch-table tbody tr { transition: background 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.batch-table tbody tr:nth-child(even) td {
+  background: color-mix(in oklab, var(--glass-tint) 35%, transparent);
+}
+.batch-table tbody tr:hover td {
+  background: color-mix(in oklab, var(--accent-bg) 55%, var(--glass-tint-strong)) !important;
+  box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent);
+}
+.batch-table tbody td {
+  border-bottom-color: var(--glass-edge) !important;
+}
+.batch-table-wrap {
+  border-color: var(--glass-edge) !important;
+  background: color-mix(in oklab, var(--glass-tint) 70%, transparent) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+    0 18px 50px -22px rgba(0, 0, 0, 0.45);
+}
+/* Codes, NDCs, counts — anything monospace — tabular by default. */
+.code, .atc-code, .ndc-code, code, .code-mono, .batch-counter,
+.cell-rxcui, .cell-removed, .m3-prog-eta, .m3-prog-count {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* -----------------------------------------------------------
+   3. Status cards: serif corner anchor + sharper press
+   ------------------------------------------------------------
+   The watermark is a quiet K / R / ! / i in the bottom-right
+   that signals the verdict before you read a single word. It
+   uses Instrument Serif italic so it reads as an editorial
+   pull-quote anchor, not a status icon.
+   ----------------------------------------------------------- */
+.card.card-kept,
+.card.card-rejected,
+.card.card-warning,
+.card.card-info { isolation: isolate; }
+
+.card.card-kept::before,
+.card.card-rejected::before,
+.card.card-warning::before,
+.card.card-info::before {
+  position: absolute;
+  bottom: -14px;
+  right: 18px;
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  opacity: 0.10;
+  z-index: 0;
+  user-select: none;
+  transition: opacity 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card.card-kept::before     { content: "K"; color: color-mix(in oklab, var(--success) 70%, transparent); }
+.card.card-rejected::before { content: "R"; color: color-mix(in oklab, var(--error)   70%, transparent); }
+.card.card-warning::before  { content: "!"; color: color-mix(in oklab, var(--warning) 70%, transparent); }
+.card.card-info::before     { content: "i"; color: color-mix(in oklab, var(--accent)  70%, transparent); }
+
+.card.card-kept:hover::before,
+.card.card-rejected:hover::before,
+.card.card-warning:hover::before,
+.card.card-info:hover::before {
+  opacity: 0.18;
+  transform: translateY(-4px) rotate(-2deg);
+}
+/* Card content stays above the watermark. */
+.card.card-kept > *,
+.card.card-rejected > *,
+.card.card-warning > *,
+.card.card-info > * { position: relative; z-index: 2; }
+/* But keep the sheen radial above the watermark too. */
+.card.card-kept::after,
+.card.card-rejected::after,
+.card.card-warning::after,
+.card.card-info::after { z-index: 1; }
+
+@media (max-width: 768px) {
+  .card.card-kept::before,
+  .card.card-rejected::before,
+  .card.card-warning::before,
+  .card.card-info::before { font-size: 110px; bottom: -10px; right: 14px; }
+}
+
+/* -----------------------------------------------------------
+   4. Refined buttons — press / disabled / loading polish
+   ----------------------------------------------------------- */
+.btn-primary:active {
+  transform: translateY(0.5px) scale(0.985);
+  transition-duration: 80ms;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 4px 12px -6px color-mix(in oklab, var(--accent) 60%, transparent) !important;
+}
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  background: color-mix(in oklab, var(--glass-tint-strong) 90%, transparent) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--glass-edge) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  cursor: not-allowed;
+  transform: none !important;
+}
+.btn-primary:disabled .btn-icon,
+.btn-primary[disabled] .btn-icon { opacity: 0.45; }
+/* Icon arrow nudges right on hover — already exists in styles.css for
+   .btn-primary :hover .btn-icon, but make sure it's smooth across all
+   refined buttons. */
+.btn-primary .btn-icon {
+  display: inline-block;
+  transition: transform 320ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.btn-primary:hover .btn-icon { transform: translateX(4px); }
+.btn-primary:active .btn-icon { transform: translateX(2px); }
+
+/* Secondary + chips: same press snap. */
+.btn-secondary:active,
+.chip:active,
+.filter-chip:active,
+.family-query-btn:active,
+.view-toggle-btn:active {
+  transform: translateY(0.5px) scale(0.985);
+  transition-duration: 80ms;
+}
+
+/* -----------------------------------------------------------
+   5. Refined inputs — accent caret + soft inner depth + counter
+   ------------------------------------------------------------
+   Empty inputs gain a faint inner shadow so they feel like a
+   pocket; on focus the shadow lifts and the caret tints accent.
+   The batch counter morphs through neutral → accent → warning
+   as the count climbs toward the cap.
+   ----------------------------------------------------------- */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea,
+#mode2-input, #mode5-input, #mode6-input, #mode7-input {
+  caret-color: var(--accent);
+  box-shadow: inset 0 2px 4px -2px rgba(0, 0, 0, 0.18);
+}
+html[data-theme="light"] input[type="text"],
+html[data-theme="light"] input[type="number"],
+html[data-theme="light"] input[type="search"],
+html[data-theme="light"] textarea,
+html[data-theme="light"] #mode2-input,
+html[data-theme="light"] #mode5-input,
+html[data-theme="light"] #mode6-input,
+html[data-theme="light"] #mode7-input {
+  box-shadow: inset 0 1px 2px rgba(20, 15, 40, 0.06);
+}
+input:focus,
+textarea:focus,
+#mode2-input:focus, #mode5-input:focus, #mode6-input:focus, #mode7-input:focus {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent) 70%, transparent),
+    0 0 30px -8px color-mix(in oklab, var(--accent) 60%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Counter pill: tabular + warm as it approaches the cap. */
+.batch-counter {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  background: var(--glass-tint-strong) !important;
+  border: 1px solid var(--glass-edge) !important;
+  color: var(--text-soft) !important;
+  transition:
+    background 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.batch-counter.over {
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--error) 35%, transparent),
+    color-mix(in oklab, var(--error) 18%, transparent)),
+    var(--glass-tint-strong) !important;
+  border-color: color-mix(in oklab, var(--error) 60%, transparent) !important;
+  color: var(--error-text) !important;
+}
+
+/* -----------------------------------------------------------
+   6. Code Anatomy — staggered reveal of the 5 visual segments
+   ----------------------------------------------------------- */
+.ca-content .ca-visual .ca-seg {
+  animation: ca-seg-rise 480ms cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+.ca-content .ca-visual .ca-seg:nth-child(1) { animation-delay: 80ms; }
+.ca-content .ca-visual .ca-seg:nth-child(2) { animation-delay: 160ms; }
+.ca-content .ca-visual .ca-seg:nth-child(3) { animation-delay: 240ms; }
+.ca-content .ca-visual .ca-seg:nth-child(4) { animation-delay: 320ms; }
+.ca-content .ca-visual .ca-seg:nth-child(5) { animation-delay: 400ms; }
+@keyframes ca-seg-rise {
+  from { opacity: 0; transform: translateY(8px) scale(0.94); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    filter: blur(0); }
+}
+/* The final segment (the deepest level) gets a slow breathing glow. */
+.ca-content .ca-visual .ca-seg.is-final {
+  animation: ca-seg-rise 480ms cubic-bezier(0.34, 1.2, 0.64, 1) 400ms both,
+             ca-seg-breathe 4.5s ease-in-out 1.2s infinite;
+}
+@keyframes ca-seg-breathe {
+  0%, 100% { box-shadow: 0 0 0 1px currentColor, 0 0 14px color-mix(in oklab, currentColor 25%, transparent); }
+  50%      { box-shadow: 0 0 0 1px currentColor, 0 0 24px color-mix(in oklab, currentColor 45%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ca-content .ca-visual .ca-seg { animation: none !important; }
+}
+
+/* -----------------------------------------------------------
+   7. Hero — accent dot after title + first-paint gradient sweep
+   ------------------------------------------------------------
+   A small accent disc trails the headline like a typographer's
+   period. On first paint, a horizontal gradient sweep washes
+   across the title once, giving the page a single moment of
+   theatre.
+   ----------------------------------------------------------- */
+.hero h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.36em;
+  height: 0.36em;
+  border-radius: 999px;
+  margin-left: 0.12em;
+  margin-bottom: 0.08em;
+  vertical-align: baseline;
+  background: var(--accent);
+  /* Reset the gradient-text clipping the h1 inherits so the dot is
+     actually painted as a solid disc, not a clipped-to-glyph void. */
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: initial;
+  box-shadow: 0 0 18px color-mix(in oklab, var(--accent) 60%, transparent);
+  animation: hero-dot-pulse 5s ease-in-out 1.6s infinite;
+}
+@keyframes hero-dot-pulse {
+  0%, 100% { box-shadow: 0 0 14px color-mix(in oklab, var(--accent) 45%, transparent); }
+  50%      { box-shadow: 0 0 26px color-mix(in oklab, var(--accent) 75%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1::after { animation: none; }
+}
+
+/* Subtle reading underline that crosses the eyebrow pill. */
+.hero-eyebrow {
+  position: relative;
+  isolation: isolate;
+}
+.hero-eyebrow::after {
+  content: "";
+  position: absolute;
+  left: -28px;
+  right: 100%;
+  top: 50%;
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent,
+    color-mix(in oklab, var(--accent) 55%, transparent));
+}
+@media (max-width: 768px) {
+  .hero-eyebrow::after { display: none; }
+}
+
+/* -----------------------------------------------------------
+   8. Footer — hairline gradient divider + glass version pill
+   ----------------------------------------------------------- */
+footer {
+  position: relative;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent,
+    color-mix(in oklab, var(--accent) 30%, transparent) 20%,
+    color-mix(in oklab, var(--text-soft) 35%, transparent) 50%,
+    color-mix(in oklab, var(--accent) 30%, transparent) 80%,
+    transparent);
+  pointer-events: none;
+}
+.disclaimer {
+  font-feature-settings: 'ss01' 1;
+}
+.disclaimer strong:first-of-type {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.08em;
+  color: var(--text);
+  letter-spacing: 0;
+  margin-right: 0.15em;
+}
+.footer-attribution {
+  font-feature-settings: 'ss01' 1;
+}
+.footer-attribution a {
+  color: var(--accent-text);
+  text-decoration: none;
+  transition: color 240ms ease;
+}
+.footer-attribution a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.version {
+  font-variant-numeric: tabular-nums;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--glass-tint-strong);
+  border: 1px solid var(--glass-edge);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  color: var(--text-soft) !important;
+}
+
+/* -----------------------------------------------------------
+   9. Glass-aware scrollbars (Chromium + Firefox)
+   ----------------------------------------------------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-edge-bright) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--glass-edge-bright) 80%, transparent);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 240ms ease;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--accent) 35%, var(--glass-edge-bright));
+  background-clip: padding-box;
+}
+.tab-bar::-webkit-scrollbar,
+.tab-bar { scrollbar-width: none; }
+.tab-bar::-webkit-scrollbar { display: none; }
+
+/* -----------------------------------------------------------
+   10. Refined focus ring — glass halo, never harsh outline
+   ----------------------------------------------------------- */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.chip:focus-visible,
+.filter-chip:focus-visible,
+.tab:focus-visible,
+.icon-btn:focus-visible,
+.family-query-btn:focus-visible,
+.view-toggle-btn:focus-visible,
+.btn-stop:focus-visible,
+.link-btn:focus-visible,
+.ca-toggle:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px color-mix(in oklab, var(--accent) 55%, transparent),
+    0 0 24px -4px color-mix(in oklab, var(--accent) 50%, transparent) !important;
+}
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* -----------------------------------------------------------
+   11. Examples chips — '→' reveal on hover
+   ----------------------------------------------------------- */
+.chip {
+  overflow: hidden;
+  /* Reserve a hair of room for the trailing arrow on hover. */
+}
+.chip::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 0;
+  width: 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  font-family: var(--font-mono);
+  color: var(--accent-text);
+  transition:
+    width   320ms cubic-bezier(0.34, 1.2, 0.64, 1),
+    opacity 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 320ms cubic-bezier(0.34, 1.2, 0.64, 1),
+    margin-left 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.chip:hover::after {
+  width: 1em;
+  margin-left: 8px;
+  opacity: 1;
+  transform: translateX(0);
+}
+.chip:hover {
+  border-color: color-mix(in oklab, var(--accent) 30%, var(--glass-edge)) !important;
+}
+
+/* -----------------------------------------------------------
+   12. Mode 3 progress card — richer fill + ETA pulse
+   ----------------------------------------------------------- */
+.m3-progress-card .progress-fill {
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--accent) 70%, transparent) 0%,
+    var(--accent) 50%,
+    color-mix(in oklab, var(--accent-hover) 90%, white 10%) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 14px -2px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+.m3-progress-card .progress-track {
+  background: color-mix(in oklab, var(--glass-tint) 90%, transparent) !important;
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+.m3-prog-eta { font-variant-numeric: tabular-nums; }
+
+/* -----------------------------------------------------------
+   13. Card type hierarchy — gentle radius variance
+   ------------------------------------------------------------
+   Subtle: input-card a hair larger than result cards; tables
+   slightly tighter. Reads as intentional, not noisy.
+   ----------------------------------------------------------- */
+.input-card,
+.batch-input-card { border-radius: 20px !important; }
+.card.card-kept,
+.card.card-rejected,
+.card.card-warning,
+.card.card-info { border-radius: 16px !important; }
+.batch-table-wrap { border-radius: 14px !important; }
+
+/* -----------------------------------------------------------
+   14. Summary bar — refined editorial tone
+   ----------------------------------------------------------- */
+.summary-bar {
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--accent) 14%, transparent),
+    color-mix(in oklab, var(--accent) 5%, transparent)),
+    var(--glass-tint-strong) !important;
+  border: 1px solid color-mix(in oklab, var(--accent) 28%, var(--glass-edge)) !important;
+  border-left: 3px solid var(--accent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 40px -22px rgba(0, 0, 0, 0.5),
+    0 0 50px -22px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+.summary-text strong {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-text);
+  letter-spacing: 0;
+  font-size: 1.06em;
+}
+
+/* -----------------------------------------------------------
+   15. About page — sharpen the section H1 + lede
+   ----------------------------------------------------------- */
+.about-h1, .about-h2 {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+.about-section-lede,
+.about-lede {
+  font-family: var(--font-display-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--text) 80%, var(--accent) 18%);
+}
+
+/* -----------------------------------------------------------
+   16. Hero — soft first-paint shimmer sweeps across the title
+   ----------------------------------------------------------- */
+html.is-first-load .hero h1 {
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation:
+    glass-rise 1100ms 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both,
+    hero-shimmer 2600ms 900ms cubic-bezier(0.22, 0.61, 0.36, 1) 1 both;
+}
+@keyframes hero-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.is-first-load .hero h1 { animation: none; }
+}
+
+/* -----------------------------------------------------------
+   17. Hover lift directional — cards subtly tilt toward cursor
+   ------------------------------------------------------------
+   The sheen tells you the cursor is near, the tilt sells it.
+   Capped at a fraction of a degree so it never feels like a
+   gimmick.
+   ----------------------------------------------------------- */
+.card:hover,
+.input-card:hover {
+  transform: translateY(-1.5px);
+}
+.card-kept:hover,
+.card-rejected:hover,
+.card-warning:hover,
+.card-info:hover {
+  transform: translateY(-2px);
+}
+
+/* -----------------------------------------------------------
+   18. Light-theme refinements — keep the polish in both modes
+   ----------------------------------------------------------- */
+html[data-theme="light"] .tab-bar::before {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent-bg) 85%, white 12%),
+    var(--accent-bg));
+  border-color: color-mix(in oklab, var(--accent) 28%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 4px 14px -8px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+html[data-theme="light"] .card.card-kept::before,
+html[data-theme="light"] .card.card-rejected::before,
+html[data-theme="light"] .card.card-warning::before,
+html[data-theme="light"] .card.card-info::before {
+  opacity: 0.08;
+}
+html[data-theme="light"] .card.card-kept:hover::before,
+html[data-theme="light"] .card.card-rejected:hover::before,
+html[data-theme="light"] .card.card-warning:hover::before,
+html[data-theme="light"] .card.card-info:hover::before {
+  opacity: 0.14;
+}
+html[data-theme="light"] *::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--text-muted) 25%, transparent);
+}
+html[data-theme="light"] *::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+/* -----------------------------------------------------------
+   19. ATC family pill, hover ↗ — animates a small lift + glow
+   ----------------------------------------------------------- */
+.atc-family-pill:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 4px 14px -4px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+/* -----------------------------------------------------------
+   20. Mode-1 result area — quiet section dividers
+   ------------------------------------------------------------
+   Between the route-resolution card and the kept-cards block,
+   between kept-cards and the anatomy cards, etc., we draw a
+   tiny gradient hairline so the eye groups them as a sequence
+   rather than a wall of cards.
+   ----------------------------------------------------------- */
+#mode1-result > .card + .ca-card,
+#mode1-result > .ca-card + .card {
+  margin-top: var(--space-5);
+}
+.result-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* -----------------------------------------------------------
+   21. Brand pulse — tiny breath on the brand mark
+   ----------------------------------------------------------- */
+.brand::before {
+  animation: brand-pulse 4.8s ease-in-out infinite;
+}
+@keyframes brand-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--accent-bg); }
+  50%      { box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-bg) 70%, var(--accent) 18%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand::before { animation: none; }
+}
+
+/* -----------------------------------------------------------
+   22. Selection refinement
+   ----------------------------------------------------------- */
+::selection {
+  background: color-mix(in oklab, var(--accent) 45%, transparent);
+  color: var(--text);
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 30%, transparent);
+}
