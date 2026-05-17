@@ -30,6 +30,74 @@ import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-en
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
+// ---------------- combination detection ----------------
+//
+// Combination products (e.g. HCTZ + valsartan = RxCUI 200284) have a real
+// gap in RxNav's public surface: ATCPROD often returns only the combination
+// L4 (C09DA) with no reachable L5, and the classMembers source under
+// relaSource=ATC carries zero members for combination L4s — so the Pass-2
+// MIN-equality promotion in resolveLevel5FromClassMembers can never fire.
+//
+// We do NOT pretend a dedicated L5 exists. Instead, when we detect a
+// combination input, we fetch each ingredient's resolved L5(s) and attach
+// them to the result envelope as `combinationIngredients`. If the engine
+// could only reach an L4 combination class (or nothing), we promote the
+// status to "COMBINATION_NO_DEDICATED_CODE" so Mode 1 can render the L4 +
+// ingredient breakdown together, with honest "no dedicated L5 reachable"
+// messaging. If the engine DID reach a dedicated combination L5 (the
+// J01EE01 sulfa+TMP case, where RxClass exposes MIN concepts under the
+// combination L4), the status stays KEEP and ingredient context is shown
+// as additional detail.
+
+/**
+ * Decide whether an RxCUI looks like a combination product, using three
+ * complementary signals. Multiple INs is the gold standard; the name
+ * heuristic and MIN-ancestor presence are corroborating signals that
+ * cover edge cases (single-IN combinations don't exist in well-formed
+ * RxNorm, so this is belt-and-suspenders).
+ */
+function looksLikeCombination({ inIngredientCount, hasMinAncestor, name }) {
+  if (inIngredientCount >= 2) return true;
+  const n = String(name || "");
+  if (/\s\/\s/.test(n)) return true;
+  if (/\sand\s/i.test(n)) return true;
+  if (/\d+\s*MG.*\d+\s*MG/i.test(n)) return true;
+  if (hasMinAncestor && inIngredientCount >= 1) return true;
+  return false;
+}
+
+/**
+ * For each IN ingredient, fetch its drug name + raw ATC L5 codes via the
+ * property API (ingredient RxCUIs carry their canonical L5 ATCs there).
+ * When a route is known and non-trivial, the L5 list is filtered by the
+ * existing route matrix so we don't surface a topical ATC under an oral
+ * combination, etc. The full unfiltered list is also returned for the
+ * row-expand audit view.
+ */
+async function fetchIngredientResolutions(ingredientIds, route) {
+  if (!Array.isArray(ingredientIds) || ingredientIds.length === 0) return [];
+  return Promise.all(ingredientIds.map(async (inId) => {
+    const [iProps, iAtcs] = await Promise.all([
+      getProperties(inId).catch(() => null),
+      getAtcPropertyValues(inId).catch(() => []),
+    ]);
+    const ingredientName = (iProps && iProps.name) || "";
+    const allL5 = (iAtcs || [])
+      .filter(c => (c || "").length === 7)
+      .map(code => ({ code, name: ingredientName }));
+    const routeFiltered = (route && route !== "unknown")
+      ? filterAtcByRoute(allL5, route)
+      : allL5;
+    return {
+      rxcui: String(inId),
+      name: ingredientName,
+      tty: (iProps && iProps.tty) || "",
+      codes: routeFiltered,
+      allCodes: allL5,
+    };
+  }));
+}
+
 /**
  * Given (input RXCUI, list of Level 4 ATC class IDs), promote to Level 5 by
  * walking ATC class members and matching against the input's ingredient
@@ -220,18 +288,66 @@ export async function convertRxcuiToAtc(rxcui) {
     }
 
     // Fire all data sources in parallel; per-endpoint failures degrade
-    // gracefully (one tier failing doesn't kill the resolution).
-    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes] = await Promise.all([
+    // gracefully (one tier failing doesn't kill the resolution). We also
+    // fetch the IN-ingredient list in this same parallel wave — both the
+    // strategy chain (downstream) and the combination-detection layer
+    // (post-strategy) consume it, so kicking it off here saves a round
+    // trip when the input turns out to be a combo.
+    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes, ingredientIds] = await Promise.all([
       getAtcprodClasses(rxcui).catch(() => []),
       getDfgs(rxcui).catch(() => []),
       getIngredientAtcClasses(rxcui).catch(() => []),
       getAtcPropertyValues(rxcui).catch(() => []),
+      getIngredientRxcuis(rxcui).catch(() => [String(rxcui)]),
     ]);
 
     // Resolve route once, used by Strategy 2/3 AND by Strategy 1's
     // route-override detection (we want to flag when ATCPROD keeps a
     // code that our matrix would have rejected).
     const route = resolveRoute(dfgNames);
+
+    // ============================================================
+    //  Combination detection — fires in parallel with strategies
+    // ============================================================
+    // True INs only — getIngredientRxcuis includes the input itself.
+    const inputId = String(rxcui);
+    const trueIns = ingredientIds.filter(id => id !== inputId);
+    const isCombination = looksLikeCombination({
+      inIngredientCount: trueIns.length,
+      hasMinAncestor: false, // signal not yet probed; trueIns >= 2 is sufficient
+      name: (props && props.name) || "",
+    });
+    // Kick off ingredient resolutions in parallel with the strategy chain.
+    // If isCombination is false this becomes a no-op promise (cheap).
+    const combinationIngredientsPromise = isCombination
+      ? fetchIngredientResolutions(trueIns, route)
+      : Promise.resolve([]);
+
+    /**
+     * Apply combination context to a strategy result. Three rules:
+     *   - Non-combination input → return result unchanged.
+     *   - Combination input, result has a Level-5 code → KEEP, attach ingredients.
+     *   - Combination input, result is L4-only or NO_ATC → upgrade status to
+     *     COMBINATION_NO_DEDICATED_CODE, attach ingredients.
+     * Ingredient resolutions are awaited here (the promise was kicked off
+     * up top so this almost never blocks).
+     */
+    const withCombination = async (result) => {
+      if (!isCombination) return result;
+      const combinationIngredients = await combinationIngredientsPromise.catch(() => []);
+      const codes = Array.isArray(result.codes) ? result.codes : [];
+      const hasL5 = codes.some(c => (c.code || "").length === 7);
+      const hasL4 = codes.some(c => (c.code || "").length === 5);
+      let nextStatus = result.status;
+      if (result.status === "NO_ATC" || (result.status === "KEEP" && hasL4 && !hasL5)) {
+        nextStatus = "COMBINATION_NO_DEDICATED_CODE";
+      }
+      return {
+        ...result,
+        status: nextStatus,
+        combinationIngredients,
+      };
+    };
 
     // Single source of truth for the route filter's rejection list.
     // After the engine produces a result, finalize() enriches it with
@@ -284,12 +400,12 @@ export async function convertRxcuiToAtc(rxcui) {
       const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
       if (level4Ids.length > 0) {
         const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-        if (level5 && level5.length > 0) return finalize(buildAtcprodKeep(level5, route));
+        if (level5 && level5.length > 0) return withCombination(finalize(buildAtcprodKeep(level5, route)));
       }
 
       // Direct Level 5 codes from ATCPROD (rare but possible).
       const level5Direct = uniqueClasses.filter(c => c.code.length === 7);
-      if (level5Direct.length > 0) return finalize(buildAtcprodKeep(level5Direct, route));
+      if (level5Direct.length > 0) return withCombination(finalize(buildAtcprodKeep(level5Direct, route)));
 
       // Save Level 4 codes as fallback AND as a prefix whitelist for
       // downstream tiers. This prevents combo drugs (e.g. R03AL) from
@@ -322,7 +438,7 @@ export async function convertRxcuiToAtc(rxcui) {
         atcprodPrefixFilter(atcList.filter(item => item.code.length === 7)),
         route,
       );
-      if (level5.length > 0) return finalize({ status: "KEEP", codes: level5 });
+      if (level5.length > 0) return withCombination(finalize({ status: "KEEP", codes: level5 }));
 
       if (!atcprodFallback) {
         const level4Ids = filterAtcByRoute(
@@ -332,7 +448,7 @@ export async function convertRxcuiToAtc(rxcui) {
         console.log("[RxCUI→ATC] Level 4 codes after route filter:", level4Ids);
         if (level4Ids.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-          if (promoted) return finalize({ status: "KEEP", codes: promoted });
+          if (promoted) return withCombination(finalize({ status: "KEEP", codes: promoted }));
         }
       }
     }
@@ -347,7 +463,7 @@ export async function convertRxcuiToAtc(rxcui) {
       );
       if (level5Codes.length > 0) {
         const named = await attachAtcNames(level5Codes);
-        return finalize({ status: "KEEP", codes: named });
+        return withCombination(finalize({ status: "KEEP", codes: named }));
       }
 
       if (!atcprodFallback) {
@@ -357,7 +473,7 @@ export async function convertRxcuiToAtc(rxcui) {
         );
         if (level4Codes.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Codes);
-          if (promoted) return finalize({ status: "KEEP", codes: promoted });
+          if (promoted) return withCombination(finalize({ status: "KEEP", codes: promoted }));
         }
       }
     }
@@ -365,9 +481,9 @@ export async function convertRxcuiToAtc(rxcui) {
     // Last resort, return ATCPROD's Level 4 codes if nothing else resolved.
     if (atcprodFallback) {
       console.log("[RxCUI→ATC] Returning ATCPROD Level 4 fallback:", atcprodFallback.map(c => c.code).join(", "));
-      return finalize({ status: "KEEP", codes: atcprodFallback });
+      return withCombination(finalize({ status: "KEEP", codes: atcprodFallback }));
     }
-    return { status: "NO_ATC", rejectedL4: [] };
+    return withCombination({ status: "NO_ATC", rejectedL4: [] });
   } catch (e) {
     console.error("[RxCUI→ATC] Error:", e);
     throw e;

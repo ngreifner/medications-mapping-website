@@ -44,6 +44,30 @@ export const explainNoRxcuiMapped = (ndc) =>
 export const explainRxcuiNotFound = (rxcui) =>
   `RXCUI ${rxcui} was not found in RxNav. It may be retired, from a different code system, or a typo.`;
 
+// ---------------- combination products (Mode 1) ----------------
+
+/**
+ * Suggestion line shown below the combination banner. Points the user at the
+ * Mode 3 L4 expansion as a way to inspect the L5 cousins of the queried L4.
+ */
+export const suggestCombinationFamilyExpansion = (l4Code) =>
+  l4Code
+    ? `To explore the WHO-defined Level 5 cousins of ${l4Code} (some of which may have dedicated codes for specific combinations like this one), open the ATC → RxCUI tab and look up ${l4Code} — the family expansion will list every Level 5 child this L4 has in RxClass.`
+    : "";
+
+/**
+ * Per-L4-combination-card note. Reads like a footnote on the L4 card.
+ */
+export const noteCombinationL4Reachable = (l4Code) =>
+  `${l4Code} is the Level 4 combination class for this drug. RxClass's classMembers source does not expose a Level 5 attribution for this product, so no dedicated L5 was reachable. This is faithful reporting, not a degraded result.`;
+
+/**
+ * Note on the standalone L4 case (non-combination drug whose engine could
+ * only reach an L4 code — rare, but possible for newer drugs).
+ */
+export const noteL4OnlyReachable = (l4Code) =>
+  `${l4Code} is a Level 4 ATC subgroup. No Level 5 child was reachable via the route-aware resolver for this drug.`;
+
 // Clinical context keyed by `${route}_${ATC anatomical letter + first 2 digits}`.
 // Looked up after a rejection to add a plain-English clinical reason.
 // Optional; falls back to no clinical line if no match.

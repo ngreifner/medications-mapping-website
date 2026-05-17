@@ -118,6 +118,106 @@ export function rejectedAtcCard({ atc, name, reason, clinical }) {
   ]);
 }
 
+// ---------------- combination renders (Mode 1) ----------------
+//
+// Combination products (e.g. RxCUI 200284, HCTZ + valsartan) trigger three
+// new render surfaces, all wired up by mode1-single-forward.js when the
+// resolver returns either status === "COMBINATION_NO_DEDICATED_CODE" OR
+// status === "KEEP" with a non-empty combinationIngredients envelope:
+//
+//   combinationBanner          — explains the situation up top
+//   combinationClassCard       — renders the L4 combination class (e.g. C09DA)
+//                                with a note that no dedicated L5 was reachable
+//   ingredientAtcBlock         — one block per IN ingredient showing its L5(s)
+
+/**
+ * Banner that frames the rest of the result as a combination product.
+ * Two tones: "no-dedicated" when the resolver couldn't reach any L5,
+ * "partial" when an L5 was reached for one ingredient but not all.
+ */
+export function combinationBanner({
+  tone = "no-dedicated",     // "no-dedicated" | "partial"
+  ingredientCount = 0,
+  l4Code = null,
+  l4Name = "",
+  suggestion = null,
+} = {}) {
+  const headline = tone === "no-dedicated"
+    ? "Combination drug, no dedicated Level 5 ATC reachable"
+    : "Combination drug, partial Level 5 coverage";
+  const body = tone === "no-dedicated"
+    ? (l4Code
+      ? `This product combines ${ingredientCount} ingredients. WHO ATC defines a dedicated Level 5 code for this combination type, but it is not currently exposed through RxNav's classMembers. The combination class ${l4Code}${l4Name ? ` (${l4Name})` : ""} is the best reachable answer. Each ingredient's resolved Level 5 is shown below for context.`
+      : `This product combines ${ingredientCount} ingredients. No dedicated combination ATC was reachable through any RxNav source. Each ingredient's resolved Level 5 ATC is shown below.`)
+    : `This product combines ${ingredientCount} ingredients. The Level 5 code below covers one of the constituent ingredients (per RxNorm's curated ATCPROD mapping); the other ingredients' Level 5 ATCs are shown below for full context.`;
+  const action = suggestion
+    ? el("p", { class: "reason" }, suggestion)
+    : null;
+  return el("section", {
+    class: "card card-warning card-combination-banner",
+    role: "note",
+    "aria-label": "Combination drug summary",
+  }, [
+    el("p", { class: "card-title" }, "Combination"),
+    el("h3", { class: "drug-name", style: "font-size:18px" }, headline),
+    el("p", { class: "card-body" }, body),
+    action,
+  ].filter(Boolean));
+}
+
+/**
+ * Renders an L4 combination class (e.g. C09DA — "Angiotensin II receptor
+ * blockers (ARBs) and diuretics") with explicit messaging that no dedicated
+ * Level 5 was reachable. Visually distinct from the L5 kept card so the user
+ * doesn't conflate the two: card-info variant + a "Level 4" badge on the title.
+ */
+export function combinationClassCard({ atc, name, note = null }) {
+  return el("section", {
+    class: "card card-info card-combination-l4",
+    "aria-label": `Combination class ${atc}`,
+  }, [
+    el("div", { class: "card-header-row" }, [
+      el("p", { class: "card-title" }, "Combination class · L4"),
+      familyPill(atc, { variant: "neutral" }),
+    ]),
+    el("p", { class: "atc-code" }, atc),
+    name ? el("p", { class: "atc-name" }, name) : null,
+    note ? el("p", { class: "reason" }, note) : null,
+  ]);
+}
+
+/**
+ * One block per IN ingredient. Surfaces the route-filtered L5(s) for that
+ * ingredient. When `atcs` is empty, renders a soft "no ATC mapped at the
+ * ingredient level" line — that's honest reporting, not a failure state.
+ */
+export function ingredientAtcBlock({ ingredientName, ingredientRxcui, tty = "IN", atcs = [] }) {
+  const header = el("div", { class: "ingredient-header" }, [
+    el("span", { class: "ingredient-name" }, ingredientName || "(unnamed ingredient)"),
+    el("span", { class: "ingredient-sep", "aria-hidden": "true" }, "·"),
+    el("span", { class: "ingredient-tty" }, tty),
+    el("span", { class: "ingredient-sep", "aria-hidden": "true" }, "·"),
+    el("span", { class: "ingredient-rxcui code" }, `RxCUI ${ingredientRxcui}`),
+  ]);
+  const codeRows = (atcs || []).map(a => el("div", { class: "ingredient-atc-row" }, [
+    familyPill(a.code, { variant: "neutral" }),
+    el("span", { class: "atc-code code" }, a.code),
+    el("span", { class: "ingredient-sep", "aria-hidden": "true" }, "·"),
+    el("span", { class: "atc-name" }, a.name || ingredientName || ""),
+  ]));
+  const empty = atcs.length === 0
+    ? el("p", { class: "card-body" }, "No Level 5 ATC reachable for this ingredient at the property level.")
+    : null;
+  return el("section", {
+    class: "card card-ingredient",
+    "aria-label": `Ingredient ${ingredientName}`,
+  }, [
+    header,
+    empty,
+    codeRows.length ? el("div", { class: "ingredient-atc-list" }, codeRows) : null,
+  ].filter(Boolean));
+}
+
 // ---------------- ATC L4 family card (Mode 3 L4 expansion) ----------------
 //
 // Renders the L4 parent + a list of L5 cousins (each with a Query button),

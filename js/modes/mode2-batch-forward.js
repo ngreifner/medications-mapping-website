@@ -389,6 +389,9 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
   // Route resolution + rejected-L4 count (the table shows the count of
   // ingredient-level Level 4 ATC subgroups removed by the route filter;
   // the row-expand renders the full Mode 1 view with L4→L5 promotion).
+  // COMBINATION_NO_DEDICATED_CODE behaves like KEEP for route purposes:
+  // the input is a real product with a real route (typically oral), and
+  // the engine just couldn't reach a dedicated L5.
   const route = result.status === "INGREDIENT_LEVEL"
     ? ""
     : resolveRoute(dfgs);
@@ -431,6 +434,12 @@ async function processOne({ rxcui, rowApi, record, runId, isStillActive }) {
     } else {
       status = "UNCHANGED";
     }
+  } else if (result.status === "COMBINATION_NO_DEDICATED_CODE") {
+    // Combination product where the engine could not reach a dedicated L5.
+    // Classified as NEEDS_REVIEW for the batch view; row-expand renders the
+    // full Mode 1 combination view (L4 + per-ingredient breakdown).
+    status = "NEEDS_REVIEW";
+    record.reason = "Combination drug, no dedicated Level 5 reachable through RxNav";
   } else {
     status = "NEEDS_REVIEW";
     record.reason = "No ATC mapping available";

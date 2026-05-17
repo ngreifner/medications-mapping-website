@@ -251,15 +251,39 @@ For combos, the only behavior change is *adding* matches that previously failed 
 
 **Why this matters:** Earlier iterations tried to pick a "best route" from the ingredient's DFG list. That's meaningless — the DFG list at ingredient level represents all routes the ingredient is formulated in, not "this product's route." Picking one arbitrarily produces wrong results (aminophylline being classified as rectal because Rectal Product was highest in priority order).
 
+### Combination detection (v8)
+**Runs in parallel with the three strategies.** After the input's TTY guard passes (i.e., not IN/MIN/PIN), the resolver fetches the input's IN ingredients via `getIngredientRxcuis` in the same parallel wave as ATCPROD/DFG/ingredient-classes/property fetches. The result is fed to `looksLikeCombination({ inIngredientCount, hasMinAncestor, name })` which fires on **any** of these signals:
+
+- two or more IN ingredients (the gold-standard signal — combinations always have ≥2 INs)
+- `/ ` or ` and ` in the drug name
+- a `\d+\s*MG.*\d+\s*MG` pattern in the name (catches strength-pairs like "12.5 MG / 80 MG")
+
+If combination is detected, `fetchIngredientResolutions(inIds, route)` runs in parallel with the strategy chain and produces a `combinationIngredients` array — one entry per IN ingredient — each carrying:
+- `rxcui`, `name`, `tty`
+- `codes`: route-filtered Level 5 ATCs reachable via `getAtcPropertyValues(ingredientRxcui)`
+- `allCodes`: unfiltered list (for audit / row-expand contexts)
+
+The array is attached to whatever the strategy chain returns. The L5 route filter applied per ingredient uses the SCD's resolved route — so a HCTZ ingredient under an oral product surfaces C03AA03 only, not topical D codes.
+
 ### Verdict states
-- `KEEP_L5` — Level 5 code retrieved and passes route filter
-- `KEEP_L4_FALLBACK` — Level 4 code retrieved (last-resort fallback after all Level 5 attempts failed)
-- `INGREDIENT_LEVEL` — input was TTY=IN/MIN/PIN; all ingredient ATCs returned without route filtering
-- `NO_ATC` — all strategies exhausted, no ATC available
+- `KEEP` — at least one Level 5 (or, as last resort, Level 4) code reachable; route filter applied. The `codes` array may contain L5 codes (preferred), L4 codes (when L4→L5 promotion failed), or a mix.
+- `INGREDIENT_LEVEL` — input was TTY=IN/MIN/PIN; all ingredient ATCs returned without route filtering.
+- `COMBINATION_NO_DEDICATED_CODE` — input was detected as a combination AND the engine could only reach an L4 combination class (e.g., C09DA for HCTZ+valsartan) OR nothing. The L4 code (when present) sits in `codes`, and `combinationIngredients` carries the per-ingredient L5 breakdown. This is an **expected outcome**, not a failure — it reflects RxClass's classMembers gap for combination L4s (the `relaSource=ATC` source returns zero members for combination L4s, so the existing Pass-2 MIN-equality cannot fire).
+- `NO_ATC` — all strategies exhausted, no ATC available, and combination detection didn't fire either.
+
+### Status decision priority
+Inside the resolver, the strategy chain runs first, then `withCombination(result)` post-processes:
+1. If input is not a combination → status unchanged.
+2. If input is a combination AND result has any L5 in `codes` → status stays `KEEP` (the engine reached a dedicated combination L5 like J01EE01, OR ATCPROD's L4→L5 promotion succeeded for one ingredient). `combinationIngredients` is attached for context.
+3. If input is a combination AND result has only L4 codes (or `NO_ATC`) → status upgrades to `COMBINATION_NO_DEDICATED_CODE`.
+
+The single check `looksLikeCombination` handles both same-family and cross-family combinations uniformly — no separate multi-family safety check.
 
 ### Display rules
-- **Level 4 codes never appear in result cards directly.** The orchestrator promotes them to Level 5 via `resolveLevel5FromClassMembers`. The `KEEP_L4_FALLBACK` state is shown only when all Level 5 attempts failed, with a note explaining the limitation.
+- **Level 4 codes ARE rendered in result cards** when the engine couldn't reach L5. The L4 surfaces in a `combinationClassCard` (the `card-info` variant with a "Combination class · L4" title) carrying an explicit note: "RxClass's classMembers source does not expose a Level 5 attribution for this product, so no dedicated L5 was reachable. This is faithful reporting, not a degraded result." Previously L4 codes were silently dropped, which produced empty Mode 1 results for combination products like RxCUI 200284 — that bug is fixed in v8.
+- **Combination context is rendered as ingredient blocks** (`ingredientAtcBlock`) after the kept cards. One block per IN, each showing the route-filtered Level 5 ATC(s) reachable through the property API.
 - **Hierarchy ancestors never appear in rejected cards.** If R01AD08 is kept, R01AD (its Level 4 parent) is suppressed from the rejected list. Filtering happens in `mode1-single-forward.js` before rendering.
+- **Mode 2 maps `COMBINATION_NO_DEDICATED_CODE` to `NEEDS_REVIEW`** with the reason "Combination drug, no dedicated Level 5 reachable through RxNav". Row-expand renders the full Mode 1 combination view (banner + L4 card + ingredient blocks).
 
 ---
 
@@ -526,6 +550,17 @@ When Modes 4/5 are built: the active/obsolete distinction is RxNorm's view as of
 - Other ingredients: metformin IN → A10BA02, aminophylline IN → R03DA05
 - RXCUI not found: 999999999 → error card
 - Invalid input: "asdf" → format-validation error card before any fetch fires
+
+### Combination scenarios (v8 — verified against live RxNav)
+- Same-family combination, no dedicated L5 reachable: **RXCUI 200284** (HCTZ 12.5 / valsartan 80 oral) → status `COMBINATION_NO_DEDICATED_CODE`. Codes: `[C09DA]` (the L4 combination class returned by ATCPROD). Combination ingredients: HCTZ → C03AA03, valsartan → C09CA03. The dedicated L5 (C09DA01 in WHO ATC) is **not reachable** through RxNav's classMembers source for C09DA — this is a faithful reflection of public infrastructure, not a bug.
+- Three-ingredient combination: **RXCUI 999967** (amlodipine + HCTZ + olmesartan oral) → status `COMBINATION_NO_DEDICATED_CODE`. Codes: `[C09DX]` (the "ARBs, other combinations" L4 — appropriate for tri-component ARB combos). Combination ingredients: amlodipine → C08CA01, olmesartan → (no L5 reachable via property API — surfaced as empty block), HCTZ → C03AA03.
+- Cross-family combination with one ingredient mapped: **RXCUI 901814** (Advil PM = diphenhydramine + ibuprofen oral capsule) → status `KEEP`. Codes: `[M01AE01]` (ATCPROD's Pass-1 MIN-equality match resolved ibuprofen to M01AE01). Combination ingredients: diphenhydramine → R06AA02 (route-filtered), ibuprofen → C01EB16, M01AE01, R02AX02 (route-filtered, multiple L5s — ibuprofen has multi-family WHO ATC presence). Mode 1 renders a "partial coverage" combination banner.
+- Retired/invalid: **RXCUI 859038** → `props.found = false` → "RXCUI not found" error card (existing behavior, untouched).
+
+### Regression baseline (all unchanged after v8)
+- RXCUI 1797907 (fluticasone nasal) → `KEEP`, codes `[R01AD08]`, no combination context.
+- RXCUI 617310 (atorvastatin oral) → `KEEP`, codes `[C10AA05]`, no combination context.
+- RXCUI 2107616 (Inbrija inhaled levodopa) → `KEEP`, codes `[N04BA01]`, no combination context.
 
 ---
 

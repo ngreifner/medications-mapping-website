@@ -24,6 +24,9 @@ import {
   skeletonCard,
   codeDetectionBanner,
   actionBarCard,
+  combinationBanner,
+  combinationClassCard,
+  ingredientAtcBlock,
 } from "../ui-components.js";
 import {
   explainWrongRouteAllow,
@@ -31,6 +34,9 @@ import {
   explainRxcuiNotFound,
   explainIngredientLevel,
   getClinicalContext,
+  suggestCombinationFamilyExpansion,
+  noteCombinationL4Reachable,
+  noteL4OnlyReachable,
 } from "../explanations.js";
 
 const MODE_LABEL = {
@@ -172,12 +178,15 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     return;
   }
 
-  // 1. Drug identity. Pass the first resolvable L5 ATC so the card can
+  // 1. Drug identity. Pass the first resolvable ATC so the card can
   // surface the anatomical family pill (e.g. "🫁 Respiratory · R") right
   // next to the RxCUI — the user sees the family before scrolling.
-  const primaryAtc = (result && Array.isArray(result.codes))
-    ? (result.codes.find(c => (c.code || "").length === 7)?.code || null)
-    : null;
+  // Preference order: L5 from engine codes → L4 from engine codes → first
+  // ingredient's L5 (so combination products like 200284 still get a pill).
+  const primaryAtc = (result && Array.isArray(result.codes) && result.codes.find(c => (c.code || "").length === 7)?.code)
+    || (result && Array.isArray(result.codes) && result.codes.find(c => (c.code || "").length === 5)?.code)
+    || (result && Array.isArray(result.combinationIngredients) && result.combinationIngredients.find(ing => (ing.codes || []).length > 0)?.codes?.[0]?.code)
+    || null;
   resultEl.appendChild(drugIdentityCard({
     rxcui: props.rxcui,
     name: props.name,
@@ -229,15 +238,34 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     chosenDfg,
   }));
 
-  // 4. Kept ATCs, only Level 5 codes (length 7) are user-facing.
-  const keptCodes = (result && result.status === "KEEP" && Array.isArray(result.codes))
-    ? result.codes.filter(c => (c.code || "").length === 7)
+  // 4. Kept ATCs.
+  //
+  // Two channels feed the kept list:
+  //   - L5 codes (length 7) — render as the standard keptAtcCard
+  //   - L4 codes (length 5) — render as a combinationClassCard (L4 fallback
+  //     case, including the COMBINATION_NO_DEDICATED_CODE path). The L4
+  //     branch is intentional, not a degraded state: it's surfaced because
+  //     L5 was not reachable through any RxNav source, and the L4 is the
+  //     most specific reachable answer.
+  const codesEnvelope = (result && (result.status === "KEEP" || result.status === "COMBINATION_NO_DEDICATED_CODE") && Array.isArray(result.codes))
+    ? result.codes
+    : [];
+  const keptCodes = codesEnvelope.filter(c => (c.code || "").length === 7);
+  const keptL4Codes = codesEnvelope.filter(c => (c.code || "").length === 5);
+
+  const isCombination = result && (
+    result.status === "COMBINATION_NO_DEDICATED_CODE" ||
+    (Array.isArray(result.combinationIngredients) && result.combinationIngredients.length > 0)
+  );
+  const combinationIngredients = (result && Array.isArray(result.combinationIngredients))
+    ? result.combinationIngredients
     : [];
 
   // 5. Rejected ATCs, read the deduped L4 list from the engine (single
   // source of truth; same array Mode 2 counts for its "removed" column).
   // Then promote each to its Level 5 equivalent for the same ingredient.
-  // L4 codes never appear in the UI.
+  // L4 codes never appear in the UI as REJECTED — only on the kept side
+  // when no L5 was reachable (see above).
   const rejectedL4 = Array.isArray(result && result.rejectedL4) ? result.rejectedL4 : [];
   const rejectedRows = [];
   if (rejectedL4.length > 0) {
@@ -270,25 +298,69 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
     for (const o of result.routeOverride.codes) overrideByCode.set(o.code, o);
   }
 
-  // Render kept cards (or empty state)
-  if (keptCodes.length === 0) {
+  // Combination banner — when the resolver flagged the input as a combo,
+  // render the banner once, BEFORE kept cards. Tone depends on whether the
+  // engine could reach any L5 at all.
+  if (isCombination) {
+    const primaryL4 = keptL4Codes[0] || null;
+    const bannerTone = (result.status === "COMBINATION_NO_DEDICATED_CODE") ? "no-dedicated" : "partial";
+    resultEl.appendChild(combinationBanner({
+      tone: bannerTone,
+      ingredientCount: combinationIngredients.length,
+      l4Code: primaryL4 ? primaryL4.code : null,
+      l4Name: primaryL4 ? primaryL4.name : "",
+      suggestion: primaryL4 ? suggestCombinationFamilyExpansion(primaryL4.code) : null,
+    }));
+  }
+
+  // Render kept L5 cards (the standard happy path)
+  for (const k of keptCodes) {
+    const ov = overrideByCode.get(k.code);
+    resultEl.appendChild(keptAtcCard({
+      atc: k.code,
+      name: k.name,
+      reason: keptReasonFor(k.code, route),
+      overrideNote: ov ? routeOverrideNote(k.code, route) : null,
+    }));
+    appendAnatomyCard(resultEl, k.code, k.name);
+  }
+
+  // Render L4-only kept cards. For combinations, the note explains the
+  // RxClass classMembers limitation; for non-combinations it's a generic
+  // L4-only note.
+  for (const k of keptL4Codes) {
+    resultEl.appendChild(combinationClassCard({
+      atc: k.code,
+      name: k.name,
+      note: isCombination ? noteCombinationL4Reachable(k.code) : noteL4OnlyReachable(k.code),
+    }));
+  }
+
+  // Ingredient breakdown — only when combination context is present. Always
+  // rendered AFTER the kept cards so the user reads top-down: combination
+  // banner → primary kept code(s) → per-ingredient detail.
+  for (const ing of combinationIngredients) {
+    resultEl.appendChild(ingredientAtcBlock({
+      ingredientName: ing.name,
+      ingredientRxcui: ing.rxcui,
+      tty: ing.tty || "IN",
+      atcs: Array.isArray(ing.codes) ? ing.codes : [],
+    }));
+  }
+
+  // Truly empty result — no L5, no L4, no combination signal. Only happens
+  // for drugs that have a valid RxCUI but are entirely outside WHO ATC and
+  // aren't combinations either. When combination context fired, the banner
+  // already explains the situation, so we don't add a redundant info card.
+  const renderedAnyAtc = keptCodes.length + keptL4Codes.length + combinationIngredients.reduce((a, b) => a + ((b.codes || []).length), 0) > 0;
+  if (!renderedAnyAtc && !isCombination) {
     resultEl.appendChild(errorCard({
       title: `RXCUI ${trimmed} found but no ATC mapped`,
       body: "Common reasons: US-only drugs not in WHO's ATC index, recently-approved or investigational drugs, or compounded formulations.",
       variant: "info",
     }));
-  } else {
-    for (const k of keptCodes) {
-      const ov = overrideByCode.get(k.code);
-      resultEl.appendChild(keptAtcCard({
-        atc: k.code,
-        name: k.name,
-        reason: keptReasonFor(k.code, route),
-        overrideNote: ov ? routeOverrideNote(k.code, route) : null,
-      }));
-      appendAnatomyCard(resultEl, k.code, k.name);
-    }
   }
+
   for (const r of rejectedRows) {
     resultEl.appendChild(rejectedAtcCard(r));
   }
@@ -297,14 +369,23 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
   resultEl.appendChild(actionBarCard({
     onCopyJson: () => copyResultAsJson({
       rxcui: trimmed, props, route, dfgs,
+      status: result && result.status,
       kept: keptCodes,
+      keptL4: keptL4Codes,
+      combinationIngredients,
       rejected: rejectedRows,
       routeOverride: result && result.routeOverride ? result.routeOverride : null,
     }),
     onLookupAnother,
   }));
 
-  setPageTitle(trimmed, keptCodes[0]?.code);
+  // Page title prefers an L5 kept code; falls back to L4, then to any
+  // ingredient L5 — so combination products still get an informative title.
+  const titleAtc = keptCodes[0]?.code
+    || keptL4Codes[0]?.code
+    || combinationIngredients.find(ing => (ing.codes || []).length > 0)?.codes?.[0]?.code
+    || null;
+  setPageTitle(trimmed, titleAtc);
 }
 
 // ATC Level 1 letter → human-readable anatomical class for the override note.
