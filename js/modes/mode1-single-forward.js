@@ -321,16 +321,22 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
   // Render kept L5 cards (the standard happy path)
   for (const k of keptCodes) {
     const ov = overrideByCode.get(k.code);
-    // Phase-2B provenance: when the kept L5 came from the MIN ancestor's
-    // RxNorm property API (Epclusa → J05AP55), replace the standard route-
+    // Provenance: when the kept L5 came from a non-routine path (Phase 2B
+    // MIN-property bypass or Phase 2C curated catalog), replace the route-
     // match reason with a clear explanation of where the code came from.
     // Reason: the route filter doesn't really "match" combination L5s the
     // way it does for monotherapy L5s; the honest sentence is about the
     // resolution path, not the prefix.
     const minProv = result && result.minProvenance;
-    const reason = (minProv && minProv.code === k.code)
-      ? `Reached via the MIN concept's RxNorm property API (RxCUI ${minProv.minRxcui}). The dedicated combination Level 5 ${k.code} is not exposed through RxNav's classMembers or ATCPROD sources, but the MIN concept carries it directly.`
-      : keptReasonFor(k.code, route);
+    const curatedProv = result && result.curatedProvenance;
+    let reason;
+    if (minProv && minProv.code === k.code) {
+      reason = `Reached via the MIN concept's RxNorm property API (RxCUI ${minProv.minRxcui}). The dedicated combination Level 5 ${k.code} is not exposed through RxNav's classMembers or ATCPROD sources, but the MIN concept carries it directly.`;
+    } else if (curatedProv && curatedProv.code === k.code) {
+      reason = `Reached via the Navina-curated combination catalog (js/atc-combinations-curated.js). WHO ATC defines ${k.code} ("${curatedProv.name}") for this exact ingredient set, but no RxNav surface exposes it — neither classMembers, byRxcui, property.json, classTree, nor byId. The curated catalog is hand-authored to fill this specific gap.`;
+    } else {
+      reason = keptReasonFor(k.code, route);
+    }
     resultEl.appendChild(keptAtcCard({
       atc: k.code,
       name: k.name,

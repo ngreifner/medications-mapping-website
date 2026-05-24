@@ -29,6 +29,7 @@ import {
   getAtcClassName,
 } from "./rxnav-client.js";
 import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-engine.js";
+import { findCuratedCombination } from "./atc-combinations-curated.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -402,27 +403,34 @@ export async function convertRxcuiToAtc(rxcui) {
       : Promise.resolve(null);
 
     /**
-     * Apply combination context to a strategy result. Five rules, evaluated
+     * Apply combination context to a strategy result. Six rules, evaluated
      * in order. The MIN-property bypass is FIRST because it's the most
      * authoritative source of a dedicated combination L5 — when present,
-     * it wins over any Strategy 1/2/3 result for the combination case.
+     * it wins over any Strategy 1/2/3 result. The curated-catalog lookup
+     * is SECOND because it covers the L5s WHO defines but RxNav doesn't
+     * expose anywhere (C09DA03 for HCTZ+valsartan, N04BA02 for Sinemet,
+     * etc.) — without it those products would land in L4-only escalation.
      *
      *   1. Non-combination input → return result unchanged.
      *   2. Combination input + MIN-ancestor's property API has an L5
      *      (e.g. Epclusa MIN 1799211 → J05AP55) → KEEP with that L5,
-     *      replace the strategy chain's codes. Provenance carried via
-     *      `minProvenance: true` on the result envelope.
-     *   3. Combination input, result is L4-only or NO_ATC → upgrade to
+     *      replace strategy chain's codes. Provenance: `minProvenance`.
+     *   3. Combination input + Navina-curated catalog has a match for
+     *      the input's ingredient set (e.g. {hydrochlorothiazide,
+     *      valsartan} → C09DA03) → KEEP with the curated L5. Provenance:
+     *      `curatedProvenance`. Catalog lives in
+     *      js/atc-combinations-curated.js — hand-authored, no upstream
+     *      license dependency.
+     *   4. Combination input, result is L4-only or NO_ATC → escalate to
      *      COMBINATION_NO_DEDICATED_CODE, attach ingredients.
-     *   4. Combination input, result has a Level-5 code AND every kept L5
+     *   5. Combination input, result has a Level-5 code AND every kept L5
      *      belongs to one ingredient's own ATC list → escalate to
      *      COMBINATION_NO_DEDICATED_CODE, swap to L4 parent(s).
-     *   5. Combination input, result has a true combination L5 (e.g.
-     *      J01EE01 sulfa+TMP, A10BD19 linagliptin+empagliflozin via
-     *      Pass-2 MIN-equality) → stay KEEP, attach ingredients.
+     *   6. Combination input, result has a true combination L5 reached
+     *      via Pass-2 MIN-equality → stay KEEP, attach ingredients.
      *
-     * Ingredient resolutions + MIN-property lookup are awaited here (both
-     * promises were kicked off up top so this almost never blocks).
+     * Promises kicked off up top are awaited inline; cheap when isCombination
+     * is false (resolved to [] / null) and almost-free when true.
      */
     const withCombination = async (result) => {
       if (!isCombination) return result;
@@ -442,6 +450,30 @@ export async function convertRxcuiToAtc(rxcui) {
           codes: [{ code: minAncestorL5.code, name: minAncestorL5.name }],
           combinationIngredients,
           minProvenance: { minRxcui: minAncestorL5.minRxcui, code: minAncestorL5.code },
+        };
+      }
+
+      // Rule 3: Navina-curated combination catalog (Phase 2C). When no
+      // RxNav surface carries the dedicated combination L5 (the HCTZ +
+      // valsartan / Sinemet / lisinopril+HCTZ class of cases), fall back
+      // to our hand-curated table. The match is exact ingredient-set
+      // equality on RxNorm IN names — no fuzzy matching, no synonym
+      // tables, no name parsing.
+      const ingredientNames = (combinationIngredients || [])
+        .map(ing => ing.name)
+        .filter(Boolean);
+      const curatedHit = findCuratedCombination(ingredientNames);
+      if (curatedHit) {
+        console.log(
+          `[RxCUI→ATC] Curated-catalog combination match: ` +
+          `{${ingredientNames.map(n => n.toLowerCase()).join(", ")}} → ${curatedHit.l5} (${curatedHit.name})`
+        );
+        return {
+          ...result,
+          status: "KEEP",
+          codes: [{ code: curatedHit.l5, name: curatedHit.name }],
+          combinationIngredients,
+          curatedProvenance: { code: curatedHit.l5, name: curatedHit.name, source: "Navina curated combination catalog" },
         };
       }
 
