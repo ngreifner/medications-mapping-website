@@ -1,0 +1,125 @@
+{
+  "l4_code": "J05AR",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AR&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:37.489Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "J05AR01",
+      "name": "zidovudine and lamivudine"
+    },
+    {
+      "code": "J05AR02",
+      "name": "lamivudine and abacavir"
+    },
+    {
+      "code": "J05AR03",
+      "name": "tenofovir disoproxil and emtricitabine"
+    },
+    {
+      "code": "J05AR04",
+      "name": "zidovudine, lamivudine and abacavir"
+    },
+    {
+      "code": "J05AR05",
+      "name": "zidovudine, lamivudine and nevirapine"
+    },
+    {
+      "code": "J05AR06",
+      "name": "emtricitabine, tenofovir disoproxil and efavirenz"
+    },
+    {
+      "code": "J05AR07",
+      "name": "stavudine, lamivudine and nevirapine"
+    },
+    {
+      "code": "J05AR08",
+      "name": "emtricitabine, tenofovir disoproxil and rilpivirine"
+    },
+    {
+      "code": "J05AR09",
+      "name": "emtricitabine, tenofovir disoproxil, elvitegravir and cobicistat"
+    },
+    {
+      "code": "J05AR10",
+      "name": "lopinavir and ritonavir"
+    },
+    {
+      "code": "J05AR11",
+      "name": "lamivudine, tenofovir disoproxil and efavirenz"
+    },
+    {
+      "code": "J05AR12",
+      "name": "lamivudine and tenofovir disoproxil"
+    },
+    {
+      "code": "J05AR13",
+      "name": "lamivudine, abacavir and dolutegravir"
+    },
+    {
+      "code": "J05AR14",
+      "name": "darunavir and cobicistat"
+    },
+    {
+      "code": "J05AR15",
+      "name": "atazanavir and cobicistat"
+    },
+    {
+      "code": "J05AR16",
+      "name": "lamivudine and raltegravir"
+    },
+    {
+      "code": "J05AR17",
+      "name": "emtricitabine and tenofovir alafenamide"
+    },
+    {
+      "code": "J05AR18",
+      "name": "emtricitabine, tenofovir alafenamide, elvitegravir and cobicistat"
+    },
+    {
+      "code": "J05AR19",
+      "name": "emtricitabine, tenofovir alafenamide and rilpivirine"
+    },
+    {
+      "code": "J05AR20",
+      "name": "emtricitabine, tenofovir alafenamide and bictegravir"
+    },
+    {
+      "code": "J05AR21",
+      "name": "dolutegravir and rilpivirine"
+    },
+    {
+      "code": "J05AR22",
+      "name": "emtricitabine, tenofovir alafenamide, darunavir and cobicistat"
+    },
+    {
+      "code": "J05AR23",
+      "name": "atazanavir and ritonavir"
+    },
+    {
+      "code": "J05AR24",
+      "name": "lamivudine, tenofovir disoproxil and doravirine"
+    },
+    {
+      "code": "J05AR25",
+      "name": "lamivudine and dolutegravir"
+    },
+    {
+      "code": "J05AR26",
+      "name": "darunavir and ritonavir"
+    },
+    {
+      "code": "J05AR27",
+      "name": "lamivudine, tenofovir disoproxil and dolutegravir"
+    },
+    {
+      "code": "J05AR28",
+      "name": "stavudine and lamivudine"
+    },
+    {
+      "code": "J05AR29",
+      "name": "emtricitabine, tenofovir alafenamide and dolutegravir"
+    }
+  ]
+}

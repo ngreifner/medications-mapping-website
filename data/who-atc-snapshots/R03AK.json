@@ -1,0 +1,65 @@
+{
+  "l4_code": "R03AK",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AK&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:36.749Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "R03AK01",
+      "name": "epinephrine and other drugs for obstructive airway diseases"
+    },
+    {
+      "code": "R03AK02",
+      "name": "isoprenaline and other drugs for obstructive airway diseases"
+    },
+    {
+      "code": "R03AK04",
+      "name": "salbutamol and sodium cromoglicate"
+    },
+    {
+      "code": "R03AK05",
+      "name": "reproterol and sodium cromoglicate"
+    },
+    {
+      "code": "R03AK06",
+      "name": "salmeterol and fluticasone"
+    },
+    {
+      "code": "R03AK07",
+      "name": "formoterol and budesonide"
+    },
+    {
+      "code": "R03AK08",
+      "name": "formoterol and beclometasone"
+    },
+    {
+      "code": "R03AK09",
+      "name": "formoterol and mometasone"
+    },
+    {
+      "code": "R03AK10",
+      "name": "vilanterol and fluticasone furoate"
+    },
+    {
+      "code": "R03AK11",
+      "name": "formoterol and fluticasone"
+    },
+    {
+      "code": "R03AK12",
+      "name": "salmeterol and budesonide"
+    },
+    {
+      "code": "R03AK13",
+      "name": "salbutamol and beclometasone"
+    },
+    {
+      "code": "R03AK14",
+      "name": "indacaterol and mometasone"
+    },
+    {
+      "code": "R03AK15",
+      "name": "salbutamol and budesonide"
+    }
+  ]
+}

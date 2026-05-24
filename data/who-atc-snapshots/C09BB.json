@@ -1,0 +1,49 @@
+{
+  "l4_code": "C09BB",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BB&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:34.209Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C09BB02",
+      "name": "enalapril and lercanidipine"
+    },
+    {
+      "code": "C09BB03",
+      "name": "lisinopril and amlodipine"
+    },
+    {
+      "code": "C09BB04",
+      "name": "perindopril and amlodipine"
+    },
+    {
+      "code": "C09BB05",
+      "name": "ramipril and felodipine"
+    },
+    {
+      "code": "C09BB06",
+      "name": "enalapril and nitrendipine"
+    },
+    {
+      "code": "C09BB07",
+      "name": "ramipril and amlodipine"
+    },
+    {
+      "code": "C09BB10",
+      "name": "trandolapril and verapamil"
+    },
+    {
+      "code": "C09BB12",
+      "name": "delapril and manidipine"
+    },
+    {
+      "code": "C09BB13",
+      "name": "benazepril and amlodipine"
+    },
+    {
+      "code": "C09BB14",
+      "name": "zofenopril and amlodipine"
+    }
+  ]
+}

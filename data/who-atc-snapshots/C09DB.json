@@ -1,0 +1,41 @@
+{
+  "l4_code": "C09DB",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DB&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:33.481Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C09DB01",
+      "name": "valsartan and amlodipine"
+    },
+    {
+      "code": "C09DB02",
+      "name": "olmesartan medoxomil and amlodipine"
+    },
+    {
+      "code": "C09DB04",
+      "name": "telmisartan and amlodipine"
+    },
+    {
+      "code": "C09DB05",
+      "name": "irbesartan and amlodipine"
+    },
+    {
+      "code": "C09DB06",
+      "name": "losartan and amlodipine"
+    },
+    {
+      "code": "C09DB07",
+      "name": "candesartan and amlodipine"
+    },
+    {
+      "code": "C09DB08",
+      "name": "valsartan and lercanidipine"
+    },
+    {
+      "code": "C09DB09",
+      "name": "fimasartan and amlodipine"
+    }
+  ]
+}

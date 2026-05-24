@@ -1,0 +1,109 @@
+{
+  "l4_code": "J01DD",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01DD&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:35.661Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "J01DD01",
+      "name": "cefotaxime"
+    },
+    {
+      "code": "J01DD02",
+      "name": "ceftazidime"
+    },
+    {
+      "code": "J01DD03",
+      "name": "cefsulodin"
+    },
+    {
+      "code": "J01DD04",
+      "name": "ceftriaxone"
+    },
+    {
+      "code": "J01DD05",
+      "name": "cefmenoxime"
+    },
+    {
+      "code": "J01DD06",
+      "name": "latamoxef"
+    },
+    {
+      "code": "J01DD07",
+      "name": "ceftizoxime"
+    },
+    {
+      "code": "J01DD08",
+      "name": "cefixime"
+    },
+    {
+      "code": "J01DD09",
+      "name": "cefodizime"
+    },
+    {
+      "code": "J01DD10",
+      "name": "cefetamet"
+    },
+    {
+      "code": "J01DD11",
+      "name": "cefpiramide"
+    },
+    {
+      "code": "J01DD12",
+      "name": "cefoperazone"
+    },
+    {
+      "code": "J01DD13",
+      "name": "cefpodoxime"
+    },
+    {
+      "code": "J01DD14",
+      "name": "ceftibuten"
+    },
+    {
+      "code": "J01DD15",
+      "name": "cefdinir"
+    },
+    {
+      "code": "J01DD16",
+      "name": "cefditoren"
+    },
+    {
+      "code": "J01DD17",
+      "name": "cefcapene"
+    },
+    {
+      "code": "J01DD18",
+      "name": "cefteram"
+    },
+    {
+      "code": "J01DD51",
+      "name": "cefotaxime and beta-lactamase inhibitor"
+    },
+    {
+      "code": "J01DD52",
+      "name": "ceftazidime and beta-lactamase inhibitor"
+    },
+    {
+      "code": "J01DD54",
+      "name": "ceftriaxone, combinations"
+    },
+    {
+      "code": "J01DD58",
+      "name": "cefixime and beta-lactamase inhibitor"
+    },
+    {
+      "code": "J01DD62",
+      "name": "cefoperazone and beta-lactamase inhibitor"
+    },
+    {
+      "code": "J01DD63",
+      "name": "ceftriaxone and beta-lactamase inhibitor"
+    },
+    {
+      "code": "J01DD64",
+      "name": "cefpodoxime and beta-lactamase inhibitor"
+    }
+  ]
+}

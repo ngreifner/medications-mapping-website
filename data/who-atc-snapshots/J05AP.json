@@ -1,0 +1,97 @@
+{
+  "l4_code": "J05AP",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AP&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:37.871Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "J05AP01",
+      "name": "ribavirin"
+    },
+    {
+      "code": "J05AP02",
+      "name": "telaprevir"
+    },
+    {
+      "code": "J05AP03",
+      "name": "boceprevir"
+    },
+    {
+      "code": "J05AP04",
+      "name": "faldaprevir"
+    },
+    {
+      "code": "J05AP05",
+      "name": "simeprevir"
+    },
+    {
+      "code": "J05AP06",
+      "name": "asunaprevir"
+    },
+    {
+      "code": "J05AP07",
+      "name": "daclatasvir"
+    },
+    {
+      "code": "J05AP08",
+      "name": "sofosbuvir"
+    },
+    {
+      "code": "J05AP09",
+      "name": "dasabuvir"
+    },
+    {
+      "code": "J05AP10",
+      "name": "elbasvir"
+    },
+    {
+      "code": "J05AP11",
+      "name": "grazoprevir"
+    },
+    {
+      "code": "J05AP12",
+      "name": "coblopasvir"
+    },
+    {
+      "code": "J05AP13",
+      "name": "ravidasvir"
+    },
+    {
+      "code": "J05AP14",
+      "name": "narlaprevir"
+    },
+    {
+      "code": "J05AP51",
+      "name": "sofosbuvir and ledipasvir"
+    },
+    {
+      "code": "J05AP52",
+      "name": "dasabuvir, ombitasvir, paritaprevir and ritonavir"
+    },
+    {
+      "code": "J05AP53",
+      "name": "ombitasvir, paritaprevir and ritonavir"
+    },
+    {
+      "code": "J05AP54",
+      "name": "elbasvir and grazoprevir"
+    },
+    {
+      "code": "J05AP55",
+      "name": "sofosbuvir and velpatasvir"
+    },
+    {
+      "code": "J05AP56",
+      "name": "sofosbuvir, velpatasvir and voxilaprevir"
+    },
+    {
+      "code": "J05AP57",
+      "name": "glecaprevir and pibrentasvir"
+    },
+    {
+      "code": "J05AP58",
+      "name": "daclatasvir, asunaprevir and beclabuvir"
+    }
+  ]
+}

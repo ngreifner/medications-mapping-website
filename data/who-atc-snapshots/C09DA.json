@@ -1,0 +1,45 @@
+{
+  "l4_code": "C09DA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DA&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:33.112Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C09DA01",
+      "name": "losartan and diuretics"
+    },
+    {
+      "code": "C09DA02",
+      "name": "eprosartan and diuretics"
+    },
+    {
+      "code": "C09DA03",
+      "name": "valsartan and diuretics"
+    },
+    {
+      "code": "C09DA04",
+      "name": "irbesartan and diuretics"
+    },
+    {
+      "code": "C09DA06",
+      "name": "candesartan and diuretics"
+    },
+    {
+      "code": "C09DA07",
+      "name": "telmisartan and diuretics"
+    },
+    {
+      "code": "C09DA08",
+      "name": "olmesartan medoxomil and diuretics"
+    },
+    {
+      "code": "C09DA09",
+      "name": "azilsartan medoxomil and diuretics"
+    },
+    {
+      "code": "C09DA10",
+      "name": "fimasartan and diuretics"
+    }
+  ]
+}

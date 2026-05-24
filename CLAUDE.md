@@ -272,14 +272,15 @@ The array is attached to whatever the strategy chain returns. The L5 route filte
 - `NO_ATC` — all strategies exhausted, no ATC available, and combination detection didn't fire either.
 
 ### Status decision priority
-Inside the resolver, the strategy chain runs first, then `withCombination(result)` post-processes in six ordered rules. Rules 2 and 3 are non-RxNav-strategy paths that fire BEFORE the L4-fallback / partial-coverage escalation, because both are more authoritative than what the strategy chain returns when they have data.
+Inside the resolver, the strategy chain runs first, then `withCombination(result)` post-processes in **seven** ordered rules. Rules 2, 3, and 3.5 are progressively-broader paths to a dedicated combination L5; each fires only when the previous one had no answer.
 
 1. **Not a combination** → return result unchanged.
-2. **Combination + MIN ancestor has an L5 in its property API** (Phase-2B) → `KEEP` with that L5, override the strategy chain's codes. Example: RxCUI 1799213 (Epclusa) — MIN ancestor 1799211 ("sofosbuvir / velpatasvir") has `J05AP55` in its `/property.json?propName=ATC`. RxClass's classMembers does NOT expose J05AP55 (classMembers for J05AP returns SCDs whose SourceId is the RxCUI itself, never an L5); ATCPROD does NOT expose it; byId for J05AP55 returns `{}`. The MIN's RxNorm property is the only public surface that carries this code. The resolver consults it, and when it returns an L5 the result envelope is stamped with `minProvenance: { minRxcui, code }` so the UI shows a "Reached via the MIN concept's RxNorm property API" note on the kept card. Same path also catches Bactrim (MIN 10831 → J01EE01) and Glyxambi (MIN 1598392 → A10BD19).
-3. **Combination + Navina-curated combination catalog has an ingredient-set match** (Phase-2C) → `KEEP` with the curated L5, stamp `curatedProvenance` on the envelope. Example: RxCUI 200284 (HCTZ + valsartan) → C09DA03 ("valsartan and diuretics"). This rule covers the L5s that WHO defines but NO RxNav surface exposes — empirically verified by exhaustive probing of classMembers across all 13 working relaSources (ATC, ATCPROD, DAILYMED, MEDRT, NDFRT, MESH, SNOMEDCT, VA, RXNORM, EPC, CDC, FDASPL, FMTSME), byRxcui across all the same sources, allProperties, classTree, classContext, byId, byName, findSimilarClasses, and the Prescribable API. The catalog lives in `js/atc-combinations-curated.js` — hand-authored, no upstream license dependency. Match is exact ingredient-set equality on RxNorm IN names (no fuzzy matching, no synonym tables, no name parsing). To add an entry, append `{ l5, name, ingredients }` to `CURATED_COMBINATIONS`.
-4. **Combination, L4-only or NO_ATC** → escalate to `COMBINATION_NO_DEDICATED_CODE`. After Rules 2 and 3 ship, this fires only for combinations where neither the MIN concept nor the curated catalog has the L5 (e.g. a niche combo we haven't curated yet). Example before curation: RxCUI 200284 used to land here.
-5. **Combination, KEEP with L5 — but partial coverage** → escalate to `COMBINATION_NO_DEDICATED_CODE`. The `shouldEscalateToCombinationNoCode` discriminator decides: if every kept L5 also appears in some ingredient's property-API codes, then the kept L5 is just one ingredient's monotherapy code. Advil PM is the canonical case after Phase 2C (MIN 644895 → empty; not in curated catalog because WHO doesn't define a combo L5 for diphenhydramine+ibuprofen): Strategy 1's M01AE01 (ibuprofen mono) escalates to L4 M01AE.
-6. **Combination, KEEP with L5 — full coverage via Pass-2 MIN-equality** → stay `KEEP`, attach ingredients. In practice this path is dead after Rules 2 and 3 ship; it remains as a safety net for edge cases.
+2. **Combination + MIN ancestor has an L5 in its property API** (Phase 2B) → `KEEP` with that L5, override the strategy chain's codes. Example: RxCUI 1799213 (Epclusa) → MIN 1799211 → `/property.json?propName=ATC` → `J05AP55`. Stamped with `minProvenance`. Also catches Bactrim (MIN 10831 → J01EE01), Glyxambi (MIN 1598392 → A10BD19), Janumet (MIN 729717 → A10BD07).
+3. **Combination + Navina-curated combination catalog has an ingredient-set match** (Phase 2C) → `KEEP` with the curated L5, stamp `curatedProvenance`. Example: RxCUI 200284 (HCTZ + valsartan) → C09DA03. Catalog lives in `js/atc-combinations-curated.js` — hand-authored, set equality on RxNorm IN names. To add an entry, append `{ l5, name, ingredients }` to `CURATED_COMBINATIONS`.
+3.5. **Combination + WHO ATC index snapshot has a name match** (Phase 2D) → `KEEP` with the WHO L5, stamp `whoProvenance`. The committed snapshot of the official WHO ATC/DDD index (atcddd.fhi.no) covers L5 codes that neither RxNav nor the curated catalog has. The runtime resolver (`js/who-atc-index.js`) name-parses each L5 in the snapshotted L4 ("hydrocodone and paracetamol" → explicit ingredients; "valsartan and diuretics" → ingredient + class wildcard; "ceftriaxone, combinations" → ingredient + wildcard suffix), then scores against the input ingredient set. Three match tiers: EXACT (100), CLASS (80, via drug-class membership), WILDCARD (40, last-resort). Below threshold or ambiguous ties → no match, fall through to Rule 4. Snapshots are refreshed by `scripts/refresh-who-snapshots.js` (run manually or via CI). To add a new L4 to the snapshot set, append to `L4_CODES` in the script and re-run. Examples: RxCUI 857004 (Norco) → N02AJ22 (EXACT); RxCUI 1603845 (Avycaz) → J01DD52 (CLASS via beta-lactamase inhibitor); RxCUI 1049640 (Percocet) → N02AJ17 (EXACT).
+4. **Combination, L4-only or NO_ATC** → escalate to `COMBINATION_NO_DEDICATED_CODE`. Fires when Rules 2, 3, and 3.5 all missed AND the engine produced only L4 codes or nothing. Example: a combination whose L4 isn't in the snapshot manifest yet AND isn't in the curated catalog AND has no MIN-property L5.
+5. **Combination, KEEP with L5 — but partial coverage** → escalate to `COMBINATION_NO_DEDICATED_CODE`. The `shouldEscalateToCombinationNoCode` discriminator decides: if every kept L5 also appears in some ingredient's property-API codes, then the kept L5 is just one ingredient's monotherapy code. Advil PM is the canonical post-Phase-2D case (MIN 644895 → empty; not in curated catalog; not in WHO snapshot because WHO doesn't define a combo L5 for diphenhydramine+ibuprofen).
+6. **Combination, KEEP with L5 — full coverage via Pass-2 MIN-equality** → stay `KEEP`, attach ingredients. Largely dead code after Phase 2D ships; safety net only.
 
 The single check `looksLikeCombination` handles both same-family and cross-family combinations uniformly — no separate multi-family safety check.
 
@@ -565,7 +566,9 @@ When Modes 4/5 are built: the active/obsolete distinction is RxNorm's view as of
 - Invalid input: "asdf" → format-validation error card before any fetch fires
 
 ### Combination scenarios (verified against live RxNav)
-- **Curated-catalog L5 — HCTZ + valsartan**: **RxCUI 200284** → `KEEP`, codes `[C09DA03]` ("valsartan and diuretics") via the Navina-curated combination catalog. WHO defines C09DA03 but no RxNav surface exposes it (exhaustively probed). The catalog match keys on the exact RxNorm IN ingredient set `{hydrochlorothiazide, valsartan}`. Same path catches RxCUI 999967 (3-ingredient combo) → `[C09DX03]`, RxCUI 724598 (Sinemet) → `[N04BA02]`, RxCUI 197885 (lisinopril+HCTZ) → `[C09BA03]`.
+- **WHO-snapshot L5 — Norco / Vicodin (opioid + APAP)**: **RxCUI 857004** (Norco SBD) → `KEEP`, codes `[N02AJ22]` ("hydrocodone and paracetamol") via the WHO ATC index snapshot. Name-parser identifies `{hydrocodone, acetaminophen}` (with `paracetamol → acetaminophen` synonym) as an EXACT explicit match. Same path catches RxCUI 1049640 (Percocet-shape) → `[N02AJ17]` ("oxycodone and paracetamol", EXACT). The 16-entry N02AJ snapshot also contains catch-alls like N02AJ09 ("codeine and other non-opioid analgesics") which are WILDCARD-tier and only win when no specific entry fits.
+- **WHO-snapshot L5 — Avycaz (ceftazidime + avibactam)**: **RxCUI 1603845** (Avycaz SBD) → `KEEP`, codes `[J01DD52]` ("ceftazidime and beta-lactamase inhibitor") via the WHO snapshot. Name-parser identifies `{ceftazidime}` as explicit and `{beta-lactamase inhibitor}` as a class wildcard; matches against the input's IN set `{avibactam, ceftazidime}` via class membership (avibactam ∈ DRUG_CLASSES["beta-lactamase inhibitor"]). Match score: CLASS (80).
+- **Curated-catalog L5 — HCTZ + valsartan**: **RxCUI 200284** → `KEEP`, codes `[C09DA03]` ("valsartan and diuretics") via the Navina-curated combination catalog (`js/atc-combinations-curated.js`). Same path catches RxCUI 999967 (3-ingredient combo) → `[C09DX03]`, RxCUI 724598 (Sinemet) → `[N04BA02]`, RxCUI 197885 (lisinopril+HCTZ) → `[C09BA03]`. The WHO snapshot also has these L5s; the curated catalog wins because Rule 3 runs before Rule 3.5.
 - **MIN-property L5 bypass — Epclusa**: **RxCUI 1799213** (Epclusa, BN) and the SCD/pellet variants (1799212 / 2584199 / 2584201 / 2584196) → `KEEP`, codes `[J05AP55]`, via MIN 1799211's `/property.json?propName=ATC`. classMembers for J05AP exposes no L5; ATCPROD only gives J05AP; byId for J05AP55 is empty. The MIN's RxNorm property is the only public surface that carries J05AP55, and Rule 2 of `withCombination` reaches it. `minProvenance` is stamped on the result envelope; Mode 1 surfaces the provenance line on the kept card.
 - **MIN-property L5 (used to be Pass-2)**: **RxCUI 151399** (Bactrim, sulfa + TMP) → `KEEP`, `[J01EE01]` via MIN 10831. **RxCUI 1602115** (Glyxambi, linagliptin + empagliflozin) → `KEEP`, `[A10BD19]` via MIN 1598392. Both used to resolve via Pass-2 MIN-equality; after Phase 2B they resolve a step earlier via Rule 2 (same answer, simpler provenance).
 - **Same-family combination, no L5 reachable**: **RxCUI 200284** (HCTZ 12.5 / valsartan 80 oral) → `COMBINATION_NO_DEDICATED_CODE`, codes `[C09DA]`. MIN 214626's property API is empty (confirmed live), classMembers for C09DA returns 0 under relaSource=ATC, ATCPROD only gives L4 → fall through to Rule 3. WHO defines C09DA01; genuinely not reachable. Ingredients: HCTZ → C03AA03, valsartan → C09CA03.
@@ -611,6 +614,39 @@ When Modes 4/5 are built: the active/obsolete distinction is RxNorm's view as of
 3. Fix or comment the limit
 4. Update the fixture's expected outcome
 5. Re-run all fixtures (regression check)
+
+### Adding a combination L5 to the curated catalog
+1. Confirm WHO defines the L5 (look up the L4 in `data/who-atc-snapshots/{L4}.json` or at https://atcddd.fhi.no/atc_ddd_index/).
+2. Append an entry to `CURATED_COMBINATIONS` in `js/atc-combinations-curated.js`:
+   ```js
+   { l5: "C09BA15", name: "zofenopril and diuretics", ingredients: ["zofenopril", "hydrochlorothiazide"] },
+   ```
+3. Use lowercase RxNorm IN names (set semantics; order doesn't matter).
+4. Verify by querying a relevant SCD in Mode 1.
+
+### Refreshing the WHO ATC snapshots (Phase 2D)
+1. Edit `L4_CODES` in `scripts/refresh-who-snapshots.js` if adding new L4s.
+2. Run: `node scripts/refresh-who-snapshots.js`
+3. The script writes:
+   - `data/who-atc-snapshots/{L4}.json` — one file per L4, human-reviewable.
+   - `data/who-atc-snapshots/_manifest.json` — registry with timestamps + entry counts.
+   - `js/who-atc-snapshots-bundle.js` — auto-generated runtime bundle, do not edit by hand.
+4. Commit all three artifacts together. WHO updates the ATC catalog annually (January), so plan a refresh after each release.
+5. If the parser logs a "structural anomaly" warning, WHO has changed the page layout — update the parser in `scripts/refresh-who-snapshots.js` and bump `PARSER_VERSION`.
+
+### Extending the WHO drug-class table
+WHO L5 names sometimes reference a constituent ingredient by class (e.g. "valsartan and diuretics", "ceftazidime and beta-lactamase inhibitor"). The resolver uses an explicit class membership table in `js/who-atc-index.js`:
+
+```js
+const DRUG_CLASSES = {
+  "diuretics": ["hydrochlorothiazide", "chlorthalidone", ...],
+  "decarboxylase inhibitor": ["carbidopa", "benserazide"],
+  "beta-lactamase inhibitor": ["avibactam", "tazobactam", ...],
+  "comt inhibitor": ["entacapone", "tolcapone", "opicapone"],
+};
+```
+
+To handle a new WHO class phrasing, add the key (exactly as it appears in L5 names, lowercase) and its RxNorm IN members. Then add a test case and verify Mode 1 resolves it.
 
 ---
 

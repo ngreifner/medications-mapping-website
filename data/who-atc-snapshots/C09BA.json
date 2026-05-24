@@ -1,0 +1,57 @@
+{
+  "l4_code": "C09BA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BA&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:33.851Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C09BA01",
+      "name": "captopril and diuretics"
+    },
+    {
+      "code": "C09BA02",
+      "name": "enalapril and diuretics"
+    },
+    {
+      "code": "C09BA03",
+      "name": "lisinopril and diuretics"
+    },
+    {
+      "code": "C09BA04",
+      "name": "perindopril and diuretics"
+    },
+    {
+      "code": "C09BA05",
+      "name": "ramipril and diuretics"
+    },
+    {
+      "code": "C09BA06",
+      "name": "quinapril and diuretics"
+    },
+    {
+      "code": "C09BA07",
+      "name": "benazepril and diuretics"
+    },
+    {
+      "code": "C09BA08",
+      "name": "cilazapril and diuretics"
+    },
+    {
+      "code": "C09BA09",
+      "name": "fosinopril and diuretics"
+    },
+    {
+      "code": "C09BA12",
+      "name": "delapril and diuretics"
+    },
+    {
+      "code": "C09BA13",
+      "name": "moexipril and diuretics"
+    },
+    {
+      "code": "C09BA15",
+      "name": "zofenopril and diuretics"
+    }
+  ]
+}

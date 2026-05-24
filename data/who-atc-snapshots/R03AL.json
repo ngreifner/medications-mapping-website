@@ -1,0 +1,57 @@
+{
+  "l4_code": "R03AL",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AL&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:37.120Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "R03AL01",
+      "name": "fenoterol and ipratropium bromide"
+    },
+    {
+      "code": "R03AL02",
+      "name": "salbutamol and ipratropium bromide"
+    },
+    {
+      "code": "R03AL03",
+      "name": "vilanterol and umeclidinium bromide"
+    },
+    {
+      "code": "R03AL04",
+      "name": "indacaterol and glycopyrronium bromide"
+    },
+    {
+      "code": "R03AL05",
+      "name": "formoterol and aclidinium bromide"
+    },
+    {
+      "code": "R03AL06",
+      "name": "olodaterol and tiotropium bromide"
+    },
+    {
+      "code": "R03AL07",
+      "name": "formoterol and glycopyrronium bromide"
+    },
+    {
+      "code": "R03AL08",
+      "name": "vilanterol, umeclidinium bromide and fluticasone furoate"
+    },
+    {
+      "code": "R03AL09",
+      "name": "formoterol, glycopyrronium bromide and beclometasone"
+    },
+    {
+      "code": "R03AL10",
+      "name": "formoterol and tiotropium bromide"
+    },
+    {
+      "code": "R03AL11",
+      "name": "formoterol, glycopyrronium bromide and budesonide"
+    },
+    {
+      "code": "R03AL12",
+      "name": "indacaterol, glycopyrronium bromide and mometasone"
+    }
+  ]
+}

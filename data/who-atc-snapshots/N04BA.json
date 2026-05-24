@@ -1,0 +1,37 @@
+{
+  "l4_code": "N04BA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N04BA&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:34.939Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "N04BA01",
+      "name": "levodopa"
+    },
+    {
+      "code": "N04BA02",
+      "name": "levodopa and decarboxylase inhibitor"
+    },
+    {
+      "code": "N04BA03",
+      "name": "levodopa, decarboxylase inhibitor and COMT inhibitor"
+    },
+    {
+      "code": "N04BA04",
+      "name": "melevodopa"
+    },
+    {
+      "code": "N04BA05",
+      "name": "melevodopa and decarboxylase inhibitor"
+    },
+    {
+      "code": "N04BA06",
+      "name": "etilevodopa and decarboxylase inhibitor"
+    },
+    {
+      "code": "N04BA07",
+      "name": "foslevodopa and decarboxylase inhibitor"
+    }
+  ]
+}

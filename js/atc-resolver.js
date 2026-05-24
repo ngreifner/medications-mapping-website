@@ -30,6 +30,7 @@ import {
 } from "./rxnav-client.js";
 import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-engine.js";
 import { findCuratedCombination } from "./atc-combinations-curated.js";
+import { resolveCombinationViaWHO } from "./who-atc-index.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -474,6 +475,43 @@ export async function convertRxcuiToAtc(rxcui) {
           codes: [{ code: curatedHit.l5, name: curatedHit.name }],
           combinationIngredients,
           curatedProvenance: { code: curatedHit.l5, name: curatedHit.name, source: "Navina curated combination catalog" },
+        };
+      }
+
+      // Rule 3.5: WHO ATC index snapshot (Phase 2D). For combinations not
+      // caught by Rules 2 or 3, look up the engine's candidate L4s in our
+      // committed snapshot of the official WHO ATC index. Name-parse each
+      // L5 child against the input's normalized ingredient set; the
+      // highest-scoring unambiguous match wins. Snapshots are refreshed
+      // by scripts/refresh-who-snapshots.js — no runtime network calls.
+      const candidateL4s = new Set();
+      for (const c of (Array.isArray(result.codes) ? result.codes : [])) {
+        const code = (c.code || "").toUpperCase();
+        if (code.length === 5) candidateL4s.add(code);
+        else if (code.length === 7) candidateL4s.add(code.slice(0, 5));
+      }
+      for (const l4 of candidateL4s) {
+        const whoHit = resolveCombinationViaWHO(l4, ingredientNames);
+        if (!whoHit) continue;
+        console.log(
+          `[RxCUI→ATC] WHO-snapshot combination match: ` +
+          `{${ingredientNames.map(n => n.toLowerCase()).join(", ")}} → ${whoHit.code} (${whoHit.name}) ` +
+          `[L4=${l4}, matchType=${whoHit.matchType}, score=${whoHit.score}]`
+        );
+        return {
+          ...result,
+          status: "KEEP",
+          codes: [{ code: whoHit.code, name: whoHit.name }],
+          combinationIngredients,
+          whoProvenance: {
+            code: whoHit.code,
+            name: whoHit.name,
+            l4_code: l4,
+            match_type: whoHit.matchType,
+            score: whoHit.score,
+            source_url: whoHit.source_url,
+            refreshed_at: whoHit.refreshed_at,
+          },
         };
       }
 

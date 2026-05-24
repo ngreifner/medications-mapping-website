@@ -1,0 +1,145 @@
+{
+  "l4_code": "A10BD",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BD&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:36.381Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "A10BD01",
+      "name": "phenformin and sulfonylureas"
+    },
+    {
+      "code": "A10BD02",
+      "name": "metformin and sulfonylureas"
+    },
+    {
+      "code": "A10BD03",
+      "name": "metformin and rosiglitazone"
+    },
+    {
+      "code": "A10BD04",
+      "name": "glimepiride and rosiglitazone"
+    },
+    {
+      "code": "A10BD05",
+      "name": "metformin and pioglitazone"
+    },
+    {
+      "code": "A10BD06",
+      "name": "glimepiride and pioglitazone"
+    },
+    {
+      "code": "A10BD07",
+      "name": "metformin and sitagliptin"
+    },
+    {
+      "code": "A10BD08",
+      "name": "metformin and vildagliptin"
+    },
+    {
+      "code": "A10BD09",
+      "name": "pioglitazone and alogliptin"
+    },
+    {
+      "code": "A10BD10",
+      "name": "metformin and saxagliptin"
+    },
+    {
+      "code": "A10BD11",
+      "name": "metformin and linagliptin"
+    },
+    {
+      "code": "A10BD12",
+      "name": "pioglitazone and sitagliptin"
+    },
+    {
+      "code": "A10BD13",
+      "name": "metformin and alogliptin"
+    },
+    {
+      "code": "A10BD14",
+      "name": "metformin and repaglinide"
+    },
+    {
+      "code": "A10BD15",
+      "name": "metformin and dapagliflozin"
+    },
+    {
+      "code": "A10BD16",
+      "name": "metformin and canagliflozin"
+    },
+    {
+      "code": "A10BD17",
+      "name": "metformin and acarbose"
+    },
+    {
+      "code": "A10BD18",
+      "name": "metformin and gemigliptin"
+    },
+    {
+      "code": "A10BD19",
+      "name": "linagliptin and empagliflozin"
+    },
+    {
+      "code": "A10BD20",
+      "name": "metformin and empagliflozin"
+    },
+    {
+      "code": "A10BD21",
+      "name": "saxagliptin and dapagliflozin"
+    },
+    {
+      "code": "A10BD22",
+      "name": "metformin and evogliptin"
+    },
+    {
+      "code": "A10BD23",
+      "name": "metformin and ertugliflozin"
+    },
+    {
+      "code": "A10BD24",
+      "name": "sitagliptin and ertugliflozin"
+    },
+    {
+      "code": "A10BD25",
+      "name": "metformin, saxagliptin and dapagliflozin"
+    },
+    {
+      "code": "A10BD26",
+      "name": "metformin and lobeglitazone"
+    },
+    {
+      "code": "A10BD27",
+      "name": "metformin, linagliptin and empagliflozin"
+    },
+    {
+      "code": "A10BD28",
+      "name": "metformin and teneligliptin"
+    },
+    {
+      "code": "A10BD29",
+      "name": "sitagliptin and dapagliflozin"
+    },
+    {
+      "code": "A10BD30",
+      "name": "gemigliptin and dapagliflozin"
+    },
+    {
+      "code": "A10BD31",
+      "name": "metformin, sitagliptin and dapagliflozin"
+    },
+    {
+      "code": "A10BD32",
+      "name": "glimepiride and dapagliflozin"
+    },
+    {
+      "code": "A10BD33",
+      "name": "pioglitazone and dapagliflozin"
+    },
+    {
+      "code": "A10BD34",
+      "name": "metformin and enavogliflozin"
+    }
+  ]
+}

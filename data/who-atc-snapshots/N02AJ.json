@@ -1,0 +1,73 @@
+{
+  "l4_code": "N02AJ",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02AJ&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:32.737Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "N02AJ01",
+      "name": "dihydrocodeine and paracetamol"
+    },
+    {
+      "code": "N02AJ02",
+      "name": "dihydrocodeine and acetylsalicylic acid"
+    },
+    {
+      "code": "N02AJ03",
+      "name": "dihydrocodeine and other non-opioid analgesics"
+    },
+    {
+      "code": "N02AJ06",
+      "name": "codeine and paracetamol"
+    },
+    {
+      "code": "N02AJ07",
+      "name": "codeine and acetylsalicylic acid"
+    },
+    {
+      "code": "N02AJ08",
+      "name": "codeine and ibuprofen"
+    },
+    {
+      "code": "N02AJ09",
+      "name": "codeine and other non-opioid analgesics"
+    },
+    {
+      "code": "N02AJ13",
+      "name": "tramadol and paracetamol"
+    },
+    {
+      "code": "N02AJ14",
+      "name": "tramadol and dexketoprofen"
+    },
+    {
+      "code": "N02AJ15",
+      "name": "tramadol and other non-opioid analgesics"
+    },
+    {
+      "code": "N02AJ16",
+      "name": "tramadol and celecoxib"
+    },
+    {
+      "code": "N02AJ17",
+      "name": "oxycodone and paracetamol"
+    },
+    {
+      "code": "N02AJ18",
+      "name": "oxycodone and acetylsalicylic acid"
+    },
+    {
+      "code": "N02AJ19",
+      "name": "oxycodone and ibuprofen"
+    },
+    {
+      "code": "N02AJ22",
+      "name": "hydrocodone and paracetamol"
+    },
+    {
+      "code": "N02AJ23",
+      "name": "hydrocodone and ibuprofen"
+    }
+  ]
+}

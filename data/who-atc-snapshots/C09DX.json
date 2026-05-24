@@ -1,0 +1,45 @@
+{
+  "l4_code": "C09DX",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DX&showdescription=no",
+  "refreshed_at": "2026-05-24T12:37:34.570Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C09DX01",
+      "name": "valsartan, amlodipine and hydrochlorothiazide"
+    },
+    {
+      "code": "C09DX02",
+      "name": "valsartan and aliskiren"
+    },
+    {
+      "code": "C09DX03",
+      "name": "olmesartan medoxomil, amlodipine and hydrochlorothiazide"
+    },
+    {
+      "code": "C09DX04",
+      "name": "valsartan and sacubitril"
+    },
+    {
+      "code": "C09DX05",
+      "name": "valsartan and nebivolol"
+    },
+    {
+      "code": "C09DX06",
+      "name": "candesartan, amlodipine and hydrochlorothiazide"
+    },
+    {
+      "code": "C09DX07",
+      "name": "irbesartan, amlodipine and hydrochlorothiazide"
+    },
+    {
+      "code": "C09DX08",
+      "name": "telmisartan, amlodipine and hydrochlorothiazide"
+    },
+    {
+      "code": "C09DX09",
+      "name": "candesartan, amlodipine and indapamide"
+    }
+  ]
+}

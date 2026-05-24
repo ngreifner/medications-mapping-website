@@ -322,18 +322,27 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
   for (const k of keptCodes) {
     const ov = overrideByCode.get(k.code);
     // Provenance: when the kept L5 came from a non-routine path (Phase 2B
-    // MIN-property bypass or Phase 2C curated catalog), replace the route-
-    // match reason with a clear explanation of where the code came from.
-    // Reason: the route filter doesn't really "match" combination L5s the
-    // way it does for monotherapy L5s; the honest sentence is about the
-    // resolution path, not the prefix.
+    // MIN-property, Phase 2C curated catalog, or Phase 2D WHO snapshot),
+    // replace the route-match reason with a clear explanation of where the
+    // code came from. The route filter doesn't really "match" combination
+    // L5s the way it does for monotherapy L5s; the honest sentence is
+    // about the resolution path, not the prefix.
     const minProv = result && result.minProvenance;
     const curatedProv = result && result.curatedProvenance;
+    const whoProv = result && result.whoProvenance;
     let reason;
     if (minProv && minProv.code === k.code) {
       reason = `Reached via the MIN concept's RxNorm property API (RxCUI ${minProv.minRxcui}). The dedicated combination Level 5 ${k.code} is not exposed through RxNav's classMembers or ATCPROD sources, but the MIN concept carries it directly.`;
     } else if (curatedProv && curatedProv.code === k.code) {
       reason = `Reached via the Navina-curated combination catalog (js/atc-combinations-curated.js). WHO ATC defines ${k.code} ("${curatedProv.name}") for this exact ingredient set, but no RxNav surface exposes it — neither classMembers, byRxcui, property.json, classTree, nor byId. The curated catalog is hand-authored to fill this specific gap.`;
+    } else if (whoProv && whoProv.code === k.code) {
+      const refreshDate = (whoProv.refreshed_at || "").slice(0, 10);
+      const matchPhrase = whoProv.match_type === "class"
+        ? "matched via drug-class membership"
+        : whoProv.match_type === "wildcard"
+          ? "matched via wildcard fallback"
+          : "matched exactly";
+      reason = `Reached via the WHO ATC index snapshot (L4 ${whoProv.l4_code}, ${matchPhrase}, score ${whoProv.score}). The dedicated combination L5 ${k.code} ("${whoProv.name}") is defined by WHO but not exposed through any RxNav surface. Source: ${whoProv.source_url} · snapshot refreshed ${refreshDate}.`;
     } else {
       reason = keptReasonFor(k.code, route);
     }
