@@ -300,16 +300,21 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
 
   // Combination banner — when the resolver flagged the input as a combo,
   // render the banner once, BEFORE kept cards. Tone depends on whether the
-  // engine could reach any L5 at all.
+  // engine reached the dedicated combination L5:
+  //   COMBINATION_NO_DEDICATED_CODE → "no-dedicated" (amber, with L4 fallback)
+  //   KEEP + combinationIngredients → "resolved" (informational; the L5 IS
+  //                                   the combination class via MIN-equality)
   if (isCombination) {
     const primaryL4 = keptL4Codes[0] || null;
-    const bannerTone = (result.status === "COMBINATION_NO_DEDICATED_CODE") ? "no-dedicated" : "partial";
+    const bannerTone = (result.status === "COMBINATION_NO_DEDICATED_CODE") ? "no-dedicated" : "resolved";
     resultEl.appendChild(combinationBanner({
       tone: bannerTone,
       ingredientCount: combinationIngredients.length,
       l4Code: primaryL4 ? primaryL4.code : null,
       l4Name: primaryL4 ? primaryL4.name : "",
-      suggestion: primaryL4 ? suggestCombinationFamilyExpansion(primaryL4.code) : null,
+      suggestion: (bannerTone === "no-dedicated" && primaryL4)
+        ? suggestCombinationFamilyExpansion(primaryL4.code)
+        : null,
     }));
   }
 

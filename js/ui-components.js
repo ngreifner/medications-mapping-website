@@ -132,11 +132,17 @@ export function rejectedAtcCard({ atc, name, reason, clinical }) {
 
 /**
  * Banner that frames the rest of the result as a combination product.
- * Two tones: "no-dedicated" when the resolver couldn't reach any L5,
- * "partial" when an L5 was reached for one ingredient but not all.
+ * Two tones:
+ *   "no-dedicated" — the resolver couldn't reach the dedicated L5 (either
+ *                    L4-only, NO_ATC, or escalated because every kept L5
+ *                    was just one ingredient's monotherapy code).
+ *   "resolved"     — the resolver did reach a true combination L5 (Bactrim
+ *                    J01EE01, Glyxambi A10BD19, etc.) via Pass-2 MIN-equality.
+ *                    The card below carries the correct combination class;
+ *                    the banner is informational, not a warning.
  */
 export function combinationBanner({
-  tone = "no-dedicated",     // "no-dedicated" | "partial"
+  tone = "no-dedicated",     // "no-dedicated" | "resolved"
   ingredientCount = 0,
   l4Code = null,
   l4Name = "",
@@ -144,17 +150,20 @@ export function combinationBanner({
 } = {}) {
   const headline = tone === "no-dedicated"
     ? "Combination drug, no dedicated Level 5 ATC reachable"
-    : "Combination drug, partial Level 5 coverage";
+    : "Combination drug, resolved to dedicated Level 5";
   const body = tone === "no-dedicated"
     ? (l4Code
       ? `This product combines ${ingredientCount} ingredients. WHO ATC defines a dedicated Level 5 code for this combination type, but it is not currently exposed through RxNav's classMembers. The combination class ${l4Code}${l4Name ? ` (${l4Name})` : ""} is the best reachable answer. Each ingredient's resolved Level 5 is shown below for context.`
       : `This product combines ${ingredientCount} ingredients. No dedicated combination ATC was reachable through any RxNav source. Each ingredient's resolved Level 5 ATC is shown below.`)
-    : `This product combines ${ingredientCount} ingredients. The Level 5 code below covers one of the constituent ingredients (per RxNorm's curated ATCPROD mapping); the other ingredients' Level 5 ATCs are shown below for full context.`;
+    : `This product combines ${ingredientCount} ingredients. The Level 5 code below is the dedicated combination class for this product, reached via RxClass's MIN-equality matching — it covers all ${ingredientCount} ingredients as a single combination concept. Per-ingredient monotherapy codes are listed below for context.`;
   const action = suggestion
     ? el("p", { class: "reason" }, suggestion)
     : null;
+  // "no-dedicated" reads as a warning (amber); "resolved" is informational
+  // (accent), since the dedicated combination L5 was found and rendered.
+  const variantCls = tone === "resolved" ? "card-info" : "card-warning";
   return el("section", {
-    class: "card card-warning card-combination-banner",
+    class: `card ${variantCls} card-combination-banner`,
     role: "note",
     "aria-label": "Combination drug summary",
   }, [

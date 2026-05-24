@@ -272,12 +272,23 @@ The array is attached to whatever the strategy chain returns. The L5 route filte
 - `NO_ATC` — all strategies exhausted, no ATC available, and combination detection didn't fire either.
 
 ### Status decision priority
-Inside the resolver, the strategy chain runs first, then `withCombination(result)` post-processes:
-1. If input is not a combination → status unchanged.
-2. If input is a combination AND result has any L5 in `codes` → status stays `KEEP` (the engine reached a dedicated combination L5 like J01EE01, OR ATCPROD's L4→L5 promotion succeeded for one ingredient). `combinationIngredients` is attached for context.
-3. If input is a combination AND result has only L4 codes (or `NO_ATC`) → status upgrades to `COMBINATION_NO_DEDICATED_CODE`.
+Inside the resolver, the strategy chain runs first, then `withCombination(result)` post-processes in four ordered rules:
+
+1. **Not a combination** → return result unchanged.
+2. **Combination, L4-only or NO_ATC** → escalate to `COMBINATION_NO_DEDICATED_CODE`. The L4 (when present) sits in `codes`, ingredient breakdown in `combinationIngredients`. Example: RxCUI 200284 (HCTZ + valsartan) → C09DA + per-ingredient L5s.
+3. **Combination, KEEP with L5 — but partial coverage** → escalate to `COMBINATION_NO_DEDICATED_CODE`. The `shouldEscalateToCombinationNoCode` discriminator decides: if every kept L5 also appears in some ingredient's property-API codes, then the kept L5 is just one ingredient's monotherapy code, not a real combination class. We replace `codes` with the L4 parent(s) of those kept L5s (class names fetched async) so the UI's `combinationClassCard` carries the L4 label. The ingredient L5 is still visible through `combinationIngredients` — it just no longer wears the primary "KEPT" badge. Example: RxCUI 1799213 (Epclusa, sofosbuvir + velpatasvir) → resolver originally returned J05AP08 (sofosbuvir mono); escalates to J05AP (Antivirals for treatment of HCV infections) because J05AP08 appears in sofosbuvir's own property codes.
+4. **Combination, KEEP with L5 — full coverage** → stay `KEEP`, attach ingredients. The kept L5 is a true MIN-derived combination class (lives on the MIN concept, not on either IN's property entry, so it isn't in any ingredient's monotherapy code list). Example: RxCUI 151399 (Bactrim) → J01EE01 stays KEEP; RxCUI 1602115 (Glyxambi) → A10BD19 stays KEEP.
 
 The single check `looksLikeCombination` handles both same-family and cross-family combinations uniformly — no separate multi-family safety check.
+
+### Why partial coverage gets escalated (and why this changed)
+Earlier the engine returned KEEP for any combination drug where Strategy 1 produced any L5, even when that L5 only represented one ingredient. Users got a misleading green-badge KEPT card whose code was the wrong answer:
+- Epclusa (sofosbuvir + velpatasvir) showed J05AP08 (sofosbuvir mono), missing velpatasvir entirely.
+- Advil PM (diphenhydramine + ibuprofen) showed M01AE01 (ibuprofen NSAID), missing the antihistamine half.
+
+The `shouldEscalateToCombinationNoCode` rule reads the resolver's own evidence to tell partial from full coverage. A true combination L5 (J01EE01, A10BD19) lives only on the MIN concept and never appears in either IN's property codes. A partial-coverage L5 (J05AP08 for Epclusa, M01AE01 for Advil PM) appears in exactly one IN's property codes. Equality between the kept set and the union of IN property codes → escalate.
+
+This means **RxCUI 901814 (Advil PM) now escalates to COMBINATION_NO_DEDICATED_CODE** (was: KEEP M01AE01). Intentional behavior change for consistency — the Mode 1 UI now renders M01AE (NSAIDs, propionic acid derivatives) as the L4 combination class card, with diphenhydramine and ibuprofen each surfaced as ingredient blocks below.
 
 ### Display rules
 - **Level 4 codes ARE rendered in result cards** when the engine couldn't reach L5. The L4 surfaces in a `combinationClassCard` (the `card-info` variant with a "Combination class · L4" title) carrying an explicit note: "RxClass's classMembers source does not expose a Level 5 attribution for this product, so no dedicated L5 was reachable. This is faithful reporting, not a degraded result." Previously L4 codes were silently dropped, which produced empty Mode 1 results for combination products like RxCUI 200284 — that bug is fixed in v8.
@@ -551,16 +562,19 @@ When Modes 4/5 are built: the active/obsolete distinction is RxNorm's view as of
 - RXCUI not found: 999999999 → error card
 - Invalid input: "asdf" → format-validation error card before any fetch fires
 
-### Combination scenarios (v8 — verified against live RxNav)
-- Same-family combination, no dedicated L5 reachable: **RXCUI 200284** (HCTZ 12.5 / valsartan 80 oral) → status `COMBINATION_NO_DEDICATED_CODE`. Codes: `[C09DA]` (the L4 combination class returned by ATCPROD). Combination ingredients: HCTZ → C03AA03, valsartan → C09CA03. The dedicated L5 (C09DA01 in WHO ATC) is **not reachable** through RxNav's classMembers source for C09DA — this is a faithful reflection of public infrastructure, not a bug.
-- Three-ingredient combination: **RXCUI 999967** (amlodipine + HCTZ + olmesartan oral) → status `COMBINATION_NO_DEDICATED_CODE`. Codes: `[C09DX]` (the "ARBs, other combinations" L4 — appropriate for tri-component ARB combos). Combination ingredients: amlodipine → C08CA01, olmesartan → (no L5 reachable via property API — surfaced as empty block), HCTZ → C03AA03.
-- Cross-family combination with one ingredient mapped: **RXCUI 901814** (Advil PM = diphenhydramine + ibuprofen oral capsule) → status `KEEP`. Codes: `[M01AE01]` (ATCPROD's Pass-1 MIN-equality match resolved ibuprofen to M01AE01). Combination ingredients: diphenhydramine → R06AA02 (route-filtered), ibuprofen → C01EB16, M01AE01, R02AX02 (route-filtered, multiple L5s — ibuprofen has multi-family WHO ATC presence). Mode 1 renders a "partial coverage" combination banner.
-- Retired/invalid: **RXCUI 859038** → `props.found = false` → "RXCUI not found" error card (existing behavior, untouched).
+### Combination scenarios (verified against live RxNav)
+- **Same-family combination, L4-only**: **RxCUI 200284** (HCTZ 12.5 / valsartan 80 oral) → `COMBINATION_NO_DEDICATED_CODE`, codes `[C09DA]`, ingredients HCTZ → C03AA03, valsartan → C09CA03. WHO defines C09DA01 (valsartan + diuretics); not reachable through RxNav's classMembers for C09DA.
+- **Three-ingredient combination, L4-only**: **RxCUI 999967** (amlodipine + HCTZ + olmesartan) → `COMBINATION_NO_DEDICATED_CODE`, codes `[C09DX]` ("ARBs, other combinations"), ingredients amlodipine → C08CA01, olmesartan → (no L5 reachable), HCTZ → C03AA03.
+- **Partial-coverage escalation (cross-family)**: **RxCUI 901814** (Advil PM = diphenhydramine + ibuprofen) → `COMBINATION_NO_DEDICATED_CODE`, codes `[M01AE]` after escalation. ATCPROD originally returned M01AE01 (ibuprofen NSAID), which is in ibuprofen's own property codes → partial coverage detected → escalate. Ingredients: diphenhydramine → R06AA02, ibuprofen → C01EB16, M01AE01, R02AX02. Behavior change from earlier KEEP/M01AE01.
+- **Partial-coverage escalation (same-family)**: **RxCUI 1799213** (Epclusa, sofosbuvir + velpatasvir) and the Epclusa pellet variants (2584199 / 2584201 / 2584196) → `COMBINATION_NO_DEDICATED_CODE`, codes `[J05AP]` after escalation. ATCPROD returned J05AP08 (sofosbuvir mono); appears in sofosbuvir's own property codes → escalate. Ingredients: sofosbuvir → J05AP08, velpatasvir → (no L5 reachable). WHO defines J05AP55 (sofosbuvir + velpatasvir); not reachable through RxNav.
+- **True combination L5 stays KEEP (MIN-equality)**: **RxCUI 151399** (Bactrim, sulfamethoxazole + trimethoprim) → `KEEP`, codes `[J01EE01]`. J01EE01 is in NEITHER ingredient's property codes (sulfa = J01EC01, TMP = J01EA01) → resolved via Pass-2 MIN-equality → no escalation. Banner tone: "resolved".
+- **True combination L5 stays KEEP (dedicated combination class)**: **RxCUI 1602115** (Glyxambi, linagliptin + empagliflozin) → `KEEP`, codes `[A10BD19]`. A10BD19 is in NEITHER ingredient's codes (linagliptin = A10BH05, empagliflozin = A10BK03) → no escalation. Banner tone: "resolved".
+- **Retired/invalid**: **RxCUI 859038** → `props.found = false` → "RXCUI not found" error card (existing behavior, untouched).
 
-### Regression baseline (all unchanged after v8)
-- RXCUI 1797907 (fluticasone nasal) → `KEEP`, codes `[R01AD08]`, no combination context.
-- RXCUI 617310 (atorvastatin oral) → `KEEP`, codes `[C10AA05]`, no combination context.
-- RXCUI 2107616 (Inbrija inhaled levodopa) → `KEEP`, codes `[N04BA01]`, no combination context.
+### Regression baseline (all unchanged through every combination revision)
+- RxCUI 1797907 (fluticasone nasal) → `KEEP`, codes `[R01AD08]`, no combination context.
+- RxCUI 617310 (atorvastatin oral) → `KEEP`, codes `[C10AA05]`, no combination context.
+- RxCUI 2107616 (Inbrija inhaled levodopa) → `KEEP`, codes `[N04BA01]`, no combination context.
 
 ---
 
