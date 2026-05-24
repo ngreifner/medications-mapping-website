@@ -155,7 +155,7 @@ export function combinationBanner({
     ? (l4Code
       ? `This product combines ${ingredientCount} ingredients. WHO ATC defines a dedicated Level 5 code for this combination type, but it is not currently exposed through RxNav's classMembers. The combination class ${l4Code}${l4Name ? ` (${l4Name})` : ""} is the best reachable answer. Each ingredient's resolved Level 5 is shown below for context.`
       : `This product combines ${ingredientCount} ingredients. No dedicated combination ATC was reachable through any RxNav source. Each ingredient's resolved Level 5 ATC is shown below.`)
-    : `This product combines ${ingredientCount} ingredients. The Level 5 code below is the dedicated combination class for this product, reached via RxClass's MIN-equality matching — it covers all ${ingredientCount} ingredients as a single combination concept. Per-ingredient monotherapy codes are listed below for context.`;
+    : `This product combines ${ingredientCount} ingredients. The Level 5 code below is the dedicated combination class for this product, reached via the MIN concept (either RxClass's MIN-equality matching, or the MIN's RxNorm ATC property when classMembers doesn't expose the L5). It covers all ${ingredientCount} ingredients as a single combination concept. Per-ingredient monotherapy codes are listed below for context.`;
   const action = suggestion
     ? el("p", { class: "reason" }, suggestion)
     : null;

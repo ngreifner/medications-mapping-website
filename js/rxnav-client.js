@@ -221,6 +221,35 @@ export async function getIngredientRxcuis(rxcui) {
 }
 
 /**
+ * /rxcui/{rxcui}/related.json?tty=MIN, returns string[] of Multiple
+ * Ingredient (MIN) RxCUIs related to the input. Used by the resolver's
+ * combination path: a MIN concept sometimes carries the dedicated
+ * combination L5 ATC code in its property.json (e.g. MIN 1799211
+ * "sofosbuvir / velpatasvir" → J05AP55) even when ATCPROD and
+ * classMembers only expose the L4. Includes the input itself for
+ * consistency with the IN / PIN siblings; callers filter that out.
+ */
+export async function getMinRxcuis(rxcui) {
+  const id = String(rxcui).trim();
+  const cached = cacheGet(CACHE_KEYS.rxcui, id);
+  if (cached && cached.minRxcuis) return cached.minRxcuis.values;
+
+  const url = `${BASE}/rxcui/${encodeURIComponent(id)}/related.json?tty=MIN`;
+  const data = await schedule(() => fetchJson(url));
+  const ids = new Set([id]);
+  if (!data.__notFound && data?.relatedGroup?.conceptGroup) {
+    for (const g of asArray(data.relatedGroup.conceptGroup)) {
+      for (const p of asArray(g.conceptProperties)) {
+        if (p && p.rxcui) ids.add(String(p.rxcui));
+      }
+    }
+  }
+  const values = Array.from(ids);
+  cacheMergeRxcui(id, { minRxcuis: { values } });
+  return values;
+}
+
+/**
  * /rxcui/{rxcui}/related.json?tty=PIN, returns string[] of Precise Ingredient
  * RxCUIs related to the input. Includes the input itself, like
  * getIngredientRxcuis. Used by resolveLevel5FromClassMembers to widen the

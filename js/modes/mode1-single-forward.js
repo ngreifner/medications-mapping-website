@@ -321,10 +321,20 @@ async function _renderResultsFor({ rxcui, resultEl, cancelled, onLookupAnother, 
   // Render kept L5 cards (the standard happy path)
   for (const k of keptCodes) {
     const ov = overrideByCode.get(k.code);
+    // Phase-2B provenance: when the kept L5 came from the MIN ancestor's
+    // RxNorm property API (Epclusa → J05AP55), replace the standard route-
+    // match reason with a clear explanation of where the code came from.
+    // Reason: the route filter doesn't really "match" combination L5s the
+    // way it does for monotherapy L5s; the honest sentence is about the
+    // resolution path, not the prefix.
+    const minProv = result && result.minProvenance;
+    const reason = (minProv && minProv.code === k.code)
+      ? `Reached via the MIN concept's RxNorm property API (RxCUI ${minProv.minRxcui}). The dedicated combination Level 5 ${k.code} is not exposed through RxNav's classMembers or ATCPROD sources, but the MIN concept carries it directly.`
+      : keptReasonFor(k.code, route);
     resultEl.appendChild(keptAtcCard({
       atc: k.code,
       name: k.name,
-      reason: keptReasonFor(k.code, route),
+      reason,
       overrideNote: ov ? routeOverrideNote(k.code, route) : null,
     }));
     appendAnatomyCard(resultEl, k.code, k.name);

@@ -20,6 +20,7 @@ import {
   getProperties,
   getDfgs,
   getIngredientRxcuis,
+  getMinRxcuis,
   getPinRxcuis,
   getAtcprodClasses,
   getIngredientAtcClasses,
@@ -98,6 +99,42 @@ function shouldEscalateToCombinationNoCode(keptL5Codes, combinationIngredients) 
   }
   if (ingredientOwnCodes.size === 0) return false;
   return keptL5Codes.every(c => c.code && ingredientOwnCodes.has(c.code));
+}
+
+/**
+ * Phase-2B path: look for a dedicated combination L5 on the MIN ancestor's
+ * own property API. Some combination drugs (Epclusa MIN 1799211 → J05AP55
+ * is the canonical case) have their WHO ATC combination L5 attached to the
+ * MIN concept's RxNorm properties even when ATCPROD and classMembers only
+ * surface the L4. This bypass is the most authoritative source we have for
+ * those drugs.
+ *
+ * Returns { code, name } when an L5 is found, null otherwise.
+ *
+ * The MIN's RxNorm `name` (e.g., "sofosbuvir / velpatasvir") is used as
+ * the display name since RxClass's byId for L5 returns `{}` — the MIN's
+ * name is the substance description users want anyway.
+ */
+async function fetchMinAncestorL5(rxcui, minRxcuis) {
+  if (!Array.isArray(minRxcuis) || minRxcuis.length === 0) return null;
+  const inputId = String(rxcui);
+  const candidates = minRxcuis.filter(id => id !== inputId);
+  if (candidates.length === 0) return null;
+  for (const minId of candidates) {
+    const [props, atcCodes] = await Promise.all([
+      getProperties(minId).catch(() => null),
+      getAtcPropertyValues(minId).catch(() => []),
+    ]);
+    const l5 = (atcCodes || []).find(c => (c || "").length === 7);
+    if (l5) {
+      const name = (props && props.name) || l5;
+      console.log(
+        `[RxCUI→ATC] MIN-property L5 hit: MIN ${minId} (${name}) → ${l5}`
+      );
+      return { code: l5, name, minRxcui: String(minId) };
+    }
+  }
+  return null;
 }
 
 /**
@@ -323,16 +360,17 @@ export async function convertRxcuiToAtc(rxcui) {
 
     // Fire all data sources in parallel; per-endpoint failures degrade
     // gracefully (one tier failing doesn't kill the resolution). We also
-    // fetch the IN-ingredient list in this same parallel wave — both the
-    // strategy chain (downstream) and the combination-detection layer
-    // (post-strategy) consume it, so kicking it off here saves a round
-    // trip when the input turns out to be a combo.
-    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes, ingredientIds] = await Promise.all([
+    // fetch the IN- and MIN-ancestor lists in this same parallel wave —
+    // the strategy chain (downstream), the combination-detection layer,
+    // and the Phase-2B MIN-property L5 lookup all consume them, so kicking
+    // them off here saves round trips when the input turns out to be a combo.
+    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes, ingredientIds, minIds] = await Promise.all([
       getAtcprodClasses(rxcui).catch(() => []),
       getDfgs(rxcui).catch(() => []),
       getIngredientAtcClasses(rxcui).catch(() => []),
       getAtcPropertyValues(rxcui).catch(() => []),
       getIngredientRxcuis(rxcui).catch(() => [String(rxcui)]),
+      getMinRxcuis(rxcui).catch(() => [String(rxcui)]),
     ]);
 
     // Resolve route once, used by Strategy 2/3 AND by Strategy 1's
@@ -346,45 +384,72 @@ export async function convertRxcuiToAtc(rxcui) {
     // True INs only — getIngredientRxcuis includes the input itself.
     const inputId = String(rxcui);
     const trueIns = ingredientIds.filter(id => id !== inputId);
+    // True MINs only — getMinRxcuis includes the input itself.
+    const trueMins = (minIds || []).filter(id => id !== inputId);
     const isCombination = looksLikeCombination({
       inIngredientCount: trueIns.length,
-      hasMinAncestor: false, // signal not yet probed; trueIns >= 2 is sufficient
+      hasMinAncestor: trueMins.length > 0,
       name: (props && props.name) || "",
     });
-    // Kick off ingredient resolutions in parallel with the strategy chain.
-    // If isCombination is false this becomes a no-op promise (cheap).
+    // Kick off ingredient resolutions + MIN-property L5 lookup in parallel
+    // with the strategy chain. If isCombination is false these become
+    // no-op resolves (cheap).
     const combinationIngredientsPromise = isCombination
       ? fetchIngredientResolutions(trueIns, route)
       : Promise.resolve([]);
+    const minAncestorL5Promise = isCombination
+      ? fetchMinAncestorL5(rxcui, trueMins)
+      : Promise.resolve(null);
 
     /**
-     * Apply combination context to a strategy result. Four rules, evaluated
-     * in order:
-     *   1. Non-combination input → return result unchanged.
-     *   2. Combination input, result is L4-only or NO_ATC → upgrade status to
-     *      COMBINATION_NO_DEDICATED_CODE, attach ingredients.
-     *   3. Combination input, result has a Level-5 code AND every kept L5
-     *      belongs to one ingredient's own ATC list (i.e. no true MIN-derived
-     *      combination L5 was reached, see shouldEscalateToCombinationNoCode)
-     *      → escalate to COMBINATION_NO_DEDICATED_CODE and replace the L5
-     *      codes with their L4 parents (with class names fetched async). The
-     *      ingredient L5 stays visible through combinationIngredients[], it
-     *      just no longer wears the "primary KEPT" badge in the UI.
-     *   4. Combination input, result has a true combination L5 (e.g.
-     *      J01EE01 sulfa+TMP, A10BD19 linagliptin+empagliflozin) → stay KEEP,
-     *      attach ingredients for context.
+     * Apply combination context to a strategy result. Five rules, evaluated
+     * in order. The MIN-property bypass is FIRST because it's the most
+     * authoritative source of a dedicated combination L5 — when present,
+     * it wins over any Strategy 1/2/3 result for the combination case.
      *
-     * Ingredient resolutions are awaited here (the promise was kicked off
-     * up top so this almost never blocks).
+     *   1. Non-combination input → return result unchanged.
+     *   2. Combination input + MIN-ancestor's property API has an L5
+     *      (e.g. Epclusa MIN 1799211 → J05AP55) → KEEP with that L5,
+     *      replace the strategy chain's codes. Provenance carried via
+     *      `minProvenance: true` on the result envelope.
+     *   3. Combination input, result is L4-only or NO_ATC → upgrade to
+     *      COMBINATION_NO_DEDICATED_CODE, attach ingredients.
+     *   4. Combination input, result has a Level-5 code AND every kept L5
+     *      belongs to one ingredient's own ATC list → escalate to
+     *      COMBINATION_NO_DEDICATED_CODE, swap to L4 parent(s).
+     *   5. Combination input, result has a true combination L5 (e.g.
+     *      J01EE01 sulfa+TMP, A10BD19 linagliptin+empagliflozin via
+     *      Pass-2 MIN-equality) → stay KEEP, attach ingredients.
+     *
+     * Ingredient resolutions + MIN-property lookup are awaited here (both
+     * promises were kicked off up top so this almost never blocks).
      */
     const withCombination = async (result) => {
       if (!isCombination) return result;
-      const combinationIngredients = await combinationIngredientsPromise.catch(() => []);
+      const [combinationIngredients, minAncestorL5] = await Promise.all([
+        combinationIngredientsPromise.catch(() => []),
+        minAncestorL5Promise.catch(() => null),
+      ]);
+
+      // Rule 2: MIN-property L5 bypass (Phase 2B). If the MIN ancestor's
+      // own property API returns a Level-5 ATC code, that is the dedicated
+      // combination L5 — authoritative for the combination, overrides
+      // whatever the strategy chain picked.
+      if (minAncestorL5) {
+        return {
+          ...result,
+          status: "KEEP",
+          codes: [{ code: minAncestorL5.code, name: minAncestorL5.name }],
+          combinationIngredients,
+          minProvenance: { minRxcui: minAncestorL5.minRxcui, code: minAncestorL5.code },
+        };
+      }
+
       const codes = Array.isArray(result.codes) ? result.codes : [];
       const l5Codes = codes.filter(c => (c.code || "").length === 7);
       const l4Codes = codes.filter(c => (c.code || "").length === 5);
 
-      // Rule 2: L4-only or NO_ATC — escalate immediately.
+      // Rule 3: L4-only or NO_ATC — escalate immediately.
       if (result.status === "NO_ATC" || (result.status === "KEEP" && l4Codes.length > 0 && l5Codes.length === 0)) {
         return {
           ...result,
@@ -393,7 +458,7 @@ export async function convertRxcuiToAtc(rxcui) {
         };
       }
 
-      // Rule 3: KEEP with L5 but every L5 is just an ingredient's own
+      // Rule 4: KEEP with L5 but every L5 is just an ingredient's own
       // monotherapy code. Escalate, swap the L5 list for its L4 parent(s),
       // and fetch the L4 class names so the UI's combinationClassCard has
       // a meaningful label (e.g. "Antivirals for treatment of HCV infections"
@@ -418,7 +483,7 @@ export async function convertRxcuiToAtc(rxcui) {
         };
       }
 
-      // Rule 4: combination resolved cleanly via Pass-2 MIN-equality
+      // Rule 5: combination resolved cleanly via Pass-2 MIN-equality
       // (Bactrim, Glyxambi, etc). Stay KEEP, attach ingredients for context.
       return {
         ...result,
