@@ -31,6 +31,7 @@ import {
 import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-engine.js";
 import { findCuratedCombination } from "./atc-combinations-curated.js";
 import { resolveCombinationViaWHO } from "./who-atc-index.js";
+import { expandWithActiveMoietyAliases } from "./atc-active-moiety-curated.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -214,7 +215,13 @@ export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
     getIngredientRxcuis(rxcui),
     getPinRxcuis(rxcui),
   ]);
-  const matchIds = Array.from(new Set([...inIds, ...pinIds]));
+  // Expand matchIds with curated active-moiety aliases. RxNorm models
+  // salt / ester / prodrug forms (e.g. "lithium carbonate", "valproate",
+  // "mycophenolate mofetil") as separate INs from the active moiety the
+  // WHO ATC L5 is attributed to ("lithium cation", "valproic acid",
+  // "mycophenolic acid"). The /related graph does not always bridge them,
+  // so Pass-1 misses for those drugs unless we add the alias up front.
+  const matchIds = expandWithActiveMoietyAliases([...inIds, ...pinIds]);
   const selfId = String(rxcui);
   // Pass 2's "is this a combo?" check uses the IN count only — adding the
   // PIN form shouldn't make a single-ingredient salt product look like a
@@ -352,11 +359,31 @@ export async function convertRxcuiToAtc(rxcui) {
     // ============================================================
     const props = await getProperties(rxcui).catch(() => null);
     if (props && props.found && INGREDIENT_TTYS.has(props.tty)) {
-      console.log(`[RxCUI→ATC] TTY=${props.tty}, skipping route filter; returning all ingredient ATCs`);
-      const propertyCodes = await getAtcPropertyValues(rxcui).catch(() => []);
-      const codes = propertyCodes
+      // Union the input's own property-API ATCs with those of its related
+      // IN and PIN concepts. RxNorm attributes L5 codes inconsistently
+      // across the IN/PIN pair: most L5s sit on the IN (e.g. saxagliptin IN
+      // 857974 → A10BH03; the saxagliptin-hydrochloride PIN 1043560 has
+      // none of its own), but for some salts the L5 sits on the PIN (e.g.
+      // clorazepate dipotassium PIN 2607 → N05BA05 while the bare
+      // clorazepate IN 2353 has only L4). Unioning catches both shapes.
+      console.log(`[RxCUI→ATC] TTY=${props.tty}, skipping route filter; unioning ATCs across own + related IN/PIN concepts`);
+      const [ownCodes, inIds, pinIds] = await Promise.all([
+        getAtcPropertyValues(rxcui).catch(() => []),
+        getIngredientRxcuis(rxcui).catch(() => [String(rxcui)]),
+        getPinRxcuis(rxcui).catch(() => [String(rxcui)]),
+      ]);
+      const collected = new Set(ownCodes);
+      const relatedIds = new Set(
+        [...inIds, ...pinIds].filter(id => String(id) !== String(rxcui))
+      );
+      for (const id of relatedIds) {
+        const codes = await getAtcPropertyValues(id).catch(() => []);
+        for (const c of codes) collected.add(c);
+      }
+      const codes = [...collected]
         .filter(c => (c || "").length === 7)
         .map(code => ({ code, name: props.name || null }));
+      console.log(`[RxCUI→ATC] Ingredient-level ATCs (own ${ownCodes.length} + related ${relatedIds.size} concepts → ${codes.length} L5): ${codes.map(c => c.code).join(",") || "none"}`);
       return { status: "INGREDIENT_LEVEL", tty: props.tty, codes, rejectedL4: [] };
     }
 

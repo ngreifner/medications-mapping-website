@@ -41,6 +41,12 @@ const USER_AGENT = "MedCode-Lookup/0.1 (clinical research; https://github.com/ng
 // refresh.
 const L4_CODES = [
   "N02AJ", // Opioids in combination with non-opioid analgesics
+  "C07BA", // Non-selective beta-blockers and thiazides (Inderide etc.)
+  "C07BB", // Selective beta-blockers and thiazides (Ziac, Lopressor HCT)
+  "C07CA", // Non-selective beta-blockers and other diuretics
+  "C07CB", // Selective beta-blockers and other diuretics (Tenoretic)
+  "C07DA", // Non-selective beta-blockers, thiazides and other diuretics
+  "C07DB", // Selective beta-blockers, thiazides and other diuretics
   "C09DA", // ARBs and diuretics
   "C09DB", // ARBs and calcium channel blockers
   "C09BA", // ACE inhibitors and diuretics
@@ -50,6 +56,7 @@ const L4_CODES = [
   "J01CR", // Penicillin + beta-lactamase inhibitor combinations
   "J01DD", // Cephalosporin combinations (incl. ceftazidime/avibactam = Avycaz)
   "J01EE", // Sulfonamide + trimethoprim combinations
+  "A06AD", // Osmotic laxative combinations (PEG + electrolytes)
   "A10BD", // Oral diabetes combinations (DPP-4 + biguanide, etc.)
   "R03AK", // ICS + LABA combinations
   "R03AL", // LABA + LAMA combinations (incl. triple inhalers)

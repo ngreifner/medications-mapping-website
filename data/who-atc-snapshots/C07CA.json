@@ -1,0 +1,25 @@
+{
+  "l4_code": "C07CA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CA&showdescription=no",
+  "refreshed_at": "2026-05-25T07:27:51.177Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C07CA02",
+      "name": "oxprenolol and other diuretics"
+    },
+    {
+      "code": "C07CA03",
+      "name": "pindolol and other diuretics"
+    },
+    {
+      "code": "C07CA17",
+      "name": "bopindolol and other diuretics"
+    },
+    {
+      "code": "C07CA23",
+      "name": "penbutolol and other diuretics"
+    }
+  ]
+}

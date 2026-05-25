@@ -82,6 +82,17 @@ export const CURATED_COMBINATIONS = [
   { l5: "C09DX03", name: "olmesartan medoxomil, amlodipine and hydrochlorothiazide",
     ingredients: ["olmesartan", "amlodipine", "hydrochlorothiazide"] },
 
+  // ─── C07BB — selective beta-blockers + thiazides ─────────────────
+  { l5: "C07BB02", name: "metoprolol and thiazides", ingredients: ["metoprolol", "hydrochlorothiazide"] },
+  { l5: "C07BB07", name: "bisoprolol and thiazides", ingredients: ["bisoprolol", "hydrochlorothiazide"] },
+
+  // ─── A06AD — osmotic laxative combinations ───────────────────────
+  // Macrogol (PEG 3350) + electrolytes for colonoscopy prep (Gavilyte-H,
+  // MoviPrep, GoLYTELY etc.). WHO models this as a single combination L5;
+  // RxNorm explodes the formulation into 4–5 separate ingredients.
+  { l5: "A06AD15", name: "macrogol, combinations",
+    ingredients: ["polyethylene glycol 3350", "potassium chloride", "sodium bicarbonate", "sodium chloride"] },
+
   // ─── N04BA — dopa and decarboxylase inhibitors ───────────────────
   { l5: "N04BA02", name: "levodopa and decarboxylase inhibitor",
     ingredients: ["carbidopa", "levodopa"] },

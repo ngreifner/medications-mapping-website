@@ -1,0 +1,77 @@
+{
+  "l4_code": "A06AD",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A06AD&showdescription=no",
+  "refreshed_at": "2026-05-25T07:27:56.001Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "A06AD01",
+      "name": "magnesium carbonate"
+    },
+    {
+      "code": "A06AD02",
+      "name": "magnesium oxide"
+    },
+    {
+      "code": "A06AD03",
+      "name": "magnesium peroxide"
+    },
+    {
+      "code": "A06AD04",
+      "name": "magnesium sulfate"
+    },
+    {
+      "code": "A06AD10",
+      "name": "mineral salts in combination"
+    },
+    {
+      "code": "A06AD11",
+      "name": "lactulose"
+    },
+    {
+      "code": "A06AD12",
+      "name": "lactitol"
+    },
+    {
+      "code": "A06AD13",
+      "name": "sodium sulfate"
+    },
+    {
+      "code": "A06AD14",
+      "name": "pentaerithrityl"
+    },
+    {
+      "code": "A06AD15",
+      "name": "macrogol"
+    },
+    {
+      "code": "A06AD16",
+      "name": "mannitol"
+    },
+    {
+      "code": "A06AD17",
+      "name": "sodium phosphate"
+    },
+    {
+      "code": "A06AD18",
+      "name": "sorbitol"
+    },
+    {
+      "code": "A06AD19",
+      "name": "magnesium citrate"
+    },
+    {
+      "code": "A06AD21",
+      "name": "sodium tartrate"
+    },
+    {
+      "code": "A06AD61",
+      "name": "lactulose, combinations"
+    },
+    {
+      "code": "A06AD65",
+      "name": "macrogol, combinations"
+    }
+  ]
+}

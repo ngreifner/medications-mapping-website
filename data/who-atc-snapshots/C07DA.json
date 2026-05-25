@@ -1,0 +1,13 @@
+{
+  "l4_code": "C07DA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DA&showdescription=no",
+  "refreshed_at": "2026-05-25T07:27:51.920Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C07DA06",
+      "name": "timolol, thiazides and other diuretics"
+    }
+  ]
+}

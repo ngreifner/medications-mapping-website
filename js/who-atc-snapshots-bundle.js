@@ -10,7 +10,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N02AJ": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02AJ&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:32.737Z",
+    "refreshed_at": "2026-05-25T07:27:50.064Z",
     "parser_version": 1,
     "children": [
       {
@@ -79,10 +79,146 @@ export const WHO_ATC_SNAPSHOTS = {
       }
     ]
   },
+  "C07BA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BA&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:50.439Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07BA02",
+        "name": "oxprenolol and thiazides"
+      },
+      {
+        "code": "C07BA05",
+        "name": "propranolol and thiazides"
+      },
+      {
+        "code": "C07BA06",
+        "name": "timolol and thiazides"
+      },
+      {
+        "code": "C07BA07",
+        "name": "sotalol and thiazides"
+      },
+      {
+        "code": "C07BA12",
+        "name": "nadolol and thiazides"
+      },
+      {
+        "code": "C07BA68",
+        "name": "metipranolol and thiazides, combinations"
+      }
+    ]
+  },
+  "C07BB": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BB&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:50.807Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07BB02",
+        "name": "metoprolol and thiazides"
+      },
+      {
+        "code": "C07BB03",
+        "name": "atenolol and thiazides"
+      },
+      {
+        "code": "C07BB04",
+        "name": "acebutolol and thiazides"
+      },
+      {
+        "code": "C07BB06",
+        "name": "bevantolol and thiazides"
+      },
+      {
+        "code": "C07BB07",
+        "name": "bisoprolol and thiazides"
+      },
+      {
+        "code": "C07BB12",
+        "name": "nebivolol and thiazides"
+      },
+      {
+        "code": "C07BB52",
+        "name": "metoprolol and thiazides, combinations"
+      }
+    ]
+  },
+  "C07CA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CA&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:51.177Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07CA02",
+        "name": "oxprenolol and other diuretics"
+      },
+      {
+        "code": "C07CA03",
+        "name": "pindolol and other diuretics"
+      },
+      {
+        "code": "C07CA17",
+        "name": "bopindolol and other diuretics"
+      },
+      {
+        "code": "C07CA23",
+        "name": "penbutolol and other diuretics"
+      }
+    ]
+  },
+  "C07CB": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CB&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:51.548Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07CB02",
+        "name": "metoprolol and other diuretics"
+      },
+      {
+        "code": "C07CB03",
+        "name": "atenolol and other diuretics"
+      },
+      {
+        "code": "C07CB53",
+        "name": "atenolol and other diuretics, combinations"
+      }
+    ]
+  },
+  "C07DA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DA&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:51.920Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07DA06",
+        "name": "timolol, thiazides and other diuretics"
+      }
+    ]
+  },
+  "C07DB": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DB&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:52.292Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C07DB01",
+        "name": "atenolol, thiazides and other diuretics"
+      }
+    ]
+  },
   "C09DA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DA&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:33.112Z",
+    "refreshed_at": "2026-05-25T07:27:52.669Z",
     "parser_version": 1,
     "children": [
       {
@@ -126,7 +262,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DB&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:33.481Z",
+    "refreshed_at": "2026-05-25T07:27:53.044Z",
     "parser_version": 1,
     "children": [
       {
@@ -166,7 +302,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BA&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:33.851Z",
+    "refreshed_at": "2026-05-25T07:27:53.427Z",
     "parser_version": 1,
     "children": [
       {
@@ -222,7 +358,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BB&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:34.209Z",
+    "refreshed_at": "2026-05-25T07:27:53.798Z",
     "parser_version": 1,
     "children": [
       {
@@ -270,7 +406,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DX": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DX&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:34.570Z",
+    "refreshed_at": "2026-05-25T07:27:54.167Z",
     "parser_version": 1,
     "children": [
       {
@@ -314,7 +450,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N04BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N04BA&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:34.939Z",
+    "refreshed_at": "2026-05-25T07:27:54.528Z",
     "parser_version": 1,
     "children": [
       {
@@ -350,7 +486,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01CR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01CR&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:35.299Z",
+    "refreshed_at": "2026-05-25T07:27:54.894Z",
     "parser_version": 1,
     "children": [
       {
@@ -382,7 +518,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01DD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01DD&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:35.661Z",
+    "refreshed_at": "2026-05-25T07:27:55.263Z",
     "parser_version": 1,
     "children": [
       {
@@ -490,7 +626,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01EE": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01EE&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:36.020Z",
+    "refreshed_at": "2026-05-25T07:27:55.636Z",
     "parser_version": 1,
     "children": [
       {
@@ -523,10 +659,86 @@ export const WHO_ATC_SNAPSHOTS = {
       }
     ]
   },
+  "A06AD": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A06AD&showdescription=no",
+    "refreshed_at": "2026-05-25T07:27:56.001Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "A06AD01",
+        "name": "magnesium carbonate"
+      },
+      {
+        "code": "A06AD02",
+        "name": "magnesium oxide"
+      },
+      {
+        "code": "A06AD03",
+        "name": "magnesium peroxide"
+      },
+      {
+        "code": "A06AD04",
+        "name": "magnesium sulfate"
+      },
+      {
+        "code": "A06AD10",
+        "name": "mineral salts in combination"
+      },
+      {
+        "code": "A06AD11",
+        "name": "lactulose"
+      },
+      {
+        "code": "A06AD12",
+        "name": "lactitol"
+      },
+      {
+        "code": "A06AD13",
+        "name": "sodium sulfate"
+      },
+      {
+        "code": "A06AD14",
+        "name": "pentaerithrityl"
+      },
+      {
+        "code": "A06AD15",
+        "name": "macrogol"
+      },
+      {
+        "code": "A06AD16",
+        "name": "mannitol"
+      },
+      {
+        "code": "A06AD17",
+        "name": "sodium phosphate"
+      },
+      {
+        "code": "A06AD18",
+        "name": "sorbitol"
+      },
+      {
+        "code": "A06AD19",
+        "name": "magnesium citrate"
+      },
+      {
+        "code": "A06AD21",
+        "name": "sodium tartrate"
+      },
+      {
+        "code": "A06AD61",
+        "name": "lactulose, combinations"
+      },
+      {
+        "code": "A06AD65",
+        "name": "macrogol, combinations"
+      }
+    ]
+  },
   "A10BD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BD&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:36.381Z",
+    "refreshed_at": "2026-05-25T07:27:56.368Z",
     "parser_version": 1,
     "children": [
       {
@@ -670,7 +882,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AK": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AK&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:36.749Z",
+    "refreshed_at": "2026-05-25T07:27:56.737Z",
     "parser_version": 1,
     "children": [
       {
@@ -734,7 +946,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AL": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AL&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:37.120Z",
+    "refreshed_at": "2026-05-25T07:27:57.104Z",
     "parser_version": 1,
     "children": [
       {
@@ -790,7 +1002,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AR&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:37.489Z",
+    "refreshed_at": "2026-05-25T07:27:57.488Z",
     "parser_version": 1,
     "children": [
       {
@@ -914,7 +1126,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AP": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AP&showdescription=no",
-    "refreshed_at": "2026-05-24T12:37:37.871Z",
+    "refreshed_at": "2026-05-25T07:27:57.860Z",
     "parser_version": 1,
     "children": [
       {

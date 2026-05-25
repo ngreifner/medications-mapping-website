@@ -1,0 +1,33 @@
+{
+  "l4_code": "C07BA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BA&showdescription=no",
+  "refreshed_at": "2026-05-25T07:27:50.439Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C07BA02",
+      "name": "oxprenolol and thiazides"
+    },
+    {
+      "code": "C07BA05",
+      "name": "propranolol and thiazides"
+    },
+    {
+      "code": "C07BA06",
+      "name": "timolol and thiazides"
+    },
+    {
+      "code": "C07BA07",
+      "name": "sotalol and thiazides"
+    },
+    {
+      "code": "C07BA12",
+      "name": "nadolol and thiazides"
+    },
+    {
+      "code": "C07BA68",
+      "name": "metipranolol and thiazides, combinations"
+    }
+  ]
+}

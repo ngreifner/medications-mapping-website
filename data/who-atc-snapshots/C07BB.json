@@ -1,0 +1,37 @@
+{
+  "l4_code": "C07BB",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BB&showdescription=no",
+  "refreshed_at": "2026-05-25T07:27:50.807Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C07BB02",
+      "name": "metoprolol and thiazides"
+    },
+    {
+      "code": "C07BB03",
+      "name": "atenolol and thiazides"
+    },
+    {
+      "code": "C07BB04",
+      "name": "acebutolol and thiazides"
+    },
+    {
+      "code": "C07BB06",
+      "name": "bevantolol and thiazides"
+    },
+    {
+      "code": "C07BB07",
+      "name": "bisoprolol and thiazides"
+    },
+    {
+      "code": "C07BB12",
+      "name": "nebivolol and thiazides"
+    },
+    {
+      "code": "C07BB52",
+      "name": "metoprolol and thiazides, combinations"
+    }
+  ]
+}

@@ -4,3 +4,5 @@ cache.sqlite
 progress.jsonl
 output/
 smoke_output/
+audit-output/
+batches/
