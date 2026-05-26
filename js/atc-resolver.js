@@ -547,7 +547,28 @@ export async function convertRxcuiToAtc(rxcui) {
         };
       }
 
-      const codes = Array.isArray(result.codes) ? result.codes : [];
+      // Override ATCPROD's R05FA misclassification of DXM-containing combos.
+      // NLM's ATCPROD source files dextromethorphan (a synthetic morphinan
+      // with no opioid activity) under R05FA "Opium derivatives and
+      // expectorants" — 91 of R05FA's 139 ATCPROD members contain DXM but
+      // none are actually opium derivatives. WHO places these under R05FB
+      // "Other cough suppressants and expectorants, combinations" (and
+      // R05FB02 specifically for DXM+guaifenesin, covered by the curated
+      // catalog). For 3+ ingredient combos where no L5 fits, swap the L4
+      // surfaced as the combination class so the user sees R05FB (the
+      // correct anatomical family) instead of R05FA.
+      const ingNames = (combinationIngredients || []).map(i => (i.name || "").toLowerCase());
+      const opiumDerivatives = new Set(["codeine", "hydrocodone", "morphine", "noscapine", "opium", "ethylmorphine"]);
+      const hasDxm = ingNames.some(n => n === "dextromethorphan");
+      const hasOpium = ingNames.some(n => opiumDerivatives.has(n));
+      const r05faMisclassified = hasDxm && !hasOpium;
+      const correctR05fa = (c) => (
+        r05faMisclassified && (c.code === "R05FA" || /^R05FA/.test(c.code))
+          ? { ...c, code: "R05FB", name: "Other cough suppressants and expectorants, combinations" }
+          : c
+      );
+
+      const codes = (Array.isArray(result.codes) ? result.codes : []).map(correctR05fa);
       const l5Codes = codes.filter(c => (c.code || "").length === 7);
       const l4Codes = codes.filter(c => (c.code || "").length === 5);
 
@@ -555,6 +576,7 @@ export async function convertRxcuiToAtc(rxcui) {
       if (result.status === "NO_ATC" || (result.status === "KEEP" && l4Codes.length > 0 && l5Codes.length === 0)) {
         return {
           ...result,
+          codes,
           status: "COMBINATION_NO_DEDICATED_CODE",
           combinationIngredients,
         };
