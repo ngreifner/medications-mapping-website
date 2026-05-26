@@ -90,7 +90,10 @@ export const CURATED_COMBINATIONS = [
   // Macrogol (PEG 3350) + electrolytes for colonoscopy prep (Gavilyte-H,
   // MoviPrep, GoLYTELY etc.). WHO models this as a single combination L5;
   // RxNorm explodes the formulation into 4–5 separate ingredients.
-  { l5: "A06AD15", name: "macrogol, combinations",
+  // NOTE: A06AD15 is "macrogol" (PEG alone). The combination class is
+  // A06AD65 ("macrogol, combinations") — that's the right L5 for any
+  // PEG-with-electrolytes formulation.
+  { l5: "A06AD65", name: "macrogol, combinations",
     ingredients: ["polyethylene glycol 3350", "potassium chloride", "sodium bicarbonate", "sodium chloride"] },
 
   // ─── N04BA — dopa and decarboxylase inhibitors ───────────────────
