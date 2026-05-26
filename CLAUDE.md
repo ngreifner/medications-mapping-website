@@ -43,6 +43,11 @@ medications mapping website/
     ├── filter-engine.js                ← pure logic: route resolution + matrix filter
     ├── rxnav-client.js                 ← all RxNav API calls + 30-day cache + 15 req/s rate limit
     ├── atc-resolver.js                 ← 3-strategy orchestrator (ATCPROD → DFG filter → property API)
+    ├── atc-combinations-curated.js     ← hand-curated ingredient-set → L5 (combinations)
+    ├── atc-active-moiety-curated.js    ← RxNorm IN/PIN → active-moiety alias table
+    ├── atc-form-determined-curated.js  ← substance + DF → L5 (Phase 2G, methotrexate-shape)
+    ├── who-atc-index.js                ← runtime name-parser for the WHO snapshot
+    ├── who-atc-snapshots-bundle.js     ← AUTO-GENERATED WHO snapshot data
     ├── atc-anatomy.js                  ← code anatomy renderer + async enrichment
     ├── code-detection.js               ← auto-detect RXCUI / ATC / NDC from input
     ├── ndc-normalizer.js               ← NDC format normalization (legacy, currently unused)
@@ -284,6 +289,37 @@ Inside the resolver, the strategy chain runs first, then `withCombination(result
 
 The single check `looksLikeCombination` handles both same-family and cross-family combinations uniformly — no separate multi-family safety check.
 
+### Form-determined ATC override (Phase 2G)
+A small number of substances carry **multiple substance-level WHO ATC codes** that are distinguished by **dose form, not anatomical route**. The route filter cannot pick between them because both codes pass the same route's allow/exclude matrix. Methotrexate is the canonical case:
+
+- **L01BA01** — antineoplastic (vials, powder for injection, infusion)
+- **L04AX03** — immunosuppressant (auto-injector, prefilled pen/syringe, oral)
+
+Both pass the injectable matrix (neither L01 nor L04 is excluded for injectables), and ATCPROD short-circuits with L01BA only for every methotrexate product. Without intervention, SC auto-injectors like Rasuvo (RxCUI 1544396) lose L04AX03 — clinically wrong for the rheumatoid-arthritis / psoriasis indications.
+
+`withFormDetermined` is a second post-processor that runs **after** `withCombination` and consults [js/atc-form-determined-curated.js](js/atc-form-determined-curated.js). For single-IN inputs whose IN is in the curated table:
+
+1. Fetch the input's RxNorm **DF** (Dose Form — finer-grained than DFG) via the new `getDfs` helper.
+2. Find the first form rule whose `forms` list contains any of the input's DFs.
+3. If a rule matches → replace `result.codes` with `rule.atcs` and stamp `formDeterminedProvenance`.
+4. If no rule matches → use the substance's `defaultAtcs` (e.g. L01BA01 for methotrexate vials).
+
+The override **replaces** whatever the strategy chain picked — it doesn't union. This is intentional: WHO defines exactly one correct L5 per (substance, form) pair, so showing both would be over-broad.
+
+Skipped for: combinations (`trueIns.length !== 1`) and ingredient-level inputs (early-exit before strategies). To add a new substance, append an entry to `FORM_DETERMINED_ATCS` with `{ingredient, formRules: [{forms, atcs, note}, ...], defaultAtcs}`.
+
+**Verified cases:**
+- `1544396` Rasuvo Auto-Injector → L04AX03 (matched "Auto-Injector")
+- `1441407` Otrexup Auto-Injector → L04AX03
+- `2377338` Reditrex Prefilled Syringe → L04AX03
+- `284592` Trexall Oral Tablet → L04AX03
+- `1921598` Xatmep Oral Solution → L04AX03
+- `105589` methotrexate 100 MG/ML Injectable Solution → L01BA01 (default)
+- `1655956` 40 ML methotrexate 25 MG/ML Injection → L01BA01 (default)
+- `6851` methotrexate IN → both L01BA01 + L04AX03 (INGREDIENT_LEVEL path, override doesn't apply)
+
+**Not the right fit for:** substances whose dual ATCs are distinguished by **dose strength** rather than dose form — sildenafil 20 mg PAH vs 50 mg ED, finasteride 1 mg alopecia vs 5 mg BPH, misoprostol ulcer vs labor-induction. Those would need a separate dose-aware mechanism (not built).
+
 ### Why partial coverage gets escalated (and why this changed)
 Earlier the engine returned KEEP for any combination drug where Strategy 1 produced any L5, even when that L5 only represented one ingredient. Users got a misleading green-badge KEPT card whose code was the wrong answer:
 - Epclusa (sofosbuvir + velpatasvir) showed J05AP08 (sofosbuvir mono), missing velpatasvir entirely.
@@ -372,6 +408,7 @@ Base URL: `https://rxnav.nlm.nih.gov/REST`
 | `/rxclass/class/byRxcui.json?rxcui={x}&relaSource=ATCPROD` | Strategy 1 |
 | `/rxclass/class/byRxcui.json?rxcui={x}&relaSource=ATC` | Strategy 2 (ingredient ATCs) |
 | `/rxcui/{x}/related.json?tty=DFG` | Strategy 2 (route resolution) |
+| `/rxcui/{x}/related.json?tty=DF` | `withFormDetermined` form-determined override (Phase 2G) |
 | `/rxcui/{x}/property.json?propName=ATC` | Strategy 3, INGREDIENT_LEVEL path |
 | `/rxcui/{x}/related.json?tty=IN` | `fetchIngredientRxcuis` for Level 5 promotion |
 | `/rxclass/classMembers.json?classId={l4}&relaSource=ATC` | `resolveLevel5FromClassMembers` primary path |
@@ -623,6 +660,27 @@ When Modes 4/5 are built: the active/obsolete distinction is RxNorm's view as of
    ```
 3. Use lowercase RxNorm IN names (set semantics; order doesn't matter).
 4. Verify by querying a relevant SCD in Mode 1.
+
+### Adding a form-determined ATC (Phase 2G)
+For substances where WHO defines multiple L5 codes distinguished by dose form (not anatomical route) — methotrexate is the canonical case:
+1. Confirm WHO assigns different L5 codes to different dose forms of the substance.
+2. Identify the canonical RxNorm DF names for each form (e.g. `Auto-Injector`, `Prefilled Syringe`, `Oral Tablet`, `Injectable Solution`). The names must match RxNav's `/related.json?tty=DF` output exactly (case-insensitive).
+3. Append an entry to `FORM_DETERMINED_ATCS` in `js/atc-form-determined-curated.js`:
+   ```js
+   {
+     ingredient: "methotrexate",
+     formRules: [
+       { forms: ["Auto-Injector", "Prefilled Syringe"], atcs: [{code: "L04AX03", name: "methotrexate"}], note: "..." },
+       { forms: ["Oral Tablet", "Oral Solution"],       atcs: [{code: "L04AX03", name: "methotrexate"}], note: "..." },
+     ],
+     defaultAtcs: [{code: "L01BA01", name: "methotrexate"}],
+     defaultNote: "...",
+   }
+   ```
+4. Add test cases to `scratch/test-form-determined.js`.
+5. Run `node scratch/test-form-determined.js` to verify.
+
+**Not suitable for:** substances whose dual ATCs are distinguished by **dose strength** (sildenafil ED vs PAH, finasteride alopecia vs BPH, misoprostol ulcer vs labor). The current mechanism reads DF, not strength.
 
 ### Refreshing the WHO ATC snapshots (Phase 2D)
 1. Edit `L4_CODES` in `scripts/refresh-who-snapshots.js` if adding new L4s.

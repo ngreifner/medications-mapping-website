@@ -196,6 +196,40 @@ export async function getDfgs(rxcui) {
 }
 
 /**
+ * /rxcui/{rxcui}/related.json?tty=DF, returns string[] of Dose Form names
+ * (e.g. ["Auto-Injector"], ["Oral Tablet"], ["Injectable Solution"]). DF is
+ * the specific dose form — finer-grained than DFG. The form-determined ATC
+ * resolver uses this to pick between substance-level ATC codes (e.g.
+ * methotrexate auto-injector → L04AX03 vs methotrexate vial → L01BA01).
+ */
+export async function getDfs(rxcui) {
+  const id = String(rxcui).trim();
+  const cached = cacheGet(CACHE_KEYS.rxcui, id);
+  if (cached && cached.dfs) return cached.dfs.values;
+
+  try {
+    const url = `${BASE}/rxcui/${encodeURIComponent(id)}/related.json?tty=DF`;
+    const data = await schedule(() => fetchJson(url));
+    if (data.__notFound || !data?.relatedGroup?.conceptGroup) {
+      cacheMergeRxcui(id, { dfs: { values: [] } });
+      return [];
+    }
+    const groups = asArray(data.relatedGroup.conceptGroup);
+    const names = [];
+    for (const g of groups) {
+      if (g.tty !== "DF") continue;
+      for (const p of asArray(g.conceptProperties)) {
+        if (p && p.name) names.push(p.name);
+      }
+    }
+    cacheMergeRxcui(id, { dfs: { values: names } });
+    return names;
+  } catch {
+    return [];
+  }
+}
+
+/**
  * /rxcui/{rxcui}/related.json?tty=IN, returns string[] of RXCUIs containing
  * both the input itself and all related ingredient RXCUIs. Used to match the
  * input drug against ATC class members in resolveLevel5FromClassMembers.

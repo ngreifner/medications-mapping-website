@@ -19,6 +19,7 @@
 import {
   getProperties,
   getDfgs,
+  getDfs,
   getIngredientRxcuis,
   getMinRxcuis,
   getPinRxcuis,
@@ -32,6 +33,7 @@ import { resolveRoute, filterAtcByRoute, classifyAtcForRoute } from "./filter-en
 import { findCuratedCombination } from "./atc-combinations-curated.js";
 import { resolveCombinationViaWHO } from "./who-atc-index.js";
 import { expandWithActiveMoietyAliases } from "./atc-active-moiety-curated.js";
+import { findFormDeterminedAtcs } from "./atc-form-determined-curated.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -393,9 +395,12 @@ export async function convertRxcuiToAtc(rxcui) {
     // the strategy chain (downstream), the combination-detection layer,
     // and the Phase-2B MIN-property L5 lookup all consume them, so kicking
     // them off here saves round trips when the input turns out to be a combo.
-    const [atcprodClasses, dfgNames, ingredientClasses, propertyCodes, ingredientIds, minIds] = await Promise.all([
+    // dfNames (DF, not DFG) feeds the form-determined ATC override path —
+    // see withFormDetermined below.
+    const [atcprodClasses, dfgNames, dfNames, ingredientClasses, propertyCodes, ingredientIds, minIds] = await Promise.all([
       getAtcprodClasses(rxcui).catch(() => []),
       getDfgs(rxcui).catch(() => []),
+      getDfs(rxcui).catch(() => []),
       getIngredientAtcClasses(rxcui).catch(() => []),
       getAtcPropertyValues(rxcui).catch(() => []),
       getIngredientRxcuis(rxcui).catch(() => [String(rxcui)]),
@@ -626,6 +631,57 @@ export async function convertRxcuiToAtc(rxcui) {
     };
 
     // ============================================================
+    //  Form-determined ATC override (Phase 2G)
+    //
+    //  Some substances carry multiple substance-level ATC L5 codes that
+    //  WHO distinguishes by dose form, not by anatomical route — the
+    //  classic case is methotrexate (L01BA01 vial / infusion vs L04AX03
+    //  auto-injector / oral). The existing route filter cannot pick
+    //  between them because both pass the same route's matrix, and
+    //  ATCPROD short-circuits with only one.
+    //
+    //  This wrapper consults atc-form-determined-curated.js: if the input
+    //  is a single-ingredient product whose IN is in the curated table,
+    //  the table's form-rule for the input's RxNorm DF wins — replacing
+    //  whatever the strategy chain picked. Combinations and ingredient-
+    //  level inputs skip this path entirely.
+    // ============================================================
+    const withFormDetermined = async (result) => {
+      if (!result || result.status !== "KEEP" || !Array.isArray(result.codes)) return result;
+      // Single-IN only; combinations have their own resolution path.
+      if (trueIns.length !== 1) return result;
+      const inId = trueIns[0];
+      const inProps = await getProperties(inId).catch(() => null);
+      const ingredientName = inProps?.name;
+      if (!ingredientName) return result;
+      const hit = findFormDeterminedAtcs(ingredientName, dfNames);
+      if (!hit) return result;
+      console.log(
+        `[RxCUI→ATC] Form-determined override: ${hit.ingredient} + DF=[${(dfNames || []).join(", ") || "none"}] → ` +
+        `${hit.atcs.map(a => a.code).join(", ")} ` +
+        `(${hit.matchedForm ? `matched "${hit.matchedForm}"` : "default"})`
+      );
+      return {
+        ...result,
+        codes: hit.atcs,
+        formDeterminedProvenance: {
+          ingredient: hit.ingredient,
+          matchedForm: hit.matchedForm,
+          doseForms: Array.isArray(dfNames) ? [...dfNames] : [],
+          note: hit.note,
+          source: "Navina form-determined ATC catalog",
+        },
+      };
+    };
+
+    // Compose the two async post-processors so every strategy return goes
+    // through both (combination context first, then form-determined override).
+    const finishResult = async (result) => {
+      const combined = await withCombination(result);
+      return await withFormDetermined(combined);
+    };
+
+    // ============================================================
     //  STRATEGY 1: ATCPROD, direct product-level ATC mapping
     // ============================================================
     let atcprodFallback = null;
@@ -639,12 +695,12 @@ export async function convertRxcuiToAtc(rxcui) {
       const level4Ids = uniqueClasses.map(c => c.code).filter(c => c.length >= 4 && c.length <= 5);
       if (level4Ids.length > 0) {
         const level5 = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-        if (level5 && level5.length > 0) return withCombination(finalize(buildAtcprodKeep(level5, route)));
+        if (level5 && level5.length > 0) return finishResult(finalize(buildAtcprodKeep(level5, route)));
       }
 
       // Direct Level 5 codes from ATCPROD (rare but possible).
       const level5Direct = uniqueClasses.filter(c => c.code.length === 7);
-      if (level5Direct.length > 0) return withCombination(finalize(buildAtcprodKeep(level5Direct, route)));
+      if (level5Direct.length > 0) return finishResult(finalize(buildAtcprodKeep(level5Direct, route)));
 
       // Save Level 4 codes as fallback AND as a prefix whitelist for
       // downstream tiers. This prevents combo drugs (e.g. R03AL) from
@@ -677,7 +733,7 @@ export async function convertRxcuiToAtc(rxcui) {
         atcprodPrefixFilter(atcList.filter(item => item.code.length === 7)),
         route,
       );
-      if (level5.length > 0) return withCombination(finalize({ status: "KEEP", codes: level5 }));
+      if (level5.length > 0) return finishResult(finalize({ status: "KEEP", codes: level5 }));
 
       if (!atcprodFallback) {
         const level4Ids = filterAtcByRoute(
@@ -687,7 +743,7 @@ export async function convertRxcuiToAtc(rxcui) {
         console.log("[RxCUI→ATC] Level 4 codes after route filter:", level4Ids);
         if (level4Ids.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Ids);
-          if (promoted) return withCombination(finalize({ status: "KEEP", codes: promoted }));
+          if (promoted) return finishResult(finalize({ status: "KEEP", codes: promoted }));
         }
       }
     }
@@ -702,7 +758,7 @@ export async function convertRxcuiToAtc(rxcui) {
       );
       if (level5Codes.length > 0) {
         const named = await attachAtcNames(level5Codes);
-        return withCombination(finalize({ status: "KEEP", codes: named }));
+        return finishResult(finalize({ status: "KEEP", codes: named }));
       }
 
       if (!atcprodFallback) {
@@ -712,7 +768,7 @@ export async function convertRxcuiToAtc(rxcui) {
         );
         if (level4Codes.length > 0) {
           const promoted = await resolveLevel5FromClassMembers(rxcui, level4Codes);
-          if (promoted) return withCombination(finalize({ status: "KEEP", codes: promoted }));
+          if (promoted) return finishResult(finalize({ status: "KEEP", codes: promoted }));
         }
       }
     }
@@ -720,9 +776,9 @@ export async function convertRxcuiToAtc(rxcui) {
     // Last resort, return ATCPROD's Level 4 codes if nothing else resolved.
     if (atcprodFallback) {
       console.log("[RxCUI→ATC] Returning ATCPROD Level 4 fallback:", atcprodFallback.map(c => c.code).join(", "));
-      return withCombination(finalize({ status: "KEEP", codes: atcprodFallback }));
+      return finishResult(finalize({ status: "KEEP", codes: atcprodFallback }));
     }
-    return withCombination({ status: "NO_ATC", rejectedL4: [] });
+    return finishResult({ status: "NO_ATC", rejectedL4: [] });
   } catch (e) {
     console.error("[RxCUI→ATC] Error:", e);
     throw e;
