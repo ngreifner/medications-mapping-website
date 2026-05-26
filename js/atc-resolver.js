@@ -57,18 +57,25 @@ const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 // as additional detail.
 
 /**
- * Decide whether an RxCUI looks like a combination product, using three
- * complementary signals. Multiple INs is the gold standard; the name
- * heuristic and MIN-ancestor presence are corroborating signals that
- * cover edge cases (single-IN combinations don't exist in well-formed
- * RxNorm, so this is belt-and-suspenders).
+ * Decide whether an RxCUI looks like a combination product.
+ *
+ * Two signals — IN count is gold standard, MIN-ancestor is a safety net
+ * when IN extraction lags upstream metadata.
+ *
+ * The earlier name-based heuristics (` / `, ` and `, MG/MG strength pairs)
+ * were removed because they false-positive on Pack codes (GPCK / BPCK):
+ * pack names use ` / ` between package contents (e.g.
+ * "{1 (...Prefilled Syringe) / 1 (...Prefilled Syringe) } Pack"). The
+ * downstream `shouldEscalateToCombinationNoCode` then strips the resolved
+ * L5 to L4 because a single-ingredient pack's only IN tautologically owns
+ * the kept code. Net effect: 200+ rows in the independent audit landed at
+ * L4_ONLY for single-ingredient drug packs (adalimumab, semaglutide,
+ * apremilast, ozanimod, lamotrigine titration packs, etc.) when WHO has a
+ * dedicated L5 that the strategy chain had already reached. RxNorm models
+ * every real combination with ≥2 INs, so the IN-count signal is sufficient.
  */
-function looksLikeCombination({ inIngredientCount, hasMinAncestor, name }) {
+function looksLikeCombination({ inIngredientCount, hasMinAncestor }) {
   if (inIngredientCount >= 2) return true;
-  const n = String(name || "");
-  if (/\s\/\s/.test(n)) return true;
-  if (/\sand\s/i.test(n)) return true;
-  if (/\d+\s*MG.*\d+\s*MG/i.test(n)) return true;
   if (hasMinAncestor && inIngredientCount >= 1) return true;
   return false;
 }
@@ -423,7 +430,6 @@ export async function convertRxcuiToAtc(rxcui) {
     const isCombination = looksLikeCombination({
       inIngredientCount: trueIns.length,
       hasMinAncestor: trueMins.length > 0,
-      name: (props && props.name) || "",
     });
     // Kick off ingredient resolutions + MIN-property L5 lookup in parallel
     // with the strategy chain. If isCombination is false these become
