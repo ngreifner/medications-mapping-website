@@ -103,6 +103,59 @@ export const CURATED_COMBINATIONS = [
     ingredients: ["benserazide", "levodopa"] },
   { l5: "N04BA03", name: "levodopa, decarboxylase inhibitor and COMT inhibitor",
     ingredients: ["carbidopa", "levodopa", "entacapone"] },
+
+  // ─── Phase 2H additions (from independent audit findings) ─────────
+  // Each entry verified against the committed WHO snapshot for the L4.
+
+  // R03AL — LABA + LAMA (+ ICS) combinations
+  { l5: "R03AL02", name: "salbutamol and ipratropium",
+    ingredients: ["albuterol", "ipratropium"] },                         // Combivent / DuoNeb
+  { l5: "R03AL06", name: "olodaterol and tiotropium",
+    ingredients: ["olodaterol", "tiotropium"] },                         // Stiolto Respimat
+  { l5: "R03AL08", name: "vilanterol, umeclidinium and fluticasone furoate",
+    ingredients: ["fluticasone", "umeclidinium", "vilanterol"] },        // Trelegy Ellipta
+
+  // C09DX — ARBs, other combinations
+  { l5: "C09DX05", name: "valsartan and nebivolol",
+    ingredients: ["nebivolol", "valsartan"] },                           // Byvalson
+
+  // N06CA — antidepressants + psycholeptics
+  { l5: "N06CA03", name: "fluoxetine and psycholeptics",
+    ingredients: ["fluoxetine", "olanzapine"] },                         // Symbyax
+
+  // N07BC — drugs used in opioid dependence (combinations)
+  { l5: "N07BC51", name: "buprenorphine, combinations",
+    ingredients: ["buprenorphine", "naloxone"] },                        // Suboxone / Zubsolv / Bunavail
+
+  // C03EA — HCTZ + potassium-sparing diuretic combinations
+  { l5: "C03EA01", name: "hydrochlorothiazide and potassium-sparing agents",
+    ingredients: ["hydrochlorothiazide", "spironolactone"] },            // Aldactazide
+  { l5: "C03EA01", name: "hydrochlorothiazide and potassium-sparing agents",
+    ingredients: ["hydrochlorothiazide", "triamterene"] },               // Dyazide / Maxzide
+  { l5: "C03EA01", name: "hydrochlorothiazide and potassium-sparing agents",
+    ingredients: ["amiloride", "hydrochlorothiazide"] },                 // Moduretic
+
+  // A03CA — anticholinergic + psycholeptic combinations
+  { l5: "A03CA02", name: "clidinium and psycholeptics",
+    ingredients: ["chlordiazepoxide", "clidinium"] },                    // Librax
+
+  // A10BD — metformin + sulfonylurea (covered by single WHO L5)
+  { l5: "A10BD02", name: "metformin and sulfonylureas",
+    ingredients: ["glipizide", "metformin"] },                           // Metaglip
+  { l5: "A10BD02", name: "metformin and sulfonylureas",
+    ingredients: ["glyburide", "metformin"] },                           // Glucovance
+
+  // N05CB — barbiturate combinations
+  { l5: "N05CB01", name: "combinations of barbiturates",
+    ingredients: ["amobarbital", "secobarbital"] },                      // Tuinal
+
+  // R05FB — DXM + guaifenesin (cough suppressant + expectorant)
+  //   Fixes the systematic R05FA mis-resolution found in chunks 2 & 4 of the
+  //   independent audit. WHO defines R05FB02 for these combos; ATCPROD often
+  //   returns R05FA (opium derivatives + expectorants) which is the wrong
+  //   anatomical group since DXM is not an opium derivative.
+  { l5: "R05FB02", name: "cough suppressants and expectorants",
+    ingredients: ["dextromethorphan", "guaifenesin"] },
 ];
 
 /**

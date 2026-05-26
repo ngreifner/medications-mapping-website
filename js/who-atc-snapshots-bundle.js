@@ -10,7 +10,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N02AJ": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02AJ&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:50.064Z",
+    "refreshed_at": "2026-05-26T09:01:12.989Z",
     "parser_version": 1,
     "children": [
       {
@@ -82,7 +82,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:50.439Z",
+    "refreshed_at": "2026-05-26T09:01:13.361Z",
     "parser_version": 1,
     "children": [
       {
@@ -114,7 +114,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07BB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BB&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:50.807Z",
+    "refreshed_at": "2026-05-26T09:01:13.725Z",
     "parser_version": 1,
     "children": [
       {
@@ -150,7 +150,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07CA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:51.177Z",
+    "refreshed_at": "2026-05-26T09:01:14.088Z",
     "parser_version": 1,
     "children": [
       {
@@ -174,7 +174,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07CB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CB&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:51.548Z",
+    "refreshed_at": "2026-05-26T09:01:14.445Z",
     "parser_version": 1,
     "children": [
       {
@@ -194,7 +194,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07DA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:51.920Z",
+    "refreshed_at": "2026-05-26T09:01:14.806Z",
     "parser_version": 1,
     "children": [
       {
@@ -206,7 +206,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07DB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DB&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:52.292Z",
+    "refreshed_at": "2026-05-26T09:01:15.168Z",
     "parser_version": 1,
     "children": [
       {
@@ -218,7 +218,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:52.669Z",
+    "refreshed_at": "2026-05-26T09:01:15.536Z",
     "parser_version": 1,
     "children": [
       {
@@ -262,7 +262,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DB&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:53.044Z",
+    "refreshed_at": "2026-05-26T09:01:15.898Z",
     "parser_version": 1,
     "children": [
       {
@@ -302,7 +302,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:53.427Z",
+    "refreshed_at": "2026-05-26T09:01:16.264Z",
     "parser_version": 1,
     "children": [
       {
@@ -358,7 +358,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BB&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:53.798Z",
+    "refreshed_at": "2026-05-26T09:01:16.634Z",
     "parser_version": 1,
     "children": [
       {
@@ -406,7 +406,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DX": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DX&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:54.167Z",
+    "refreshed_at": "2026-05-26T09:01:16.999Z",
     "parser_version": 1,
     "children": [
       {
@@ -450,7 +450,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N04BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N04BA&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:54.528Z",
+    "refreshed_at": "2026-05-26T09:01:17.354Z",
     "parser_version": 1,
     "children": [
       {
@@ -486,7 +486,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01CR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01CR&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:54.894Z",
+    "refreshed_at": "2026-05-26T09:01:17.709Z",
     "parser_version": 1,
     "children": [
       {
@@ -518,7 +518,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01DD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01DD&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:55.263Z",
+    "refreshed_at": "2026-05-26T09:01:18.073Z",
     "parser_version": 1,
     "children": [
       {
@@ -626,7 +626,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01EE": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01EE&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:55.636Z",
+    "refreshed_at": "2026-05-26T09:01:18.427Z",
     "parser_version": 1,
     "children": [
       {
@@ -662,7 +662,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "A06AD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A06AD&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:56.001Z",
+    "refreshed_at": "2026-05-26T09:01:18.787Z",
     "parser_version": 1,
     "children": [
       {
@@ -738,7 +738,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "A10BD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BD&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:56.368Z",
+    "refreshed_at": "2026-05-26T09:01:19.145Z",
     "parser_version": 1,
     "children": [
       {
@@ -882,7 +882,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AK": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AK&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:56.737Z",
+    "refreshed_at": "2026-05-26T09:01:19.515Z",
     "parser_version": 1,
     "children": [
       {
@@ -946,7 +946,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AL": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AL&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:57.104Z",
+    "refreshed_at": "2026-05-26T09:01:19.874Z",
     "parser_version": 1,
     "children": [
       {
@@ -1002,7 +1002,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AR&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:57.488Z",
+    "refreshed_at": "2026-05-26T09:01:20.242Z",
     "parser_version": 1,
     "children": [
       {
@@ -1126,7 +1126,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AP": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AP&showdescription=no",
-    "refreshed_at": "2026-05-25T07:27:57.860Z",
+    "refreshed_at": "2026-05-26T09:01:20.594Z",
     "parser_version": 1,
     "children": [
       {
@@ -1216,6 +1216,314 @@ export const WHO_ATC_SNAPSHOTS = {
       {
         "code": "J05AP58",
         "name": "daclatasvir, asunaprevir and beclabuvir"
+      }
+    ]
+  },
+  "N06CA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N06CA&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:20.955Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "N06CA01",
+        "name": "amitriptyline and psycholeptics"
+      },
+      {
+        "code": "N06CA02",
+        "name": "melitracen and psycholeptics"
+      },
+      {
+        "code": "N06CA03",
+        "name": "fluoxetine and psycholeptics"
+      }
+    ]
+  },
+  "N07BC": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N07BC&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:21.314Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "N07BC01",
+        "name": "buprenorphine"
+      },
+      {
+        "code": "N07BC02",
+        "name": "methadone"
+      },
+      {
+        "code": "N07BC03",
+        "name": "levacetylmethadol"
+      },
+      {
+        "code": "N07BC04",
+        "name": "lofexidine"
+      },
+      {
+        "code": "N07BC05",
+        "name": "levomethadone"
+      },
+      {
+        "code": "N07BC06",
+        "name": "diamorphine"
+      },
+      {
+        "code": "N07BC51",
+        "name": "buprenorphine, combinations"
+      }
+    ]
+  },
+  "C03EA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C03EA&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:21.671Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C03EA01",
+        "name": "hydrochlorothiazide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA02",
+        "name": "trichlormethiazide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA03",
+        "name": "epitizide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA04",
+        "name": "altizide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA05",
+        "name": "mebutizide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA06",
+        "name": "chlortalidone and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA07",
+        "name": "cyclopenthiazide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA12",
+        "name": "metolazone and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA13",
+        "name": "bendroflumethiazide and potassium-sparing agents"
+      },
+      {
+        "code": "C03EA14",
+        "name": "butizide and potassium-sparing agents"
+      }
+    ]
+  },
+  "A03CA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A03CA&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:22.033Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "A03CA01",
+        "name": "isopropamide and psycholeptics"
+      },
+      {
+        "code": "A03CA02",
+        "name": "clidinium and psycholeptics"
+      },
+      {
+        "code": "A03CA03",
+        "name": "oxyphencyclimine and psycholeptics"
+      },
+      {
+        "code": "A03CA04",
+        "name": "otilonium bromide and psycholeptics"
+      },
+      {
+        "code": "A03CA05",
+        "name": "glycopyrronium bromide and psycholeptics"
+      },
+      {
+        "code": "A03CA06",
+        "name": "bevonium and psycholeptics"
+      },
+      {
+        "code": "A03CA07",
+        "name": "ambutonium and psycholeptics"
+      },
+      {
+        "code": "A03CA08",
+        "name": "diphemanil and psycholeptics"
+      },
+      {
+        "code": "A03CA09",
+        "name": "pipenzolate and psycholeptics"
+      },
+      {
+        "code": "A03CA30",
+        "name": "emepronium and psycholeptics"
+      },
+      {
+        "code": "A03CA34",
+        "name": "propantheline and psycholeptics"
+      }
+    ]
+  },
+  "C10BA": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C10BA&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:22.393Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C10BA01",
+        "name": "lovastatin and nicotinic acid"
+      },
+      {
+        "code": "C10BA02",
+        "name": "simvastatin and ezetimibe"
+      },
+      {
+        "code": "C10BA03",
+        "name": "pravastatin and fenofibrate"
+      },
+      {
+        "code": "C10BA04",
+        "name": "simvastatin and fenofibrate"
+      },
+      {
+        "code": "C10BA05",
+        "name": "atorvastatin and ezetimibe"
+      },
+      {
+        "code": "C10BA06",
+        "name": "rosuvastatin and ezetimibe"
+      },
+      {
+        "code": "C10BA07",
+        "name": "rosuvastatin and omega-3 fatty acids"
+      },
+      {
+        "code": "C10BA08",
+        "name": "atorvastatin and omega-3 fatty acids"
+      },
+      {
+        "code": "C10BA09",
+        "name": "rosuvastatin and fenofibrate"
+      },
+      {
+        "code": "C10BA10",
+        "name": "bempedoic acid and ezetimibe"
+      },
+      {
+        "code": "C10BA11",
+        "name": "pravastatin and ezetimibe"
+      },
+      {
+        "code": "C10BA12",
+        "name": "pravastatin, ezetimibe and fenofibrate"
+      },
+      {
+        "code": "C10BA13",
+        "name": "pitavastatin and ezetimibe"
+      },
+      {
+        "code": "C10BA14",
+        "name": "pitavastatin and fenofibrate"
+      },
+      {
+        "code": "C10BA15",
+        "name": "rosuvastatin, ezetimibe and fenofibrate"
+      },
+      {
+        "code": "C10BA16",
+        "name": "atorvastatin and fenofibrate"
+      }
+    ]
+  },
+  "N05CB": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N05CB&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:22.752Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "N05CB01",
+        "name": "combinations of barbiturates"
+      },
+      {
+        "code": "N05CB02",
+        "name": "barbiturates in combination with other drugs"
+      }
+    ]
+  },
+  "N02BE": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02BE&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:23.115Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "N02BE01",
+        "name": "paracetamol"
+      },
+      {
+        "code": "N02BE03",
+        "name": "phenacetin"
+      },
+      {
+        "code": "N02BE04",
+        "name": "bucetin"
+      },
+      {
+        "code": "N02BE05",
+        "name": "propacetamol"
+      },
+      {
+        "code": "N02BE51",
+        "name": "paracetamol, combinations excl. psycholeptics"
+      },
+      {
+        "code": "N02BE53",
+        "name": "phenacetin, combinations excl. psycholeptics"
+      },
+      {
+        "code": "N02BE54",
+        "name": "bucetin, combinations excl. psycholeptics"
+      },
+      {
+        "code": "N02BE71",
+        "name": "paracetamol, combinations with psycholeptics"
+      },
+      {
+        "code": "N02BE73",
+        "name": "phenacetin, combinations with psycholeptics"
+      },
+      {
+        "code": "N02BE74",
+        "name": "bucetin, combinations with psycholeptics"
+      }
+    ]
+  },
+  "R05FB": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R05FB&showdescription=no",
+    "refreshed_at": "2026-05-26T09:01:23.473Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "R05FB01",
+        "name": "cough suppressants and mucolytics"
+      },
+      {
+        "code": "R05FB02",
+        "name": "cough suppressants and expectorants"
       }
     ]
   }

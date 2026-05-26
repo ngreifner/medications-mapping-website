@@ -1,0 +1,73 @@
+{
+  "l4_code": "C10BA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C10BA&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:22.393Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C10BA01",
+      "name": "lovastatin and nicotinic acid"
+    },
+    {
+      "code": "C10BA02",
+      "name": "simvastatin and ezetimibe"
+    },
+    {
+      "code": "C10BA03",
+      "name": "pravastatin and fenofibrate"
+    },
+    {
+      "code": "C10BA04",
+      "name": "simvastatin and fenofibrate"
+    },
+    {
+      "code": "C10BA05",
+      "name": "atorvastatin and ezetimibe"
+    },
+    {
+      "code": "C10BA06",
+      "name": "rosuvastatin and ezetimibe"
+    },
+    {
+      "code": "C10BA07",
+      "name": "rosuvastatin and omega-3 fatty acids"
+    },
+    {
+      "code": "C10BA08",
+      "name": "atorvastatin and omega-3 fatty acids"
+    },
+    {
+      "code": "C10BA09",
+      "name": "rosuvastatin and fenofibrate"
+    },
+    {
+      "code": "C10BA10",
+      "name": "bempedoic acid and ezetimibe"
+    },
+    {
+      "code": "C10BA11",
+      "name": "pravastatin and ezetimibe"
+    },
+    {
+      "code": "C10BA12",
+      "name": "pravastatin, ezetimibe and fenofibrate"
+    },
+    {
+      "code": "C10BA13",
+      "name": "pitavastatin and ezetimibe"
+    },
+    {
+      "code": "C10BA14",
+      "name": "pitavastatin and fenofibrate"
+    },
+    {
+      "code": "C10BA15",
+      "name": "rosuvastatin, ezetimibe and fenofibrate"
+    },
+    {
+      "code": "C10BA16",
+      "name": "atorvastatin and fenofibrate"
+    }
+  ]
+}

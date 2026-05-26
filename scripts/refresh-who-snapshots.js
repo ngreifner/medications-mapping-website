@@ -62,6 +62,15 @@ const L4_CODES = [
   "R03AL", // LABA + LAMA combinations (incl. triple inhalers)
   "J05AR", // HIV antiviral combinations
   "J05AP", // HCV antiviral combinations
+  // ─── Phase 2H additions (from independent audit findings) ──────
+  "N06CA", // Antidepressants + psycholeptics (Symbyax = fluoxetine + olanzapine)
+  "N07BC", // Drugs used in opioid dependence (Suboxone = buprenorphine + naloxone)
+  "C03EA", // Diuretic + potassium-sparing combos (Aldactazide = HCTZ + spironolactone)
+  "A03CA", // Anticholinergic + psycholeptic combos (Librax = clidinium + chlordiazepoxide)
+  "C10BA", // HMG-CoA reductase inhibitors + lipid modifiers (Simcor = simvastatin + niacin)
+  "N05CB", // Barbiturate combinations (Tuinal = amobarbital + secobarbital)
+  "N02BE", // Paracetamol-led combinations (Fioricet, Esgic, dihydrocodeine+APAP+caffeine)
+  "R05FB", // Other cough suppressants + expectorants (DXM + guaifenesin combos)
 ];
 
 const SNAPSHOT_DIR = path.join(REPO_ROOT, "data", "who-atc-snapshots");

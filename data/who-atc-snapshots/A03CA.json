@@ -1,0 +1,53 @@
+{
+  "l4_code": "A03CA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A03CA&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:22.033Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "A03CA01",
+      "name": "isopropamide and psycholeptics"
+    },
+    {
+      "code": "A03CA02",
+      "name": "clidinium and psycholeptics"
+    },
+    {
+      "code": "A03CA03",
+      "name": "oxyphencyclimine and psycholeptics"
+    },
+    {
+      "code": "A03CA04",
+      "name": "otilonium bromide and psycholeptics"
+    },
+    {
+      "code": "A03CA05",
+      "name": "glycopyrronium bromide and psycholeptics"
+    },
+    {
+      "code": "A03CA06",
+      "name": "bevonium and psycholeptics"
+    },
+    {
+      "code": "A03CA07",
+      "name": "ambutonium and psycholeptics"
+    },
+    {
+      "code": "A03CA08",
+      "name": "diphemanil and psycholeptics"
+    },
+    {
+      "code": "A03CA09",
+      "name": "pipenzolate and psycholeptics"
+    },
+    {
+      "code": "A03CA30",
+      "name": "emepronium and psycholeptics"
+    },
+    {
+      "code": "A03CA34",
+      "name": "propantheline and psycholeptics"
+    }
+  ]
+}

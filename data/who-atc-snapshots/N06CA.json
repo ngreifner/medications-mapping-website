@@ -1,0 +1,21 @@
+{
+  "l4_code": "N06CA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N06CA&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:20.955Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "N06CA01",
+      "name": "amitriptyline and psycholeptics"
+    },
+    {
+      "code": "N06CA02",
+      "name": "melitracen and psycholeptics"
+    },
+    {
+      "code": "N06CA03",
+      "name": "fluoxetine and psycholeptics"
+    }
+  ]
+}

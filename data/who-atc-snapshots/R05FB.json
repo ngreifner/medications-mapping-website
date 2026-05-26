@@ -1,0 +1,17 @@
+{
+  "l4_code": "R05FB",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R05FB&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:23.473Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "R05FB01",
+      "name": "cough suppressants and mucolytics"
+    },
+    {
+      "code": "R05FB02",
+      "name": "cough suppressants and expectorants"
+    }
+  ]
+}

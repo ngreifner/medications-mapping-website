@@ -1,0 +1,49 @@
+{
+  "l4_code": "C03EA",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C03EA&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:21.671Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C03EA01",
+      "name": "hydrochlorothiazide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA02",
+      "name": "trichlormethiazide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA03",
+      "name": "epitizide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA04",
+      "name": "altizide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA05",
+      "name": "mebutizide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA06",
+      "name": "chlortalidone and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA07",
+      "name": "cyclopenthiazide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA12",
+      "name": "metolazone and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA13",
+      "name": "bendroflumethiazide and potassium-sparing agents"
+    },
+    {
+      "code": "C03EA14",
+      "name": "butizide and potassium-sparing agents"
+    }
+  ]
+}

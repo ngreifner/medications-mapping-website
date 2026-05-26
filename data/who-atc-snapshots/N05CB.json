@@ -1,0 +1,17 @@
+{
+  "l4_code": "N05CB",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N05CB&showdescription=no",
+  "refreshed_at": "2026-05-26T09:01:22.752Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "N05CB01",
+      "name": "combinations of barbiturates"
+    },
+    {
+      "code": "N05CB02",
+      "name": "barbiturates in combination with other drugs"
+    }
+  ]
+}
