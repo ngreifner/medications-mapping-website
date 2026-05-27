@@ -242,15 +242,27 @@ export async function resolveLevel5FromClassMembers(rxcui, level4ClassIds) {
     if (classId.length !== 5) continue;
     const members = await getClassMembers(classId).catch(() => []);
 
-    // Pass 1: single-ingredient direct match.
-    let hit = null;
+    // Pass 1: single-ingredient direct match. Prefer a match on the input's
+    // PRECISE ingredient (PIN) over its base IN. RxClass sometimes attributes
+    // a distinct L5 to a specific ester/salt: e.g. the fluticasone furoate
+    // PIN (705022) carries R01AD12 (nasal) / R03BA09 (inhaled), while the
+    // base fluticasone IN (41126) carries the propionate codes R01AD08 /
+    // R03BA05. Both are class members, and the base IN usually appears first
+    // — so taking the first match silently returns the wrong ester's code
+    // for furoate products. Preferring the PIN-specific match fixes this
+    // generically (any salt/ester with its own WHO L5), using attribution
+    // RxClass already exposes. Propionate products keep resolving to the IN
+    // code because their PIN isn't a distinct class member.
+    const pinMatchSet = new Set(pinIds.filter(id => id !== selfId));
+    let hit = null, inFallbackHit = null;
     for (const member of members) {
       if (!member.rxcui || !matchIds.includes(member.rxcui)) continue;
-      if (member.sourceId && member.sourceId.length === 7) {
-        hit = { code: member.sourceId, name: member.sourceName || "Name not available" };
-        break;
-      }
+      if (!member.sourceId || member.sourceId.length !== 7) continue;
+      const cand = { code: member.sourceId, name: member.sourceName || "Name not available" };
+      if (pinMatchSet.has(member.rxcui)) { hit = cand; break; } // most specific — take it
+      if (!inFallbackHit) inFallbackHit = cand;                 // remember base-IN match
     }
+    if (!hit) hit = inFallbackHit;
 
     // Pass 2: MIN-equality match for combination products. Only meaningful
     // when the input has at least two ingredients, otherwise there's no
