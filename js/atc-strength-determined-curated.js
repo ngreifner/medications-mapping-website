@@ -12,14 +12,17 @@
 //                >1 mg  → L01EG02 (antineoplastic mTOR inhibitor, Afinitor)
 //   finasteride   1 mg  → D11AX10 (androgenetic alopecia, Propecia)
 //                ≥5 mg  → G04CB01 (benign prostatic hyperplasia, Proscar)
-//   sildenafil   ≤20 mg → C02KX01 (pulmonary arterial hypertension, Revatio)
-//                >20 mg → G04BE03 (erectile dysfunction, Viagra)
+//
+// NB: sildenafil is NOT a strength-determined case. WHO assigns sildenafil
+// a single code (G04BE03) for every indication — including pulmonary
+// arterial hypertension (Revatio). C02KX01 is bosentan, a different drug;
+// the C02KX group is endothelin antagonists + riociguat, not PDE5
+// inhibitors. (An earlier draft wrongly split sildenafil here.)
 //
 // Why a curated table rather than data-driven: the route filter cannot pick
 // between these (finasteride's two codes span D and G; everolimus's span L01
 // and L04 — both pass the oral matrix), and RxNorm does not expose the
-// strength→code split. For sildenafil RxNorm doesn't even carry the PAH code
-// C02KX01 at all, so it must be supplied here.
+// strength→code split.
 //
 // Strength is read from the product's RxNorm name (e.g. "everolimus 0.5 MG
 // Oral Tablet"). Only plain-MG strengths are honored; concentration forms
@@ -50,16 +53,6 @@ export const STRENGTH_DETERMINED_ATCS = [
     ],
     defaultAtcs: [{ code: "G04CB01", name: "finasteride" }],
     defaultNote: "≥5 mg — benign prostatic hyperplasia (Proscar)",
-  },
-  {
-    ingredient: "sildenafil",
-    unit: "MG",
-    rules: [
-      { maxStrength: 20, atcs: [{ code: "C02KX01", name: "sildenafil" }],
-        note: "≤20 mg — pulmonary arterial hypertension (Revatio)" },
-    ],
-    defaultAtcs: [{ code: "G04BE03", name: "sildenafil" }],
-    defaultNote: ">20 mg — erectile dysfunction (Viagra)",
   },
 ];
 

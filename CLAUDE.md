@@ -319,7 +319,7 @@ Skipped for: combinations (`trueIns.length !== 1`) and ingredient-level inputs (
 - `1655956` 40 ML methotrexate 25 MG/ML Injection → L01BA01 (default)
 - `6851` methotrexate IN → both L01BA01 + L04AX03 (INGREDIENT_LEVEL path, override doesn't apply)
 
-**Dose-strength-determined cousins:** see Phase 2I below — that path now handles the strength-distinguished cases (sildenafil, finasteride, everolimus).
+**Dose-strength-determined cousins:** see Phase 2I below — that path handles the strength-distinguished cases (everolimus, finasteride). NB: sildenafil is *not* one — it's G04BE03 for every indication including PAH; C02KX01 is bosentan, a different drug.
 
 ### Strength-determined ATC override (Phase 2I)
 The third leg of dual-code handling, after route (the matrix) and dose form (Phase 2G): a few substances carry multiple WHO L5 codes distinguished by **dose strength**, which tracks the clinical indication. The route filter can't separate them (both codes pass the same route's matrix) and RxNorm doesn't expose the split.
@@ -332,9 +332,10 @@ Curated cases (each verified against WHO + live RxNav):
 |---|---|---|
 | everolimus | ≤1 mg → **L04AH02** (transplant immunosuppressant, Zortress) | >1 mg → **L01EG02** (antineoplastic mTOR inhibitor, Afinitor) |
 | finasteride | 1 mg → **D11AX10** (androgenetic alopecia, Propecia) | ≥5 mg → **G04CB01** (BPH, Proscar) |
-| sildenafil | ≤20 mg → **C02KX01** (pulmonary arterial hypertension, Revatio) | >20 mg → **G04BE03** (erectile dysfunction, Viagra) |
 
-Note the override **bypasses the route filter by design**: finasteride 1 mg correctly resolves to D11AX10 (a dermatological code) even though it's an oral tablet, because WHO classes alopecia finasteride under dermatologicals. And sildenafil's PAH code C02KX01 isn't in RxNorm at all — the curated table supplies it. Verified on 977436/845518 (everolimus), 213178/201961 (finasteride), 581645/213270 (sildenafil).
+Note the override **bypasses the route filter by design**: finasteride 1 mg correctly resolves to D11AX10 (a dermatological code) even though it's an oral tablet, because WHO classes alopecia finasteride under dermatologicals. Verified against the live WHO ATC index on 977436/845518 (everolimus) and 213178/201961 (finasteride).
+
+**Sildenafil is deliberately NOT in this table.** An earlier draft split it (Revatio PAH vs Viagra ED), but WHO assigns sildenafil the single code G04BE03 for all indications — C02KX01 is *bosentan*. The ground-truth WHO verification pass caught and removed this.
 
 ### Why partial coverage gets escalated (and why this changed)
 Earlier the engine returned KEEP for any combination drug where Strategy 1 produced any L5, even when that L5 only represented one ingredient. Users got a misleading green-badge KEPT card whose code was the wrong answer:

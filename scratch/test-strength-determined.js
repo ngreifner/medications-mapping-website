@@ -40,7 +40,9 @@ const CASES = [
   { label: "Afinitor 5 MG (oncology)",            rxcui: "845518", expect: "L01EG02", forbid: "L04AH02" },
   { label: "Propecia 1 MG (alopecia)",            rxcui: "213178", expect: "D11AX10", forbid: "G04CB01" },
   { label: "Proscar 5 MG (BPH)",                  rxcui: "201961", expect: "G04CB01", forbid: "D11AX10" },
-  { label: "Revatio 20 MG (PAH)",                 rxcui: "581645", expect: "C02KX01", forbid: "G04BE03" },
+  // sildenafil is NOT strength-determined: G04BE03 for all indications,
+  // including PAH (Revatio). Guard against the wrong C02KX01 (=bosentan) bug.
+  { label: "Revatio 20 MG (PAH) — must be G04BE03, not bosentan's C02KX01", rxcui: "581645", expect: "G04BE03", forbid: "C02KX01" },
   { label: "Viagra 50 MG (ED)",                   rxcui: "213270", expect: "G04BE03", forbid: "C02KX01" },
 ];
 console.log("\n=== end-to-end resolver ===");
