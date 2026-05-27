@@ -1,0 +1,49 @@
+{
+  "l4_code": "A10BH",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BH&showdescription=no",
+  "refreshed_at": "2026-05-27T09:43:29.955Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "A10BH01",
+      "name": "sitagliptin"
+    },
+    {
+      "code": "A10BH02",
+      "name": "vildagliptin"
+    },
+    {
+      "code": "A10BH03",
+      "name": "saxagliptin"
+    },
+    {
+      "code": "A10BH04",
+      "name": "alogliptin"
+    },
+    {
+      "code": "A10BH05",
+      "name": "linagliptin"
+    },
+    {
+      "code": "A10BH06",
+      "name": "gemigliptin"
+    },
+    {
+      "code": "A10BH07",
+      "name": "evogliptin"
+    },
+    {
+      "code": "A10BH08",
+      "name": "teneligliptin"
+    },
+    {
+      "code": "A10BH51",
+      "name": "sitagliptin and simvastatin"
+    },
+    {
+      "code": "A10BH52",
+      "name": "gemigliptin and rosuvastatin"
+    }
+  ]
+}

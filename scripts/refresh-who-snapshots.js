@@ -71,6 +71,10 @@ const L4_CODES = [
   "N05CB", // Barbiturate combinations (Tuinal = amobarbital + secobarbital)
   "N02BE", // Paracetamol-led combinations (Fioricet, Esgic, dihydrocodeine+APAP+caffeine)
   "R05FB", // Other cough suppressants + expectorants (DXM + guaifenesin combos)
+  // ─── Phase 2H Bucket D additions (from v2 audit control-sample errors) ──
+  "C10BX", // Statins + other combinations (Caduet = amlodipine + atorvastatin)
+  "A10BH", // DPP-4 inhibitor combinations (Juvisync = simvastatin + sitagliptin)
+  "C02LG", // Hydrazinophthalazine antihypertensives + diuretics (Apresazide)
 ];
 
 const SNAPSHOT_DIR = path.join(REPO_ROOT, "data", "who-atc-snapshots");

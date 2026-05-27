@@ -10,7 +10,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N02AJ": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02AJ&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:12.989Z",
+    "refreshed_at": "2026-05-27T09:43:18.049Z",
     "parser_version": 1,
     "children": [
       {
@@ -82,7 +82,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:13.361Z",
+    "refreshed_at": "2026-05-27T09:43:18.427Z",
     "parser_version": 1,
     "children": [
       {
@@ -114,7 +114,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07BB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07BB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:13.725Z",
+    "refreshed_at": "2026-05-27T09:43:18.819Z",
     "parser_version": 1,
     "children": [
       {
@@ -150,7 +150,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07CA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:14.088Z",
+    "refreshed_at": "2026-05-27T09:43:19.212Z",
     "parser_version": 1,
     "children": [
       {
@@ -174,7 +174,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07CB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07CB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:14.445Z",
+    "refreshed_at": "2026-05-27T09:43:19.658Z",
     "parser_version": 1,
     "children": [
       {
@@ -194,7 +194,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07DA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:14.806Z",
+    "refreshed_at": "2026-05-27T09:43:20.044Z",
     "parser_version": 1,
     "children": [
       {
@@ -206,7 +206,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C07DB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C07DB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:15.168Z",
+    "refreshed_at": "2026-05-27T09:43:20.420Z",
     "parser_version": 1,
     "children": [
       {
@@ -218,7 +218,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:15.536Z",
+    "refreshed_at": "2026-05-27T09:43:20.788Z",
     "parser_version": 1,
     "children": [
       {
@@ -262,7 +262,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:15.898Z",
+    "refreshed_at": "2026-05-27T09:43:21.160Z",
     "parser_version": 1,
     "children": [
       {
@@ -302,7 +302,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:16.264Z",
+    "refreshed_at": "2026-05-27T09:43:21.530Z",
     "parser_version": 1,
     "children": [
       {
@@ -358,7 +358,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09BB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09BB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:16.634Z",
+    "refreshed_at": "2026-05-27T09:43:21.899Z",
     "parser_version": 1,
     "children": [
       {
@@ -406,7 +406,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C09DX": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C09DX&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:16.999Z",
+    "refreshed_at": "2026-05-27T09:43:22.260Z",
     "parser_version": 1,
     "children": [
       {
@@ -450,7 +450,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N04BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N04BA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:17.354Z",
+    "refreshed_at": "2026-05-27T09:43:22.646Z",
     "parser_version": 1,
     "children": [
       {
@@ -486,7 +486,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01CR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01CR&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:17.709Z",
+    "refreshed_at": "2026-05-27T09:43:23.016Z",
     "parser_version": 1,
     "children": [
       {
@@ -518,7 +518,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01DD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01DD&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:18.073Z",
+    "refreshed_at": "2026-05-27T09:43:23.387Z",
     "parser_version": 1,
     "children": [
       {
@@ -626,7 +626,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J01EE": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J01EE&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:18.427Z",
+    "refreshed_at": "2026-05-27T09:43:23.763Z",
     "parser_version": 1,
     "children": [
       {
@@ -662,7 +662,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "A06AD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A06AD&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:18.787Z",
+    "refreshed_at": "2026-05-27T09:43:24.157Z",
     "parser_version": 1,
     "children": [
       {
@@ -738,7 +738,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "A10BD": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BD&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:19.145Z",
+    "refreshed_at": "2026-05-27T09:43:24.588Z",
     "parser_version": 1,
     "children": [
       {
@@ -882,7 +882,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AK": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AK&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:19.515Z",
+    "refreshed_at": "2026-05-27T09:43:24.957Z",
     "parser_version": 1,
     "children": [
       {
@@ -946,7 +946,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R03AL": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R03AL&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:19.874Z",
+    "refreshed_at": "2026-05-27T09:43:25.319Z",
     "parser_version": 1,
     "children": [
       {
@@ -1002,7 +1002,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AR": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AR&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:20.242Z",
+    "refreshed_at": "2026-05-27T09:43:25.702Z",
     "parser_version": 1,
     "children": [
       {
@@ -1126,7 +1126,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "J05AP": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=J05AP&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:20.594Z",
+    "refreshed_at": "2026-05-27T09:43:26.070Z",
     "parser_version": 1,
     "children": [
       {
@@ -1222,7 +1222,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N06CA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N06CA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:20.955Z",
+    "refreshed_at": "2026-05-27T09:43:26.438Z",
     "parser_version": 1,
     "children": [
       {
@@ -1242,7 +1242,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N07BC": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N07BC&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:21.314Z",
+    "refreshed_at": "2026-05-27T09:43:26.815Z",
     "parser_version": 1,
     "children": [
       {
@@ -1278,7 +1278,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C03EA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C03EA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:21.671Z",
+    "refreshed_at": "2026-05-27T09:43:27.227Z",
     "parser_version": 1,
     "children": [
       {
@@ -1326,7 +1326,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "A03CA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A03CA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:22.033Z",
+    "refreshed_at": "2026-05-27T09:43:27.597Z",
     "parser_version": 1,
     "children": [
       {
@@ -1378,7 +1378,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "C10BA": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C10BA&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:22.393Z",
+    "refreshed_at": "2026-05-27T09:43:27.963Z",
     "parser_version": 1,
     "children": [
       {
@@ -1450,7 +1450,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N05CB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N05CB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:22.752Z",
+    "refreshed_at": "2026-05-27T09:43:28.361Z",
     "parser_version": 1,
     "children": [
       {
@@ -1466,7 +1466,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "N02BE": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=N02BE&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:23.115Z",
+    "refreshed_at": "2026-05-27T09:43:28.750Z",
     "parser_version": 1,
     "children": [
       {
@@ -1514,7 +1514,7 @@ export const WHO_ATC_SNAPSHOTS = {
   "R05FB": {
     "l4_name": "",
     "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=R05FB&showdescription=no",
-    "refreshed_at": "2026-05-26T09:01:23.473Z",
+    "refreshed_at": "2026-05-27T09:43:29.163Z",
     "parser_version": 1,
     "children": [
       {
@@ -1524,6 +1524,186 @@ export const WHO_ATC_SNAPSHOTS = {
       {
         "code": "R05FB02",
         "name": "cough suppressants and expectorants"
+      }
+    ]
+  },
+  "C10BX": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C10BX&showdescription=no",
+    "refreshed_at": "2026-05-27T09:43:29.591Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C10BX01",
+        "name": "simvastatin and acetylsalicylic acid"
+      },
+      {
+        "code": "C10BX02",
+        "name": "pravastatin and acetylsalicylic acid"
+      },
+      {
+        "code": "C10BX03",
+        "name": "atorvastatin and amlodipine"
+      },
+      {
+        "code": "C10BX04",
+        "name": "simvastatin, acetylsalicylic acid and ramipril"
+      },
+      {
+        "code": "C10BX05",
+        "name": "rosuvastatin and acetylsalicylic acid"
+      },
+      {
+        "code": "C10BX06",
+        "name": "atorvastatin, acetylsalicylic acid and ramipril"
+      },
+      {
+        "code": "C10BX07",
+        "name": "rosuvastatin, amlodipine and lisinopril"
+      },
+      {
+        "code": "C10BX08",
+        "name": "atorvastatin and acetylsalicylic acid"
+      },
+      {
+        "code": "C10BX09",
+        "name": "rosuvastatin and amlodipine"
+      },
+      {
+        "code": "C10BX10",
+        "name": "rosuvastatin and valsartan"
+      },
+      {
+        "code": "C10BX11",
+        "name": "atorvastatin, amlodipine and perindopril"
+      },
+      {
+        "code": "C10BX12",
+        "name": "atorvastatin, acetylsalicylic acid and perindopril"
+      },
+      {
+        "code": "C10BX13",
+        "name": "rosuvastatin, perindopril and indapamide"
+      },
+      {
+        "code": "C10BX14",
+        "name": "rosuvastatin, amlodipine and perindopril"
+      },
+      {
+        "code": "C10BX15",
+        "name": "atorvastatin and perindopril"
+      },
+      {
+        "code": "C10BX16",
+        "name": "rosuvastatin and fimasartan"
+      },
+      {
+        "code": "C10BX17",
+        "name": "rosuvastatin and ramipril"
+      },
+      {
+        "code": "C10BX18",
+        "name": "atorvastatin, amlodipine and ramipril"
+      },
+      {
+        "code": "C10BX19",
+        "name": "atorvastatin, amlodipine and candesartan"
+      },
+      {
+        "code": "C10BX20",
+        "name": "rosuvastatin and telmisartan"
+      },
+      {
+        "code": "C10BX21",
+        "name": "rosuvastatin and perindopril"
+      },
+      {
+        "code": "C10BX22",
+        "name": "rosuvastatin and nebivolol"
+      },
+      {
+        "code": "C10BX23",
+        "name": "rosuvastatin, amlodipine and ramipril"
+      },
+      {
+        "code": "C10BX24",
+        "name": "rosuvastatin, amlodipine and telmisartan"
+      }
+    ]
+  },
+  "A10BH": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=A10BH&showdescription=no",
+    "refreshed_at": "2026-05-27T09:43:29.955Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "A10BH01",
+        "name": "sitagliptin"
+      },
+      {
+        "code": "A10BH02",
+        "name": "vildagliptin"
+      },
+      {
+        "code": "A10BH03",
+        "name": "saxagliptin"
+      },
+      {
+        "code": "A10BH04",
+        "name": "alogliptin"
+      },
+      {
+        "code": "A10BH05",
+        "name": "linagliptin"
+      },
+      {
+        "code": "A10BH06",
+        "name": "gemigliptin"
+      },
+      {
+        "code": "A10BH07",
+        "name": "evogliptin"
+      },
+      {
+        "code": "A10BH08",
+        "name": "teneligliptin"
+      },
+      {
+        "code": "A10BH51",
+        "name": "sitagliptin and simvastatin"
+      },
+      {
+        "code": "A10BH52",
+        "name": "gemigliptin and rosuvastatin"
+      }
+    ]
+  },
+  "C02LG": {
+    "l4_name": "",
+    "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C02LG&showdescription=no",
+    "refreshed_at": "2026-05-27T09:43:30.316Z",
+    "parser_version": 1,
+    "children": [
+      {
+        "code": "C02LG01",
+        "name": "dihydralazine and diuretics"
+      },
+      {
+        "code": "C02LG02",
+        "name": "hydralazine and diuretics"
+      },
+      {
+        "code": "C02LG03",
+        "name": "picodralazine and diuretics"
+      },
+      {
+        "code": "C02LG51",
+        "name": "dihydralazine and diuretics, combinations with other drugs"
+      },
+      {
+        "code": "C02LG73",
+        "name": "picodralazine and diuretics, combinations with psycholeptics"
       }
     ]
   }

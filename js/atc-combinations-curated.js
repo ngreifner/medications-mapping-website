@@ -88,13 +88,11 @@ export const CURATED_COMBINATIONS = [
 
   // ─── A06AD — osmotic laxative combinations ───────────────────────
   // Macrogol (PEG 3350) + electrolytes for colonoscopy prep (Gavilyte-H,
-  // MoviPrep, GoLYTELY etc.). WHO models this as a single combination L5;
-  // RxNorm explodes the formulation into 4–5 separate ingredients.
-  // NOTE: A06AD15 is "macrogol" (PEG alone). The combination class is
-  // A06AD65 ("macrogol, combinations") — that's the right L5 for any
-  // PEG-with-electrolytes formulation.
-  { l5: "A06AD65", name: "macrogol, combinations",
-    ingredients: ["polyethylene glycol 3350", "potassium chloride", "sodium bicarbonate", "sodium chloride"] },
+  // MoviPrep, GoLYTELY, TriLyte, Plenvu etc.) → A06AD65 "macrogol,
+  // combinations". A06AD15 is "macrogol" (PEG alone), NOT the combination.
+  // These ship in 4-/5-/6-ingredient variants, so the match is handled by
+  // the macrogol-family rule at the top of findCuratedCombination() rather
+  // than an exact ingredient-set entry here.
 
   // ─── N04BA — dopa and decarboxylase inhibitors ───────────────────
   { l5: "N04BA02", name: "levodopa and decarboxylase inhibitor",
@@ -156,6 +154,59 @@ export const CURATED_COMBINATIONS = [
   //   anatomical group since DXM is not an opium derivative.
   { l5: "R05FB02", name: "cough suppressants and expectorants",
     ingredients: ["dextromethorphan", "guaifenesin"] },
+
+  // ─── Phase 2H Bucket D (from the v2 audit: combos both sources missed) ──
+  // Each L5 verified against the committed WHO snapshot for its L4.
+
+  // R03AK — adrenergic + corticosteroid inhaler combinations
+  { l5: "R03AK06", name: "salmeterol and fluticasone",
+    ingredients: ["salmeterol", "fluticasone"] },                        // Advair / Seretide
+
+  // R03AL — adrenergic + anticholinergic (+ ICS) inhaler combinations
+  //   NB: RxNorm names the LAMA "glycopyrronium" (not "glycopyrrolate") for
+  //   these inhaled products — confirmed live on Bevespi/Breztri.
+  { l5: "R03AL07", name: "formoterol and glycopyrronium",
+    ingredients: ["formoterol", "glycopyrronium"] },                     // Bevespi Aerosphere
+  { l5: "R03AL11", name: "formoterol, glycopyrronium and budesonide",
+    ingredients: ["budesonide", "formoterol", "glycopyrronium"] },       // Breztri Aerosphere
+
+  // N02AJ — opioid + non-opioid analgesic combinations
+  { l5: "N02AJ17", name: "oxycodone and paracetamol",
+    ingredients: ["acetaminophen", "oxycodone"] },                       // Percocet / Endocet
+  { l5: "N02AJ18", name: "oxycodone and acetylsalicylic acid",
+    ingredients: ["aspirin", "oxycodone"] },                             // Percodan
+  { l5: "N02AJ19", name: "oxycodone and ibuprofen",
+    ingredients: ["ibuprofen", "oxycodone"] },                           // Combunox
+
+  // C10BX — statin + other (CCB / antiplatelet) combinations
+  { l5: "C10BX03", name: "atorvastatin and amlodipine",
+    ingredients: ["amlodipine", "atorvastatin"] },                       // Caduet
+
+  // C10BA — statin + other lipid-modifier combinations
+  { l5: "C10BA01", name: "lovastatin and nicotinic acid",
+    ingredients: ["lovastatin", "niacin"] },                             // Advicor
+
+  // A10BH — DPP-4 inhibitor + statin combination
+  { l5: "A10BH51", name: "sitagliptin and simvastatin",
+    ingredients: ["simvastatin", "sitagliptin"] },                       // Juvisync
+
+  // A10BD — sulfonylurea + thiazolidinedione combination
+  { l5: "A10BD04", name: "glimepiride and rosiglitazone",
+    ingredients: ["glimepiride", "rosiglitazone"] },                     // Avandaryl
+
+  // C02LG — hydralazine + diuretic combination
+  { l5: "C02LG02", name: "hydralazine and diuretics",
+    ingredients: ["hydralazine", "hydrochlorothiazide"] },               // Apresazide
+
+  // N06CA — amitriptyline + psycholeptic combinations
+  { l5: "N06CA01", name: "amitriptyline and psycholeptics",
+    ingredients: ["amitriptyline", "perphenazine"] },                    // Triavil / Etrafon
+  { l5: "N06CA01", name: "amitriptyline and psycholeptics",
+    ingredients: ["amitriptyline", "chlordiazepoxide"] },                // Limbitrol
+
+  // J05AP — HCV antiviral combination (4-drug)
+  { l5: "J05AP52", name: "dasabuvir, ombitasvir, paritaprevir and ritonavir",
+    ingredients: ["dasabuvir", "ombitasvir", "paritaprevir", "ritonavir"] }, // Viekira Pak
 ];
 
 /**
@@ -176,6 +227,16 @@ export function findCuratedCombination(ingredientNames) {
       .filter(Boolean)
   );
   if (inputSet.size < 2) return null;
+
+  // Macrogol-family rule (A06AD65 "macrogol, combinations"). PEG-3350 bowel
+  // preps ship in 4-, 5-, and 6-ingredient variants (TriLyte, GoLYTELY,
+  // Plenvu) that all map to the single WHO combination code. Exact set
+  // equality can't enumerate every electrolyte permutation, so we match the
+  // family directly: macrogol present + at least two other components.
+  if (inputSet.has("polyethylene glycol 3350") && inputSet.size >= 3) {
+    return { l5: "A06AD65", name: "macrogol, combinations",
+             ingredients: [...inputSet] };
+  }
 
   for (const entry of CURATED_COMBINATIONS) {
     const entrySet = new Set(entry.ingredients.map(s => s.toLowerCase()));

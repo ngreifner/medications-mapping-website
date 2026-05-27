@@ -1,0 +1,29 @@
+{
+  "l4_code": "C02LG",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C02LG&showdescription=no",
+  "refreshed_at": "2026-05-27T09:43:30.316Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C02LG01",
+      "name": "dihydralazine and diuretics"
+    },
+    {
+      "code": "C02LG02",
+      "name": "hydralazine and diuretics"
+    },
+    {
+      "code": "C02LG03",
+      "name": "picodralazine and diuretics"
+    },
+    {
+      "code": "C02LG51",
+      "name": "dihydralazine and diuretics, combinations with other drugs"
+    },
+    {
+      "code": "C02LG73",
+      "name": "picodralazine and diuretics, combinations with psycholeptics"
+    }
+  ]
+}

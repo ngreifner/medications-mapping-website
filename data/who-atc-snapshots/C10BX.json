@@ -1,0 +1,105 @@
+{
+  "l4_code": "C10BX",
+  "l4_name": "",
+  "source_url": "https://atcddd.fhi.no/atc_ddd_index/?code=C10BX&showdescription=no",
+  "refreshed_at": "2026-05-27T09:43:29.591Z",
+  "parser_version": 1,
+  "children": [
+    {
+      "code": "C10BX01",
+      "name": "simvastatin and acetylsalicylic acid"
+    },
+    {
+      "code": "C10BX02",
+      "name": "pravastatin and acetylsalicylic acid"
+    },
+    {
+      "code": "C10BX03",
+      "name": "atorvastatin and amlodipine"
+    },
+    {
+      "code": "C10BX04",
+      "name": "simvastatin, acetylsalicylic acid and ramipril"
+    },
+    {
+      "code": "C10BX05",
+      "name": "rosuvastatin and acetylsalicylic acid"
+    },
+    {
+      "code": "C10BX06",
+      "name": "atorvastatin, acetylsalicylic acid and ramipril"
+    },
+    {
+      "code": "C10BX07",
+      "name": "rosuvastatin, amlodipine and lisinopril"
+    },
+    {
+      "code": "C10BX08",
+      "name": "atorvastatin and acetylsalicylic acid"
+    },
+    {
+      "code": "C10BX09",
+      "name": "rosuvastatin and amlodipine"
+    },
+    {
+      "code": "C10BX10",
+      "name": "rosuvastatin and valsartan"
+    },
+    {
+      "code": "C10BX11",
+      "name": "atorvastatin, amlodipine and perindopril"
+    },
+    {
+      "code": "C10BX12",
+      "name": "atorvastatin, acetylsalicylic acid and perindopril"
+    },
+    {
+      "code": "C10BX13",
+      "name": "rosuvastatin, perindopril and indapamide"
+    },
+    {
+      "code": "C10BX14",
+      "name": "rosuvastatin, amlodipine and perindopril"
+    },
+    {
+      "code": "C10BX15",
+      "name": "atorvastatin and perindopril"
+    },
+    {
+      "code": "C10BX16",
+      "name": "rosuvastatin and fimasartan"
+    },
+    {
+      "code": "C10BX17",
+      "name": "rosuvastatin and ramipril"
+    },
+    {
+      "code": "C10BX18",
+      "name": "atorvastatin, amlodipine and ramipril"
+    },
+    {
+      "code": "C10BX19",
+      "name": "atorvastatin, amlodipine and candesartan"
+    },
+    {
+      "code": "C10BX20",
+      "name": "rosuvastatin and telmisartan"
+    },
+    {
+      "code": "C10BX21",
+      "name": "rosuvastatin and perindopril"
+    },
+    {
+      "code": "C10BX22",
+      "name": "rosuvastatin and nebivolol"
+    },
+    {
+      "code": "C10BX23",
+      "name": "rosuvastatin, amlodipine and ramipril"
+    },
+    {
+      "code": "C10BX24",
+      "name": "rosuvastatin, amlodipine and telmisartan"
+    }
+  ]
+}
