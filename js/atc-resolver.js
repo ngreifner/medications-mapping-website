@@ -34,6 +34,7 @@ import { findCuratedCombination } from "./atc-combinations-curated.js";
 import { resolveCombinationViaWHO } from "./who-atc-index.js";
 import { expandWithActiveMoietyAliases } from "./atc-active-moiety-curated.js";
 import { findFormDeterminedAtcs } from "./atc-form-determined-curated.js";
+import { findStrengthDeterminedAtcs } from "./atc-strength-determined-curated.js";
 
 const INGREDIENT_TTYS = new Set(["IN", "MIN", "PIN"]);
 
@@ -714,11 +715,52 @@ export async function convertRxcuiToAtc(rxcui) {
       };
     };
 
-    // Compose the two async post-processors so every strategy return goes
-    // through both (combination context first, then form-determined override).
+    // ============================================================
+    //  Strength-determined ATC override (Phase 2I)
+    //
+    //  The third leg of dual-code handling (after route + dose form): a few
+    //  substances carry multiple WHO L5 codes distinguished by DOSE STRENGTH,
+    //  which tracks the clinical indication. The route filter can't separate
+    //  them (e.g. finasteride's D11AX10 vs G04CB01, everolimus's L04AH02 vs
+    //  L01EG02 both pass the oral matrix) and RxNorm doesn't expose the split.
+    //  Consults atc-strength-determined-curated.js using the product's RxNorm
+    //  strength; single-IN only, like the form-determined override.
+    // ============================================================
+    const withStrengthDetermined = async (result) => {
+      if (!result || result.status !== "KEEP" || !Array.isArray(result.codes)) return result;
+      if (trueIns.length !== 1) return result;
+      const inId = trueIns[0];
+      const inProps = await getProperties(inId).catch(() => null);
+      const ingredientName = inProps?.name;
+      if (!ingredientName) return result;
+      const productName = (props && props.name) || "";
+      const hit = findStrengthDeterminedAtcs(ingredientName, productName);
+      if (!hit) return result;
+      console.log(
+        `[RxCUI→ATC] Strength-determined override: ${hit.ingredient} @ ${hit.matchedStrength} ${hit.unit} → ` +
+        `${hit.atcs.map(a => a.code).join(", ")} (${hit.note})`
+      );
+      return {
+        ...result,
+        codes: hit.atcs,
+        strengthDeterminedProvenance: {
+          ingredient: hit.ingredient,
+          strength: hit.matchedStrength,
+          unit: hit.unit,
+          note: hit.note,
+          source: "Navina strength-determined ATC catalog",
+        },
+      };
+    };
+
+    // Compose the async post-processors so every strategy return runs through
+    // all three: combination context, then form-determined, then strength-
+    // determined. Form and strength are mutually exclusive in practice (no
+    // substance is in both tables), so order between them doesn't matter.
     const finishResult = async (result) => {
       const combined = await withCombination(result);
-      return await withFormDetermined(combined);
+      const formed = await withFormDetermined(combined);
+      return await withStrengthDetermined(formed);
     };
 
     // ============================================================

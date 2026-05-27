@@ -46,6 +46,7 @@ medications mapping website/
     ├── atc-combinations-curated.js     ← hand-curated ingredient-set → L5 (combinations)
     ├── atc-active-moiety-curated.js    ← RxNorm IN/PIN → active-moiety alias table
     ├── atc-form-determined-curated.js  ← substance + DF → L5 (Phase 2G, methotrexate-shape)
+    ├── atc-strength-determined-curated.js ← substance + strength → L5 (Phase 2I, everolimus-shape)
     ├── who-atc-index.js                ← runtime name-parser for the WHO snapshot
     ├── who-atc-snapshots-bundle.js     ← AUTO-GENERATED WHO snapshot data
     ├── atc-anatomy.js                  ← code anatomy renderer + async enrichment
@@ -318,7 +319,22 @@ Skipped for: combinations (`trueIns.length !== 1`) and ingredient-level inputs (
 - `1655956` 40 ML methotrexate 25 MG/ML Injection → L01BA01 (default)
 - `6851` methotrexate IN → both L01BA01 + L04AX03 (INGREDIENT_LEVEL path, override doesn't apply)
 
-**Not the right fit for:** substances whose dual ATCs are distinguished by **dose strength** rather than dose form — sildenafil 20 mg PAH vs 50 mg ED, finasteride 1 mg alopecia vs 5 mg BPH, misoprostol ulcer vs labor-induction. Those would need a separate dose-aware mechanism (not built).
+**Dose-strength-determined cousins:** see Phase 2I below — that path now handles the strength-distinguished cases (sildenafil, finasteride, everolimus).
+
+### Strength-determined ATC override (Phase 2I)
+The third leg of dual-code handling, after route (the matrix) and dose form (Phase 2G): a few substances carry multiple WHO L5 codes distinguished by **dose strength**, which tracks the clinical indication. The route filter can't separate them (both codes pass the same route's matrix) and RxNorm doesn't expose the split.
+
+`withStrengthDetermined` runs **after** `withFormDetermined` as the final post-processor, consulting [js/atc-strength-determined-curated.js](js/atc-strength-determined-curated.js). Single-IN inputs only (same guard as Phase 2G). It parses the **plain-MG strength** from the product's RxNorm name (`parseMgStrength` — deliberately returns null for MG/ML concentrations and MG/ACTUAT metered doses, so liquids/inhalers fall through to the normal answer rather than risk a wrong call), then evaluates the substance's ordered strength rules and **replaces** the codes. Composition: `strategies → finalize → withCombination → withFormDetermined → withStrengthDetermined`.
+
+Curated cases (each verified against WHO + live RxNav):
+
+| Substance | ≤ threshold | > threshold |
+|---|---|---|
+| everolimus | ≤1 mg → **L04AH02** (transplant immunosuppressant, Zortress) | >1 mg → **L01EG02** (antineoplastic mTOR inhibitor, Afinitor) |
+| finasteride | 1 mg → **D11AX10** (androgenetic alopecia, Propecia) | ≥5 mg → **G04CB01** (BPH, Proscar) |
+| sildenafil | ≤20 mg → **C02KX01** (pulmonary arterial hypertension, Revatio) | >20 mg → **G04BE03** (erectile dysfunction, Viagra) |
+
+Note the override **bypasses the route filter by design**: finasteride 1 mg correctly resolves to D11AX10 (a dermatological code) even though it's an oral tablet, because WHO classes alopecia finasteride under dermatologicals. And sildenafil's PAH code C02KX01 isn't in RxNorm at all — the curated table supplies it. Verified on 977436/845518 (everolimus), 213178/201961 (finasteride), 581645/213270 (sildenafil).
 
 ### Why partial coverage gets escalated (and why this changed)
 Earlier the engine returned KEEP for any combination drug where Strategy 1 produced any L5, even when that L5 only represented one ingredient. Users got a misleading green-badge KEPT card whose code was the wrong answer:
