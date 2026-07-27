@@ -44,7 +44,7 @@ const md = new Map();
     md.set(rx, {
       name: r[ix("drug_name")]||"", tty: r[ix("tty")]||"",
       app: (r[ix("app_atcs")]||"").split("|").filter(Boolean),
-      status: r[ix("app_status")]||"", explanation: r[ix("explanation")]||"",
+      status: r[ix("app_status")]||"", prov: r[ix("provenance")]||"", explanation: r[ix("explanation")]||"",
     });
   }
 }
@@ -78,6 +78,20 @@ for (const rx of universe) {
   else if (w === "GAP" || GAP.has(m.status)) { verdict = "FLAG_DATA_GAP"; final = baseline; reason = `data gap (${m.status||w})`; }
   else if (baseline.length === 0 && resolver.length && w === "CONFIRMED") { verdict = "CORRECTED_FROM_EMPTY"; final = resolver; }
   else { verdict = "FLAG_REVIEW"; final = baseline; reason = `resolver disagrees (${resolver.join("|")||"∅"}); who=${w}`; }
+  // Rule-based auto-resolve of FLAG_REVIEW (safe adopts only; general, not per-drug):
+  // never adopt a resolver set that ADDS codes to ours (that is the route-pollution
+  // signal). Adopt only when (a) resolver strictly TIGHTENS ours (resolver ⊆ ours,
+  // fewer codes) or (b) resolver came from a VETTED provenance (curated combos,
+  // MIN-property L5, WHO-snapshot). Disjoint route_filter replacements (everolimus-
+  // type) cannot be auto-verified and stay FLAG_REVIEW for residual triage.
+  if (verdict === "FLAG_REVIEW" && resolver.length > 0) {
+    const oursSet = new Set(baseline), resSet = new Set(resolver);
+    const noNewCodes = [...resSet].every(x => oursSet.has(x));          // resolver ⊆ ours
+    const tightened = noNewCodes && resSet.size < oursSet.size;         // strictly fewer
+    const vetted = new Set(["curated", "min_property", "who_snapshot", "history+curated"]).has(m.prov);
+    if (tightened) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: resolver tightened (⊆ ours, prov=${m.prov})`; }
+    else if (vetted) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: vetted provenance ${m.prov}`; }
+  }
   // safety valve
   if (final.length === 0 && p.length > 0) { final = p; if (!verdict.startsWith("FLAG")) { verdict = "FLAG_REVIEW"; reason = "safety valve: kept production to avoid emptying"; } }
   counts[verdict] = (counts[verdict]||0) + 1;
@@ -92,12 +106,12 @@ fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT-review.csv"), review.join("\n")
 fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT.tsv"), "RXCUI\tATC\n" + sot.join("\n") + "\n");
 
 const total = universe.size;
-const order = ["CORRECT","CORRECTED","CORRECTED_FROM_EMPTY","FLAG_DATA_GAP","FLAG_REVIEW"];
+const order = ["CORRECT","CORRECTED_FROM_EMPTY","ADOPTED_RULE","FLAG_DATA_GAP","FLAG_REVIEW"];
 const sum = order.reduce((s,k)=>s+(counts[k]||0),0);
 let mdOut = `# SOT Rebuild — Summary\n\nGenerated ${new Date().toISOString().slice(0,10)}\n\n`;
 mdOut += `- Output rows (universe): **${total}**\n`;
 for (const k of order) mdOut += `- ${k}: **${counts[k]||0}**\n`;
-const changed = (counts.CORRECTED||0)+(counts.CORRECTED_FROM_EMPTY||0);
+const changed = (counts.CORRECTED_FROM_EMPTY||0)+(counts.ADOPTED_RULE||0);
 mdOut += `\n**Corrected total (value differs from production): ${changed}. Flagged for review: ${(counts.FLAG_DATA_GAP||0)+(counts.FLAG_REVIEW||0)}.**\n`;
 mdOut += `\nReconciliation check: sum(${sum}) == total(${total}) ? ${sum===total}\n`;
 fs.writeFileSync(R("reports/sot/SOT-summary.md"), mdOut);
