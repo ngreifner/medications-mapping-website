@@ -27,7 +27,7 @@ for (let i = 1; i < priorLines.length; i++) {
   // certified_atcs may be pipe/comma/semicolon joined and possibly quoted; extract codes
   const cells = priorLines[i].match(/(".*?"|[^,]*)(,|$)/g) || [];
   const rx = (cells[rxI] || "").replace(/[",]/g, "").trim();
-  const codes = (priorLines[i].match(/[A-Z]\d{2}[A-Z]{2}\d{2}/g) || []);
+  const codes = [...new Set((priorLines[i].match(/[A-Z]\d{2}[A-Z]{2}\d{2}/g) || []))];
   if (/^\d+$/.test(rx)) prior.set(rx, codes);
 }
 
@@ -52,13 +52,13 @@ if (total !== universe.length) { console.error("MISMATCH"); process.exit(1); }
 
 fs.mkdirSync(OUT_ROOT, { recursive: true });
 if (!fs.existsSync(SOT_CACHE)) {
-  // merge both warm caches (dx first, oos overlays) into the SOT cache
+  // seed from warm caches; Object.assign is last-source-wins at the top-level-key granularity (OOS overlays DX)
   const merged = {};
   for (const p of [DX_CACHE, OOS_CACHE]) {
     if (fs.existsSync(p)) { try { Object.assign(merged, JSON.parse(fs.readFileSync(p, "utf8"))); } catch {} }
   }
   fs.writeFileSync(SOT_CACHE, JSON.stringify(merged));
-  console.log(`Seeded SOT cache: ${Object.keys(merged).length} entries (${(fs.statSync(SOT_CACHE).size/1e6).toFixed(1)} MB)`);
+  console.log(`Seeded SOT cache from warm caches: ${Object.keys(merged).length} entries (${(fs.statSync(SOT_CACHE).size/1e6).toFixed(1)} MB)`);
 } else {
   console.log("SOT cache already exists — leaving as-is (resumable).");
 }
