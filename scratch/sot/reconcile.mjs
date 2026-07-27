@@ -91,6 +91,14 @@ for (const rx of universe) {
     const vetted = new Set(["curated", "min_property", "who_snapshot", "history+curated"]).has(m.prov);
     if (tightened) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: resolver tightened (⊆ ours, prov=${m.prov})`; }
     else if (vetted) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: vetted provenance ${m.prov}`; }
+    else {
+      // The history+* recovery path (retired RxCUIs) unions per-ingredient ATCs
+      // WITHOUT route filtering, so a broader result there is unfiltered pollution,
+      // not a real disagreement. Our route-filtered value is authoritative → keep it
+      // with confidence (not a manual-review item).
+      const broaderUnfiltered = noNewCodes === false && [...oursSet].every(x => resSet.has(x)) && m.prov.startsWith("history");
+      if (broaderUnfiltered) { verdict = "KEEP_OURS"; final = baseline; reason = `rule: unfiltered ${m.prov} recovery broader than our route-filtered value; kept ours`; }
+    }
   }
   // safety valve
   if (final.length === 0 && p.length > 0) { final = p; if (!verdict.startsWith("FLAG")) { verdict = "FLAG_REVIEW"; reason = "safety valve: kept production to avoid emptying"; } }
@@ -106,7 +114,7 @@ fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT-review.csv"), review.join("\n")
 fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT.tsv"), "RXCUI\tATC\n" + sot.join("\n") + "\n");
 
 const total = universe.size;
-const order = ["CORRECT","CORRECTED_FROM_EMPTY","ADOPTED_RULE","FLAG_DATA_GAP","FLAG_REVIEW"];
+const order = ["CORRECT","CORRECTED_FROM_EMPTY","ADOPTED_RULE","KEEP_OURS","FLAG_DATA_GAP","FLAG_REVIEW"];
 const sum = order.reduce((s,k)=>s+(counts[k]||0),0);
 let mdOut = `# SOT Rebuild — Summary\n\nGenerated ${new Date().toISOString().slice(0,10)}\n\n`;
 mdOut += `- Output rows (universe): **${total}**\n`;
