@@ -1,0 +1,92 @@
+rxcui,decision,final_codes,confidence,evidence
+253182,ADOPT_RESOLVER,A10AB01|A10AC01|A10AD01|A10AE01|A10AF01,HIGH,RxNav property API returns all 5 codes incl A10AF01; WHO confirms A10AF01="insulin (human)" (inhaled, Afrezza) - ingredient-level union applies
+253337,ADOPT_RESOLVER,L01FG01|S01LA08,HIGH,WHO confirms both L01FG01 and S01LA08 are legitimately "bevacizumab" (oncology + ophthalmic anti-VEGF); bare IN gets ingredient-level union of both
+2535748,KEEP_OURS,C10BA06,HIGH,Local snapshot data/who-atc-snapshots/C10BA.json: C10BA06="rosuvastatin and ezetimibe"; resolver's C10AA07/C10AX09 are per-ingredient pollution
+2599041,ADOPT_RESOLVER,L01FG01|S01LA08,HIGH,PIN (bevacizumab-maly) - same WHO dual-code substance as base IN; ingredient-level union applies
+2599043,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD (product-level, route-pre-filtered) shows only L01FG for this 25mg/mL IV injection SCD; S01LA08 (ophthalmic) reflects off-label compounding, not the approved IV oncology product
+2599045,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG class for Alymsys (bevacizumab-maly brand, IV oncology biosimilar)
+2599049,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Alymsys IV injection)
+2599051,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD
+2599052,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Alymsys IV injection)
+2611248,KEEP_OURS,C10BA05,HIGH,Local snapshot C10BA.json: C10BA05="atorvastatin and ezetimibe" (Lypqozet); resolver's C10AX09/C10AA05 are per-ingredient pollution missing the combo code
+2611250,KEEP_OURS,C10BA05,HIGH,Same as 2611248 - Lypqozet strength variant, WHO combo code confirmed via snapshot
+2611252,KEEP_OURS,C10BA05,HIGH,Same as 2611248 - Lypqozet strength variant, WHO combo code confirmed via snapshot
+2611254,KEEP_OURS,C10BA05,HIGH,Same as 2611248 - Lypqozet strength variant, WHO combo code confirmed via snapshot
+2627648,ADOPT_RESOLVER,L01FG01|S01LA08,HIGH,PIN (bevacizumab-adcd) - same WHO dual-code substance; ingredient-level union applies
+2627650,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD (bevacizumab-adcd)
+2627652,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for Vegzelma (bevacizumab-adcd brand, IV oncology biosimilar)
+2627656,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Vegzelma IV injection)
+2627658,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD
+2627659,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Vegzelma IV injection)
+2696256,KEEP_OURS,S01LA05,HIGH,ATCPROD confirms only S01LA class for all child SCD/SBD (0.05 ML aflibercept-ayyh 40 MG/ML prefilled syringe/injection [Pavblu]) - a 40mg/mL ophthalmic-only Eylea biosimilar; L01XX44 (WHO="aflibercept" oncology/Zaltrap line) has zero product children here
+2700660,ADOPT_RESOLVER,L01FG01|S01LA08,HIGH,PIN (bevacizumab-tnjn) - same WHO dual-code substance; ingredient-level union applies
+2700735,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD (bevacizumab-tnjn)
+2700737,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for Avzivi (bevacizumab-tnjn brand, IV oncology biosimilar)
+2700742,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Avzivi IV injection)
+2700744,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD
+2700745,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Avzivi IV injection)
+2706479,KEEP_OURS,S01LA05,HIGH,ATCPROD confirms only S01LA class for child SCD/SBD (aflibercept-mrbb 40 MG/ML [Ahzantive]) - ophthalmic-only Eylea biosimilar, no oncology product
+2712044,ADOPT_RESOLVER,L01FG01|S01LA08,HIGH,PIN (bevacizumab-nwgd) - same WHO dual-code substance; ingredient-level union applies
+2712048,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD (bevacizumab-nwgd)
+2712050,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for Jobevne (bevacizumab-nwgd brand, IV oncology biosimilar)
+2712055,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Jobevne IV injection)
+2712057,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this 25mg/mL IV injection SCD
+2712058,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD shows only L01FG for this SBD (Jobevne IV injection)
+314659,ADOPT_RESOLVER,B01AB01|C05BA03|S01XA14,HIGH,Base IN heparin (5224) property API + WHO confirm all 3 codes ("heparin"); PIN with empty own property inherits per architecture's ingredient-level union rule
+337521,ADOPT_RESOLVER,L01FG01,HIGH,ATCPROD confirms only L01FG for Avastin (the original IV oncology bevacizumab brand)
+3443,ADOPT_RESOLVER,C05AE03|C08DB01,HIGH,RxNav property API for bare IN returns both; WHO confirms C05AE03="diltiazem" (vasoprotective, anal-fissure ointment/Rectiv) and C08DB01="diltiazem" (CCB) - genuine dual-code substance at ingredient level
+352387,KEEP_OURS,C10BA01,HIGH,Local snapshot C10BA.json: C10BA01="lovastatin and nicotinic acid" (niacin); resolver's C10AA02/C04AC01/C10AD02 are per-ingredient pollution
+484211,KEEP_OURS,C10BA02,HIGH,Local snapshot C10BA.json: C10BA02="simvastatin and ezetimibe"; resolver's C10AX09/C10AA01 are per-ingredient pollution
+5224,ADOPT_RESOLVER,B01AB01|C05BA03|S01XA14,HIGH,RxNav property API returns all 3; WHO confirms C05BA03 and S01XA14 both = "heparin" (topical vasoprotective + ophthalmic) - genuine dual/triple-code substance at ingredient level
+606253,KEEP_OURS,A10BD04,HIGH,Local snapshot A10BD.json: A10BD04="glimepiride and rosiglitazone"; resolver's A10BB12/A10BG02 are per-ingredient pollution
+607999,KEEP_OURS,A10BD05,HIGH,Local snapshot A10BD.json: A10BD05="metformin and pioglitazone"; resolver's A10BG03/A10BA02 are per-ingredient pollution
+614348,KEEP_OURS,A10BD03,HIGH,Local snapshot A10BD.json: A10BD03="metformin and rosiglitazone"; resolver's A10BA02/A10BG02 are per-ingredient pollution
+647235,KEEP_OURS,A10BD06,HIGH,Local snapshot A10BD.json: A10BD06="glimepiride and pioglitazone"; resolver's A10BB12/A10BG03 are per-ingredient pollution
+729455,KEEP_OURS,C09DB01,HIGH,Local snapshot C09DB.json: C09DB01="valsartan and amlodipine"; resolver's C08CA01/C09CA03 are per-ingredient pollution
+729717,KEEP_OURS,A10BD07,HIGH,Local snapshot A10BD.json: A10BD07="metformin and sitagliptin"; resolver's A10BH01/A10BA02 are per-ingredient pollution
+802646,KEEP_OURS,A10BD14,HIGH,Local snapshot A10BD.json: A10BD14="metformin and repaglinide"; resolver's A10BA02/A10BX02 are per-ingredient pollution
+81999,ADOPT_RESOLVER,C05AE03|C08DB01,HIGH,PIN diltiazem malate - base IN diltiazem (3443) carries both WHO codes; PIN with empty own property inherits per ingredient-level union rule
+901212,KEEP_OURS,C09DB04,HIGH,Local snapshot C09DB.json: C09DB04="telmisartan and amlodipine"; resolver's C08CA01/C09CA07 are per-ingredient pollution
+977427,ADOPT_RESOLVER,L04AH02,HIGH,Per project's own verified Phase 2I strength-determined override (js/atc-strength-determined-curated.js): everolimus <=1mg oral -> L04AH02 (transplant/Zortress), replaces route-chain answer; 0.25mg is well under threshold
+977438,ADOPT_RESOLVER,L04AH02,HIGH,Same Phase 2I override - 0.75mg is <=1mg threshold -> L04AH02
+9877,ADOPT_RESOLVER,B01AB01|C05BA03|S01XA14,HIGH,PIN heparin sodium - base IN heparin (5224) carries all 3 WHO codes; PIN with empty own property inherits per ingredient-level union rule
+103990,KEEP_OURS,N04BA02,HIGH,Local snapshot N04BA.json: N04BA02="levodopa and decarboxylase inhibitor" (carbidopa+levodopa); resolver's N04BA01 (plain levodopa) is the documented RxClass classMembers coverage gap (CLAUDE.md Known Limitation), not the correct combo code
+404786,KEEP_OURS,N04BA03,HIGH,Local snapshot N04BA.json: N04BA03="levodopa, decarboxylase inhibitor and COMT inhibitor" (Stalevo); resolver's N04BX02 (entacapone alone)/N04BA01 (levodopa alone) are per-ingredient pollution
+389141,OTHER,G04BE07,MED,3mg Sublingual Tablet dose/form matches discontinued Uprima/Ixense apomorphine-SL erectile-dysfunction product line (2-3mg SL tablets; PubMed/clinical lit confirms this exact dosing for ED indication) rather than Kynmobi (SL film, 10-30mg, Parkinson's); WHO confirms G04BE07="apomorphine" (ED class); no ATCPROD/branded RxNav link exists to confirm identity directly, hence not HIGH
+389140,OTHER,G04BE07,MED,2mg Sublingual Tablet - same reasoning as 389141 (Uprima/Ixense ED dosing signature, not Kynmobi's Parkinson's SL film dosing)
+2631887,KEEP_OURS,C02KX54,HIGH,RxNav property API for this MIN returns only C02KX54; WHO confirms C02KX54="macitentan and tadalafil" (Opsynvi); resolver's C02KX04/G04BE08 are per-ingredient pollution
+284635,KEEP_OURS,R03AK06,HIGH,Local snapshot R03AK.json: R03AK06="salmeterol and fluticasone"; resolver's per-ingredient codes (R03AC12/D07AC17/R01AD08/R03BA05) are pollution missing the combo code
+389132,KEEP_OURS,R03AK07,HIGH,Local snapshot R03AK.json: R03AK07="formoterol and budesonide"; resolver's per-ingredient codes are pollution missing the combo code
+1002293,KEEP_OURS,R03AK09,HIGH,Local snapshot R03AK.json: R03AK09="formoterol and mometasone"; resolver's per-ingredient codes are pollution missing the combo code
+1424888,KEEP_OURS,R03AK10,HIGH,Local snapshot R03AK.json: R03AK10="vilanterol and fluticasone furoate" (Breo Ellipta); resolver_value entirely omits the combo code, listing only per-ingredient pollution
+1648787,KEEP_OURS,R03AK10,HIGH,Breo Ellipta SBD strength variant - same WHO combo code R03AK10 confirmed via snapshot; resolver again omits the combo code
+1648786,KEEP_OURS,R03AK10,HIGH,Breo Ellipta SCD strength variant - same WHO combo code R03AK10 confirmed via snapshot
+1539892,KEEP_OURS,R03AK10,HIGH,Breo Ellipta SBD strength variant - same WHO combo code R03AK10 confirmed via snapshot
+1424895,KEEP_OURS,R03AK10,HIGH,Breo Ellipta SCD strength variant - same WHO combo code R03AK10 confirmed via snapshot
+1720948,KEEP_OURS,R03AL04,HIGH,Local snapshot R03AL.json: R03AL04="indacaterol and glycopyrronium bromide"; resolver's R03AC18/D11AA01 are per-ingredient pollution missing the combo code
+1658460,KEEP_OURS,R03AL06,HIGH,Local snapshot R03AL.json: R03AL06="olodaterol and tiotropium bromide" (Stiolto); resolver's R03AC19 is tiotropium-alone pollution missing the combo code
+1790638,KEEP_OURS,R03AL07,HIGH,Local snapshot R03AL.json: R03AL07="formoterol and glycopyrronium bromide" (Bevespi); resolver's per-ingredient codes are pollution missing the combo code
+1945038,KEEP_OURS,R03AL08,HIGH,Local snapshot R03AL.json: R03AL08="vilanterol, umeclidinium bromide and fluticasone furoate" (Trelegy); resolver's per-ingredient codes are pollution missing the combo code
+2387330,KEEP_OURS,R03AL11,HIGH,Local snapshot R03AL.json: R03AL11="formoterol, glycopyrronium bromide and budesonide" (Breztri); resolver's per-ingredient codes are pollution missing the combo code
+217152,KEEP_OURS,R03BA05,HIGH,Flovent = fluticasone PROPIONATE inhaler; WHO confirms R03BA05="fluticasone" (original propionate-salt entry); R03BA09 (resolver) is the later furoate-salt code (Arnuity) and does not apply to Flovent
+705022,KEEP_OURS,R01AD12|R03BA09,HIGH,RxNav property API for this specific PIN (fluticasone furoate) returns exactly these 2 codes; resolver's added D07AC17/R01AD08/R03BA05 are propionate-salt codes that belong to the different PIN "fluticasone" (base), not furoate
+217266,KEEP_OURS,A07EB01,HIGH,Gastrocrom = oral cromolyn sodium solution for mastocytosis; WHO confirms A07EB01="cromoglicic acid" (GI/oral antiallergic); R03BC01 (resolver) is the inhaled/respiratory cromoglicic acid code (Intal), wrong route for an oral product
+831263,KEEP_OURS,A07EB01,HIGH,Cromolyn sodium 100mg Oral Capsule - same oral route reasoning as Gastrocrom; R03BC01 (inhaled) does not apply
+214199,KEEP_OURS,R03AL02,HIGH,Local snapshot R03AL.json: R03AL02="salbutamol and ipratropium bromide"; resolver's per-ingredient codes (R03AC02/R03CC02/R01AX03/R03BB01) are pollution missing the combo code
+153171,KEEP_OURS,A07EA06,HIGH,Entocort = oral ileal-release budesonide capsule for Crohn's (GI-targeted); A07EA06 is the correct oral/GI budesonide code; resolver's D07AC09/R01AD05/R03BA02 are topical/nasal/inhaled budesonide codes, wrong route for an oral capsule
+1727492,KEEP_OURS,J05AR19,HIGH,Local snapshot J05AR.json: J05AR19="emtricitabine, tenofovir alafenamide and rilpivirine" (Odefsey); resolver's per-ingredient codes are pollution missing the combo code
+1996259,KEEP_OURS,J05AR20,HIGH,Local snapshot J05AR.json: J05AR20="emtricitabine, tenofovir alafenamide and bictegravir" (Biktarvy); resolver's per-ingredient codes are pollution missing the combo code
+1996260,KEEP_OURS,J05AR22,HIGH,Local snapshot J05AR.json: J05AR22="emtricitabine, tenofovir alafenamide, darunavir and cobicistat" (Symtuza); resolver's per-ingredient codes (incl V03AX03 cobicistat-alone) are pollution missing the combo code
+435,ADOPT_RESOLVER,R03AC02|R03CC02,HIGH,RxNav property API for bare IN returns both; WHO confirms R03CC02="salbutamol" (systemic/oral beta-2 agonist) in addition to R03AC02 (inhaled) - genuine dual-code substance at ingredient level
+3554,ADOPT_RESOLVER,N07BB01|P03AA04,HIGH,RxNav property API for bare IN returns both; WHO confirms P03AA04="disulfiram" (sulfur-containing ectoparasiticide) in addition to N07BB01 (alcohol-deterrent) - genuine dual-code substance at ingredient level
+142153,ADOPT_RESOLVER,R03AC02|R03CC02,HIGH,PIN albuterol sulfate - base IN albuterol (435) carries both WHO codes; PIN with empty own property inherits per ingredient-level union rule
+891170,OTHER,D07AC13,MED,Momexin Kit packs ammonium lactate foam (no WHO ATC code exists for ammonium lactate - human-use topical alpha-hydroxy-acid emollients are unclassified; only a veterinary ATCvet code exists) with mometasone furoate topical cream; only the mometasone component has a real applicable WHO code, D07AC13 ("mometasone", potent topical corticosteroid); our G01AD01 and resolver's D07XC03/R01AD09/R03BA07 are all wrong-route/spurious for a topical cream+foam kit
+977431,ADOPT_RESOLVER,L04AH02,HIGH,Zortress 0.25mg - explicitly verified in project's own Phase 2I documentation (CLAUDE.md cites 977436/845518 as verified against live WHO ATC index); <=1mg -> L04AH02, replaces L01EG02/L01XE10
+977434,ADOPT_RESOLVER,L04AH02,HIGH,Everolimus 0.5mg SCD <=1mg threshold -> L04AH02 per Phase 2I override
+977436,ADOPT_RESOLVER,L04AH02,HIGH,Zortress 0.5mg - this exact RxCUI is cited in CLAUDE.md as verified against the live WHO ATC index for the Phase 2I strength-determined override
+977440,ADOPT_RESOLVER,L04AH02,HIGH,Zortress 0.75mg <=1mg threshold -> L04AH02 per Phase 2I override
+1597387,OTHER,J05AP52,HIGH,Pack explicitly contains dasabuvir tablets + ombitasvir/paritaprevir/ritonavir tablets (Viekira Pak, full 4-drug regimen). Local snapshot J05AP.json shows J05AP53="ombitasvir, paritaprevir and ritonavir" (no dasabuvir - that is Technivie, genotype 4) while J05AP52="dasabuvir, ombitasvir, paritaprevir and ritonavir" is the correct 4-drug code; our_value J05AP53 is a mislabel, resolver's J05AP09|J05AE03 (dasabuvir-alone + ritonavir-alone) is per-ingredient pollution
+1797890,ADOPT_RESOLVER,R01AD12,HIGH,This is Flonase Sensimist (fluticasone FUROATE nasal spray, confirmed via product name and ATCPROD R01AD class); our_value D07AC17|R01AD08|R03BA05 are fluticasone PROPIONATE-salt codes - a salt mismatch; resolver's R01AD12 is the correct furoate-specific nasal code
+1869712,ADOPT_RESOLVER,R01AD12,HIGH,Same salt-mismatch fix as 1797890 - SBD [Flonase Sensimist] variant
+2715399,KEEP_OURS,S01LA05,HIGH,ATCPROD confirms only S01LA class for child SCD/SBD (aflibercept-yszy 40 MG/ML [Opuviz]) - ophthalmic-only Eylea biosimilar, no oncology product
+2725885,KEEP_OURS,S01LA05,HIGH,ATCPROD confirms only S01LA class for child SCD/SBD (aflibercept-boav 40 MG/ML [Eydenzelt], prefilled syringe + injection) - ophthalmic-only Eylea biosimilar, no oncology product

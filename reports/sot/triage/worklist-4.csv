@@ -1,0 +1,95 @@
+rxcui,drug_name,tty,our_value,resolver_value,provenance,who_check
+1544490,"insulin, regular, human 8 UNT Inhalation Powder [Afrezza]",SBD,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1244721,dextromethorphan hydrobromide 3 MG/ML / guaifenesin 45 MG/ML Oral Suspension,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1423794,dextromethorphan hydrobromide 2 MG/ML / guaifenesin 13.4 MG/ML Oral Solution,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1486763,calcium gluconate 230 MG/ML Oral Solution,SCD,A12AA03,A12AA03|B05XA19,route_filter,UNCONFIRMED
+686514,glucose 43 MG/ML / sodium chloride 0.0308 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+896175,28 ACTUAT fluticasone propionate 0.1 MG/ACTUAT / salmeterol 0.05 MG/ACTUAT Dry Powder Inhaler [Advair],SBD,R03AK06,R03AC12|D07AC17|R01AD08|R03BA05,history+per_ingredient,UNCONFIRMED
+750223,amlodipine 2.5 MG / atorvastatin 10 MG Oral Tablet [Caduet],SBD,C10BX03,C08CA01|C10AA05,history+per_ingredient,UNCONFIRMED
+750219,amlodipine 2.5 MG / atorvastatin 20 MG Oral Tablet [Caduet],SBD,C10BX03,C08CA01|C10AA05,history+per_ingredient,UNCONFIRMED
+310469,gentamicin 3 MG/ML / prednisolone acetate 10 MG/ML Ophthalmic Suspension,SCD,S01CA02,D06AX07|J01GB03|S01AA11|S02AA14|S03AA06|A01AC04|A07EA01|C05AA04|D07AA03|D07XA02|H02AB06|R01AD02|S01BA04|S01CB02|S02BA03|S03BA02,history+per_ingredient,UNCONFIRMED
+749861,{21 (ethinyl estradiol 0.035 MG / norgestimate 0.25 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Ortho-Cyclen 28 Day],BPCK,G03AA11,G03CA01|L02AA03,history+per_ingredient,UNCONFIRMED
+1049402,benzalkonium chloride 2 MG/ML Topical Spray,SCD,D08AJ01,D08AJ01|D09AA11,route_filter,UNCONFIRMED
+801701,arginine 22.5 MG/ML Oral Solution [Arginaid],SBD,A05BA01,B05XB01,history+per_ingredient,UNCONFIRMED
+1299219,chlorhexidine gluconate 1 MG/ML Oral Spray,SCD,R02AA05,B05CA02|R02AA05,route_filter,UNCONFIRMED
+1543207,"insulin, regular, human 4 UNT Inhalation Powder [Afrezza]",SBD,A10AF01,A10AB01,route_filter,UNCONFIRMED
+686894,glucose 100 MG/ML / sodium chloride 0.0564 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+686892,glucose 100 MG/ML / sodium chloride 0.0385 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+2176267,dextromethorphan hydrobromide 20 MG / guaifenesin 400 MG Powder for Oral Solution,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1046423,calcium glycerophosphate 1.3 MG/ML / pyridoxine hydrochloride 0.3 MG/ML / sodium monofluorophosphate 7.6 MG/ML Toothpaste,SCD,A11HA02,A01AA02,route_filter,UNCONFIRMED
+1495474,acetaminophen 325 MG / hydrocodone bitartrate 5 MG Oral Tablet [Lortab],SBD,N02AJ22,N02BE01|R05DA03,history+per_ingredient,CONFIRMED
+1422098,atorvastatin 40 MG / ezetimibe 10 MG Oral Tablet [Liptruzet],SBD,C10BA05,C10AX09|C10AA05,history+per_ingredient,UNCONFIRMED
+1308476,dextromethorphan hydrobromide 28 MG / guaifenesin 600 MG Extended Release Oral Tablet,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+861792,metformin hydrochloride 500 MG / repaglinide 2 MG Oral Tablet [PrandiMet],SBD,A10BD14,A10BA02|A10BX02,history+per_ingredient,UNCONFIRMED
+904669,{30 (aspirin 81 MG Oral Tablet) / 30 (pravastatin sodium 40 MG Oral Tablet [Pravachol]) } Pack [Pravigard 81/40],BPCK,C10BX02,A01AD05|B01AC06|N02BA01|C10AA03,history+per_ingredient,UNCONFIRMED
+1049272,acetaminophen 650 MG / oxycodone hydrochloride 10 MG Oral Tablet [Endocet],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1043690,hydrocortisone acetate 10 MG/ML Topical Cream,SCD,D07AA02|D07XA01,C05AA01|D07AA02|D07XA01,route_filter,UNCONFIRMED
+1049655,acetaminophen 500 MG / oxycodone hydrochloride 10 MG Oral Tablet [Xolox],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+2100029,"{90 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 90 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 180 - 90 (8 UNT), 90 (12 UNT)]",BPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+477336,12 HR dextromethorphan hydrobromide 20 MG / guaifenesin 1200 MG Extended Release Oral Tablet,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1307984,12 HR dextromethorphan hydrobromide 30 MG / guaifenesin 800 MG Extended Release Oral Tablet,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1312422,simvastatin 20 MG / sitagliptin 50 MG Oral Tablet [Juvisync],SBD,A10BH51,C10AA01|A10BH01,history+per_ingredient,CONFIRMED
+1862102,"{60 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 180 Titration Pack- 60 (4 UNT), 60 (8 UNT), 60 (12 UNT)]",BPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1422095,atorvastatin 20 MG / ezetimibe 10 MG Oral Tablet [Liptruzet],SBD,C10BA05,C10AX09|C10AA05,history+per_ingredient,UNCONFIRMED
+636230,Chantix,BN,N07BA,N07BA03,route_filter,UNCONFIRMED
+790296,captopril 50 MG / hydrochlorothiazide 25 MG Oral Tablet [Capozide],SBD,C09BA01,C09AA01|C03AA03,history+per_ingredient,UNCONFIRMED
+749862,{7 (inert ingredients 1 MG Oral Tablet) / 21 (mestranol 0.05 MG / norethindrone 1 MG Oral Tablet) } Pack,GPCK,G03FA01,G03AC01|G03DC02,history+per_ingredient,UNCONFIRMED
+200053,dextromethorphan hydrobromide 1.33 MG/ML / guaifenesin 13.3 MG/ML Oral Solution,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1011845,benzethonium chloride 0.002 MG/MG / lidocaine hydrochloride 0.025 MG/MG Topical Gel [StaphAseptic],SBD,C05AD01|D04AB01|D08AJ08,D08AJ08|C05AD01|D04AB01|N01BB02,route_filter,UNCONFIRMED
+1049218,acetaminophen 300 MG / oxycodone hydrochloride 2.5 MG Oral Tablet [Lynox],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1192516,benzethonium chloride 2 MG/ML / benzocaine 100 MG/ML / menthol 3.3 MG/ML Topical Spray,SCD,D04AB04|D08AJ08,C05AD03|D04AB04|N01BA05|D08AJ08,route_filter,UNCONFIRMED
+1007909,naloxone / tilidine,MIN,N02AX51,N02AX51|N02AX01|A06AH04|V03AB15,route_filter,UNCONFIRMED
+1043562,metformin / saxagliptin,MIN,A10BD10,A10BD10|A10BA02|A10BH03,route_filter,CONFIRMED
+1189803,simvastatin / sitagliptin,MIN,A10BH51,A10BH51|C10AA01|A10BH01,route_filter,CONFIRMED
+1243019,linagliptin / metformin,MIN,A10BD11,A10BD11|A10BH05|A10BA02,route_filter,CONFIRMED
+1304475,ziv-aflibercept,PIN,L01XX44,L01XX44|S01LA05,route_filter,UNCONFIRMED
+1368384,alogliptin / metformin,MIN,A10BD13,A10BD13|A10BH04|A10BA02,route_filter,CONFIRMED
+1368402,alogliptin / pioglitazone,MIN,A10BD09,A10BD09|A10BH04|A10BG03,route_filter,CONFIRMED
+1422085,atorvastatin / ezetimibe,MIN,C10BA05,C10BA05|C10AX09|C10AA05,route_filter,CONFIRMED
+1422086,atorvastatin 10 MG / ezetimibe 10 MG Oral Tablet,SCD,C10BA05,C10AX09|C10AA05,history+per_ingredient,UNCONFIRMED
+1430892,fenofibrate / simvastatin,MIN,C10BA04,C10BA04|C10AA01|C10AB05,route_filter,CONFIRMED
+1430990,donepezil / memantine,MIN,N06DA52,N06DA52|N06DA02|N06DX01,route_filter,UNCONFIRMED
+1486436,dapagliflozin / metformin,MIN,A10BD15,A10BD15|A10BK01|A10BA02,route_filter,CONFIRMED
+1543202,"insulin, regular, human 4 UNT Inhalation Powder",SCD,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1544488,"insulin, regular, human 8 UNT Inhalation Powder",SCD,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1545149,canagliflozin / metformin,MIN,A10BD16,A10BD16|A10BK02|A10BA02,route_filter,CONFIRMED
+1551467,bupropion / naltrexone,MIN,A08AA62,A08AA62|N06AX12|N07BB04,route_filter,UNCONFIRMED
+1591942,ledipasvir / sofosbuvir,MIN,J05AP51,J05AP51|J05AP08,route_filter,CONFIRMED
+1597378,ombitasvir / paritaprevir / ritonavir,MIN,J05AP53,J05AP53|J05AE03,route_filter,CONFIRMED
+1598392,empagliflozin / linagliptin,MIN,A10BD19,A10BD19|A10BH05|A10BK03,route_filter,CONFIRMED
+1600259,dasabuvir / ombitasvir / paritaprevir / ritonavir,MIN,J05AP52,J05AP52|J05AP09|J05AE03,route_filter,CONFIRMED
+1654910,"insulin, regular, human 12 UNT Inhalation Powder",SCD,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1656339,sacubitril / valsartan,MIN,C09DX04,C09DX04|C09CA03,route_filter,CONFIRMED
+1657073,16 ML bevacizumab 25 MG/ML Injection,SCD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+1664314,empagliflozin / metformin,MIN,A10BD20,A10BD20|A10BK03|A10BA02,route_filter,CONFIRMED
+1727493,insulin degludec / liraglutide,MIN,A10AE56,A10AE56|A10AE06|A10BJ02,route_filter,UNCONFIRMED
+1727500,dapagliflozin / saxagliptin,MIN,A10BD21,A10BD21|A10BK01|A10BH03,route_filter,CONFIRMED
+1734635,elbasvir / grazoprevir,MIN,J05AP54,J05AP54|J05AP10|J05AP11,route_filter,CONFIRMED
+1798387,"{90 (insulin, regular, human 4 UNT Inhalation Powder) / 90 (insulin, regular, human 8 UNT Inhalation Powder) } Pack",GPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1799211,sofosbuvir / velpatasvir,MIN,J05AP55,J05AP55|J05AP08,route_filter,CONFIRMED
+1856273,"heparin, bovine",PIN,B01AB01,B01AB01|C05BA03|S01XA14,route_filter,UNCONFIRMED
+1858994,insulin glargine / lixisenatide,MIN,A10AE54,A10AE54|A10BJ03|A10AE04,route_filter,UNCONFIRMED
+1862101,"{60 (insulin, regular, human 12 UNT Inhalation Powder) / 60 (insulin, regular, human 4 UNT Inhalation Powder) / 60 (insulin, regular, human 8 UNT Inhalation Powder) } Pack",GPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1939328,sofosbuvir / velpatasvir / voxilaprevir,MIN,J05AP56,J05AP56|J05AP08,route_filter,CONFIRMED
+1992684,ertugliflozin / metformin,MIN,A10BD23,A10BD23|A10BK04|A10BA02,route_filter,CONFIRMED
+1992825,ertugliflozin / sitagliptin,MIN,A10BD24,A10BD24|A10BK04|A10BH01,route_filter,CONFIRMED
+20044,heparin calcium,PIN,B01AB01,B01AB01|C05BA03|S01XA14,route_filter,UNCONFIRMED
+2017575,cytarabine / daunorubicin,MIN,L01XY01,L01XY01|L01BC01|L01DB02,route_filter,UNCONFIRMED
+203211,diltiazem hydrochloride,PIN,C08DB01,C05AE03|C08DB01,route_filter,UNCONFIRMED
+2046138,bevacizumab-awwb,PIN,S01LA08,L01FG01|S01LA08,route_filter,UNCONFIRMED
+2046140,16 ML bevacizumab-awwb 25 MG/ML Injection,SCD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2046141,Mvasi,BN,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2046148,4 ML bevacizumab-awwb 25 MG/ML Injection,SCD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2056895,everolimus 1 MG Oral Tablet,SCD,L01EG02,L04AH02,route_filter,UNCONFIRMED
+2100028,"{90 (insulin, regular, human 12 UNT Inhalation Powder) / 90 (insulin, regular, human 8 UNT Inhalation Powder) } Pack",GPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+2117292,dapagliflozin / metformin / saxagliptin,MIN,A10BD25,A10BD25|A10BK01|A10BA02|A10BH03,route_filter,CONFIRMED
+2268037,bevacizumab-bvzr,PIN,S01LA08,L01FG01|S01LA08,route_filter,UNCONFIRMED
+2268039,4 ML bevacizumab-bvzr 25 MG/ML Injection,SCD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2268040,Zirabev,BN,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2268044,4 ML bevacizumab-bvzr 25 MG/ML Injection [Zirabev],SBD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2268047,16 ML bevacizumab-bvzr 25 MG/ML Injection,SCD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2268048,16 ML bevacizumab-bvzr 25 MG/ML Injection [Zirabev],SBD,S01LA08,L01FG01,route_filter,UNCONFIRMED
+2281864,empagliflozin / linagliptin / metformin,MIN,A10BD27,A10BD27|A10BH05|A10BK03|A10BA02,route_filter,CONFIRMED
+2283229,bempedoic acid / ezetimibe,MIN,C10BA10,C10BA10|C10AX15|C10AX09,route_filter,CONFIRMED
+235473,"heparin, porcine",PIN,B01AB01,B01AB01|C05BA03|S01XA14,route_filter,UNCONFIRMED
+236025,"heparin sodium, bovine",PIN,B01AB01,B01AB01|C05BA03|S01XA14,route_filter,UNCONFIRMED

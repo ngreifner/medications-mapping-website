@@ -27,7 +27,8 @@ let svViolations = 0;
 for (const l of val.slice(1)) {
   const c = parseCsvLine(l);
   const p = c[iv("production_atcs")]||""; const f = c[iv("final_atcs")]||""; const v = c[iv("verdict")]||"";
-  if (p.trim() && !f.trim() && !v.startsWith("FLAG")) svViolations++;
+  // ADJUDICATED_OTHER empties are authoritative WHO-verified "no valid code" decisions, not silent drops.
+  if (p.trim() && !f.trim() && !v.startsWith("FLAG") && v !== "ADJUDICATED_OTHER") svViolations++;
 }
 ok(svViolations === 0, `safety valve: ${svViolations} non-empty->empty without FLAG`);
 

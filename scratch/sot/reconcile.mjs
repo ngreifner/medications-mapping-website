@@ -53,6 +53,18 @@ const who = new Map();
 for (const l of readLines(R("reports/sot/01-who-check.csv")).slice(1)) {
   const r = parseCsvLine(l); who.set(r[0], r[1]);
 }
+// ---- triage adjudications (WHO/RxNav-verified human-loop overrides for the 467 residual) ----
+const triage = new Map();
+for (const n of ["1","2","3","4","5"]) {
+  const fp = R(`reports/sot/triage/decision-${n}.csv`);
+  if (!fs.existsSync(fp)) continue;
+  const lines = readLines(fp); const H = parseCsvLine(lines[0]);
+  const ri=H.indexOf("rxcui"), di=H.indexOf("decision"), fi=H.indexOf("final_codes"), ci=H.indexOf("confidence"), ei=H.indexOf("evidence");
+  for (let i=1;i<lines.length;i++){ const c=parseCsvLine(lines[i]); const rx=c[ri]; if(!rx) continue;
+    const codes=[...new Set((c[fi]||"").split(/[|,]/).map(s=>s.trim()).filter(x=>/^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(x)))];
+    triage.set(rx, {decision:c[di], codes, confidence:c[ci]||"", evidence:(c[ei]||"").slice(0,120)});
+  }
+}
 
 const GAP = new Set(["L4_ONLY","COMBINATION_NO_DEDICATED_CODE","RETIRED_NO_REMAP","NO_ATC"]);
 const setEq = (a,b) => { const A=new Set(a),B=new Set(b); if(A.size!==B.size)return false; for(const x of A)if(!B.has(x))return false; return true; };
@@ -102,11 +114,20 @@ for (const rx of universe) {
   }
   // safety valve
   if (final.length === 0 && p.length > 0) { final = p; if (!verdict.startsWith("FLAG")) { verdict = "FLAG_REVIEW"; reason = "safety valve: kept production to avoid emptying"; } }
+  // triage adjudication override — authoritative (WHO/RxNav-verified human loop); runs
+  // last, so it supersedes the safety valve (an adjudicator may confirm "no valid code").
+  const td = triage.get(rx);
+  if (td) {
+    if (td.decision === "ADOPT_RESOLVER") { verdict = "ADJUDICATED_ADOPT"; final = td.codes; }
+    else if (td.decision === "OTHER") { verdict = "ADJUDICATED_OTHER"; final = td.codes; }
+    else { verdict = "ADJUDICATED_KEEP"; final = baseline; }
+    reason = `triage[${td.confidence}] ${td.evidence}`;
+  }
   counts[verdict] = (counts[verdict]||0) + 1;
   const src = pr ? (!prod.has(rx) ? "extra" : "prior") : "gap-resolved";
   const row = [rx, name, tty, p.join("|"), baseline.join("|"), resolver.join("|"), w, verdict, final.join("|"), src].map(csvCell).join(",");
   val.push(row);
-  if (verdict.startsWith("FLAG")) review.push([rx, name, tty, p.join("|"), baseline.join("|"), resolver.join("|"), w, verdict, final.join("|"), reason].map(csvCell).join(","));
+  if (verdict.startsWith("FLAG") || (td && td.confidence === "LOW")) review.push([rx, name, tty, p.join("|"), baseline.join("|"), resolver.join("|"), w, verdict, final.join("|"), reason].map(csvCell).join(","));
   sot.push(`${rx}\t${tsvCell(arrCell(final))}`);
 }
 fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT-validation.csv"), val.join("\n") + "\n");
@@ -114,12 +135,12 @@ fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT-review.csv"), review.join("\n")
 fs.writeFileSync(R("reports/sot/rxcui-to-atc-SOT.tsv"), "RXCUI\tATC\n" + sot.join("\n") + "\n");
 
 const total = universe.size;
-const order = ["CORRECT","CORRECTED_FROM_EMPTY","ADOPTED_RULE","KEEP_OURS","FLAG_DATA_GAP","FLAG_REVIEW"];
+const order = ["CORRECT","CORRECTED_FROM_EMPTY","ADOPTED_RULE","KEEP_OURS","ADJUDICATED_ADOPT","ADJUDICATED_OTHER","ADJUDICATED_KEEP","FLAG_DATA_GAP","FLAG_REVIEW"];
 const sum = order.reduce((s,k)=>s+(counts[k]||0),0);
 let mdOut = `# SOT Rebuild — Summary\n\nGenerated ${new Date().toISOString().slice(0,10)}\n\n`;
 mdOut += `- Output rows (universe): **${total}**\n`;
 for (const k of order) mdOut += `- ${k}: **${counts[k]||0}**\n`;
-const changed = (counts.CORRECTED_FROM_EMPTY||0)+(counts.ADOPTED_RULE||0);
+const changed = (counts.CORRECTED_FROM_EMPTY||0)+(counts.ADOPTED_RULE||0)+(counts.ADJUDICATED_ADOPT||0)+(counts.ADJUDICATED_OTHER||0);
 mdOut += `\n**Corrected total (value differs from production): ${changed}. Flagged for review: ${(counts.FLAG_DATA_GAP||0)+(counts.FLAG_REVIEW||0)}.**\n`;
 mdOut += `\nReconciliation check: sum(${sum}) == total(${total}) ? ${sum===total}\n`;
 fs.writeFileSync(R("reports/sot/SOT-summary.md"), mdOut);
