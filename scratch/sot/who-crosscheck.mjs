@@ -1,4 +1,4 @@
-// scratch/sot/who-crosscheck.mjs — for each CHANGED row, verify the resolver's
+// scratch/sot/who-crosscheck.mjs — for EVERY row in master-diff, verify the resolver's
 // codes against the committed WHO ATC snapshots. A code is CONFIRMED when its
 // L4 exists in the snapshot set AND the exact L5 appears among that L4's WHO
 // entries; UNCONFIRMED when we have no snapshot for its L4 (not disproven, just
@@ -20,9 +20,10 @@ if (fs.existsSync(SNAP_DIR)) {
     try {
       const j = JSON.parse(fs.readFileSync(path.join(SNAP_DIR, f), "utf8"));
       const l4 = f.replace(/\.json$/, ""); whoL4.add(l4);
-      const entries = j.entries || j.l5 || j.codes || (Array.isArray(j) ? j : []);
+      // Actual snapshot schema: { l4_code, l4_name, children: [{code, name}, ...] }
+      const entries = Array.isArray(j.children) ? j.children : [];
       for (const e of entries) {
-        const code = (e.code || e.atc || e).toString();
+        const code = (e.code || "").toString();
         if (/^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(code)) whoL5.add(code);
       }
     } catch {}
@@ -44,10 +45,7 @@ const GAP_STATUS = new Set(["L4_ONLY", "COMBINATION_NO_DEDICATED_CODE", "RETIRED
 const out = ["rxcui,who_check,who_note"];
 for (const r of rows) {
   const rx = r[ix("rxcui")];
-  const navina = (r[ix("navina_atcs")] || "").split("|").filter(Boolean).sort().join("|");
   const app = (r[ix("app_atcs")] || "").split("|").filter(Boolean);
-  const appKey = app.slice().sort().join("|");
-  if (navina === appKey) continue; // unchanged — not in the cross-check set
   const status = r[ix("app_status")] || "";
   let check, note;
   if (GAP_STATUS.has(status)) { check = "GAP"; note = `resolver status ${status}`; }

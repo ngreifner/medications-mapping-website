@@ -12,27 +12,29 @@ const prod = new Map();
 for (const l of readLines(R("reports/sot/00-production-parsed.csv")).slice(1)) {
   const c = l.indexOf(","); const rx = l.slice(0, c); prod.set(rx, l.slice(c + 1).split("|").filter(Boolean));
 }
-// ---- prior certified (drug_name, tty, certified) ----
-const prior = new Map();
-{
-  const lines = readLines(R("reports/navina-unified-mapping-FINAL.csv"));
-  const h = lines[0].split(","); const rxI = h.indexOf("rxcui"), nmI = h.indexOf("drug_name"), ttyI = h.indexOf("tty"), certI = h.indexOf("certified_atcs");
-  for (let i = 1; i < lines.length; i++) {
-    const cells = lines[i].split(",");
-    const rx = cells[rxI]; if (!/^\d+$/.test(rx)) continue;
-    // Read ONLY the certified_atcs column (our corrected value). ATC columns are
-    // pipe-joined with no embedded commas, so split(",") is safe here. (A prior
-    // whole-line regex wrongly unioned navina_atcs + certified_atcs.)
-    const codes = [...new Set((cells[certI] || "").split("|").map(s => s.trim()).filter(c => /^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(c)))];
-    prior.set(rx, { name: cells[nmI] || "", tty: cells[ttyI] || "", codes });
-  }
-}
-// ---- master-diff (resolver) ----
+// ---- quote-aware CSV line parser (shared by prior-file + master-diff blocks) ----
 function parseCsvLine(l) { const out=[];let f="";let q=false;
   for(let i=0;i<l.length;i++){const c=l[i];
     if(q){if(c==='"'){if(l[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
     else if(c==='"')q=true;else if(c===","){out.push(f);f="";}else f+=c;}
   out.push(f);return out; }
+// ---- prior certified (drug_name, tty, certified) ----
+const prior = new Map();
+{
+  const lines = readLines(R("reports/navina-unified-mapping-FINAL.csv"));
+  const h = parseCsvLine(lines[0]); const rxI = h.indexOf("rxcui"), nmI = h.indexOf("drug_name"), ttyI = h.indexOf("tty"), certI = h.indexOf("certified_atcs");
+  for (let i = 1; i < lines.length; i++) {
+    const cells = parseCsvLine(lines[i]);
+    const rx = cells[rxI]; if (!/^\d+$/.test(rx)) continue;
+    // Read ONLY the certified_atcs column (our corrected value), using the
+    // quote-aware parser above — drug_name can contain embedded commas inside
+    // quoted fields (e.g. "100 ML insulin, regular, human ... [Myxredlin]"),
+    // which a naive split(",") would misalign, shifting later columns.
+    const codes = [...new Set((cells[certI] || "").split("|").map(s => s.trim()).filter(c => /^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(c)))];
+    prior.set(rx, { name: cells[nmI] || "", tty: cells[ttyI] || "", codes });
+  }
+}
+// ---- master-diff (resolver) ----
 const md = new Map();
 {
   const lines = readLines(R("skills/route-aware-atc-audit/audit-output-sot/master-diff.csv"));
@@ -70,7 +72,7 @@ for (const rx of universe) {
   const name = m.name || pr?.name || ""; const tty = m.tty || pr?.tty || "";
   const baseline = pr ? pr.codes : p;
   const resolver = m.app;
-  const w = who.get(rx) || "CONFIRMED";
+  const w = who.get(rx) || "UNCONFIRMED";
   let verdict, final, reason = "";
   if (setEq(resolver, baseline)) { verdict = "CORRECT"; final = baseline; }
   else if (w === "GAP" || GAP.has(m.status)) { verdict = "FLAG_DATA_GAP"; final = baseline; reason = `data gap (${m.status||w})`; }
