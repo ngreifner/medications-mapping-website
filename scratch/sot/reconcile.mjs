@@ -30,7 +30,9 @@ const prior = new Map();
     // quote-aware parser above — drug_name can contain embedded commas inside
     // quoted fields (e.g. "100 ML insulin, regular, human ... [Myxredlin]"),
     // which a naive split(",") would misalign, shifting later columns.
-    const codes = [...new Set((cells[certI] || "").split("|").map(s => s.trim()).filter(c => /^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(c)))];
+    // Accept L4 (5-char combination classes, e.g. M02AC) AND L5 (7-char) — some
+    // certified values are legit L4 combo codes; an L5-only filter would drop them.
+    const codes = [...new Set((cells[certI] || "").split("|").map(s => s.trim()).filter(c => /^[A-Z]\d{2}[A-Z]{2}(\d{2})?$/.test(c)))];
     prior.set(rx, { name: cells[nmI] || "", tty: cells[ttyI] || "", codes });
   }
 }
@@ -61,7 +63,7 @@ for (const n of ["1","2","3","4","5"]) {
   const lines = readLines(fp); const H = parseCsvLine(lines[0]);
   const ri=H.indexOf("rxcui"), di=H.indexOf("decision"), fi=H.indexOf("final_codes"), ci=H.indexOf("confidence"), ei=H.indexOf("evidence");
   for (let i=1;i<lines.length;i++){ const c=parseCsvLine(lines[i]); const rx=c[ri]; if(!rx) continue;
-    const codes=[...new Set((c[fi]||"").split(/[|,]/).map(s=>s.trim()).filter(x=>/^[A-Z]\d{2}[A-Z]{2}\d{2}$/.test(x)))];
+    const codes=[...new Set((c[fi]||"").split(/[|,]/).map(s=>s.trim()).filter(x=>/^[A-Z]\d{2}[A-Z]{2}(\d{2})?$/.test(x)))];
     triage.set(rx, {decision:c[di], codes, confidence:c[ci]||"", evidence:(c[ei]||"").slice(0,120)});
   }
 }
@@ -77,6 +79,7 @@ const val = ["rxcui,drug_name,tty,production_atcs,our_prior_atcs,resolver_atcs,w
 const review = ["rxcui,drug_name,tty,production_atcs,our_prior_atcs,resolver_atcs,who_check,verdict,final_atcs,reason"];
 const sot = [];
 const counts = {};
+let changedVsProd = 0;
 for (const rx of universe) {
   const p = prod.get(rx) || [];
   const pr = prior.get(rx);
@@ -100,9 +103,10 @@ for (const rx of universe) {
     const oursSet = new Set(baseline), resSet = new Set(resolver);
     const noNewCodes = [...resSet].every(x => oursSet.has(x));          // resolver ⊆ ours
     const tightened = noNewCodes && resSet.size < oursSet.size;         // strictly fewer
+    const isSuperset = [...oursSet].every(x => resSet.has(x)) && resSet.size > oursSet.size; // resolver ⊋ ours
     const vetted = new Set(["curated", "min_property", "who_snapshot", "history+curated"]).has(m.prov);
     if (tightened) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: resolver tightened (⊆ ours, prov=${m.prov})`; }
-    else if (vetted) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: vetted provenance ${m.prov}`; }
+    else if (vetted && !isSuperset) { verdict = "ADOPTED_RULE"; final = resolver; reason = `rule: vetted provenance ${m.prov}`; }  // never adopt a broader set
     else {
       // The history+* recovery path (retired RxCUIs) unions per-ingredient ATCs
       // WITHOUT route filtering, so a broader result there is unfiltered pollution,
@@ -124,6 +128,7 @@ for (const rx of universe) {
     reason = `triage[${td.confidence}] ${td.evidence}`;
   }
   counts[verdict] = (counts[verdict]||0) + 1;
+  if (!setEq(final, p)) changedVsProd++;
   const src = pr ? (!prod.has(rx) ? "extra" : "prior") : "gap-resolved";
   const row = [rx, name, tty, p.join("|"), baseline.join("|"), resolver.join("|"), w, verdict, final.join("|"), src].map(csvCell).join(",");
   val.push(row);
@@ -140,7 +145,7 @@ const sum = order.reduce((s,k)=>s+(counts[k]||0),0);
 let mdOut = `# SOT Rebuild — Summary\n\nGenerated ${new Date().toISOString().slice(0,10)}\n\n`;
 mdOut += `- Output rows (universe): **${total}**\n`;
 for (const k of order) mdOut += `- ${k}: **${counts[k]||0}**\n`;
-const changed = (counts.CORRECTED_FROM_EMPTY||0)+(counts.ADOPTED_RULE||0)+(counts.ADJUDICATED_ADOPT||0)+(counts.ADJUDICATED_OTHER||0);
+const changed = changedVsProd; // rows whose final_atcs set differs from production_atcs
 mdOut += `\n**Corrected total (value differs from production): ${changed}. Flagged for review: ${(counts.FLAG_DATA_GAP||0)+(counts.FLAG_REVIEW||0)}.**\n`;
 mdOut += `\nReconciliation check: sum(${sum}) == total(${total}) ? ${sum===total}\n`;
 fs.writeFileSync(R("reports/sot/SOT-summary.md"), mdOut);
