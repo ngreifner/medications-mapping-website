@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+1235133,D04AB01,OTHER,HIGH,Topical Cream: lidocaine topical code D04AB01 only; drop rectal C05AD01 pollution; menthol has no WHO code
+1190694,A03BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1232711,S01GA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1233607,A12AX,USE_ATCPROD,HIGH,"ATCPROD confirms A12AX (Calcium,combinations w/ vitD/other drugs); property API empty, no L5 exists"
+1000686,S01AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1046654,S01GA51,KEEP_CURRENT,MED,S01GA51 (naphazoline+lubricant combo) already present in CF; ATCPROD monotherapy candidate S01GA01 correctly superseded per combo-preference rule
+261380,D04AB04,OTHER,HIGH,Topical Gel: benzocaine topical D04AB04 only; drop rectal C05AD03
+2123151,G03AD01,OTHER,HIGH,"levonorgestrel 1.5mg single-dose tablet (BionaFem) is unambiguously an emergency-contraceptive dose; G03AD01 (WHO's dedicated emergency-contraceptive levonorgestrel code) only, not the regular-contraception G03AC03"
+1150969,D08AE04,OTHER,HIGH,"Medicated Liquid Soap: D08AE04 (triclosan topical antiseptic) only; D09AA06 is triclosan's MEDICATED-DRESSING-specific code (confirmed via classMembers: D09AA class = 'Medicated dressings with antiinfectives'), wrong for a liquid soap"
+1232397,J01CE08|J01CE09,OTHER,HIGH,"benzathine+procaine combo: J01CE08 (benzathine)+J01CE09 (procaine); drop J01CE01 (plain, no plain salt present)"
+541953,J01AA02,OTHER,HIGH,"Systemic oral doxycycline: J01AA02 only; A01AB22 is doxycycline's LOCAL dental-pocket-gel code (Atridox-type), wrong for a swallowed systemic product"
+1657749,L01FF02,KEEP_CURRENT,HIGH,"Pembrolizumab: WHO ATC/DDD index confirms L01FF02 (current WHO classification, supersedes older L01XC18)"
+1012963,R01BA03|R06AA08,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312481,C02LE01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+198710,A11HA07|C04AC03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+801925,V07AB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+804374,S01XA20,OTHER,HIGH,"Ophthalmic lubricant (CMC+glycerin artificial tears): matches confirmed S01XA20 pattern used elsewhere in this dataset for ophthalmic lubricants; glycerin's laxative codes A06AG04/A06AX01 are cross-contamination, wrong context entirely"
+808085,B03AE10,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1099896,M02AC,KEEP_CURRENT,HIGH,COVERED; capsaicin+menthol+methyl salicylate 3-way counterirritant combo maps to M02AC terminal WHO combo class
+1235150,C09DA09,KEEP_CURRENT,HIGH,azilsartan medoxomil+chlorthalidone (Edarbyclor): confirmed real WHO combo code via live RxNav lookup
+211337,N02BA01|N06BC01,OTHER,HIGH,"aspirin+butalbital+caffeine (Fiorinal-shape): aspirin analgesic use->N02BA01, caffeine->N06BC01 (confirmed WHO code for caffeine); butalbital has no WHO ATC code; drop dental A01AD05 and antiplatelet B01AC06 (wrong use context)"
+213622,S01AA18|S01AA32,OTHER,MED,bacitracin+polymyxin B Ophthalmic Ointment: per-ingredient ophthalmic codes (confirmed via classMembers S01AA); drop otic S03AA03 wrong-route
+403941,R01BA03|R05CA03|R06AC01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+543460,D02AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+858320,D02AA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1012084,S01AB04|S01BA04,OTHER,MED,"prednisolone+sulfacetamide Ophthalmic Suspension, no mydriatic present: sulfacetamide->S01AB04, prednisolone->S01BA04; drop S01CB02 (requires mydriatic, absent) and otic S03BA02"
+242960,A06AX01,OTHER,HIGH,"Oral Solution laxative use of glycerin: A06AX01 only; drop A06AG04 (enema/rectal route, wrong for oral)"
+248332,D02AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1663455,M02AB01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+211804,A01AA01|A12CD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+544550,G04BC,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1053258,R01BA53,KEEP_CURRENT,MED,"R01BA53 (phenylephrine, combinations) already present in CF, COVERED; PROD's monotherapy candidate R01BA03 correctly superseded per combo-preference rule (exact suffix not independently confirmed via RxClass classMembers, hence MED not HIGH)"
+251400,D11AF,USE_ATCPROD,HIGH,ATCPROD confirms D11AF (Wart and anti-corn preparations)
+1663733,D02AB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1789470,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+1795473,B05BB02,OTHER,HIGH,"500mL glucose/NaCl Injection (D5NS-type IV fluid): B05BB02 (electrolytes+carbohydrates combo, already in CF) alone; matches established single-code pattern confirmed at COVERED rxcui 1795147/800644; drop redundant A12CA01/B05CB01/B05XA03 component-duplicate codes"
+1809845,D07AA02,OTHER,HIGH,"single-ingredient hydrocortisone acetate Topical Cream: D07AA02 only; D07XA01 is the steroid+antiseptic COMBO class, wrong for a mono product"
+1236459,N02BE01|R01BA02|R06AA09,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1245466,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1251345,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1291375,R02AA06,USE_ATCPROD,HIGH,ATCPROD/COVERED confirms R02AA06 (mouthwash antiseptic) for cetylpyridinium chloride
+1293320,A03BA01|A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1301694,D07AC21|G01AD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1314479,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+1425114,L01EE01,KEEP_CURRENT,HIGH,Trametinib: WHO ATC/DDD index confirms L01EE01
+1483624,A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1484770,D01AC08|D08AC02,OTHER,HIGH,chlorhexidine+ketoconazole Medicated Shampoo: ketoconazole topical D01AC08 + chlorhexidine topical D08AC02; drop mucosal/dressing D09AA12 (redundant wrong-route duplicate of chlorhexidine's own code)
+1488624,A02AH,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1536993,R01BA53,KEEP_CURRENT,MED,"R01BA53 (phenylephrine, combinations) already present in CF, COVERED; PROD's monotherapy candidate R01BA03 correctly superseded per combo-preference rule (exact suffix not independently confirmed via RxClass classMembers, hence MED not HIGH)"
+1551493,D06AX07|D07AC01,KEEP_CURRENT,HIGH,betamethasone+gentamicin Topical Spray: CF already clean (gentamicin topical + betamethasone potent-topical); PROD's systemic/ophthalmic/otic additions are wrong route
+1600611,D04AB01|M02AC,OTHER,MED,"capsaicin+lidocaine+menthol+methyl salicylate topical balm: D04AB01 (lidocaine, topical anesthetic) + M02AC (3 counterirritants combo); drop C01BB01 (antiarrhythmic-route lidocaine pollution) and C05AD01 (rectal lidocaine pollution)"
+1795147,B05BB01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1235731,A02AC01|A12AA04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1244573,A03BB03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1250559,D01AE04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1314474,D01AC02,KEEP_CURRENT,HIGH,"miconazole nitrate Topical Lotion, single ingredient, already correctly coded"
+1360011,C01CA06|C05AX06|R01BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1366630,D04AB04,OTHER,HIGH,"Topical Ointment, single ingredient benzocaine: D04AB04 only; drop rectal C05AD03"
+1372304,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+1423838,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+1546589,D02AB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1305892,B02BC30,KEEP_CURRENT,MED,"fibrin sealant (fibrinogen human+thrombin human, Artiss): per task rule, prefer dedicated combination code (B02BC30) over ATCPROD's monotherapy candidate (B02BC06=fibrinogen alone)"
+1357416,A02AC01|A12AA04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1809029,A11JA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1941643,D11AF,USE_ATCPROD,HIGH,ATCPROD confirms D11AF
+1249602,J01CE01,OTHER,HIGH,penicillin G POTASSIUM alone = plain benzylpenicillin salt: J01CE01 only
+1426278,D08AA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1483340,A12BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1492682,P02CF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1597119,C01EB16|G02CC01|M01AE01|M01AX05|M01AX25|R02AX02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1236277,S01XA20,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1248156,A06AA02|A06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1294364,D08AE05|S02BA01,OTHER,MED,"chloroxylenol+hydrocortisone+pramoxine Otic Solution: D08AE05 (chloroxylenol; no dedicated otic code exists per classMembers) + S02BA01 (hydrocortisone, otic steroid); pramoxine has no WHO code"
+1483143,D02AX,OTHER,HIGH,"Topical Lotion, glycerin as emollient: D02AX (matches ammonium lactate/lactic acid topical-emollient precedent in this dataset); drop laxative-route A06AG04/A06AX01"
+1486572,A01AA01|A12CD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1492678,P02CF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1651332,D07AA02|D10AD01,OTHER,HIGH,"hydrocortisone+tretinoin Topical Cream: D07AA02(hydrocortisone)+D10AD01(tretinoin, confirmed acne-retinoid code); drop rectal/ester/systemic pollution"
+1241471,S01XA20,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1311662,D02AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1304988,G03AA07,USE_ATCPROD,HIGH,"COVERED; G03AA07 = ethinylestradiol+levonorgestrel, correct for this standard OC pack"
+647681,B03AA07,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+705836,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+686385,J01EB05|J01FA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+749880,G03AA05,OTHER,HIGH,EE0.035/norethindrone0.5 OC pack: G03AA05 (confirmed real WHO code) matches PROD; CF's 4-code breakdown is pollution/mono mismatch
+762816,R01BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+763632,A06AB02|A06AD17,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+794012,G02CC02|M01AE02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+309916,D02AA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+992679,A03BB06|R05DA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1087335,A02AA02|A06AD02|A11HA02|A12CC10|B03BA03|B03BB01|V03AB33,KEEP_CURRENT,LOW,"Highly complex multi-ingredient vitamin/mineral combo (7-13 codes); current_final kept per default-to-current policy, but completeness not independently re-verified ingredient-by-ingredient in this pass -- recommend targeted follow-up review"
+206324,D07AA02,OTHER,HIGH,single-ingredient hydrocortisone Topical Solution (Cortaid): D07AA02 only; drop rectal C05AA01 and ester/combo pollution
+312988,R01AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+312281,A06AD14|C01DA05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+750187,S01AA03|S01AA18|S01AA32,OTHER,HIGH,bacitracin+neomycin+polymyxin B Ophthalmic Ointment: minimal per-ingredient set (no evidence of a dedicated triple-antibiotic combo L5); adds the 2 codes CF was missing
+900528,N02BA51,KEEP_CURRENT,HIGH,aspirin+caffeine Oral Powder: already correctly single-coded with dedicated combo N02BA51
+308282,N02BA05|N02BE01|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+308305,N02BE01|R01BA03|R06AB04|R06AC01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+309714,S01XA20,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+206403,C02CC02|C03AA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+314146,G03AA06,KEEP_CURRENT,HIGH,"COVERED; G03AA06 = ethinylestradiol+norgestrel, already correct"
+801648,B05BA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+991037,C05AD03|D04AB04|N01BA05|R02AD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+901833,D08AC02,OTHER,HIGH,chlorhexidine diacetate Topical Spray: D08AC02 only; drop mucosal D09AA12
+966566,R03BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+311888,S01CA02,USE_ATCPROD,HIGH,"ATCPROD confirms S01CA (corticosteroid+antiinfective combo, ophthalmic) family for neomycin+polymyxinB+prednisolone"
+315002,D08AE05|S02BA01,OTHER,MED,benzalkonium+chloroxylenol+hydrocortisone Otic Solution: same fix; benzalkonium has no clean otic code
+692774,R01BA03|R05DB05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+792049,A12AA13,OTHER,HIGH,"calcium citrate/glutamate Oral Tablet: A12AA13 (calcium citrate) only, matches PROD; drop A09AB01 (wrong, digestive-enzyme class); glutamate has no WHO code"
+860943,C05AD03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+861689,J01CR02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+312104,A03DB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+205834,J01CA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+809533,A12AX,USE_ATCPROD,HIGH,"ATCPROD confirms A12AX (Calcium,combinations w/ vitD/other drugs); property API empty, no L5 exists"
+806717,B05CB01|B05XA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+309680,S01CA01,USE_ATCPROD,HIGH,ATCPROD confirms S01CA family for dexamethasone+neomycin+polymyxinB
+643496,A02AD01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+692658,A03BB03|R01BA03|R06AB02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+745505,J01CE01,OTHER,HIGH,penicillin G POTASSIUM alone: J01CE01 only
+701627,A11CB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+762007,G03AA05,KEEP_CURRENT,HIGH,COVERED; already correctly G03AA05
+308304,N02BE01|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312526,A12BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1086723,R01BA53,KEEP_CURRENT,MED,"R01BA53 (phenylephrine, combinations) already present in CF, COVERED; PROD's monotherapy candidate R01BA03 correctly superseded per combo-preference rule (exact suffix not independently confirmed via RxClass classMembers, hence MED not HIGH)"
+198604,D02AA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+2047875,D02AX,OTHER,MED,"allantoin/glycerin/propylene glycol Topical Spray (skin protectant): D02AX (emollient class, by glycerin analogy); drop laxative-route A06AG04/A06AX01; allantoin/propylene glycol have no distinct WHO code"
+359932,R01BA03|R05CA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+800644,B05BB02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+830530,B01AC06|N02BA01,OTHER,MED,"plain aspirin 325mg tablet, ambiguous use: keep both real WHO aspirin codes (analgesic N02BA01 + antiplatelet B01AC06) absent further indication; drop dental-niche A01AD05"
+618654,A12AA13,OTHER,HIGH,"same combo, different strength"
+750268,G03AA07,USE_ATCPROD,HIGH,"same combo/shape, COVERED"
+723520,R01BA03|R06AB02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+860945,C05AD03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312542,R05CA02|V03AB21,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+995195,A06AA01|C05AD07,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+997523,N02BA01|N06BC01|N02AA59,OTHER,LOW,"aspirin+butalbital+caffeine+codeine (Fiorinal w/ codeine): aspirin->N02BA01, caffeine->N06BC01, codeine analgesic combo->N02AA59 (best-effort; WHO's exact codeine-analgesic-combo suffix for barbiturate-containing products is uncertain, flagged LOW); butalbital uncoded; drop A01AD05/B01AC06/R05DA04(wrong-antitussive-class for analgesic-use codeine)"
+998183,R01BA03|R05DA04|R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312880,D11AF,KEEP_CURRENT,HIGH,COVERED; matches D11AF pattern confirmed for same-shape rxcuis via ATCPROD
+359939,R01BA03|R05CA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+378788,G03FA12,KEEP_CURRENT,HIGH,"COVERED; G03FA12 = conjugated estrogens+medroxyprogesterone (Premphase/Prempro), already correct; drop PROD's redundant G03CA57"
+308368,N02BA01|N06BC01,OTHER,MED,"aspirin+caffeine+cinnamedrine (menstrual-pain OTC): aspirin analgesic->N02BA01, caffeine->N06BC01; cinnamedrine has no WHO code; drop dental A01AD05 and antiplatelet B01AC06 (non-analgesic use context)"
+202020,G01AX11,KEEP_CURRENT,HIGH,"povidone-iodine Vaginal Gel: G01AX11 (vaginal-specific, confirmed) already correct"
+2048956,M02AC,OTHER,MED,camphor+capsaicin topical combo of 2 M02A-class counterirritants; treat as combination class M02AC rather than mono M02AB01
+314929,C01CA26|R03CA02|R05CA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+800400,B05CX03|B05XB03|N06AX02|V03AB26,OTHER,MED,"amino-acid+glucose IV combo: adopt PROD's narrower, internally-consistent 4-code set; drop CF's extra B05CX01/B05XB01/V04CA02/V06DC01 duplicative/diagnostic codes"
+348689,B03AE,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+849612,B03AE,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+207934,L02AA04,OTHER,HIGH,"Stilphostrol = fosfestrol (diethylstilbestrol diphosphate), a distinct WHO-coded prodrug for prostate cancer: L02AA04 confirmed via WHO ATC/DDD index; G03CB02 (plain DES, menopausal-dose) is the wrong entity/indication for a 50mg antineoplastic product"
+208423,S01KA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+208593,S01CA01,OTHER,HIGH,Identical ingredient combo (dexamethasone+neomycin+polymyxinB Ophthalmic Suspension) to ATCPROD-confirmed rxcui 309680; apply same S01CA01
+208683,D06AX04|D07AB19,OTHER,MED,"dexamethasone+neomycin Topical Cream (Neo-Decadron, dermatologic not ophthalmic): D06AX04(neomycin topical)+D07AB19(dexamethasone topical); drop rectal C05AA09, redundant D07XB05, and unrelated acne code D10AA03"
+211100,D08AG02,KEEP_CURRENT,HIGH,"povidone-iodine Topical Cream: D08AG02 (topical, confirmed) already correct; drop PROD's mucosal/shampoo/vaginal/throat pollution"
+2122900,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1094059,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1094831,D04AB01,OTHER,HIGH,"Topical Cream, single ingredient lidocaine: D04AB01 only; drop rectal C05AD01"
+1100894,A12AX,USE_ATCPROD,HIGH,"ATCPROD confirms A12AX (Calcium,combinations w/ vitD/other drugs); property API empty, no L5 exists"
+1115800,A11JB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1116183,B03AE04,KEEP_CURRENT,LOW,"Highly complex multi-ingredient vitamin/mineral combo (7-13 codes); current_final kept per default-to-current policy, but completeness not independently re-verified ingredient-by-ingredient in this pass -- recommend targeted follow-up review"
+1116547,V07AB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1189640,B05BA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1189850,R01BA03|R05CA03|R05DB10,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1232718,R01AA06|R01AB03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+858847,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+860435,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1011752,C09XA52,KEEP_CURRENT,HIGH,"aliskiren+HCTZ (Tekturna HCT): ATCPROD confirms C09XA (renin inhibitors) family; C09XA52 = dedicated 'aliskiren and diuretics' combo code, correctly preferred over monotherapy candidate C09XA02"
+1012177,S01AB04|S01BA04,OTHER,MED,"same combo, different strength"
+1038830,D08AJ01|D09AA11,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1039250,D08AG02|D09AA09,OTHER,MED,povidone-iodine Medicated Pad: keep topical D08AG02 + mucosal/dressing D09AA09 (pad form plausibly matches either); drop shampoo-class D11AC06
+1039353,A01AC03|A07EA02|D07AA02|D07XA01|H02AB09|S01BA02|S02BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1042852,D01AE12,KEEP_CURRENT,MED,"D01AE12 confirmed real WHO L5 (salicylic acid) via RxClass classMembers(D01AE); PROD's added N02BA04 is systemic-salicylate cross-contamination, correctly absent from CF"
+1085658,D07AB09,OTHER,HIGH,"triamcinolone acetonide Topical Cream, single ingredient: D07AB09 only; drop rectal C05AA12 and combo-class D07XB02"
+1085994,H02AB08,OTHER,MED,"triamcinolone HEXACETONIDE Injectable Suspension (intra-articular/intralesional use): no distinct WHO ester code identified; H02AB08 (triamcinolone, systemic/parenteral) is the best-available single code; drop dental A01AC01, rectal C05AA12, and unrelated inhaled R03BA06"
+241713,A12BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+245660,D02AB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1658222,A06AD04|A12CC02|B05XA05|V04CC02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1665002,M01AB15,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1115886,C05BB05|D08AE03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1116154,D06AX04|D06AX05|D07AA02,OTHER,HIGH,bacitracin zinc+hydrocortisone acetate+neomycin sulfate Topical: same fix; CF's S01AA03/S01BA02 are ophthalmic codes wrongly applied to a topical product
+1150122,N01BB02,OTHER,MED,Epinephrine/lidocaine dental-type local anesthetic cartridge: lidocaine->N01BB02 (injectable local anesthetic); epinephrine here is a vasoconstrictor adjuvant with no WHO code specific to that adjunct role; drop the many unrelated epinephrine systemic-use codes (A01AD01/B02BC09/C01CA24/R03AA01) and rectal C05AD01
+1190560,D04AB01,KEEP_CURRENT,HIGH,"Medicated Pad, already correctly single-coded D04AB01 (topical)"
+1232716,R01AA06|R01AB03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+404554,G03FA12,KEEP_CURRENT,HIGH,COVERED; same as above
+2184132,N02BE01|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+244098,B05BB01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+244382,D10AA,USE_ATCPROD,HIGH,ATCPROD/COVERED confirms D10AA for benzoyl peroxide+hydrocortisone Topical Lotion
+260285,S01AA11|S01BA04,OTHER,MED,"gentamicin+prednisolone acetate Ophthalmic Ointment (Pred-G), no mydriatic: per-ingredient S01AA11(gentamicin)+S01BA04(prednisolone); drop S01CB02(needs mydriatic, absent) and otic S03AA06/S03BA02"
+1088447,C01EX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+204912,B05CX01,OTHER,MED,"glucose Ophthalmic Ointment (unusual/likely excipient use): best-available B05CX01 (carbohydrate solution component); drop diagnostic V04CA02 (glucose-tolerance-test code, clearly wrong) and V06DC01"
+996697,D08AX01|D11AX25,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+800915,A06AD65,KEEP_CURRENT,HIGH,"ascorbate/PEG3350/electrolyte bowel-prep: ATCPROD confirms A06AD (osmotic laxatives) family; A06AD65 (macrogol, combinations) correctly preferred over monotherapy candidate A06AD13"
+210751,A02AB01|A02AB02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1090525,D06AX07,KEEP_CURRENT,HIGH,gentamicin Irrigation Solution: topical/local code D06AX07 is best available; drop otic S03AA06
+1099269,G03AA12,KEEP_CURRENT,HIGH,"COVERED; G03AA12 = ethinylestradiol+drospirenone (Yasmin), already correct; drop PROD's redundant mono G03AC10"
+349115,J01AA02,OTHER,HIGH,"Systemic oral doxycycline: J01AA02 only; A01AB22 is doxycycline's LOCAL dental-pocket-gel code (Atridox-type), wrong for a swallowed systemic product"
+830536,B01AC06|N02BA01,OTHER,MED,plain aspirin 500mg tablet: same as above; drop A01AD05
+210000,A02AD01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+211372,V06DC01,OTHER,MED,"Insta-Glucose oral gel for hypoglycemia: V06DC01 (carbohydrate nutrient), matches PROD; drop diagnostic-test code V04CA02 and B05CX01"
+1099923,M02AC,KEEP_CURRENT,HIGH,COVERED; capsaicin+menthol+methyl salicylate 3-way counterirritant combo maps to M02AC terminal WHO combo class
+1112785,D07AB08,KEEP_CURRENT,HIGH,"desonide Topical Cream, single ingredient, already correctly coded; drop PROD's ophthalmic S01BA11"
+1149660,R02AA15,OTHER,MED,povidone-iodine Mouthwash: throat/mouth-specific code R02AA15 (by numbering analogy with confirmed R02AA06=cetylpyridinium); drop topical/dressing/shampoo/vaginal/ophthalmic pollution
+1150291,A11JA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+577068,A12AX,USE_ATCPROD,HIGH,"ATCPROD confirms A12AX (Calcium,combinations w/ vitD/other drugs); property API empty, no L5 exists"
+857830,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1039446,D08AE04,OTHER,HIGH,Topical Spray: D08AE04 only; same D09AA06 dressing-code mismatch as above
+1047797,A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+105395,H02AB09,OTHER,HIGH,"hydrocortisone 10mg Oral Tablet (Hydrocortone), systemic use: H02AB09 only, matches PROD; drop dental/rectal pollution"
+243461,A02AA04,OTHER,HIGH,aluminum/magnesium hydroxide Chewable Tablet: A02AA04 (dedicated aluminum+magnesium combo antacid code) alone; drop mono A02AB01/02 and unrelated urological G04BX01
+211680,S01AA03|S01AA18,OTHER,MED,neomycin+polymyxin B Irrigation Solution (G.U. irrigant): no dedicated WHO code for urological irrigant use exists; best-available proxy is the ophthalmic per-ingredient mono codes
+1012570,R01BA03|R05DB05|R06AA08,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1658707,B01AB01|C05BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1653440,D01AE12|D02AX,OTHER,MED,lactic acid topical use maps to D02AX (confirmed elsewhere in this dataset for topical lactic acid/ammonium lactate); CF omitted it; drop PROD's vaginal G01AD01 and systemic N02BA04
+1011749,D04AB01,OTHER,HIGH,Topical Lotion (LidaMantle): D04AB01 only; drop rectal C05AD01
+1001751,A12AX,USE_ATCPROD,HIGH,"ATCPROD confirms A12AX (Calcium,combinations w/ vitD/other drugs); property API empty, no L5 exists"
+1009375,C05AD03|D04AB04|N01BA05|R02AD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1729545,D11AX01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1046713,A03BA01|A03BA03|A04AD01|N05CM05|R01BA01|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1087919,H02AB02,KEEP_CURRENT,HIGH,"dexamethasone Injectable Solution, already correctly coded systemic; drop PROD's ophthalmic S01BA01"
+346911,N02BA04|N02BA12,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1092209,D01AC08|D08AE05,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1094015,J01RA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+210754,A11GA01|B03AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+579443,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1000143,G03DA02,OTHER,HIGH,"medroxyprogesterone acetate 5mg Oral Tablet (Cycrin, standard low dose for gynecological/menstrual regulation, not contraception or oncology): G03DA02 (progestogen, non-contraceptive gynecological use) only; drop contraceptive G03AC06 and antineoplastic-dose L02AB02"
+1668032,A03BA01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1670322,L01BC59,KEEP_CURRENT,HIGH,Lonsurf (tipiracil/trifluridine): ATCPROD confirms L01BC (pyrimidine analogues) family; L01BC59 is the established trifluridine+tipiracil combo code
+1744840,M02AB01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1795251,B05BB02,OTHER,HIGH,"same IV fluid shape, different volume/concentration; same fix"
+1869047,B03AA02|G03AA05,OTHER,MED,chewable EE/norethindrone pack + 7 ferrous fumarate tablets: combine the OC combo code (G03AA05) with the iron component's own code (B03AA02); ATCPROD independently surfaces both G03AA and B03AA class families for this rxcui
+1870685,J01GB03,OTHER,HIGH,gentamicin Injection (systemic use): J01GB03 (systemic aminoglycoside) only; drop otic/oto-ophthalmic S03AA06
+1918453,D04AB04,OTHER,MED,benzalkonium+benzocaine Medicated Pad (topical/mucosal antiseptic pad): benzocaine topical D04AB04; benzalkonium contributes no clean single code here (drop D08AJ01/D09AA11 ambiguous route pollution given medicated-pad ambiguity); drop rectal C05AD03
+1245403,D04AA32,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1250949,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1251022,R01AA04|R01AB01|R01BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1292364,D04AA04|D04AA32,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1293853,C05AD07|C05AX06,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1301959,A06AD18|A06AG07,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1314654,A06AD04|A11DA01|A11HA01|A11HA02|A11HA04|A11HA31|A12CB01|A12CC02|B03AA02|B03BA01|B03BB01|V03AB20|V04CC02,KEEP_CURRENT,LOW,"Highly complex multi-ingredient vitamin/mineral combo (7-13 codes); current_final kept per default-to-current policy, but completeness not independently re-verified ingredient-by-ingredient in this pass -- recommend targeted follow-up review"
+1359123,G03FA11,KEEP_CURRENT,HIGH,"COVERED; G03FA11 = estradiol+norethisterone acetate for climacteric/HRT use (Activella), already correct"
+1370754,D07AA02,OTHER,HIGH,single-ingredient hydrocortisone valerate Topical Cream: D07AA02 (no distinct WHO valerate-ester code identified); drop combo-class D07XA01
+1372918,D01AE04|D08AE04,OTHER,HIGH,"triclosan+undecylenic acid Topical Cream: D01AE04 (undecylenic acid, confirmed antifungal) + D08AE04 (triclosan); drop dressing-code D09AA06 and PROD's D01AE20"
+1536447,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1538280,D04AB04,OTHER,HIGH,Topical Cream (benzocaine): D04AB04 only; drop rectal C05AD03
+1606488,D04AB01,KEEP_CURRENT,HIGH,"Medicated Pad, already correctly single-coded D04AB01"
+1741263,B03AC,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1745455,C05AD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1789738,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1874173,D04AB01,OTHER,HIGH,Topical Gel (Alocaine): D04AB01 only; drop rectal C05AD01
+1926571,D07AA02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1250554,D01AE04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1294338,N02BA01|R01BA01|R06AA02,OTHER,HIGH,"aspirin+diphenhydramine citrate+phenylpropanolamine cold remedy: aspirin analgesic->N02BA01 (pain/fever context, not antiplatelet), R01BA01=phenylpropanolamine (confirmed R01BA-mono numbering), R06AA02=diphenhydramine; drop dental A01AD05 and antiplatelet B01AC06"
+1297833,N02BA51,OTHER,HIGH,aspirin+caffeine 2-way combo: dedicated combo code N02BA51 (matches established pattern from rxcui 900528/1537019 in this dataset) supersedes per-ingredient N02BA01/B01AC06/A01AD05/N06BC01
+1312496,D08AG02|D08AX08,OTHER,MED,"ethanol+povidone-iodine Topical Solution (skin-prep swab): D08AG02(povidone-iodine)+D08AX08(ethanol, other antiseptics); drop dressing/shampoo D09AA09/D11AC06"
+1362026,B01AB01|C05BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1369777,M01AE01|M01AE14,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1372464,M02AC,KEEP_CURRENT,HIGH,COVERED; capsaicin+menthol+methyl salicylate 3-way counterirritant combo maps to M02AC terminal WHO combo class
+1488218,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1542825,L03AX14,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1547121,D08AG02,OTHER,HIGH,povidone-iodine Topical Solution (Triadine): D08AG02 only; drop dressing/shampoo D09AA09/D11AC06 and PROD's vaginal G01AX11
+1734777,M02AB01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1737724,C01BB01|N01BB02,OTHER,MED,Generic lidocaine Injection (unspecified use): keep antiarrhythmic (C01BB01) + local/regional anesthetic (N01BB02) real dual-indication codes; drop rectal C05AD01 (wrong route for an injection)
+1858383,R01BA53,KEEP_CURRENT,MED,"R01BA53 (phenylephrine, combinations) already present in CF, COVERED; PROD's monotherapy candidate R01BA03 correctly superseded per combo-preference rule (exact suffix not independently confirmed via RxClass classMembers, hence MED not HIGH)"
+1869344,S01KA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1243998,D01AC02,KEEP_CURRENT,HIGH,"miconazole nitrate Topical Cream, single ingredient, already correctly coded"
+1251782,A12BA04|B05CB02|B05CB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1297524,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1302617,D08AJ08,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1310481,R06AA02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1356524,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1366788,P02CF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+197592,C02DA01|V03AH01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1593876,R01AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1735004,N01AH01|N02AB03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1801689,D01AE12,OTHER,MED,Otic route; drop systemic salicylate N02BA04/12 and unrelated ophthalmic NSAID S01BC08; phytosphingosine has no WHO code
+1249026,A06AA02|A06AB03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1251594,D04AB04|R02AA06,OTHER,MED,"Benzocaine + cetylpyridinium chloride Mucous Membrane Topical Solution (oral/throat use, Orajel-type): benzocaine mucosal->D04AB04 (best available; no dedicated oral-mucosal code), cetylpyridinium mouth/throat->R02AA06 (confirmed); drop rectal C05AD03"
+1312997,D11AF,KEEP_CURRENT,HIGH,COVERED; matches D11AF pattern
+1358777,G03AA05,OTHER,MED,EE0.02/norethindrone-acetate-1mg pack (Gildess): G03AA05 (WHO groups norethindrone acetate with norethisterone base for this class); matches PROD
+1362822,B01AB01|C05BA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1437300,D08AJ01|D09AA11,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+1440021,D02AA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1537019,N02BA51,KEEP_CURRENT,HIGH,aspirin+caffeine Effervescent Tablet: already correctly single-coded with dedicated combo N02BA51
+1544281,R07AX01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+618028,J01CR02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+617339,J01CR02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+657561,D06AX04|D06AX05|D07AA02,OTHER,HIGH,"bacitracin+hydrocortisone+neomycin+polymyxin B Topical: D06AX04(neomycin)+D06AX05(bacitracin)+D07AA02(hydrocortisone); polymyxin B has no topical/dermatologic WHO code (only ophthalmic/otic), contributes none"
+685578,J01FF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+707381,R01AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+749855,G03AA05,OTHER,MED,"biphasic EE/norethindrone pack: G03AA05, matches PROD/established pattern"
+749874,G03AA05,OTHER,MED,biphasic EE/norethindrone pack: G03AA05
+800341,B05BA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+880890,D01AE12|D02AE01,OTHER,HIGH,Pack = salicylic acid foam + urea foam; D02AE01=urea (confirmed real WHO code) + D01AE12=salicylic acid; drop B05BC02/N02BA04/12/S01BC08/V04CX05 pollution
+899257,A03BB03|R01BA02|R06AB04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+800345,B05BA01,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+797654,A02AA02|A02AC01|A06AD02|A11CA01|A11DA01|A11GA01|A11HA01|A11HA03|A11HA04|A11HA05|A12AA04|A12CC10|B03AA02|B03BA01|B03BB01,KEEP_CURRENT,LOW,"Highly complex multi-ingredient vitamin/mineral combo (7-13 codes); current_final kept per default-to-current policy, but completeness not independently re-verified ingredient-by-ingredient in this pass -- recommend targeted follow-up review"
+308493,S01AA03|S01AA18|S01AA32,OTHER,HIGH,"same triple-antibiotic combo, different RxCUI; ATCPROD only confirms the L4 family (S01AA), not that S01AA03 alone is complete"
+308799,R01BA03|R06AB01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312218,A03AD01|G04BE02,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+312601,S01AB04|S01BA04,OTHER,MED,"same combo, Ophthalmic Solution vehicle"
+1088970,R05FA02,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+206549,S02AA11|S02BA01,OTHER,HIGH,"hydrocortisone+polymyxin B Otic Solution (Otobiotic): per-ingredient otic-alone codes S02AA11(polymyxin B)+S02BA01(hydrocortisone); drop S03AA03 (oto-ophthalmic combined class, not applicable to pure-otic product)"
+800062,B05DB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+748866,G03AA07,OTHER,MED,triphasic EE/levonorgestrel pack (Triphasil-shape): G03AA07 (established EE+levonorgestrel code); CF's G03AD01 (emergency-contraceptive-specific) is wrong for a regular triphasic OC
+707359,R01AX,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+796544,A11JA,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+861663,C01DA02|C05AE01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+891820,A11JB,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+1995011,D11AX18|M02AA15,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+206369,D07AA02,OTHER,HIGH,single-ingredient hydrocortisone Topical Lotion (Cetacort): D07AA02 only
+1087663,V06DD,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+630062,R01BA03|R05CA03,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+686497,A01AD,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+629994,A01AA01|A12CD01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+702615,N02BE51,OTHER,HIGH,acetaminophen+caffeine (Excedrin Quick Tab): dedicated combo code N02BE51 alone supersedes redundant mono N02BE01 and PROD's unrelated N06BC01
+761998,G03AA05,OTHER,MED,"triphasic EE/norethindrone pack (Ortho-Novum 7/7/7-shape): G03AA05, matches PROD/established pattern (WHO does not appear to split by phasing)"
+731573,J01CE08,OTHER,HIGH,penicillin G BENZATHINE alone (Bicillin L-A): J01CE08 only; drop J01CE09 procaine (not present)
+891136,B01AC06|N02BA01,KEEP_CURRENT,HIGH,"bulk aspirin 31200mg, already clean 2-code set; PROD's added N02BA51 wrong (not a combination product)"
+968989,P02CF01,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+308897,A02AA01|A02AC01|A06AD01|A12AA04,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+309390,D05AA,USE_ATCPROD,HIGH,ATCPROD confirms D05AA (Tars) for this exact rxcui; coal tar is the dominant classification for coal-tar+salicylic-acid shampoos
+309536,D08AJ08,KEEP_CURRENT,MED,No stronger contrary evidence found (MISS coverage); current_final already reflects prior audit-phase correction and no pollution pattern identified
+2001358,N02AJ22,KEEP_CURRENT,MED,acetaminophen+benzhydrocodone (Apadaz): ATCPROD confirms N02AJ (opioid+non-opioid analgesic combo) family matching CF's specific L5
+995864,A11JB|A11JC,KEEP_CURRENT,HIGH,ATCPROD-derived L4 prefix confirms current_final's family; production reflects pre-fix pipeline
+702296,J01AA02,OTHER,HIGH,"Systemic oral doxycycline: J01AA02 only; A01AB22 is doxycycline's LOCAL dental-pocket-gel code (Atridox-type), wrong for a swallowed systemic product"

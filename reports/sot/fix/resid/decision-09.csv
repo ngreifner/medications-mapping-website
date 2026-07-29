@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+1593569,D11AX12,OTHER,HIGH,WHO D11AC has no zinc-pyrithione entry; real ingredient code D11AX12 (pyrithione zinc) confirmed
+1596455,S02BA07|S02AA14|D01AC01,OTHER,MED,"betamethasone has no S02CA entry in WHO (steroid not covered by that class); minimal otic-route set = betamethasone(S02BA07)+gentamicin(S02AA14)+clotrimazole(D01AC01, no ear-specific antifungal code exists)"
+1918056,G03AB03|G03CA01,USE_ATCPROD,MED,"ATCPROD candidate G03AB03(seq levonorgestrel+EE, matches 91-day extended regimen)+G03CA01(EE-only 7-day phase); dropped atcprod G03AA08 (medroxyprogesterone) - ingredient mismatch, not present in product"
+1241796,A11JB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1293644,C05AD07|D04AB07,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1293660,A07EA02|C05AA01|C05AD07|D07AA02|D07XA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1294562,R01BA02|R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1300368,J07AJ52,KEEP_CURRENT,HIGH,"WHO J07AJ52=""pertussis, purified antigen, combinations with toxoids"" is the correct dedicated code for acellular-pertussis+diphtheria+tetanus (DTaP); confirmed via WHO page"
+1432948,D08AX08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1483212,D08AE05|D08AX08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1241833,N02BE01|R01BA03|R06AC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1244579,A03BB03|R06AB04,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1247988,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1250903,D01AE04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1251557,A02AA02|A02AC01|A06AD02|A12AA04|A12CC10,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1294371,R01BA03|R05DB05|R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1297584,R01BA03|R05DA03|R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1303358,D01AE12,OTHER,HIGH,D11AC has no salicylic-acid child in WHO; ingredient real code D01AE12 confirmed live
+1370002,A03BB03|R01BA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1490785,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1495476,N02AJ22,KEEP_CURRENT,HIGH,WHO N02AJ22=hydrocodone and paracetamol (Lortab)
+1537107,M09AX01,OTHER,HIGH,"intraarticular sodium hyaluronate injection (Monovisc); WHO M09AX01 DDD note explicitly specifies ""intraarticular"" use, exact match; current S01KA01 is the ophthalmic-viscoelastic hyaluronate code, wrong indication"
+1540278,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1597593,L01XK01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1608258,M02AB01|D04AB01,OTHER,MED,topical counterirritant patch; capsaicin primary use-class M02AB01 (joint/muscular pain); lidocaine as topical co-anesthetic D04AB01; current M02AX is the wrong L4 (capsaicin is not in that class); menthol has no WHO code
+1544065,C05AD01|D04AB01,KEEP_CURRENT,MED,"lidocaine topical cream; N01BB02 is the injectable/nerve-block code, not applicable to topical route"
+1359129,G03FA01,KEEP_CURRENT,HIGH,WHO G03FA01=norethisterone and estrogen; matches estradiol+norethindrone acetate; ATCPROD L4 G03FA confirms
+1551989,J05AJ02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1603861,G03AB03|G03CA01,USE_ATCPROD,MED,same product design as 1918056 (Ashlyna 91-day)
+1376395,D08AG02|D09AA09|D11AC06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1244565,A03BB03|R01BA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1251049,A06AG04|A06AX01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1251175,A06AG04|A06AX01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1367227,R01BA03|R06AB04,OTHER,HIGH,ATCPROD candidate confirms R01BA03 (specific phenylephrine code) over current R01BA53 (generic catch-all); chlorpheniramine R06AB04 confirmed via ingredient lookup
+1545174,A07EA02|C05AA01|D07AA02|D07XA01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+657568,S01GX08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+687196,A12CA01|B05CB01|B05CX01|B05XA03|V04CA02|V06DC01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+707339,R01AX,OTHER,HIGH,"sodium chloride nasal spray; sibling products (707333, 284453) already correctly use R01AX"
+723530,A01AD05|B01AC06|N02BA01|N02BE01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+707333,R01AX,KEEP_CURRENT,HIGH,confirmed correct (verified live)
+795770,B03AA02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+800588,B05BA01,KEEP_CURRENT,MED,parenteral amino acid solution; L4-level B05BA01 (amino acids) is WHO-appropriate; per-amino-acid reconstruction is unreliable given RxNorm property-API noise
+800074,B05DB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+895666,M01AE01|R06AA02,OTHER,MED,"no dedicated WHO L5 for diphenhydramine+ibuprofen; M01AE14 is dexibuprofen (wrong sibling, not a combo code); minimal oral-route set = ibuprofen M01AE01 + diphenhydramine R06AA02"
+1087249,A11GA01|B03BA01|B03BB01|V04CX02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+206510,S02CA03,OTHER,HIGH,otic hydrocortisone+neomycin+polymyxin B; WHO S02CA03=hydrocortisone and antiinfectives
+763095,S02CA03,KEEP_CURRENT,HIGH,already correct (same otic combo)
+308941,C05BB05|N01BX03,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+310313,B03AA02|B03BB01|V04CX02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+311423,A12CA01|A12CC01|B05CB01|B05XA03|B05XA11,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+310228,G03CA01|G03DC06|L02AA03,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+763577,A03BB03|R01BA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+748641,M01AE01,OTHER,HIGH,"plain oral ibuprofen solution; drop G02CC01(vaginal),R02AX02(throat lozenge) wrong-context siblings"
+755799,R01BA01|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+755838,C01CA26|R03CA02|R05CA03|R05DA04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+762005,G03AA05,OTHER,MED,production already G03AA05; WHO G03AA05=norethisterone and ethinylestradiol matches; current was raw per-ingredient split
+991251,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+885131,D10AE01|D10AF01,OTHER,MED,no dedicated WHO L5 for benzoyl peroxide+clindamycin; minimal set = benzoyl peroxide(D10AE01)+clindamycin(D10AF01); atcprod candidate D10AF01 confirms clindamycin half
+308841,A02AF02,KEEP_CURRENT,HIGH,"calcium carbonate+magnesium hydroxide+simethicone; A02AF02 ""ordinary salt combinations and antiflatulents"" already correct, confirmed via ATCPROD L4 + WHO page"
+309315,A02AA02|A06AD02|A09AB04|A12CC10,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+311997,D08AF01|D09AA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+200866,C01DA08|C05AE02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+317282,M03BC01|N04AB02,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+808534,A11JA,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+731559,J01CE08|J01CE09,OTHER,HIGH,"Bicillin = benzathine+procaine penicillin specifically; WHO J01CE08/09 match those exact salts, J01CE01 (plain benzylpenicillin) is a non-matching sibling"
+308667,C05AD03|C05BB05|D04AB04|D08AE03|R02AA19|R02AD01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+630422,A01AA01,OTHER,MED,"toothpaste = topical dental application; A01AA01 (caries prophylactic); drop A12CD01 (systemic fluoride supplement, wrong indication for toothpaste)"
+749157,G03AA11,KEEP_CURRENT,HIGH,WHO G03AA11=norgestimate and ethinylestradiol matches
+992582,D02AX,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+308524,D03BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+312525,A12BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+2047879,C05AD01|D04AB01|D08AJ01|D09AA11,OTHER,MED,benzalkonium+lidocaine topical spray; drop N01BB02 (injectable code)
+801579,A12CA01|A12CC01|B05CB01|B05CX01|B05CX03|B05XA03|B05XA08|B05XA11|B05XB03|N06AX02|V03AB26|V04CA02|V06DC01,OTHER,LOW,"drop B05XB01 (arginine hydrochloride, salt-sibling mismatch to plain arginine); rest kept as multi-electrolyte/amino-acid parenteral solution"
+310911,A01AB02|B05CB04,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+630475,A12CD01,OTHER,MED,"""Fluor-A-Day"" is a systemic pediatric fluoride-supplement drop product; A12CD01 (systemic fluoride) fits better than topical A01AA01"
+866813,D02AE01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+308903,A02AC01|A12AA04|B05CX03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+753549,G03AA05,OTHER,MED,same reasoning as 762005
+198493,R02AD01,KEEP_CURRENT,MED,benzocaine oral lozenge; R02AD01 (throat preparation) already correct
+999990,C09DX03,KEEP_CURRENT,HIGH,"WHO C09DX03=olmesartan medoxomil, amlodipine and hydrochlorothiazide (Tribenzor)"
+992754,A03BB06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+198468,A01AD05|B01AC06|N02BA01,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+198717,D08AH30|D09AA10,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+994435,A01AD05|B01AC06|N02BA01|N06BC01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+807206,D07AC13,OTHER,HIGH,"plain mometasone furoate ointment (no combo partner); D07XC03 is specifically ""corticosteroids potent, OTHER COMBINATIONS"" (mometasone when combined with another agent) - does not apply to a single-ingredient product"
+846953,D10AD01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+853367,C05AD03|D04AA02|D04AB04|N01BA05,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+855644,D11AX18|M02AA15,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+208957,A12BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+209251,G03BA02|G03EK01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+210078,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+2106997,G03AA12,KEEP_CURRENT,HIGH,WHO G03AA12=drospirenone and ethinylestradiol matches
+2174390,R07AX31,KEEP_CURRENT,HIGH,"WHO R07AX31=ivacaftor and tezacaftor (Symdeko); atcprod_candidate R07AX02 is ivacaftor-mono, wrongly drops the combo"
+2184133,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1099308,R01BA02|R06AX07,OTHER,MED,"triprolidine has its own specific code (R06AX07); prefer split convention over generic R01BA52 catch-all, consistent with sibling rows in this dataset"
+1101942,A01AA01,OTHER,MED,same (toothpaste)
+1112244,R01BA02|R06AX18,OTHER,MED,acrivastine has its own specific code (R06AX18); same reasoning as 1099308
+1094418,R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1191262,D10AD51,KEEP_CURRENT,MED,"fluocinolone+hydroquinone+tretinoin triple combo (Tri-Luma-shape); D10AD51 ""tretinoin, combinations"" catch-all is a plausible existing WHO classification for this specific triple-combo product; no stronger evidence to override"
+452688,C05AD03|D04AB04|N01BA05,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+859164,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+860600,R01BA03|R05DA03|R06AB02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1020053,D01AE12,OTHER,HIGH,D11AF is a terminal WHO L4 (no children); real salicylic-acid code is D01AE12
+1046504,D01AE12,KEEP_CURRENT,HIGH,"already D01AE12, confirmed correct WHO code for salicylic acid"
+2184177,A03BB03|R01BA02|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+245038,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+251406,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+283602,D01AE12,OTHER,HIGH,same as 1020053
+1655934,R07AX30,KEEP_CURRENT,HIGH,WHO R07AX30=ivacaftor and lumacaftor (Orkambi)
+1658313,M02AB01,KEEP_CURRENT,HIGH,capsaicin+menthol patch; M02AB01 already correct (menthol has no WHO code to add)
+1094447,A07EA02|C05AA01|C05AD07|D07AA02|D07XA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1148394,D02AA,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1190184,A06AA02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+540142,A12CD01,OTHER,MED,Luride chewable = systemic pediatric fluoride supplement tablet; A12CD01
+1001079,S01EA01|S01EB01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1039499,A01AD05|B01AC06|N02BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1046900,A03BA01|A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1657910,A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+995447,R05DA04|R06AC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+999995,C09DX03,KEEP_CURRENT,HIGH,"same product, different dose"
+317862,A02AA04|A02AC01|A12AA04|G04BX01|N03AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+807835,R01BA03|R05CA09,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+2049391,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+856824,S01AA01|S03AA08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+208592,S01CA01,OTHER,HIGH,"ophthalmic dexamethasone+neomycin+polymyxin B; WHO S01CA01=dexamethasone and antiinfectives (keyed by steroid, covers multi-antiinfective combos)"
+210778,A02AB01,OTHER,HIGH,"plain aluminum hydroxide oral suspension; A02AB01 is correct, A02AB02 is a non-matching sibling entry"
+211893,A01AD05|B01AC06|N02BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+2123159,C05AD01|D04AB01,OTHER,MED,lidocaine topical oil; drop N01BB02 (injectable/nerve-block code)
+2184131,N02BE01|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1092552,C05AD03|D04AB04|R02AD01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+208311,P02CA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+206178,A01AB18,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+801194,A01AA01,OTHER,MED,oral paste = topical dental application; A01AA01 only
+831250,C05AE03|C08DB01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+314171,A06AD14,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+377832,D08AE04|D09AA06,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+210827,A02AB01,OTHER,HIGH,same (Amphojel tablet)
+237406,A02AC01|A11CC01|A12AA04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1094481,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+211836,A02AB01,OTHER,HIGH,same (Alu-Tab)
+1233692,D04AA32,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+579816,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1000497,G03FA12,KEEP_CURRENT,HIGH,WHO G03FA12=medroxyprogesterone and estrogen; matches conjugated estrogens+medroxyprogesterone acetate
+1006709,S01AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1012004,S01CA02,OTHER,HIGH,ophthalmic prednisolone+sulfacetamide; WHO S01CA02=prednisolone and antiinfectives (Metimyd)
+1085698,A01AC01|C05AA12|H02AB08|R03BA06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+238405,D02AB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+251404,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+260127,A01AC04|A07EA01|C05AA04|H02AB06|S03BA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+211682,C04AC01|C10AD02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1047862,A03BA01|A03BA03|A04AD01|N03AA02|N05CM05,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1085977,C05AA12|D07AB09|D07XB02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1664359,D07AA02,OTHER,HIGH,same as 543685 (Blue-Emu Anti-Itch)
+245020,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1737638,C01BB01|C05AD01|N01BB02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+859941,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1050670,D08AE04|D09AA06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+307828,D06BA05|D08AA02|J01EB06,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1668154,A03BA01|V04CX07,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+860143,R01BA03|R05DA03|R06AC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1737565,C01BB01|C05AD01|N01BB02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1744041,D01AE12,OTHER,HIGH,same as 1303358 (salicylic acid shampoo)
+206847,C01DA08|C05AE02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+205859,G03CA01|L02AA03,KEEP_CURRENT,MED,ethinyl estradiol 0.5mg - both contraceptive/HRT (G03CA01) and high-dose oncologic (L02AA03) WHO uses legitimate; no dose-based curated override exists
+349404,D02AB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+833703,C05AE03|C08DB01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+849450,N02CC51,KEEP_CURRENT,HIGH,WHO N02CC51=sumatriptan and naproxen (Treximet)
+1090849,A12CX,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1100896,A02AC01|A11CC01|A12AA04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1191376,C05AA01|D07AA02|D07XA01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+208323,C05AA11|D07AC08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+208942,A12BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+210540,S01AA01|S03AA08,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+416684,D02AB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+562251,J01CR02,KEEP_CURRENT,HIGH,WHO J01CR02=amoxicillin and beta-lactamase inhibitor
+577862,A11HA07,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+617309,J01CR02,KEEP_CURRENT,HIGH,same
+857413,R01BA01|R06AA04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+857468,C10AA,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+857764,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1020059,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1037147,R01BA02|R06AB05|R06AC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+245043,A11GA01|B03AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+261359,J06BD01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1798541,D01AE12,OTHER,HIGH,same as 1020053 (medicated patch)
+1873704,G03AA05|B03AA02,OTHER,MED,"OC combo (norethindrone acetate+EE=G03AA05) + iron component (ferrous fumarate=B03AA02) both real actives in ""Fe"" pack; atcprod confirms B03AA02"
+1946727,C05AD03|D04AB04|N01BA05,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1863967,A12BA01|A12CA01|B05CB01|B05CX01|B05XA01|B05XA03|V04CA02|V06DC01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1241824,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1245985,M09AX01,OTHER,HIGH,same as 1537107 (Orthovisc)
+1246628,C05AD01|D04AB01|D08AJ01|D09AA11,OTHER,MED,"same combo as 2047879, different brand"
+1292314,D04AA32,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1304511,A02AA02|A02AC01|A06AA02|A06AD02|A11CC05|A11DA01|A11GA01|A11HA01|A11HA02|A11HA04|A12AA04|A12CC10|B03BA01|B03BB01|V04CX02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1374408,A01AC02|C05AA09|H02AB02|S03BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+197953,C02LA03,OTHER,HIGH,C02LA05 does not exist in WHO index; correct code for deserpidine+diuretics is C02LA03
+1432119,C05AD03|D04AB04|D08AJ01|D09AA11|N01BA05,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+244309,S02DA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1242787,G03AA05,KEEP_CURRENT,HIGH,WHO match confirmed + ATCPROD L4 G03AA/G03AB confirms
+1293975,R01BA02|R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1297551,R01BA03|R05DB05|R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1310954,A12AX,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1363034,A03BB03|R01BA02|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1376066,C05AA09|D07AB19|D07XB05|D10AA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1422081,G03AA09,KEEP_CURRENT,HIGH,WHO G03AA09=desogestrel and ethinylestradiol matches
+1436155,D01AE12,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1486665,A06AG04|A06AX01,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1534833,D02AA,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1943551,A01AC02|C05AA09|H02AB02|S03BA01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1869381,M09AX01,OTHER,HIGH,same as 1537107 (Gel-Syn)
+1293876,S02CA03,KEEP_CURRENT,MED,otic steroid+antiinfective combo; S02CA03=hydrocortisone and antiinfectives already correct; pramoxine (local anesthetic) has no otic-specific WHO code so cannot be separately represented
+1310944,A03BB03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1359347,D06AX04|D06AX05,OTHER,MED,neomycin(D06AX04)+bacitracin(D06AX05) both have general topical-antibiotic codes; polymyxin B has no D06AX entry (only ophthalmic/otic-specific codes exist) so cannot be represented
+1363499,R01AA07|R01AB06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1436931,D08AX01|D11AX25,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+198208,A04AD01|N05CM05,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1483558,G03AA05|B03AA02,OTHER,MED,same reasoning as 1873704 (Zenchent Fe)
+1545669,C05AX06,KEEP_CURRENT,HIGH,"rectal ointment; C05AX06 is phenylephrine's anorectal-vasoconstrictor WHO code, exactly matching this hemorrhoid-preparation indication"
+1923433,S01ED51,KEEP_CURRENT,HIGH,"WHO S01ED51=""timolol, combinations"" catch-all applies to any timolol combo incl. dorzolamide+timolol; atcprod S01ED01 wrongly drops the combo"
+1601098,C05AD01|D04AB01,OTHER,MED,lidocaine+menthol topical patch; drop N01BB02 (injectable code); menthol has no WHO code
+1539190,G03FA01,OTHER,MED,same estradiol+norethindrone-acetate pair as verified Mimvey (1359129)/Amabelz(1806683) siblings
+1544971,C05AX06,KEEP_CURRENT,HIGH,same as 1545669 (rectal cream)
+1806683,G03FA01,OTHER,HIGH,current G03FA11=levonorgestrel+estrogen mismatches actual ingredients (estradiol+norethindrone acetate); correct WHO code is G03FA01
+1245286,A03BB03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1302633,D04AX,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1440065,M02AC,KEEP_CURRENT,MED,"camphor+capsaicin+methyl salicylate counterirritant; M02AC (""preparations with salicylic acid derivatives"") is a terminal WHO L4 that fits methyl salicylate; no further subdivision exists"
+1597620,J01DI54,KEEP_CURRENT,HIGH,WHO J01DI54=ceftolozane and beta-lactamase inhibitor (Zerbaxa)
+1598471,A02AF02,OTHER,HIGH,same combo (Gelusil)
+1601091,S01GX09,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+702434,D10AB02|D10AX02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+308366,A01AD05|B01AC06|N02BA01|N06BC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+312193,S01AB04|S01BA04|S01CB02|S01FB01|S01GA05|S03BA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+800220,B05BA01,KEEP_CURRENT,MED,same
+892830,R02AD01,OTHER,MED,benzocaine oral gel for mouth sores (Orabase); R02AD01 (throat/mouth local anesthetic) is the clinically correct single code; drop anorectal/topical-skin/injectable-ester-class siblings
+205899,S01EA01|S01EB01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+995615,B03AA07,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+998514,D01AC02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+351358,S02CA03,OTHER,HIGH,same otic combo (Cort-Biotic)
+802059,A07EA02,OTHER,HIGH,"rectal enema for colitis; WHO A07EA (corticosteroids acting locally, GI) is the exact indicated chapter; drop skin/anorectal-hemorrhoid ester-variant clutter"
+308898,A02AC01|A12AA04|N03AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+901814,M01AE01|R06AA02,OTHER,MED,same as 895666 (Advil PM)
+315243,B05BC02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+829759,A11JB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+845494,A07EA03|H02AB07,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+876679,A11JA,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+1090529,J01GB03|S03AA06,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1088977,R01BA02|R05CA03|R05DA04,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+830778,C01EB09,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+617333,J01CR02,KEEP_CURRENT,HIGH,same
+730869,C09DB02,KEEP_CURRENT,HIGH,WHO C09DB02=olmesartan medoxomil and amlodipine
+656808,A01AA01,OTHER,MED,mouthwash = topical dental rinse; A01AA01 only
+746030,C07CB03,KEEP_CURRENT,HIGH,WHO C07CB03=atenolol and other diuretics (Tenoretic)
+891815,A11JB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+315158,D08AF01|D09AA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+404176,A02AF02,OTHER,HIGH,"ATCPROD L4 confirms A02AF (antacids with antiflatulents), not A02AD; WHO A02AF02=""ordinary salt combinations and antiflatulents"" matches alu/mag hydroxide+simethicone"
+198404,B03AA02|B03BB01|V04CX02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+388054,S01ED51,KEEP_CURRENT,HIGH,same catch-all applies to latanoprost+timolol
+801486,A12CA01|A12CC01|B05CB01|B05CX01|B05CX03|B05XA03|B05XA08|B05XA11|B05XB03|N06AX02|V03AB26|V04CA02|V06DC01,OTHER,LOW,same as 801579
+311662,G03BA02|G03EK01,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+672193,D10AX01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+656843,A01AA01,OTHER,MED,same (oral paste)
+749158,G03AA11,KEEP_CURRENT,HIGH,same as 749157
+758486,A02BC03|M01AE02,OTHER,HIGH,lansoprazole+naproxen GPCK; A02BC03(lansoprazole)+M01AE02(naproxen); drop G02CC02(vaginal)/M02AA12(topical) wrong-context naproxen siblings
+748800,G03AA12,KEEP_CURRENT,HIGH,same as 2106997
+900438,M01AE01,OTHER,HIGH,same (Ultraprin tablet)
+310326,B03AA07|B03BB01|V04CX02,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+995443,R05CA03|R05DA04,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+311214,A07AA08|J01GB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+312266,J01CE01,OTHER,HIGH,plain penicillin G tablet; J01CE08/09 (benzathine/procaine salts) do not match this product
+896862,G03GA01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+991013,A01AA01,OTHER,MED,oral foam = topical dental office treatment; A01AA01 only
+310541,S01XA20,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1087258,A11JB,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+801005,A12CA01|B05CB01|B05CX01|B05XA03|B05XA17|V04CA02|V06DC01,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+979334,R03AB03|R03CB03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+312106,A07DA02|N02AA02,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1087682,D02AA,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+998369,R01BA03|R05DA04|R06AB02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+313788,A02AF02,OTHER,MED,"same alu/mag/simethicone core; dropped P03AX05 (dimethicone anti-lice code, wrong indication for oral antacid)"
+349607,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+360422,A12AX,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+805017,D10AF02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+834158,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+848197,C05AA05|D07AC01|D07XC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+854861,G03AC03|G03AD01,KEEP_CURRENT,MED,"levonorgestrel emergency-contraception pack; G03AD01 is the emergency-contraceptive-specific WHO code, already present"
+208123,S01FA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+208590,S01CA01,OTHER,HIGH,"same combo, different brand (Dexasporin)"
+213561,C05AA05|D07AC01|D07XC01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1094168,R06AA02,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+351913,D01AE14,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1116629,C05AD01|D04AB01,OTHER,MED,"epinephrine+lidocaine topical patch (Lidosite); epinephrine has no applicable topical WHO code; lidocaine only, drop N01BB02 (injectable)"
+1190804,A03BA01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+562300,A01AC03,OTHER,HIGH,"""Oral Paste"" = dental/mouth-ulcer corticosteroid paste; WHO A01AC (corticosteroids for local oral treatment) is the exact indicated chapter"
+1000046,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1011987,S01CA02,OTHER,HIGH,same combo (Blephamide)
+1013011,C05AD01|D04AB01,OTHER,MED,epinephrine+lidocaine topical solution (Iontocaine); same reasoning as 1116629
+1037153,R01BA03|R05CA03|R05DB05,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1044218,D08AG02|D08AG03|D09AA09|D11AC06,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+1047939,D08AE04|D09AA06,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1052709,D08AX01,KEEP_CURRENT,LOW,"no RxNav ATC data recoverable for ingredient(s); current value kept as best-available, unverified"
+1053282,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1053364,C05AD03|D04AB04|N01BA05,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+108329,D01AC08,OTHER,MED,route-aware per-ingredient WHO-code reconstruction (RxNav ingredient property data + route matrix); no dedicated combo L5 identified
+2184158,R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+283279,D02AF,KEEP_CURRENT,HIGH,bare terminal WHO L4 (no L5 children exist) - already maximally specific
+284453,R01AX,KEEP_CURRENT,HIGH,confirmed correct (verified live)
+1659174,B05CB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+543685,D07AA02,OTHER,HIGH,"plain hydrocortisone topical lotion; D07AA02 (weak-potency plain hydrocortisone, topical) is correct; other codes are ester-variant/anorectal clutter"
+616906,R01BA03|R05DB05|R06AB04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1020375,R02AD01,OTHER,MED,same (Beegentle)
+1044982,D11AX12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+543806,R02AD01,OTHER,MED,"benzocaine oral solution, mouth/throat use; C05AD03 (anorectal) does not apply"
+1999389,R07AX31,KEEP_CURRENT,HIGH,"same product, different pack size"
+207638,S01CA02,OTHER,HIGH,ophthalmic neomycin+polymyxin B+prednisolone (Poly Pred); WHO S01CA02=prednisolone and antiinfectives
+805378,J07CA02,OTHER,MED,"DTaP-IPV-Hib combo (Pentacel); WHO J07CA02=""diphtheria-pertussis-poliomyelitis-tetanus"" fits better than the current bare J07CA parent; J07CA02 does not include Hib specifically but is the closest matching multi-antigen combo code available"
+809521,A02AC01|A12AA04,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+833104,A06AD17|A06AG01|A12BA01|A12CA01|A12CC01|B05CB01|B05CX01|B05CX03|B05XA01|B05XA03|B05XA09|B05XA11|B05XB03|N06AX02|V03AB26|V03AG05|V04CA02|V06DC01,OTHER,LOW,"drop A09AB01 (glutamic acid hydrochloride, mismatched substance) and V10XX01 (radioactive sodium phosphate isotope, clearly wrong for a nutrition solution)"
+853021,J01FF01,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+210177,D01AE12|D10AB02,OTHER,MED,"salicylic acid+sulfur shampoo, no dedicated WHO combo L5; minimal set = salicylic acid(D01AE12)+sulfur(D10AB02)"
+211151,A07BC04,USE_ATCPROD,MED,bismuth subsalicylate chewable tablet; A07BC04 (production value) fits WHO A07B intestinal-adsorbent chapter; current A02BD|A07BB are non-specific parent-level codes
+211958,J01CA03,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1091245,A02AA02|A02AC01|A06AD02|A11CC05|A12AA04|A12CC10,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly
+1111055,D01AE12,KEEP_CURRENT,HIGH,route-filtered per-ingredient union matches current exactly

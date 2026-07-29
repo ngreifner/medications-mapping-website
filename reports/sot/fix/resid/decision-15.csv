@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+351706,D07BA,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+852869,A01AB22|J01AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1148253,S01KA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1190639,A03BA01|A07DA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+543018,A09AB04|B05CB02,USE_ATCPROD,HIGH,upgrade L4-only (G04BC) to real per-ingredient L5s (citric acid + sodium citrate); no dedicated combo L5 exists
+562781,S01BA04|S01CB02|S03BA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+857734,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+859137,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+860441,A07AA09|J01XA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1005789,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1039923,D07AA02|D07XA01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA01|D07AB02|D07AB11|D07AC16
+1044910,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1050493,G03AA12,KEEP_CURRENT,HIGH,dedicated combo code already correct; reject re-added drospirenone mono
+1053618,R01BA52,OTHER,HIGH,strip redundant pseudoephedrine mono (R01BA02); R01BA52 combo-bucket already covers product
+1085779,D07AB09|D07XB02,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA12
+1117090,S01AA03|S01AA32,OTHER,HIGH,restore missing bacitracin code (S01AA32) alongside neomycin (S01AA03); polymyxin B has no ophthalmic-specific L5 available
+1038754,A01AA01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A12CD01
+1086453,H02AB08,OTHER,HIGH,stripped cross-route/ester-mismatch: A01AC01|C05AA12|R03BA06
+1039248,R02AD01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AD03
+1722333,M01AE01|M01AE14,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1732122,D01AC08|D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1011766,D04AB01|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: N01BB02
+834768,G03AA09,KEEP_CURRENT,HIGH,dedicated combo code already correct; reject re-added desogestrel mono
+2003464,D02AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+207214,G03BA02|G03EK01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+847627,B05BB01,KEEP_CURRENT,MED,electrolyte-combination bucket already covers the whole IV solution
+857687,R03CC03,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: R03AC03
+211394,N02BA03|N07AX02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1091325,A11HA03|A16AA01|C01EB09,USE_ATCPROD,MED,stripped cross-route/ester-mismatch: C01EX; added route-correct/ingredient code: A11HA03|A16AA01|C01EB09
+1094911,J01CE09,USE_ATCPROD,HIGH,product is penicillin G PROCAINE; strip plain benzylpenicillin (J01CE01) sibling code
+1116195,R03CA02,OTHER,HIGH,stripped cross-route/ester-mismatch: C01CA26
+2117976,D08AH30|D09AA10,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1115759,D04AB01|D06AX05|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: N01BB02
+310818,C03EA01,KEEP_CURRENT,HIGH,dedicated combo code (HCTZ+K-sparing diuretic) already correct
+1090048,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+801451,B05BB02,KEEP_CURRENT,MED,electrolyte-with-carbohydrates bucket already covers the whole IV solution
+856429,C07BA05,KEEP_CURRENT,HIGH,dedicated combo code (propranolol+thiazide) already correct
+856962,N02AJ22,KEEP_CURRENT,HIGH,dedicated combo code (hydrocodone+paracetamol) already correct
+210779,A11GA01|B03AA07,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1099659,R01BA53,KEEP_CURRENT,HIGH,dedicated combo-bucket code already correct
+1101729,D11AC|D11AX12,OTHER,MED,added route-correct/ingredient code: D11AX12
+1112895,A07BC01|A07FA51,OTHER,MED,added route-correct/ingredient code: A07BC01
+210753,A02AB01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A02AB02
+604669,R01BA53,KEEP_CURRENT,HIGH,dedicated combo-bucket code already correct
+858763,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+858784,C01EB16|M01AE01|R05DA03,OTHER,HIGH,stripped cross-route/ester-mismatch: G02CC01|R02AX02
+858795,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+858854,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1000122,G03AC06|G03DA02|L02AB02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1042815,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1044290,R01AA04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+261179,D01AA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+616798,D04AB04|D08AX08,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AD03
+1049425,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+243459,A02AA04|A02AB01|G04BX01,OTHER,HIGH,stripped cross-route/ester-mismatch: A02AB02
+1721082,M09AX01,USE_ATCPROD,MED,stripped cross-route/ester-mismatch: S01KA01; added route-correct/ingredient code: M09AX01
+1114098,D02AX,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1114019,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1114376,D08AX01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+413248,D08AE04|D09AA06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1013619,R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1050123,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+242668,A11GA01|B03AE,OTHER,MED,generic iron-combination bucket plus ascorbic acid code
+251407,D01AE12|D11AF,OTHER,MED,added route-correct/ingredient code: D01AE12
+284199,A02AC01|A12AA04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+435191,A01AA01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A12CD01
+616913,R01BA03|R05DB05|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1043619,A01AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1086253,H02AB08,OTHER,HIGH,stripped cross-route/ester-mismatch: A01AC01|C05AA12|R03BA06
+242814,A01AB04|A01AB13|A07AA07|J01AA07|J02AA01,OTHER,HIGH,stripped cross-route/ester-mismatch: S03AA02
+260375,J01EB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+284465,G03GA01|G03GA08,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+204735,A11GA01|B03AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+206755,H02AB07,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A07EA03
+312885,D11AC|D11AX12,OTHER,MED,added route-correct/ingredient code: D11AX12
+1092454,D04AA32,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1095689,D01AE12|D11AF,OTHER,MED,added route-correct/ingredient code: D01AE12
+1111457,R02AA19,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1116271,N03AA02|R03CA02,OTHER,HIGH,stripped cross-route/ester-mismatch: C01CA26
+210025,A02AA04|A02AB01|G04BX01,OTHER,HIGH,stripped cross-route/ester-mismatch: A02AB02
+616918,R01BA03|R05DB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+857685,R03CC03,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: R03AC03
+859139,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+860743,C05AD03|R06AA10,OTHER,MED,added route-correct/ingredient code: R06AA10
+1045553,R01BA01|R06AB05|R06AC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1189629,B05BB02,KEEP_CURRENT,MED,electrolyte-with-carbohydrates bucket already covers the whole IV solution
+2186001,D04AX|P03AX05,OTHER,MED,added route-correct/ingredient code: P03AX05
+282708,R02AA19,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1005858,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1809636,R01BA03|R06AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1864958,C05AD03,OTHER,MED,"oral gel local anesthetic/antiseptic; keep benzocaine anorectal-family code only, drop cross-route dermatological/oromucosal/benzethonium sibling noise (low-confidence input classification)"
+1242779,R01AX,OTHER,MED,"saline nasal spray; apply the R01AX (""other nasal preparations"") code used for the equivalent ENTsol nasal gel product in this dataset; original candidates were all wrong-route (oral/injectable sodium chloride)"
+1250569,R02AD01,OTHER,MED,stripped cross-route/ester-mismatch: C05AD03|D04AB04; added route-correct/ingredient code: R02AD01
+1297755,C07AB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1311206,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1359097,C01EB16|M01AE01,OTHER,HIGH,stripped cross-route/ester-mismatch: G02CC01|R02AX02
+197963,C02LB01,KEEP_CURRENT,HIGH,dedicated combo code (methyldopa+diuretic) already correct
+1433630,B01AC06|N02BA01|N02BA51,USE_ATCPROD,MED,added route-correct/ingredient code: N02BA51
+1483199,D04AB04|D08AJ01,OTHER,HIGH,product contains benzalkonium chloride only; strip benzethonium chloride (D08AJ08) sibling code
+1489373,D07AA02|D07XA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1495202,D01AC08|D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1537340,D04AA32|D07AA02|D07XA01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA01|D07AB02|D07AB11|D07AC16
+1543754,M02AB01|N01BX04,OTHER,MED,added route-correct/ingredient code: N01BX04
+1600520,A03BA03|G04BX12|J01XX05,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: V03AB17|V04CG05
+1242891,A06AG04|A06AX01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1297354,A01AD05|B01AC06|N02BA01|R01BA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1299675,R03AB02,OTHER,HIGH,stripped cross-route/ester-mismatch: R03CB01
+1300293,L03AX14,KEEP_CURRENT,LOW,auto-filter produced empty set; keeping current_final as safety valve (needs human review)
+1430059,M02AB01|N01BX04,OTHER,MED,added route-correct/ingredient code: N01BX04
+1442145,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1487080,D11AC|D11AX12,OTHER,MED,added route-correct/ingredient code: D11AX12
+1484963,B01AD12|B02BD04|B02BD05|B02BD13,USE_ATCPROD,MED,added route-correct/ingredient code: B01AD12
+1543735,G03AC03|G03AD01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1549085,D11AX22,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1595997,D06AX07|D07AC01|D07XC01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA05
+1600378,R02AD01,OTHER,MED,stripped cross-route/ester-mismatch: C05AD03|D04AB04; added route-correct/ingredient code: R02AD01
+1605695,D04AB01|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C01BB01|C05AD01; added route-correct/ingredient code: N01BB02
+1251290,A03BA03|G04BX|J01XX05,OTHER,MED,added route-correct/ingredient code: A03BA03|J01XX05
+1294001,R01BA03|R05DB05|R06AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1546194,S02AA14|S02BA07|S03AA06|S03BA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1297389,A12AX,KEEP_CURRENT,MED,Calcium+vitaminD combination bucket already covers product
+1297965,D01AC08,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1363651,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1424612,D01AE12|D02AF,OTHER,MED,added route-correct/ingredient code: D01AE12
+1483184,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1535503,G01AF04,OTHER,HIGH,stripped cross-route/ester-mismatch: A01AB09|A07AC01|D01AC02|J02AB01|S02AA13
+1535618,N01BB02|N01BB52,OTHER,MED,added route-correct/ingredient code: N01BB02
+1539441,D04AB01|D08AJ01|N01BB02,OTHER,MED,product contains benzalkonium chloride only; strip benzethonium (D08AJ08)
+1542941,A07AA09|J01XA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1547777,S01HA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1549551,J01CE09,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1945071,A01AC02|H02AB02,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA09|D07AB19|D07XB05|D10AA03|R01AD03|S01BA01|S01CB01|S02BA06|S03BA01
+1313070,P02CC01|P02CF01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1359293,G03AC01|G03CA01|G03DC02|L02AA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1441321,A06AG04|A06AX01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1487627,D08AJ08,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1490659,R03BA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1601095,D04AB01|M02AC|N01BB02|N01BX04,OTHER,MED,added route-correct/ingredient code: D04AB01|N01BB02|N01BX04
+1923329,M02AC|N01BX04,OTHER,MED,added route-correct/ingredient code: N01BX04
+707916,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+657440,D04AB04,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AD03
+702428,D07AA02,OTHER,HIGH,stripped cross-route/ester-mismatch: D07AB02|D07AB11
+801000,B05BA01,KEEP_CURRENT,MED,amino-acids bucket already covers this pure amino-acid IV solution
+861185,D01AE12,OTHER,HIGH,stripped cross-route/ester-mismatch: N02BA04|N02BA12|N05CC01|S01BC08
+884995,S02AA10,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+895899,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+312528,A12BA01|B05XA01,USE_ATCPROD,MED,added route-correct/ingredient code: B05XA01
+199240,B03BA01|B03BB01,USE_ATCPROD,MED,"replace generic ""combinations of vitamins"" bucket with the two real ingredient-specific codes (B12 + folic acid)"
+2048895,A01AC01|H02AB08,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA12|R03BA06
+308664,D04AB04,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AD03
+795713,J01MA02,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: S01AE03|S02AA15|S03AA07
+759719,A07EA02|C05AA01|D07AA02|D07XA01,OTHER,MED,"local anorectal/perianal corticosteroid cream; strip ester-mismatched siblings and the systemic corticosteroid code (H02AB09), which does not apply to a locally-acting rectal cream"
+994507,D11AX22,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+994008,M01AE52,KEEP_CURRENT,HIGH,dedicated combo code (naproxen+esomeprazole) already correct
+308716,D07AC01|D07XC01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA05
+312609,H02AB06,OTHER,HIGH,stripped cross-route/ester-mismatch: A01AC04|A07EA01|C05AA04|S03BA02
+205826,S01CA02,KEEP_CURRENT,HIGH,"dedicated combo code (corticosteroid+antiinfective, ophthalmic) already correct"
+828587,A01AD05|B01AC06|N02AC04|N02BA01|N06BC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+900424,J01FF01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+881350,D07AA02|D07XA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+617423,J01CR02,KEEP_CURRENT,HIGH,dedicated combo code (amoxicillin+beta-lactamase inhibitor) already correct
+744632,C09DB02,KEEP_CURRENT,HIGH,dedicated combo code (olmesartan+amlodipine) already correct
+705726,A11CB,KEEP_CURRENT,MED,Vitamin A+D combination bucket already covers product (no more specific L5 available)
+756237,B03AA07,KEEP_CURRENT,HIGH,product is ferrous SULFATE; strip ferrous glycine sulfate (B03AA01) sibling code
+685855,B05CX01|V06DC01,OTHER,MED,plain glucose IV solution; drop diagnostic-context code (V04CA02) as not applicable to a therapeutic nutritional solution
+800111,B05DB,KEEP_CURRENT,MED,hypertonic/dialysis-solution bucket already covers the whole IV solution; no more specific L5 available
+992457,R06AD02,USE_ATCPROD,HIGH,"promethazine given rectally for systemic antiemetic effect; strip the topical antipruritic code (D04AA10), which does not apply"
+308209,J01CA01,KEEP_CURRENT,HIGH,product is ampicillin; strip hetacillin (J01CA18) prodrug sibling code
+800988,B05BB02,KEEP_CURRENT,MED,electrolyte-with-carbohydrates bucket already covers the whole IV solution
+308363,N02BA01|N02BA05|N06BC01,OTHER,HIGH,"restore missing aspirin (N02BA01, analgesic dose) and caffeine (N06BC01) codes alongside salicylamide; no dedicated 3-way combo L5 exists"
+310363,D07AC08,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: C05AA11
+800192,B05BA01,KEEP_CURRENT,MED,amino-acids bucket already covers this pure amino-acid IV solution
+990993,S01EB01|S01EB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+312491,A12BA01|A12BA04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+755593,N02BA04|N02BA12|N06BC01|R01BA03|R06AB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+901857,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1991327,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+205111,B03AA07,KEEP_CURRENT,HIGH,product is ferrous SULFATE; strip ferrous glycine sulfate (B03AA01) sibling code
+343037,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+308356,A01AD05|B01AC06|N02BA01|N06BC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+309477,A01AD05|B01AC06|N02BA01|N06BC01|R05DA04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+798451,J07AG01,KEEP_CURRENT,HIGH,"product is Haemophilus influenzae B vaccine; influenza-vaccine codes (J07BB01/02) are a name-collision error, reject"
+866357,A01AD,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+885133,D10AF51,KEEP_CURRENT,MED,clindamycin-combinations bucket already covers product; benzoyl peroxide not separately encoded
+2001686,D04AB01|M02AC|N01BB02|N01BX04,OTHER,MED,added route-correct/ingredient code: D04AB01|N01BB02|N01BX04
+2047185,D01AE12|D11AX12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+205885,A03AB02,USE_ATCPROD,HIGH,"injectable glycopyrronium; strip topical antihidrotic code (D11AA01), keep systemic antimuscarinic code"
+351071,D04AB01|D06AX04|D06AX05|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: N01BB02
+359906,R01BA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+809125,N02BA05|N02BE01|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1998442,D02AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+313081,V03AB06,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: M01CB02
+809835,S01EB01|S01ED02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+830677,B05CX03|B05XB01|B05XB03|N06AX02|V03AB26,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+836268,A11GA01|B03AE|B03BA01|B03BB01,OTHER,MED,"generic iron-combination bucket plus the vitamin-specific codes (vit C, B12, folic acid); iron carbonyl/docusate have no additional WHO L5 available"
+848210,D07AC01|D07XC01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA05
+857002,N02AJ22,KEEP_CURRENT,HIGH,dedicated combo code (hydrocodone+paracetamol) already correct
+857612,R01BA03|R05DA03|R06AB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2105780,D01AA01|D06AX04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2106107,D02AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+211796,S02AA10,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1094734,D08AJ01,OTHER,HIGH,product contains benzalkonium chloride only; strip benzethonium chloride (D08AJ08) sibling code
+1100467,A02AA02|A02AC01|A06AD02|A11CA02|A11CC05|A11DA01|A11GA01|A11HA01|A11HA02|A11HA04|A12AA04|A12CC10|B03BA01|B03BB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1116374,R01AX,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+826091,A02AC01|A11HA02|A12AA04|B03BA01|B03BB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+855660,M01AB05,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+857421,R06AA04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+856799,N06CA01,OTHER,HIGH,"dedicated combo code ""amitriptyline and psycholeptics"" exactly matches amitriptyline+perphenazine; replaces both monotherapy codes"
+1189269,A12AA07|A12BA01|A12CA01|A12CC01|B05CB01|B05CX01|B05CX03|B05XA01|B05XA03|B05XA07|B05XA11|B05XB01|B05XB03|N06AX02|V03AB26|V04CA02|V06DC01,OTHER,HIGH,stripped cross-route/ester-mismatch: A09AB01|G04BA03
+1189281,A12AA07|A12BA01|A12CA01|A12CC01|B05CB01|B05CX01|B05CX03|B05XA01|B05XA03|B05XA07|B05XA11|B05XB01|B05XB03|N06AX02|V03AB26|V04CA02|V06DC01,OTHER,HIGH,stripped cross-route/ester-mismatch: A09AB01|G04BA03
+1190233,R01BA03|R06AE04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+476553,A02AF02,KEEP_CURRENT,MED,antacid+antiflatulent combination bucket already covers product
+542045,B03BA01|B03BB01,USE_ATCPROD,MED,"replace generic ""combinations of vitamins"" bucket with the two real ingredient-specific codes (B12 + folic acid)"
+543549,D01AA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+545229,S01AA17,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+546651,D04AB01|N01BB04,OTHER,MED,stripped cross-route/ester-mismatch: C01BB01|C05AD01; added route-correct/ingredient code: N01BB04
+616880,R01BA03|R05DB05|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+858856,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1009392,D06AX04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1011841,D04AB01|D08AJ01|D08AJ08|D09AA11|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: D08AJ08|N01BB02
+1011983,D04AB01|D08AJ01|N01BB02,OTHER,HIGH,product contains benzalkonium chloride only; strip benzethonium chloride (D08AJ08) sibling code
+1012996,D04AB01|D06AX04|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: N01BB02
+1043719,D02AX,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2184171,A03BB03|R01BA02|R06AB02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+247138,A01AD05|B01AC06|N02BA01|N02BA51,OTHER,MED,added route-correct/ingredient code: N02BA51
+1115990,R03CA02|R05CA03,OTHER,HIGH,stripped cross-route/ester-mismatch: C01CA26
+404172,N02BE51,OTHER,HIGH,strip redundant paracetamol mono (N02BE01); N02BE51 combo-bucket already covers product
+859150,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+860098,M01AB15,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1053741,R05FB02,KEEP_CURRENT,MED,cough-suppressant+expectorant combo bucket; 3rd ingredient (pseudoephedrine) not separately encoded by WHO here
+1670324,L01BC59,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1726322,L01CE02|L01XX19,OTHER,MED,added route-correct/ingredient code: L01XX19
+1020420,D04AB01|M02AC|N01BB02|N01BX04,OTHER,MED,added route-correct/ingredient code: D04AB01|N01BB02|N01BX04
+240559,D01AE12|D11AF,OTHER,MED,added route-correct/ingredient code: D01AE12
+259093,C05AX03|C05AX06,OTHER,MED,added route-correct/ingredient code: C05AX06
+198474,N02BA01|N02BA51,OTHER,MED,stripped cross-route/ester-mismatch: A01AD05|B01AC06; added route-correct/ingredient code: N02BA51
+2003375,G03AA12,KEEP_CURRENT,HIGH,dedicated combo code already correct; reject re-added drospirenone mono
+403853,C09DA08,KEEP_CURRENT,HIGH,dedicated combo code (olmesartan+diuretic) already correct
+809559,A12AX,KEEP_CURRENT,MED,Calcium+vitaminD combination bucket already covers product
+830614,R03DA01|R05CA03,USE_ATCPROD,MED,added route-correct/ingredient code: R05CA03
+847540,D08AG02|D09AA09|D11AC06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+211892,A01AD05|B01AC06|N02BA01|N02BA51,OTHER,MED,added route-correct/ingredient code: N02BA51
+213554,D07AC01|D07XC01,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA05
+2184157,M01AE01|M01AE14,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1112246,R01BA02|R01BA52|R06AX18,USE_ATCPROD,MED,added route-correct/ingredient code: R01BA52
+847617,B05BB01,KEEP_CURRENT,MED,electrolyte-combination bucket already covers the whole IV solution
+1090577,D02AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+308650,A02AA01|A02AC01|A06AD01|A12AA04|N03AA02,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AD03|N01BA05|R02AD01
+1088604,D02AA|P03AX05,OTHER,MED,added route-correct/ingredient code: P03AX05
+198859,A02AH|B05CB04|B05XA02,OTHER,MED,added route-correct/ingredient code: B05CB04|B05XA02
+207287,A01AB17|J01XD01|P01AB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2000695,G03AA01,KEEP_CURRENT,HIGH,dedicated combo code already correct
+834171,D08AC02|D09AA12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+807367,A02AB01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A02AB02
+857834,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+211312,A01AD05|B01AC06|N02BA01|N06BC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2122902,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+212839,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+477180,D02AB,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+541951,A01AB22|J01AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1001690,A06AD04|A06AD13,OTHER,MED,restore sodium sulfate (A06AD13) alongside magnesium sulfate; potassium sulfate has no WHO L5 available; drop wrong-route B05XA05
+1046812,D08AE04|D09AA06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1047873,A03BA01|A03BA03|G04BX12|J01XX05,OTHER,HIGH,stripped cross-route/ester-mismatch: V03AB17|V04CG05
+260395,H02AB06,OTHER,HIGH,stripped cross-route/ester-mismatch: A01AC04|A07EA01|C05AA04|S03BA02
+308071,D10AX01|D11AA,OTHER,MED,added route-correct/ingredient code: D10AX01
+1190629,A03BA01|A07DA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1001089,S01EA01|S01EB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1718991,A06AB02|A06AD65,OTHER,HIGH,pack contains a separate bisacodyl tablet component distinct from the PEG/electrolyte solution; keep both
+860437,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1085744,D07AB09|D07XB02,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA12
+1654725,D02AX,OTHER,MED,"topical glycerin cream; apply the D02AX (""other emollients and protectives"") code used for the equivalent glycerin medicated pad product in this dataset; original candidates (A06AG04/A06AX01) are oral/rectal laxative codes, wrong route for a topical cream"
+308618,A12BA01|C03AA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+198879,D08AE04|D09AA06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+207360,C01DA02,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: C05AE01
+314116,C04AC01|C10AD02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1098490,A01AA01|A12CD01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1101879,A01AA01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: A12CD01
+1146128,D02AA|P03AX05,OTHER,MED,added route-correct/ingredient code: P03AX05
+209264,A07AA09|J01XA01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2181301,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+2184166,A04AD01|N05CM05|R01BA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+857766,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1045385,M02AC|N01BX04,OTHER,MED,added route-correct/ingredient code: N01BX04
+1045328,D02AX,OTHER,MED,"topical allantoin/glycerin gel; apply the D02AX (""other emollients and protectives"") code by analogy; original candidates are oral/rectal laxative codes, wrong route for a topical gel"
+1086328,A01AC01|H02AB08,OTHER,HIGH,stripped cross-route/ester-mismatch: C05AA12|R03BA06
+308081,A02AB01|A02AB02,KEEP_CURRENT,LOW,auto-filter produced empty set; keeping current_final as safety valve (needs human review)
+210761,A11GA01|B03AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1807579,A12CA01|B05BB01|B05CB01|B05XA03,OTHER,MED,added route-correct/ingredient code: B05BB01
+1809905,B03AA02|G03AA05|G03CA01|G03DC02,OTHER,MED,added route-correct/ingredient code: B03AA02|G03CA01|G03DC02
+1246227,N01BB02|R02AD02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01|D04AB01; added route-correct/ingredient code: N01BB02|R02AD02
+1291103,A07EA02|C05AA01,KEEP_CURRENT,HIGH,"rectal suppository (inserted, no perianal skin contact); dermatological cream code (D07AA02) does not apply, current_final already correct"
+1299137,R01AA04|R01AB01,OTHER,HIGH,stripped cross-route/ester-mismatch: R01BA03
+1300438,R05FB02,KEEP_CURRENT,HIGH,dedicated combo code (cough suppressant+expectorant) already correct
+1357883,R01BA53,KEEP_CURRENT,HIGH,dedicated combo-bucket code already correct
+1359113,A06AA01|C05AX06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1360954,A07EA02|D07AA02,OTHER,MED,"local anorectal corticosteroid+anesthetic cream; strip the systemic corticosteroid code (H02AB09), which does not apply to a locally-acting rectal cream"
+1362058,B01AB01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: C05BA03
+1363387,A02AC01|A02AD05|A12AA04|B05CB04,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1436161,D01AE12,OTHER,HIGH,stripped cross-route/ester-mismatch: N02BA04|N02BA12
+1438297,A01AD05|B01AC06|N02BA01|N02BE01|N06BC01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1495050,R01AX,KEEP_CURRENT,MED,"saline inhalation/nebulizer solution for nasal/sinus use; R01AX already correct, restore it (auto-filter mis-scored the route)"
+1534658,M02AB01|N01BX04,OTHER,MED,added route-correct/ingredient code: N01BX04
+1543553,G03AA12,KEEP_CURRENT,HIGH,dedicated combo code already correct; reject re-added drospirenone mono
+1549474,S01AA03|S01BA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1607990,B03AA02|G03AA05|G03CA01|G03DC02,OTHER,MED,added route-correct/ingredient code: B03AA02|G03CA01|G03DC02
+1489158,D08AJ01|D09AA11|P03AX06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1789192,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1803724,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1876397,G03AA07|G03AA08|G03AB03|G03CA01,OTHER,MED,added route-correct/ingredient code: G03AA08|G03AB03|G03CA01
+1299083,R01AA04|R01AB01,OTHER,MED,stripped cross-route/ester-mismatch: R01BA03; added route-correct/ingredient code: R01AA04
+1301239,R02AD01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1312784,R06AA02,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1360744,R01BA03|R05DB10|R06AC06,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1361035,B01AB01,USE_ATCPROD,HIGH,stripped cross-route/ester-mismatch: C05BA03
+1363631,R01BA03|R06AB01,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1376210,D01AE12,OTHER,HIGH,stripped cross-route/ester-mismatch: N02BA04|N02BA12|S01BC08
+1426594,D04AB01|D08AE03|N01BB02,OTHER,MED,added route-correct/ingredient code: N01BB02
+1432541,D04AB01|M02AC|N01BB02|N01BX04,OTHER,MED,added route-correct/ingredient code: D04AB01|N01BB02|N01BX04
+1537091,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1541268,D01AE12,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final
+1599273,D04AB01|N01BB02,OTHER,MED,stripped cross-route/ester-mismatch: C05AD01; added route-correct/ingredient code: N01BB02
+1648148,D11AC,KEEP_CURRENT,HIGH,route-filtered candidate set matches current_final

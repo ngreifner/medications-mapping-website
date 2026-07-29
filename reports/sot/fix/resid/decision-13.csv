@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+204638,D01AE12|D11AC08,OTHER,MED,"salicylic acid + sulfur medicated shampoo: D01AE12(salicylic acid)+D11AC08(sulfur compounds, antiseborrhoeic-shampoo class); no dedicated 2-ingredient shampoo code exists"
+206522,S02CA03,OTHER,HIGH,hydrocortisone+neomycin+polymyxin B OTIC suspension -> dedicated WHO combo class S02CA03 'hydrocortisone and antiinfectives'
+313550,D01AE04,KEEP_CURRENT,MED,undecylenic acid + zinc undecylenate = same active moiety (zinc salt of undecylenic acid); D01AE04 covers the substance
+315004,R02AD01,KEEP_CURRENT,HIGH,benzocaine+licorice+menthol oral lozenge: R02AD01 oropharyngeal benzocaine correct; licorice/menthol have no fitting code
+904255,A12CX,KEEP_CURRENT,MED,KCl+NaCl oral tablet: A12CX 'other mineral products' terminal L4 fits combined electrolyte tablet; no per-ingredient oral code exists for this combo
+731577,J01CE08,OTHER,HIGH,"penicillin G benzathine injectable suspension (Bicillin L-A): J01CE08 'benzathine benzylpenicillin' only; J01CE01 is plain benzylpenicillin, wrong salt form"
+866214,D02AB|D02AC,OTHER,MED,"lanolin+petrolatum+zinc oxide topical ointment: zinc oxide=D02AB + petrolatum=D02AC (both terminal L4s, no L5 exists for either substance); lanolin has no WHO code; C05AX04(hemorrhoid-specific) wrong use-context"
+308909,A02AF02,OTHER,HIGH,calcium-carbonate/aluminum-magnesium 'ordinary salt' antacid + simethicone/dimethicone antiflatulent -> dedicated combo class A02AF02 'ordinary salt combinations and antiflatulents'
+312288,N02AD01|N02BE01,OTHER,MED,acetaminophen+pentazocine tablet: no WHO combo code for pentazocine+APAP; use per-ingredient N02AD01(pentazocine)+N02BE01(APAP)
+753457,D06AX04|D06AX05,OTHER,MED,"bacitracin+neomycin+polymyxin B TOPICAL ointment (Neosporin): neomycin=D06AX04, bacitracin=D06AX05; polymyxin B has no WHO topical-skin code"
+308894,A02AF02,OTHER,HIGH,calcium-carbonate/aluminum-magnesium 'ordinary salt' antacid + simethicone/dimethicone antiflatulent -> dedicated combo class A02AF02 'ordinary salt combinations and antiflatulents'
+310688,S01CA03,OTHER,HIGH,hydrocortisone+neomycin+polymyxin B OPHTHALMIC ointment -> S01CA03 'hydrocortisone and antiinfectives'
+202098,M01AE01,OTHER,HIGH,"ibuprofen 800mg oral tablet (Motrin, systemic NSAID): M01AE01; drop cardiac/gynecological/throat-lozenge sibling codes, wrong routes"
+309259,J01AA03,OTHER,HIGH,"chlortetracycline oral capsule (systemic use): J01AA03; A01AB21 is the local oral/dental antiinfective code, wrong route for a systemic capsule"
+631803,D02AA|D02AC,OTHER,MED,"dimethicone+petrolatum topical cream: D02AA(silicone)+D02AC(paraffin/fat), both terminal L4s"
+647328,R01BA53|R05CA03,OTHER,MED,guaifenesin+phenylephrine oral solution: phenylephrine combo variant R01BA53 (WHO: combos classified in R01B); guaifenesin R05CA03 plain (no combo suffix exists)
+644148,R01AX,KEEP_CURRENT,LOW,"saline nasal spray/gel/inhalation solution: no WHO L5 exists specifically for sodium chloride nasal use; R01AX (nasal preparations, other) terminal L4 accepted; production's systemic IV-electrolyte/ophthalmic-hypertonic-saline codes are wrong route"
+749787,G03AA06,OTHER,HIGH,ethinylestradiol+norgestrel oral contraceptive pack (Lo/Ovral): dedicated combo G03AA06 'norgestrel and ethinylestradiol'
+695932,A02BC01,OTHER,MED,omeprazole + sodium bicarbonate + magnesium hydroxide chewable (Zegerid-type): classified by the active PPI ingredient A02BC01; buffering antacids not separately coded for this product
+701128,C05AA01,OTHER,LOW,hydrocortisone+iodoquinol rectal cream (Lodocortisone): C05AA01 hydrocortisone rectal/anal code; iodoquinol has no clear rectal-topical WHO code
+201896,J02AB02,OTHER,MED,"ketoconazole oral tablet (Nizoral, primary antifungal use): J02AB02; drop probable duplicate/mis-specific H02CA04, H02CA03 Cushing's-specific code not the primary indication for a generic tablet"
+371774,B05BB01,KEEP_CURRENT,HIGH,glucose+sodium chloride IV solution: B05BB01 'electrolytes' generic IV-fluid combo code correct
+800420,B05BA01,KEEP_CURRENT,HIGH,multi-amino-acid parenteral nutrition solution: B05BA01 'amino acids'; per-amino-acid electrolyte/antidote/antidepressant codes (glycine/lysine/methionine/tryptophan) do not apply to a TPN mixture
+831117,C08DB01,OTHER,HIGH,"diltiazem ER oral tablet/capsule (systemic antihypertensive/antianginal): C08DB01; C05AE03 is the topical/rectal anal-fissure gel code, wrong route"
+896821,N02AA02,OTHER,MED,"opium injectable solution (systemic use, not oral antidiarrheal): N02AA02 opioid analgesic; A07DA02 is the oral antidiarrheal-tincture code, wrong route for an injectable"
+998538,D01AC02,KEEP_CURRENT,HIGH,miconazole nitrate topical antifungal spray/cream: D01AC02 correct route; production's dental/vaginal codes wrong route
+645649,D10AD01,KEEP_CURRENT,HIGH,"tretinoin topical gel (acne use): D10AD01 correct; L01XX14 is the systemic oncology tretinoin code, wrong route"
+751876,G03AA05,OTHER,HIGH,ethinylestradiol+norethindrone oral contraceptive pack: dedicated combo G03AA05 'norethisterone and ethinylestradiol'
+978579,C07AA15,KEEP_CURRENT,HIGH,"carteolol oral tablet (systemic antihypertensive, Cartrol): C07AA15 correct; S01ED05 is the ophthalmic glaucoma-drop code, wrong route"
+1995466,A07AA01,OTHER,HIGH,"neomycin sulfate oral solution (GI-local use, hepatic encephalopathy/bowel prep - not systemically absorbed): A07AA01; J01GB05 is the systemic injectable aminoglycoside code, wrong route"
+206199,H02AB07,OTHER,HIGH,"prednisone oral solution (Liquid Pred, systemic): H02AB07; drop GI-local A07EA03"
+206789,N02BA01,OTHER,MED,"single-ingredient aspirin 975mg delayed-release tablet (Easprin, anti-inflammatory dose): N02BA01 analgesic code; drop dental A01AD05 and antiplatelet B01AC06 (wrong dose/use)"
+800662,A12BA01|A12CA01|B05CB01|B05CX01|B05XA01|B05XA03|B05XA15|V04CA02|V06DC01,KEEP_CURRENT,LOW,"complex multi-electrolyte IV solution: current multi-code set accepted, no cleaner single-code alternative found"
+809346,D01AE20,OTHER,MED,benzoic acid+salicylic acid topical (Whitfield's-type) -> D01AE20 'combinations' under antifungals for topical use; no per-ingredient benzoic-acid code exists
+311957,A11HA01|N03AA02,OTHER,MED,"niacin 3.3mg (vitamin-range dose, not pharmacologic)+niacinamide+phenobarbital tablet: drop niacin's pharmacologic-dose codes C04AC01/C10AD02 (wrong dose-context), keep niacinamide A11HA01+phenobarbital N03AA02"
+198315,C03EA01,KEEP_CURRENT,MED,hydrochlorothiazide+triamterene: dedicated combo class C03EA01 'thiazides and potassium-sparing agents'
+1986365,D01AE12,OTHER,HIGH,salicylic acid=D01AE12 (only WHO L5 for the substance); D02AF/D11AF are L4s with zero L5 children per atcddd.fhi.no
+828600,N02AC04|N06BC01,OTHER,HIGH,"aspirin+caffeine+propoxyphene capsule: strip aspirin's own codes, keep propoxyphene(N02AC04)+caffeine(N06BC01)"
+834164,D08AC02,OTHER,HIGH,"chlorhexidine topical antiseptic soap/pad/spray: D08AC02; D09AA12 is the medicated-DRESSING code (wrong product type), A01AB03 is the dental/oral-local code (wrong route)"
+834175,D08AC02,OTHER,HIGH,"chlorhexidine topical antiseptic soap/pad/spray: D08AC02; D09AA12 is the medicated-DRESSING code (wrong product type), A01AB03 is the dental/oral-local code (wrong route)"
+849546,D07AA02,OTHER,HIGH,"plain hydrocortisone topical lotion: D07AA02 (weak group); D07AB02/D07AB11 are the BUTYRATE/BUTEPRATE ESTER codes, wrong substance form"
+2105785,D01AA01|D06AX04|D07AB09,OTHER,MED,neomycin+nystatin+thiostrepton+triamcinolone topical ointment (Dermalone): nystatin D01AA01+neomycin D06AX04+triamcinolone D07AB09; thiostrepton has no WHO code; drop combo-only D07XB02
+211333,N06BC01,OTHER,MED,aspirin+butalbital+caffeine tablet (Fiorinal): strip aspirin codes; butalbital has no WHO ATC code; keep caffeine N06BC01 only
+2119805,D04AB01,OTHER,HIGH,"lidocaine+menthol TOPICAL (skin) gel/cream: D04AB01; C05AD01 is the rectal/anal-fissure lidocaine code, wrong route"
+213495,R02AD01,KEEP_CURRENT,HIGH,benzocaine oral lozenge/gel: R02AD01 oropharyngeal code correct; drop rectal/topical-skin sibling codes
+2183684,R01BA53,KEEP_CURRENT,HIGH,phenylephrine+chlorpheniramine ER suspension already uses combo suffix R01BA53; kept as-is per prior phase
+1095682,M02AB01|M02AC,OTHER,HIGH,"camphor/capsaicin/menthol/methyl-salicylate topical rub: capsaicin=M02AB01 (real L5) + M02AC (terminal L4 for the salicylate-derivative content, methyl salicylate itself has no dedicated L5); current_final's single M02AC code omitted the capsaicin component"
+1099897,B03AA02|G03AA05,OTHER,HIGH,ethinylestradiol+norethindrone contraceptive + ferrous fumarate iron pills (Generess Fe): G03AA05 + B03AA02
+204466,J01CE08|J01CE09,KEEP_CURRENT,MED,"penicillin G potassium injection: matches production, salt-specific codes retained"
+857608,R01BA53|R05DA03|R06AB51,OTHER,MED,"brompheniramine+hydrocodone+phenylephrine oral solution: R01BA53(phenylephrine combo)+R06AB51(brompheniramine combo)+R05DA03(hydrocodone plain, no combo suffix)"
+213125,A04AD01,OTHER,LOW,"scopolamine oral tablet (Scopace, antiemetic/motion-sickness use): A04AD01; N05CM05 sedative-use code less applicable to this indication, dropped"
+1149388,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+1189206,D07AA02,OTHER,HIGH,plain hydrocortisone topical cream (Neosporin Eczema): D07AA02; drop ester codes D07AB02/D07AB11
+485348,S01CA03,OTHER,HIGH,hydrocortisone+neomycin+polymyxin B OPHTHALMIC solution -> S01CA03
+584503,S02DA03,KEEP_CURRENT,HIGH,antipyrine(phenazone)+benzocaine otic solution: dedicated combo S02DA03 already current
+603589,R01BA53|R06AB54,OTHER,MED,"carbetapentane+chlorpheniramine+phenylephrine ER suspension: R01BA53+R06AB54(chlorphenamine combo); carbetapentane has no WHO code (current R05DB05=pentoxyverine, wrong substance) - dropped"
+1000137,G03DA02,OTHER,LOW,"medroxyprogesterone acetate 2.5mg oral tablet (Cycrin, low-dose gynecological/menstrual-regulation use): G03DA02; drop contraceptive G03AC06 and oncology L02AB02 codes, wrong dose-context"
+1000373,G03AC06|G03DA02|L02AB02,KEEP_CURRENT,LOW,medroxyprogesterone acetate injectable suspension: dose/indication (contraceptive vs. oncology vs. HRT) not determinable from the row; current dual-use codes retained
+1001082,S01EA01|S01EB01,KEEP_CURRENT,MED,"epinephrine+pilocarpine ophthalmic solution (P1E1-type): per-ingredient antiglaucoma codes correct, no dedicated combo exists"
+1006547,P02CF01,KEEP_CURRENT,HIGH,"ivermectin chewable tablet (Heartgard, systemic antiparasitic): P02CF01 correct route"
+1012025,S01CA02,OTHER,HIGH,prednisolone+sulfacetamide OPHTHALMIC solution (Vasocidin) -> S01CA02 'prednisolone and antiinfectives'
+1012354,C05AA01|C05AD01,OTHER,MED,hydrocortisone acetate+lidocaine RECTAL cream (Lidazone): C05AA01+C05AD01 (both rectal-route codes)
+1046307,S01AA11,OTHER,LOW,"gentamicin OPHTHALMIC solution (Garamycin/Genoptic): S01AA11 (ophthalmic-specific); S03AA06 is the combined ophth+otic code, less precise for a pure ophthalmic solution"
+1046605,D08AE04,OTHER,MED,"triclosan medicated bar soap: D08AE04; D09AA06 is the medicated-dressing code, wrong product type for a bar soap"
+1049178,D08AJ08,KEEP_CURRENT,HIGH,"single-ingredient benzethonium chloride topical antiseptic: D08AJ08 correct; drop throat-lozenge R02AA09, wrong route"
+1053304,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1053736,D01AA01|D07AB09,OTHER,MED,nystatin+triamcinolone acetonide topical ointment (Nyst-Olone): D01AA01+D07AB09
+1053705,D01AA01|D07AB09,OTHER,MED,nystatin+triamcinolone acetonide topical ointment (Myco-Triacet): D01AA01+D07AB09
+248328,R01AX,KEEP_CURRENT,LOW,"saline nasal spray/gel/inhalation solution: no WHO L5 exists specifically for sodium chloride nasal use; R01AX (nasal preparations, other) terminal L4 accepted; production's systemic IV-electrolyte/ophthalmic-hypertonic-saline codes are wrong route"
+1657016,N01BB52,OTHER,HIGH,"epinephrine+lidocaine dental cartridge: N01BB52 'lidocaine, combinations'"
+607273,J05AB06|S01AD09,KEEP_CURRENT,MED,"ganciclovir intravitreal implant (Vitrasert, CMV retinitis): dual real-world classification (systemic antiviral substance J05AB06 + ophthalmic-delivery S01AD09) retained"
+1013053,N01BB02,OTHER,MED,"single-ingredient lidocaine injectable (Truxacaine, dental local anesthetic): N01BB02 alone; current mixes in wrong-route topical/antiarrhythmic/rectal codes"
+1039685,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+284275,H02AB06,OTHER,HIGH,"prednisolone oral solution (Prelone, systemic): H02AB06; drop dental/GI-local/rectal/ophth-otic siblings"
+1658180,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1012002,S01CA02,OTHER,HIGH,prednisolone acetate+sulfacetamide OPHTHALMIC ointment (AK-Cide) -> S01CA02
+1047945,A03BA03|G04BX12|J01XX05,OTHER,MED,atropine/benzoic-acid/hyoscyamine/methenamine/methylene-blue/phenyl-salicylate UTI antiseptic-antispasmodic tablet: hyoscyamine A03BA03+phenyl salicylate G04BX12+methenamine J01XX05; drop plain-atropine and methylene-blue antidote/diagnostic-context codes
+1994404,D01AE12,OTHER,HIGH,salicylic acid=D01AE12 (only WHO L5 for the substance); D02AF/D11AF are L4s with zero L5 children per atcddd.fhi.no
+312997,R01AX,KEEP_CURRENT,LOW,"saline nasal spray/gel/inhalation solution: no WHO L5 exists specifically for sodium chloride nasal use; R01AX (nasal preparations, other) terminal L4 accepted; production's systemic IV-electrolyte/ophthalmic-hypertonic-saline codes are wrong route"
+352080,J01AA02,OTHER,HIGH,"doxycycline hyclate delayed-release oral capsule (Doryx, systemic): J01AA02; drop local-oral A01AB22"
+824590,A11JB,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+310664,C02LF01,KEEP_CURRENT,MED,guanethidine+hydrochlorothiazide tablet: dedicated combo class C02LF01
+801644,B05BA01,KEEP_CURRENT,HIGH,multi-amino-acid parenteral nutrition solution: B05BA01 'amino acids'; per-amino-acid electrolyte/antidote/antidepressant codes (glycine/lysine/methionine/tryptophan) do not apply to a TPN mixture
+2109606,D08AJ01|D08AX08,OTHER,MED,benzalkonium chloride+ethanol liquid soap: D08AJ01+D08AX08(ethanol antiseptic); drop D09AA11 medicated-dressing code
+211297,N06BC01,OTHER,HIGH,"aspirin+caffeine tablet (P-A-C): strip aspirin codes, keep caffeine N06BC01"
+212841,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1091626,C08DB01,OTHER,HIGH,"diltiazem ER oral tablet/capsule (systemic antihypertensive/antianginal): C08DB01; C05AE03 is the topical/rectal anal-fissure gel code, wrong route"
+1099602,R01BA52|R06AX07,OTHER,MED,"pseudoephedrine+triprolidine oral tablet (Histafed): R01BA52(pseudoephedrine combo)+R06AX07(triprolidine plain, no combo suffix)"
+1145348,A11JA,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+1117122,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+203970,J01AA07,OTHER,HIGH,"tetracycline HCl oral capsule (Achromycin V, systemic): J01AA07; drop local-oral A01AB13 and ophthalmic/otic S03AA02"
+206225,D10AF02,KEEP_CURRENT,HIGH,"erythromycin topical solution (acne use, Erythra-Derm): D10AF02 already current, correct route"
+207933,L02AA04,OTHER,HIGH,"diethylstilbestrol injectable solution (Stilphostrol, a prostate-cancer hormone therapy product, not routine estrogen replacement): L02AA04 oncology code; matches production/ATCPROD-like signal"
+856797,N06CA01,KEEP_CURRENT,HIGH,amitriptyline+perphenazine tablet: dedicated combo N06CA01 'amitriptyline and psycholeptics'
+210780,A11GA01|B03AA07,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+1099869,A12AX,OTHER,MED,"calcium carbonate+cholecalciferol chewable tablet: align with A12AX 'calcium, combinations with vitamin D' used for the other two identical-ingredient rows; drop redundant antacid/mineral-supplement codes"
+859153,R01BA53|R05DA03|R06AB54,OTHER,MED,chlorpheniramine+hydrocodone+phenylephrine oral solution: R01BA53+R05DA03+R06AB54
+1012272,N01BB57,OTHER,HIGH,"etidocaine+epinephrine injectable (Duranest w/ epi): N01BB57 'etidocaine, combinations'"
+1013731,R01BA53|R06AC01,OTHER,MED,phenylephrine+pyrilamine ORAL tablet: R01BA53(phenylephrine combo)+R06AC01(pyrilamine plain); production's nasal/ophthalmic codes are wrong route for an oral tablet
+1046596,S01GA01,KEEP_CURRENT,HIGH,naphazoline+zinc sulfate ophthalmic solution: S01GA01 (naphazoline decongestant); zinc sulfate astringent has no separate ophthalmic code
+1046704,D08AJ01,OTHER,MED,benzalkonium chloride+menthol+petrolatum topical ointment (Herpetrol): D08AJ01; drop D09AA11 medicated-dressing code
+1049176,D04AA32|D08AJ08,KEEP_CURRENT,MED,"benzethonium chloride+diphenhydramine+zinc acetate topical gel (Calagel): D04AA32(diphenhydramine,topical antihistamine)+D08AJ08(benzethonium,antiseptic) already current; zinc acetate's systemic Wilson's-disease code A16AX05 doesn't fit this topical anti-itch use"
+1053859,D02AE01,KEEP_CURRENT,MED,ammonium lactate+urea topical cream (Carb-O-Lac): D02AE01 (ammonium lactate); urea has no separate L5
+1085987,H02AB08,OTHER,MED,"triamcinolone acetonide injectable suspension (TAC, IM/systemic depot): H02AB08; drop dental/rectal/inhaled siblings"
+244399,D07CC03,OTHER,HIGH,flurandrenolide(fludroxycortide)+neomycin topical cream: dedicated combo D07CC03 'fludroxycortide and antibiotics'
+283224,M02AB01|M02AC,OTHER,HIGH,"camphor/capsaicin/menthol/methyl-salicylate topical rub: capsaicin=M02AB01 (real L5) + M02AC (terminal L4 for the salicylate-derivative content, methyl salicylate itself has no dedicated L5); current_final's single M02AC code omitted the capsaicin component"
+1658308,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1000682,S01AB04,KEEP_CURRENT,HIGH,sulfacetamide sodium ophthalmic ointment (Cetamide): S01AB04 correct; production's D10AB02(sulfur) is a substance mismatch
+1738136,A03BA03|J01XX05,OTHER,MED,hyoscyamine+methenamine+methylene-blue+sodium-phosphate UTI capsule: A03BA03+J01XX05; drop methylene-blue antidote/diagnostic-context codes
+1115980,R03CA02|R05CA02,OTHER,LOW,ephedrine+potassium iodide oral solution (old bronchodilator/expectorant): R03CA02+R05CA02; drop cardiovascular-vasopressor and antidote-context codes (genuine route ambiguity for oral ephedrine)
+1116971,M02AB01|M02AC,OTHER,HIGH,"camphor/capsaicin/menthol/methyl-salicylate topical rub: capsaicin=M02AB01 (real L5) + M02AC (terminal L4 for the salicylate-derivative content, methyl salicylate itself has no dedicated L5); current_final's single M02AC code omitted the capsaicin component"
+603646,R01BA53|R06AC01,OTHER,MED,"carbetapentane+phenylephrine+pyrilamine oral suspension (C-Tanna 12D): R01BA53+R06AC01; carbetapentane has no WHO code, dropped"
+860164,R01BA53|R05CA03|R05DA03,OTHER,MED,guaifenesin+hydrocodone+phenylephrine oral solution (MonteFlu HC): R01BA53+R05CA03+R05DA03
+1042818,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1046961,A03BA03|N03AA02,OTHER,LOW,atropine/hyoscyamine/phenobarbital/scopolamine GI antispasmodic tablet/solution: hyoscyamine A03BA03+phenobarbital N03AA02; scopolamine's antiemetic(A04AD01)/sedative(N05CM05) codes don't fit its antispasmodic role here and are dropped; plain-atropine dropped
+243998,H03CA,KEEP_CURRENT,MED,"iodine oral tablet (thyroid/systemic iodine-therapy use): H03CA terminal L4 correct; production's D08AG03 is the topical-antiseptic-iodine code, wrong route/use"
+244642,D02AA,KEEP_CURRENT,MED,"single-ingredient dimethicone topical cream: D02AA (terminal L4, no L5 for dimethicone as general emollient); P03AX05 is the anti-lice-specific code, wrong use-context"
+2003662,B02BC30,KEEP_CURRENT,HIGH,fibrinogen+thrombin topical fibrin sealant (Tisseel): dedicated combo B02BC30 'combinations'; preferred over ATCPROD's thrombin-monotherapy candidate B02BC06 per combo-precedence rule
+204919,D02AB,KEEP_CURRENT,MED,"single-ingredient zinc oxide paste: D02AB (terminal L4); C05AX04 is hemorrhoid-specific, wrong use-context"
+207290,P01AB01,OTHER,MED,"metronidazole oral tablet (Flagyl, systemic/antiprotozoal use): P01AB01 (matches ATCPROD-like production signal); drop local-oral A01AB17"
+884202,C02AC01|C03BA04,OTHER,MED,"chlorthalidone+clonidine tablet (Clorpres): C02AC01(clonidine,antihypertensive)+C03BA04(chlorthalidone); drop N02CX02(clonidine migraine-specific code, wrong indication)"
+1098161,D03AX05,KEEP_CURRENT,HIGH,"sodium hyaluronate topical lotion (wound-care use): D03AX05 correct; production's M09AX01 is the intra-articular-injection code, wrong route/form"
+2106103,D02AB,KEEP_CURRENT,MED,single-ingredient zinc oxide topical cream: D02AB
+210804,A02AB01,OTHER,MED,"single-ingredient aluminum hydroxide oral capsule (Alu-Cap): A02AB01; A02AB02(algeldrate) is a different aluminum compound, substance mismatch"
+1012757,R01BA53|R06AA08,OTHER,MED,"carbinoxamine+phenylephrine oral solution: R01BA53+R06AA08(carbinoxamine plain, no combo suffix)"
+1053426,R02AD01,OTHER,HIGH,2-component benzocaine oral gel pack (Orajel Day/Night): both components are oropharyngeal benzocaine gel -> R02AD01; drop rectal/topical-skin sibling codes
+282739,R01BA53|R06AB54|R06AC01,OTHER,MED,chlorpheniramine+phenylephrine+pyrilamine oral solution: R01BA53+R06AB54+R06AC01
+308077,A02AD01,OTHER,MED,aluminum hydroxide + magnesium hydroxide antacid (no antiflatulent present): A02AD01 'ordinary salt combinations'; production's single-ingredient A02AB01 drops magnesium component
+1673147,N01BB51,OTHER,HIGH,"bupivacaine+epinephrine injection (Marcaine w/ epi): N01BB51 'bupivacaine, combinations'"
+1049110,D04AB04|D08AJ08,KEEP_CURRENT,HIGH,"benzethonium chloride+benzocaine topical spray/cream: D04AB04(benzocaine,topical anesthetic)+D08AJ08(benzethonium,antiseptic) already current, correct"
+1740883,D04AB01,OTHER,HIGH,"lidocaine+menthol TOPICAL (skin) gel/cream: D04AB01; C05AD01 is the rectal/anal-fissure lidocaine code, wrong route"
+1792775,A02AF02,OTHER,HIGH,calcium-carbonate/aluminum-magnesium 'ordinary salt' antacid + simethicone/dimethicone antiflatulent -> dedicated combo class A02AF02 'ordinary salt combinations and antiflatulents'
+197383,C07CB03,KEEP_CURRENT,HIGH,atenolol+chlorthalidone tablet: dedicated combo C07CB03 'atenolol and thiazides'
+1251335,G03FA01,OTHER,MED,"ultra-low-dose ethinylestradiol+norethindrone acetate pack (Femhrt, HRT product not contraceptive): G03FA01 'norethisterone and estrogen' (menopausal HRT class) rather than G03AA (contraceptive class)"
+1252016,G03AA09,KEEP_CURRENT,HIGH,desogestrel+ethinylestradiol contraceptive pack (Viorele): dedicated combo G03AA09 already current
+1293472,R01BA53|R06AB54,OTHER,MED,chlorpheniramine tannate+phenylephrine tannate oral suspension: R01BA53+R06AB54
+1293512,N02CA52|N06BC01,OTHER,MED,"caffeine+ergotamine tartrate oral tablet (Wigraine): N02CA52 'ergotamine, combinations excl. psycholeptics' (combo-suffix variant) + N06BC01(caffeine)"
+1293731,C05AA01|C05AD07,OTHER,MED,hydrocortisone acetate+pramoxine RECTAL cream (ProctoCream-HC): C05AA01+C05AD07
+1294350,R01BA53|R06AA52,OTHER,MED,diphenhydramine+phenylephrine chewable tablet (Aldex CT): R01BA53+R06AA52(diphenhydramine combo)
+1294368,R06AA52,OTHER,MED,carbetapentane+diphenhydramine ER suspension: only R06AA52(diphenhydramine combo); no decongestant present; carbetapentane has no WHO code
+1294567,N02BE01|R01BA52|R06AA52,OTHER,MED,acetaminophen+diphenhydramine+pseudoephedrine oral tablet: N02BE01 plain analgesic + R01BA52 + R06AA52
+1299764,R03AB02,OTHER,MED,isoproterenol HCl INHALATION solution: R03AB02 (inhaled route); R03CB01(oral) and C01CA02(cardiac/IV) are wrong route for an inhalation solution
+1300363,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1356330,M02AB01|M02AC,OTHER,HIGH,"camphor/capsaicin/menthol/methyl-salicylate topical rub: capsaicin=M02AB01 (real L5) + M02AC (terminal L4 for the salicylate-derivative content, methyl salicylate itself has no dedicated L5); current_final's single M02AC code omitted the capsaicin component"
+1356527,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,HIGH,ivermectin+praziquantel+pyrantel chewable tablet (systemic antiparasitic combo): all three per-ingredient codes correct
+1359352,D04AB07|D06AX04|D06AX05,OTHER,MED,bacitracin+neomycin+polymyxin B+pramoxine TOPICAL ointment: add pramoxine local anesthetic D04AB07; polymyxin B has no topical-skin code
+1363770,R01BA03,KEEP_CURRENT,HIGH,single-ingredient phenylephrine ER suspension: plain code R01BA03 correct (no combination partner)
+1367212,N02BE01|R01BA53,OTHER,MED,acetaminophen+phenylephrine oral tablet: N02BE01+R01BA53
+198001,C07BA12,KEEP_CURRENT,HIGH,bendroflumethiazide+nadolol tablet: dedicated combo C07BA12 'nadolol and thiazides'
+1432785,D08AE03,OTHER,HIGH,"camphor+phenol topical gel (ChapIce, lip-balm use): D08AE03 (phenol, topical antiseptic); C05BB05 is the injectable-sclerosant code, wrong route/use entirely"
+1442280,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1442714,D01AE12,OTHER,HIGH,salicylic acid=D01AE12 (only WHO L5 for the substance); D02AF/D11AF are L4s with zero L5 children per atcddd.fhi.no
+1537095,N02BE01|R01BA53|R05CA03|R06AA52,OTHER,MED,2-component GPCK pack (APAP/diphenhydramine/phenylephrine oral solution + APAP/guaifenesin/phenylephrine oral solution): N02BE01+R01BA53+R05CA03+R06AA52; production's nasal/ophthalmic codes wrong route
+1537071,D04AB01|D08AJ01,OTHER,MED,benzalkonium chloride+lidocaine liquid soap: D04AB01(lidocaine topical anesthetic)+D08AJ01(benzalkonium); drop rectal C05AD01 and medicated-dressing D09AA11
+1546164,D11AX22,KEEP_CURRENT,HIGH,"ivermectin topical solution (Bimectin, dermatological use): D11AX22 correct route"
+1371365,D01AC08|D08AC02,OTHER,HIGH,"chlorhexidine+ketoconazole topical spray: D08AC02+D01AC08; drop systemic J02AB02, dental A01AB03, throat R02AA05"
+1918252,A01AA30,OTHER,HIGH,sodium fluoride + sodium monofluorophosphate toothpaste = 2 distinct fluoride salts -> A01AA30 'combinations' catch-all under caries prophylactic agents
+1245259,D08AG02,OTHER,HIGH,povidone-iodine surgical scrub soap/pad: D08AG02 (general antiseptic); D09AA09(medicated dressing) and D11AC06(medicated shampoo) are wrong-product-type sibling codes for the same substance
+1247574,D01AC02,KEEP_CURRENT,HIGH,miconazole nitrate topical antifungal spray/cream: D01AC02 correct route; production's dental/vaginal codes wrong route
+1292988,A03BB03|R01BA53|R06AB54,OTHER,MED,chlorpheniramine+methscopolamine+phenylephrine ER suspension: A03BB03(methscopolamine plain)+R01BA53+R06AB54
+1293665,B01AC06,OTHER,HIGH,"single-ingredient aspirin 81mg delayed-release tablet (Aspir-Low, classic low-dose): B01AC06 antiplatelet; drop N02BA01/A01AD05 (wrong use for this dose)"
+1302845,A08AA51,KEEP_CURRENT,HIGH,"phentermine+topiramate ER capsule (Qsymia): dedicated combo A08AA51, preferred over ATCPROD's phentermine-monotherapy candidate A08AA01"
+1357871,R01BA03,KEEP_CURRENT,HIGH,single-ingredient phenylephrine oral solution: plain code correct
+1367214,N02BE01|R01BA53,OTHER,MED,acetaminophen+phenylephrine chewable tablet: N02BE01+R01BA53
+1430400,A03BB03|R01BA52|R06AB54,OTHER,MED,chlorpheniramine+methscopolamine+pseudoephedrine ER tablet: A03BB03+R01BA52+R06AB54
+1435267,D07CC01,OTHER,HIGH,betamethasone+gentamicin TOPICAL spray -> D07CC01 'betamethasone and antibiotics'
+1435634,D08AE03|N01BX02,OTHER,MED,"dyclonine HCl+phenol topical cream: D08AE03(phenol)+N01BX02(dyclonine, topical local anesthetic, missing from current); drop injectable-sclerosant C05BB05"
+1435889,M02AB01|M02AC,OTHER,HIGH,capsaicin+menthol+methyl salicylate topical lotion: M02AB01+M02AC
+1486983,A06AG10,KEEP_CURRENT,HIGH,"docusate sodium ENEMA (rectal route): A06AG10 correct; production's A06AA02 is the oral-softener code, wrong route"
+1534818,M02AB01,KEEP_CURRENT,HIGH,"capsaicin+menthol topical gel (Corisin, no methyl salicylate): M02AB01 alone"
+1594682,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+1649341,R02AD01,KEEP_CURRENT,HIGH,benzocaine oral lozenge/gel: R02AD01 oropharyngeal code correct; drop rectal/topical-skin sibling codes
+1799178,A11GA01|B03AA,OTHER,MED,"ascorbic acid+iron carbonyl delayed-release tablet (Vitron-C): add ascorbic acid A11GA01 (missing from current); iron carbonyl has no specific B03AA salt-code match, kept at terminal L4"
+1942757,D01AE12|D05AA|D11AC06,OTHER,MED,coal tar+salicylic acid+sulfur antidandruff shampoo (Ala Seb T): coal tar D05AA(terminal)+salicylic acid D01AE12+sulfur under shampoo class D11AC08 - note current only captured the tar component
+1291386,D08AE05|D08AJ03,OTHER,MED,"cetylpyridinium chloride+chloroxylenol+triacetin topical antiseptic spray: D08AE05(chloroxylenol)+D08AJ03(cetylpyridinium); drop D09AA07 medicated-dressing code, wrong product type for a spray"
+1297641,M02AB01|M02AC,OTHER,HIGH,capsaicin+menthol+methyl salicylate topical lotion: M02AB01+M02AC
+1366149,A11JA,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+1424374,A03BB03|R01BA53|R06AB54,OTHER,MED,chlorpheniramine 12mg+methscopolamine+phenylephrine 20mg ER tablet: A03BB03+R01BA53+R06AB54
+1428025,D02AE01,OTHER,MED,"ammonium lactate topical cream (Geri-Hydrolac): D02AE01 (substance-specific code), matching the other ammonium-lactate row rather than the generic D02AX bucket"
+197771,C02LA01,KEEP_CURRENT,MED,hydrochlorothiazide+reserpine tablet: dedicated combo class C02LA01
+1546074,C05AD01,KEEP_CURRENT,HIGH,"lidocaine HCl RECTAL cream: C05AD01 correct rectal-route code, already current"
+1591982,D02AA|D02AB,OTHER,MED,dimethicone+zinc oxide topical ointment: D02AA+D02AB
+1592912,J01EE02,KEEP_CURRENT,HIGH,sulfadiazine+trimethoprim oral suspension: dedicated combo J01EE02 already current
+285007,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+1805278,D04AB01|D04AB07,OTHER,MED,"lidocaine+pramoxine medicated shampoo (scalp/topical, not rectal): D04AB01+D04AB07; drop rectal C05AD01/C05AD07"
+1246373,D01AE12|D11AX12,KEEP_CURRENT,HIGH,salicylic acid+zinc pyrithione dandruff shampoo (X-Seb Plus): both per-ingredient codes already correct
+1300294,D04AB04|D08AJ08,KEEP_CURRENT,HIGH,"benzethonium chloride+benzocaine topical spray/cream: D04AB04(benzocaine,topical anesthetic)+D08AJ08(benzethonium,antiseptic) already current, correct"
+1487267,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+792052,D07AA02,OTHER,HIGH,"plain hydrocortisone topical lotion (Coraz): D07AA02; D07XA01 is a combination-only code, not for single-ingredient hydrocortisone"
+798179,D08AG02,OTHER,HIGH,povidone-iodine surgical scrub soap/pad: D08AG02 (general antiseptic); D09AA09(medicated dressing) and D11AC06(medicated shampoo) are wrong-product-type sibling codes for the same substance
+800241,B05BA01,KEEP_CURRENT,HIGH,multi-amino-acid parenteral nutrition solution: B05BA01 'amino acids'; per-amino-acid electrolyte/antidote/antidepressant codes (glycine/lysine/methionine/tryptophan) do not apply to a TPN mixture
+311996,D08AF01,OTHER,MED,"nitrofurazone topical cream: D08AF01; D09AA03 is the medicated-dressing code, wrong product type for a cream"
+900580,R01AX,OTHER,LOW,saline nasal spray: align with R01AX pattern used for other saline nasal products; current systemic electrolyte codes (A12CA01/B05CB01/B05XA03) are wrong route for a nasal spray
+308293,N02BE01|N06BC01|R01BA53|R06AB54|R06AC01,OTHER,MED,"APAP+caffeine+chlorpheniramine+phenylephrine+pyrilamine oral tablet: five-ingredient combo, per-ingredient minimal set with combo suffixes where they exist"
+1087410,B03AE04,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+2003378,M02AB01|M02AC,OTHER,HIGH,"camphor/capsaicin/menthol/methyl-salicylate topical rub: capsaicin=M02AB01 (real L5) + M02AC (terminal L4 for the salicylate-derivative content, methyl salicylate itself has no dedicated L5); current_final's single M02AC code omitted the capsaicin component"
+207352,J01AA08,OTHER,HIGH,"minocycline oral capsule (Dynacin, systemic): J01AA08; drop local-oral A01AB23"
+351455,J01AA07,OTHER,HIGH,"tetracycline HCl oral capsule (Tetracon, systemic): J01AA07"
+746756,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+790879,S01CA01,OTHER,HIGH,dexamethasone+neomycin OPHTHALMIC solution (Neo-Decadron) -> S01CA01 'dexamethasone and antiinfectives'
+308712,D07AC01,OTHER,HIGH,plain betamethasone topical gel: D07AC01; drop rectal/combo-only siblings
+308495,S01AA30,OTHER,HIGH,multi-antibiotic (no steroid) OPHTHALMIC product -> S01AA30 'combinations of different antibiotics'
+1089027,R01BA52|R05FA02,OTHER,MED,"codeine+guaifenesin+pseudoephedrine oral suspension (Zodryl DEC): dedicated combo R05FA02(codeine+expectorant) + R01BA52(pseudoephedrine combo, missing from current)"
+745051,J01CE08|J01CE09,KEEP_CURRENT,MED,"penicillin G potassium oral tablet: current already drops plain J01CE01, keeps benzathine/procaine salt codes matching production"
+884175,C02AC01,OTHER,HIGH,"clonidine oral tablet (Catapres, standard antihypertensive): C02AC01; N02CX02 is the migraine-specific code, wrong indication for a standard antihypertensive tablet"
+895664,M01AE01|R06AA52,OTHER,MED,"diphenhydramine citrate+ibuprofen tablet (Advil-PM-shape combo, no WHO dedicated combo per CLAUDE.md precedent): M01AE01(ibuprofen)+R06AA52(diphenhydramine combo, missing from current); drop redundant M01AE14"
+309340,J01FF01,KEEP_CURRENT,HIGH,"clindamycin injectable solution (systemic): J01FF01 already current, correct route"
+1992526,R01BA53|R06AA52,OTHER,MED,"diphenhydramine+phenylephrine oral solution (Wal-Dryl PE): current had only R01BA53, missing R06AA52(diphenhydramine combo)"
+997557,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+199161,D01AE12,OTHER,HIGH,salicylic acid=D01AE12 (only WHO L5 for the substance); D02AF/D11AF are L4s with zero L5 children per atcddd.fhi.no
+351519,H02AB06,OTHER,HIGH,"prednisolone oral tablet (Cotolone, systemic): H02AB06; drop dental/GI-local/rectal/ophth-otic siblings"
+656866,D03BA01,KEEP_CURRENT,MED,"castor oil+Peruvian balsam+trypsin wound ointment (Allanderm-type): D03BA01 (trypsin, proteolytic enzyme); castor oil/Peruvian balsam have no topical wound-care code"
+763168,C10AD02,OTHER,MED,"niacin ER tablet titration pack (lipid-lowering use, matches production ATCPROD signal): C10AD02; drop C04AC01 (obsolete peripheral-vasodilator indication)"
+895384,J01EB05|J01FA01,KEEP_CURRENT,HIGH,"erythromycin ethylsuccinate+sulfisoxazole oral suspension: J01EB05 (sulfafurazole=sulfisoxazole) + J01FA01 (erythromycin), both confirmed on WHO index"
+899228,A06AD19|A12AA05|A12BA01|A12CA01|A12CC04|B05CB01|B05CB03|B05CX01|V04CA02|V06DC01,KEEP_CURRENT,LOW,"complex multi-electrolyte oral rehydration-type solution: current multi-code set accepted, no cleaner match found"
+896893,N02BA05|N06BC01,OTHER,HIGH,"aspirin+caffeine+salicylamide tablet (BC Headache): strip aspirin-specific codes, keep salicylamide(N02BA05, distinct substance)+caffeine(N06BC01)"
+308793,S01AX07,KEEP_CURRENT,HIGH,"boric acid OPHTHALMIC ointment: S01AX07 correct route; production's S02AA03 is the otic-specific code, wrong route"
+310595,S01AA30,OTHER,HIGH,multi-antibiotic (no steroid) OPHTHALMIC product -> S01AA30 'combinations of different antibiotics'
+205577,A11CC06|H05BX05,KEEP_CURRENT,MED,calcifediol oral capsule (Calderol): dual legitimate use (vitamin-D repletion A11CC06 + renal-osteodystrophy/anti-parathyroid H05BX05) retained
+205795,S01AA11,OTHER,LOW,"gentamicin OPHTHALMIC solution (Garamycin/Genoptic): S01AA11 (ophthalmic-specific); S03AA06 is the combined ophth+otic code, less precise for a pure ophthalmic solution"
+347741,V03AN01|V03AN03|V03AN04|V04CX08,KEEP_CURRENT,MED,"diagnostic medical gas mixture (CO/He/N2/O2, pulmonary function test gas): current multi-code set accepted"
+996738,R05FA02,KEEP_CURRENT,HIGH,codeine+guaifenesin oral capsule (M-Clear WC): dedicated combo R05FA02 already current
+308496,S01AA30,OTHER,HIGH,multi-antibiotic (no steroid) OPHTHALMIC product -> S01AA30 'combinations of different antibiotics'
+761979,J01MA14,OTHER,HIGH,moxifloxacin oral tablet pack: J01MA14 systemic; S01AE07 ophthalmic code wrong route
+864685,P01BB51,KEEP_CURRENT,HIGH,"atovaquone+proguanil tablet (Malarone): dedicated combo P01BB51, preferred over ATCPROD's proguanil-monotherapy candidate P01BB01"
+891178,D01BA02,OTHER,HIGH,"terbinafine oral tablet (systemic antifungal, Terbinex): D01BA02; drop topical D01AE15"
+993074,R01BA53|R05DA04|R06AD52,OTHER,MED,codeine+guaiacolsulfonic acid+phenylephrine+promethazine oral solution: R01BA53+R05DA04(codeine plain)+R06AD52(promethazine combo); guaiacolsulfonic acid has no WHO code
+308390,A11GA01|C10AD02,OTHER,LOW,ascorbic acid+niacin (nicotinic acid) tablet: A11GA01+C10AD02 (lipid-modifying use code retained per production signal); C04AC01 vasodilator-use code dropped as the more obsolete/less-supported indication - genuine ambiguity at this low (50mg) vitamin-range dose
+308705,A11CA01|A11CA02,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+310547,A06AX01,OTHER,HIGH,"glycerin ORAL solution (osmotic laxative/diuretic use, Osmoglyn): A06AX01; A06AG04 is the rectal glycerin-enema code, wrong route for an oral solution"
+205188,B03AD03,OTHER,HIGH,ferrous sulfate+folic acid ER tablet: dedicated combo B03AD03 'ferrous sulfate and folic acid'
+803310,H02AB06,OTHER,HIGH,"prednisolone oral suspension (Flo-Pred, systemic): H02AB06; drop dental A01AC04, GI-local A07EA01, rectal C05AA04, ophth/otic S03BA02"
+2000686,A02AF02,KEEP_CURRENT,HIGH,calcium carbonate + simethicone (Tums w/ Gas Relief): A02AF02 already current
+207334,A03AD01,OTHER,LOW,"papaverine ER oral capsule (oral systemic vasodilator/antispasmodic use, Papacon): A03AD01; G04BE02 is the erectile-dysfunction code (typically intracavernosal injection), wrong route/use for an oral capsule"
+312399,R01AB01,OTHER,MED,"phenylephrine+antihistamine NASAL spray/solution: R01AB01 'phenylephrine, combinations' (nasal route); R01BA03 is the oral/systemic decongestant code, wrong route; partner antihistamine has no nasal-specific code"
+2053512,R07AX30,KEEP_CURRENT,MED,ivacaftor+lumacaftor oral granules (Orkambi): R07AX30 accepted as the CFTR-modulator combination code
+314973,A11GA01|B03AA02,KEEP_CURRENT,MED,"ascorbic acid+ferrous fumarate tablet: per-ingredient codes correct, no combo code exists for iron+vitamin-C specifically"
+801432,B05BA01,OTHER,HIGH,multi-amino-acid parenteral nutrition solution: B05BA01 'amino acids'; per-amino-acid electrolyte/antidote/antidepressant codes (glycine/lysine/methionine/tryptophan) do not apply to a TPN mixture
+806392,S01KX,KEEP_CURRENT,LOW,"multi-electrolyte ophthalmic irrigation/BSS-type solution: S01KX 'other ophthalmologicals' terminal bucket accepted, no closer match found"
+800884,B05BA01,OTHER,HIGH,multi-amino-acid parenteral nutrition solution: B05BA01 'amino acids'; per-amino-acid electrolyte/antidote/antidepressant codes (glycine/lysine/methionine/tryptophan) do not apply to a TPN mixture
+849547,D07AA02,OTHER,HIGH,"plain hydrocortisone topical lotion (Balneol, 2.5mg/mL): D07AA02; drop rectal C05AA01, ester D07AC16/D07AB*, combo-only D07XA01"
+853610,D08AG02,OTHER,HIGH,povidone-iodine surgical scrub soap/pad: D08AG02 (general antiseptic); D09AA09(medicated dressing) and D11AC06(medicated shampoo) are wrong-product-type sibling codes for the same substance
+857389,N02AJ22|N06BC01,OTHER,MED,APAP+aspirin+caffeine+hydrocodone tablet: dedicated combo N02AJ22 'hydrocodone and paracetamol' covers the core analgesic pair + caffeine N06BC01; aspirin codes stripped
+857432,R06AA04,KEEP_CURRENT,HIGH,clemastine fumarate oral solution (Tavist): R06AA04 correct; production's D04AA14 is a topical-route mismatch
+856942,N02AJ22,KEEP_CURRENT,HIGH,"acetaminophen+hydrocodone oral solution/tablet: dedicated combo N02AJ22 'hydrocodone and paracetamol', preferred over separate per-ingredient codes"
+2123045,D02AB,KEEP_CURRENT,MED,menthol+zinc oxide topical ointment: D02AB (zinc oxide dominant active); menthol has no fitting WHO code outside the muscle-pain-rub class
+213538,D07AC01,OTHER,HIGH,plain betamethasone topical cream (Uticort): D07AC01; drop rectal C05AA05 and combo-only D07XC01
+214041,S02DA03,KEEP_CURRENT,HIGH,antipyrine(phenazone)+benzocaine otic solution: dedicated combo S02DA03 already current
+1101857,A03BB03|R06AB54,OTHER,MED,chlorpheniramine+methscopolamine ER tablet (Aerohist): A03BB03+R06AB54; no decongestant present
+1101914,D04AB04|D08AJ08,KEEP_CURRENT,HIGH,"benzethonium chloride+benzocaine topical spray/cream: D04AB04(benzocaine,topical anesthetic)+D08AJ08(benzethonium,antiseptic) already current, correct"
+1147496,N02AJ06|N02BA05|N06BC01,OTHER,MED,APAP+aspirin+caffeine+codeine+salicylamide tablet (Rid-A-Pain): dedicated combo N02AJ06 'codeine and paracetamol' + salicylamide N02BA05 + caffeine N06BC01; aspirin stripped
+1091387,M02AX10,OTHER,LOW,histamine dihydrochloride topical rubefacient cream (rheumatic-pain use): M02AX10 'various' catch-all under topical joint/muscular-pain products; production's V04CG03 is a diagnostic-reagent-context mismatch
+1101947,R01BA53|R05CA03,OTHER,MED,carbetapentane+guaifenesin+phenylephrine oral solution: R01BA53+R05CA03; carbetapentane dropped (no WHO code)
+1190888,A03BA01|A07BC02|N03AA02,KEEP_CURRENT,MED,atropine+kaolin+phenobarbital antidiarrheal/antispasmodic tablet: current per-ingredient set (including atropine A03BA01) accepted
+1192857,R01AX,OTHER,LOW,saline nasal spray: align with R01AX pattern used for other saline nasal products; current systemic electrolyte codes (A12CA01/B05CB01/B05XA03) are wrong route for a nasal spray
+403828,A02AF02,KEEP_CURRENT,HIGH,calcium carbonate + simethicone chewable tablet: A02AF02 already current
+484925,A11JA,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+541140,A12BA01,KEEP_CURRENT,HIGH,"potassium chloride ER oral capsule/tablet: A12BA01 mineral-supplement code correct; production's B05XA01 is the IV-additive code, wrong route/form"
+857738,R01BA53|R05DA03|R06AB54,OTHER,MED,chlorpheniramine+hydrocodone+phenylephrine oral solution (Chlorphen HD): R01BA53+R05DA03+R06AB54
+857859,R01BA53|R05DA03|R06AB54,OTHER,MED,chlorpheniramine+hydrocodone+phenylephrine oral solution (Chemdal HD): R01BA53+R05DA03+R06AB54
+1000989,R01AA05,OTHER,HIGH,single-ingredient oxymetazoline NASAL solution: R01AA05 plain (R01AB07 implies a combination partner that doesn't exist in this single-ingredient product)
+1005820,D10AB02|D10AF06,KEEP_CURRENT,HIGH,"sulfacetamide sodium+sulfur topical acne product: both per-ingredient acne codes correct, no dedicated combo exists"
+1011755,C09XA52,KEEP_CURRENT,HIGH,"aliskiren+hydrochlorothiazide tablet (Tekturna HCT): dedicated combo C09XA52, preferred over ATCPROD's aliskiren-monotherapy candidate C09XA02"
+1044345,D08AC02,OTHER,HIGH,"chlorhexidine topical antiseptic soap/pad/spray: D08AC02; D09AA12 is the medicated-DRESSING code (wrong product type), A01AB03 is the dental/oral-local code (wrong route)"
+1046820,A03BA03|G04BX12|J01XX05,OTHER,MED,"atropine/benzoic-acid/hyoscyamine/methenamine/phenyl-salicylate/sodium-benzoate UTI combo tablet (Prosed-type): A03BA03+G04BX12+J01XX05; sodium benzoate here is not for hyperammonemia use, A16AX11 dropped"
+1085732,D07AB09,OTHER,HIGH,triamcinolone acetonide topical ointment (Kenalog): D07AB09; drop rectal C05AA12 and combo-only D07XB02
+238145,N02BA01,OTHER,MED,single-ingredient aspirin 195mg rectal suppository (pediatric antipyretic/analgesic use): N02BA01; drop dental/antiplatelet codes
+259090,D02AA,KEEP_CURRENT,MED,single-ingredient dimethicone topical cream: D02AA
+1660690,G03AA09,KEEP_CURRENT,HIGH,desogestrel+ethinylestradiol contraceptive pack (Cyred): G03AA09 already current
+1112788,D07AB08,KEEP_CURRENT,HIGH,"desonide topical ointment: D07AB08 already current, correct"
+1012621,D04AB01|D07AA02,OTHER,MED,"hydrocortisone acetate+lidocaine TOPICAL (skin) cream (Lidamantle HC): D04AB01+D07AA02 (topical-route codes, not rectal)"
+1013034,D10AB02|D10AF06,KEEP_CURRENT,HIGH,"sulfacetamide sodium+sulfur topical acne product: both per-ingredient acne codes correct, no dedicated combo exists"
+1037115,R01BA51|R06AB05|R06AC01,OTHER,MED,pheniramine+phenylpropanolamine+phenyltoloxamine+pyrilamine ER capsule (Multihistamine-D): R01BA51(phenylpropanolamine combo)+R06AB05(pheniramine plain)+R06AC01(pyrilamine plain); phenyltoloxamine has no WHO code
+1049091,D04AA32|D08AJ08,KEEP_CURRENT,MED,"benzethonium chloride+diphenhydramine+zinc acetate topical gel (Calagel): D04AA32(diphenhydramine,topical antihistamine)+D08AJ08(benzethonium,antiseptic) already current; zinc acetate's systemic Wilson's-disease code A16AX05 doesn't fit this topical anti-itch use"
+1085638,D07AB09,OTHER,HIGH,triamcinolone acetonide topical ointment (Aristocort): D07AB09
+1005855,D10AB02|D10AF06,KEEP_CURRENT,HIGH,"sulfacetamide sodium+sulfur topical acne product: both per-ingredient acne codes correct, no dedicated combo exists"
+1085783,D07AB09,OTHER,HIGH,triamcinolone acetonide topical cream (Triacet): D07AB09
+245667,D08AX01|D11AX25,KEEP_CURRENT,MED,hydrogen peroxide topical solution: both of hydrogen peroxide's real WHO codes (general antiseptic + other-dermatologicals) retained given unspecified product use
+205884,A06AX01,OTHER,HIGH,"glycerin ORAL solution (osmotic laxative/diuretic use, Osmoglyn): A06AX01; A06AG04 is the rectal glycerin-enema code, wrong route for an oral solution"
+996590,R01BA53|R05DA04|R06AC01,OTHER,MED,codeine+phenylephrine+pyrilamine oral solution (Codimal PH): R01BA53+R05DA04+R06AC01
+315155,A14AB01,KEEP_CURRENT,HIGH,nandrolone injectable solution (systemic anabolic use): A14AB01 correct; production's S01XA11 is an obscure ophthalmic-nandrolone mismatch
+315214,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+856980,N02AJ22,KEEP_CURRENT,HIGH,"acetaminophen+hydrocodone oral solution/tablet: dedicated combo N02AJ22 'hydrocodone and paracetamol', preferred over separate per-ingredient codes"
+857681,R03CC03,OTHER,HIGH,"terbutaline sulfate ORAL tablet (Bricanyl, systemic beta-2-agonist): R03CC03; R03AC03 is the inhaled-route code, wrong route for an oral tablet"
+208364,H02AB08,OTHER,HIGH,"triamcinolone oral tablet (Aristopak, systemic): H02AB08; drop dental A01AC01, rectal C05AA12, inhaled R03BA06"
+208124,C03EA01,KEEP_CURRENT,MED,hydrochlorothiazide+triamterene: dedicated combo class C03EA01 'thiazides and potassium-sparing agents'
+1092351,N02BE01|R06AA52,OTHER,MED,"acetaminophen+diphenhydramine tablet (Mapap PM): N02BE01+R06AA52(diphenhydramine combo, missing from current)"
+1094022,A12AX,KEEP_CURRENT,HIGH,"calcium carbonate+cholecalciferol oral capsule: A12AX already current, correct dedicated vitamin-D+calcium class"
+1098468,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+1117233,D08AJ08,KEEP_CURRENT,HIGH,"single-ingredient benzethonium chloride topical antiseptic: D08AJ08 correct; drop throat-lozenge R02AA09, wrong route"
+832919,A12AX,KEEP_CURRENT,HIGH,"calcium carbonate+cholecalciferol oral capsule: A12AX already current, correct dedicated vitamin-D+calcium class"
+204779,R01AB01,OTHER,MED,"phenylephrine+antihistamine NASAL spray/solution: R01AB01 'phenylephrine, combinations' (nasal route); R01BA03 is the oral/systemic decongestant code, wrong route; partner antihistamine has no nasal-specific code"
+205891,S01EA01|S01EB01,KEEP_CURRENT,MED,"epinephrine+pilocarpine ophthalmic solution (P1E1-type): per-ingredient antiglaucoma codes correct, no dedicated combo exists"
+206221,D10AF02,KEEP_CURRENT,HIGH,"erythromycin topical solution (acne use, E-Solve 2): D10AF02 already current"
+312971,B05CB04,KEEP_CURRENT,LOW,sodium bicarbonate+tartaric acid oral effervescent granules: B05CB04 retained; genuine ambiguity between IV-irrigation and oral-antacid classification for sodium bicarbonate
+314002,S01AA30,OTHER,HIGH,multi-antibiotic (no steroid) OPHTHALMIC product -> S01AA30 'combinations of different antibiotics'
+347052,A01AA01,OTHER,HIGH,"sodium fluoride dental caries prophylaxis = A01AA01; A12CD01 is the systemic mineral-supplement sibling code, wrong use-context"
+831150,C08DB01,OTHER,HIGH,"diltiazem ER oral tablet/capsule (systemic antihypertensive/antianginal): C08DB01; C05AE03 is the topical/rectal anal-fissure gel code, wrong route"
+831274,C08DB01,OTHER,HIGH,"diltiazem ER oral tablet/capsule (systemic antihypertensive/antianginal): C08DB01; C05AE03 is the topical/rectal anal-fissure gel code, wrong route"
+359275,M09AB03,KEEP_CURRENT,HIGH,bromelains oral tablet: M09AB03 correct; production's other-route enzyme codes are wrong route for an oral tablet
+208813,S01CA01,OTHER,HIGH,dexamethasone+tobramycin OPHTHALMIC suspension (Tobradex) -> S01CA01
+1235563,A03BB03|R01BA53|R06AB54,OTHER,MED,chlorpheniramine 4mg+methscopolamine+phenylephrine 10mg oral tablet: A03BB03+R01BA53+R06AB54
+545074,D01AE12,KEEP_CURRENT,HIGH,"salicylic acid topical = D01AE12, confirmed on WHO ATC index"
+860227,L02AB01,OTHER,MED,"megestrol acetate oral suspension (Megace, primary real-world use = cancer/AIDS-cachexia appetite stimulant): L02AB01; drop contraceptive/HRT-progestin codes G03AC05/G03DB02"
+860571,R01BA53|R05DA03|R06AB54,OTHER,MED,chlorpheniramine+hydrocodone+phenylephrine oral solution: R01BA53+R05DA03+R06AB54
+1000588,D06BX01,KEEP_CURRENT,LOW,malachite green/metronidazole/microcrystalline-cellulose/trichlorfon topical veterinary antiseptic solution: D06BX01 (metronidazole) retained as primary code; other actives have no fitting WHO code
+1011712,C09XA52,KEEP_CURRENT,HIGH,"aliskiren+hydrochlorothiazide tablet (Tekturna HCT): dedicated combo C09XA52, preferred over ATCPROD's aliskiren-monotherapy candidate C09XA02"
+1043636,D02AX,KEEP_CURRENT,MED,glycerin medicated pad: D02AX terminal 'other emollients' bucket accepted
+1046817,A03BA03|N03AA02,OTHER,LOW,atropine/hyoscyamine/phenobarbital/scopolamine GI antispasmodic tablet/solution: hyoscyamine A03BA03+phenobarbital N03AA02; scopolamine's antiemetic(A04AD01)/sedative(N05CM05) codes don't fit its antispasmodic role here and are dropped; plain-atropine dropped
+240738,V04CG30,KEEP_CURRENT,HIGH,"caffeine+sodium benzoate injection: dedicated combo V04CG30, exact substance match"
+244451,D05AC01,KEEP_CURRENT,HIGH,"anthralin topical ointment: D05AC01 correct, single ingredient"
+259870,A11CB,KEEP_CURRENT,MED,"vitamin/mineral combination class is a terminal WHO L4 with no L5 children (or, for 308705/210780, the existing per-ingredient L5 set is already correct); current mapping accepted"
+261168,G01AF02,KEEP_CURRENT,HIGH,"clotrimazole VAGINAL insert (Mycelex-7): G01AF02 correct route; production's D01AC01 is the topical-skin code, wrong route"
+1654914,D08AJ08,KEEP_CURRENT,HIGH,"single-ingredient benzethonium chloride topical antiseptic: D08AJ08 correct; drop throat-lozenge R02AA09, wrong route"
+1656634,L04AG06,KEEP_CURRENT,HIGH,"alemtuzumab injection: L04AG06 correct, confirmed on WHO ATC index"
+208951,A12BA01,KEEP_CURRENT,HIGH,"potassium chloride ER oral capsule/tablet: A12BA01 mineral-supplement code correct; production's B05XA01 is the IV-additive code, wrong route/form"
+209280,G01AE10,OTHER,HIGH,"sulfabenzamide+sulfacetamide+sulfathiazole vaginal cream (triple-sulfa, V.V.S.): dedicated combo G01AE10 'combinations of sulfonamides' (vaginal antiinfectives)"
+1046789,A03BA03|N03AA02,OTHER,LOW,atropine/hyoscyamine/phenobarbital/scopolamine GI antispasmodic tablet/solution: hyoscyamine A03BA03+phenobarbital N03AA02; scopolamine's antiemetic(A04AD01)/sedative(N05CM05) codes don't fit its antispasmodic role here and are dropped; plain-atropine dropped
+1085121,D01AA01|D07AB09,OTHER,MED,nystatin+triamcinolone acetonide topical ointment (Mytrex): D01AA01(nystatin)+D07AB09(triamcinolone); drop rectal C05AA12 and combo-only D07XB02
+242993,R01AB01,OTHER,MED,"phenylephrine+antihistamine NASAL spray/solution: R01AB01 'phenylephrine, combinations' (nasal route); R01BA03 is the oral/systemic decongestant code, wrong route; partner antihistamine has no nasal-specific code"
+307746,A02AF02,OTHER,HIGH,aluminum+magnesium hydroxide antacid + simethicone (Suspension): A02AF02
+1232646,D04AA32,KEEP_CURRENT,HIGH,"diphenhydramine HCl topical cream (Dermarest Anti-Itch): D04AA32 correct route; production's R06AA02 is the oral/systemic code, wrong route"
