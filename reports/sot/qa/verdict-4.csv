@@ -1,0 +1,81 @@
+rxcui,judgment,should_be,reason_category,note
+545871,CHANGE_WRONG,N02BA05|N02BE01|N06BC01,ingredient-level-overbroad,"Final adds A01AD05 (dental, unrelated), B01AC06 (aspirin antiplatelet dose), N02BA01 (aspirin monotherapy) - wrong for a 4-ingredient analgesic combo tablet."
+1101019,CHANGE_WRONG,J01AA02,route-pollution,A01AB22 is doxycycline's dental/periodontal local-treatment code; this is an oral (systemic) capsule not a dental gel.
+1005834,CHANGE_CORRECT,,,D10AF (antiinfectives for acne) reasonably captures sulfacetamide+sulfur acne cream; better than sulfur-only D10AB02 which ignored sulfacetamide.
+249465,CHANGE_CORRECT,,,Fixes severe route pollution (nasal/ophthalmic codes on a rectal gel); C05AX fits phenylephrine+witch hazel anorectal/hemorrhoidal preparation.
+227897,CHANGE_WRONG,A07EA04|C05AA05|D07AC01|D07XC01|H02AB01|R01AD06|S01BA06|S01CB04|S02BA07|S03BA03,other,"R03BA04 is a different corticosteroid's inhalant code (fluticasone/triamcinolone), not betamethasone; the rest of the list correctly reflects betamethasone's real cross-route ingredient-level codes."
+746020,CHANGE_CORRECT,,,B03AA07 is the correct ferrous sulfate code; B03AA01 (a different iron salt) was correctly dropped.
+1542919,CHANGE_CORRECT,,,Fixes ingredient-level route pollution (IV/oral/ophthalmic codes on a nasal saline/bicarb powder); R01AX (other nasal preparations) is a reasonable L4 fallback.
+866404,UNSURE,,other,"M02AC is not a WHO subclass I can confirm exists (real WHO M02A has AA/AB/AX); the menthol/methyl salicylate/capsaicin rub likely belongs under M02AX, but I cannot verify offline."
+805375,UNSURE,,l4-vs-l5-granularity,J07CA (combined bacterial/viral vaccines) is the right L4 for this DTaP-IPV-Hib product; a specific L5 (diphtheria-Hib-pertussis-poliomyelitis-tetanus) likely exists but I cannot confirm the exact suffix offline.
+417547,CHANGE_CORRECT,,,D02AA (silicone skin protectant) fits a low-concentration dimethicone barrier cream better than P03AX05 (ectoparasiticide).
+1046611,CHANGE_CORRECT,,,Fixes route pollution: R01AA08 (naphazoline nasal decongestant) is correct for a nasal spray; S01GA01 is the ophthalmic code.
+207391,CHANGE_CORRECT,,,"J01CE01 (benzylpenicillin, plain) is correct for penicillin G potassium; J01CE08/09 are the benzathine/procaine depot-salt codes, a salt mismatch that was corrected."
+210110,CHANGE_CORRECT,,,Alkets is a calcium-carbonate antacid; adding A02AC01 (antacid use) alongside A12AA04 (supplement use) reflects real dual WHO classification for this product type.
+315147,CHANGE_CORRECT,,,"Drops D11AE01 (topical androgen), a wrong route for an oral tablet; A14AA03 (metandienone) is correct."
+801653,UNSURE,,other,Complex custom TPN amino-acid/electrolyte infusion; no single WHO code exists for compounded formulas and I cannot verify each of the many component codes with confidence offline.
+1294338,CHANGE_WRONG,R01BA01|R06AA02,ingredient-level-overbroad,Same aspirin-pollution pattern (A01AD05/B01AC06/N02BA01 unrelated to this decongestant/antihistamine cold solution); R06AA02 (diphenhydramine) was a correct addition.
+849426,CHANGE_WRONG,N02AC04|N06BC01,ingredient-level-overbroad,Same aspirin-pollution pattern (A01AD05/B01AC06/N02BA01) added to an opioid/caffeine combo tablet.
+309473,CHANGE_WRONG,N06BC01|R05DA04,ingredient-level-overbroad,Same aspirin-pollution pattern.
+1299653,CHANGE_CORRECT,,,D11AC (antiseborrheics) correctly reclassifies a salicylic-acid medicated shampoo; drops N02BA04 (wrong-route analgesic pollution).
+979338,CHANGE_CORRECT,,,"B03AE (iron + other antianemic combos) better reflects the iron/folate/B12 combo capsule than the incomplete B03BA01|B03BB01 pair, which omitted the iron component entirely."
+205530,CHANGE_CORRECT,,,"Drops S01BA11 (ophthalmic corticosteroid), wrong route for a topical ointment; D07AB08 (desonide, topical) is correct."
+1092424,CHANGE_CORRECT,,,"Drops D04AA32 (topical antipruritic), wrong route for an oral solution; R06AA02 (systemic diphenhydramine) is correct."
+1050336,UNSURE,,other,"D09AA06 is a medicated-dressing code; the product is described as a 'Topical Spray', so a dose-form mismatch is suspected but not certain."
+1668247,CHANGE_CORRECT,,,B05XA19 (IV electrolyte additive) correctly reflects a parenteral calcium gluconate injection rather than A12AA03 (oral calcium supplement).
+1488047,CHANGE_CORRECT,,,"Drops L01XX14 (oral/IV antineoplastic all-trans retinoic acid code), wrong for a topical acne gel; D10AD01 (topical tretinoin) is correct."
+1292923,CHANGE_CORRECT,,,D08AB (metal-derivative astringent/antiseptic) correctly reclassifies an aluminum sulfate/calcium acetate astringent solution (Domeboro-type) instead of the unrelated V03AE07.
+1867997,CHANGE_CORRECT,,,"Drops severe multi-route ingredient pollution (cardiac/topical/throat/ophthalmic codes); N01BB02 (lidocaine, injectable local anesthetic) correctly reflects the injectable product."
+543549,CHANGE_CORRECT,,,"Drops A01AB11 and A07AA02 (oral/GI nystatin codes), wrong route for a topical cream; D01AA01 is correct."
+1485222,CHANGE_CORRECT,,,J01GB03 (systemic gentamicin) correctly reflects an injectable solution; production's D06AX07/S03AA06 were topical/ophthalmic-otic route errors.
+2184158,CHANGE_WRONG,R06AB04,no-who-code-exists,R01BA03 does not exist in WHO ATC (R01BA only has 01 phenylpropanolamine and 02 pseudoephedrine); oral/systemic phenylephrine has no WHO code.
+860945,CHANGE_WRONG,A04AD05,other,Triban's primary active is trimethobenzamide (antiemetic suppository); its correct WHO code is A04AD05. C05AD (proctology local anesthetic) misattributes the whole product to the minor benzocaine component and wrong indication.
+857123,CHANGE_WRONG,R05DA03,ingredient-level-overbroad,Aspirin-pollution pattern (A01AD05/B01AC06/N02BA01) added; the underlying R05DA03 (hydrocodone-as-antitussive code) is also questionable for this analgesic combo but was already present in production.
+895895,CHANGE_CORRECT,,,"Correctly adds P02CF01 (ivermectin, avermectine antiparasitic), the previously-missing third component of this combo dewormer."
+198496,UNSURE,,no-who-code-exists,"Uncertain whether N01BA05 (esters of aminobenzoic acid) is a genuine benzocaine code; benzocaine is usually classified by application route (A01AD/C05AD/D04AB/R02AD), not under N01BA."
+1046954,UNSURE,,other,Donnatal-type belladonna-alkaloid/phenobarbital combo; the added A04AD01 (scopolamine as antiemetic) and N05CM05 (sedative-hypnotic combination) placements are plausible but I cannot verify the exact WHO codes offline.
+861385,CHANGE_CORRECT,,,"Drops J01DH05 (a carbapenem antibiotic code, wrong drug class entirely); J02AX05 (micafungin, systemic antifungal) is correct."
+1297960,CHANGE_CORRECT,,,"Drops J02AB02 (oral systemic ketoconazole), wrong route for a topical solution; D01AC08 is correct."
+994277,CHANGE_WRONG,N06BC01|R05DA04,ingredient-level-overbroad,Aspirin-pollution pattern (A01AD05/B01AC06/N02BA01) added to a butalbital/caffeine/codeine combo capsule.
+1544971,CHANGE_CORRECT,,,"Same fix as 249465: drops nasal/ophthalmic route pollution, C05AX06 fits a phenylephrine anorectal cream."
+800122,UNSURE,,other,"Complex custom TPN amino-acid solution (Aminosyn II), same verification limits as rxcui 801653."
+1363651,CHANGE_WRONG,A03BB03|R06AB04,no-who-code-exists,"R01BA03 (phenylephrine) is a fabricated/nonexistent WHO code, same issue as other R01BA03 rows; A03BB03 (methscopolamine) and R06AB04 (chlorpheniramine) are plausible."
+283616,CHANGE_CORRECT,,,"Drops A07AA01 (oral/GI neomycin) and S01AA03 (ophthalmic antibiotic), wrong routes for a topical cream; D06AX04 (topical antibiotic) is the right class."
+1050077,CHANGE_CORRECT,,,"Drops R06AA02 (systemic diphenhydramine), wrong route for a topical cream; D04AA32 is correct."
+207302,CHANGE_CORRECT,,,"Fixes route: drops J01AA06 (systemic tetracycline), wrong for an ophthalmic ointment; S01AA/S03AA ophthalmic antiinfective codes are appropriate."
+1006698,CHANGE_CORRECT,,,"S01AB04 (ophthalmic sulfacetamide) correctly replaces D10AB02 (topical acne/sulfur code), which was the wrong drug class/route for an ophthalmic solution."
+1088800,CHANGE_CORRECT,,,A12AX (calcium in combination with other drugs) correctly reflects a calcium carbonate + cholecalciferol combo tablet.
+848178,CHANGE_CORRECT,,,"Drops H02AB01/S01BA06/S03BA03 (systemic/ophthalmic/oto-ophthalmic betamethasone codes), wrong routes for a topical lotion; D07AC01 is correct."
+829187,CHANGE_CORRECT,,,"Same dual antacid/supplement classification as rxcui 210110, appropriate for this calcium-carbonate antacid gum."
+1250174,CHANGE_CORRECT,,,"Drops V03AB16/V03AZ01 (ethanol-as-antidote codes), wrong indication for a topical solution; D08AX08 (topical antiseptic) is correct."
+308913,CHANGE_WRONG,A02AA04|A02AC01|A12AA04,other,G04BX01 (other urologicals) is unrelated to a calcium carbonate/magnesium hydroxide GI antacid chewable tablet.
+205815,CHANGE_CORRECT,,,Drops J01CA18 (a different penicillin/ester code); J01CA01 (plain ampicillin) is correct for this oral suspension.
+1050325,CHANGE_CORRECT,,,G04BX (other urologicals) better reflects this classic methenamine/methylene blue/hyoscyamine/phosphate urinary-antiseptic combo than splitting into unrelated component codes.
+748998,CHANGE_WRONG,G03AA07,missing-combo-L5,"Ethinylestradiol+norethindrone combined oral contraceptive has a dedicated WHO combo code under G03AA (progestogen+estrogen fixed combinations, e.g. G03AA07); final omits it and instead adds L02AA03, an antineoplastic-estrogen code irrelevant to contraception."
+1112864,CHANGE_WRONG,N02BE51|R06AB04,missing-combo-L5,"Final drops the chlorpheniramine code entirely and reduces the product to plain-paracetamol monotherapy (N02BE01); should reflect the combo (N02BE51, paracetamol combinations excl. psycholeptics) and/or retain the antihistamine code."
+2053512,CHANGE_CORRECT,,,"R07AX30 is the correct WHO combination code for lumacaftor+ivacaftor (Orkambi), replacing the ivacaftor-only R07AX02."
+1361021,CHANGE_CORRECT,,,"Drops V03AB36 (phentolamine-as-antidote code); C04AB01 (phentolamine, peripheral vasodilator) is a reasonable base code for this dental-anesthesia-reversal product."
+313090,CHANGE_CORRECT,,,"Drops A06AD18/A06AG07 (laxative) and V04CC01 (diagnostic agent), wrong indications for an irrigation solution; B05CX02 is correct."
+417994,CHANGE_CORRECT,,,"D02AB (zinc products, skin protectant) correctly reclassifies plain zinc oxide cream instead of the hemorrhoid-specific C05AX04."
+603879,CHANGE_WRONG,R05DB05|R06AB01,no-who-code-exists,"R01BA03 (phenylephrine) is a fabricated/nonexistent WHO code, same issue as other R01BA03 rows."
+1996196,CHANGE_CORRECT,,,Same fix as rxcui 1299653 (different strength of the same shampoo product).
+312769,CHANGE_WRONG,A02BA02,salt-mismatch,"A02BA07 is ranitidine bismuth citrate (a distinct compound, branded Tritec), not plain ranitidine injectable solution."
+211805,CHANGE_CORRECT,,,A12CD01 (fluoride mineral supplement) alongside A01AA01 (dental caries prophylaxis) reflects real dual WHO classification of oral fluoride drops.
+562260,CHANGE_WRONG,B02BC09|C01CA24,route-pollution,"R03AA01 is inhaled/nebulized epinephrine (asthma bronchodilator route), wrong for an injectable suspension; A01AD01 (dental) is also inappropriate here."
+483450,CHANGE_CORRECT,,,"N02BF02 is the current WHO gabapentinoid-class code for pregabalin (replacing the older N03AX16 antiepileptic-only code), consistent with the CLAUDE.md-documented reclassification pattern."
+1000558,CHANGE_CORRECT,,,S01AB04 (sulfacetamide) plus S01CB05 (corticosteroid+antiinfective combo) correctly replace the wrong-route/wrong-drug D10AB02 for this ophthalmic suspension.
+977427,CHANGE_CORRECT,,,"Matches the codebase's own documented strength-determined rule: everolimus <=1 mg resolves to L04AH02 (Zortress, immunosuppressant), not L01EG02 (Afinitor, antineoplastic)."
+1005712,CHANGE_WRONG,C01DA05|N03AA02,salt-mismatch,"A06AD14 'pentaerithrityl' is an osmotic-laxative code for a different compound (pentaerythritol), confused with pentaerythritol tetranitrate, the cardiac nitrate vasodilator correctly coded C01DA05."
+309288,CHANGE_CORRECT,,,"Drops S01KX01 (ophthalmic surgical aid), wrong route for an oral tablet; B06AA04 (systemic enzyme) is correct."
+1919489,CHANGE_CORRECT,,,"V06DC (carbohydrate/nutrient) correctly reflects that glucose (357 mg/mL) is the primary active ingredient of this gel, versus a trace cholecalciferol additive (9.52 UNT/mL)."
+1086701,CHANGE_WRONG,H02AB02,route-pollution,"Oral tablet; A01AC02 (dental), C05AA09 (rectal), and S03BA01 (oto-ophthalmic) are all wrong routes for a plain oral dexamethasone tablet. Only H02AB02 (systemic) applies."
+2048005,CHANGE_CORRECT,,,"Drops N01BB02 (injectable) and R02AD02 (throat lozenge), wrong routes for a topical spray; D04AB01 is correct."
+631504,CHANGE_CORRECT,,,Drops oral/IV/ophthalmic sodium-chloride pollution codes; B05CB01 (irrigating solution) is correct for this irrigation product.
+1376068,CHANGE_WRONG,H02AB02,route-pollution,"Injectable solution; A01AC02 (dental), C05AA09 (rectal), and S03BA01 (oto-ophthalmic) are wrong routes. Only H02AB02 (systemic) applies."
+858782,CHANGE_WRONG,R05DA03|R06AB04,no-who-code-exists,"R01BA03 (phenylephrine) is a fabricated/nonexistent WHO code, same issue as other R01BA03 rows."
+2122909,CHANGE_WRONG,R05CA03|R05DA03,no-who-code-exists,"R01BA03 (phenylephrine) is a fabricated/nonexistent WHO code, same issue as other R01BA03 rows."
+1373130,CHANGE_CORRECT,,,"Drops N01BB02 (injectable) and R02AD02 (throat lozenge), wrong routes for a medicated patch; D04AB01 is correct."
+1300908,CHANGE_WRONG,D01AE12|D10AE01,ingredient-level-overbroad,"N02BA04 is the same wrong-route salicylic-acid pollution code seen in the shampoo rows (1299653/1996196), and S01BC08 (ophthalmic) is unrelated to this topical acne foam/soap/cream pack."
+1046760,UNSURE,,other,Same Donnatal-type combo as rxcui 1046954; plausible but unverifiable exact WHO codes offline.
+310149,CHANGE_CORRECT,,,"Drops J01FA01 (systemic macrolide), wrong route for an ophthalmic ointment; S01AA17 (ophthalmic erythromycin) is correct."
+311949,CHANGE_CORRECT,,,C04AC01 (peripheral vasodilator) alongside C10AD02 (lipid-modifying agent) reflects real dual WHO classification of niacin/nicotinic acid.

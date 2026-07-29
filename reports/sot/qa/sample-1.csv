@@ -1,0 +1,81 @@
+rxcui,drug_name,tty,production_atcs,final_atcs,verdict,source
+1049127,Benzalkonium Chloride 1.3 MG/ML / Pramoxine hydrochloride 10 MG/ML Topical Spray [Neosporin Neo To Go],SBD,D08AJ01|D08AJ08|R02AA16,D08AJ01|D08AJ08,FLAG_DATA_GAP,prior
+211316,benzocaine 200 MG/ML Topical Spray [Dermoplast],SBD,C05AD03|D04AB04|R02AD01,N01BA05,CORRECT,prior
+1088805,24 HR calcium carbonate 200 MG / folic acid 1 MG / pyridoxine 75 MG / vitamin B12 0.012 MG Extended Release Oral Tablet [FoliNatal Plus B],SBD,A11HA02|B03BA01|B03BB01,A02AC01|A11HA02|A12AA04|B03BA01|B03BB01,KEEP_OURS,prior
+351913,ciclopirox 0.0077 MG/MG Topical Gel [Loprox],SBD,D01AE14|G01AX12,D01AE14,KEEP_OURS,prior
+657568,ketotifen 0.3 MG/ML Ophthalmic Solution,SCD,R06AX17|S01GX08,S01GX08,KEEP_OURS,prior
+93131,fluocinonide 0.5 MG/ML Topical Solution [Lidex],SBD,D07AC08,C05AA11|D07AC08,CORRECT,prior
+700499,hydroxocobalamin 5000 MG Injection [Cyanokit],SBD,B03BA03|V03AB33,V03AB33,CORRECT,prior
+213120,metronidazole 10 MG/ML Topical Cream [Noritate],SBD,A01AB17|D06BX01|P01AB01,D06BX01,CORRECT,prior
+311953,niacin 200 MG Extended Release Oral Tablet,SCD,C10AD02,C04AC01|C10AD02,CORRECT,prior
+1046908,atropine sulfate 0.03 MG / benzoic acid 4.5 MG / hyoscyamine sulfate 0.03 MG / methenamine 40.8 MG / methylene blue 5.4 MG / phenyl salicylate 18.1 MG Oral Tablet [Uri-Sep],SBD,A03BA03|G04BX12|J01XX05,A03BA01|A03BA03|A16AX11|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_OURS,prior
+1293320,atropine sulfate 0.06 MG / benzoic acid 9 MG / hyoscyamine sulfate 0.06 MG / methenamine 81.6 MG / methylene blue 10.8 MG / phenyl salicylate 36.2 MG Delayed Release Oral Tablet [Prosed],SBD,A03BA03|G04BX12|J01XX05,A03BA01|A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_OURS,prior
+1235591,raltegravir 100 MG Chewable Tablet [Isentress],SBD,J05AX08,J05AJ01,CORRECT,prior
+1038824,acetaminophen 650 MG / chlorpheniramine maleate 4 MG / phenylephrine hydrochloride 10 MG Powder for Oral Solution,SCD,N02BE01|R06AB04,N02BE01|R01BA03|R06AB04,KEEP_OURS,prior
+1235874,{21 (ethinyl estradiol 0.035 MG / norethindrone 0.4 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Philith 28 Day],BPCK,G03CA01|G03DC02,G03AA05,CORRECT,prior
+1047862,12 HR atropine sulfate 0.0582 MG / hyoscyamine sulfate 0.0582 MG / phenobarbital 48.6 MG / scopolamine hydrobromide 0.0195 MG Extended Release Oral Tablet [Phenobel],SBD,A03BA03|N03AA02,A03BA01|A03BA03|A04AD01|N03AA02|N05CM05,KEEP_OURS,prior
+756269,brompheniramine 0.8 MG/ML / phenylephrine 1 MG/ML / phenylpropanolamine 1 MG/ML Oral Solution,SCD,R01BA01|R06AB01,R01BA01|R01BA03|R06AB01,KEEP_OURS,prior
+208314,thiabendazole 100 MG/ML Oral Suspension [Mintezol],SBD,D01AC06|P02CA02,P02CA02,KEEP_OURS,prior
+1734934,20 ML acyclovir 50 MG/ML Injection,SCD,D06BB03|J05AB01|S01AD03,J05AB01,CORRECT,prior
+860217,megestrol acetate 20 MG Oral Tablet [Megace],SBD,L02AB01,G03AC05|G03DB02|L02AB01,CORRECT,prior
+313137,sulfamethoxazole 80 MG/ML / trimethoprim 16 MG/ML Injectable Solution,SCD,J01EA01|J01EC01,J01EE01,CORRECT,prior
+1796137,capsaicin 0.25 MG/ML / menthol 20 MG/ML Topical Cream [Zostrix Joint & Arthritis Pain Relief],SBD,N01BX04,M02AB,CORRECT,prior
+1595989,allantoin 0.02 MG/MG / lidocaine 0.05 MG/MG / petrolatum 0.3 MG/MG Medicated Patch,SCD,D04AB01|N01BB02|R02AD02,N01BB02,FLAG_DATA_GAP,prior
+198760,niacin 50 MG Oral Tablet,SCD,C10AD02,C04AC01,ADOPTED_RULE,prior
+615979,sorafenib 200 MG Oral Tablet [Nexavar],SBD,L01XE05,L01EX02,CORRECT,prior
+317865,calcium carbonate 400 MG Chewable Tablet,SCD,A12AA04,A02AC01,CORRECT,prior
+1000500,"{28 (estrogens, conjugated (USP) 0.625 MG / medroxyprogesterone acetate 5 MG Oral Tablet) } Pack [Prempro 0.625/5 28 Day]",BPCK,G03CA57|G03FA12,G03FA12,FLAG_DATA_GAP,prior
+1673147,3 ML bupivacaine hydrochloride 5 MG/ML / epinephrine 0.005 MG/ML Injection [Marcaine with Epinephrine],SBD,N01BB01,A01AD01|B02BC09|C01CA24|N01BB01|R03AA01,KEEP_OURS,prior
+205596,dexamethasone acetate 8 MG/ML Injectable Suspension [Decadron-LA],SBD,H02AB02|S01BA01,A01AC02|C05AA09|H02AB02|S03BA01,KEEP_OURS,prior
+727507,0.5 ML choriogonadotropin alfa 0.5 MG/ML Prefilled Syringe [Ovidrel],SBD,G03GA01|G03GA08,G03GA08,CORRECT,prior
+1053761,nystatin 100000 UNT/ML / triamcinolone acetonide 1 MG/ML Topical Cream [Myco-Triacet],SBD,A01AB11|A01AC01|A07AA02|D01AA01|H02AB08|R01AD11,C05AA12|D01AA01|D07AB09|D07XB02,KEEP_OURS,prior
+211297,aspirin 400 MG / caffeine 32 MG Oral Tablet [P-A-C Analgesic],SBD,N06BC01,A01AD05|B01AC06|N02BA01|N06BC01,KEEP_OURS,prior
+1598052,glycerin 2.5 MG/ML Ophthalmic Solution [Oasis Tears],SBD,A06AX01,S01XA20,FLAG_DATA_GAP,prior
+1000131,medroxyprogesterone acetate 400 MG/ML Injectable Suspension,SCD,G03DA02|L02AB02,L02AB02,CORRECT,prior
+801192,phenylephrine tannate 1 MG/ML / pyrilamine tannate 6 MG/ML Oral Suspension [Rynesa],SBD,R01AA04|S01FB01|S01XA20,R01BA03|R06AC01,KEEP_OURS,prior
+1011875,sulfacetamide sodium 90 MG/ML / sulfur 40 MG/ML Medicated Liquid Soap [Sumaxin],SBD,D10AB02,D10AF,CORRECT,prior
+1302643,salicylic acid 20 MG/ML Medicated Pad [Propa P.H.],SBD,D01AE12|N02BA04,D01AE12,KEEP_OURS,prior
+1304971,benzocaine 20 MG/ML / cetylpyridinium chloride 1 MG/ML / menthol 1.5 MG/ML / zinc chloride 1 MG/ML Mucous Membrane Topical Solution [Bucalsep],SBD,B05XA12,R02AA,CORRECT,prior
+245650,benzocaine 80 MG/ML Topical Lotion,SCD,C05AD03|D04AB04|R02AD01,C05AD03|D04AB04,KEEP_OURS,prior
+1665002,ketorolac tromethamine 15 MG/ML Injection,SCD,M01AB15|S01BC05,M01AB15,KEEP_OURS,prior
+859126,alprostadil 0.125 MG Urethral Suppository [Muse],SBD,C01EA01|G04BE01,G04BE01,KEEP_OURS,prior
+754028,chorionic gonadotropin 2000 UNT/ML Injectable Solution [A.P.L.],SBD,G03GA01,G03GA01|G03GA08,CORRECT,prior
+206876,Ibuprofen 40 MG/ML Oral Suspension [Pediacare Fever],SBD,M01AE01|M01AE14|M02AA13,M01AE01|M01AE14,FLAG_DATA_GAP,prior
+1251566,salicylic acid 0.02 MG/MG Topical Gel [clear days ahead],SBD,D01AE12|N02BA04,D11AF,CORRECT,prior
+1993067,hydrogen peroxide 400 MG/ML Topical Solution [Eskata],SBD,A01AB02|D08AX01,D08AX01,CORRECT,prior
+2599051,16 ML bevacizumab-maly 25 MG/ML Injection,SCD,S01LA08,L01FG01,ADJUDICATED_ADOPT,gap-resolved
+1294380,diphenhydramine tannate 5 MG/ML / hydrocodone tannate 0.7 MG/ML / phenylephrine tannate 1.5 MG/ML Extended Release Suspension,SCD,R05DA03,R01BA03|R05DA03|R06AA02,KEEP_OURS,prior
+1923484,10 ML sodium bicarbonate 84 MG/ML Injection,SCD,B05CB04|B05XA02,B05XA02,CORRECT,prior
+312881,salicylic acid 170 MG/ML Topical Solution,SCD,D01AE12|N02BA04,D01AE12,CORRECT,prior
+1542942,vancomycin 50 MG/ML Oral Suspension,SCD,A07AA09,A07AA09|J01XA01,KEEP_OURS,prior
+105395,hydrocortisone 10 MG Oral Tablet [Hydrocortone],SBD,H02AB09,A01AC03|A07EA02|C05AA01|H02AB09,KEEP_OURS,prior
+2106997,{24 (drospirenone 3 MG / ethinyl estradiol 0.02 MG Oral Tablet) / 4 (inert ingredients 1 MG Oral Tablet) } Pack [Jasmiel 28 Day],BPCK,G03AA12|G03AC10,G03AA12,CORRECT,prior
+1422076,benzalkonium chloride 4 MG/ML / chlorhexidine gluconate 5 MG/ML / N-alkyl ethylbenzyl dimethyl ammonium chloride (C12-C14) 4 MG/ML Topical Solution [Hex-O-Prep],SBD,A01AB03|D08AC02|D08AJ01|D08AJ08|R02AA05|R02AA16,D08AC02|D08AJ01|D09AA11|D09AA12,KEEP_OURS,prior
+1012228,sulfabenzamide 184 MG / sulfacetamide sodium 144 MG / sulfathiazole 172 MG Vaginal Insert,SCD,D10AB02,G01AE10,FLAG_DATA_GAP,prior
+245020,salicylic acid 250 MG/ML Topical Cream,SCD,D01AE12|N02BA04,D01AE12,KEEP_OURS,prior
+1250729,miconazole nitrate 20 MG/ML Topical Cream [Femmesil],SBD,A01AB09|D01AC02|G01AF04,D01AC02,KEEP_OURS,prior
+758864,hydrocortisone acetate 20 MG/ML Topical Cream [MiCort-HC],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,D07AA02|D07XA01,KEEP_OURS,prior
+800954,alanine 1.54 MG/ML / arginine 1.2 MG/ML / cysteine 0.04 MG/ML / histidine 0.48 MG/ML / isoleucine 1.8 MG/ML / leucine 2.2 MG/ML / lysine 1.22 MG/ML / methionine 0.2 MG/ML / phenylalanine 0.2 MG/ML / phosphoric acid 0.23 MG/ML / proline 1.6 MG/ML / serine 1 MG/ML / threonine 0.9 MG/ML / tryptophan 0.13 MG/ML / valine 1.68 MG/ML Injectable Solution [Hepatasol 8],SBD,B05XB03|N06AX02|V03AB26,B05XB01|B05XB03|N06AX02|V03AB26,CORRECT,prior
+310323,ferrous sulfate 60 MG/ML Oral Solution,SCD,B03AA01|B03AA07,B03AA07,CORRECT,prior
+330396,pantoprazole 40 MG,SCDC,A02BC,A02BC02,ADJUDICATED_ADOPT,gap-resolved
+1116111,chlorhexidine gluconate 20 MG/ML / miconazole nitrate 20 MG/ML Medicated Shampoo [Malaseb],SBD,A01AB03|A01AB09|D01AC02|D08AC02|G01AF04|R02AA05,D01AC02|D08AC02,FLAG_DATA_GAP,prior
+1046815,atropine sulfate 0.0194 MG / hyoscyamine sulfate 0.1037 MG / phenobarbital 16.2 MG / scopolamine hydrobromide 0.0065 MG Oral Tablet,SCD,A03BA03|N03AA02,A03CB,CORRECT,prior
+1046781,acetaminophen 325 MG / chlorpheniramine maleate 2 MG / phenylephrine hydrochloride 5 MG Oral Tablet,SCD,N02BE01|R06AB04,R01BA,CORRECT,prior
+1089030,codeine phosphate 1 MG/ML / guaifenesin 20 MG/ML / pseudoephedrine hydrochloride 6 MG/ML Oral Suspension [Zodryl DEC],SBD,R01BA02|R05CA03|R05DA04,R05FA02,FLAG_DATA_GAP,prior
+210040,aluminum hydroxide 40 MG/ML / magnesium hydroxide 40 MG/ML / simethicone 4 MG/ML Oral Suspension [Mylagen],SBD,A02AB01,A02AA04|A02AB01|A02AB02|G04BX01,CORRECT,prior
+901190,penicillin G procaine 300000 UNT/ML Injectable Suspension [Aquacillin],SBD,J01CE09,J01CE01|J01CE09,KEEP_OURS,prior
+1945072,{49 (dexamethasone 1.5 MG Oral Tablet [Decadron]) } Pack [Decadron DP 12 Day],BPCK,H02AB02|S01BA01,A01AC02|C05AA09|D07AB19|D07XB05|D10AA03|H02AB02|R01AD03|S01BA01|S01CB01|S02BA06|S03BA01,CORRECT,prior
+1484903,{24 (ethinyl estradiol 0.01 MG / norethindrone acetate 1 MG Chewable Tablet) / 2 (ethinyl estradiol 0.01 MG Oral Tablet) / 2 (ferrous fumarate 75 MG Oral Tablet) } Pack [Lo Minastrin Fe 28 Day],BPCK,G03CA01,B03AA02|G03AC01|G03CA01|G03DC02|L02AA03,CORRECT,prior
+1094168,diphenhydramine hydrochloride 2.5 MG/ML Oral Solution [Beldin],SBD,D04AA32|R06AA02,R06AA02,KEEP_OURS,prior
+314197,palivizumab 100 MG/ML Injectable Solution,SCD,J06BB16,J06BD01,CORRECT,prior
+1006202,hydrogen peroxide 10 MG/ML Topical Solution [Pre Milk],SBD,A01AB02|D08AX01,D08AX01|D11AX25,KEEP_OURS,prior
+1653155,choline salicylate 29 MG/ML / guaifenesin 6.67 MG/ML / phenylephrine hydrochloride 0.33 MG/ML Oral Solution,SCD,R05CA03,N02BA03|R01BA03|R05CA03,KEEP_OURS,prior
+1872891,lidocaine hydrochloride 40 MG/ML Medicated Pad [Alocane],SBD,D04AB01|N01BB02|R02AD02,D04AB01,CORRECT,prior
+108118,mometasone,IN,R03BA07,D07AC13|D07XC03|R01AD09|R03BA07,CORRECT,prior
+1370950,benzalkonium chloride 2.4 MG/ML Medicated Pad,SCD,D08AJ01|D08AJ08|R02AA16,D08AJ01|D09AA11,KEEP_OURS,prior
+1314932,hydrocortisone 10 MG/ML Topical Cream [Kera-HC],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,D07AA02,CORRECT,prior
+309291,ciclopirox 80 MG/ML Topical Solution,SCD,D01AE14|G01AX12,D01AE14,CORRECT,prior
+251406,salicylic acid 0.25 MG/MG Topical Ointment,SCD,D01AE12|N02BA04,D01AE12,KEEP_OURS,prior
+1358853,acetaminophen 110 MG / aspirin 162 MG / caffeine 32.4 MG / salicylamide 152 MG Oral Tablet [Exaprin],SBD,N02BA05|N02BE01|N06BC01,N02BE01,FLAG_DATA_GAP,prior
+1098483,sodium fluoride 1.1 MG / xylitol 237 MG Chewable Tablet [Fluor a Day Chewable],SBD,A01AA01,A01AA01|A12CD01,CORRECT,prior
+309477,aspirin 325 MG / butalbital 50 MG / caffeine 40 MG / codeine 7.5 MG Oral Capsule,SCD,N06BC01|R05DA04,A01AD05|B01AC06|N02BA01|N06BC01|R05DA04,KEEP_OURS,prior

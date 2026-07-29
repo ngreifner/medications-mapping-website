@@ -1,0 +1,81 @@
+rxcui,judgment,should_be,reason_category,note
+309682,CORRECT,,,"TobraDex-type dexamethasone+tobramycin ophthalmic combo; S01CA01 (dexamethasone and antiinfectives) is the correct WHO combo code, fixes production's split H02AB02|S01BA01"
+1294196,CORRECT,,,"Diphenhydramine+phenylephrine oral cold syrup; R01BA53 (phenylephrine, combinations) is the correct WHO combo-suffix code"
+1043199,CORRECT,,,"Salicylic acid alone; D01AE12 is salicylic acid's real WHO code, drops unrelated N02BA04 pollution"
+1658313,CORRECT,,,Capsaicin/menthol patch; M02AB01 (capsaicin) is the correct topical analgesic class
+1091387,CORRECT,,,"Histamine dihydrochloride topical cream; M02AX10 (histamine, topical rubefacient) fixes production's diagnostic-use V04CG03 pollution"
+856955,CORRECT,,,"Hycomine Compound hydrocodone-based cough/cold combo; R05DA20 (hydrocodone, combinations) is a reasonable consolidated code for this shape of product"
+992739,CORRECT,,,"Homatropine methylbromide oral (Homapin, GI antispasmodic); A03BB06 correctly distinguishes this quaternary salt from ophthalmic homatropine hydrobromide (S01FA05)"
+1011833,CORRECT,,,"Lidocaine mucosal/laryngotracheal anesthesia spray; N01BB02 (lidocaine, local anesthetic general) is a defensible single code for this use"
+1535618,WRONG,D04AB01,wrong-route,"Allantoin+lidocaine topical ointment; N01BB02/N01BB52 are systemic/general local-anesthetic codes, topical form should map to D04AB01 (lidocaine, topical)"
+664704,CORRECT,,,"Glucose/KCl/NaCl IV fluid; B05BB02 (electrolytes with carbohydrates) is the correct consolidated code, fixes multi-code ingredient pollution"
+832907,UNSURE,A12AX (uncertain exact suffix),missing-combo-L5,"Calcium carbonate+cholecalciferol combo; WHO may have a dedicated A12AX-class combo code, cannot confirm offline whether ingredient split (A11CC05|A12AA04) is the correct fallback"
+1191264,WRONG,"D11AX (uncertain exact suffix, or no dedicated code)",other,"Tri-Luma treats melasma (steroid+hydroquinone+tretinoin); D10AD51 is an acne tretinoin-combination code, wrong indication class"
+1006698,CORRECT,,,Sulfacetamide sodium ophthalmic solution; S01AB04 fixes production's wrong dermatological-acne code D10AB02
+1190450,WRONG,R01BA52,combo-split-to-ingredients,"Diphenhydramine+pseudoephedrine ER tablet (Tekral); should use the R01BA52 pseudoephedrine-combinations suffix, matching the same tool's own R01BA53 use for the analogous phenylephrine+diphenhydramine combo (rxcui 1294196), instead of splitting into R01BA02|R06AA02"
+1551286,UNSURE,,missing-combo-L5,Chlophedianol+dexbrompheniramine cough syrup; uncertain offline whether WHO has a dedicated combo code beyond the plain antitussive code R05DB10
+245224,CORRECT,,,Phenylephrine+zinc oxide rectal suppository; single rectal-route code C05AX06 fixes multi-route pollution (nasal/ophthalmic codes) in production
+1539190,CORRECT,,,"Mimvey Lo estradiol/norethindrone acetate HRT pack; G03FA01 (progestogens and estrogens, fixed combination) is the correct combo code, fixes production's estrogen-only G03CA03"
+1789947,CORRECT,,,Papaverine generic injection; A03AD01 (musculotropic antispasmodic) is the more defensible code for an unbranded injection vs. the erectile-dysfunction code G04BE02
+807839,UNSURE,R05CA09 (alone),missing-combo-L5,"Phenylephrine+potassium guaiacolsulfonate oral solution; unclear offline whether the expectorant combo code R05CA09 already subsumes the decongestant partner, making the added R01BA03 split unnecessary"
+4511,CORRECT,,,Folic acid ingredient-level; B03BB01 (antianemic) plus V04CX02 (diagnostic use) are both real dual-use WHO codes for folic acid
+896976,CORRECT,,,Hydrochlorothiazide+labetalol combo tablet; C07BG01 (labetalol and thiazides) is a real established beta-blocker+thiazide combo class
+1010751,CORRECT,,,"Epinephrine+lidocaine injectable (local anesthesia with vasoconstrictor); N01BB02 (lidocaine) is the standard single code for this combination, fixes epinephrine multi-route pollution"
+664961,CORRECT,,,"Ketoconazole topical gel; D01AC08 correct, drops wrong systemic-antifungal code J02AB02"
+313884,UNSURE,depends on product indication (A02AC01 antacid vs A12AA04 supplement),wrong-strength-indication,"Calcium carbonate 420mg chewable tablet with no brand; cannot determine from the generic name alone whether this is an antacid or a mineral-supplement product, so cannot confirm the antacid-only code is right"
+308718,CORRECT,,,"Betamethasone injectable solution; H02AB01 (systemic glucocorticoid) is correct, fixes topical/ophthalmic/otic route pollution"
+238015,CORRECT,,,"Ethinyl estradiol+norethindrone monophasic OC tablet; G03AA05 is the correct combo code, fixes production's split estrogen/progestin codes"
+762007,CORRECT,,,"Nortrel 7/7/7 triphasic OC pack; G03AA05 (ethinylestradiol+norethisterone) applies regardless of phasic regimen, correctly drops production's wrong G03FA01 (HRT class) addition"
+1047873,CORRECT,,,"Atropine/hyoscyamine/methenamine/methylene blue/phenyl salicylate legacy urinary combo (Urised-type); no dedicated combo L5 exists, and adding atropine's own code A03BA01 (present in the actual formulation) is a more complete ingredient-level breakdown than production's 3-code version"
+762967,WRONG,"D08AE-series or M02AX (topical antiseptic/counterirritant), exact suffix uncertain",other,"Camphor/menthol/phenol/salicylic acid topical rub (Campho-Phenique-type); C05BB05 is a sclerosing-agent-for-injection code (varicose vein treatment), implausible for a topical OTC rub"
+1367219,WRONG,R01BA53,combo-split-to-ingredients,"Phenylephrine tannate+brompheniramine tannate chewable; should use R01BA53 combo suffix per the same dataset's own precedent (rxcui 1294196), not split R01BA03|R06AB01"
+1426565,CORRECT,,,Benzalkonium chloride antiseptic pad; single D08AJ01 code fixes multi-route pollution in production
+1442714,CORRECT,,,"Salicylic acid topical cream (Zit Stick); D01AE12 correct, same as rxcui 1043199"
+240422,UNSURE,"R01AX-series if nasal saline, or B05CB if irrigation solution",wrong-route,Sodium chloride 'Topical Spray'; V07AB (solvents/diluting/irrigating solutions) is an unusual class for a topical spray and the true intended use (nasal saline vs. irrigation vs. skin) is not clear from the generic name
+1294368,UNSURE,,missing-combo-L5,Carbetapentane tannate+diphenhydramine tannate ER suspension; carbetapentane's WHO ATC status/combo-suffix convention is uncertain offline
+1534814,CORRECT,,,"Ortho Evra-type transdermal contraceptive patch; G03AA13 (norelgestromin+ethinylestradiol) is the real established WHO code, fixes production's estrogen-only G03CA01"
+1876355,CORRECT,,,"Benzethonium chloride topical antiseptic spray; D08AJ08 correct, fixes wrong throat-lozenge route code R02AA09"
+903438,WRONG,H03AA03,missing-combo-L5,Levothyroxine+liothyronine combo tablet (Thyrolar-type); WHO has a dedicated combination code H03AA03 for this pairing; new_final instead uses only liothyronine's own code (H03AA02) and drops levothyroxine's contribution entirely
+966550,CORRECT,,,"Beclomethasone MDI inhaler (Beclovent); R03BA01 (inhaled glucocorticoid) correct, fixes wrong topical/nasal route codes"
+665096,UNSURE,"R05DB-series (alone), exact suffix uncertain",missing-combo-L5,Carbetapentane tannate+phenylephrine tannate oral suspension; same carbetapentane coding uncertainty as rxcui 1294368
+1543074,CORRECT,,,"Tripelennamine topical cream; D04AA04 correct, fixes wrong systemic antihistamine route code"
+315109,UNSURE,R05CA03 (alone),missing-combo-L5,"Guaifenesin+phenylephrine ER capsule; unclear offline whether the expectorant combo code already covers the decongestant partner, making the added R01BA03 unnecessary"
+91348,CORRECT,,,"Hydrogen peroxide topical solution; D08AX01 correct, fixes wrong dental/oral-use code A01AB02"
+209971,UNSURE,possibly R02AD-series or C05AD-series depending on intended mucosal site,l4-vs-l5-granularity,Cetacaine (benzocaine/butamben/tetracaine) topical/mucosal anesthetic; sole N01BA03 code may not reflect the site-specific local-anesthetic classification family used elsewhere in this dataset (C05AD/R02AD for anorectal/throat use)
+1112250,WRONG,R01BA52,combo-split-to-ingredients,Desloratadine+pseudoephedrine ER tablet (Clarinex-D); should use R01BA52 pseudoephedrine-combinations suffix; new_final drops desloratadine entirely and keeps only the bare single-ingredient pseudoephedrine code
+1012233,WRONG,C05AA01 plus a C05AD-series lidocaine anorectal code,combo-split-to-ingredients,"Hydrocortisone acetate+lidocaine rectal cream; missing lidocaine's anorectal local-anesthetic code (cf. C05AD03 used elsewhere in this dataset for a similar anesthetic), only the steroid component is retained"
+1234580,WRONG,S01FB01,wrong-strength-indication,"Neo-Synephrine 2.5% ophthalmic solution is the prescription mydriatic strength/use (S01FB01, sympathomimetic mydriatics); S01GA05 is the low-concentration OTC decongestant/antiallergic class; production's S01FB01 was correct"
+1928545,CORRECT,,,"Chlorhexidine gluconate medicated antiseptic pad; D08AC02 (topical antiseptic) plus D09AA12 (medicated dressing) is a reasonable dual classification for this dressing/pad form, fixes wrong dental/throat route codes"
+581285,WRONG,J01CR01,combo-split-to-ingredients,"Ampicillin+sulbactam (Unasyn) has a dedicated WHO combination code J01CR01 ('ampicillin and beta-lactamase inhibitor'), confirmed via local snapshot data/who-atc-snapshots/J01CR.json; splitting into J01CA01|J01CG01 loses the combination classification"
+1665675,CORRECT,,,"Ketorolac tromethamine injectable cartridge; M01AB15 correct, fixes wrong ophthalmic route code S01BC05"
+686383,UNSURE,possibly a dedicated antibacterial-combination code (J01RA-series),missing-combo-L5,Erythromycin ethylsuccinate+sulfisoxazole (Pediazole); cannot confirm offline whether a dedicated WHO combination code supersedes the ingredient split J01EB05|J01FA01
+801357,CORRECT,,,Plasma-Lyte 148 balanced electrolyte IV fluid (no dextrose); B05BB01 (electrolytes) correctly distinguishes it from the glucose-containing B05BB02 used elsewhere in this dataset
+2184150,WRONG,R01BA53 (phenylephrine component) plus A03BB03 and R06AB04,combo-split-to-ingredients,"Phenylephrine+chlorpheniramine+methscopolamine ER tablet; the phenylephrine component should use the R01BA53 combinations suffix per this dataset's own precedent (rxcui 1294196), not the bare single-ingredient R01BA03"
+990986,CORRECT,,,"Physostigmine ophthalmic ointment (miotic); S01EB05 correct, fixes wrong systemic-antidote code V03AB19"
+351380,CORRECT,,,"Ciclopirox topical cream (Loprox); D01AE14 correct, fixes wrong vaginal-antifungal route code G01AX12"
+240984,WRONG,J01CR01,salt-mismatch,"J01CR04 is sultamicillin, a distinct single-molecule mutual ester prodrug, not the free ampicillin+sulbactam combination product actually named here; confirmed via local snapshot data/who-atc-snapshots/J01CR.json that J01CR01 is 'ampicillin and beta-lactamase inhibitor'"
+313947,CORRECT,,,"Dexamethasone/neomycin/polymyxin B ophthalmic ointment (Maxitrol-type); S01CA01 correct combo code, fixes extensive multi-route ingredient pollution"
+1999989,CORRECT,,,"Lidocaine medicated liquid soap; D04AB01 (topical) correct, fixes redundant systemic/throat codes"
+197724,CORRECT,,,"Flurbiprofen oral tablet; M01AE09 (systemic NSAID) correct, fixes wrong throat-lozenge route code R02AX01"
+1657007,WRONG,L01XC11,stale-or-retired-code,"Ipilimumab's established WHO ATC code is L01XC11 (monoclonal antibody, immune checkpoint inhibitor); L01FX04 reflects an incorrect/outdated bucket; production's L01XC11 was correct"
+1038947,CORRECT,,,"Dyclonine+menthol throat lozenge (Sucrets Complete); R02AD04 correct, fixes wrong systemic-anesthetic code N01BX02"
+706943,WRONG,"likely a code under R05CB (expectorants/mucolytics), exact suffix uncertain",other,"7% sodium chloride inhalation solution (hypertonic saline mucolytic, e.g. for CF sputum clearance); new_final is blank/no code assigned, but a real WHO code most likely exists for this product class rather than none"
+545875,WRONG,N02BE51,combo-split-to-ingredients,"Acetaminophen+aspirin+caffeine+salicylamide combo tablet (Levacet); the paracetamol-combinations catch-all code N02BE51 (used elsewhere in this same dataset's production values, rxcui 1092412) is the more correct consolidated code than the 4-way ingredient split"
+1236716,WRONG,R01BA52,combo-split-to-ingredients,Chlorcyclizine+pseudoephedrine tablet (Stahist AD); should use R01BA52 pseudoephedrine-combinations suffix; new_final drops chlorcyclizine entirely and keeps only the bare single-ingredient code
+1293036,CORRECT,,,Chlorpheniramine tannate+methscopolamine nitrate oral suspension; ingredient-level split (A03BB03|R06AB04) is a reasonable fallback since no dedicated combo code for this antihistamine+antispasmodic pairing is evident
+310870,CORRECT,,,"Hydrocortisone+iodoquinol topical cream; L4-only D07BA (weak steroid+antiinfective combos) is a defensible fallback when no exact L5 exists, fixes wrong vaginal-antifungal route code G01AC01"
+261179,CORRECT,,,"Nystatin topical powder (Pedi-Dri); D01AA01 correct, fixes wrong oral/dental/GI route codes"
+1303746,WRONG,A16AA01|C01EB09,l4-vs-l5-granularity,"Levocarnitine+ubidecarenone (CoQ10) supplement capsule; C01EX does not correspond to either real ingredient's classification (levocarnitine is A16AA01, ubidecarenone is C01EB09, matching production); no dedicated combo L5 known, so the ingredient split is the correct fallback, not C01EX"
+1092412,CORRECT,,,"Tylenol Extra Strength Day/Night pack (BPCK combining plain-APAP and APAP+diphenhydramine tablets); listing both actual active ingredients present in the pack (N02BE01, R06AA02) is a reasonable, transparent representation"
+901818,CORRECT,,,"Advil PM (diphenhydramine+ibuprofen); M01AE01 and R06AA02 are each individually correct WHO codes for the two ingredients; no dedicated combo L5 exists for this pairing, so per-ingredient codes are an accurate representation"
+1117522,CORRECT,,,"Colistin injectable solution; J01XB01 (systemic polymyxin) correct, fixes wrong oral/GI route code A07AA10"
+206527,CORRECT,,,"Hydrocortisone/neomycin/polymyxin B otic suspension (Pediotic); S02CA03 correct otic combo code, fixes extensive route pollution"
+1305135,CORRECT,,,Multivitamin/mineral/omega-3 supplement capsule; ingredient-level split is the expected fallback since WHO does not code specific multivitamin formulations
+314982,CORRECT,,,"Ascorbic acid+ferrous fumarate+vitamin B12 ER capsule; ingredient-level split (A11GA01|B03AA02|B03BA01) correct, no dedicated combo code expected"
+1926461,CORRECT,,,"Capsaicin+menthol patch (8.3mg/30mg strength); M02AB01 correct, same as rxcui 1658313"
+966623,CORRECT,,,"Generic beclomethasone MDI inhaler; R03BA01 correct, same as rxcui 966550"
+312887,UNSURE,possibly D11AF alone (wart/corn class),l4-vs-l5-granularity,"260 mg/mL (26%) salicylic acid solution is wart/corn-remover strength, correctly suggesting D11AF (preparations for warts and corns); pairing it with D01AE12 (lower-strength antifungal/keratolytic use) may be superfluous, but cannot confirm the exact WHO L5 offline"
+856810,CORRECT,,,Amitriptyline+perphenazine tablet (Triavil); N06CA01 ('amitriptyline and psycholeptics') confirmed via local snapshot data/who-atc-snapshots/N06CA.json as the exact correct combo code
+1039147,CORRECT,,,"Benzocaine+pectin throat lozenge (Cepacol Sore Throat Plus); R02AD01 correct, fixes unrelated GI-adsorbent code A07BC01"
+206510,CORRECT,,,"Hydrocortisone/neomycin/polymyxin B otic solution (Cortratigen); S02CA03 correct, same pattern as rxcui 206527"
+902644,CORRECT,,,"Tetracycline oral solution (Ornacycline); J01AA07 (systemic tetracycline) correct, fixes wrong topical route code D06AA04"

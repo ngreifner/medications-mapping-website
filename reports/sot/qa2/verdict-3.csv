@@ -1,0 +1,81 @@
+rxcui,judgment,should_be,reason_category,note
+1293731,WRONG,C05AA01|C05AD08,route-pollution,Pramoxine's WHO code is likely C05AD08 not C05AD07; otherwise fine for a rectal cream
+1545297,CORRECT,,,Lidocaine topical spray correctly narrowed to D04AB01
+9877,UNSURE,,other,B01AB01/C05BA03 plausible for heparin but S01XA14 unverifiable offline
+198158,CORRECT,,,Procaine injectable correctly narrowed to N01BA02
+198468,WRONG,N02BA01,ingredient-level-overbroad,A01AD05 (dental) and B01AC06 (antiplatelet) don't fit a 325mg rectal analgesic suppository
+1547773,CORRECT,,,Tetracaine ophthalmic correctly narrowed to S01HA03
+828602,CORRECT,,,Aspirin/caffeine/propoxyphene triple correctly ingredient-split (no dedicated WHO combo code)
+248108,CORRECT,,,Acyclovir injectable correctly narrowed to J05AB01
+616763,CORRECT,,,Ethanol topical foam correctly narrowed to D08AX08
+1297584,CORRECT,,,Triple cough/cold tannate combo correctly ingredient-split
+312178,CORRECT,,,Oxyphenbutazone oral correctly narrowed to M01AA03
+1291092,UNSURE,,other,Ambiguous whether hydrocortisone acetate suppository (Proctocort) is A07EA02 (proctitis) or C05AA01 (hemorrhoid) without WHO site access
+1013731,CORRECT,,,Phenylephrine/pyrilamine oral combo correctly resolved (R01BA53 combo code + R06AC01)
+1537194,CORRECT,,,Benzethonium/diphenhydramine/hydrocortisone topical spray plausibly correct
+1250282,UNSURE,,other,Exact A02AD subcode for aluminum hydroxide + magnesium carbonate combo unverifiable offline
+2168528,WRONG,D04AB01 + phenylephrine's topical code,other,Phenylephrine's ATC code dropped entirely from the lidocaine/phenylephrine topical spray combo
+313801,CORRECT,,,Ampicillin/probenecid correctly ingredient-split (J01CA01 + M04AB01)
+310933,CORRECT,,,Hypromellose ophthalmic correctly narrowed to S01KA02
+616880,CORRECT,,,Carbetapentane/chlorpheniramine/phenylephrine correctly ingredient-split
+1249710,WRONG,H02AB02,route-pollution,Injectable solution should not carry dental (A01AC02), rectal (C05AA09), or ophthalmic/otic (S03BA01) codes
+1094385,CORRECT,,,Oral diphenhydramine correctly narrowed to R06AA02
+226552,WRONG,A04AD01,wrong-strength-indication,Transdermal scopolamine (motion sickness) is A04AD01 (antiemetic); N05CM05 doesn't fit this product's indication
+1372890,WRONG,D07AA02|D08AE03,route-pollution,8 codes for a 2-ingredient topical gel; rectal (C05AA01) and antimicrobial-combination (D07AB02/D07AB11/D07XA01) codes don't apply
+313927,CORRECT,,,Chlorpheniramine/codeine/phenylephrine oral solution correctly ingredient-split
+2001364,CORRECT,,,Benzhydrocodone/acetaminophen correctly mapped to hydrocodone+paracetamol combo code N02AJ22
+1300719,WRONG,D02AF01,l4-vs-l5-granularity,WHO has a Level 5 for salicylic acid (D02AF01); only the L4 D02AF was given
+1552450,CORRECT,,,Capsaicin patch correctly narrowed to M02AB01 (menthol has no dedicated WHO code)
+1425118,CORRECT,,,Trametinib correctly updated to current WHO code L01EE01 (was stale L01XE25)
+1190894,CORRECT,,,Atropine/phenobarbital antispasmodic combo plausibly correct as A03CB03
+603929,CORRECT,,,Benzocaine rectal ointment correctly narrowed to C05AD03
+310868,CORRECT,,,Plain hydrocortisone rectal cream correctly narrowed to C05AA01
+1100258,WRONG,"drop R05CA02; keep A06AA02|A11CC05|A11DA01|A11GA01|A11HA01|A11HA02|A11HA04|A12AA13|B03BB01|V03AB21",other,R05CA02 (expectorant combination) does not correspond to any ingredient in this multivitamin/mineral tablet
+1012224,CORRECT,,,Prednisolone/sulfacetamide ophthalmic combo correctly mapped to dedicated code S01CA02
+1235389,WRONG,add codes for niacin/riboflavin/vitamin E,other,Only 8 codes given for 11 ingredients; niacin, riboflavin and vitamin E appear to be missing coverage
+1297354,WRONG,N02BA01|R01BA02,ingredient-level-overbroad,A01AD05 (dental) and B01AC06 (antiplatelet) don't fit an oral analgesic/decongestant combo
+756337,CORRECT,,,Oral KCl solution correctly narrowed to A12BA01
+1094447,WRONG,C05AA01|C05AD08,route-pollution,Extra A07EA02/D07AA02/D07XA01 don't fit a rectal cream; pramoxine code likely C05AD08 not C05AD07; also inconsistent with sibling row 1293731's cleaner answer for the same combo
+351291,CORRECT,,,Cyclosporine ophthalmic correctly narrowed to S01XA18
+311320,WRONG,N01BB20,missing-combo-L5,Lidocaine+prilocaine (EMLA-type) combo has a dedicated WHO combination code; ingredient-split (D04AB01+N01BB04) used instead
+994228,WRONG,M03BA02|N02BA01|R05DA04,ingredient-level-overbroad,A01AD05 (dental) and B01AC06 (antiplatelet) don't fit this analgesic/muscle-relaxant/opioid combo
+1737568,WRONG,N01BB02,wrong-strength-indication,2 mL of 1% lidocaine is a small local-anesthetic vial, not an IV antiarrhythmic dose (contrast the 250 mL 0.8% bag at rxcui 1737723 correctly coded C01BB01)
+206212,CORRECT,,,Erythromycin topical acne gel correctly narrowed to D10AF02
+1248241,CORRECT,,,Docusate/phenolphthalein laxative combo plausibly correct
+1427959,WRONG,D02AB02,l4-vs-l5-granularity,Zinc oxide has a dedicated Level 5 (D02AB02); only the L4 D02AB was given
+1242401,WRONG,R01BA02|R06AX13,other,Loratadine's antihistamine code (R06AX13) dropped from the loratadine/pseudoephedrine decongestant combo
+1012021,CORRECT,,,Prednisolone/sulfacetamide ophthalmic combo correctly mapped to dedicated code S01CA02
+1303110,CORRECT,,,Benzalkonium chloride medicated dressing pad plausibly correctly mapped to D09AA11 (form-specific dressing class distinct from D08AJ01 liquid/gel class)
+1436083,CORRECT,,,Lidocaine rectal cream correctly narrowed to C05AD01
+203576,CORRECT,,,Loratadine (Claritin) correctly upgraded from L4 R06AX to L5 R06AX13
+1544645,CORRECT,,,Benzalkonium chloride topical gel correctly narrowed to D08AJ01
+199099,WRONG,D02AB02,l4-vs-l5-granularity,Zinc oxide has a dedicated Level 5 (D02AB02); only the L4 D02AB was given
+997415,WRONG,R01BA02|R06AX26,other,Fexofenadine's antihistamine code (R06AX26) dropped from the fexofenadine/pseudoephedrine decongestant combo
+856987,CORRECT,,,Hydrocodone/acetaminophen correctly mapped to dedicated combo code N02AJ22
+308640,CORRECT,,,Benzocaine topical ointment correctly narrowed to D04AB04 (boric acid has no dedicated WHO code)
+1737723,CORRECT,,,Large-volume dilute lidocaine infusion bag correctly mapped to antiarrhythmic C01BB01
+1120017,WRONG,D08AX01,other,D11AX25 is a spurious/unrelated extra code for a single-ingredient hydrogen peroxide topical solution
+1147496,WRONG,N02AJ06|N02BA01|N02BA05|N06BC01,other,Aspirin's own code (N02BA01) dropped even though aspirin is a separate listed ingredient from salicylamide
+1089121,WRONG,D01AC20,missing-combo-L5,Miconazole + zinc oxide antifungal/skin-protectant combo (Vusion-type product) has a dedicated WHO combination code
+1005845,CORRECT,,,Sulfacetamide/sulfur acne topical cream plausibly correct
+1868839,WRONG,A11HA07|B03BB01,l4-vs-l5-granularity,Folic acid's well-established Level 5 (B03BB01) dropped in favor of the vague L4 A11JA
+1927647,CORRECT,,,Benzocaine medicated pad correctly narrowed to C05AD03
+1437306,CORRECT,,,Oral diphenhydramine correctly narrowed to R06AA02
+672601,WRONG,N02BE01|N06BC01,other,Regression: caffeine's code (N06BC01), already correct in production, was dropped; magnesium salicylate also left uncoded
+991037,WRONG,N01BA05|D04AB04,route-pollution,C05AD03 is the rectal-specific benzocaine code and does not belong on a dental/oral ointment
+1606488,CORRECT,,,Lidocaine medicated patch correctly narrowed to D04AB01
+1049898,CORRECT,,,Diphenhydramine topical spray correctly narrowed to D04AA32
+389141,CORRECT,,,3 mg apomorphine sublingual strength matches the discontinued erectile-dysfunction formulation (G04BE07) rather than the higher-dose Parkinson's formulation (N04BC07)
+1359743,CORRECT,,,Lidocaine prefilled syringe (injectable) correctly narrowed to N01BB02
+1147228,CORRECT,,,Vemurafenib correctly updated to current WHO code L01EC01 (was stale L01XE15)
+860928,CORRECT,,,Benzocaine rectal suppository correctly narrowed to C05AD03 (trimethobenzamide likely has no dedicated WHO code)
+584534,CORRECT,,,Erythromycin ophthalmic ointment correctly narrowed to S01AA17
+1190166,WRONG,D04AB01|D08AJ01,wrong-route,No indication this is a rectal-specific product; the rectal lidocaine code C05AD01 is misapplied to a general topical spray
+1145942,CORRECT,,,Acetaminophen/caffeine correctly mapped to the single dedicated combo code N02BE51
+1297952,CORRECT,,,Diphenhydramine/hydrocortisone topical spray correctly ingredient-split (D07AA02 + D04AA32)
+834160,CORRECT,,,Chlorhexidine medicated soap correctly narrowed to D08AC02
+1193037,WRONG,A11CC05|A11HA02|B03BA01|B03BB01,l4-vs-l5-granularity,Well-established individual vitamin Level 5 codes dropped in favor of the vague L4 A11JC
+1112713,CORRECT,,,Oral diphenhydramine correctly narrowed to R06AA02
+314029,CORRECT,,,HCTZ/triamterene correctly mapped to dedicated combo code C03EA01 (verified against local WHO snapshot)
+1657026,UNSURE,,other,Unclear whether epinephrine (vasoconstrictor adjuvant) warrants its own ATC code in this dental anesthetic cartridge; N01BB02 alone may be legitimate
+602395,CORRECT,,,Abacavir/lamivudine correctly mapped to dedicated combo code J05AR02 (verified against local WHO snapshot)
