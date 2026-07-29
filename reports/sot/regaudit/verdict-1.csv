@@ -1,0 +1,101 @@
+rxcui,verdict,recommended_final,confidence,evidence
+1738589,IMPROVED,H02AB09,HIGH,ATCPROD confirms H02AB systemic corticosteroid; H02AB09=hydrocortisone; prod was 7-code ingredient pollution
+1193353,IMPROVED,L01EJ01,HIGH,ATCPROD confirms L01EJ; WHO reclassified ruxolitinib L01XE18(old)->L01EJ01(JAK inhibitors)
+1373142,IMPROVED,D04AB01,HIGH,ATCPROD confirms D04AB; D04AB01=lidocaine topical; dropped wrong-route N01BB02/R02AD02
+1926571,IMPROVED,D07AA02,MED,Shampoo route confirmed; D07AA02=hydrocortisone weak topical corticosteroid is WHO-correct despite ATCPROD's coarser D11AC hit (D11AC has no hydrocortisone member per WHO index)
+832907,IMPROVED,A11CC05|A12AA04,HIGH,A12AA04=calcium carbonate mineral supplement (WHO confirmed); prod missing this ingredient entirely
+312894,BOTH_WRONG,D02AF,HIGH,"WHO guideline: 'all other preparations containing salicylic acid...classified in D02AF'; new_final's D11AF is an EMPTY/unpopulated WHO class (verified on atcddd.fhi.no, zero substances assigned); prod's D01AE12 is antifungal-context only, N02BA04 wrong route"
+990993,IMPROVED,S01EB01|S01EB05,HIGH,"classMembers confirmed: pilocarpine=S01EB01, physostigmine=S01EB05 (ophthalmic parasympathomimetics); prod had wrong-route systemic N07AX01"
+208589,IMPROVED,S01AA03|S01AA18|S01BA01,HIGH,"confirmed: neomycin=S01AA03, polymyxinB=S01AA18, dexamethasone=S01BA01 (all ophthalmic); prod was 5-code route pollution"
+2046141,IMPROVED,L01FG01,HIGH,"ATCPROD confirms L01FG; bevacizumab biosimilar IV oncology infusion=L01FG01, not ophthalmic S01LA08"
+1297551,IMPROVED,R01BA03|R05DB05|R06AA02,HIGH,confirmed all 3 ingredient codes (phenylephrine/carbetapentane/diphenhydramine) via classMembers; prod only had 1 of 3
+701627,IMPROVED,A11CB,HIGH,ATCPROD confirms A11CB; WHO 'Vitamin A and D in combination' is terminal 5-char code w/ no L5 children; prod's A11CA01 ignored the vitamin D component
+1086475,IMPROVED,R01BA03|R06AB04,MED,"adds missing phenylephrine code (ideally R01BA53 per WHO 'combos w/ antihistamines' guideline, but plain code still an improvement over missing entirely)"
+313908,IMPROVED,D07BA04,HIGH,"WHO D07BA04='hydrocortisone and antiseptics', exact match for clioquinol+hydrocortisone gel"
+1006703,IMPROVED,S01AB04,HIGH,"confirmed S01AB04=sulfacetamide (ophthalmic); prod's D10AB02 is sulfur's code, wrong substance/route entirely"
+580294,IMPROVED,D01AC14,HIGH,ATCPROD confirms D01AC; sertaconazole topical=D01AC14; dropped wrong vaginal G01AF19
+1116912,IMPROVED,A03BA01,HIGH,injectable atropine=A03BA01 systemic; dropped wrong ophthalmic S01FA01
+1436929,IMPROVED,M02AB01,MED,"capsaicin has dual WHO codes (M02AB01 topical musculoskeletal, N01BX04 local anesthetic/Qutenza patch); low-dose OTC cream fits M02AB01"
+1798481,IMPROVED,D04AB07,HIGH,confirmed D04AB07=pramoxine topical anesthetic; prod's C05AX04 wrong (hemorrhoidal class)
+259047,IMPROVED,J01GB03,HIGH,injectable gentamicin=J01GB03 systemic aminoglycoside; prod had topical/otic route codes
+750245,IMPROVED,G03AA06,HIGH,confirmed G03AA06='norgestrel and ethinylestradiol' exact WHO combo code; prod's G03CA01 only covered the estrogen component
+108329,IMPROVED,D01AC08,HIGH,ATCPROD confirms D01AC; topical ketoconazole cream; dropped wrong systemic J02AB02
+1436374,IMPROVED,M02AB01,MED,same capsaicin OTC-cream reasoning as rxcui 1436929
+1245700,IMPROVED,A06AA02|A06AB04,MED,"adds docusate's code (A06AA02, sodium-salt WHO code used as active-moiety proxy, no distinct WHO code for docusate calcium); phenolphthalein=A06AB04 confirmed"
+1251782,IMPROVED,A12BA04|B05CB02|B05CB04,MED,"adds missing potassium bicarbonate code (A12BA04); WHO has no oral-specific code for sodium citrate/bicarbonate distinct from the B05CB irrigation-solution class, so ingredient-level fallback used"
+999613,BOTH_WRONG,D10AB02|D10AF06,HIGH,"WHO confirmed: D10AB02=sulfur, D10AF06=sulfacetamide; prod had only sulfur's code, new has only sulfacetamide's code -- product contains BOTH ingredients"
+1918453,BOTH_WRONG,D04AB04|D08AJ01,MED,"benzocaine=D04AB04, benzalkonium=D08AJ01 (both confirmed, both already present in prod amid noise); new_final dropped D08AJ01"
+244537,BOTH_WRONG,D02AF|D10AB02,HIGH,"sulfur=D10AB02 (confirmed, present in both); salicylic acid in a non-shampoo/non-antifungal cream=D02AF per WHO guideline, not D01AE12 as new_final used"
+260688,IMPROVED,G01AX11,HIGH,confirmed G01AX11=povidone-iodine (vaginal/gynecological); Betadine douche; prod was 5-code route pollution
+1011342,IMPROVED,C01BB01|N01BB02,HIGH,"injectable lidocaine has dual legitimate WHO uses (antiarrhythmic C01BB01, local anesthetic N01BB02); prod had wrong topical/throat codes"
+2106334,BOTH_WRONG,J07AM51,HIGH,"WHO has dedicated combo code J07AM51='tetanus toxoid, combinations with diphtheria toxoid' for Td vaccine (Tdvax); neither prod's [J07AF01,J07AM01] nor new's [J07AM01 alone] uses it"
+1037305,IMPROVED,R01BA51|R06AB05|R06AC01,HIGH,"confirmed correct per WHO 'combos with antihistamines' guideline (phenylpropanolamine,combinations)+pheniramine+mepyramine; prod had only 1 of 4 ingredients coded"
+603646,BOTH_WRONG,R05DB05|R01BA53|R06AC01,HIGH,"new_final dropped carbetapentane's code (R05DB05) that prod correctly had; C-Tanna 12D has 3 active ingredients, all need codes"
+1046501,BOTH_WRONG,D02AF,HIGH,"Proactiv Cleansing (acne soap); WHO explicitly routes anti-acne salicylic acid preparations to D02AF, not D01AE12 which both prod and new used"
+1006684,IMPROVED,D10AF06,HIGH,single-ingredient sulfacetamide cream (no sulfur); D10AF06 confirmed correct; prod's D10AB02 was sulfur's code (wrong substance)
+198861,IMPROVED,A02AH,HIGH,"ATCPROD confirms A02AH ('Antacids with sodium bicarbonate', terminal code) for oral sodium bicarbonate tablet; prod's B05CB04/B05XA02 are IV/irrigation-only codes"
+2109512,IMPROVED,D04AB07,HIGH,confirmed D04AB07=pramoxine; ATCPROD confirms D04AB; dropped wrong C05AD07
+403942,IMPROVED,R01BA03|R05CA03|R06AC01,MED,"guaifenesin=R05CA03 confirmed; adds missing phenylephrine+pyrilamine codes (phenylephrine ideally R01BA53 per guideline, but improvement regardless)"
+1294262,IMPROVED,D08AC02,HIGH,ATCPROD confirms D08AC; chlorhexidine topical antiseptic; dropped wrong dental/throat codes
+1099575,REGRESSED,R01BA52,MED,identical drug to Actifed/Wal-Act rows which correctly resolved to single code R01BA52 per WHO 'pseudoephedrine combos w/ antihistamines' guideline; this row's new_final dropped R01BA52 (which prod already had) keeping only plain R01BA02
+855644,IMPROVED,D11AX18,HIGH,"WHO guideline text explicit: 'Diclofenac formulated as a 3% hyaluronic acid gel used in treatment of actinic keratoses is classified in D11AX18' -- exact match for Solaraze; new_final added D11AX18 correctly (extraneous M02AA15 should be dropped, that's for arthritis-gel diclofenac)"
+1099448,IMPROVED,R01BA52,HIGH,exact match to WHO guideline for pseudoephedrine+antihistamine combo (Actifed)
+1491000,IMPROVED,D06AX05,HIGH,topical bacitracin; dropped wrong systemic/throat codes
+1300294,IMPROVED,D04AB04|D08AJ08,HIGH,benzocaine+benzethonium chloride both confirmed correct topical codes; prod had wrong-route R02AA09
+884221,IMPROVED,N02CX02,HIGH,ATCPROD confirms N02CX; clonidine injectable formulated/marketed for epidural analgesic use per RxNav product curation
+1111750,IMPROVED,A11DA01|A11HA01|A11HA02|A11HA04|A11HA30|A12CB01|B03BA01,HIGH,"adds A11HA30=dexpanthenol (WHO confirmed), previously missing entirely from prod"
+197583,IMPROVED,H02AB02,HIGH,ATCPROD confirms H02AB; oral dexamethasone tablet; dropped wrong ophthalmic S01BA01
+310933,REGRESSED,S01XA20,HIGH,"WHO guideline explicit: 'Hypromellose used as artificial tears is...classified in S01XA20'; this 0.3% Ophthalmic Solution is an artificial-tears formulation not surgical viscoelastic (S01KA02); prod had BOTH codes incl. correct S01XA20; new_final dropped the correct one, kept only the wrong surgical code"
+1537337,IMPROVED,D11AC30,HIGH,WHO guideline explicit: 'Medicated shampoos containing salicylic acid are classified in D11AC30'; new_final correctly identified family D11AC (matches ATCPROD) though missing L5 suffix; prod's D01AE12/N02BA04 both wrong
+260847,IMPROVED,N02BA01,HIGH,"ATCPROD confirms N02BA; Bufferin 325mg=analgesic-dose aspirin, N02BA01 correct; dropped antiplatelet-dose code B01AC06 and unnecessary N02BA51"
+259240,IMPROVED,A02AA02|A06AD02|A12CC10,HIGH,all 3 confirmed legitimate WHO codes for magnesium oxide (antacid/laxative/supplement uses); plain unspecified-indication capsule; prod missing 1 of 3
+800294,IMPROVED,B05BA01,HIGH,confirmed B05BA01=amino acids (parenteral nutrition); TPN amino-acid injectable; prod had unrelated/wrong codes
+310467,IMPROVED,S01AA11,HIGH,"ATCPROD confirms S01AA; pure ophthalmic solution (not combined otic/ophthalmic)=S01AA11, not S03AA06"
+392147,REGRESSED,A01AA01,HIGH,"WHO guideline explicit: 'Fluoride used in caries prophylaxis, see A01AA'; A12CD01 is specifically for OSTEOPOROSIS treatment, not mouthwash/dental use; prod's single-code A01AA01 was already fully correct, new_final incorrectly added A12CD01"
+1248347,BOTH_WRONG,D11AC30,HIGH,same substance+doseform as rxcui 1537337 (shampoo); WHO routes to D11AC30; new_final kept prod's wrong D01AE12 (only dropped extra wrong N02BA04) -- inconsistent vs. sibling row's better handling
+807396,IMPROVED,B05BB01,HIGH,"confirmed B05BB01='electrolytes', WHO's consolidated multi-electrolyte IV code; ATCPROD confirms; prod was 9-code ingredient pollution"
+1046954,BOTH_WRONG,A03CB31,MED,WHO has dedicated combo code A03CB31='hyoscyamine and psycholeptics' for the belladonna-alkaloids+phenobarbital (Donnatal-type) formula; neither prod's nor new's ingredient-decomposition list uses it
+580001,IMPROVED,S01XA20,HIGH,ATCPROD confirms S01XA; mineral oil/petrolatum ophthalmic lubricant ointment; matches established S01XA20 artificial-tears/lubricant pattern
+307762,IMPROVED,A02AF02,MED,"Maalox-type combo; WHO has dedicated code A02AF02='ordinary salt combinations and antiflatulents' (Al(OH)3+Mg(OH)2+simethicone), more specific than new_final's generic A02AX catch-all, but both correct family vs. prod's incomplete single-ingredient A02AB01"
+1367172,IMPROVED,A07EA06|D07AC09|R01AD05|R03BA02,HIGH,PIN/ingredient-level input; all 4 confirmed legitimate WHO codes for budesonide across GI/topical/nasal/inhaled routes; prod had only 1 of 4
+1000859,BOTH_WRONG,D10AB02|D10AF06,HIGH,same sulfacetamide+sulfur incompleteness pattern as rxcui 999613
+1737566,BOTH_WRONG,C01BB01|N01BB02,MED,"generic small-volume injectable lidocaine has dual legitimate uses (established elsewhere in dataset); new_final kept only the antiarrhythmic code, dropping the local-anesthetic use present in prod"
+1101339,IMPROVED,N02BF01,HIGH,"ATCPROD confirms N02BF; gabapentin enacarbil (Horizant)=current WHO Gabapentinoids class, not older antiepileptic N03AX12"
+1246599,IMPROVED,D03AX05,HIGH,"WHO guideline: 'Medicated dressings containing hyaluronic acid are classified in D03AX'; Bionect wound gel; prod's M09AX01 is for intra-articular/surgical hyaluronic acid, wrong use"
+1425407,IMPROVED,D08AX08,HIGH,ATCPROD confirms D08AX; ethanol topical antiseptic spray; dropped unrelated antidote/deterrent codes
+1012955,IMPROVED,D04AB01,HIGH,topical lidocaine solution; matches established D04AB01 pattern
+308368,IMPROVED,N02BA01|N06BC01,HIGH,confirmed N06BC01=caffeine (already in prod); adds missing aspirin code N02BA01
+1440191,IMPROVED,D02AA,HIGH,ATCPROD confirms D02AA; dimethicone emollient lotion; dropped wrong anti-lice code P03AX05
+1591982,IMPROVED,D02AA|D02AB,HIGH,dimethicone(D02AA)+zinc oxide(D02AB) both confirmed emollient/protectant codes; dropped wrong P03AX05
+859132,IMPROVED,G04BE01,HIGH,ATCPROD confirms G04BE; Muse=alprostadil urethral suppository for ED; dropped wrong cardiac-use code C01EA01
+205336,IMPROVED,A01AB02,HIGH,ATCPROD confirms A01AB; mucosal/oral local antiseptic use; dropped general skin antiseptic D08AX01
+1232104,IMPROVED,D02AB,HIGH,ATCPROD confirms D02AB; zinc oxide protective; dropped wrong hemorrhoidal C05AX04
+1006105,BOTH_WRONG,D10AB02|D10AF06,HIGH,same sulfacetamide+sulfur incompleteness pattern as rxcui 999613 (Avar)
+211591,IMPROVED,D07AA02,HIGH,ATCPROD confirms D07AA; hydrocortisone topical cream (Cortaid); dropped 6 wrong-route codes
+198248,IMPROVED,N01BA03,HIGH,ATCPROD confirms N01BA; injectable tetracaine local/spinal anesthetic; dropped topical/ophthalmic/anorectal codes
+884231,IMPROVED,C02AC01|C03BA04,HIGH,"adds missing clonidine code (C02AC01, WHO confirmed); Combipres=chlorthalidone+clonidine combo"
+1305205,IMPROVED,A11CA01|A11CC01|A11DA01|A11GA01|A11HA01|A11HA02|A11HA04|A11HA05|A11HA30|B02BA01|B03BA01|B03BB01,HIGH,same dexpanthenol(A11HA30) fix as rxcui 1111750
+1250471,BOTH_WRONG,D02AF,MED,"Dermarest Psoriasis lotion; doesn't fit WHO's shampoo/antifungal/joint-pain/corticosteroid exceptions, falls to D02AF catch-all per guideline; both prod and new used wrong D01AE12"
+212462,IMPROVED,A02AC01,HIGH,ATCPROD confirms A02AC; Alka-Mints marketed as antacid; A02AC01=calcium carbonate antacid class confirmed
+282739,IMPROVED,R01BA53|R06AB54|R06AC01,HIGH,"correct, consistent application of WHO 'combinations' suffix convention for all 3 ingredients"
+993242,IMPROVED,J01FF01,HIGH,oral capsule systemic clindamycin; dropped wrong topical-acne code D10AF01
+998476,IMPROVED,A01AB09|J02AB01,MED,"Injectable Solution needs systemic antifungal code J02AB01 (correctly added, absent from prod); A07AC01 addition looks spurious (oral-route GI antifungal code, doesn't fit injectable) and should be dropped"
+608844,IMPROVED,D01AC08,HIGH,WHO guideline: 'Shampoos containing imidazoles are classified in D01AC'; confirms Nizoral ketoconazole shampoo correctly stays D01AC08; dropped wrong systemic J02AB02
+1088846,IMPROVED,R01BA03|R06AA02,MED,"Benadryl-D; prod had zero correct codes (all wrong-route); new adds correct-family codes, though phenylephrine ideally R01BA53 per guideline"
+1094748,BOTH_WRONG,D08AJ01,MED,both prod and new retain extraneous wrong codes around the shared correct D08AJ01 (prod: wrong-substance D08AJ08 + wrong-route R02AA16; new: wrong-substance D08AJ08 + dressing-only D09AA11 on a cream product)
+904617,IMPROVED,D02AE01|D10AF06,HIGH,"ATCPROD confirms D02AE+D10AF; urea=D02AE01, sulfacetamide=D10AF06, both confirmed correct for this 2-product pack"
+616798,IMPROVED,D04AB04|D08AX08,HIGH,benzocaine+ethanol both confirmed; dropped wrong anorectal/throat codes
+1357942,IMPROVED,R01BA03|R05DA03|R06AB02,MED,adds missing phenylephrine code; hydrocodone antitussive+dexchlorpheniramine already correct in prod
+1190540,IMPROVED,A03BA01,HIGH,systemic atropine auto-injector; dropped wrong ophthalmic S01FA01
+2045120,IMPROVED,D08AC02,HIGH,chlorhexidine topical antiseptic spray; matches established pattern
+1010895,IMPROVED,D04AB01,HIGH,topical lidocaine cream; matches established pattern
+1988786,IMPROVED,L01ED04,HIGH,"ATCPROD confirms L01ED; brigatinib=ALK inhibitor, consistent with WHO kinase-inhibitor reclassification pattern (cf. ruxolitinib rxcui 1193353)"
+544241,IMPROVED,A07AA02,HIGH,"oral delayed-release nystatin (Mycostatin), systemic/intestinal use; dropped wrong oral-lozenge/topical codes"
+1046548,IMPROVED,R01BA01|R06AB05|R06AC01,MED,"adds 2 missing ingredient codes (pheniramine, pyrilamine); phenylpropanolamine ideally R01BA51 per guideline (sibling rxcui 1037305 used the suffix correctly) but net addition is still an improvement over prod's single code"
+1486031,IMPROVED,D02AB,HIGH,zinc oxide paste; dropped wrong hemorrhoidal C05AX04
+756189,IMPROVED,J01EB05,HIGH,oral systemic sulfisoxazole; dropped wrong ophthalmic S01AB02
+1047766,BOTH_WRONG,A03CB31,MED,same Donnatal-formula finding as rxcui 1046954
+1099774,IMPROVED,R01BA52,HIGH,"matches WHO guideline exactly, same as rxcui 1099448 (identical drug, different brand)"
+727820,IMPROVED,B05XA03,HIGH,ATCPROD confirms B05XA; small-volume saline flush syringe=IV additive/electrolyte concentrate class
+1250909,REGRESSED,N02BA01|R06AA02,HIGH,"Bayer Aspirin PM=aspirin(500mg,primary ingredient)+diphenhydramine; prod correctly included N02BA01 (aspirin); new_final DROPPED aspirin's code entirely, keeping only R06AA02 (diphenhydramine)"
+359541,IMPROVED,A11HA02|B03BA01|B03BB01,HIGH,confirmed A11HA02=pyridoxine; adds missing vitamin B6 code to the existing correct B12/folate codes
