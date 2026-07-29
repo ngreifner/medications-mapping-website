@@ -1,0 +1,101 @@
+rxcui,drug_name,tty,production,new_final
+312279,pentaerythritol tetranitrate 30 MG Oral Capsule,SCD,C01DA05,A06AD14|C01DA05
+1374574,{224 (tobramycin 28 MG Inhalation Powder [Tobi]) } Pack [TOBI Podhaler Kit],BPCK,J01GB01|S01AA12,J01GB01
+1307225,chlorpheniramine tannate 0.8 MG/ML / phenylephrine tannate 4 MG/ML Extended Release Suspension,SCD,R06AB04,R01BA03|R06AB04
+312216,papaverine 150 MG Extended Release Oral Capsule,SCD,G04BE02,A03AD01
+1649008,lidocaine 0.04 MG/MG / menthol 0.03 MG/MG Medicated Patch,SCD,D04AB01|N01BB02|R02AD02,D04AB01
+308389,ascorbic acid 300 MG / ferrous fumarate 134 MG Chewable Tablet,SCD,A11GA01,A11GA01|B03AA02
+1311206,salicylic acid 0.02 MG/MG Topical Gel [Super Spot Remover],SBD,D01AE12|N02BA04,D01AE12
+993926,acetaminophen 325 MG / chlorpheniramine maleate 2 MG / codeine phosphate 16 MG / phenylephrine hydrochloride 10 MG Oral Capsule [Colrex],SBD,N02BE01|R05DA04|R06AB04,N02BE01|R01BA03|R05DA04|R06AB04
+247139,resorcinol 20 MG/ML / sulfur 80 MG/ML Topical Lotion,SCD,D10AB02,D10AB02|D10AX02
+210760,ascorbic acid 125 MG / ferrous fumarate 66 MG Oral Tablet [Vitron-C],SBD,A11GA01,A11GA01|B03AA02
+606947,acetaminophen 325 MG / dichloralphenazone 100 MG / isometheptene 65 MG Oral Capsule,SCD,A03AX10|N02BE01|N05CC04,N02BE01
+1011852,lidocaine hydrochloride 0.02 MG/MG Topical Gel,SCD,D04AB01|N01BB02|R02AD02,D04AB01
+211223,castor oil 793 MG/ML / Peruvian balsam 88.4 MG/ML / trypsin 0.122 MG/ML Topical Spray [Dermuspray],SBD,A06AB05,D03BA01
+1243393,calcium carbonate 1250 MG / cholecalciferol 600 UNT Oral Tablet [Os-Cal 500 with D],SBD,A11CC05,A12AX
+197665,"estrogens, conjugated (USP) 1.25 MG / methyltestosterone 10 MG Oral Tablet",SCD,G03CA57,G03EK01
+1235477,benzocaine 15 MG / menthol 3.6 MG Oral Lozenge [Cepacol Sore Throat Pain Relief],SBD,C05AD03|D04AB04|R02AD01,R02AD01
+1000496,"{28 (estrogens, conjugated (USP) 0.45 MG / medroxyprogesterone acetate 1.5 MG Oral Tablet) } Pack",GPCK,G03CA57,G03FA12
+1249040,carbetapentane tannate 15 MG/ML / chlorpheniramine tannate 2 MG/ML / phenylephrine tannate 2.5 MG/ML Oral Suspension,SCD,R05DB05|R06AB04,R01BA03|R05DB05|R06AB04
+1358746,methylprednisolone acetate 10 MG/ML / neomycin 3.5 MG/ML Topical Cream,SCD,A07AA01|D06AX04|H02AB04|S01AA03,D07CA02
+891709,ascorbic acid 60 MG / cuprous oxide 2 MG / dl-alpha tocopheryl acetate 30 MG / lutein 6 MG / zinc oxide 15 MG Oral Capsule [Ocuvite Lutein],SBD,A11GA01|A11HA03,A11JB
+749159,{21 (ethinyl estradiol 0.03 MG / norgestrel 0.3 MG Oral Tablet) } Pack,GPCK,G03CA01,G03AA07
+1053133,hypromellose 2 MG/ML / naphazoline hydrochloride 0.25 MG/ML / polysorbate 80 5 MG/ML / zinc sulfate 2.5 MG/ML Ophthalmic Solution,SCD,A12CB01|S01KA02,S01GA51
+616795,acetone 60 MG/ML / ethanol 0.15 ML/ML Medicated Shampoo,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+616480,phenol 5 MG/ML Mucosal Spray,SCD,D08AE03,N01BX03
+210072,salicylic acid 170 MG/ML Topical Solution [Compound W brand of salicylic acid],SBD,D01AE12|N02BA04,D01AE12
+749796,benzocaine 0.1 MG/MG Oral Gel [Anbesol],SBD,R02AD01,N01BA05
+308657,benzocaine 200 MG/ML Mucous Membrane Topical Solution,SCD,C05AD03|D04AB04|R02AD01,N01BA05
+1945074,magnesium sulfate 0.4 MG/MG Topical Ointment,SCD,A06AD04|B05XA05,D11AX05
+858900,dexbrompheniramine maleate 0.2 MG/ML / hydrocodone bitartrate 0.5 MG/ML / phenylephrine hydrochloride 1 MG/ML Oral Solution [Cytuss-HC NR],SBD,R05DA03|R06AB06,R01BA03|R05DA03|R06AB06
+308636,benzethonium 5 MG/ML / benzocaine 136 MG/ML Topical Spray,SCD,R02AA09,C05AD03|D04AB04|D08AJ08
+206285,hydrocortisone 25 MG/ML Topical Lotion [Lacticare-HC],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,C05AA01|D07AA02|D07AB02|D07AB11|D07AC16|D07XA01
+1293997,clioquinol 3 MG/ML / hydrocortisone 5 MG/ML / pramoxine hydrochloride 1 MG/ML Topical Cream,SCD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,C05AA01|C05AD07|D04AB07|D07AA02|D07AB02|D07AB11|D07AC16|D07XA01|D08AH30|D09AA10
+1020055,sulfacetamide sodium 100 MG/ML / sulfur 50 MG/ML Topical Lotion [Rosula],SBD,D10AB02,D10AB02|D10AF06
+607076,magnesium oxide 600 MG Oral Capsule [MagGel],SBD,A02AA02|A02AA04,A12CC10
+731591,4 ML penicillin G benzathine 300000 UNT/ML / penicillin G procaine 300000 UNT/ML Prefilled Syringe [Bicillin],SBD,J01CE08|J01CE09,J01CE01|J01CE08|J01CE09
+1545688,benzalkonium chloride 1.3 MG/ML / lidocaine hydrochloride 25 MG/ML Topical Spray [Bactine],SBD,D04AB01|D08AJ01|D08AJ08|N01BB02|R02AA16|R02AD02,C05AD01|D04AB01
+1233682,chlorhexidine gluconate 40 MG/ML Medicated Liquid Soap [E-Z Scrub],SBD,A01AB03|D08AC02|R02AA05,D08AC02
+308913,calcium carbonate 585 MG / magnesium hydroxide 120 MG Chewable Tablet,SCD,A02AA04|A12AA04,A02AD01
+1091339,clindamycin 10 MG/ML Medicated Pad [Clindacin],SBD,D10AF01|J01FF01,D10AF01
+1867998,5 ML epinephrine 0.005 MG/ML / lidocaine hydrochloride 15 MG/ML Injection,SCD,C01CA24|D04AB01|N01BB02|R02AD02|S01EA01,N01BB02
+199130,ethanol 0.65 ML/ML Topical Foam,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+753543,{21 (desogestrel 0.15 MG / ethinyl estradiol 0.03 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Reclipsen 28 Day],BPCK,G03AA09|G03AC09,G03AA09
+605132,benzocaine 10 MG Oral Lozenge [Cepacol],SBD,C05AD03|D04AB04|R02AD01,R02AD01
+198471,aspirin 500 MG Oral Tablet,SCD,B01AC06|N02BA01|N02BA51,N02BA01
+259196,mineral oil 0.2 MG/MG / petrolatum 0.8 MG/MG Ophthalmic Ointment,SCD,A06AA01,S01XA20
+800415,alanine 8.8 MG/ML / arginine 4.89 MG/ML / glucose 250 MG/ML / glycine 4.38 MG/ML / histidine 2.04 MG/ML / isoleucine 2.55 MG/ML / leucine 3.11 MG/ML / lysine 2.47 MG/ML / methionine 1.7 MG/ML / phenylalanine 2.38 MG/ML / proline 2.89 MG/ML / serine 2.13 MG/ML / threonine 1.79 MG/ML / tryptophan 0.77 MG/ML / tyrosine 0.17 MG/ML / valine 2.47 MG/ML Injectable Solution [Clinimix 4.25/25],SBD,B05CX03|B05XB03|N06AX02|V03AB26,B05BA01
+1049266,benzalkonium chloride 1.3 MG/ML Topical Spray [Zephiran],SBD,D08AJ01|D08AJ08|R02AA16,D08AJ01
+2048895,triamcinolone acetonide 1.5 MG Oral Tablet [Vetalog],SBD,A01AC01|H02AB08|R01AD11,A01AC01|H02AB08
+351958,benzoyl peroxide 0.05 MG/MG / clindamycin phosphate 0.012 MG/MG Topical Gel [Duac],SBD,D10AE01,D10AE01|D10AF01
+1085771,triamcinolone acetonide 0.001 MG/MG Topical Ointment [Triderm],SBD,A01AC01|H02AB08|R01AD11,D07AB09
+1657910,"hyoscyamine sulfate 0.12 MG / methenamine 81 MG / methylene blue 10.8 MG / phenyl salicylate 32.4 MG / sodium phosphate, monobasic 40.8 MG Oral Tablet [Hyolev]",SBD,A03BA03|G04BX12|J01XX05,A03BA03|G04BX12|J01XX05|V03AB17|V04CG05
+1360954,hydrocortisone acetate 10 MG/ML / pramoxine hydrochloride 10 MG/ML Rectal Cream [Analpram HC],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,A07EA02|D07AA02
+1000933,pilocarpine hydrochloride 50 MG/ML Ophthalmic Solution,SCD,N07AX01|S01EB01,S01EB01
+310971,idoxuridine 1 MG/ML Ophthalmic Solution,SCD,D06BB01,S01AD01
+746686,doxycycline hyclate 20 MG Oral Capsule [Oraxyl],SBD,J01AA02,A01AB22|J01AA02
+309335,50 ML clindamycin 12 MG/ML Injection,SCD,D10AF01|J01FF01,J01FF01
+1358505,methylprednisolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG Topical Ointment [Neo-Medrol],SBD,A07AA01|D06AX04|H02AB04|S01AA03,D07CA02
+1486880,clindamycin 25 MG/ML Oral Solution [Clindamed],SBD,D10AF01|J01FF01,J01FF01
+2122905,guaifenesin 20 MG/ML / hydrocodone bitartrate 1 MG/ML / phenylephrine hydrochloride 3 MG/ML Oral Solution,SCD,R05CA03|R05DA03,R01BA53|R05CA03|R05DA03
+1299766,isoproterenol hydrochloride 0.62 MG/ML Inhalation Solution,SCD,C01CA02|R03AB02|R03CB01,R03AB02
+806677,sodium chloride 5 MG/ML Nasal Spray,SCD,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,R01AX
+853517,povidone-iodine 0.1 MG/MG Medicated Bar Soap [Pharmadine],SBD,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15,D11AC06
+211313,aspirin 325 MG / butalbital 50 MG / caffeine 40 MG Oral Capsule [Isollyl],SBD,N06BC01,N02BA71
+1245259,povidone-iodine 65 MG/ML Medicated Liquid Soap [E-Z Scrub Povidone Iodine],SBD,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15,D08AG02
+106258,hydrocortisone 10 MG/ML Topical Cream,SCD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,D07AA02
+213641,betamethasone 0.5 MG/ML / clotrimazole 10 MG/ML Topical Cream [Lotrisone],SBD,D01AC01|D07AC01|H02AB01|S01BA06|S03BA03,D01AC01|D07AC01
+1011851,lidocaine hydrochloride 0.005 MG/MG Topical Gel [Solarcaine],SBD,D04AB01|N01BB02|R02AD02,D04AB01
+577799,choline bitartrate 648 MG Oral Tablet,SCD,N02BA03,N02BA03|N07AX02
+1294367,diphenhydramine tannate 5 MG/ML Extended Release Suspension,SCD,D04AA32|R06AA02,R06AA02
+993776,ivermectin 5 MG/ML Topical Solution [Agri-Mectin],SBD,D11AX22|P02CF01,D11AX22
+1052416,acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet [Pamprin Max Formula],SBD,N02BE01|N06BC01,N02BE01
+486515,sodium chloride 0.154 MEQ/ML Irrigation Solution,SCD,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,B05CB01
+309289,ciclopirox 7.7 MG/ML Topical Cream,SCD,D01AE14|G01AX12,D01AE14
+1535503,{1 (75000 MG) (miconazole nitrate 0.02 MG/MG Medicated Bar Soap) / 1 (25000 MG) (miconazole nitrate 0.02 MG/MG Vaginal Ointment) } Pack,GPCK,A01AB09|D01AC02|G01AF04,G01AF04
+857725,chlorpheniramine maleate 0.2 MG/ML / hydrocodone bitartrate 0.5 MG/ML / phenylephrine hydrochloride 1 MG/ML Oral Solution [Histussin-HC],SBD,R05DA03|R06AB04,R01BA03|R05DA03|R06AB04
+1733890,epinephrine hydrochloride 0.0001 MG/MG / lidocaine hydrochloride 0.05 MG/MG Rectal Gel,SCD,C01CA24|D04AB01|N01BB02|R02AD02|S01EA01,N01BB02
+1368300,salicylic acid 5 MG/ML Medicated Liquid Soap [Santalia Daily Cleanser],SBD,D01AE12|N02BA04,D01AE12
+197804,ibuprofen 300 MG Oral Tablet,SCD,M01AE14,M01AE01
+1190542,0.7 ML atropine sulfate 2.86 MG/ML Auto-Injector,SCD,A03BA01|S01FA01,A03BA01
+866357,benzyl alcohol 0.1 ML/ML Oral Gel [Zilactin Cold Sore],SBD,P03AX06,A01AD
+1431687,benzalkonium chloride 0.0013 MG/MG / lidocaine hydrochloride 0.02 MG/MG Topical Gel [Cicloferon],SBD,D04AB01|D08AJ01|D08AJ08|N01BB02|R02AA16|R02AD02,D04AB01
+243459,aluminum hydroxide 400 MG / magnesium hydroxide 400 MG Oral Tablet,SCD,A02AB01,A02AA04|A02AB01|G04BX01
+1037205,povidone-iodine 10 MG/ML Medicated Pad,SCD,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15,D08AG02
+1000352,"estrogens, conjugated (USP) 0.45 MG / medroxyprogesterone acetate 1.5 MG Oral Tablet",SCD,G03CA57,G03FA12
+1436947,hydrocortisone acetate 19 MG/ML / iodoquinol 10 MG/ML Topical Cream,SCD,G01AC01,D07AA02|G01AC01
+1052709,Hydrogen Peroxide 15 MG/ML Mucous Membrane Topical Solution [Orajel Mouth Sore Rinse],SBD,A01AB02|D08AX01,D08AX01
+1674200,hydrocortisone acetate 30 MG Rectal Suppository [Hemmorex],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,C05AA01
+858364,ketorolac tromethamine 4.5 MG/ML Ophthalmic Solution,SCD,M01AB15|S01BC05,S01BC05
+749151,{12 (ethinyl estradiol 0.035 MG / norethindrone 0.5 MG Oral Tablet) / 9 (ethinyl estradiol 0.035 MG / norethindrone 1 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Tri-Norinyl 28 Day],BPCK,G03AA05,G03AB04
+1039716,salicylic acid 20 MG/ML Medicated Liquid Soap [St. Ives Blemish & Blackhead Control],SBD,D01AE12|N02BA04,D01AE12
+1244579,{1 (12 HR chlorpheniramine maleate 4 MG / methscopolamine nitrate 2.5 MG Extended Release Oral Tablet [Allerx DF AM]) / 1 (12 HR chlorpheniramine maleate 8 MG / methscopolamine nitrate 2.5 MG Extended Release Oral Tablet [AlleRx PM]) } Pack [AlleRx DF Sample],BPCK,R06AB04,A03BB03|R06AB04
+645459,sodium fluoride 2 MG/ML Mouthwash [CaviRinse],SBD,A01AA01,A01AA01|A12CD01
+1039681,capsaicin 0.08 MG/MG Medicated Patch [Qutenza],SBD,N01BX04,M02AB01
+403941,guaifenesin 200 MG / phenylephrine tannate 25 MG / pyrilamine tannate 60 MG Oral Tablet,SCD,R05CA03,R01BA03|R05CA03|R06AC01
+1657660,50 ML cetuximab 2 MG/ML Injection [Erbitux],SBD,L01XC06,L01FE01
+1546204,hydrogen peroxide 5 MG/ML / lactic acid 17 MG/ML Topical Spray [Astri-UC],SBD,A01AB02|D08AX01|G01AD01,D08AX01
+1797857,ketorolac tromethamine 15.8 MG/ACTUAT Metered Dose Nasal Spray [Sprix],SBD,M01AB15|S01BC05,M01AB15
+858905,dexbrompheniramine maleate 0.2 MG/ML / hydrocodone bitartrate 0.5 MG/ML / phenylephrine hydrochloride 1 MG/ML Oral Solution [H C Tussive-NR],SBD,R05DA03|R06AB06,R01BA03|R05DA03|R06AB06
+1087245,calcium ascorbate 60 MG / calcium threonate 0.8 MG / ferrous asparto glycinate 50 MG / folic acid 1 MG / polysaccharide iron complex 100 MG / succinic acid 50 MG / vitamin B12 0.025 MG Oral Capsule,SCD,B03BA01|B03BB01,B03AE01
+1423416,guaifenesin 1000 MG / phenylephrine hydrochloride 30 MG Oral Tablet,SCD,R05CA03,R01BA03|R05CA03

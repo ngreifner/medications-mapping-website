@@ -1,0 +1,101 @@
+rxcui,drug_name,tty,production,new_final
+1491773,ethanol 0.62 ML/ML Medicated Liquid Soap,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+2055315,{1 (150 ML) (salicylic acid 10 MG/ML Medicated Liquid Soap) / 1 (35 ML) (salicylic acid 10 MG/ML Topical Cream) / 1 (60 ML) (salicylic acid 5 MG/ML Topical Cream) } Pack,GPCK,D01AE12|N02BA04,D01AE12
+1366646,neomycin 140 MG/ML Oral Solution,SCD,A07AA01|D06AX04|S01AA03,A07AA01
+1486985,docusate sodium 20 MG/ML Enema [Docusol],SBD,A06AA02,A06AG10
+637197,2 ML ibuprofen 10 MG/ML Injection [Neoprofen],SBD,M01AE01|M01AE14|M02AA13,M01AE01
+1234546,pramoxine hydrochloride 10 MG/ML / zinc acetate 1 MG/ML Topical Lotion,SCD,A16AX05,D04AB07
+209717,bacitracin 0.5 UNT/MG / diperodon 0.01 MG/MG / neomycin 0.0035 MG/MG Topical Ointment [Campho-Phenique Maximum Strength],SBD,A07AA01|D06AX04|S01AA03,D06AX04|D06AX05
+1302737,benzethonium chloride 1.3 MG/ML Topical Solution,SCD,R02AA09,D08AJ08
+1111341,olopatadine 1 MG/ML Ophthalmic Solution [Patanol],SBD,R01AC08,S01GX09
+1020059,sulfacetamide sodium 0.1 MG/MG / sulfur 0.05 MG/MG Topical Gel [Rosula],SBD,D10AB02,D10AB02|D10AF06
+1995466,neomycin sulfate 200 MG/ML Oral Solution,SCD,A07AA01|D06AX04|S01AA03,A07AA01
+1868485,2.7 ML sodium bicarbonate 84 MG/ML Cartridge,SCD,B05CB04|B05XA02,B05XA02
+1495106,salicylic acid 2 MG/ML Otic Suspension [Epi-Otic Advanced],SBD,D01AE12|N02BA04,D01AE12
+1992305,timolol hemihydrate 5 MG/ML Ophthalmic Solution [Betimol],SBD,C07AA06,S01ED01
+865073,zinc oxide 250 MG/ML Topical Spray,SCD,C05AX04,D02AB
+313819,ampicillin 250 MG/ML Injectable Solution,SCD,J01CA01|J01CA18,J01CA01
+1536610,{1 (9000 MG) (miconazole nitrate 20 MG/ML Vaginal Cream [Monistat]) / 7 (5000 MG) (miconazole nitrate 20 MG/ML Vaginal Cream [Monistat]) } Pack [Monistat 7 Vaginal Cream Combination Pack with Vaginal Creams],BPCK,A01AB09|D01AC02|G01AF04,G01AF04
+1012019,lidocaine hydrochloride 2 MG/ML Injectable Solution,SCD,D04AB01|N01BB02|R02AD02,N01BB02
+388054,latanoprost 0.05 MG/ML / timolol 5 MG/ML Ophthalmic Solution,SCD,S01ED51|S01EE01,S01ED51
+205352,chlorpheniramine maleate 4 MG / phenylephrine hydrochloride 10 MG / phenylpropanolamine hydrochloride 50 MG / pyrilamine maleate 25 MG Extended Release Oral Tablet,SCD,R01BA01|R06AB04,R01BA01|R01BA03|R06AB04|R06AC01
+1657781,50 ML ramucirumab 10 MG/ML Injection [Cyramza],SBD,L01XC21,L01FG02
+855628,Twice-Daily diclofenac epolamine 0.013 MG/MG Medicated Patch [Flector],SBD,M01AB05|M02AA15|S01BC03,M01AB05
+616906,carbetapentane tannate 6 MG/ML / chlorpheniramine tannate 0.8 MG/ML / phenylephrine tannate 2.5 MG/ML Oral Suspension,SCD,R05DB05|R06AB04,R01BA03|R05DB05|R06AB04
+207017,naloxone 0.5 MG / pentazocine 50 MG Oral Tablet [Talwin NX],SBD,N02AD01,N02AD01|V03AB15
+1085691,triamcinolone diacetate 25 MG/ML Injectable Suspension [Aristocort],SBD,A01AC01|H02AB08|R01AD11,A01AC01|C05AA12|H02AB08|R03BA06
+209304,citric acid 66.8 MG/ML / potassium citrate 220 MG/ML Oral Solution [Cytra-K],SBD,A09AB04|A12BA02,G04BC
+1192984,benzocaine 4 MG/ML / docusate sodium 56.6 MG/ML Enema,SCD,A06AA02|C05AD03|D04AB04|R02AD01,A06AG10
+1659218,capsaicin 0.001 MG/MG / menthol 0.003 MG/MG / methyl salicylate 0.01 MG/MG Medicated Patch,SCD,N01BX04,M02AB01
+1043619,eucalyptol 0.92 MG/ML / menthol 0.42 MG/ML / methyl salicylate 0.6 MG/ML / thymol 0.64 MG/ML Mouthwash,SCD,R05CA13,A01AB
+856942,acetaminophen 21.7 MG/ML / hydrocodone bitartrate 0.5 MG/ML Oral Solution [Hycet],SBD,N02BE01|R05DA03,N02AJ22
+1987646,tretinoin 0.0006 MG/MG Topical Gel [Retin-A],SBD,D10AD01|L01XX14,D10AD01
+901857,chlorhexidine gluconate 1 MG/ML Medicated Pad [Pro Pet Dental Wipes],SBD,A01AB03|D08AC02|R02AA05,D08AC02|D09AA12
+312215,papaverine 150 MG Oral Capsule,SCD,G04BE02,A03AD01
+1722107,benzocaine 140 MG/ML / butamben 20 MG/ML / tetracaine 20 MG/ML Mucosal Spray [Cetacaine],SBD,C05AD03|D04AB04|R02AD01,N01BA03
+1870232,NDA201739 0.15 ML epinephrine 1 MG/ML Auto-Injector,SCD,C01CA24|S01EA01,C01CA24
+1807578,20 ML sodium chloride 146 MG/ML Injection,SCD,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,B05XA03
+991502,codeine phosphate 2 MG/ML / promethazine hydrochloride 1.25 MG/ML Oral Solution [Phenergan with Codeine],SBD,R05DA04,R05DA04|R06AD02
+997518,ammonium chloride 6.66 MG/ML / chlorpheniramine maleate 0.4 MG/ML / codeine phosphate 1.97 MG/ML / phenylephrine hydrochloride 1 MG/ML Oral Solution [Rolatuss],SBD,R05DA04|R06AB04,G04BA01|R01BA03|R05DA04|R06AB04
+202248,sulfisoxazole 500 MG Oral Tablet [Gantrisin],SBD,J01EB05|S01AB02,J01EB05
+1303746,levocarnitine 20 MG / ubidecarenone 100 MG Oral Capsule,SCD,A16AA01|C01EB09,C01EX
+227897,betamethasone valerate,PIN,R03BA04,A07EA04|C05AA05|D07AC01|D07XC01|H02AB01|R01AD06|R03BA04|S01BA06|S01CB04|S02BA07|S03BA03
+1876498,benzalkonium chloride 2.6 MG/ML Topical Solution,SCD,D08AJ01|D08AJ08|R02AA16,D08AJ01
+581660,ethanol 0.62 ML/ML Topical Gel,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+1049086,benzethonium chloride 0.001 MG/MG / benzocaine 0.2 MG/MG Topical Ointment,SCD,R02AA09,D04AB04|D08AJ08
+1863605,1000 ML glucose 50 MG/ML / potassium chloride 0.02 MEQ/ML / sodium chloride 4.5 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|S01XA03|V06DC01,B05BB01
+858866,carbinoxamine maleate 0.4 MG/ML / hydrocodone bitartrate 1 MG/ML / phenylephrine hydrochloride 1.2 MG/ML Oral Solution [Donatussin MAX],SBD,R05DA03|R06AA08,R01BA03|R05DA03|R06AA08
+1737571,10 ML lidocaine hydrochloride 10 MG/ML Injection [Xylocaine],SBD,N01BB02,C01BB01
+615100,1000 ML glucose 50 MG/ML / potassium chloride 0.04 MEQ/ML / sodium chloride 4.5 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|S01XA03|V06DC01,B05BB01
+348689,ascorbic acid 60 MG / ferrous fumarate 460 MG / folic acid 1 MG / vitamin B12 0.01 MG Oral Capsule,SCD,A11GA01|B03BA01|B03BB01,B03AE
+1013665,24 HR minocycline 80 MG Extended Release Oral Tablet,SCD,A01AB23|J01AA08,J01AA08
+801142,magnesium acetate 0.0015 MEQ/ML / potassium acetate 0.013 MEQ/ML / sodium chloride 0.04 MEQ/ML Injectable Solution,SCD,B05XA17,B05BB01
+1047765,12 HR atropine sulfate 0.0582 MG / hyoscyamine sulfate 0.0582 MG / phenobarbital 48.6 MG / scopolamine hydrobromide 0.0195 MG Extended Release Oral Tablet [Donnatal],SBD,A03BA03|N03AA02,A03BA01|A03BA03|N03AA02|N05CM05
+1655506,capsaicin 0.35 MG/ML / menthol 60 MG/ML / methyl salicylate 300 MG/ML Topical Cream,SCD,N01BX04,M02AC
+1094427,Diphenhydramine Hydrochloride 2.5 MG/ML Oral Solution [Pediacare Nighttime Cough],SBD,D04AA32|R06AA02,R06AA02
+208334,tretinoin 0.0001 MG/MG Topical Gel [Retin-A],SBD,D10AD01|L01XX14,D10AD01
+858334,folic acid 0.2 MG / vitamin B12 1 MG Sublingual Tablet,SCD,B03BA01|B03BB01,A11JA
+750248,{21 (ethinyl estradiol 0.035 MG / ethynodiol diacetate 1 MG Oral Tablet) } Pack,GPCK,G03DC06,G03AA01
+1363779,phenylephrine hydrochloride 10 MG Chewable Tablet [Ah-Chew D],SBD,R01AA04|S01FB01|S01XA20,R01BA03
+1250174,ethanol 0.85 ML/ML Topical Solution,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+1371355,hydrocortisone 5 MG/ML / pramoxine hydrochloride 2.5 MG/ML Topical Spray,SCD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,D07AA02|D04AB07
+1190166,benzalkonium chloride 1.3 MG/ML / lidocaine hydrochloride 20 MG/ML Topical Spray,SCD,D04AB01|D08AJ01|D08AJ08|N01BB02|R02AA16|R02AD02,C05AD01|D08AJ01
+1433894,cetylpyridinium chloride 1 MG/ML Mouthwash [Crest Mouthwash],SBD,B05CA01|D08AJ03|D09AA07|R02AA06,R02AA06
+1365984,ascorbic acid 35 MG/ML / cholecalciferol 0.01 MG/ML / sodium fluoride 1.1 MG/ML / vitamin A palmitate 1500 UNT/ML Oral Solution,SCD,A11CA01|A11CC05|A11GA01,A11CA01|A11GA01|A11CC05|A12CD01
+727505,0.5 ML choriogonadotropin alfa 0.5 MG/ML Prefilled Syringe,SCD,G03GA01|G03GA08,G03GA08
+1427997,salicylic acid 10 MG/ML Topical Solution [Clearasil Toner],SBD,D01AE12|N02BA04,D01AE12
+1546288,betamethasone 0.284 MG/ML / gentamicin 0.57 MG/ML Topical Spray [Gentacalm],SBD,D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,D07CC01
+1046378,acetaminophen 325 MG / phenylephrine hydrochloride 5 MG Oral Tablet,SCD,N02BE01,R01BA03
+1086613,mineral oil 0.15 MG/MG / petrolatum 0.83 MG/MG Ophthalmic Ointment [Lubrifresh P.M.],SBD,A06AA01,S01XA20
+404044,hydrocortisone 10 MG/ML Topical Cream [Dermtex HC],SBD,A01AC03|A07EA02|D07AA02|D07AB02|D07AB11|H02AB09|S01BA02,D07AA02
+309692,dexamethasone 1 MG/ML Ophthalmic Suspension,SCD,H02AB02|S01BA01,S01BA01
+1872886,lidocaine hydrochloride 40 MG/ML Medicated Pad,SCD,D04AB01|N01BB02|R02AD02,D04AB01
+1375954,doxylamine succinate 10 MG / pyridoxine hydrochloride 10 MG Delayed Release Oral Tablet [Diclegis],SBD,A11HA02|R06AA09,R06AA09
+1011849,lidocaine hydrochloride 0.005 MG/MG Topical Gel,SCD,D04AB01|N01BB02|R02AD02,D04AB01
+1006107,sulfacetamide sodium 100 MG/ML Medicated Liquid Soap,SCD,D10AB02,D10AF06
+1145942,acetaminophen 500 MG / caffeine 65 MG Oral Tablet [Sedalmex],SBD,N02BE01|N02BE51|N06BC01,N02BE51
+309290,ciclopirox 7.7 MG/ML Topical Lotion,SCD,D01AE14|G01AX12,D01AE14
+1042693,chlorpheniramine maleate 0.4 MG/ML / codeine phosphate 2 MG/ML / phenylephrine hydrochloride 1 MG/ML Oral Solution,SCD,R05DA04|R06AB04,R05DA04
+2174801,diphenhydramine hydrochloride 0.02 MG/MG Topical Gel [Calagel Reformulated Jun 2019],SBD,D04AA32|R06AA02,D04AA32
+313847,alitretinoin 0.001 MG/MG Topical Gel,SCD,D11AH04|L01XX22,L01XF02
+745292,penicillin G potassium 400000 UNT Oral Tablet,SCD,J01CE08|J01CE09,J01CE01
+1006110,sulfacetamide sodium 100 MG/ML Medicated Liquid Soap [Ovace],SBD,D10AB02,D10AF06
+197576,dexamethasone 0.25 MG Oral Tablet,SCD,H02AB02|S01BA01,H02AB02
+800786,dibasic potassium phosphate 1.3 MG/ML / glucose 50 MG/ML / sodium acetate 0.0302 MEQ/ML / sodium chloride 0.0155 MEQ/ML Injectable Solution,SCD,B05XA08,B05BB02
+643066,efavirenz 600 MG / emtricitabine 200 MG / tenofovir disoproxil fumarate 300 MG Oral Tablet,SCD,J05AF07|J05AF09|J05AG03,J05AR06
+1292988,chlorpheniramine maleate 0.4 MG/ML / methscopolamine nitrate 0.3 MG/ML / phenylephrine hydrochloride 2 MG/ML Extended Release Suspension,SCD,R06AB04,A03BB03|R01BA53|R06AB54
+1041807,ethanol 0.63 ML/ML Topical Solution,SCD,D08AX08|V03AB16|V03AZ01,D08AX08
+848960,ciprofloxacin 2 MG/ML Otic Solution [Cetraxal],SBD,J01MA02,S02AA15
+836344,200 ACTUAT ipratropium bromide 0.018 MG/ACTUAT Metered Dose Inhaler,SCD,R01AX03,R03BB01
+308412,aspirin 650 MG Extended Release Oral Tablet,SCD,B01AC06|N02BA01|N02BA51,N02BA01
+1099861,calcium carbonate 2500 MG / cholecalciferol 800 UNT Oral Tablet,SCD,A11CC05,A12AX
+207640,diazoxide 15 MG/ML Injectable Solution [Hyperstat],SBD,V03AH01,C02DA01
+1090754,miconazole nitrate 20 MG/ML Topical Cream [Inzo],SBD,A01AB09|D01AC02|G01AF04,D01AC02
+994007,esomeprazole 20 MG / naproxen 375 MG Delayed Release Oral Tablet [Vimovo],SBD,A02BC05,M01AE52
+756260,belladonna alkaloids 0.026 MG/ML / phenobarbital 3.24 MG/ML Oral Solution,SCD,N03AA02,A03CB02
+809533,calcium carbonate 1500 MG / cholecalciferol 200 UNT Oral Tablet,SCD,A11CC05,A12AX
+1375115,dexamethasone sodium phosphate 4 MG/ML Injectable Solution [Decadron],SBD,H02AB02|S01BA01,A01AC02|C05AA09|H02AB02|S03BA01
+1089090,glycerin 30 MG/ML / sodium chloride 7.5 MG/ML Nasal Spray [Pretz],SBD,A06AX01|A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,R01AX
+1597298,acetaminophen 500 MG / caffeine 60 MG / pyrilamine maleate 15 MG Oral Tablet,SCD,N02BE01|N06BC01,N02BE01
+200082,lamivudine 150 MG / zidovudine 300 MG Oral Tablet,SCD,J05AF01|J05AF05|J05AR01,J05AR01
+1357402,brompheniramine maleate 0.4 MG/ML / codeine phosphate 2 MG/ML / phenylpropanolamine hydrochloride 2.5 MG/ML Oral Solution,SCD,R01BA01|R05DA04|R06AB01,R05DA04
