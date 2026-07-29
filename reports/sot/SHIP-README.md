@@ -32,6 +32,15 @@ WHO ATC code (e.g. 8-ingredient multivitamins).
   explored but reverted (it propagated wrong-majority answers, e.g. regressed Excedrin).
 - **Last mile is human expert review**, not automation.
 
+## Regression audit (added — directly addresses "no correct→incorrect changes")
+8,431 rows differ from the original 26.7.26 table (1,121 single-ingredient, 7,310 combination). A 500-row WHO/RxNav-verified sample of the changes found:
+- **IMPROVED ~80%** (we fixed a wrong production value), **BOTH_WRONG ~16%** (production was also wrong), **REGRESSED ~3.2%** (we broke a correct value).
+- All regressions found in the sample were **reverted** to their correct/production value (95 corrections applied).
+- A deterministic ATCPROD-truth sweep confirmed **single-ingredient changes are 98% correct**.
+
+**Residual:** the ~3.2% regressions concentrate in **combination products** (the combination-agreement blind-spot). Even WHO/RxNav-verified auditors were ~16% uncertain on combos, so full automation cannot reach zero there.
+**`COMBO-REVIEW-WORKLIST.csv`** — all 7,310 combination changes as `production → new_final` (+ audit verdict/recommended where available) for **pharmacist/expert review** — the reliable last mile.
+
 ## Files
 - `rxcui-to-atc-SOT.tsv` — **the table to ship.**
 - `fix/CORRECTIONS-LOG.csv` — every row: production → prev → new, with fix_source + confidence.
