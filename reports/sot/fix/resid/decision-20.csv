@@ -1,0 +1,307 @@
+rxcui,final_codes,fix_action,confidence,evidence
+237870,A02AD01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1000563,D10AB02|D10AF06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1005861,D10AB02|D10AF06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1014431,B05BA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1043690,D07AA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1044248,A12CA01|B05CB01|B05XA03,KEEP_CURRENT,MED,Menthol/sodium chloride topical/throat spray; no WHO code fits a topical saline spray well; no clearly better alternative found
+1045348,C05AD03|D04AB04|N01BA05|R02AD01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1046879,A03BA01|A03BA03|A16AX11|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,MED,"Atropine/benzoic acid/hyoscyamine/methenamine/methylene blue/phenyl salicylate (urinary antiseptic, Cystex-type); methylene blue has no dedicated urinary-antiseptic WHO code, current per-ingredient set is the best available"
+242979,R06AC04,KEEP_CURRENT,HIGH,Tripelennamine oral solution; systemic antihistamine code R06AC04 is route-correct; production's added D04AA04 (topical) is wrong route
+1191359,D07CC02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1658254,B05XA05|A12CC02,OTHER,MED,500mL magnesium sulfate injection; dropped oral-laxative code A06AD04 and bile-duct diagnostic test code V04CC02
+809602,A16AX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+312616,A07EA03|H02AB07,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+346887,A03BA01|A03BA03|A04AD01|N03AA02|N05CM05,KEEP_CURRENT,MED,Atropine/hyoscyamine/phenobarbital/scopolamine (Donnatal-type); no dedicated WHO combo L5; current_final already lists correct per-ingredient codes for every active
+804614,A11JB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+808611,A11JA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+308400,A11GA01|B03AA07,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+209686,S01AX07,KEEP_CURRENT,HIGH,"Boric acid ophthalmic solution; S01AX07 (sodium borate, the WHO code for borate-based ophthalmic antiseptics) is correct; production's S02AA03 is the wrong (otic) route"
+211294,N02BA51,OTHER,HIGH,"Aspirin+caffeine combo, no psycholeptic; WHO dedicated combo code N02BA51 (ASA combinations excl. psycholeptics) replaces monotherapy-code fragmentation"
+211313,N02BA71,OTHER,HIGH,Aspirin+butalbital(barbiturate=psycholeptic)+caffeine; WHO dedicated code N02BA71 (ASA combinations w/ psycholeptics)
+205618,A01AB22|J01AA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+210455,N02AD01|N02BA01,OTHER,MED,"Aspirin+pentazocine (opioid, not a WHO 'psycholeptic'); no dedicated combo L5; minimal per-ingredient set, dropped A01AD05/B01AC06 monotherapy leaks"
+2121441,D08AX01|D11AX25,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1098703,A11JA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1091725,S01KA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1094438,R01BA53,OTHER,MED,Phenylephrine+triprolidine oral combo -> R01BA53 (matches established pattern at RXCUI 1114838)
+1101883,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride toothpaste; dental topical-use code plus systemic-supplement code both plausibly apply
+1112713,R06AA02,KEEP_CURRENT,HIGH,Diphenhydramine oral solution; systemic antihistamine code correct; production's added topical code is wrong route
+1190793,A03BA01,KEEP_CURRENT,HIGH,Atropine injection; systemic antimuscarinic code correct; production's added ophthalmic mydriatic code is wrong route
+485819,C01EX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+579948,A16AA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1000496,G03FA12,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1012006,S01CA02,OTHER,HIGH,Prednisolone acetate+sulfacetamide sodium ophthalmic ointment; WHO dedicated code S01CA02 'prednisolone and antiinfectives'
+1042645,D02AA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1053278,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1673949,J01BA01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1733864,M02AX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1098625,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1014256,R01BA53,OTHER,MED,Phenylephrine+pyrilamine combo -> R01BA53
+1048290,A03BA01|A03BA03|A04AD01|N03AA02|N05CM05,KEEP_CURRENT,MED,Same Donnatal-type combo as RXCUI 346887; same reasoning
+1086326,H02AB08,OTHER,HIGH,Oral/injectable triamcinolone (systemic route); H02AB08 correct; dropped dental/hemorrhoidal/inhaled cross-route duplicates
+1048276,A03BA01|A03BA03|A04AD01|N05CM05|R01BA02|R06AB04,KEEP_CURRENT,MED,Atropine/chlorpheniramine/hyoscyamine/pseudoephedrine/scopolamine 5-ingredient legacy combo; too complex/uncertain to safely re-derive a single bucket
+1005713,A06AD14|C01DA05,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1006052,D10AB02|D10AF06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1049406,D08AJ01,OTHER,HIGH,Single-ingredient benzalkonium chloride topical solution; D08AJ08 names a different substance (benzethonium chloride)
+1049295,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+1085746,D07AB09,OTHER,HIGH,Single-ingredient topical triamcinolone; D07AB09 correct; dropped hemorrhoidal C05AA12 and 'other combinations' D07XB02 (no partner exists)
+1085734,D07AB09,OTHER,HIGH,Single-ingredient topical triamcinolone; D07AB09 correct; dropped hemorrhoidal C05AA12 and 'other combinations' D07XB02 (no partner exists)
+830867,C05AE03|C08DB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1188405,D08AE04|D09AA06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1086251,H02AB08,OTHER,HIGH,Oral/injectable triamcinolone (systemic route); H02AB08 correct; dropped dental/hemorrhoidal/inhaled cross-route duplicates
+283597,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+1657712,L01FE02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1731532,D08AG02|D08AX05|D09AA09|D11AC06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1741271,B03AC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1801694,D01AE12|N02BA04|N02BA12|S01BC08,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1803009,D08AE04|D09AA06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1855091,M02AB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1863973,B05BB01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1870691,C01CA26|R03CA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1872479,L01FX10,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1246622,S01KA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1246836,S01KA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1294436,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+1299653,D11AC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1299766,R03AB02,OTHER,HIGH,Isoproterenol Inhalation Solution; R03AB inhaled chapter is route-correct
+1305908,B02BC30,KEEP_CURRENT,HIGH,Fibrin sealant kit (fibrinogen+thrombin); WHO classifies as B02BC30 'combinations' under local hemostatics; ATCPROD's thrombin-only candidate drops fibrinogen
+1356500,C05AD03|C05BB05|D04AB04|D08AE03,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1364854,A11AA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1372307,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1373244,P02CF01,KEEP_CURRENT,HIGH,Ivermectin oral solution; correct single antiparasitic code; production's added dermatologic code is wrong
+1423328,D04AB01|D08AJ01|D08AJ08,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1424037,D04AB01|D08AJ01,OTHER,MED,Benzalkonium chloride+lidocaine general topical cream (not perianal); dropped hemorrhoidal C05AD01 and dressing D09AA11
+1438754,D07AA02,OTHER,HIGH,Single-ingredient hydrocortisone acetate cream; D07XA01 inapplicable since no combination partner exists
+1442085,D10AB02|D10AF06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1540974,C05AD03|D04AB04,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1541084,D07XA01|D04AB07,OTHER,MED,Hydrocortisone+pramoxine topical spray; D07XA01 combination-tier code plus pramoxine's topical-anesthetic code
+1808524,M02AB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1855722,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+1243284,D04AB01,OTHER,MED,Allantoin+lidocaine topical ointment; dropped hemorrhoidal C05AD01
+1294572,R01BA52,OTHER,MED,"Pseudoephedrine+diphenhydramine combo -> R01BA52 (pseudoephedrine, combinations)"
+1300378,J07AJ52,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1302483,A09AB04,OTHER,MED,"Renacidin urological irrigation solution; genitourinary product, not an oral antacid -- GI-route magnesium codes don't fit"
+1371036,D08AX08,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1493173,H02AB06,OTHER,HIGH,Single-ingredient prednisolone injectable (systemic); H02AB06 correct; dropped dental/rectal/hemorrhoidal/otic cross-route duplicates
+1534846,D01AC08,KEEP_CURRENT,HIGH,Ketoconazole+phytosphingosine topical solution; topical antifungal code correct; production's systemic-oral code is wrong route
+1552035,J05AJ02,KEEP_CURRENT,HIGH,Elvitegravir (Vitekta); J05AJ02 is the correct integrase-inhibitor code; production's J05AX11 is wrong
+1495080,D08AC02,OTHER,MED,Chlorhexidine topical spray/solution/shampoo (not a dressing); D09AA12 medicated-dressing chapter doesn't fit this dose form
+1945173,A06AG04|A06AX01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1243811,R05CA10,OTHER,MED,"APAP+guaifenesin+phenylephrine ER, expectorant-led -> R05CA10 (expectorant combinations)"
+1305890,B02BC30,OTHER,HIGH,"Same product (Artiss) as RXCUI 1305908 in different packaging; should carry the same dedicated fibrin-sealant combo code B02BC30, not split fibrinogen/thrombin monotherapy codes"
+198109,S02AA11|S02BA01,OTHER,MED,"Hydrocortisone+polymyxin B otic solution; kept per-ingredient otic codes, dropped redundant eye+ear-combined duplicate S03AA03"
+1545292,D04AB01,OTHER,MED,Single-ingredient lidocaine topical spray; dropped hemorrhoidal C05AD01
+1362049,B01AB01,OTHER,HIGH,Systemic heparin (porcine) prefilled syringe; dropped topical heparinoid code C05BA03
+1595449,M02AB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1372546,D08AE04|D09AA06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+197930,N02BA71,KEEP_CURRENT,HIGH,Aspirin+meprobamate(psycholeptic); N02BA71 is the correct dedicated combo code; ATCPROD's N02BA01 drops meprobamate
+1484903,G03AA05|B03AA02,OTHER,HIGH,Norethindrone acetate+ethinylestradiol OC pack + iron placebo tablets (Lo Minastrin Fe)
+1243364,A12AX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1297544,R05DB05|R06AA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+642338,A02AD01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+750180,S01AA30,OTHER,HIGH,"Gramicidin+neomycin+polymyxin B ophthalmic solution (triple antibiotic, no steroid); WHO dedicated code S01AA30 'combinations of different antibiotics'"
+748859,G03AA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1087614,D01AC02,KEEP_CURRENT,HIGH,Miconazole nitrate topical cream; topical antifungal code correct; production's oral/vaginal codes are wrong route
+750261,G03AA09,OTHER,HIGH,Desogestrel+ethinylestradiol OC pack (Solia); dedicated combo code G03AA09
+745483,J01CE01,OTHER,HIGH,"Penicillin G POTASSIUM oral tablet; J01CE08/09 are benzathine/procaine depot-injection ester forms, wrong for an oral potassium-salt tablet"
+891153,S02AA13|S02AA11|S03BA02,OTHER,MED,Miconazole+polymyxin B sulfate+prednisolone acetate otic suspension (Surolan); per-ingredient set since current_final dropped 2 of 3 actives
+308284,N02BA51,OTHER,MED,"APAP+aspirin+caffeine, no opioid/psycholeptic; WHO's generic ASA-combinations bucket (N02BA51) replaces per-ingredient monotherapy fragmentation"
+312519,A12BA01|A12BA05,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1087418,B03AE,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+205116,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+206027,D07BA04,OTHER,HIGH,Clioquinol(antiseptic)+hydrocortisone topical cream; WHO dedicated code D07BA04 'hydrocortisone and antiseptics'
+999826,B03AE,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+748832,G03AA07,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+800648,B05BB02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1087623,A11DA01|A11GA01|A11HA02|A11HA04|A11HA05|B03BA01|B03BB01|C04AC01|C10AD02,KEEP_CURRENT,MED,"Nephrocaps renal B-complex+vitC formula; niacin (non-amide form) genuinely has only pharmacological WHO codes (C04AC01/C10AD02), not a vitamin-specific one -- current 9-code per-ingredient set is complete"
+801021,B05BA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+830525,B01AC06|N02BA01,OTHER,MED,"Plain aspirin tablet; dropped A01AD05 (local oral/dental code, route-mismatched for a swallowed tablet); kept antiplatelet+analgesic uses"
+996716,R05FA02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+645459,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride mouthwash; same dual-code ambiguity
+688880,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+751554,G03AA07,OTHER,HIGH,Levonorgestrel+ethinylestradiol continuous OC pack (Lybrel); dedicated combo code G03AA07
+754028,G03GA01,OTHER,HIGH,Natural/extracted chorionic gonadotropin injection (A.P.L.); G03GA08 names a different recombinant product
+656805,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride mouthwash; same dual-code ambiguity
+991632,R03AB03,OTHER,HIGH,Metaproterenol (orciprenaline) Metered Dose Inhaler; R03AB inhaled chapter is route-correct
+884215,C02AC01|C03BA04,OTHER,MED,Chlorthalidone+clonidine antihypertensive combo (Combipres); dropped antimigraine code N02CX02
+882546,J01CE09,OTHER,HIGH,Penicillin G PROCAINE injectable suspension; J01CE01 (plain/potassium salt) doesn't match this salt form
+308397,A11GA01|B03AA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+309679,S01CA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1086950,C05AA01|D07AA02|D07AB02|D07AB11|D07AC16|D07XA01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+2045120,D08AC02,OTHER,MED,Chlorhexidine topical spray/solution/shampoo (not a dressing); D09AA12 medicated-dressing chapter doesn't fit this dose form
+749854,G03AA05,OTHER,HIGH,Norethindrone+ethinylestradiol triphasic OC pack; dedicated combo code G03AA05
+205900,S01EA01|S01EB01,KEEP_CURRENT,MED,"Epinephrine+pilocarpine ophthalmic solution (glaucoma combo); per-ingredient set already used, no verified single combo code found"
+731027,R01BA53,OTHER,MED,Phenylephrine+brompheniramine ER combo -> R01BA53
+861958,N06BA13,KEEP_CURRENT,HIGH,Armodafinil (Nuvigil); correct single code; production's added modafinil (different isomer/drug) code is wrong
+308499,D04AB01|D06AX05,OTHER,MED,Bacitracin+lidocaine+polymyxin B general topical spray; dropped hemorrhoidal C05AD01
+199099,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+205815,J01CA01,KEEP_CURRENT,HIGH,Ampicillin oral suspension (Omnipen); plain ampicillin code correct; production's added hetacillin (different prodrug ester) is wrong
+206295,C05AA01|D07AA02|D07AB02|D07AB11|D07AC16|D07XA01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+207221,G03BA02|G03EK01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+199852,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+359542,A11JA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+750248,G03AA01,OTHER,HIGH,Ethynodiol diacetate+ethinylestradiol OC pack; dedicated combo code G03AA01 (matches sibling RXCUI 748859)
+860930,C05AD03,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+991376,A02AC01|A11CC05|A11GA01|A11HA03|A12AA04,KEEP_CURRENT,MED,VitaminC/calcium carbonate/cholecalciferol/vitaminE combo; calcium carbonate legitimately carries both antacid and supplement codes
+312097,N02AA02|N02BA01|R05CA03|N06BC01,OTHER,LOW,"Aspirin/caffeine/ipecac/opium quadruple legacy combo; no dedicated WHO code found; dropped A01AD05 and B01AC06 monotherapy leaks, kept per-ingredient codes for the rest"
+1087779,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+198620,R03AA01,KEEP_CURRENT,HIGH,Epinephrine metered-dose inhaler; inhaled bronchodilator code correct; production's cardiac/glaucoma codes are wrong route
+205675,S01BA01,OTHER,MED,Single-ingredient dexamethasone phosphate ophthalmic ointment; plain code correct; dropped combination-tier and eye+ear-combined duplicates
+314994,D06AX04|D06AX05,KEEP_CURRENT,MED,Bacitracin+diperodon+neomycin+polymyxin B topical ointment; partial per-ingredient set retained (polymyxin B and diperodon's own topical-skin codes not independently verifiable)
+392147,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride mouthwash; same dual-code ambiguity
+803062,A12CB01|B05XA18|V03AB20,KEEP_CURRENT,MED,Multitrace-4 (4 trace elements); partial per-ingredient set for a complex micronutrient combo
+806575,L01FD01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+311954,C04AC01|C10AD02|R07AB03,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+996693,D08AX01|D11AX25,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+313143,S01AB02,KEEP_CURRENT,HIGH,Sulfisoxazole (=sulfafurazole) ophthalmic ointment; single correct code; production's added systemic-antibacterial code is wrong route
+348225,V03AN04,KEEP_CURRENT,HIGH,Nitrogen 100% medical gas; correct single code; production's added nitric-oxide code names a different gas
+348805,G03AA07,KEEP_CURRENT,HIGH,Levonorgestrel+ethinylestradiol OC; G03AA07 is the exact WHO combo code; ATCPROD candidate names a different progestin pairing (wrong)
+831339,C05AE03|C08DB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+849651,A11HA07|C04AC03,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+857391,N02AJ22,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+207664,C04AC01|C10AD02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+207799,D08AF01|D09AA03,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+2103222,A01AB03,OTHER,HIGH,Chlorhexidine dental mouthwash; stripped ophthalmic/otic/systemic/dressing/throat cross-route pollution
+211117,G01AX11,KEEP_CURRENT,HIGH,Povidone-iodine vaginal insert; vaginal antiinfective code is route-correct; production's skin/dressing/shampoo/throat codes are wrong route
+2178941,R01BA53,OTHER,MED,APAP+chlorpheniramine+phenylephrine -> R01BA53
+1094543,G03AA05,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1098640,S01GA52,OTHER,HIGH,"Tetrahydrozoline(=INN tetryzoline)+zinc sulfate ophthalmic combo; dedicated code S01GA52 'tetryzoline, combinations' -- current_final's S01GA51 names the wrong ingredient (naphazoline); ATCPROD's S01GA02 drops the combination"
+1099448,R01BA52,OTHER,MED,Pseudoephedrine+triprolidine (Actifed) -> R01BA52
+1099774,R01BA52,OTHER,MED,"Pseudoephedrine+triprolidine (Wal-Act); drop monotherapy R01BA02, keep dedicated combo R01BA52"
+1114900,A02AC01|A11CC05|A11DA01|A11GA01|A11HA02|A11HA03|A11HA04|A12AA04|B03AA02|B03BA01|B03BB01|C04AC01|C10AD02|N02BA03|N07AX02|R05CA02|S01XA04|S01XA26|V03AB21,KEEP_CURRENT,MED,"Gesticare DHA prenatal starter pack (18+ ingredients); already a thorough per-ingredient set, too complex to meaningfully re-derive"
+1232104,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+404710,B03AA02|B03BB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+615099,B05BB01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+857864,R05DA20,OTHER,MED,Hydrocodone+chlorpheniramine+phenylephrine (no expectorant); opium-alkaloid generic combo bucket R05DA20
+1006544,P02CF01,KEEP_CURRENT,HIGH,Ivermectin chewable (Heartgard); correct single antiparasitic code; production's added dermatologic code is wrong
+1011845,D04AB01|D08AJ08,KEEP_CURRENT,HIGH,Benzethonium chloride+lidocaine topical gel; both codes correctly matched to their actual substances
+1012150,S01CA02,OTHER,HIGH,Prednisolone sodium phosphate+sulfacetamide sodium ophthalmic solution; same dedicated code
+1013024,C01BB01|N01BB02,OTHER,MED,Single-ingredient lidocaine injectable solution (Lidoject); dropped hemorrhoidal C05AD01
+1043364,C05AD03|D04AB04,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1047789,A03BA03|G04BX12|J01XX05|V03AB17|V04CG05,KEEP_CURRENT,MED,Same urinary-antiseptic combo family (no atropine) as RXCUI 1046879; same reasoning
+1048366,D08AJ08|N01BX02,KEEP_CURRENT,HIGH,Benzethonium chloride+dyclonine topical solution; both codes correctly matched
+237192,C02LA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1011081,G03AA12,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1011748,D04AB01,OTHER,MED,Single-ingredient lidocaine topical cream (LidaMantle); dropped hemorrhoidal C05AD01
+1012244,C05AA01|C05AD01,OTHER,HIGH,"Hydrocortisone acetate+lidocaine RECTAL gel (genuinely perianal); kept hemorrhoid/anal-fissure chapter codes, dropped dermatological D07/A07EA02 codes"
+1048126,A03BA01|A03BA03|A04AD01|N05CM05|R01BA02|R01BA03,KEEP_CURRENT,MED,Atropine/hyoscyamine/phenylephrine/pseudoephedrine/scopolamine 5-ingredient legacy combo; same reasoning
+1085998,H02AB08,OTHER,HIGH,Oral/injectable triamcinolone (systemic route); H02AB08 correct; dropped dental/hemorrhoidal/inhaled cross-route duplicates
+1046967,A03BA01|A03BA03|A04AD01|N03AA02|N05CM05,KEEP_CURRENT,MED,Same Donnatal-type combo (Bellalphen); same reasoning
+1053768,D01AA01|D07XB02,OTHER,MED,Nystatin+triamcinolone acetonide combo cream (Mycolog); D07XB02 is triamcinolone's combination-tier code plus nystatin's own antifungal code
+857850,R05DA20,OTHER,MED,Hydrocodone+chlorpheniramine+phenylephrine+pyrilamine -> R05DA20
+238803,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15|S01AX18,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+804916,B05BC02,OTHER,HIGH,"Urea injectable osmotic diuretic (Ureaphil); dropped V04CX05 (13C-urea breath-test diagnostic reagent, unrelated use)"
+1087438,B03AE,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+2059045,D04AA32,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+207391,J01CE01,KEEP_CURRENT,HIGH,Penicillin G potassium injection; plain/potassium-salt code correct; production's benzathine/procaine depot codes are wrong salt forms
+996601,R05DA20,OTHER,MED,Codeine+phenylephrine+pyrilamine -> R05DA20
+999799,B03AE,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+831531,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+856955,R05DA20,OTHER,MED,APAP/caffeine/chlorpheniramine/hydrocodone/phenylephrine (Hycomine Compound); opioid-led combo -> R05DA20
+210229,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+2103397,C05AA05|D06AX07|D07AC01|D07XC01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+213544,C05AA05|D07AC01|D07XC01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+2109620,J07CA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+212740,D08AG02|D09AA09|D11AC06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+312280,A06AD14|C01DA05,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+312348,R01BA51,OTHER,MED,Phenylpropanolamine+pheniramine+pyrilamine -> R01BA51
+801109,B05BB02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+210834,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+210007,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+211805,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride oral drops (Pediaflor); same dual-code ambiguity (topical dental vs systemic supplement)
+1091721,S01KA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1099861,A12AX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1190179,S01KA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1111741,C05AD03|D04AB04|D08AX08,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1115592,A11JC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+544666,D10AF06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+579999,S01XA20,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+616713,A06AG04|A06AX01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1043608,S01GA01|S01KA02,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1048136,R02AD04,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1049404,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+1052707,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+244638,D02AB,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+260494,A12CB01|B05XA18|V03AB20,KEEP_CURRENT,MED,P.T.E.-5 (5 trace elements); partial per-ingredient set for a complex micronutrient combo
+260851,B01AC06|N02BA01,OTHER,MED,Plain aspirin (enteric-coated); dropped A01AD05 (local oral treatment code inapplicable to a swallowed tablet)
+1726835,C05AD03|D04AB04,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1191264,D10AD51,KEEP_CURRENT,HIGH,"Fluocinolone/hydroquinone/tretinoin combo (Tri-Luma); D10AD51 'tretinoin, combinations' is the dedicated WHO code; ATCPROD's D10AD01 is the tretinoin-monotherapy code (drops the combination)"
+1001021,R01AA05,OTHER,MED,Single-ingredient oxymetazoline nasal spray; R01AB07 combinations bucket inapplicable since no combination partner present
+1053345,A06AD04,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1192516,D04AB04|D08AJ08,KEEP_CURRENT,HIGH,Benzethonium chloride+benzocaine+menthol topical spray; both classifiable ingredients correctly matched
+578124,A11JC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+860217,G03AC05|G03DB02|L02AB01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1011470,A02AD01,OTHER,HIGH,"Aluminium/calcium/magnesium antacid combination; WHO dedicated code A02AD01 'ordinary salt combinations' -- matches confirmed precedent for identical combos elsewhere in this file (e.g. RXCUI 237870, 642338)"
+1039147,R02AD01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1046835,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+250344,D01AE14,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+307831,D06BA05|D08AA02|J01EB06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1190635,A03BA01|A07DA01,KEEP_CURRENT,HIGH,Atropine+diphenoxylate (Lomotil-type); no dedicated combo L5 exists; per-ingredient set already correct
+1085703,H02AB08,OTHER,HIGH,Oral/injectable triamcinolone (systemic route); H02AB08 correct; dropped dental/hemorrhoidal/inhaled cross-route duplicates
+309035,D03BA01,KEEP_CURRENT,MED,Castor oil/Peruvian balsam/trypsin wound-care spray; trypsin is the only WHO-classifiable ingredient
+206988,A07EA03|H02AB07,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1114838,R01BA53,KEEP_CURRENT,HIGH,"Chlorpheniramine+phenylephrine oral combo; R01BA53 (phenylephrine, combinations) is WHO's generic decongestant-combination bucket; ATCPROD's R01BA03 is the monotherapy code"
+213559,C05AA05|D07AC01|D07XC01,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1000352,G03FA12,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1010793,C01BB01|N01BB02,OTHER,MED,Single-ingredient lidocaine injectable solution; dropped hemorrhoidal C05AD01 (wrong route/form)
+1666111,J01CA01,KEEP_CURRENT,HIGH,Ampicillin injectable suspension; plain ampicillin code correct; production's hetacillin ester code is wrong
+1867716,R03CC03,OTHER,MED,Terbutaline sulfate INJECTION (systemic); R03CC systemic chapter is route-correct
+1875600,D08AC02,OTHER,MED,Chlorhexidine topical spray/solution/shampoo (not a dressing); D09AA12 medicated-dressing chapter doesn't fit this dose form
+1928545,D08AC02|D09AA12,KEEP_CURRENT,HIGH,"Chlorhexidine gluconate Medicated Pad -- genuinely a dressing, both codes legitimately apply"
+1245957,A12CA01|B05CB01|B05XA03,KEEP_CURRENT,MED,Sodium chloride nasal spray (saline); same as above -- no dedicated WHO code for OTC saline nasal spray found
+1248473,R05DB20,OTHER,MED,Carbetapentane(non-opioid antitussive)+chlorpheniramine+phenylephrine -> R05DB20
+1293706,R01BA52,OTHER,MED,APAP+diphenhydramine+pseudoephedrine -> R01BA52
+1294002,D07BA04|D04AB07,OTHER,MED,Clioquinol+hydrocortisone+pramoxine cream; antiseptic-combo code plus pramoxine's own anesthetic code
+1294365,R01BA53,OTHER,MED,Phenylephrine tannate+diphenhydramine tannate -> R01BA53
+1303845,R05DB20,OTHER,MED,Chlophedianol(non-opioid antitussive)+guaifenesin+phenylephrine -> R05DB20
+1313116,P02CC01|P02CF01,KEEP_CURRENT,MED,"Ivermectin+pyrantel chewable; per-ingredient antiparasitic set, no dedicated combo code found"
+1356489,D04AB01|D08AJ01,OTHER,MED,Benzalkonium chloride+lidocaine general topical cream (not perianal); dropped hemorrhoidal C05AD01 and dressing D09AA11
+1356531,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,MED,"Ivermectin+praziquantel+pyrantel chewable; per-ingredient antiparasitic set, no dedicated combo code found"
+1376207,A02AD01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1376440,H02AB08,OTHER,HIGH,Oral/injectable triamcinolone (systemic route); H02AB08 correct; dropped dental/hemorrhoidal/inhaled cross-route duplicates
+1421878,A02AC01|A12AA04,KEEP_CURRENT,MED,"Calcium carbonate only (two strengths bundled, not a true ingredient combination); dual antacid/supplement classification legitimate"
+1429887,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+197954,C02LA01,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1534676,R01BA51,OTHER,MED,Phenylpropanolamine+pheniramine+phenyltoloxamine+pyrilamine ER -> R01BA51
+1541229,D02AA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1544183,D08AG02|D09AA09|D11AC06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1747725,A01AA01|A12CD01,KEEP_CURRENT,MED,Sodium fluoride mouthwash; same dual-code ambiguity
+1793908,L03AX14,KEEP_CURRENT,LOW,Histamine dihydrochloride+menthol topical rub; L03AX14 names the correct substance but wrong clinical-use context (immunostimulant injection vs topical rub); no better WHO mapping identified
+1870681,J01GB03,OTHER,HIGH,Systemic gentamicin injection; dropped otic/ophthalmic S03AA06 (wrong route)
+1293642,D07BA04|D04AB07,OTHER,MED,Same triple combo as RXCUI 1294002
+1294315,D08AJ01,OTHER,MED,Benzalkonium chloride topical solution/foam/spray/soap/ointment (not a dressing); D09AA11 medicated-dressing chapter doesn't fit this dose form
+1313820,A06AA01|C05AX06,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1442876,D07AB09,OTHER,HIGH,Single-ingredient topical triamcinolone; D07AB09 correct; dropped hemorrhoidal C05AA12 and 'other combinations' D07XB02 (no partner exists)
+1550963,M01AE57,KEEP_CURRENT,HIGH,Diphenhydramine+naproxen sodium (Aleve PM); M01AE57 is the exact WHO dedicated combo code; ATCPROD's M01AE02 drops diphenhydramine
+1360044,C02AC01,OTHER,HIGH,Single-ingredient clonidine transdermal patch (hypertension); dropped antimigraine N02CX02 and ophthalmic-glaucoma code S01EA04
+1362950,B01AB01,OTHER,HIGH,Systemic heparin (porcine) injectable solution; dropped topical heparinoid code C05BA03
+1490415,R01BA53,OTHER,MED,Phenylephrine+chlorpheniramine oral solution -> R01BA53
+1537911,D02AA,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1599164,M02AC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1648510,D04AB01,OTHER,MED,Single-ingredient lidocaine topical cream; dropped hemorrhoidal C05AD01
+1305588,R01BA52,OTHER,MED,Pseudoephedrine+dexbrompheniramine ER -> R01BA52
+1245951,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1362805,A12AX,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1367211,R01BA53,OTHER,MED,APAP+caffeine+phenylephrine -> R01BA53
+1426600,G03AA05|B03AA02,OTHER,MED,"OC pack (norethindrone acetate+ethinylestradiol) + iron placebo tablets; combo code G03AA05 already present, add B03AA02 for the iron component (matches sibling pack 1484903)"
+1650439,D01AE12,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+1596413,D03AX05,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+1651599,D11AC,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+2056895,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+977427,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+977438,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+389141,G04BE07,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+389140,G04BE07,KEEP_CURRENT,MED,No ATCPROD coverage; current_final already reflects route/ingredient-aware correction and no further WHO-verifiable issue identified
+891170,D07AC13,KEEP_CURRENT,MED,Momexin Kit bundles two unrelated marketed products; kept the classifiable corticosteroid component
+905203,C02LG02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+905211,C02LG02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+905217,C02LG02,KEEP_CURRENT,HIGH,current_final matches NLM ATCPROD product-level mapping
+977431,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+977434,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+977436,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+977440,L04AH02,KEEP_CURRENT,HIGH,Everolimus <=1mg oral tablet; project-documented strength-determined override: <=1mg maps to L04AH02 (transplant immunosuppressant); ATCPROD's L01EG02 is the >1mg oncology code
+1370688,A06AD65,KEEP_CURRENT,HIGH,"Suclear bowel-prep kit; A06AD65 (macrogol, combinations) correctly represents the PEG-electrolyte component"
+1546089,N02AA55,OTHER,HIGH,Naloxone+oxycodone ER (Targiniq); WHO dedicated combo code N02AA55 'oxycodone and naloxone'
+1597387,J05AP52,KEEP_CURRENT,HIGH,Dasabuvir/ombitasvir/paritaprevir/ritonavir pack (generic); J05AP52 is the exact WHO dedicated combo code
+1597388,J05AP52,OTHER,HIGH,"Dasabuvir/ombitasvir/paritaprevir/ritonavir pack (Viekira Pak, BPCK); identical combination to sibling GPCK 1597387 which correctly uses J05AP52"

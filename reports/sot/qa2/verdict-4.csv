@@ -1,0 +1,81 @@
+rxcui,judgment,should_be,reason_category,note
+308985,CORRECT,,,Carbenicillin oral = J01CA03; correctly drops unrelated J01CA05 (ticarcillin)
+1020364,CORRECT,,,Ethanol topical = D08AX08; correctly drops IV-antidote codes V03AB16/V03AZ01 (wrong route)
+1360330,CORRECT,,,Low-dose phenylephrine prefilled syringe (IV vasopressor use) = C01CA06; nasal/ophthalmic codes correctly dropped
+351277,CORRECT,,,Phenylephrine oral (R01BA03) + pyrilamine/mepyramine (R06AC01); no dedicated WHO combo L5 exists so ingredient split is reasonable
+211394,WRONG,N02BA03,other,N07AX02 = choline alfoscerate, an unrelated drug wrongly matched via the "choline" substring in "choline salicylate"
+2045196,CORRECT,,,Drospirenone+EE combined pill = G03AA12 (dedicated WHO combo L5); correctly drops mono G03AC10
+2197110,CORRECT,,,NaCl electrolyte infusion = B05BB01; correctly drops oral/irrigation/additive/ophthalmic codes
+877014,CORRECT,,,Salicylic acid topical foam = D01AE12; correctly drops oral-systemic N02BA04
+1307225,CORRECT,,,Adds missing phenylephrine oral code (R01BA03) alongside chlorpheniramine (R06AB04)
+237512,UNSURE,,other,Cannot confirm offline whether B05XA18 is genuinely zinc sulfate's WHO parenteral-additive code
+1000935,CORRECT,,,Pilocarpine ophthalmic = S01EB01; correctly drops oral xerostomia code N07AX01
+1422080,CORRECT,,,Lidocaine topical cream = D04AB01; correctly drops injectable/oropharyngeal codes
+50121,CORRECT,,,"PIN ingredient-level: all 3 known fluticasone propionate L5s (D07AC17/R01AD08/R03BA05) returned unfiltered, per methodology"
+1918242,CORRECT,,,Niraparib reclassified under newer WHO PARP-inhibitor group L01XK02 (from legacy L01XX54)
+1294322,CORRECT,,,Diphenhydramine (R06AA02) + phenylephrine oral (R01BA03); wrong-route codes correctly dropped
+310818,CORRECT,,,HCTZ+triamterene = dedicated WHO combo C03EA01 (confirmed via local snapshot), correctly replacing split mono codes
+1488333,CORRECT,,,Lidocaine topical spray active ingredient correctly coded D04AB01, replacing spurious benzyl-alcohol code
+1011981,CORRECT,,,Prednisolone+sulfacetamide ophthalmic combo = S01CA02 (steroid+antiinfective ophthalmic combo class)
+859225,CORRECT,,,Adds missing phenylephrine oral code (R01BA03) to existing hydrocodone/chlorpheniramine codes
+1087663,UNSURE,,no-who-code-exists,Unclear whether WHO assigns any code to oral L-lysine supplements; V06DD may be a fabricated/incorrect L4
+1000555,UNSURE,,salt-mismatch,"D10AF06 is typically dapsone (Aczone), not sulfur; sulfacetamide's only well-established WHO code is ophthalmic S01AB04"
+882504,CORRECT,,,Diphenhydramine oral = R06AA02; correctly drops topical D04AA32
+1012272,CORRECT,,,Etidocaine+epinephrine = N01BB57 (standard +50 vasoconstrictor-combo offset from N01BB07)
+1235490,CORRECT,,,Benzocaine oropharyngeal lozenge = R02AD01; correctly drops rectal/dermatologic codes
+1997446,CORRECT,,,Same as ethanol topical spray pattern; D08AX08 correct
+857725,CORRECT,,,Adds missing phenylephrine oral code to hydrocodone/chlorpheniramine combo
+1114900,WRONG,,other,"Choline bitartrate wrongly mapped to N02BA03 (choline salicylate) and N07AX02 (choline alfoscerate) - both different substances; remaining vitamin/mineral codes not independently verified"
+1012231,WRONG,G01AE10 (or equivalent vaginal sulfonamide-combo L5),wrong-route,D06BA02 is topical dermatologic sulfadiazine (wrong ingredient AND wrong route) for a vaginal triple-sulfa insert
+1294019,CORRECT,,,"Consolidated to guaifenesin's expectorant code R05CA03, dropping mono APAP/pseudoephedrine codes; plausible WHO convention for this OTC combo shape"
+1489158,WRONG,D08AJ01,other,D09AA11 (medicated dressing) doesn't fit a spray dosage form; P03AX06 (ectoparasiticide) is an unrelated benzyl-alcohol mismatch
+1114847,WRONG,A11CC05|M01AX05|M01AX25,other,Drops cholecalciferol (A11CC05) and one of the two joint-supplement ingredient codes; all three active ingredients need their own code absent a dedicated combo L5
+686403,UNSURE,,l4-vs-l5-granularity,Zinc oxide and dimethicone may belong to different D02A subgroups (D02AB vs D02AA); single L4 D02AA may not cover zinc oxide
+1430050,CORRECT,,,Undecylenic acid single-ingredient = D01AE04; correctly drops inapplicable combinations code D01AE20
+309785,CORRECT,,,Dextrose+KCl infusion = B05BB02 (electrolytes with carbohydrates); correctly drops amino-acid/general-nutrient codes
+1050385,WRONG,N02BE01|R01BA03|R06AA02,other,Missing acetaminophen (N02BE01) and diphenhydramine (R06AA02) codes; only phenylephrine retained
+1294246,WRONG,S02CA-series (hydrocortisone+antiinfective, otic),missing-combo-L5,Steroid+antiinfective+anesthetic otic combo reduced to plain steroid monotherapy code S02BA01
+1436949,CORRECT,,,Hydrocortisone+iodoquinol topical combo = D07BA04 (weak corticosteroid + antiseptic); correctly replaces wrong-route vaginal code
+106303,CORRECT,,,Topical tretinoin = D10AD01; correctly drops oncology-use code L01XX14
+313819,CORRECT,,,Ampicillin injectable = J01CA01; correctly drops unrelated penicillin code J01CA18
+1423967,CORRECT,,,Oral clemastine = R06AA04; correctly drops topical code D04AA14
+1100907,WRONG,N02BE01|N06BC01,other,Drops caffeine's own code (N06BC01) from the APAP/butalbital/caffeine combo
+1598039,UNSURE,,other,Cannot confirm exact WHO identity/appropriateness of P03AX06 for this benzyl-alcohol/pet-anti-itch product
+755802,WRONG,R03CA02|R06AB04,route-pollution,C01CA26 (injectable vasopressor use of ephedrine) doesn't fit an oral antihistamine/decongestant solution
+315004,CORRECT,,,Benzocaine oropharyngeal lozenge = R02AD01; correctly drops rectal/dermatologic codes
+2001424,CORRECT,,,Matches local WHO snapshot J05AR11 exactly: lamivudine, tenofovir disoproxil and efavirenz
+1010033,CORRECT,,,Injectable lidocaine = N01BB02; correctly drops topical/oropharyngeal codes
+1191003,WRONG,M02AB01,wrong-strength-indication,N01BX04 reflects the high-concentration Rx capsaicin patch (Qutenza) context; this OTC menthol-containing patch fits M02AB01 (topical counterirritant) only
+745464,WRONG,J01CE01,salt-mismatch,Penicillin G POTASSIUM salt should map to J01CE01 alone; J01CE08/09 are procaine/benzathine salt-specific codes that don't apply to the potassium salt
+1363507,CORRECT,,,Adds missing phenylephrine oral code to APAP/dexbrompheniramine combo
+210058,CORRECT,,,Topical salicylic acid = D01AE12; correctly drops oral-systemic N02BA04
+1087399,CORRECT,,,Iron+multivitamin/mineral antianemic combo consolidated to WHO's dedicated B03AE-series combo code
+846161,CORRECT,,,Plain topical hydrocortisone = D07AA02; correctly drops oral/rectal/systemic/ophthalmic codes
+1491000,CORRECT,,,Topical bacitracin = D06AX05; correctly drops systemic/oropharyngeal codes
+858346,CORRECT,,,Oral diclofenac (Zipsor) = M01AB05; correctly drops topical/ophthalmic codes
+1099668,WRONG,R01BA02|R06AX07,other,Drops triprolidine's own code (R06AX07) from the pseudoephedrine/triprolidine combo
+1116195,CORRECT,,,Oral ephedrine = R03CA02; correctly drops nasal-route code R01AA03
+1012929,CORRECT,,,Topical lidocaine lotion = D04AB01; correctly drops injectable/oropharyngeal codes
+2000686,CORRECT,,,Calcium carbonate+simethicone antacid combo = A02AF02 (dedicated antacid+antiflatulent combo class)
+1991329,CORRECT,,,Epinephrine auto-injector = C01CA24; correctly drops ophthalmic code S01EA01
+1363751,CORRECT,,,Same phenylephrine/pyrilamine combo pattern as RxCUI 351277; R01BA03|R06AC01 correct
+762816,CORRECT,,,Oral phenylephrine suspension = R01BA03; correctly drops nasal/ophthalmic codes
+1543553,CORRECT,,,Same drospirenone/EE combo pill pattern as RxCUI 2045196
+314988,CORRECT,,,Adds missing aspirin code (N02BA01) to existing codeine/caffeine codes
+1039716,CORRECT,,,Topical salicylic acid soap = D01AE12; correctly drops oral-systemic N02BA04
+856792,CORRECT,,,Matches local WHO snapshot N06CA01 exactly: amitriptyline and psycholeptics (Limbitrol-type combo)
+2001745,UNSURE,,l4-vs-l5-granularity,Cannot confirm M02AC is an established WHO L4 class; if valid it is a reasonable multi-ingredient counterirritant-patch fallback
+308122,CORRECT,,,Aminosalicylic acid oral = J04AA01; correctly drops unrelated anti-TB code J04AA02
+795727,CORRECT,,,Aspirin+caffeine (no sedative/codeine) = N02BA51 combination code, replacing incorrect psycholeptic-combo code
+1011342,CORRECT,,,High-concentration injectable lidocaine plausibly serves both local-anesthetic (N01BB02) and antiarrhythmic (C01BB01) uses
+1516,UNSURE,,other,"Ingredient-level list includes R03BA04, an inhaled-corticosteroid slot not typically associated with betamethasone; cannot fully verify all 11 codes offline"
+261177,CORRECT,,,Topical nystatin powder = D01AA01; correctly drops oral/GI antifungal codes
+1006707,CORRECT,,,Sulfacetamide ophthalmic = S01AB04; correctly drops dermatologic code D10AB02
+2054120,CORRECT,,,Topical glycopyrronium antihidrotic wipe = D11AA01; correctly drops oral GI-antispasmodic code A03AB02
+210540,WRONG,S01AA01,wrong-route,S03AA08 (combined ophthalmic/otic antiinfective) doesn't fit this ophthalmic-only solution
+1102185,CORRECT,,,Topical BAK lotion = D08AJ01; correctly drops unrelated antiseptic and oropharyngeal codes
+1114096,CORRECT,,,Vandetanib reclassified under newer WHO kinase-inhibitor group L01EX04 (from legacy L01XE12), mirroring the niraparib pattern
+1147619,WRONG,N02BE01|R01BA03|R06AA02,other,Missing acetaminophen (N02BE01) and diphenhydramine (R06AA02) codes; only phenylephrine retained
+979379,CORRECT,,,Inhalation solution correctly mapped to inhalant-route code R03AB03, replacing systemic-route code R03CB03
+857001,CORRECT,,,Matches local WHO snapshot N02AJ22 exactly: hydrocodone and paracetamol (Norco)
+1235150,CORRECT,,,Matches local WHO snapshot C09DA09 exactly: azilsartan medoxomil and diuretics (Edarbyclor)

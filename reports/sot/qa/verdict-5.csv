@@ -1,0 +1,81 @@
+rxcui,judgment,should_be,reason_category,note
+602598,CHANGE_WRONG,G03AA12,missing-combo-L5,"Drospirenone+ethinylestradiol combo needs dedicated G03AA12; final splits into progestogen-alone/estrogen-alone codes plus L02AA03 (estramustine, an unrelated antineoplastic)."
+1547121,CHANGE_WRONG,D08AG02,ingredient-level-overbroad,Topical antiseptic solution; D09AA09 (medicated dressings) and D11AC06 (medicated shampoo) are wrong dose-form codes for povidone-iodine.
+476825,CHANGE_CORRECT,,,"2-ingredient oral cold combo; R06AB01 (brompheniramine) + R01BA03 (oral phenylephrine) both represented, matching the accepted pattern in row 1099486."
+310905,CHANGE_WRONG,A01AA01|A01AA04,route-pollution,High-concentration professional/dental topical fluoride rinse (A01AA); A12CD01 is the systemic oral fluoride-supplement code and doesn't fit this product.
+1088447,CHANGE_WRONG,A16AA01|C01EB09,l4-vs-l5-granularity,"Downgrades the specific, already-correct L5 ubidecarenone code C01EB09 to the vague L4 catch-all C01EX, and drops levocarnitine (A16AA01) entirely."
+206223,CHANGE_CORRECT,,,Topical acne erythromycin correctly reclassified from systemic J01FA01 to D10AF02.
+2183684,CHANGE_WRONG,R01BA03|R06AB04,incomplete-combo-coverage,"Drops chlorpheniramine (R06AB04) entirely, keeping only phenylephrine's code; compare accepted 2-ingredient pattern in row 1099486."
+245001,CHANGE_CORRECT,,,Aluminium hydroxide + magnesium carbonate antacid maps to the dedicated combo code A02AD03.
+204442,CHANGE_CORRECT,,,"Oral ibuprofen suspension correctly narrowed to M01AE01, dropping dexibuprofen (different substance) and the topical gel code."
+1010900,CHANGE_CORRECT,,,"Injectable lidocaine correctly narrowed to local-anesthetic N01BB02, dropping topical/oromucosal route codes."
+2166129,CHANGE_WRONG,R01BA03|R06AA02,incomplete-combo-coverage,"Drops diphenhydramine (R06AA02) entirely from a diphenhydramine+phenylephrine oral solution, keeping only the phenylephrine combinations code."
+253182,CHANGE_CORRECT,,,Ingredient-level insulin regular human union legitimately adds A10AF01 (inhaled insulin formulation); human-adjudicated (ADJUDICATED_ADOPT).
+1994362,CHANGE_CORRECT,,,"Ibrutinib reclassified to current WHO BTK-inhibitor code L01EL01 (post-restructuring), replacing legacy L01XE27."
+1091941,CHANGE_CORRECT,,,"Topical salicylic acid acne solution correctly narrowed to D01AE12, dropping mismatched N02BA04 (acetylsalicylic acid/aspirin)."
+211598,CHANGE_WRONG,D07AA02,ingredient-level-overbroad,"Plain hydrocortisone topical cream; C05AA01 (rectal), D07AB02/11 and D07AC16 (wrong potency class) and D07XA01 (combinations) are wrong route/formulation. Single active with no partner ingredient -> plain weak-potency topical D07AA02."
+1011854,CHANGE_CORRECT,,,Topical lidocaine gel correctly narrowed to dermatological D04AB01.
+1737563,UNSURE,N01BB02|C01BB01,wrong-route,"Injectable lidocaine legitimately carries dual WHO classification (local anesthetic N01BB02 + antiarrhythmic C01BB01); cannot confirm offline whether this specific branded Xylocaine vial is antiarrhythmic-only, justifying dropping N01BB02."
+899660,CHANGE_CORRECT,,,"Nitroglycerin transdermal patch correctly narrowed to C01DA02, dropping an unrelated C05AE01."
+1117106,CHANGE_CORRECT,,,"Bacitracin zinc/polymyxin B topical powder narrows to D06AX05 (bacitracin); WHO has no dedicated topical-skin code for polymyxin B, so single-code result is faithful, not a regression."
+2629337,CHANGE_CORRECT,,,"Fentanyl prefilled syringe (parenteral) correctly narrowed to anesthesia code N01AH01, dropping the patch/lozenge analgesic code N02AB03."
+1010033,CHANGE_CORRECT,,,"Generic injectable lidocaine correctly narrowed to N01BB02, consistent with row 1010900."
+1244968,CHANGE_WRONG,R05CB13,wrong-route,"Nebulized hypertonic saline for inhalation (CF mucolytic use) is a pulmonary/mucolytic use, not nasal; R01AX (nasal, L4-only) is the wrong anatomical route and doesn't even reach L5."
+1091910,CHANGE_WRONG,A01AA01,route-pollution,"Professional topical dental fluoride foam (A01AA01); A12CD01 (systemic fluoride supplement) wrongly appended, same bug pattern as row 310905."
+1100894,CHANGE_CORRECT,,,"Calcium+cholecalciferol capsule maps to the genuine WHO terminal combination code A12AX (calcium combinations), consistent with similar terminal vitamin/mineral combo codes elsewhere in this batch (A11JA, A11CB)."
+1535468,CHANGE_CORRECT,,,"Ceritinib reclassified to current WHO ALK-inhibitor code L01ED02, replacing legacy L01XE28."
+1090522,UNSURE,,no-who-code-exists,Iodine povacrylex is a distinct antiseptic polymer from povidone-iodine; cannot confirm offline whether WHO has assigned it a dedicated L5 under D08AG or whether the L4-only result is the faithful ceiling.
+312013,CHANGE_CORRECT,,,"Extended-release nitroglycerin capsule correctly narrowed to C01DA02, dropping unrelated C05AE01 (same fix as row 899660)."
+1000717,CHANGE_CORRECT,,,"Topical sulfacetamide sodium acne gel reclassified into the antiinfective-acne class D10AF06, alongside erythromycin's D10AF02 in row 206223."
+204423,CHANGE_CORRECT,,,"Hydrocortisone+neomycin+polymyxin B otic solution (classic Cortisporin-type combo) maps to the dedicated corticosteroid+antiinfective otic combo code S02CA03, replacing a multi-route kitchen-sink list."
+307829,CHANGE_WRONG,D08AA02,wrong-route,"Vaginal insert; J01EB05 (systemic sulfonamide) and S01AB02 (ophthalmic sulfonamide) are both wrong-route additions for sulfisoxazole in a vaginal product; needs a vaginal anti-infective (G01A-class) code instead, which could not be pinned down precisely offline."
+895040,CHANGE_CORRECT,,,"Otic acetic acid/antipyrine/benzocaine combo splits sensibly into S02AA10 (acetic acid, otic antiinfective) and S02DA03 (otic analgesic/anesthetic), replacing a multi-route kitchen-sink list."
+1092351,CHANGE_WRONG,N02BE51|R06AA02,missing-combo-L5,"Drops WHO's dedicated combo code N02BE51 ('paracetamol, combinations excl. psycholeptics'), confirmed in local N02BE.json snapshot, which correctly covers acetaminophen+diphenhydramine (Mapap PM)."
+1484890,CHANGE_CORRECT,,,"Coal tar/menthol/salicylic acid shampoo correctly narrowed to D01AE12, dropping mismatched N02BA04 (aspirin)."
+1242787,CHANGE_CORRECT,,,"Triphasic OC pack correctly narrowed to G03AA05 (norethisterone+ethinylestradiol combo), dropping an HRT-context code G03FA01."
+1660018,CHANGE_WRONG,C01CA24,ingredient-level-overbroad,"Emergency/anaphylaxis injectable epinephrine (Adrenalin ampule) over-unions across route-specific codes including dental (A01AD01) and inhaled bronchodilator (R03AA01), neither of which fit an injectable ampule."
+314986,CHANGE_WRONG,N02AJ07|N06BC01,missing-combo-L5,"WHO has a dedicated codeine+acetylsalicylic-acid combo code N02AJ07 (confirmed in local N02AJ.json) that final_atcs misses entirely; instead uses aspirin's antiplatelet (B01AC06) and dental (A01AD05) codes, wrong context for an analgesic combo tablet."
+1803724,CHANGE_CORRECT,,,"Salicylic acid medicated soap correctly narrowed to D01AE12, dropping mismatched N02BA04 (aspirin), same fix as rows 1091941/1484890."
+1085642,CHANGE_WRONG,D07AB09,route-pollution,"Plain triamcinolone topical ointment (single active, no partner); C05AA12 is the rectal/anorectal code (wrong route) and D07XB02 implies a combination product that doesn't exist here."
+251380,CHANGE_WRONG,D01AE12,l4-vs-l5-granularity,"Salicylic acid topical gel; D01AE12 is the code used consistently for this exact substance/route elsewhere in this batch (rows 1091941, 1803724, 1484890); D11AF is an unsupported/inconsistent substitute."
+206199,CHANGE_WRONG,H02AB07,route-pollution,"Liquid Pred is a systemic oral corticosteroid solution, not a locally-acting GI preparation; A07EA03 (locally-acting GI/rectal corticosteroid class) doesn't fit this product's route."
+1494824,CHANGE_WRONG,D10AF06,l4-vs-l5-granularity,Sulfacetamide/sulfur acne lotion; result stops at L4 (D10AF) even though the sibling pure-sulfacetamide product in row 1000717 reaches L5 D10AF06 in the same batch.
+827180,CHANGE_WRONG,A02BA02,cross-substance-contamination,"A02BA07 is roxatidine, a different H2-receptor-antagonist substance, not ranitidine; spurious cross-substance addition."
+198334,CHANGE_CORRECT,,,"Sulfamethoxazole+trimethoprim correctly resolves to the dedicated combo code J01EE01, confirmed in local J01EE.json snapshot (matches CLAUDE.md's documented Bactrim example)."
+212285,UNSURE,,other,Aluminium hydroxide + magnesium trisilicate chewable; cannot confirm offline whether A02AB02 (an aluminium-compounds-class code) correctly represents magnesium trisilicate or is a mismatched/different aluminium salt.
+762334,CHANGE_CORRECT,,,Desogestrel/ethinylestradiol triphasic OC pack correctly moved from progestogen-alone G03AC09 to the combined-OC code G03AA09.
+701627,CHANGE_CORRECT,,,Cholecalciferol+vitamin A capsule maps to the genuine WHO terminal combination code A11CB (Vitamin A and D combinations).
+205973,CHANGE_CORRECT,,,"Gramicidin/neomycin/polymyxin B ophthalmic solution moved from a wrong-route throat code (R02AB30) to ophthalmic/otic antiinfective codes, a correct directional fix."
+1542385,CHANGE_CORRECT,,,"Injectable phenylephrine (Vazculep, vasopressor use) correctly reclassified to cardiac-stimulant C01CA06, dropping decongestant/ophthalmic codes."
+1657997,CHANGE_WRONG,B01AB01,route-pollution,"Injectable systemic heparin; C05BA03 is the topical/local antivaricose heparin-gel code (bruise treatment), wrong route/formulation for an injectable anticoagulant."
+1668054,CHANGE_CORRECT,,,"Alprostadil injection legitimately carries dual WHO classification: C01EA01 (PDA-maintenance IV use) and G04BE01 (intracavernosal ED use, e.g. Caverject); keeping both is appropriate given genuine formulation ambiguity."
+849547,CHANGE_WRONG,D07AA02,ingredient-level-overbroad,"Same hydrocortisone kitchen-sink issue as row 211598, applied to a topical lotion/cleanser; should narrow to plain weak-potency D07AA02."
+1251619,CHANGE_CORRECT,,,"Cetylpyridinium mouthwash correctly narrowed to throat-antiseptic R02AA06, dropping irrigation/dressing/generic-antiseptic codes."
+853367,CHANGE_WRONG,D04AA02|D04AB04,route-pollution,"Topical anti-itch gel (skin); C05AD03 is the anorectal local-anesthetic code, wrong route for a dermatological product."
+1251049,CHANGE_WRONG,A06AX01,wrong-route,"Glycerin rectal suppository; A06AG04 is the enema-specific laxative code, a dose-form mismatch for a suppository."
+1190776,CHANGE_CORRECT,,,"Injectable atropine correctly narrowed to systemic anticholinergic A03BA01, dropping the ophthalmic mydriatic code."
+1088965,CHANGE_WRONG,R01BA02|R05FA02,incomplete-combo-coverage,3-ingredient cough/cold product; final keeps only the codeine+guaifenesin combo code (R05FA02) and drops pseudoephedrine (R01BA02) entirely.
+994507,UNSURE,,other,Vetrimec is a veterinary ivermectin product; WHO's human ATC (D11AX22) may not even be the applicable system (veterinary products use ATCvet 'Q' codes) -- cannot resolve offline.
+727822,CHANGE_CORRECT,,,Small-volume prefilled saline syringe (catheter flush) correctly narrowed to the IV-additive/flush code B05XA03.
+360349,UNSURE,,other,Benzocaine topical spray; N01BA05 is inconsistent with the dermatological code D04AB04 used for the same substance/route elsewhere in this batch (row 853367) -- unclear offline whether N01BA05 is a legitimate alternate classification or an error.
+1442980,CHANGE_CORRECT,,,"Dimethicone topical/scar cream reclassified from a lice-treatment code (P03AX05) to the silicone-preparations terminal code D02AA, matching its actual skin-protectant use."
+857461,CHANGE_CORRECT,,,"Oral clemastine correctly narrowed to systemic antihistamine R06AA04, dropping the dermatological code."
+484925,CHANGE_CORRECT,,,Folic acid/B12/B6 combo maps to the genuine WHO terminal combination code A11JA.
+1047484,CHANGE_WRONG,D01AE12|D11AX12,cross-substance-contamination,"3-shampoo pack (coal tar/salicylic acid/zinc pyrithione); N02BA04/N02BA12 (systemic salicylate/NSAID analgesic codes) and S01BC08 (ophthalmic NSAID) are unrelated mismatches -- the same salicylic-acid name-confusion bug that was correctly avoided elsewhere in this batch (rows 1091941, 1803724, 1484890)."
+308209,CHANGE_CORRECT,,,"Oral ampicillin suspension correctly narrowed to J01CA01, dropping a mismatched second penicillin code (J01CA18)."
+308914,UNSURE,,other,"Calcium carbonate 600mg chewable is used both as an antacid (A02AC01) and a dietary calcium supplement (A12AA04, already correct in production); no brand/label to disambiguate the intended product offline."
+238920,CHANGE_CORRECT,,,"Betamethasone topical cream correctly narrowed to the potent-topical-corticosteroid code D07AC01, dropping systemic/ophthalmic/otic route codes."
+1048138,CHANGE_CORRECT,,,Dyclonine oral lozenge (Sucrets) correctly narrowed to the throat-preparation code R02AD04.
+885578,CHANGE_CORRECT,,,"Extended-release ferrous sulfate correctly narrowed to B03AA07, dropping a mismatched different-iron-salt code (B03AA01)."
+859141,CHANGE_CORRECT,,,"3-ingredient cough/cold combo (chlorpheniramine+hydrocodone+phenylephrine); final adds phenylephrine's own code (R01BA03) while keeping both other actives' codes -- full, consistent combo coverage."
+804547,CHANGE_CORRECT,,,Difluprednate ophthalmic suspension (Durezol) correctly reclassified from dermatological D07AC19 to ophthalmic S01BA16.
+990999,CHANGE_CORRECT,,,"Ophthalmic physostigmine correctly narrowed to the ophthalmic miotic code S01EB05, dropping the systemic-antidote code V03AB19."
+1099486,CHANGE_CORRECT,,,"Pseudoephedrine+triprolidine oral solution keeps both partner base codes (R01BA02, R06AX07), dropping the combinations-suffix code R01BA52 -- establishes the accepted 2-ingredient combo pattern used to judge similar rows in this batch."
+2058529,CHANGE_CORRECT,,,"Extended-release oral minocycline correctly narrowed to systemic J01AA08, dropping the dental/local-oral code A01AB23."
+198741,CHANGE_CORRECT,,,Plain magnesium oxide 400mg tablet (a supplement-dose product) reclassified from antacid codes to the mineral-supplement code A12CC10.
+351383,CHANGE_CORRECT,,,"Topical ciclopirox lotion correctly narrowed to dermatological D01AE14, dropping the vaginal-antifungal code G01AX12."
+310882,CHANGE_WRONG,S01BA02,spurious-combination-code,Single-ingredient hydrocortisone ophthalmic suspension; S01CB03 is a corticosteroid+antiinfective COMBINATION code that doesn't apply since no antiinfective ingredient is present in this product.
+212647,CHANGE_WRONG,A02AB01|A02AF01,missing-combo-L5,"Maalox Plus (aluminium/magnesium hydroxide + simethicone); drops A02AF01, the dedicated 'antacids with antiflatulents' combo code appropriate for this simethicone-containing formula, in favor of an uncertain plain ingredient list."
+1190779,CHANGE_CORRECT,,,"Injectable atropine correctly narrowed to A03BA01, same fix as row 1190776."
+1148253,UNSURE,,other,"Multi-ingredient (5-active) OTC eye drop (Visine Totality); S01KA02 (typically 'surgical aids'/ophthalmic viscoelastics) is a questionable fit for a decongestant+lubricant product, but the correct code(s) could not be confirmed offline."
+705164,CHANGE_CORRECT,,,"Oral phenylephrine film correctly narrowed to the oral/systemic decongestant code R01BA03, matching the route-appropriate pattern used across this batch."

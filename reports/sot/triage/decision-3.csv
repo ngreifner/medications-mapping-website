@@ -1,0 +1,95 @@
+rxcui,decision,final_codes,confidence,evidence
+311239,KEEP_OURS,A05BA01,MED,"A05BA01=arginine glutamate is the closest oral-route WHO code for plain oral arginine capsule; WHO has no code for unqualified 'arginine'; resolver's B05XB01=arginine hydrochloride is an IV-additive-solution code, wrong route for an oral capsule"
+544241,OTHER,A07AA02,MED,"A07AA02=nystatin(oral,A07AA list confirmed) is correct; A01AB11's official WHO name is 'various' (not nystatin-specific), so dropped; resolver's D01AA01(nystatin,topical)/G01AA01(nystatin,vaginal) confirmed wrong-route for an oral tablet"
+1190034,KEEP_OURS,D04AB04|D08AJ08,HIGH,"WHO confirmed: D04AB04=benzocaine(topical anesthetics), D08AJ08=benzethonium chloride(quaternary-ammonium disinfectant); resolver adds C05AD03(benzocaine,anorectal) and N01BA05(benzocaine,systemic ester-anesthetic class), both wrong route for a Topical Spray"
+205257,OTHER,J07AM51,HIGH,"Product is diphtheria toxoid + tetanus toxoid only (no pertussis/polio in name); WHO J07AM51='tetanus toxoid, combinations with diphtheria toxoid' is the exact WHO code; our J07CA02 wrongly implies pertussis+polio; resolver's split J07AF01+J07AM01 discards the dedicated combination code"
+1234328,ADOPT_RESOLVER,C01EB09,MED,C01EB09=ubidecarenone(coenzyme Q10) confirmed via C01EB WHO list; covers only the CoQ10 half of the product - red yeast rice/monacolin K has no WHO ATC assignment; still better than our shipped empty value
+1191,ADOPT_RESOLVER,A01AD05|B01AC06|N02BA01,HIGH,"TTY=IN (aspirin); live RxNav property API for rxcui 1191 returns exactly A01AD05, B01AC06, N02BA01; per ingredient-level rule all L5 ATCs are kept unfiltered; our N02BA is a truncated L4"
+1049108,KEEP_OURS,D04AB04|D08AJ08,HIGH,Same benzethonium chloride/benzocaine topical-spray pattern as rxcui 1190034; WHO-confirmed correct-route codes
+1360949,KEEP_OURS,D07AA02|D07XA01,MED,"Both D07AA02 and D07XA01 are WHO-listed as 'hydrocortisone' (weak-corticosteroid group); resolver adds C05AA01(hydrocortisone,anorectal/hemorrhoid class) which is wrong route for a Topical Cream"
+1299628,KEEP_OURS,S01XA03,HIGH,"WHO S01XA03='sodium chloride, hypertonic' (confirmed in S01XA list) matches this ophthalmic hypertonic-saline product (Sochlor); resolver's A12CA01/B05CB01/B05XA03 are oral-mineral/IV-electrolyte codes, wrong route for an Ophthalmic Ointment"
+1300155,KEEP_OURS,D04AB04|D08AJ08,HIGH,Same benzethonium chloride/benzocaine topical-spray pattern (Lanacane); WHO-confirmed
+724547,KEEP_OURS,N02AJ18,HIGH,"WHO N02AJ18='oxycodone and acetylsalicylic acid' (confirmed in N02AJ snapshot) is the exact combo code for aspirin+oxycodone (Endodan); resolver splits into 4 monotherapy ingredient codes, losing the dedicated combination code"
+876863,OTHER,A11DA01|A11HA03|A11GA01|A11CC05|A11CA01|A11HA04|B03AA07|C04AC01|C10AD02,LOW,"8-ingredient oral multivitamin/mineral solution with no dedicated WHO combo code; kept the plausible oral-route entries from resolver's ingredient-level list and dropped confirmed wrong-route entries (D10AD02=retinol for TOPICAL acne per D10AD WHO list; S01XA02/S01XA15/S01XA26=ophthalmic; G01AD03=vaginal; R01AX02=nasal); our shipped value was empty; remaining set not individually re-verified per ingredient, hence LOW confidence"
+204525,OTHER,J07AM51,HIGH,Same diphtheria+tetanus-toxoid-only vaccine pattern as rxcui 205257; WHO J07AM51 is the exact match
+725076,KEEP_OURS,N06CA03,HIGH,"WHO N06CA03='fluoxetine and psycholeptics' confirmed via N06CA snapshot; olanzapine is a psycholeptic/antipsychotic, exact match for Symbyax; resolver splits into 2 monotherapy codes"
+866464,KEEP_OURS,C07BB02,HIGH,WHO C07BB02='metoprolol and thiazides' confirmed via C07BB snapshot; exact match for Dutoprol
+750124,KEEP_OURS,S01XA03,HIGH,Same hypertonic-saline-ophthalmic pattern as rxcui 1299628 (Adsorbonac)
+749572,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' confirmed via G03AA WHO list; matches Levora OC pack; resolver splits into estrogen-alone/progestin-alone monotherapy ingredient codes
+1995466,KEEP_OURS,A07AA01|J01GB05,MED,"A07AA01=neomycin(oral,route O confirmed in A07AA WHO list); J01GB05=neomycin carries no route restriction in the WHO index (unlike tobramycin/amikacin which explicitly specify inhalation), so it is not excluded for an oral product; resolver's B05CA09(irrigation solution)/R02AB01(throat preparation) are wrong-route for an Oral Solution"
+352099,KEEP_OURS,R05FB02,HIGH,"WHO R05FB02='cough suppressants and expectorants' confirmed via R05FB WHO list - the dedicated combo class for dextromethorphan(antitussive)+guaifenesin(expectorant); resolver splits into monotherapy codes R05DA09+R05CA03, losing the dedicated combination code"
+1049660,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; WHO N02AJ17='oxycodone and paracetamol' verified via N02AJ snapshot
+1049110,KEEP_OURS,D04AB04|D08AJ08,HIGH,Same benzethonium chloride/benzocaine topical-spray pattern
+1437704,KEEP_OURS,R03AL02,HIGH,WHO R03AL02='salbutamol and ipratropium bromide' confirmed via R03AL WHO list - exact match for DuoNeb; resolver splits into 4 monotherapy/wrong-route ingredient codes
+1300294,KEEP_OURS,D04AB04|D08AJ08,HIGH,"Same benzethonium chloride/benzocaine pattern, topical cream form"
+899993,KEEP_OURS,A10BD05,HIGH,WHO A10BD05='metformin and pioglitazone' confirmed via A10BD snapshot; exact match for Actoplus Met
+2173852,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern as rxcui 352099
+1101914,KEEP_OURS,D04AB04|D08AJ08,HIGH,Same benzethonium chloride/benzocaine pattern (Dermoplast Antibacterial)
+476466,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+999946,KEEP_OURS,C10AD52,MED,"WHO C10AD52='nicotinic acid, combinations' confirmed via C10AD WHO list; no simvastatin-specific niacin-combo code exists in C10BA (checked snapshot), so this generic niacin-combination code is the best available match for Simcor; better fit than resolver's 3-way ingredient split"
+1090054,KEEP_OURS,G03AA07,HIGH,Same levonorgestrel+ethinylestradiol OC-pack pattern (Portia)
+1245392,OTHER,D08AC02,MED,"D08AC02=chlorhexidine(dermatological antiseptic) is the correct code for a topical/scalp Medicated Shampoo; D09AA12=chlorhexidine but for 'medicated dressings'(wound bandages) is a poor form-fit for a liquid shampoo despite passing the blanket topical-prefix filter, so dropped; resolver's full list (8 codes spanning oral/vaginal/nasal/ophthalmic/otic routes) is severe ingredient pollution"
+1250490,KEEP_OURS,D07AA02|D07XA01,MED,Same hydrocortisone-acetate topical-cream pattern as rxcui 1360949
+1307998,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+1373322,OTHER,D04AB04,MED,Single-ingredient benzocaine Topical Lotion; WHO D04AB04=benzocaine(topical) is the only correct-route code; our_value's C05AD03(anorectal) and resolver's added N01BA05(systemic ester-anesthetic class) are both wrong-route for a topical lotion
+762003,KEEP_OURS,G03AA11,HIGH,WHO G03AA11='norgestimate and ethinylestradiol' confirmed via G03AA WHO list; exact match for MonoNessa
+861738,KEEP_OURS,A10BD02,HIGH,"WHO A10BD02='metformin and sulfonylureas' confirmed via A10BD snapshot; glipizide is a sulfonylurea, exact match for Metaglip"
+310858,KEEP_OURS,D07AA02|D07XA01,MED,Same hydrocortisone topical-spray pattern
+330396,ADOPT_RESOLVER,A02BC02,HIGH,"SCDC pantoprazole (no dose form); live RxNav ATCPROD confirms A02BC(L4,proton pump inhibitors) for this rxcui; A02BC02 is the substance-specific WHO L5 for pantoprazole - PPIs get one code regardless of route, so promotion is unambiguous"
+749863,KEEP_OURS,G03FA01,HIGH,"WHO G03FA01='norethisterone and estrogen' (generic estrogen, covers mestranol pairing) confirmed via G03FA WHO list; exact match for Ortho-Novum 1/50"
+211053,KEEP_OURS,C09BA01,HIGH,WHO C09BA01='captopril and diuretics' confirmed via C09BA snapshot; exact match for Capozide
+215101,ADOPT_RESOLVER,M01AE02,HIGH,Aleve=naproxen; live RxNav related.json confirms IN=naproxen for this BN concept; WHO M01AE02=naproxen confirmed via M01AE WHO list; our M01AE is a truncated L4
+4511,ADOPT_RESOLVER,B03BB01|V04CX02,HIGH,TTY=IN folic acid; live RxNav property API returns exactly B03BB01+V04CX02; per ingredient-level rule all L5 ATCs are kept unfiltered; our B03BB is a truncated L4
+2173930,KEEP_OURS,R05FB02,HIGH,"Dextromethorphan+guaifenesin+sodium citrate; R05FB02 combo code fits the two primary actives (sodium citrate is a minor expectorant adjuvant, not independently indicated here); resolver drops the dedicated combo code entirely and mis-adds B05CB02(systemic electrolyte)"
+1014605,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Perloxx
+1545716,OTHER,D04AB01|D08AJ08,MED,"Benzethonium chloride+lidocaine Topical Spray; WHO D04AB01=lidocaine(topical)+D08AJ08=benzethonium(disinfectant) are the correct-route codes; both our_value and resolver include C05AD01(lidocaine,anorectal) and resolver additionally adds N01BB02(lidocaine,systemic amide-anesthetic class) - all wrong route for a topical spray"
+866506,KEEP_OURS,C07BB02,HIGH,Same metoprolol+thiazide pattern (Lopressor HCT)
+991553,KEEP_OURS,C09BA06,HIGH,WHO C09BA06='quinapril and diuretics' confirmed via C09BA snapshot; matches Quinaretic 20mg
+897855,KEEP_OURS,C09BB10,HIGH,WHO C09BB10='trandolapril and verapamil' confirmed via C09BB snapshot; exact match for Tarka
+805379,OTHER,J07AM51,HIGH,Same diphtheria+tetanus-toxoid-only vaccine pattern; WHO J07AM51 exact match
+1299873,KEEP_OURS,C09BA13,HIGH,WHO C09BA13='moexipril and diuretics' confirmed via C09BA snapshot; matches Uniretic 7.5mg
+1367319,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+762004,KEEP_OURS,G03FA01,HIGH,Same mestranol+norethindrone OC-pack pattern (Necon)
+205826,KEEP_OURS,S01CA02,HIGH,WHO S01CA02='prednisolone and antiinfectives' confirmed via S01CA WHO list; matches gentamicin+prednisolone-acetate ophthalmic suspension (Pred-G); resolver's 16-code list is ingredient pollution spanning every possible route of both substances
+705013,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+759469,KEEP_OURS,G03AA07,HIGH,Same levonorgestrel+ethinylestradiol OC-pack pattern (Quasense)
+905511,KEEP_OURS,A03CB01,HIGH,"WHO A03CB01='methylscopolamine and psycholeptics' confirmed via A03CB WHO list; exact match for chlordiazepoxide+methscopolamine ('Librax Reformulated'); resolver splits into ingredient-alone codes N05BA02/A03BB03/S01FA03, losing the combination code (note: rxcui is retired, no live RxNav data available, decision based on WHO name-match)"
+203457,ADOPT_RESOLVER,R06AA02|D04AA32,HIGH,"Benadryl(diphenhydramine) BN; live RxNav ATCPROD confirms BOTH R06AA(oral antihistamine) and D04AA(topical antihistamine) classes attached to this brand concept - a genuine multi-route brand; our shipped value only had D04AA(L4), missing the oral route entirely; resolver's L5 promotion for both routes is correct"
+249710,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+1049666,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Tylox
+898352,KEEP_OURS,C09BB13,HIGH,WHO C09BB13='benazepril and amlodipine' confirmed via C09BB snapshot; exact match for Lotrel
+725072,KEEP_OURS,N06CA03,HIGH,Same fluoxetine+olanzapine pattern (Symbyax)
+343030,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+861797,KEEP_OURS,A10BD03,HIGH,WHO A10BD03='metformin and rosiglitazone' confirmed via A10BD snapshot; matches Avandamet 1mg
+996525,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+745718,KEEP_OURS,A03AX13,HIGH,"WHO A03AX13='silicones' (simethicone) confirmed via A03AX WHO list; resolver's P03AX05 is an ectoparasiticide class code, unrelated to an oral antiflatulent"
+889622,KEEP_OURS,A03CA02,HIGH,WHO A03CA02='clidinium and psycholeptics' confirmed via A03CA snapshot; matches Clindex (chlordiazepoxide+clidinium)
+1092602,OTHER,D08AC02,MED,Same chlorhexidine medicated-shampoo pattern as rxcui 1245392
+1041524,KEEP_OURS,S02DA30,HIGH,WHO S02DA30='combinations' (otic analgesics/anesthetics class) confirmed via S02DA WHO list; fits this 4-ingredient otic combo; resolver's 9-code list is severe ingredient pollution across unrelated systemic/vaginal/nasal routes
+1049693,KEEP_OURS,N02AJ18,HIGH,Same aspirin+oxycodone combo-code pattern as rxcui 724547 (Roxiprin); WHO N02AJ18 confirmed via N02AJ snapshot
+1795169,OTHER,B05BB02,MED,"Glucose+sodium-chloride fixed-ratio IV injection; WHO B05BB02='electrolytes with carbohydrates' is the textbook WHO combo class for a dextrose-saline infusion; our_value(6-code shotgun incl. oral-mineral A12CA01) and resolver's list (incl. V04CA02=glucose-tolerance-test diagnostic reagent, wrong for a therapeutic infusion) are both ingredient-polluted"
+991549,KEEP_OURS,C09BA06,HIGH,Same quinapril+HCTZ pattern (Quinaretic 10mg)
+310355,OTHER,C02LA08|A12BA01,MED,"Flumethiazide has no WHO ATC code at all (absent from the C03AA thiazides WHO list - never separately classified); Rauwolfia serpentina whole root = C02AA04 (confirmed); WHO C02LA08='rauwolfia alkaloids, whole root and diuretics' is the exact combination class for rauwolfia+thiazide-diuretic; A12BA01(potassium chloride) retained as a separate supplement ingredient; both our_value and resolver_value miss the antihypertensive combination code entirely"
+889624,KEEP_OURS,A03CA02,HIGH,Same chlordiazepoxide+clidinium pattern (Chlordinium)
+1049253,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Magnacet 10mg
+2108527,KEEP_OURS,A10AF01,HIGH,WHO A10AF01='insulin (human)' for the inhalation route confirmed via A10AF WHO list; matches Afrezza; RxNav's own ATCPROD wrongly tags this rxcui A10AB(injectable) - a known ATCPROD route-prefilter gap - but WHO's A10AF is route-specific to inhalation and is the clinically correct code
+602630,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+5640,ADOPT_RESOLVER,C01EB16|G02CC01|M01AE01|M02AA13|R02AX02,HIGH,TTY=IN ibuprofen; live RxNav property API returns exactly these 5 L5 codes; per ingredient-level rule all L5 ATCs are kept unfiltered; our M01AE is a truncated L4
+858827,KEEP_OURS,C09BA02,HIGH,WHO C09BA02='enalapril and diuretics' confirmed via C09BA snapshot; matches Vaseretic
+1049235,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Endocet
+1863986,OTHER,B05BB02,MED,Glucose+potassium-chloride+sodium-chloride IV injection; same WHO B05BB02='electrolytes with carbohydrates' logic as rxcui 1795169 applies to this maintenance IV fluid; both our_value and resolver_value are ingredient-polluted shotguns including wrong-context codes
+1366495,ADOPT_RESOLVER,R06AE04,HIGH,Ahist; live RxNav related.json confirms IN=chlorcyclizine; WHO R06AE04=chlorcyclizine(oral) confirmed via R06AE WHO list; our R06AE is a truncated L4
+896193,KEEP_OURS,R03AK06,HIGH,WHO R03AK06='salmeterol and fluticasone' confirmed via R03AK WHO list; exact match for Advair Diskus; resolver splits into 4 monotherapy ingredient codes
+861762,KEEP_OURS,A10BD03,HIGH,Same metformin+rosiglitazone pattern (Avandamet 2mg)
+1049709,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED
+1049262,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Magnacet 5mg
+1482815,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+1299861,KEEP_OURS,C09BA13,HIGH,Same moexipril+HCTZ pattern (Uniretic 15mg)
+309740,KEEP_OURS,R05FB02,HIGH,Same dextromethorphan+guaifenesin combo-code pattern
+672353,KEEP_OURS,A05BA01,MED,Same arginine oral-capsule logic as rxcui 311239
+861747,KEEP_OURS,A10BD02,HIGH,"WHO A10BD02='metformin and sulfonylureas' confirmed; glyburide is a sulfonylurea, exact match for Glucovance"
+861765,KEEP_OURS,A10BD03,HIGH,Same metformin+rosiglitazone pattern (Avandamet 4mg)
+848772,KEEP_OURS,N02AJ18,HIGH,Same aspirin+oxycodone combo-code pattern (Percodan)
+1011843,OTHER,D04AB01|D08AJ08,MED,"Same benzethonium chloride+lidocaine wrong-route pattern as rxcui 1545716, topical gel form"
+206826,KEEP_OURS,G03FA01,HIGH,Same mestranol+norethindrone pattern (Norinyl 1-50)
+1049241,KEEP_OURS,N02AJ17,HIGH,who_check already CONFIRMED; matches Lynox

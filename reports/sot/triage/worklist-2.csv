@@ -1,0 +1,95 @@
+rxcui,drug_name,tty,our_value,resolver_value,provenance,who_check
+836358,ipratropium bromide 0.2 MG/ML Inhalation Solution,SCD,R01AX03,R03BB01,route_filter,UNCONFIRMED
+1049647,acetaminophen 500 MG / oxycodone hydrochloride 7.5 MG Oral Tablet [Percocet],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+197411,bromocriptine 2.5 MG Oral Tablet,SCD,G02CB01,N04BC01,route_filter,UNCONFIRMED
+750126,sodium chloride 0.854 MEQ/ML Ophthalmic Solution [Adsorbonac],SBD,S01XA03,A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+761986,{7 (inert ingredients 1 MG Oral Tablet) / 21 (mestranol 0.05 MG / norethindrone 1 MG Oral Tablet) } Pack [Genora 1/50 28 Day],BPCK,G03FA01,G03AC01|G03DC02,history+per_ingredient,UNCONFIRMED
+896226,28 ACTUAT fluticasone propionate 0.5 MG/ACTUAT / salmeterol 0.05 MG/ACTUAT Dry Powder Inhaler [Advair],SBD,R03AK06,R03AC12|D07AC17|R01AD08|R03BA05,history+per_ingredient,UNCONFIRMED
+749571,{21 (ethinyl estradiol 0.03 MG / levonorgestrel 0.15 MG Oral Tablet) } Pack,GPCK,G03AA07,G03CA01|L02AA03|G03AC03|G03AD01,history+per_ingredient,UNCONFIRMED
+1049703,acetaminophen 325 MG / oxycodone hydrochloride 5 MG Oral Capsule,SCD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1049257,acetaminophen 400 MG / oxycodone hydrochloride 2.5 MG Oral Tablet,SCD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1863606,glucose 50 MG/ML / potassium chloride 0.02 MEQ/ML / sodium chloride 4.5 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12BA01|B05XA01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+1243237,benzalkonium chloride 15 MG/ML Medicated Shampoo [Mane 'N Tail Pro-Tect],SBD,D08AJ01|D09AA11,D08AJ01|D09AA11|R02AA16,route_filter,UNCONFIRMED
+749866,{21 (ethinyl estradiol 0.035 MG / norgestimate 0.25 MG Oral Tablet) } Pack,GPCK,G03AA11,G03CA01|L02AA03,history+per_ingredient,UNCONFIRMED
+763236,24 HR niacin 750 MG / simvastatin 20 MG Extended Release Oral Tablet [Simcor],SBD,C10AD52,C10AA01|C04AC01|C10AD02,history+per_ingredient,UNCONFIRMED
+352336,eprosartan 600 MG / hydrochlorothiazide 25 MG Oral Tablet [Teveten HCT],SBD,C09DA02,C03AA03|C09CA02,history+per_ingredient,UNCONFIRMED
+1049191,acetaminophen 300 MG / oxycodone hydrochloride 10 MG Oral Tablet [Lynox],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1049650,acetaminophen 650 MG / oxycodone hydrochloride 10 MG Oral Tablet [Percocet],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+332451,meloxicam 15 MG,SCDC,M01AC,M01AC06,route_filter,UNCONFIRMED
+212792,phenol 0.01 MG/MG Topical Ointment [Unguentine],SBD,C05BB05|D08AE03,C05BB05|D08AE03|N01BX03,route_filter,UNCONFIRMED
+1440184,hydrocortisone acetate 0.01 MG/MG Topical Ointment,SCD,D07AA02|D07XA01,C05AA01|D07AA02|D07XA01,route_filter,UNCONFIRMED
+1545297,lidocaine hydrochloride 24.6 MG/ML Topical Spray [Hexa-Caine],SBD,C05AD01|D04AB01,C05AD01|D04AB01|N01BB02,route_filter,UNCONFIRMED
+1720953,glycopyrrolate 0.0156 MG / indacaterol 0.0275 MG Inhalation Powder [Utibron],SBD,R03AL04,R03AC18|D11AA01,history+per_ingredient,UNCONFIRMED
+686185,1000 ML glucose 50 MG/ML / potassium chloride 0.03 MEQ/ML / sodium chloride 2.25 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12BA01|B05XA01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+309771,glucose 25 MG/ML / sodium chloride 0.0342 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+866455,24 HR hydrochlorothiazide 12.5 MG / metoprolol succinate 100 MG Extended Release Oral Tablet [Dutoprol],SBD,C07BB02,C03AA03|C07AB02,history+per_ingredient,UNCONFIRMED
+896225,28 ACTUAT fluticasone propionate 0.5 MG/ACTUAT / salmeterol 0.05 MG/ACTUAT Dry Powder Inhaler,SCD,R03AK06,R03AC12|D07AC17|R01AD08|R03BA05,history+per_ingredient,UNCONFIRMED
+762677,{21 (mestranol 0.05 MG / norethindrone 1 MG Oral Tablet) } Pack [Necon 1/50 21 Day],BPCK,G03FA01,G03AC01|G03DC02,history+per_ingredient,UNCONFIRMED
+324026,Allegra,BN,R06AX,R06AX26,route_filter,UNCONFIRMED
+1151,ascorbic acid,IN,A11GA,A11GA01|G01AD03|S01XA15,route_filter,UNCONFIRMED
+1192505,benzethonium chloride 2 MG/ML / benzocaine 100 MG/ML Topical Spray,SCD,D04AB04|D08AJ08,C05AD03|D04AB04|N01BA05|D08AJ08,route_filter,UNCONFIRMED
+1300740,phenol 5 MG/ML Topical Solution,SCD,C05BB05|D08AE03,C05BB05|D08AE03|N01BX03,route_filter,UNCONFIRMED
+664704,1000 ML glucose 50 MG/ML / potassium chloride 0.04 MEQ/ML / sodium chloride 2.25 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12BA01|B05XA01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+205255,"diphtheria toxoid vaccine, inactivated 25 UNT/ML / tetanus toxoid vaccine, inactivated 10 UNT/ML Injectable Suspension",SCD,J07CA02,J07AF01|J07AM01,history+per_ingredient,UNCONFIRMED
+1041810,dextromethorphan hydrobromide 3 MG/ML / pseudoephedrine hydrochloride 6 MG/ML / pyrilamine maleate 4 MG/ML Oral Solution,SCD,R05DA20,R05DA09|R01BA02|D04AA02|R06AC01,history+per_ingredient,UNCONFIRMED
+1049232,acetaminophen 300 MG / oxycodone hydrochloride 5 MG Oral Tablet [Lynox],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+11248,vitamin B12,IN,B03BA,B03BA01,route_filter,UNCONFIRMED
+847708,glimepiride 4 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl],SBD,A10BD04,A10BB12|A10BG02,history+per_ingredient,UNCONFIRMED
+1049582,acetaminophen 65 MG/ML / oxycodone hydrochloride 1 MG/ML Oral Solution [Roxicet],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1049591,ibuprofen 400 MG / oxycodone hydrochloride 5 MG Oral Tablet [Combunox],SBD,N02AJ19,C01EB16|G02CC01|M01AE01|M02AA13|R02AX02|N02AA05,history+per_ingredient,UNCONFIRMED
+1242697,dextromethorphan hydrobromide 4 MG/ML / guaifenesin 40 MG/ML Oral Solution,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1495476,acetaminophen 325 MG / hydrocodone bitartrate 7.5 MG Oral Tablet [Lortab],SBD,N02AJ22,N02BE01|R05DA03,history+per_ingredient,CONFIRMED
+898382,benazepril hydrochloride 5 MG / hydrochlorothiazide 6.25 MG Oral Tablet [Lotensin HCT],SBD,C09BA07,C09AA07|C03AA03,history+per_ingredient,UNCONFIRMED
+801697,arginine 22.5 MG/ML Oral Solution,SCD,A05BA01,B05XB01,history+per_ingredient,UNCONFIRMED
+807206,mometasone furoate 0.01 MG/MG Topical Ointment,SCD,D07AC13|R03BA07,R03AC13|R03CC15,history+per_ingredient,UNCONFIRMED
+857182,fosinopril sodium 10 MG / hydrochlorothiazide 12.5 MG Oral Tablet [Monopril-HCT],SBD,C09BA09,C09AA09|C03AA03,history+per_ingredient,UNCONFIRMED
+847712,glimepiride 2 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl],SBD,A10BD04,A10BB12|A10BG02,history+per_ingredient,UNCONFIRMED
+211072,captopril 25 MG / hydrochlorothiazide 25 MG Oral Tablet [Capozide],SBD,C09BA01,C09AA01|C03AA03,history+per_ingredient,UNCONFIRMED
+2108525,"insulin, regular, human Inhalation Powder",SCDF,A10AF01,A10AB01,route_filter,UNCONFIRMED
+452688,benzocaine 0.2 MG/MG Topical Gel,SCD,C05AD03|D04AB04,C05AD03|D04AB04|N01BA05,route_filter,UNCONFIRMED
+1189818,simvastatin 10 MG / sitagliptin 100 MG Oral Tablet [Juvisync],SBD,A10BH51,C10AA01|A10BH01,history+per_ingredient,CONFIRMED
+404334,dextromethorphan hydrobromide 50 MG / guaifenesin 1000 MG Extended Release Oral Tablet,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1863967,glucose 50 MG/ML / potassium chloride 0.02 MEQ/ML / sodium chloride 2 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12BA01|B05XA01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+1798388,"{90 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 90 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza Titration Pack]",BPCK,A10AF01,A10AB01,route_filter,UNCONFIRMED
+1312429,simvastatin 40 MG / sitagliptin 50 MG Oral Tablet [Juvisync],SBD,A10BH51,C10AA01|A10BH01,history+per_ingredient,CONFIRMED
+1422101,atorvastatin 80 MG / ezetimibe 10 MG Oral Tablet [Liptruzet],SBD,C10BA05,C10AX09|C10AA05,history+per_ingredient,UNCONFIRMED
+861742,glipizide 5 MG / metformin hydrochloride 500 MG Oral Tablet [Metaglip],SBD,A10BD02,A10BB07|A10BA02,history+per_ingredient,UNCONFIRMED
+310874,hydrocortisone 0.015 MG/MG / neomycin 0.005 MG/MG Ophthalmic Ointment,SCD,S03CA04,A01AC03|A07EA02|C05AA01|D07AA02|D07XA01|H02AB09|S01BA02|S01CB03|S02BA01|D07AB02|D07AB11|D07AC16|A01AB08|A07AA01|B05CA09|D06AX04|J01GB05|R02AB01|S01AA03|S02AA07|S03AA01,history+per_ingredient,UNCONFIRMED
+904663,{30 (aspirin 325 MG Oral Tablet) / 30 (pravastatin sodium 40 MG Oral Tablet [Pravachol]) } Pack [Pravigard 325/40],BPCK,C10BX02,A01AD05|B01AC06|N02BA01|C10AA03,history+per_ingredient,UNCONFIRMED
+847716,glimepiride 1 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl],SBD,A10BD04,A10BB12|A10BG02,history+per_ingredient,UNCONFIRMED
+104726,amobarbital 50 MG / secobarbital 50 MG Oral Capsule [Tuinal],SBD,N05CB01,N05CA02|N05CA06,history+per_ingredient,UNCONFIRMED
+836366,200 ACTUAT albuterol 0.09 MG/ACTUAT / ipratropium bromide 0.018 MG/ACTUAT Inhalation Spray [Combivent],SBD,R03AL02,R03AC02|R03CC02|R01AX03|R03BB01,history+per_ingredient,UNCONFIRMED
+1049197,acetaminophen 300 MG / oxycodone hydrochloride 2.5 MG Oral Tablet [Perloxx],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+249711,dextromethorphan hydrobromide 30 MG / guaifenesin 675 MG Extended Release Oral Tablet,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1189814,simvastatin 20 MG / sitagliptin 100 MG Oral Tablet [Juvisync],SBD,A10BH51,C10AA01|A10BH01,history+per_ingredient,CONFIRMED
+1049086,benzethonium chloride 0.001 MG/MG / benzocaine 0.2 MG/MG Topical Ointment,SCD,D04AB04|D08AJ08,C05AD03|D04AB04|N01BA05|D08AJ08,route_filter,UNCONFIRMED
+1794882,glucose 50 MG/ML / sodium chloride 2 MG/ML Injection,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+1491834,12 HR acetaminophen 325 MG / oxycodone hydrochloride 7.5 MG Extended Release Oral Tablet [Xartemis],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+313847,alitretinoin 0.001 MG/MG Topical Gel,SCD,D11AH04,L01XF02,route_filter,UNCONFIRMED
+1037261,acetaminophen 300 MG / oxycodone hydrochloride 2.5 MG Oral Tablet [Primalev],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+999939,24 HR niacin 1000 MG / simvastatin 40 MG Extended Release Oral Tablet [Simcor],SBD,C10AD52,C10AA01|C04AC01|C10AD02,history+per_ingredient,UNCONFIRMED
+847720,glimepiride 2 MG / rosiglitazone 8 MG Oral Tablet [Avandaryl],SBD,A10BD04,A10BB12|A10BG02,history+per_ingredient,UNCONFIRMED
+1495472,acetaminophen 325 MG / hydrocodone bitartrate 10 MG Oral Tablet [Lortab],SBD,N02AJ22,N02BE01|R05DA03,history+per_ingredient,CONFIRMED
+861789,metformin hydrochloride 500 MG / repaglinide 1 MG Oral Tablet [PrandiMet],SBD,A10BD14,A10BA02|A10BX02,history+per_ingredient,UNCONFIRMED
+861733,glipizide 2.5 MG / metformin hydrochloride 250 MG Oral Tablet [Metaglip],SBD,A10BD02,A10BB07|A10BA02,history+per_ingredient,UNCONFIRMED
+750145,sodium chloride 0.854 MEQ/ML Ophthalmic Solution [Sochlor],SBD,S01XA03,A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+904667,{30 (aspirin 81 MG Oral Tablet) / 30 (pravastatin sodium 20 MG Oral Tablet [Pravachol]) } Pack [Pravigard 81/20],BPCK,C10BX02,A01AD05|B01AC06|N02BA01|C10AA03,history+per_ingredient,UNCONFIRMED
+763091,{4 (ethinyl estradiol 0.05 MG / levonorgestrel 0.25 MG Oral Tablet) } Pack [Preven Emergency Contraceptive Kit],BPCK,G03AA07,G03CA01|L02AA03|G03AC03|G03AD01,history+per_ingredient,UNCONFIRMED
+904665,{30 (aspirin 325 MG Oral Tablet) / 30 (pravastatin sodium 80 MG Oral Tablet [Pravachol]) } Pack [Pravigard 325/80],BPCK,C10BX02,A01AD05|B01AC06|N02BA01|C10AA03,history+per_ingredient,UNCONFIRMED
+749882,{7 (inert ingredients 1 MG Oral Tablet) / 21 (mestranol 0.05 MG / norethindrone 1 MG Oral Tablet) } Pack [Norinyl 1+50 28 Day],BPCK,G03FA01,G03AC01|G03DC02,history+per_ingredient,UNCONFIRMED
+1233035,dextromethorphan hydrobromide 3 MG/ML / guaifenesin 25 MG/ML Oral Solution,SCD,R05FB02,R05DA09|R05CA03,history+per_ingredient,UNCONFIRMED
+1049206,acetaminophen 300 MG / oxycodone hydrochloride 5 MG Oral Tablet [Perloxx],SBD,N02AJ17,N02BE01|N02AA05,history+per_ingredient,CONFIRMED
+1366652,neomycin 140 MG/ML Oral Solution [Neovet],SBD,A07AA01|J01GB05,A07AA01|B05CA09|J01GB05|R02AB01,route_filter,UNCONFIRMED
+1741538,dextran 70 1 MG/ML / polyethylene glycol 400 10 MG/ML / povidone 10 MG/ML / tetrahydrozoline hydrochloride 0.5 MG/ML Ophthalmic Solution [Optimis7],SBD,S01XA20,R01AA06|R01AB03|S01GA02,history+per_ingredient,UNCONFIRMED
+686893,glucose 100 MG/ML / sodium chloride 0.0513 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+686890,glucose 100 MG/ML / sodium chloride 0.0188 MEQ/ML Injectable Solution,SCD,A12CA01|B05BA03|B05BB01|B05CB01|B05XA03|V06DC01,B05CX01|V04CA02|V06DC01|A12CA01|B05CB01|B05XA03,history+per_ingredient,UNCONFIRMED
+312958,simethicone 40 MG Chewable Tablet,SCD,A03AX13,P03AX05,history+per_ingredient,UNCONFIRMED
+352335,eprosartan 600 MG / hydrochlorothiazide 12.5 MG Oral Tablet [Teveten HCT],SBD,C09DA02,C03AA03|C09CA02,history+per_ingredient,UNCONFIRMED
+1010609,buprenorphine 8 MG / naloxone 2 MG Sublingual Tablet [Suboxone],SBD,N07BC51,N02AE01|N07BC01|A06AH04|V03AB15,history+per_ingredient,CONFIRMED
+1049081,benzethonium chloride 0.001 MG/MG / benzocaine 0.2 MG/MG Topical Gel,SCD,D04AB04|D08AJ08,C05AD03|D04AB04|N01BA05|D08AJ08,route_filter,UNCONFIRMED
+1489372,hydrocortisone acetate 5 MG/ML Topical Lotion,SCD,D07AA02|D07XA01,C05AA01|D07AA02|D07XA01,route_filter,UNCONFIRMED
+151720,Estring,BN,G03CA,G03CA03,route_filter,UNCONFIRMED
+861752,glyburide 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Glucovance],SBD,A10BD02,A10BB01|A10BA02,history+per_ingredient,UNCONFIRMED
+861808,metformin hydrochloride 500 MG / rosiglitazone 2 MG Oral Tablet [Avandamet],SBD,A10BD03,A10BA02|A10BG02,history+per_ingredient,UNCONFIRMED
+866475,24 HR hydrochlorothiazide 12.5 MG / metoprolol succinate 50 MG Extended Release Oral Tablet [Dutoprol],SBD,C07BB02,C03AA03|C07AB02,history+per_ingredient,UNCONFIRMED
+308616,potassium chloride 5.4 MEQ / Rauwolfia serpentina (USP) 50 MG Oral Tablet,SCD,A12BA01|C02AA04,A12BA01|B05XA01,history+per_ingredient,UNCONFIRMED

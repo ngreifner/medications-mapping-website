@@ -1,0 +1,95 @@
+rxcui,decision,final_codes,confidence,evidence
+725068,KEEP_OURS,N06CA03,HIGH,WHO N06CA03='fluoxetine and psycholeptics' matches Symbyax; resolver splits into unrelated per-ingredient SSRI+antipsychotic codes
+790297,KEEP_OURS,C09BA01,HIGH,WHO C09BA01='captopril and diuretics' matches Capozide; resolver is per-ingredient split
+836286,KEEP_OURS,R03AL02,HIGH,WHO R03AL02='salbutamol and ipratropium bromide' matches; resolver mixes wrong-route ingredient codes (oral/nasal)
+763232,KEEP_OURS,C10AD52,HIGH,"No WHO L5 exists for niacin+simvastatin combo; C10AD52 (nicotinic acid, combinations) is the closest real bucket; resolver's 3-code split (C10AA01/C04AC01/C10AD02) is not a valid combo repr, confirmed via WHO C10AD/C10BA lookups"
+897785,KEEP_OURS,C09BB10,HIGH,WHO C09BB10='trandolapril and verapamil' exact match (Tarka)
+904661,KEEP_OURS,C10BX02,HIGH,WHO C10BX02='pravastatin and acetylsalicylic acid' matches Pravigard; resolver is per-ingredient split
+861757,KEEP_OURS,A10BD02,HIGH,WHO A10BD02='metformin and sulfonylureas' matches Glucovance (glyburide=sulfonylurea)
+359439,KEEP_OURS,R05FB02,HIGH,WHO R05FB02='cough suppressants and expectorants' matches dextromethorphan/guaifenesin combo
+1189827,KEEP_OURS,A10BH51,HIGH,WHO A10BH51='sitagliptin and simvastatin' exact match (Juvisync)
+58930,ADOPT_RESOLVER,R06AE07,HIGH,WHO R06AE07=cetirizine (ATCPROD class R06AE confirmed); our_value was L4-only
+1050496,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Roxicet)
+1050490,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Roxicet)
+1368423,KEEP_OURS,A10BD09,HIGH,WHO A10BD09='pioglitazone and alogliptin' exact match (Oseni)
+876866,OTHER,,MED,"9-ingredient OTC multivitamin+iron blend has no dedicated WHO combo L5; resolver's 15-code list is raw per-ingredient pollution across unrelated single-ingredient routes, not a product mapping"
+991557,KEEP_OURS,C09BA06,HIGH,WHO C09BA06='quinapril and diuretics' matches Quinaretic
+831269,KEEP_OURS,A07EB01,HIGH,"Oral solution for systemic/GI mastocytosis (Gastrocrom); A07EB01=cromoglicic acid intestinal use fits; resolver's R03BC01 is the inhaled-asthma route code, wrong formulation"
+210372,OTHER,A07AA02,HIGH,"our A01AB11 = generic 'various' placeholder, not nystatin specifically (confirmed via WHO A01AB listing, nystatin absent); WHO confirms nystatin's oral-route code is A07AA02 (DDD defined for oral admin), fitting an Oral Lozenge; resolver's D01AA01(dermatological)/G01AA01(vaginal) don't fit"
+2109981,KEEP_OURS,M09AX01,HIGH,"WHO M09AX01='hyaluronic acid (intraarticular administration)' exact fit for Hymovis knee-injection viscosupplement; S01KA01 is the ophthalmic-surgery viscoelastic code, wrong use"
+1049653,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Narvox)
+1795473,OTHER,A12CA01|B05BB02|B05CB01|B05XA03,MED,"Neither set fully correct: B05BB02='electrolytes with carbohydrates' (confirmed WHO L5) is the dedicated code for a dextrose+saline IV fluid, missing from both candidates; V06DC01 is WHO-labeled oral/tube-feed only, V04CA02 is a diagnostic glucose-tolerance-test code, B05CX01 is irrigation-only -- all wrong for a therapeutic IV fluid"
+1809845,KEEP_OURS,D07AA02|D07XA01,HIGH,C05AA01 is WHO's antihemorrhoidal-topical class (rectal/anal fissure products only); doesn't fit a generic hydrocortisone Topical Cream
+749871,KEEP_OURS,G03FA01,HIGH,WHO G03FA01='Norethisterone and estrogen' is the correct bucket for mestranol+norethindrone combos; resolver splits into unrelated monotherapy progestogen codes
+763632,OTHER,A06AB02|A06AD17,MED,"3-part bowel-prep pack (bisacodyl suppository+tablet, sodium phosphate ORAL solution); bisacodyl=A06AB02 covers all routes; sodium phosphate component here is an Oral Solution not an enema, so A06AD17 (oral) fits better than either side's A06AG* enema/combo codes"
+977885,KEEP_OURS,C03EA01,HIGH,WHO C03EA01='hydrochlorothiazide and potassium-sparing agents' matches Moduretic (amiloride=potassium-sparing)
+898361,KEEP_OURS,C09BB13,HIGH,WHO C09BB13='benazepril and amlodipine' exact match (Lotrel)
+749872,KEEP_OURS,G03FA01,HIGH,WHO G03FA01='Norethisterone and estrogen' matches Ortho-Novum 1/50
+896192,KEEP_OURS,R03AK06,HIGH,WHO R03AK06='salmeterol and fluticasone' exact match
+1039353,KEEP_OURS,A01AC03|A07EA02|D07AA02|D07XA01|H02AB09|S01BA02|S02BA01,HIGH,C05AA01(hemorrhoid-only class) and S01CB03(ophthalmic corticosteroid combo) are pollution -- no plausible route from a vaginal cream to either
+1049211,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Perloxx)
+404554,KEEP_OURS,G03FA12,HIGH,WHO G03FA12='Medroxyprogesterone and estrogen' matches Prempro; resolver splits into 4 unrelated monotherapy codes across different branches
+1090525,OTHER,D06AX07,MED,Generic surgical/wound Irrigation Solution doesn't fit ophthalmic-only S01AA11 (under-inclusive) nor resolver's 5-code multi-route shotgun (ophthalmic+otic+systemic); D06AX07 (other topical antibiotics) is the closest single WHO bucket for a non-specific antibiotic irrigation solution
+1795251,OTHER,A12CA01|B05BB02|B05CB01|B05XA03,MED,"Same glucose+NaCl IV fluid issue as RXCUI 1795473: B05BB02 (confirmed WHO code 'electrolytes with carbohydrates') is the correct dedicated bucket, missing from both candidates"
+1301959,KEEP_OURS,A06AD18|A06AG07,MED,"A06AG07 confirmed WHO='sorbitol' enema code (correct route for Rectal Solution); resolver's B05CX02(irrigation use) and V04CC01(diagnostic bile-duct-patency test) are different sorbitol use-cases, not the laxative/rectal use here"
+1370754,KEEP_OURS,D07AA02|D07XA01,HIGH,"D07AA02/D07XA01 correct topical corticosteroid codes; C05AA01 is hemorrhoid-specific, pollution for a generic Topical Cream"
+1302617,KEEP_OURS,D08AJ08,HIGH,"R02AA09 is WHO's throat-lozenge/oropharyngeal route, pollution for a scalp Medicated Shampoo"
+753533,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' exact match (Levlen); resolver splits into unrelated per-ingredient monotherapy codes across 4 branches
+866461,KEEP_OURS,C07BB02,HIGH,WHO C07BB02='metoprolol and thiazides' exact match
+637542,KEEP_OURS,N02AJ18,HIGH,WHO N02AJ18='oxycodone and acetylsalicylic acid' exact match (Percodan)
+763228,KEEP_OURS,C10AD52,HIGH,Same as RXCUI 763232 (Simcor): C10AD52 is the closest real WHO bucket for niacin+simvastatin; no dedicated combo L5 exists
+205256,OTHER,J07AM51,HIGH,"WHO J07AM51='tetanus toxoid, combinations with diphtheria toxoid' is the exact bivalent DT vaccine match; our J07CA02 is the 4-antigen DTaP-IPV code (wrong antigen count); resolver's monovalent J07AF01/J07AM01 split is also not how WHO codes this combo"
+857178,KEEP_OURS,C09BA09,HIGH,WHO C09BA09='fosinopril and diuretics' exact match (Monopril-HCT)
+1660750,KEEP_OURS,H02AB01,HIGH,A07EA04 (confirmed WHO=betamethasone) is the GI/rectal-enema corticosteroid class (Betnesol-shape); doesn't fit an Injectable Suspension (Betavet)
+313138,KEEP_OURS,D06BA05,LOW,"No dedicated WHO vaginal-sulfanilamide L5 exists (G01AE genital-antiinfective class doesn't name sulfanilamide); D06BA05 (topical/local) is a closer proxy to local vaginal use than J01EB06 (systemic short-acting sulfonamide); genuine coverage gap, flagged for review"
+2106368,KEEP_OURS,N07BC51,HIGH,"WHO N07BC51='buprenorphine, combinations' exact match (Cassipa)"
+847724,KEEP_OURS,A10BD04,HIGH,WHO A10BD04='glimepiride and rosiglitazone' exact match (Avandaryl)
+664799,KEEP_OURS,R05FB02,HIGH,WHO R05FB02='cough suppressants and expectorants' matches
+806413,OTHER,A12CA01|A12BA01|B05BB02|B05CB01|B05XA03|B05XA01,MED,"Glucose+KCl+NaCl IV fluid: B05BB02 (electrolytes with carbohydrates) replaces the wrong B05BA03/B05BB01 split; B05XA01 (potassium chloride, same IV-electrolyte bucket as B05XA03) fixes our_value's total omission of any potassium code despite KCl being an ingredient; V04CA02/B05CX01 (diagnostic/irrigation) dropped as mismapped"
+213502,ADOPT_RESOLVER,L01XF02,HIGH,"ATCPROD confirms L01XF (Retinoids for cancer treatment); L01XF02=alitretinoin exact match for Panretin topical gel (Kaposi sarcoma); D11AH04 is alitretinoin's ORAL-capsule (Toctino, hand eczema) code, wrong formulation"
+2171258,KEEP_OURS,D08AJ01|D09AA11,HIGH,"R02AA16 is WHO's throat-lozenge route, pollution for a scalp Medicated Shampoo"
+215850,ADOPT_RESOLVER,A12AA04,HIGH,"ATCPROD confirms A12AA (Calcium); A12AA04=calcium carbonate as a mineral/bone supplement, matching Caltrate's marketed use; A02AC is the antacid-use classification, doesn't fit"
+836368,ADOPT_RESOLVER,R03BB01,HIGH,"ATCPROD confirms R03BB (Anticholinergics, inhalant); our R01AX03 is ipratropium's NASAL SPRAY code, wrong route for a Metered Dose Inhaler (Atrovent)"
+1805273,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' exact match (Lillow)
+1370750,KEEP_OURS,D07AA02|D07XA01,HIGH,"D07AA02/D07XA01 correct; C05AA01 hemorrhoid-specific, pollution for a Topical Ointment"
+753479,KEEP_OURS,G03AA11,HIGH,"WHO G03AA11='norgestimate and ethinylestradiol' exact match (Tri-Previfem); resolver splits into unrelated plain-ethinylestradiol monotherapy codes, missing norgestimate entirely"
+686538,OTHER,A12CA01|B05BB02|B05CB01|B05XA03,MED,"Same glucose+NaCl IV fluid issue: B05BB02 is the correct dedicated WHO bucket, missing from both candidates"
+802049,OTHER,J07AM51,HIGH,Same DT-vaccine issue as RXCUI 205256: J07AM51 is the exact bivalent diphtheria+tetanus combination code
+861818,KEEP_OURS,A10BD03,HIGH,WHO A10BD03='metformin and rosiglitazone' exact match (Avandamet)
+848928,KEEP_OURS,N02AJ18,HIGH,WHO N02AJ18='oxycodone and acetylsalicylic acid' exact match (Endodan)
+2173936,KEEP_OURS,R05DA20,HIGH,"WHO R05DA20='combinations' (confirmed) is the correct generic bucket for dextromethorphan multi-ingredient cough/cold products; resolver's 9-code list is raw per-ingredient route pollution (phenylephrine's nasal/ophthalmic/cardiac codes, etc.)"
+252306,KEEP_OURS,R05FB02,HIGH,WHO R05FB02 matches dextromethorphan/guaifenesin combo
+1312415,KEEP_OURS,A10BH51,HIGH,WHO A10BH51='sitagliptin and simvastatin' exact match (Juvisync)
+1358330,KEEP_OURS,R05FB02,HIGH,WHO R05FB02 matches dextromethorphan/guaifenesin combo
+1537200,KEEP_OURS,R05DA20,HIGH,WHO R05DA20='combinations' fits a dextromethorphan-containing multi-ingredient cough/cold tablet; resolver's per-ingredient split (aspirin/chlorpheniramine/dextromethorphan codes) is pollution
+1299959,KEEP_OURS,C09BA13,HIGH,WHO C09BA13='moexipril and diuretics' exact match (Uniretic)
+897846,KEEP_OURS,C09BB10,HIGH,WHO C09BB10='trandolapril and verapamil' exact match (Tarka)
+751902,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' exact match (Seasonale)
+900000,KEEP_OURS,A10BD05,HIGH,WHO A10BD05='metformin and pioglitazone' exact match (Actoplus Met)
+904671,KEEP_OURS,C10BX02,HIGH,WHO C10BX02='pravastatin and acetylsalicylic acid' exact match (Pravigard 81/80)
+105446,OTHER,G02CB01|N04BC01,MED,"WHO assigns bromocriptine two legitimate indication-specific L5 codes (G02CB01=prolactine inhibitor/hyperprolactinemia, N04BC01=dopamine agonist/Parkinson's, confirmed both real with different DDDs); RxNorm's single 2.5mg tablet RXCUI doesn't discriminate by indication; ATCPROD leans N04BC but both WHO codes are valid for this formulation"
+244099,OTHER,A12CA01|B05BB02|B05CB01|B05XA03,MED,Same glucose+NaCl IV fluid issue: B05BB02 is the correct dedicated WHO bucket
+237896,KEEP_OURS,A03AX13,HIGH,"WHO A03AX13=simeticone/simethicone exact match; resolver's P03AX05=dimeticone (ectoparasiticide/lice treatment), an unrelated substance mismapping"
+1368409,KEEP_OURS,A10BD09,HIGH,WHO A10BD09='pioglitazone and alogliptin' exact match (Oseni)
+1370752,KEEP_OURS,D07AA02|D07XA01,HIGH,"D07AA02/D07XA01 correct; C05AA01 hemorrhoid-specific, pollution for a Topical Ointment (Westcort)"
+1300295,KEEP_OURS,D04AB04|D08AJ08,HIGH,C05AD03(hemorrhoid local anesthetic)/N01BA05(injectable-class amide anesthetic) don't fit a topical skin anesthetic cream (Lanacane)
+866472,KEEP_OURS,C07BB02,HIGH,WHO C07BB02='metoprolol and thiazides' exact match
+206182,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' exact match (Levora)
+1049259,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Magnacet)
+2003745,KEEP_OURS,D08AC02|D09AA12,HIGH,A01AB(oromucosal)/B05CA(irrigation)/R02AA(throat)/S01AX(ophthalmic)/S02AA(otic)/S03AA(combined) are all unrelated-route pollution for a scalp Medicated Shampoo
+203576,ADOPT_RESOLVER,R06AX13,HIGH,ATCPROD confirms R06AX (Other antihistamines for systemic use); R06AX13=loratadine exact match; our_value was L4-only
+378167,ADOPT_RESOLVER,R05CA04|V03AB01,MED,"R05CA04=ipecacuanha (expectorant) and V03AB01=ipecacuanha (antidote/emetic use) are both genuine separate WHO L5 entries for the same substance; unbranded generic 'ipecac syrup' historically denotes the emetic/antidote use as much as the expectorant use, so both codes are warranted"
+2056897,OTHER,L04AH02,HIGH,"Per this project's own verified strength-determined override (Phase 2I, cross-checked against live WHO ATC index): everolimus <=1mg (Zortress) = L04AH02 (transplant immunosuppressant); our 3-code value mixes in the >1mg oncology codes (L01EG02/L01XE10) plus L04AA18 which don't apply at the 1mg antirejection strength"
+1654912,KEEP_OURS,A10AF01,HIGH,"A10AF='Insulins and analogues for inhalation' confirmed; A10AF01 fits an Inhalation Powder (Afrezza); ATCPROD's A10AB is the injectable-insulin class, wrong route"
+1010608,KEEP_OURS,N07BC51,HIGH,"WHO N07BC51='buprenorphine, combinations' exact match (Suboxone)"
+1944692,KEEP_OURS,D01AC02,HIGH,A01AB(oromucosal)/A07AC(intestinal)/G01AF(vaginal)/J02AB(systemic)/S02AA(otic) are unrelated-route pollution for a scalp Medicated Shampoo
+1422092,KEEP_OURS,C10BA05,HIGH,WHO C10BA05='atorvastatin and ezetimibe' exact match (Liptruzet)
+1366646,KEEP_OURS,A07AA01|J01GB05,HIGH,B05CA09(irrigation-solution use)/R02AB01(throat-lozenge route) are pollution for an Oral Solution; A07AA01/J01GB05 correctly fit oral/systemic neomycin use
+1495103,KEEP_OURS,D01AE12,MED,"S01BC08 is an ophthalmic NSAID code, doesn't fit an Otic (ear) product; no dedicated otic-route salicylic-acid code confirmed to exist, baseline D01AE12 stands"
+748886,KEEP_OURS,G03AA07,HIGH,WHO G03AA07='levonorgestrel and ethinylestradiol' exact match (Nordette)
+205157,KEEP_OURS,C05BB05|D08AE03,HIGH,N01BX03 (procedural/injectable local-anesthetic class) doesn't fit a topical antiseptic Ointment; baseline C05BB05(sclerosing)/D08AE03(antiseptic phenol) correct
+897782,KEEP_OURS,C09BB10,HIGH,WHO C09BB10='trandolapril and verapamil' exact match (Tarka)
+831261,KEEP_OURS,A07EB01,HIGH,"Oral solution for systemic/GI use; A07EB01=cromoglicic acid intestinal code fits; resolver's R03BC01 is the inhaled-asthma route code, wrong formulation"
+2104187,KEEP_OURS,D03AX05,MED,"M09AX01(intra-articular)/R01AX09(nasal)/S01KA01(ophthalmic viscoelastic) are hyaluronic acid's unrelated-route codes, pollution for a topical Liquid Soap; no dedicated WHO combo code exists beyond allantoin's wound-healing bucket"
+1049269,KEEP_OURS,N02AJ17,HIGH,WHO N02AJ17='oxycodone and paracetamol' exact match (Magnacet)
+2590,ADOPT_RESOLVER,D07AD01|S01BA17,HIGH,"RxNav property API directly returns both codes for this ingredient-level (TTY=IN) concept; per project rule, ingredient-level inputs get the full ATC union without route filtering"

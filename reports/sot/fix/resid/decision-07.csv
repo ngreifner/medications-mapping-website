@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+1657916,A03BA03|G04BX12|J01XX05,OTHER,HIGH,Methylene blue has no WHO code for urinary-antiseptic use (only antidote V03AB17/diagnostic V04CG05); minimal set hyoscyamine+methenamine+phenyl salicylate matches production.
+1739871,D07AA02,OTHER,HIGH,Plain topical hydrocortisone cream; D07AA02 is WHO's weak-potency plain code; C05AA01(anorectal)/D07AB/D07AC/D07XA(other-potency/combo) don't fit a plain skin cream.
+1233729,A01AA01,OTHER,HIGH,"Sodium fluoride chewable tablet for caries prophylaxis -> A01AA01 (stomatological). A12CD01 is the systemic osteoporosis mineral-supplement code, wrong indication/dose context."
+543362,D01AE12,KEEP_CURRENT,HIGH,Salicylic acid topical cream; D01AE12 confirmed via RxNav property API as salicylic acid's WHO code; already correctly narrowed.
+860234,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+860426,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1012375,G01AE10,OTHER,HIGH,"Trysul (sulfabenzamide+sulfacetamide+sulfathiazole vaginal cream): WHO G01AE10 'combinations of sulfonamides' (gynecological) is the dedicated combo code, verified via official WHO ATC index; D06BA02/D10AF06 are topical-route codes for a different (dermatological) use of sulfacetamide/sulfathiazole."
+1041847,D08AX08,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+307748,A02AA04|G04BX01,OTHER,MED,"Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): aluminum hydroxide, simethicone."
+1657904,A03BA03|J01XX05,OTHER,HIGH,Same as sibling Uramit product; methylene blue has no applicable WHO code; matches production.
+1099893,D02AF,KEEP_CURRENT,HIGH,WHO D02AF (Salicylic acid preparations) has no L5 children (verified via official WHO ATC index); terminal L4 is the correct WHO answer for keratolytic paste.
+1659219,M02AB01|N01BX04,OTHER,MED,"Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): menthol, methyl salicylate."
+824190,J01CR02,KEEP_CURRENT,HIGH,Augmentin amoxicillin+clavulanate already correctly resolved to dedicated combo code J01CR02.
+856792,N06CA01,KEEP_CURRENT,HIGH,Limbitrol (amitriptyline+chlordiazepoxide) already correctly resolved to dedicated combo code N06CA01.
+1117398,D02AA,KEEP_CURRENT,HIGH,"Dimethicone topical gel skin-protectant; ATCPROD-confirmed D02AA (Silicone products). Ingredient-level property API only carries dimethicone's antilice code P03AX05, which is the wrong indication for this barrier-cream product."
+210760,A11GA01|B03AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+211069,D04AB02,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1125471,D02AB,KEEP_CURRENT,HIGH,Zinc oxide topical cream; ATCPROD-confirmed D02AB (Zinc oxide preparations).
+860149,R01BA03|R05DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1116117,R01AA03,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+211223,D03BA01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1043249,S01GA02,USE_ATCPROD,HIGH,"Tetrahydrozoline(=tetryzoline)+zinc sulfate ophthalmic decongestant solution; ATCPROD gives S01GA02 (tetryzoline, plain) for this specific product; current_final's S01GA51 is actually 'naphazoline, combinations' - wrong substance entirely. Zinc sulfate's systemic mineral-supplement codes (A12CB01/B05XA18) don't fit ophthalmic astringent use."
+1863606,B05BB02,KEEP_CURRENT,HIGH,Already correct.
+1795470,B05BB02,OTHER,HIGH,"Glucose+sodium chloride injection contains a carbohydrate; WHO B05BB02 'electrolytes with carbohydrates' is correct (matches identical sibling glucose+NaCl products 1863606/309771/686185 already resolved to B05BB02); B05BB01 ('electrolytes' alone, no carbohydrate) is inconsistent given glucose is present."
+1243233,D08AJ01,OTHER,HIGH,"Benzalkonium chloride topical solution (equine grooming antiseptic, not a wound dressing); D09AA11 applies only to medicated dressings; D08AJ08(benzethonium, different substance)/R02AA16(throat) are wrong."
+1243237,D08AJ01,OTHER,HIGH,"Same product family, medicated shampoo form -> D08AJ01."
+1244205,J07AM51,OTHER,MED,"DT (diphtheria+tetanus, no pertussis) pediatric vaccine; WHO J07AM51 = 'tetanus toxoid, combinations with diphtheria toxoid' is the correct combo code (J07AM01 alone is tetanus monotherapy; J07AF01 is diphtheria monotherapy; neither reflects the DT combination)."
+1246599,D03AX05,KEEP_CURRENT,HIGH,Bionect sodium hyaluronate wound-healing topical gel; ATCPROD-confirmed D03AX05 (Other cicatrizants). Property-API's ophthalmic-viscoelastic code S01KA01 is the wrong indication for this dermatological wound gel.
+1250486,D07AA02,OTHER,HIGH,Plain hydrocortisone acetate topical cream -> D07AA02 (same WHO substance entry covers the acetate ester).
+1293338,S01AA01,KEEP_CURRENT,HIGH,Chloramphenicol ophthalmic ointment already correctly S01AA01.
+1302627,D08AJ01,OTHER,HIGH,Qore-24 benzalkonium chloride antiseptic spray -> D08AJ01.
+1425493,D08AC02,OTHER,HIGH,"Chlorhexidine gluconate topical solution -> D08AC02; D09AA12 is for medicated dressings only, not a solution."
+1427298,D06AX04|D06AX05,OTHER,HIGH,Repara Triple Antibiotic topical ointment: WHO D06C (antibiotic combinations) has no assigned codes; minimal set = neomycin D06AX04 + bacitracin D06AX05 (matches sibling 4-ingredient product 308486's already-correct answer); polymyxin B has no WHO topical/dermatological code.
+1432974,D08AC02,OTHER,HIGH,Chlorhexidine gluconate topical lotion -> D08AC02.
+1488702,R06AA02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1541233,J01AA07,OTHER,HIGH,"Tetracycline HCl oral capsule, systemic use -> J01AA07; A01AB13(dental)/S03AA02(oto-ophthalmic) are wrong-route."
+1547607,R05FA02,KEEP_CURRENT,HIGH,Lortuss EX codeine+guaifenesin+pseudoephedrine already ATCPROD-confirmed at dedicated combo code R05FA02 (opium derivatives and expectorants).
+1607582,M01AB05,KEEP_CURRENT,HIGH,"Dyloject diclofenac sodium injection, systemic NSAID, already correctly M01AB05."
+1607808,J07CA02,KEEP_CURRENT,HIGH,Quadracel DTaP-IPV already correctly J07CA02 (diphtheria-pertussis-poliomyelitis-tetanus).
+1648155,D02AF,KEEP_CURRENT,MED,Niacinamide+salicylic acid topical solution; ATCPROD-assigned D02AF for this specific product.
+1741559,D02AF,KEEP_CURRENT,MED,Niacinamide+salicylic acid topical spray; ATCPROD-assigned D02AF.
+1299672,R03AB02|R03CB01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1298806,C01BB01|C05AD01|N01BB02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1356529,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1371353,J01FF01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1423123,G03AA07,KEEP_CURRENT,HIGH,Daysee extended-cycle levonorgestrel+EE pack; G03AA07 (fixed combination) correctly matches the exact progestin/estrogen pair; ATCPROD's alternate candidates (G03AB03 sequential / G03AA08 wrong progestin) fit worse.
+1432967,D08AJ08,KEEP_CURRENT,HIGH,Septicare benzethonium chloride topical spray already correctly D08AJ08 (distinct substance from benzalkonium).
+1491830,D08AX01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1739887,A03CB31,OTHER,MED,"Phenohytro (atropine+hyoscyamine+phenobarbital+scopolamine): WHO A03CB31 'hyoscyamine and psycholeptics' is the closest dedicated combo code (hyoscyamine is the dominant belladonna component by dose; phenobarbital is the psycholeptic); ATCPROD confirms parent L4 A03CB, no RxNav L5 available to directly confirm the specific L5 child."
+1860414,G03AA07,KEEP_CURRENT,HIGH,Afirmelle 28-day levonorgestrel+EE pack already correctly G03AA07.
+1945072,H02AB02,OTHER,HIGH,Decadron DP oral tablet taper pack: dexamethasone systemic use -> H02AB02. All other listed codes are wrong-route (dental/anorectal/topical/nasal/ophthalmic/otic) pollution from ingredient-level ATC lookup.
+1242240,R01BA03|R06AB04,OTHER,HIGH,Chlorpheniramine+phenylephrine oral tablet: minimal set = phenylephrine's systemic-oral code R01BA03 (R01B is 'nasal decongestants for systemic use' and legitimately applies to oral tablets despite starting with R01; the oral-route matrix's blanket R01 exclusion is a known over-strip gap - see project notes on R01B) + chlorpheniramine R06AB04. ATCPROD's candidate R01BA03 confirms the phenylephrine half but drops chlorpheniramine.
+1431286,N02BE01|N06BC01|R05DA04,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): butalbital.
+1495106,D01AE12,OTHER,MED,"Salicylic acid otic/ear-cleanser suspension; D01AE12 is salicylic acid's only WHO-confirmed code (via property API); N02BA04/12 are oral-salicylate codes and S01BC08 is an erroneous cross-attribution, neither applicable; no otic-specific WHO code exists for salicylic acid."
+1535144,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1540854,S01AA30,OTHER,MED,"Vetropolycin: bacitracin+neomycin+polymyxin B ophthalmic ointment (no steroid) -> S01AA30 'combinations of different antibiotics', the WHO catch-all for multi-antibiotic ophthalmic combos with no dedicated 3-way code."
+1548705,S01BA04,OTHER,HIGH,Econopred Plus: plain prednisolone acetate ophthalmic suspension (no antiinfective) -> S01BA04. S01CB02/S03BA02 imply combination/otic context not present.
+1357940,R01BA03|R05DA03|R06AB02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1648152,D11AX,KEEP_CURRENT,MED,Dexpanthenol+salicylic acid topical solution; ATCPROD-assigned catch-all D11AX (other dermatologicals) for this specific non-standard combo; no more specific code identified.
+1541104,D01AE12,KEEP_CURRENT,HIGH,Already correct.
+1244215,A07EA06,KEEP_CURRENT,HIGH,Entocort oral delayed-release capsule for Crohn's disease; A07EA06 is WHO's classification for oral budesonide acting locally in the gut; R03BA02 (inhaled) is wrong route/form.
+1248166,A06AA02|A06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1250898,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1307165,A03BB03|R01BA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+617432,J01CR02,KEEP_CURRENT,HIGH,Same.
+687204,P01AB01,OTHER,MED,"Metronidazole extended-release oral tablet for systemic use (antiprotozoal/antibacterial) -> P01AB01 (systemic antiprotozoal, dominant clinical indication for this ER formulation e.g. rosacea/anaerobic infection); A01AB17(dental)/J01XD01(alternate systemic code) less specific; genuinely could be J01XD01 too - low differentiation confidence."
+756250,G04BA01|R01BA03|R05DA04|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+801009,B05BB02,KEEP_CURRENT,HIGH,Normosol-M electrolyte+dextrose injectable solution; already correctly B05BB02 (electrolytes with carbohydrates).
+308254,R06AX05,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+880454,D04AB04,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+93253,C03EA01,KEEP_CURRENT,HIGH,"Maxzide HCTZ+triamterene; C03EA01 'hydrochlorothiazide and potassium-sparing agents' is the dedicated WHO combo code, already correct."
+308486,D06AX04|D06AX05,KEEP_CURRENT,HIGH,Already correctly resolved to minimal antibiotic set; diperodon (anesthetic) and polymyxin B have no WHO topical codes.
+204887,D11AC06,OTHER,HIGH,"Povidone-iodine medicated shampoo -> D11AC06 (antiseborrheic/shampoo class), the dose-form-specific WHO code; D08AG02(general)/D09AA09(dressing)/G01AX11(vaginal) don't match a shampoo."
+318178,C04AE04,OTHER,LOW,"Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): dihydroergocornine, dihydroergocryptine."
+748868,G03AA07,KEEP_CURRENT,HIGH,Generic levonorgestrel+EE pack already correctly G03AA07.
+876858,A11JB,OTHER,MED,"Tri-Vi-Sol with Iron multivitamin oral solution; ATCPROD gives A11JA for this product but the presence of iron (ferrous sulfate) fits the iron-containing multivitamin class A11JB better, matching sibling iron-containing multivitamin products (1365980/1087285) in this dataset."
+308848,A11HA01|A12AA03|N03AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+310880,D07CA01,OTHER,HIGH,"Hydrocortisone+neomycin topical ointment: WHO D07CA01 'hydrocortisone and antibiotics' is the dedicated combo code (verified via official WHO ATC index), matching the D07CA group structure used for triamcinolone+nystatin (D07CB01) elsewhere in this dataset."
+206513,S02CA03,OTHER,HIGH,"Identical combo (hydrocortisone+neomycin+polymyxin B otic) resolves to S02CA03 for sibling RxCUI 206511 (Cortisporin, ATCPROD-confirmed); apply same dedicated combo code for consistency."
+206851,C01DA08,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+206960,J01GB04,OTHER,HIGH,"Kanamycin injectable solution, systemic -> J01GB04; A07AA08 is oral non-absorbed intestinal use, wrong for an IM/IV injectable."
+207355,J01AA08,OTHER,HIGH,"Minocycline oral capsule, systemic -> J01AA08; A01AB23(dental) wrong route."
+309349,D08AH30|D07AA02,OTHER,MED,Clioquinol+hydrocortisone topical cream: no dedicated combo code found; minimal set = clioquinol D08AH30 (topical antiinfective) + hydrocortisone D07AA02 (plain weak corticosteroid).
+728126,D04AB01|D04AB06,OTHER,HIGH,Pliaglis lidocaine+tetracaine topical anesthetic cream: minimal set of both topical anesthetic codes (D04AB01+D04AB06); ATCPROD's candidate D04AB06 (tetracaine alone) is a partial match confirming tetracaine's code but drops lidocaine's contribution -- no dedicated 2-agent combo code found.
+695930,A02AA04|A02BC01|B05CB04|G04BX01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+790888,D01AE12,KEEP_CURRENT,HIGH,Already correct.
+800066,B05DB,KEEP_CURRENT,MED,Dianeal-type peritoneal dialysis solution; ATCPROD terminal L4 B05DB (hypertonic solutions) is WHO's best-available answer for this niche product; no L5 identified.
+993924,N02BE01|R01BA03|R05DA04|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+310470,S01AA11,OTHER,MED,Gentamicin ophthalmic ointment -> S01AA11 (plain ophthalmic antibiotic); S03AA06 implies combined oto-ophthalmic labeling not indicated by name.
+311661,G03BA02,OTHER,MED,"Methyltestosterone buccal tablet delivers systemically; G03BA02 (androgen) fits; buccal-route matrix has no androgen allowance (matrix gap), not a true topical/local use."
+1992841,D08AC02,OTHER,LOW,"Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): climbazole, salicyloyl phytosphingosine."
+2044375,D04AB04|D08AX05,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+998485,D01AC02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+801015,B05BA01,OTHER,MED,"Clinimix E 2.75/10 TPN amino acid/dextrose/electrolyte admixture; align with sibling Clinimix variants (801031/801012/800269) already resolved to B05BA01 (amino acids, parenteral nutrition) as base classification."
+206511,S02CA03,KEEP_CURRENT,HIGH,ATCPROD-confirmed dedicated combo code already correct.
+206698,J04AB02|J04AC01|J04AK01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+207846,S01AA12,KEEP_CURRENT,HIGH,Tobramycin ophthalmic solution already correctly S01AA12.
+313045,A01AA01,OTHER,HIGH,"Sodium fluoride toothpaste -> A01AA01 (dental caries prophylaxis; despite generic 'topical' dose-form label this is a dental product, not a dermatological one)."
+992799,A03BB06|A07DA02,OTHER,MED,"Homatropine methylbromide+opium+pectin antidiarrheal oral suspension; A03BB06 (homatropine, antispasmodic) + A07DA02 (opium, antipropulsive/antidiarrheal) is the minimal correct set; N02AA02 (opium as analgesic) and A07BC01 (adsorbent class) don't fit this antidiarrheal's primary mechanism."
+618606,A11JC,KEEP_CURRENT,HIGH,Omega-3+vitamin E capsule; ATCPROD-confirmed A11JC (other vitamin combinations).
+748857,G03AA12,KEEP_CURRENT,HIGH,Yasmin drospirenone+EE pack already correctly G03AA12.
+968663,D02AA,KEEP_CURRENT,HIGH,"Dimethicone medicated pad, same rationale -> D02AA."
+310594,S01AA30,OTHER,MED,"Gramicidin+neomycin+polymyxin B ophthalmic solution (Neosporin-type triple antibiotic, no steroid): apply the same WHO catch-all S01AA30 'combinations of different antibiotics' used for the identical-shape Vetropolycin product (1540854), rather than ATCPROD's incomplete single-ingredient candidate S01AA03 (neomycin alone, drops gramicidin+polymyxin B)."
+312373,D08AE03|D10AX02|N01BX03,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+312555,G01AX11,OTHER,HIGH,"Povidone-iodine douche (vaginal) -> G01AX11 (gynecological antiseptic), the route-specific WHO code."
+2045140,J01AA02,OTHER,HIGH,"Doxycycline hyclate oral tablet, systemic -> J01AA02; A01AB22(dental) wrong route."
+998513,D01AC02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+313626,A11GA01|B03AA02|B03BB01,OTHER,MED,"Multivitamin+iron oral tablet; ascorbic acid has no standalone WHO code at this context, calcium carbonate likewise omitted (mineral filler); minimal set = ascorbic-acid-adjacent vitamin C code A11GA01 (contains ascorbic acid use context), ferrous fumarate B03AA02, folic acid B03BB01."
+347669,A01AA01,OTHER,HIGH,Sodium fluoride oral gel for caries prophylaxis -> A01AA01.
+308940,D04AX,KEEP_CURRENT,HIGH,Camphor+phenol topical solution (antipruritic liniment); ATCPROD-confirmed D04AX (Other antipruritics).
+1090941,R02AA06|R02AD01,KEEP_CURRENT,HIGH,"Sepasoothe throat lozenge; already correctly R02AA06 (cetylpyridinium, throat antiseptic) + R02AD01 (benzocaine, throat anesthetic)."
+205643,D02AX,KEEP_CURRENT,HIGH,Amlactin ammonium lactate topical lotion; ATCPROD-confirmed D02AX (Other emollients and protectives).
+637149,D02AB,KEEP_CURRENT,HIGH,Petrolatum+zinc oxide topical ointment; ATCPROD-confirmed D02AB.
+860928,C05AD03,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+705921,G03BA02,KEEP_CURRENT,MED,Covaryx: estrogens+methyltestosterone combo oral tablet; methyltestosterone contributes G03BA02; no dedicated WHO combo code for esterified-estrogen+methyltestosterone found.
+204906,N02BA01,OTHER,HIGH,"Aspirin 1200mg rectal suppository is a systemic analgesic/antipyretic dose; N02BA01 (plain analgesic) fits; A01AD05(dental)/B01AC06(antiplatelet, low-dose) don't match this high analgesic dose or rectal systemic-analgesic use."
+315219,J01EB05,KEEP_CURRENT,HIGH,"Sulfisoxazole oral suspension, systemic, already correctly J01EB05."
+801031,B05BA01,KEEP_CURRENT,HIGH,Already correct.
+205349,R01BA01|R01BA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+205818,J01CA01,KEEP_CURRENT,HIGH,Ampicillin oral suspension already correctly J01CA01.
+204901,V06DD,KEEP_CURRENT,HIGH,Arginine oral capsule; ATCPROD-confirmed V06DD (dietary/general nutrient supplement class).
+996746,R01BA03|R05DA04|R06AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+997555,A01AA01,OTHER,HIGH,Same as above.
+313947,S01CA01,OTHER,HIGH,"Dexamethasone+neomycin+polymyxin B ophthalmic ointment (Maxitrol-type), no mydriatic -> S01CA01 'dexamethasone and antiinfectives'. ATCPROD confirms sibling SCDs (309679/309680/208591/208601, same MIN) classify to L4 S01CA (not S01CB, which requires a mydriatic component)."
+314986,N02BA71,OTHER,MED,Aspirin+butalbital+caffeine+codeine (Fiorinal-with-codeine-type): WHO N02BA71 'acetylsalicylic acid combinations with psycholeptics' fits (butalbital is a barbiturate/psycholeptic); no direct RxNav/ATCPROD confirmation available for this obscure combo.
+834154,D08AC02,OTHER,HIGH,Betasept chlorhexidine gluconate solution -> D08AC02.
+313805,N02BA01|R06AC01,OTHER,LOW,"Aspirin+phenyltoloxamine (sedating antihistamine) oral tablet; no dedicated WHO combo code identified; minimal set uses aspirin's plain analgesic code plus phenyltoloxamine's closest analog class placeholder is uncertain -- phenyltoloxamine itself has no WHO code, so retaining aspirin N02BA01 alone with low confidence."
+809547,A02AC01|A12AA04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+845493,H02AB07,OTHER,HIGH,"Sterapred DS prednisone oral taper pack, systemic use -> H02AB07; A07EA03 is for local rectal/intestinal action, not applicable to oral systemic taper."
+857463,R06AA04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+208029,C03AA01|C07AA12,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+209704,J01XX10,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+212048,A02AB01|A02AB02,KEEP_CURRENT,LOW,Automated minimal-set derivation produced no codes; retaining current_final as fallback.
+212739,G01AX11,OTHER,HIGH,Betadine povidone-iodine douche -> G01AX11.
+1095510,R05CA02|V03AB21,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1099593,R01BA02|R06AX07,OTHER,HIGH,Pseudoephedrine+triprolidine oral tablet: minimal set = pseudoephedrine's systemic-oral code R01BA02 (same R01B oral exception as above) + triprolidine R06AX07. ATCPROD's candidate R01BA02 confirms the pseudoephedrine half but drops triprolidine.
+1100501,R01BA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1110809,R06AC01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+2119467,L03AX14,KEEP_CURRENT,LOW,"Histamine dihydrochloride topical gel; L03AX14 is histamine's only WHO ATC entry (immunostimulant, typically SC injection use) - no topical-specific WHO code exists; kept as best-available substance code with low confidence given route mismatch."
+1116150,S01AA03|S01AA18|S01AA32|S01BA02,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+1119422,B05CB04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1191684,D08AX08,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1233685,N01AH01|N01BB09|N02AB03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+859141,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1011820,A01AD01|B02BC09|C01BB01|C01CA24|C05AD01|N01BB02|R03AA01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1011981,S01CA02,OTHER,MED,"Cetapred: prednisolone acetate+sulfacetamide ophthalmic ointment, no mydriatic -> S01CA02 'prednisolone and antiinfectives' by analogy to Maxitrol/S01CA pattern."
+1012253,C01BB01|C05AD01|N01BB01|N01BB02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1014367,D07AA02|D01AC08,OTHER,MED,"Ketocon Plus kit = two separate topical products packaged together (hydrocortisone gel + ketoconazole cream); treat as two independent single-ingredient topicals: D07AA02 (hydrocortisone) + D01AC08 (ketoconazole, confirmed WHO code)."
+1053753,D07CB01,KEEP_CURRENT,HIGH,Nystatin+triamcinolone acetonide topical cream already ATCPROD-confirmed at dedicated combo code D07CB01.
+1086240,H02AB08,OTHER,HIGH,Injectable suspension (IM/intra-articular) triamcinolone acetonide -> systemic H02AB08. Dental/anorectal/nasal-inhalant codes are wrong-route pollution.
+244051,A12CA01|B05CB01,KEEP_CURRENT,LOW,No route-appropriate WHO code found via automated lookup; retaining current_final as fallback.
+248678,D02AF,KEEP_CURRENT,MED,Salicylic acid+urea topical ointment (keratolytic); ATCPROD already assigns D02AF for this specific product; matches sibling paste product's terminal-L4 pattern.
+251380,D11AF,KEEP_CURRENT,HIGH,WHO D11AF (Wart and anti-corn preparations) has no L5 children (verified); terminal L4 correct.
+1095693,D11AF,KEEP_CURRENT,HIGH,Same terminal L4 D11AF.
+1012257,A01AC02|C01BB01|C05AA09|C05AD01|H02AB02|N01BB02|S03BA01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1085769,D07AB09,OTHER,HIGH,"Cinolar: plain triamcinolone acetonide topical ointment, no combo -> D07AB09 (moderately potent, plain). D07XB02 is for combinations; C05AA12 is anorectal."
+1098924,A01AA01,OTHER,HIGH,Sodium fluoride oral solution/drops -> A01AA01.
+1052950,D08AJ01,OTHER,HIGH,Benzalkonium chloride topical spray -> D08AJ01.
+1086041,H02AB08,OTHER,HIGH,Same product family (Ken-Jec) -> H02AB08.
+204510,D07AB19,OTHER,HIGH,"Plain dexamethasone topical spray, no combo/acne context -> D07AB19 (moderately potent, plain). C05AA09(anorectal)/D07XB05(combo)/D10AA03(acne-combo) don't fit."
+996736,R05FA02,KEEP_CURRENT,HIGH,"Codeine+guaifenesin oral capsule (2-ingredient, no decongestant) ATCPROD-confirmed R05FA02."
+346806,B05CX01,OTHER,LOW,"Ethanol+glucose injectable solution (likely an ethanol-lock or antidote preparation); B05CX01 (glucose, irrigating solutions) is the closest fit but this is a genuinely obscure/ambiguous product; ethanol itself has no systemic-injectable WHO code matching this use."
+824194,J01CR02,KEEP_CURRENT,HIGH,Same.
+857527,R05DA03,OTHER,MED,"Alor: aspirin+hydrocodone oral tablet (analgesic combo, not a cough product); minimal set keeps hydrocodone's code; aspirin's contribution has no dedicated 'aspirin+opioid' WHO combo code, and at analgesic dosing (500mg) aspirin's own N02BA01 could be added, but given R05DA03 already appears in current production/final and dedicated combo absent, keep hydrocodone code only pending clearer WHO guidance."
+857754,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+208652,R06AC04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+209469,A01AD05|B01AC06|N02BA01|N02BE01|N06BC01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+2104586,R02AA06,KEEP_CURRENT,HIGH,"Cetylpyridinium chloride throat/mucosal spray already correctly R02AA06 (throat antiseptic); mucosal-route matrix simply omits R02 from its allow-list (matrix gap, not a data error)."
+1098397,D04AB01|D06AX04|D06AX05,OTHER,HIGH,Bacitracin+lidocaine+neomycin+polymyxin B topical ointment: add lidocaine's topical anesthetic code D04AB01 to the established antibiotic minimal set (D06AX04+D06AX05); atcprod_candidate confirms D06AX05 as valid.
+1147526,R01AX,OTHER,MED,"Breathe Free Saline nasal spray; matches sibling saline product (RxCUI 707544, Sea Soft) already resolved to WHO L4 R01AX (other nasal preparations, terminal for saline); electrolyte/IV-solution codes are wrong context for a nasal irrigation product."
+349092,D10AF02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+206316,D07AA02,OTHER,HIGH,Hytone plain hydrocortisone topical ointment -> D07AA02 (verified WHO D07AA group).
+999832,B03AA02|B03BB01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+807356,A02AB01|A02AB02,KEEP_CURRENT,LOW,Automated minimal-set derivation produced no codes; retaining current_final as fallback.
+833197,C08DB01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+210056,B03AA07,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+212792,D08AE03|N01BX03,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1114383,D08AX01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+486042,G04BC,KEEP_CURRENT,HIGH,"Citric acid+sodium citrate oral solution (urinary alkaliniser, Bicitra-type); ATCPROD-confirmed dedicated class G04BC."
+1001060,R01AA05,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1012929,D04AB01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+284024,D01AE12,KEEP_CURRENT,HIGH,Already correct.
+860236,R01BA03|R05CA03|R05DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+262197,B05BB,KEEP_CURRENT,LOW,Multitrace-5 trace-element IV additive; ATCPROD terminal L4 B05BB is the best available WHO classification; no dedicated trace-element-combination L5 identified (A12CB01/V03AB20 individual candidates don't cover the full 5-element mix).
+1740250,D04AB04|D08AJ01,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): camphor.
+1191691,D11AF,KEEP_CURRENT,HIGH,Same terminal L4 D11AF.
+476628,A11JA,KEEP_CURRENT,HIGH,"Folic acid+B12 tablet; ATCPROD-confirmed A11JA (vitamin B-complex, incl. combinations)."
+485788,R01BA03|R05CA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+540582,J01AA02,OTHER,HIGH,"Doxycycline hyclate oral capsule, systemic -> J01AA02."
+1046957,A03CB31,OTHER,MED,"Haponal, identical formula to 1739887 -> A03CB31."
+1739880,D10AB02|D10AF06,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+205625,M01AE09,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+205850,S01EA01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+831337,C08DB01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1091092,D11AX12,OTHER,MED,"Dial Dandruff Control zinc pyrithione medicated shampoo; WHO's specific substance code for zinc pyrithione is D11AX12 (verified via property API and WHO ATC index), more precise than ATCPROD's L4-only D11AC (medicated shampoos, general class)."
+1192860,S01KA01,KEEP_CURRENT,HIGH,"Amvisc ophthalmic viscoelastic (surgical aid) already correctly S01KA01; M09AX01 is the joint-viscosupplementation code for a different product context, not applicable."
+208985,M03BA02,KEEP_CURRENT,MED,"Soma Compound (aspirin+carisoprodol); no dedicated WHO combo code; carisoprodol's own code M03BA02 retained, aspirin's contribution ambiguous/no combo code."
+2118716,A01AA01|A01AA02,OTHER,HIGH,Sodium fluoride + sodium monofluorophosphate toothpaste -> both caries-prophylaxis codes A01AA01/A01AA02.
+577190,A11GB,KEEP_CURRENT,HIGH,Ascorbic acid+collagen capsule; ATCPROD-confirmed A11GB (vitamin C combinations).
+857861,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1048906,D08AE04,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+577819,A02AA01|A02AB01|A02AB02|A06AD01,KEEP_CURRENT,LOW,Automated minimal-set derivation produced no codes; retaining current_final as fallback.
+604271,N06BC01,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): benzoic acid.
+1658260,A06AD04|A12CC02|B05XA05|V04CC02,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1795149,B05BB02,OTHER,HIGH,Same correction as 1795470.
+1795254,B05BB02,OTHER,HIGH,Same correction as 1795470.
+1797871,R01AC03,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1868839,A11JA,KEEP_CURRENT,HIGH,Pregnitude folic acid+inositol; ATCPROD-confirmed A11JA.
+1237129,R01BA03|R06AC01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1246594,S01KA51,KEEP_CURRENT,HIGH,DisCoVisc chondroitin+hyaluronate combo viscoelastic already correctly resolved to combo code S01KA51.
+1247397,N02BA01,USE_ATCPROD,HIGH,"BC Arthritis aspirin+caffeine powder; ATCPROD gives N02BA01 (aspirin, plain analgesic) directly for this specific product."
+1250065,S01BA07,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1250909,R06AA02,OTHER,LOW,"Bayer Aspirin PM: aspirin+diphenhydramine oral tablet, no dedicated WHO combo code; minimal set keeps diphenhydramine's systemic antihistamine code R06AA02; aspirin's contribution ambiguous (see Advil PM precedent in CLAUDE.md where NSAID+antihistamine combos escalate to L4/ingredient-block rather than a single code)."
+1292443,J07BD54,OTHER,HIGH,"ProQuad MMRV (measles+mumps+rubella+varicella) live vaccine; WHO J07BD54 = 'measles, combinations with mumps, rubella and varicella' is the correct 4-way combo code (J07BD01 alone is measles monotherapy)."
+1294246,S02BA01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1294322,R01BA03|R06AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1294366,R01BA03|R06AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1297547,R01BA03|R05DB05|R06AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1297564,R01BA03|R06AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1314141,C05AD01,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+1356859,R01BA03|R06AB01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1362213,C05AA01|C05AD07,OTHER,LOW,"Analpram E Kit = hydrocortisone acetate+pramoxine rectal cream + pramoxine medicated pad; minimal set C05AA01 (hydrocortisone, anorectal) + C05AD07 (pramoxine, anorectal anesthetic); no dedicated combo code found for either component."
+1435083,A06AA02|C05AD03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1440184,D07AA02,OTHER,HIGH,Plain hydrocortisone acetate topical ointment -> D07AA02.
+1485531,A11JC,KEEP_CURRENT,HIGH,Multivitamin+omega-3+iron+docusate capsule; ATCPROD-confirmed A11JC.
+1491795,A02AA04|G04BX01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1494064,R02AD01,OTHER,MED,Neutracaine mouthwash; benzocaine used as an oral-rinse throat/oropharyngeal anesthetic -> R02AD01; C05AD03(anorectal)/D04AB04(dermatological)/N01BA05(dental-injection context) are less specific fits for a swished-and-spit mouthwash.
+1545297,D04AB01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1246609,S01KA01,KEEP_CURRENT,HIGH,"HYALOVET ophthalmic viscoelastic, same as above -> S01KA01."
+1250492,D07AA02,OTHER,HIGH,Plain hydrocortisone acetate topical cream -> D07AA02.
+1250657,D01AE12,KEEP_CURRENT,HIGH,Already correct.
+1293342,J01BA01,OTHER,HIGH,"Chloramphenicol injectable solution, systemic -> J01BA01; S03AA08(oto-ophthalmic) wrong route."
+1297363,N01BC01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+1299702,R03AB02|R03CB01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1300206,J07AJ52,KEEP_CURRENT,HIGH,"Adacel Tdap already correctly J07AJ52 (pertussis, purified antigen, combinations with toxoids)."
+1357942,R01BA03|R05DA03|R06AB02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1363511,R01BA03|R06AB01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1364052,D08AJ01,OTHER,HIGH,Benzalkonium chloride liquid soap -> D08AJ01.
+1365980,A11JB,KEEP_CURRENT,HIGH,"Ascorbic acid+cholecalciferol+sodium fluoride+vitamin A oral solution; ATCPROD-confirmed A11JB (multivitamins, incl. minerals)."
+1492680,P02CF01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1741417,A11JC,KEEP_CURRENT,HIGH,Cholecalciferol+menatetrenone (vitamin D+K) capsule; ATCPROD-confirmed A11JC.
+1795518,B05BA03,KEEP_CURRENT,HIGH,Pure concentrated glucose injection (no electrolyte) already correctly B05BA03 (parenteral nutrition carbohydrates).
+1293040,A03BB03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1293446,B05BB,KEEP_CURRENT,LOW,"Multitrace-4 trace-element IV additive, same rationale as 262197."
+1293962,R05CA03|R06AA02,OTHER,LOW,"Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): menthol, sodium citrate."
+1299811,A12AX,KEEP_CURRENT,HIGH,"Calcium carbonate+cholecalciferol oral solution; ATCPROD-confirmed A12AX (calcium, combinations with vitamin D and/or other drugs)."
+1361692,D02AA,KEEP_CURRENT,HIGH,"Dimethicone topical cream, same rationale -> D02AA."
+1362059,B01AB01|C05BA03,KEEP_CURRENT,LOW,No route-appropriate WHO code found via automated lookup; retaining current_final as fallback.
+1429409,R05DB10|R06AC01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1537189,D01AC08|D08AC02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1550965,G03FA01,KEEP_CURRENT,HIGH,"Lopreeza estradiol+norethindrone acetate HRT pack already correctly G03FA01 (norethisterone and estrogen, HRT-section combo)."
+1649526,C05AD01,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1250921,D01AE04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+1650696,A01AA01,OTHER,HIGH,Sodium fluoride oral gel -> A01AA01.
+1427959,D02AB,KEEP_CURRENT,HIGH,Petrolatum+zinc oxide topical cream; ATCPROD-confirmed D02AB.
+1549435,D08AC02,OTHER,HIGH,Kenocidin chlorhexidine gluconate solution -> D08AC02.
+1245283,A03BB03|R06AB04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+1865206,D02AB,KEEP_CURRENT,HIGH,Zinc oxide topical cream; ATCPROD-confirmed D02AB.
+1920976,N01BA05,OTHER,MED,"Sensicaine benzocaine oral gel; applied directly to mouth lesions/sore spots -> N01BA05 (dental local anesthetic), the dedicated WHO code for oral/dental benzocaine use; C05AD03(anorectal)/D04AB04(dermatological)/R02AD01(throat-rinse) are less specific fits for a spot-applied gel."
+1923343,D02AA,KEEP_CURRENT,HIGH,"Dimethicone+petrolatum topical ointment, same rationale -> D02AA."
+1293268,D08AB,KEEP_CURRENT,HIGH,Domeboro aluminum sulfate+calcium acetate topical astringent solution; ATCPROD-confirmed D08AB (Astringents).
+1294248,S02BA01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+667906,D01AE12,KEEP_CURRENT,HIGH,Already correct.
+686185,B05BB02,KEEP_CURRENT,HIGH,Already correct.
+707544,R01AX,KEEP_CURRENT,MED,Sea Soft nasal saline spray already resolved to R01AX.
+905005,M09AB03,KEEP_CURRENT,LOW,No route-appropriate WHO code found via automated lookup; retaining current_final as fallback.
+800003,B05DB,KEEP_CURRENT,MED,"Dianeal PD-2/4.25 peritoneal dialysis solution, same as above."
+801012,B05BA01,KEEP_CURRENT,HIGH,Already correct.
+861098,S02DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+895907,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+991259,D08AC02,OTHER,HIGH,CHX Plus chlorhexidine gluconate solution -> D08AC02.
+308370,N02BA51,OTHER,LOW,"Aspirin+caffeine+salicylamide (BC Powder-type, two salicylates+caffeine); N02BA51 used as best fit with aspirin as index ingredient; genuinely ambiguous given dual salicylates."
+310890,A07EA02,OTHER,MED,Hydrocortisone rectal suppository: A07EA02 (locally-acting rectal corticosteroid) fits the rectal route better than the anorectal-hemorrhoidal C05AA01 or dermatological D07 codes; genuinely ambiguous between A07EA02/C05AA01 without brand identity.
+312527,A12BA01,KEEP_CURRENT,LOW,No route-appropriate WHO code found via automated lookup; retaining current_final as fallback.
+1087285,A11JB,KEEP_CURRENT,HIGH,Folgard OS multivitamin+mineral tablet; ATCPROD-confirmed A11JB.
+1997508,D04AB01,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination. Ingredient(s) with no WHO ATC code found (omitted): allantoin.
+2003668,B02BC30,KEEP_CURRENT,HIGH,Tisseel fibrinogen+thrombin fibrin sealant already correctly uses the dedicated WHO combination code B02BC30; ATCPROD's candidate B02BC06 (thrombin alone) is the monotherapy code and should not override the dedicated combo code per the combination-preference rule.
+205914,D01BA01,OTHER,HIGH,"Griseofulvin oral tablet is a systemic antifungal; D01BA01 (antimycotics for systemic use) is correct despite the 'D' top-level prefix (oral-route matrix incorrectly blanket-excludes all D-codes); D01AA08 is the topical antifungal code, wrong route."
+998232,S01XA20,KEEP_CURRENT,HIGH,Glycerin ophthalmic solution; already correctly S01XA20 (ophthalmic lubricant/hyperosmotic); property-API's laxative codes (A06AG04/A06AX01) are the wrong indication.
+998543,G01AF04,KEEP_CURRENT,MED,Single-ingredient route-filtered code matches current_final; auto-derived via ingredient property-API lookup + route matrix.
+866404,M02AC,KEEP_CURRENT,HIGH,"Capsaicin+menthol+methyl salicylate topical lotion (rubefacient combo); ATCPROD-confirmed M02AC, distinct from the patch-form M02AB01 code used elsewhere in this dataset."
+749848,G03AA09,KEEP_CURRENT,HIGH,Desogestrel+EE pack already correctly G03AA09.
+876852,A11JB,OTHER,MED,Tri-Vi-Sol with Iron oral solution (same brand family as 284/876858/1365980/1087285); apply the same iron-containing multivitamin class A11JB for consistency rather than reducing to ferrous sulfate's monotherapy code alone.
+901818,M01AE01|R06AA02,OTHER,MED,"Advil PM (diphenhydramine+ibuprofen): per CLAUDE.md's documented COMBINATION_NO_DEDICATED_CODE precedent for this exact combo, keep the per-ingredient minimal set (ibuprofen M01AE01 + diphenhydramine R06AA02) rather than a single monotherapy code."
+309771,B05BB02,KEEP_CURRENT,HIGH,Already correct.
+314029,C03EA01,KEEP_CURRENT,HIGH,"Generic HCTZ+triamterene 25/50mg; same dedicated combo code C03EA01, already correct."
+830541,N02BA01,OTHER,HIGH,"Aspirin 325mg oral tablet, analgesic dose -> N02BA01, not B01AC06 (antiplatelet dosing is typically 81mg) or A01AD05 (dental)."
+992443,R06AD02,OTHER,HIGH,Promethazine HCl rectal suppository is a systemic antiemetic/antihistamine; R06AD02 correct; D04AA10 (topical antipruritic) is wrong route/use (rectal-route matrix incorrectly treats this as a local anorectal product).
+2059297,D08AC02,KEEP_CURRENT,HIGH,Chlorhexidine medicated pad already correctly D08AC02.
+895905,P02BA01|P02CC01|P02CF01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+310207,G03CA07|G03CC04|G03DA04,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+2001364,N02AJ22,KEEP_CURRENT,HIGH,Apadaz (acetaminophen+benzhydrocodone); N02AJ22 already correctly captures this hydrocodone-prodrug+paracetamol combination as a single dedicated code; adding acetaminophen's monotherapy code N02BE01 would be redundant/incorrect per the combination-preference rule.
+992668,A03BB06|R05DA03,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+995192,A06AA01|C05AD07,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+308846,A11HA01|A12AA03|N03AA02,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+830873,C08DB01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+881376,C04AC01|C04AC03|C10AD02,OTHER,MED,Multi-ingredient minimal per-ingredient set (property-API lookup + route matrix + tie-break heuristics); no dedicated combo L5 identified for this combination.
+895521,H02AB02,OTHER,HIGH,Zema Pak oral tablet taper pack: same as 1945072 -> H02AB02.
+1088953,R05FA02,KEEP_CURRENT,HIGH,"Zodryl DEC, same combo shape, ATCPROD-confirmed R05FA02."
+2055989,G02BB01,KEEP_CURRENT,HIGH,"Annovera vaginal contraceptive ring (EE+segesterone acetate); G02BB01 is the dedicated vaginal-contraceptive combo code, already correct; no need to add G03CA01."
+333834,N02BA01,OTHER,MED,Aspirin 60mg chewable tablet -> N02BA01 (pediatric/analgesic chewable); could arguably be low-dose antiplatelet but WHO classifies aspirin chewables generically as N02BA01 absent explicit cardioprotective labeling.
+348548,M01AA01,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+800269,B05BA01,KEEP_CURRENT,HIGH,"Already correct (pure amino acid mixture, no dextrose)."
+978949,G03AB08,KEEP_CURRENT,HIGH,Qlaira-type quadriphasic dienogest+estradiol valerate pack already correctly G03AB08 (sequential preparations - genuinely multiphasic regimen).
+730866,C09DB02,KEEP_CURRENT,HIGH,"Amlodipine+olmesartan (Azor-type); C09DB02 'olmesartan and amlodipine' is the dedicated WHO ARB+CCB combo code, already correct."
+749736,G03AA05,KEEP_CURRENT,HIGH,Norethindrone 0.4mg+EE 0.035mg pack already correctly G03AA05.
+93130,D07AC08,KEEP_CURRENT,HIGH,"Fluocinonide topical gel plain potent corticosteroid -> D07AC08; C05AA11 is anorectal, not applicable."
+312032,S01AE02,KEEP_CURRENT,HIGH,Norfloxacin ophthalmic solution already correctly S01AE02.
+995455,R05FA02,OTHER,MED,"Maxiphen CD: codeine+guaifenesin+phenylephrine, same combo shape as ATCPROD-confirmed siblings (1547607/1088953/1088965 with pseudoephedrine instead of phenylephrine) -> apply R05FA02 for consistency."
+351277,R01BA03|R06AC01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+311948,A11JA,KEEP_CURRENT,HIGH,Niacin+riboflavin+thiamine tablet; ATCPROD-confirmed A11JA (vitamin B-complex).
+309454,N02BA51,OTHER,MED,Aspirin+caffeine+codeine (no barbiturate) -> WHO N02BA51 'acetylsalicylic acid combinations excl. psycholeptics' (codeine/caffeine aren't psycholeptics).
+807790,G03AA05,OTHER,HIGH,"Norethin 1/50: norethindrone 1mg+EE 0.05mg pack, same progestin/estrogen class as sibling 749736 -> G03AA05 (norethisterone and ethinylestradiol); current_final's G03AC01/G03CA01/G03DC02/L02AA03 don't match this fixed-combination product."
+310811,C07BA06,KEEP_CURRENT,HIGH,"HCTZ+timolol; C07BA06 'timolol and thiazides' is the dedicated WHO combo code, already correct."
+617995,J01CR02,KEEP_CURRENT,HIGH,Same.
+876980,D02AA,KEEP_CURRENT,HIGH,"Dimethicone topical lotion, same rationale -> D02AA."
+308281,A01AD05|B01AC06|N02BA01|N02BE01|N06BC01,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.
+309682,S01CA01,KEEP_CURRENT,MED,Dexamethasone+tobramycin ophthalmic ointment already correctly S01CA01 (verify consistent with Maxitrol-family S01CA naming; current label used S01CA01 for TobraDex-type product).
+312284,C01DA05,OTHER,MED,Single-ingredient route-filtered code (property-API + route matrix + tie-break heuristics) differs from current_final; corrected to route/context-appropriate code(s).
+310476,J01GB03,OTHER,HIGH,"Gentamicin injection, systemic -> J01GB03; S03AA06(oto-ophthalmic) wrong route."
+1088965,R05FA02,KEEP_CURRENT,HIGH,"Zodryl DEC variant, ATCPROD-confirmed R05FA02."
+312356,B05CB04|C03BD01|N03AA02|R03DA07|R05CA02|V03AB21,KEEP_CURRENT,MED,Multi-ingredient minimal per-ingredient set (auto-derived) matches current_final; no dedicated combo L5 identified.

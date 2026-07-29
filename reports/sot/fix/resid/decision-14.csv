@@ -1,0 +1,323 @@
+rxcui,final_codes,fix_action,confidence,evidence
+406396,G03AA11,KEEP_CURRENT,HIGH,norgestimate+EE combined OC; WHO G03AA11 exact match; atcprod_candidate includes G03AA11
+616968,R01BA03|R05DB05|R06AC01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1014195,D08AE05|D04AB07,OTHER,LOW,"chloroxylenol+pramoxine Otic Solution; WHO has no otic-specific code for either substance (S02AA lacks chloroxylenol, S02DA lacks pramoxine) and no dedicated combo exists -- fell back to each substance's general WHO code (D08AE05 antiseptic, D04AB07 local anesthetic); route imperfect, needs human review"
+1039016,D08AJ01|D08AJ08,OTHER,HIGH,route=topical; stripped wrong-route pollutant code(s) ['D09AA11'] per DFG/route matrix
+1043056,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1086267,H02AB08,OTHER,HIGH,"triamcinolone acetonide Injectable Suspension (systemic IM/intra-articular, U-Tri-Lone); WHO H02AB08 (systemic corticosteroid) matches production; dental A01AC01, anorectal C05AA12, and inhaled R03BA06 stripped as wrong-route pollution"
+1086634,R01BA03|R05DA04|R06AB01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+244400,D06AX04|D07AC07,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+259184,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1735057,N01AH01|N02AB03,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+545278,C01DA02,OTHER,HIGH,"nitroglycerin Transdermal System (Minitran, systemic anti-anginal patch); WHO C01DA02 confirmed; C05AE01 is glyceryl trinitrate's DIFFERENT product-specific code for rectal anal-fissure ointment (Rectiv-shape), wrong formulation for a systemic patch"
+1005848,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1659149,J01CR05,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+310552,A06AG04|A06AX01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+2047112,L03AX14,KEEP_CURRENT,HIGH,"histamine dihydrochloride Topical Gel; WHO L03AX14 (immunostimulant) is the substance's only WHO code regardless of topical dose form; production's V04CG03 is a different salt (histamine phosphate, diagnostic use), wrong substance"
+562395,G01AE10,KEEP_CURRENT,HIGH,sulfabenzamide+sulfacetamide+sulfathiazole triple-sulfa Vaginal Cream; WHO G01AE10 'combinations of sulfonamides' (vaginal) is an exact dedicated combo fit; production's D10AB02 is the wrong substance/route (sulfur/topical)
+1000717,D10AF06,KEEP_CURRENT,HIGH,"sulfacetamide sodium Topical Gel (Seb-Prev); WHO D10AF06 confirmed correct; production's D10AB02 is sulfur's code, wrong substance"
+1663612,R01BA53,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1802849,M02AB01,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1870686,J01GB03,OTHER,HIGH,gentamicin 10 MG/ML Injection (systemic); WHO J01GB03 confirmed; otic/combined-oto-ophthalmic S03AA06 is wrong route for a plain injectable
+1874539,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+1866047,G03AA09,KEEP_CURRENT,HIGH,desogestrel+EE combined OC (Isibloom); WHO G03AA09 exact; production's G03AC09 is desogestrel-alone pollution
+1245232,D08AC02,OTHER,HIGH,route=topical; stripped wrong-route pollutant code(s) ['D09AA12'] per DFG/route matrix
+1245392,D08AC02,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1248750,R01BA03|R05DB10|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1250490,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+1291363,R02AA06,KEEP_CURRENT,HIGH,route=buccal; route-matrix filter made no changes to current_final
+1302643,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1305143,A06AA02|A11CC05|A11GA01|A11HA02|B03AA02|B03BB01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1359126,G03FA01,KEEP_CURRENT,HIGH,estradiol+norethindrone acetate HRT combo; WHO G03FA01 (norethisterone and estrogen) exact
+1360059,N01BB02,OTHER,MED,"lidocaine hydrochloride 20 MG/ML Prefilled Syringe; most consistent with local/regional anesthesia use (WHO N01BB02) rather than IV antiarrhythmic (C01BB01) or anorectal (C05AD01); genuinely indication-ambiguous from the name alone, needs human review"
+1363751,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1363779,R01BA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1425498,D08AX01|D11AX25,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1490656,R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1549539,S03CA06,OTHER,HIGH,"betamethasone+gentamicin Otic Solution (GentaVed); WHO has no S02CA (otic-only) entry for betamethasone+antiinfective, but S03CA06 'betamethasone and antiinfectives' (combined oto-ophthalmic class) is the confirmed dedicated WHO code; current_final/production both split into ingredient-level route pollution"
+1653139,N02BA03|R01BA03|R06AA02,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1248120,A06AA02|A06AB04,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1242785,A12CA01,OTHER,LOW,"sodium chloride 'Oral Spray' [Aqua Maris] -- brand is commercially a nasal saline spray but RxNorm's dose form text says Oral Spray; kept oral electrolyte code A12CA01, dropped IV-solution code B05CB01 (wrong route either way); genuinely ambiguous, needs human review"
+1291711,N02BE01|R01BA02|R06AA02,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1300370,J07AJ52,KEEP_CURRENT,HIGH,"DTaP (pertussis purified antigen + diphtheria + tetanus toxoids, Boostrix); WHO J07AJ52 confirmed exact"
+1357873,R01BA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1361577,B01AB01,OTHER,HIGH,route=injectable; stripped wrong-route pollutant code(s) ['C05BA03'] per DFG/route matrix
+1363749,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1374851,D08AJ01,OTHER,MED,"benzalkonium chloride+camphor Topical Cream; WHO D08AJ01 (benzalkonium, confirmed) kept; D08AJ08 is benzethonium chloride (a different quaternary-ammonium substance, ingredient-mapping artifact, not present in this product) dropped; camphor has no WHO topical code"
+1375978,M02AB01,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1426606,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1432525,J01CE01|J01CE08|J01CE09,KEEP_CURRENT,MED,route=injectable; route-matrix filter made no changes to current_final
+1438136,J01CE09,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+1442155,D04AB04|D08AE03,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['C05AD03', 'C05BB05'] per DFG/route matrix"
+1540663,D04AB01,OTHER,HIGH,allantoin+lidocaine+petrolatum Medicated Patch (skin); WHO D04AB01 confirmed for lidocaine; antiarrhythmic C01BB01 and anorectal C05AD01 are wrong-route pollution; allantoin/petrolatum are inert skin protectants with no WHO code
+1373322,D04AB04,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1291956,N02BE01|R01BA02|R06AA02,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1294602,N02BE01|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1359256,P02CC01|P02CF01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1432118,D06AX05,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1436947,D07AA02|G01AC01,OTHER,MED,"hydrocortisone acetate+iodoquinol Topical Cream, same combo shape as above -- D07AA02+G01AC01"
+1442405,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1486532,A01AA01,OTHER,HIGH,"sodium fluoride mouthwash; WHO A01AA01 (caries prophylactic, topical dental) confirmed correct route; A12CD01 is the systemic fluoride mineral-supplement code, wrong route for a rinse; matches production"
+1535506,D01AC01,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['A01AB18', 'G01AF02'] per DFG/route matrix"
+1544645,D08AJ01,OTHER,MED,"benzalkonium chloride Topical Gel (Omnicide); WHO D08AJ01 confirmed; dressings-class D09AA11 dropped (product is a gel, not a medicated dressing)"
+1041732,D08AE04,OTHER,HIGH,route=topical; stripped wrong-route pollutant code(s) ['D09AA06'] per DFG/route matrix
+1244514,A03BB03|R01BA02|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1293865,S02CA03,KEEP_CURRENT,HIGH,"chloroxylenol+hydrocortisone+pramoxine (Topical Lotion label, but combo maps to otic steroid+antiinfective class); current_final S02CA03 already correct"
+1298073,S01FA04|S01FB01|S01GA05,KEEP_CURRENT,MED,route=ophthalmic; route-matrix filter made no changes to current_final
+1595023,D04AB01,OTHER,HIGH,"lidocaine Topical Solution (Derma Ice, skin); WHO D04AB01 (topical local anesthetic) confirmed; anorectal C05AD01 is wrong sub-route for a skin product"
+1549099,D01AE12|D10AE01,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['N02BA04', 'N02BA12', 'S01BC08'] per DFG/route matrix"
+629987,A01AA01,OTHER,HIGH,"sodium fluoride mouthwash; WHO A01AA01 (caries prophylactic, topical dental) confirmed correct route; A12CD01 is the systemic fluoride mineral-supplement code, wrong route for a rinse; matches production"
+702167,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+644789,A11JA,KEEP_CURRENT,MED,"folic acid+B12+B6 oral tablet (Folbee); WHO A11JA terminal L4, no L5 exists"
+707329,R01AX,KEEP_CURRENT,HIGH,route=nasal; route-matrix filter made no changes to current_final
+645508,R02AD01,OTHER,MED,"benzocaine Oral Gel (mouth/gum application); WHO R02AD01 (benzocaine, throat/mouth preparations) is the best-fit route match; C05AD03 (rectal) and D04AB04 (skin) and N01BA05 (parenteral local anesthetic) are wrong-route pollution"
+758498,A02BC03|M01AE02,OTHER,HIGH,"route=oral; stripped wrong-route pollutant code(s) ['G02CC02', 'M02AA12'] per DFG/route matrix"
+800957,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+796480,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+800666,B05BB01,OTHER,HIGH,glucose+electrolytes IV solution (Ionosol-T); WHO B05BB01 'electrolytes' generic combo code; individual salt ingredient codes are pollution
+891077,B05DB,OTHER,MED,peritoneal dialysis solution (Dianeal Low Calcium); WHO B05D (peritoneal dialytics) has no L5 subdivision -- B05DB (hypertonic solutions) is the deepest available WHO code; ingredient-level electrolyte codes are pollution
+308290,N02BA01|N02BE01|N06BC01,OTHER,HIGH,"acetaminophen+aspirin+caffeine analgesic combo (no salicylamide); same fix -- drop aspirin's dental/antiplatelet codes, keep analgesic-use N02BA01"
+310129,R03AA01,KEEP_CURRENT,HIGH,epinephrine Metered Dose Inhaler (Primatene-shape); WHO R03AA01 confirmed correct inhalant route; production's C01CA24/S01EA01 are cardiac/ophthalmic-route pollution
+312196,R01BA01|R01BA02|R01BA03,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+312633,C05AD05|N01BA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+202248,J01EB05,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+204630,B03AA07,KEEP_CURRENT,HIGH,"ferrous sulfate Extended Release Oral Capsule; WHO B03AA07 confirmed; production's B03AA01 (ferrous glycine sulfate) is a different salt, wrong substance"
+746340,R03BC01,KEEP_CURRENT,HIGH,route=inhalant; route-matrix filter made no changes to current_final
+310626,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+310858,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+311536,A06AD14|C01DA05|N05BC01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1090522,D08AG,KEEP_CURRENT,MED,"iodine povacrylex+isopropyl alcohol Topical Solution (DuraPrep surgical antiseptic); WHO D08AG (iodine products) has no exact L5 for the povacrylex complex -- ATCPROD already resolved to this L4, no better L5 available"
+198841,D01AE12|D05AA,OTHER,MED,"coal tar+salicylic acid Topical Gel; salicylic acid=D01AE12 (confirmed); coal tar's WHO code is D05AA (Tars) -- no dedicated combo L5 exists for this pairing, so per-ingredient minimal set applies; coal tar L5 not independently verified, MED confidence"
+807371,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+800933,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+992910,R01BA03|R06AD02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+311930,D06AX04,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+617954,D04AX,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+637129,D02AB,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+688067,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+700669,R06AB06|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+708020,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+749671,S02AA16,KEEP_CURRENT,HIGH,ofloxacin Otic Solution; current_final S02AA16 already correct; production's J01MA01 is the systemic-route pollution code
+900462,J01FF01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+308900,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+309577,R01BA01|R01BA02|R06AB04|R06AC01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+206282,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+348622,B03AE01,OTHER,HIGH,"iron+B12+folic acid (+vitamin C carrier) oral capsule; WHO dedicated code B03AE01 'iron, vitamin B12 and folic acid'; current_final's bare L4 'B03AE' promoted to its only child L5"
+358917,D10AF51,KEEP_CURRENT,HIGH,"benzoyl peroxide+clindamycin acne gel; WHO D10AF51 'clindamycin, combinations' confirmed exact; atcprod_candidate D10AF01 is clindamycin-monotherapy, wrong (drops benzoyl peroxide)"
+833696,C05AE03|C08DB01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+310478,J01GB03,OTHER,HIGH,gentamicin 2.4 MG/ML Injectable Solution (systemic); same as above -- J01GB03 alone
+95267,B05CX01|V04CA02|V06DC01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+359938,A12BA02|R01BA03|R05CA03,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+745309,J01CE01|J01CE08,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+645671,D10AD01,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+745300,J01CE01|J01CE08|J01CE09,KEEP_CURRENT,MED,route=injectable; route-matrix filter made no changes to current_final
+790302,S02AA01,OTHER,HIGH,chloramphenicol Otic Solution (Chloromycetin); WHO S02AA01 (otic antiinfective) confirmed; S03AA08 (combined oto-ophthalmic) is the wrong sub-route for a product labeled specifically Otic Solution; production's J01BA01 (systemic) and S01AA01 (ophthalmic) are also wrong-route pollution
+762008,G03AA06,OTHER,HIGH,norgestrel+EE combined OC (Ovral); WHO G03AA06 (norgestrel and ethinylestradiol) exact; current_final/production both miss the combo code entirely
+755976,H02AB02,KEEP_CURRENT,MED,"dexamethasone Oral Solution (Decadron); systemic oral corticosteroid -- WHO H02AB02 confirmed correct, route-pollution (A01AC02 dental, C05AA09 anorectal, S03BA01 oto-ophthalmic) already stripped in current_final"
+860914,M02AC,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+308807,M09AB03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+200172,D11AX10,KEEP_CURRENT,HIGH,"finasteride 1 MG Oral Tablet; WHO strength-determined split (Phase 2I, CLAUDE.md) -- 1mg = alopecia D11AX10; atcprod_candidate G04CB01 is the 5mg BPH code, wrong strength for this product"
+314160,A06AD14|C01DA05,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+834043,J01FA10,OTHER,HIGH,route=oral; stripped wrong-route pollutant code(s) ['S01AA26'] per DFG/route matrix
+991633,R03AB03|R03CB03,KEEP_CURRENT,HIGH,route=inhalant; route-matrix filter made no changes to current_final
+998236,S01XA20,KEEP_CURRENT,HIGH,route=ophthalmic; route-matrix filter made no changes to current_final
+828293,A11AA,OTHER,LOW,"calcium carbonate+cholecalciferol+folic acid+hydroxocobalamin oral tablet; multivitamin+mineral combo, no exact L5 -- fallback to terminal A11AA per multivitamin+mineral shape; needs review"
+1089057,R05FA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+202263,C02CC02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+2048002,L03AX14,KEEP_CURRENT,HIGH,histamine dihydrochloride+menthol Topical Spray; same as above -- L03AX14; menthol has no WHO code
+995026,N02BA04|N06BC01|R01BA03|R05DA04|R06AB05,OTHER,HIGH,"caffeine+codeine+pheniramine+phenylephrine+sodium salicylate Oral Solution (Tussirex); sodium salicylate=N02BA04 (confirmed); N02BA12 is potassium salicylate, a different salt not present in this product, dropped"
+313793,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+810096,G03AB03,USE_ATCPROD,HIGH,"7d EE-alone lead-in + 84d EE/levonorgestrel combo = true WHO 'sequential preparation'; G03AB03 (levonorgestrel and ethinylestradiol, sequential) confirmed in atcprod_candidate and fits the regimen shape better than combined-class G03AA07/G03AA08"
+830166,N01BA03,OTHER,HIGH,route=injectable; stripped wrong-route pollutant code(s) ['C05AD02'] per DFG/route matrix
+206848,C01DA08|C05AE02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+313599,A11JA,KEEP_CURRENT,MED,ascorbic acid+cholecalciferol+vitamin A oral solution; WHO A11JA (combinations of vitamins) has no L5 children -- L4 is WHO's deepest code
+810015,A02BC03|M01AE02,OTHER,HIGH,"route=oral; stripped wrong-route pollutant code(s) ['G02CC02', 'M02AA12'] per DFG/route matrix"
+856840,N06CA01,KEEP_CURRENT,HIGH,amitriptyline+perphenazine (Triavil-shape); WHO N06CA01 'amitriptyline and psycholeptics' confirmed exact
+856987,N02AJ22,KEEP_CURRENT,HIGH,hydrocodone+acetaminophen (Norco-shape); WHO N02AJ22 confirmed exact per project WHO snapshot
+208591,S01CA01,KEEP_CURRENT,HIGH,dexamethasone+neomycin+polymyxin B Ophthalmic Suspension (Maxitrol); WHO S01CA01 'dexamethasone and antiinfectives' confirmed exact
+2109253,D01AE12,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['N02BA04', 'N02BA12', 'S01BC08'] per DFG/route matrix"
+211637,A02AD01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+212318,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1116454,D04AB04|D08AJ01,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['C05AD03', 'D09AA11'] per DFG/route matrix"
+1117106,D06AX05,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1190113,S01KA51,KEEP_CURRENT,HIGH,"chondroitin sulfates+sodium hyaluronate Prefilled Syringe (Viscoat, ophthalmic viscosurgical device for cataract surgery); WHO S01KA51 'hyaluronic acid, combinations' (ophthalmic) confirmed correct despite the 'Prefilled Syringe' dose-form text suggesting a systemic injectable"
+1190444,R01BA02|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1234482,A11AA,KEEP_CURRENT,MED,"10-ingredient multivitamin oral solution; WHO A11AA (multivitamins, various combos) terminal L4, no exact L5 fits a 10-way combo"
+417994,D02AB,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+485102,A02AA04,OTHER,HIGH,"single-ingredient magnesium hydroxide Oral Suspension (antacid use); WHO A02AA04 confirmed; G04BX01 is magnesium hydroxide's unrelated urological-use code, wrong indication for a plain antacid"
+545875,N02BA01|N02BA05|N02BE01|N06BC01,OTHER,HIGH,"acetaminophen+aspirin+caffeine+salicylamide analgesic combo (Levacet); kept each ingredient's analgesic-context WHO code (aspirin N02BA01, salicylamide N02BA05, acetaminophen N02BE01, caffeine N06BC01); dropped aspirin's dental (A01AD05) and low-dose-antiplatelet (B01AC06) codes, wrong indication for a full-dose analgesic tablet"
+603086,J01GB01,KEEP_CURRENT,HIGH,tobramycin 40 MG/ML Injectable Solution (Nebcin); current_final already correctly single-coded J01GB01
+1000636,D02AA,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1046534,D01AE12|D03AX03,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1046815,A03CB,KEEP_CURRENT,MED,"atropine/hyoscyamine/phenobarbital/scopolamine (Donnatal-shape) oral tablet; WHO A03CB (belladonna alkaloid+barbiturate combos) terminal L4, closest matches are 'and psycholeptics' L5s keyed to a single named alkaloid which doesn't fit this 4-way mix"
+239009,S02DA03,KEEP_CURRENT,HIGH,route=otic; route-matrix filter made no changes to current_final
+245224,C05AX06,KEEP_CURRENT,HIGH,route=rectal; route-matrix filter made no changes to current_final
+307710,S02AA10|D07AB08,OTHER,LOW,"acetic acid+desonide Otic Solution; no dedicated otic combo code for desonide exists in WHO (S02BA has no desonide entry) -- per-ingredient fallback: acetic acid S02AA10 (confirmed otic antiinfective) + desonide's only WHO code D07AB08 (dermatological, imperfect route match); needs review"
+307686,N02BE01|N02BE51,KEEP_CURRENT,MED,acetaminophen+caffeine: plain paracetamol N02BE01 and paracetamol-combinations N02BE51 both plausible; keeping both as WHO does not have a single unambiguous code for this specific pairing; production kept N02BE01 only
+1726416,S01XA20,KEEP_CURRENT,HIGH,route=ophthalmic; route-matrix filter made no changes to current_final
+1727521,G03AA05,KEEP_CURRENT,HIGH,norethindrone+EE combined OC (Kaitlib Fe) w/ iron placebo days; WHO G03AA05 exact; iron placebo tablets are not separately ATC-coded
+1658300,A12BA01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1053423,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+999434,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+346966,R01BA02|R06AB01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+800444,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+313633,B03AE01,OTHER,MED,"ascorbic acid+ferrous fumarate+folic acid oral capsule (no B12); closest WHO bucket is still B03AE (iron+vitamin combos) -- no exact 'iron+folic acid only' L5 exists distinctly, B03AE01 is the best-fit dedicated code"
+857368,D01AC03,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+857716,R01BA03|R05DA03|R06AB01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+209304,G04BC,KEEP_CURRENT,LOW,"citric acid+potassium citrate oral solution (Cytra-K); WHO G04BC terminal L4, no L5 subdivision found"
+238135,N02BA51,KEEP_CURRENT,HIGH,"aspirin+butalbital+caffeine; WHO N02BA51 'acetylsalicylic acid, combinations excl. psycholeptics' fits butalbital+caffeine analgesic combo; production's N02BA01 is aspirin-monotherapy pollution"
+1095225,G03AA05,OTHER,HIGH,norethindrone+EE combined OC (Zeosa) w/ iron placebo; same combo class as Kaitlib Fe -> G03AA05; current_final's 5-code pollution list lacks the dedicated combo code entirely
+1098170,D08AX08,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1101741,A03BB03|R01BA03|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1192741,D02AA,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1088930,C01EX,KEEP_CURRENT,MED,ubidecarenone (CoQ10)+vitamin E oral solution; WHO C01EX (other cardiac preparations) terminal L4 for ubidecarenone; vitamin E not separately coded in this pairing
+997951,A11JA,KEEP_CURRENT,MED,folic acid+B12+B6 oral tablet (Foltabs); same as Folbee -- A11JA terminal
+312891,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+313456,D07AB09,OTHER,HIGH,plain triamcinolone Topical Ointment; WHO D07AB09 confirmed; anorectal C05AA12 and combo-class D07XB02 stripped; production's A01AC01/H02AB08/R01AD11 are dental/systemic/inhaled pollution
+857410,R01BA01|R06AA04,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+2107062,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+213543,D07AC01,OTHER,HIGH,plain betamethasone Topical Cream (Maxivate); WHO D07AC01 confirmed; anorectal C05AA05 and combo-class D07XC01 stripped
+562193,B05AA05,KEEP_CURRENT,HIGH,"dextran 60 plasma volume substitute; WHO B05AA05 confirmed; sodium chloride is just the diluent vehicle, not separately coded"
+605132,R02AD01,KEEP_CURRENT,HIGH,"benzocaine Oral Lozenge (Cepacol, throat lozenge); WHO R02AD01 (throat preparations) confirmed correct"
+859225,R01BA03|R05DA03|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1006725,S01AB04,KEEP_CURRENT,HIGH,"sulfacetamide sodium Ophthalmic Solution (Sulf-15); WHO S01AB04 confirmed correct; production's D10AB02 is sulfur's topical-acne code, wrong substance/route"
+244541,D01AE12|D10AB02,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+248244,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+260394,A01AC04|A07EA01|H02AB06|S03BA02,OTHER,HIGH,route=injectable; stripped wrong-route pollutant code(s) ['C05AA04'] per DFG/route matrix
+1667692,J01GB03,KEEP_CURRENT,HIGH,gentamicin 100 MG/ML Injectable Solution (Garasol); current_final already correctly single-coded J01GB03
+1730425,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+577927,S01XA20,KEEP_CURRENT,HIGH,route=ophthalmic; route-matrix filter made no changes to current_final
+860117,R01BA03|R05DA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1000666,S01EB01,KEEP_CURRENT,HIGH,route=ophthalmic; route-matrix filter made no changes to current_final
+1049648,D08AC02|D08AX08,OTHER,HIGH,route=topical; stripped wrong-route pollutant code(s) ['D09AA12'] per DFG/route matrix
+243783,C04AC01|C10AD02,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+244124,B05BA03,OTHER,MED,"plain glucose 380 MG/ML Injectable Solution (IV dextrose); WHO B05BA03 'carbohydrates' (parenteral nutrition/fluid replacement) fits a therapeutic IV solution; V04CA02 is the diabetes-diagnostic-test code and B05CX01 is a wound-irrigation-solution code, both wrong context for a therapeutic IV injectable"
+544351,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1000000,C09DX03,KEEP_CURRENT,HIGH,amlodipine+HCTZ+olmesartan triple combo; dedicated WHO L5 C09DX03 (matches documented Tribenzor precedent)
+1001679,A11JB,KEEP_CURRENT,MED,"calcium carbonate+cholecalciferol+magnesium oxide oral tablet; WHO A11JB (multivitamins with minerals, other combos) terminal L4"
+1042829,R01BA03|R06AB04|R06AC01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1658303,A12BA01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1089060,R05FA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+205073,B05XA31,OTHER,LOW,trace element (chromium/copper/manganese/zinc) IV combo; no dedicated WHO trace-element combo L5 found -- B05XA31 'electrolytes in combination with other drugs' is the closest generic bucket; needs human review
+206962,C01EB03|M01AB01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+317055,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+994005,M01AE52,KEEP_CURRENT,HIGH,"esomeprazole+naproxen dedicated WHO code M01AE52 'naproxen and esomeprazole' confirmed exact; atcprod_candidate M01AE02 is naproxen-monotherapy, wrong (drops esomeprazole)"
+831313,C05AE03|C08DB01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+853019,J01FF01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1091712,R01BA02|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1112894,A07FA51,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1235747,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+208318,D07AC08,OTHER,HIGH,plain fluocinonide Topical Cream (Fluex); WHO D07AC08 confirmed; anorectal C05AA11 stripped
+1006063,D10AB02|D10AF06,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+577799,N02BA03|N07AX02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+261345,D01AE14,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1794905,B05BB01,KEEP_CURRENT,HIGH,glucose+sodium chloride IV solution; WHO B05BB01 'electrolytes' generic combo code already correct
+1805281,D04AB01|D04AB07,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['C05AD01', 'C05AD07'] per DFG/route matrix"
+1923430,S01ED01,KEEP_CURRENT,HIGH,route=ophthalmic; route-matrix filter made no changes to current_final
+1923421,G03AA09,KEEP_CURRENT,HIGH,"desogestrel+EE combined OC (Kalliga), same as Isibloom; WHO G03AA09 exact"
+1241639,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1241720,B03AA02,OTHER,MED,"ascorbic acid+ferrous fumarate oral tablet, no folic acid/B12; no dedicated iron+vitaminC combo L5 exists; falls back to iron monotherapy code B03AA02 (ferrous fumarate) per per-ingredient rule; ascorbic acid absorption-enhancer not separately coded in this pairing"
+1244146,A11DB,KEEP_CURRENT,MED,B6+B1+B12 oral tablet; WHO A11DB (vit B1 combos) has no L5 children -- terminal L4
+1246336,C05AD07,KEEP_CURRENT,HIGH,route=rectal; route-matrix filter made no changes to current_final
+1248347,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1248486,R01BA03|R05DB05|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1293874,S02CA03,KEEP_CURRENT,HIGH,chloroxylenol+hydrocortisone+pramoxine Otic Solution; current_final S02CA03 already correct
+1293983,D04AX,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1294313,R01BA03|R06AA02|R06AB01,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1294348,R01BA03|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1314399,A11DA01|A11HA01|A11HA02|A11HA04|A11HA30|B03BA01,KEEP_CURRENT,MED,route=injectable; route-matrix filter made no changes to current_final
+1358395,R01BA03|R05CA09,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1359024,G03AA05,OTHER,HIGH,norethindrone acetate+EE combined OC (Gildess Fe 1.5/30); norethindrone acetate maps to same WHO norethisterone class -> G03AA05; matches production
+1368312,D01AE12,OTHER,HIGH,"route=topical; stripped wrong-route pollutant code(s) ['N02BA04', 'N02BA12', 'S01BC08'] per DFG/route matrix"
+1370760,D07AB02,OTHER,HIGH,"hydrocortisone BUTYRATE (not plain hydrocortisone) Topical Ointment (Locoid); WHO D07AB02 is the ester-specific code; plain D07AA02, combo-class D07XA01, and anorectal C05AA01 are all wrong for this specific ester/route"
+1423416,R01BA03|R05CA03,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+198021,S01CB01,OTHER,MED,"dexamethasone+neomycin Ophthalmic Ointment; steroid+antiinfective combo -- WHO S01CA01 'dexamethasone and antiinfectives' is the correct combo bucket (S01CB01 is dexamethasone-monotherapy, wrong since neomycin is present); current_final's S01CB01 in its own list is retained but corrected to the combo code"
+1441185,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+1537434,D04AB01|D08AJ01,OTHER,MED,"benzalkonium chloride+lidocaine Topical Spray; lidocaine=D04AB01 (topical, confirmed), benzalkonium=D08AJ01 (general antiseptic, confirmed); anorectal C05AD01 and dressings-class D09AA11 stripped as wrong format/route"
+1598339,D08AX08,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1241621,N02BE01|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1250631,D08AJ01,OTHER,MED,allantoin+benzalkonium chloride Topical Ointment; WHO D08AJ01 confirmed for benzalkonium; dressings-class D09AA11 dropped; allantoin has no WHO code
+1292982,D08AX08,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1294395,N02CA02|N03AA02|N06BC01,OTHER,MED,"belladonna alkaloids+caffeine+ergotamine+phenobarbital Rectal Suppository (Bellergal-shape, systemic migraine/menopause combo delivered rectally, not a local anorectal product); kept each ingredient's systemic WHO code (ergotamine N02CA02, phenobarbital N03AA02, caffeine N06BC01); dropped D11AX26 (caffeine's topical/dermatological code, wrong formulation); belladonna alkaloids themselves have no single clean WHO code in this mix"
+1545716,D04AB01|D08AJ08,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1597269,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1251566,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+1293036,A03BB03|R06AB04,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1540246,D10AF51,KEEP_CURRENT,HIGH,"benzoyl peroxide+clindamycin phosphate acne gel (Neuac), same combo class as above -> D10AF51"
+1926461,M02AB01,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1297932,R01BA03|R05DA03|R06AA02,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1297983,R01BA02|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+1311810,M02AB01|N01BX04,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1368640,A01AA01,OTHER,HIGH,"sodium fluoride mouthwash; WHO A01AA01 (caries prophylactic, topical dental) confirmed correct route; A12CD01 is the systemic fluoride mineral-supplement code, wrong route for a rinse; matches production"
+197959,C02LB01,KEEP_CURRENT,HIGH,chlorothiazide+methyldopa; WHO C02LB01 'methyldopa (levorotatory) and diuretics' confirmed exact
+1545703,M02AB01,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1534829,S01KA01,KEEP_CURRENT,HIGH,"sodium hyaluronate Injectable Solution (Nexha, ophthalmic viscosupplement); WHO S01KA01 confirmed correct; production's M09AX01 is the musculoskeletal intra-articular hyaluronic-acid code, wrong indication"
+1653155,N02BA03|R01BA03|R05CA03,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+1484873,J01CE09,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+730872,C09DB02,KEEP_CURRENT,HIGH,amlodipine+olmesartan dedicated WHO combo L5; production retains amlodipine-alone pollution
+800033,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+756219,R06AB05|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+800061,B05DB,KEEP_CURRENT,HIGH,peritoneal dialysis solution (Dianeal PD-2/1.5); current_final B05DB already reflects WHO's terminal L4-only classification for peritoneal dialytics
+205121,A06AG06,KEEP_CURRENT,HIGH,route=rectal; route-matrix filter made no changes to current_final
+801192,R01BA03|R06AC01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+744980,C05AD03,OTHER,HIGH,route=oral; stripped wrong-route pollutant code(s) ['R02AD01'] per DFG/route matrix
+758864,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+311904,A14AB01,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+1088846,R01BA03|R06AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+351524,S02DA03,KEEP_CURRENT,HIGH,route=otic; route-matrix filter made no changes to current_final
+205022,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+310892,S01BA02,OTHER,HIGH,"plain hydrocortisone 25mg/mL Ophthalmic Suspension; WHO S01BA02 (corticosteroids, plain) is the correct ophthalmic bucket; S01CB03 sits in the S01C ('corticosteroids+antiinfectives') branch and is not appropriate for a single-ingredient product with no antiinfective"
+746686,A01AB22|J01AA02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+749881,G03AA05,OTHER,HIGH,"norethindrone+EE combined OC (Norinyl 1/35); WHO G03AA05 exact; matches production, current_final pollution lacks combo code"
+753476,G03AA05,OTHER,HIGH,"norethindrone+EE combined OC (unbranded, same as Norinyl shape); WHO G03AA05"
+762667,J01MA12,OTHER,HIGH,route=oral; stripped wrong-route pollutant code(s) ['S01AE05'] per DFG/route matrix
+748865,G03AA07,KEEP_CURRENT,HIGH,levonorgestrel+EE triphasic OC (Trivora); WHO G03AA07 exact; production splits into monotherapy pollution
+731526,G03BA02|G03EK01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+899863,D02AB,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+308206,A07AA07|J01AA07,OTHER,MED,"amphotericin B+tetracycline Oral Capsule (non-absorbable GI decontamination combo); oral amphotericin B is classified as an intestinal antiinfective (WHO A07AA07) given negligible oral absorption, not systemic antifungal (J02AA01) or dental (A01AB04/A01AB13); tetracycline is genuinely absorbed systemically (J01AA07); otic/ophthalmic S03AA02 dropped as wrong route entirely"
+309421,R05CA03|R05DA04|R06AB05,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+347690,S02CA03,OTHER,HIGH,hydrocortisone+neomycin+polymyxin B Otic Solution; WHO S02CA03 'hydrocortisone and antiinfectives' is the confirmed dedicated combo code regardless of which/how-many antibiotics are combined
+894875,D11AX22,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+308291,N02BA01|N02BA05|N02BE01|N06BC01,OTHER,HIGH,"acetaminophen+aspirin+caffeine+salicylamide analgesic combo, same shape as Levacet -- same fix"
+310910,A01AB02|R02AA15,OTHER,HIGH,"route=buccal; stripped wrong-route pollutant code(s) ['D08AG02', 'D08AX01', 'D09AA09', 'D11AC06', 'D11AX25', 'G01AX11', 'S01AX18', 'S02AA06'] per DFG/route matrix"
+755546,R01BA03|R05DA04|R06AB04,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+800105,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+992783,G01AF04,KEEP_CURRENT,HIGH,route=vaginal; route-matrix filter made no changes to current_final
+310871,D07AA02|G01AC01,OTHER,MED,"hydrocortisone+iodoquinol Topical Cream; hydrocortisone=D07AA02 (plain, confirmed); iodoquinol's only WHO code is G01AC01 (gynecological antiinfective class) -- WHO has no dermatological-specific code for iodoquinol, so this is kept as the substance's sole true code despite imperfect route match, same shape as the desonide-otic gap"
+1088869,B03AA07,KEEP_CURRENT,MED,"ascorbic acid + iron carbonyl oral tablet; current_final B03AE (iron+vitC bare L4, no exact child) -- reassigned to iron-monotherapy fallback since 'iron carbonyl' isn't itself a distinct WHO entry; kept close to production's implied logic"
+352131,S01KA01,KEEP_CURRENT,HIGH,"sodium hyaluronate Prefilled Syringe (Healon5, ophthalmic viscoelastic for cataract surgery); current_final S01KA01 already correct; production's M09AX01 is the wrong (musculoskeletal) indication code"
+829764,B05XA05,OTHER,HIGH,"magnesium sulfate 4 MEQ/ML Prefilled Syringe (injectable, e.g. eclampsia/arrhythmia treatment); WHO B05XA05 (IV electrolyte additive) confirmed correct; oral-laxative (A06AD04), oral-mineral-supplement (A12CC02), and diagnostic-fat-absorption-test (V04CC02) codes are wrong route/indication for an injectable syringe"
+636337,V06DD,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+762334,G03AA09,KEEP_CURRENT,HIGH,"desogestrel+EE triphasic OC (Velivet); WHO does not split by phasic regimen, G03AA09 applies"
+993075,R05DA04|R06AD02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+730905,A11GA01,OTHER,MED,"ascorbic acid+bromelains oral tablet, same combo shape as above -- A11GA01"
+1087757,H02AB02,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+311971,A11HA01|R05CA02,OTHER,MED,"niacinamide+potassium iodide Extended Release Oral Tablet (expectorant-shape combo); potassium iodide's expectorant-use code R05CA02 fits; V03AB21 is potassium iodide's radiation-antidote/thyroid-blocking-use code, wrong indication for an OTC expectorant tablet"
+198531,A02AC01|A12AA04,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+199842,A11GA01,KEEP_CURRENT,MED,"ascorbic acid+bromelains oral capsule; no dedicated combo code, WHO A11GB (vitC+calcium) doesn't fit (no calcium here) -- fallback to vitamin C monotherapy A11GA01 per per-ingredient rule, bromelains M09AB03 dropped as non-primary"
+206286,D07AA02,OTHER,HIGH,"single-ingredient plain hydrocortisone(-acetate) topical cream/lotion/spray/gel; WHO D07AA02 (hydrocortisone, plain corticosteroid) confirmed correct; D07XA01 ('combinations of corticosteroids') survives naive D-prefix filtering but is for combo products, not this single-ingredient one; other hydrocortisone-ester codes (D07AB02 butyrate/D07AB11 buteprate/D07AC16 aceponate) and anorectal C05AA01 are wrong-substance/wrong-route pollution"
+999731,A02AA02|A06AD02|A12CC10|M03BX08,KEEP_CURRENT,MED,route=oral; route-matrix filter made no changes to current_final
+314933,C05AD03|C05BB05|N01BA05|N01BX03,OTHER,HIGH,"route=oral; stripped wrong-route pollutant code(s) ['R02AA19', 'R02AD01'] per DFG/route matrix"
+801035,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+352096,A02AC01|A12AA04,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+830655,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+198490,R02AD01,OTHER,MED,benzocaine Mucous Membrane Topical Solution (oral/throat mucosa); WHO R02AD01 best route fit; C05AD03/D04AB04 are wrong-route (rectal/skin) pollution
+204801,B02BC09,OTHER,MED,"epinephrine Topical Solution used as a local hemostatic (surgical/dental bleeding control); WHO B02BC09 (local hemostatics) is the correct fit; epinephrine has no dermatological ATC code at all -- dental A01AD01, cardiac C01CA24, nasal R01AA14, inhalant R03AA01, and ophthalmic S01EA01 are all wrong-indication/wrong-route for a topical hemostatic solution"
+205904,D01BA01,OTHER,HIGH,"griseofulvin Oral Tablet (Gris-PEG, systemic antifungal); WHO D01BA01 is the SYSTEMIC-use subclass (D01B), distinct from D01AA08 which is the topical-antifungal subclass (D01A) for the same substance; D01AA08 is wrong formulation for an oral tablet despite sharing the D01 root"
+807391,B05BB02,OTHER,HIGH,balanced electrolyte (K/Mg/Na/phosphate/lactate) + glucose Injectable Solution; WHO B05BB02 'electrolytes with carbohydrates' is the correct dedicated bucket (parallel to B05BB01 'electrolytes' used elsewhere in this dataset for glucose-free electrolyte mixes); per-salt ingredient codes are pollution
+827689,R07AX01,KEEP_CURRENT,HIGH,route=inhalant; route-matrix filter made no changes to current_final
+831267,R03BC01,KEEP_CURRENT,HIGH,route=inhalant; route-matrix filter made no changes to current_final
+832739,A12BA01,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+805379,J07AM51,KEEP_CURRENT,HIGH,"diphtheria+tetanus toxoid combo (no pertussis); WHO J07AM51 confirmed exact; production's J07CA02 is the DTaP triple-combo code, wrong (adds pertussis)"
+830684,B05BA01,OTHER,HIGH,"IV amino acid (parenteral nutrition) solution; WHO dedicated code B05BA01 'amino acids' covers the whole mixture regardless of composition; individual-amino-acid ingredient codes (B05CX03 glycine, B05XB01/03 arginine/lysine, N06AX02 tryptophan-as-antidepressant, V03AB26 methionine-as-antidote, A09AB01 glutamic acid-as-digestive) are ingredient-level route/indication pollution"
+207662,C04AC01|C10AD02,KEEP_CURRENT,HIGH,route=oral; route-matrix filter made no changes to current_final
+210141,D01AE12,OTHER,HIGH,"single-ingredient topical salicylic acid; WHO confirms D01AE12 is the ONLY code for this substance (verified live against atcddd.fhi.no) regardless of dose form (gel/lotion/shampoo/pad/powder/solution); D11AF is not a valid WHO code, D11AC (medicated shampoos) does not list salicylic acid, N02BA04/12 (sodium/potassium salicylate) is a different systemic-analgesic substance entirely"
+210828,A02AD01,OTHER,HIGH,"aluminum/magnesium/calcium antacid salt combination (+/- simethicone); WHO A02AD01 'ordinary salt combinations' confirmed dedicated code (matches row 211637 Mintox Plus, which already carries this code correctly); per-salt pollution codes (A02AB02 algeldrate wrong compound, G04BX01 magnesium's urological code, A06AD01 laxative-use code, A12AA04 calcium mineral-supplement code) all dropped"
+2121105,P02CF01,KEEP_CURRENT,HIGH,route=injectable; route-matrix filter made no changes to current_final
+2121931,M02AC,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+213528,S02CA03,OTHER,HIGH,acetic acid+hydrocortisone Otic Solution (Vosol HC); acetic acid counts as the antiinfective component -- WHO S02CA03 dedicated code applies
+213635,S01CA03,OTHER,MED,"bacitracin+hydrocortisone+neomycin+polymyxin B Ophthalmic Ointment; steroid+antiinfective combo maps to WHO S01CA03 'hydrocortisone and antiinfectives', not the hydrocortisone-monotherapy S01CB03 code buried in current_final's pollution list"
+2178934,N02BE01|R03CA02|R05CA03|R06AB04,OTHER,HIGH,"acetaminophen+chlorpheniramine+ephedrine+guaifenesin Oral Solution; ephedrine's oral bronchodilator/decongestant code R03CA02 applies (confirmed), not the cardiac-emergency-use code C01CA26"
+1114385,D08AX01|D11AX25,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1116731,D02AA,KEEP_CURRENT,HIGH,route=topical; route-matrix filter made no changes to current_final
+1147235,D04AB01,OTHER,HIGH,route=topical; stripped wrong-route pollutant code(s) ['C05AD01'] per DFG/route matrix
