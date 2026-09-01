@@ -29,3 +29,6 @@ scratch/phase*-final/
 # Local secrets (none today, but in case)
 .env
 .env.local
+
+# ATC repair sweep caches (regenerable RxNav lookups, not source data)
+scratch/atc-repair/.enrich-cache.json
