@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { getWhoName, isCombinationCode, listCombinationL5sInL4, listAllCombinationL4s } from "./who-full-index.mjs";
+import { getWhoName, isCombinationCode, listAllCombinationL5s } from "./who-full-index.mjs";
 import { findCuratedCombination } from "../../js/atc-combinations-curated.js";
 import { parseAtcL5Name, scoreL5Match } from "../../js/who-atc-index.js";
 import { resolveRoute, classifyAtcForRoute } from "../../js/filter-engine.js";
@@ -38,25 +38,40 @@ const SCORE_CLASS = 80;
  * explicit:["lidocaine"], wildcards:["combinations"]}) to mean "lidocaine plus
  * one or more other active substances, unspecified" — i.e. a genuine,
  * unambiguous single-ingredient anchor. When that anchor ingredient IS one of
- * our input ingredients, this is exactly as strong a signal as the generic
- * CLASS tier (an ingredient/class membership + wildcard). scoreL5Match itself
- * can't tell these two wildcard uses apart (it has no notion of "how strong is
- * this particular wildcard"), so this promotion lives here, at the call site,
- * rather than inside scoreL5Match's shared scoring behavior used elsewhere in
- * the live app.
+ * our input ingredients, this is a real signal — but it is NOT as strong as an
+ * actual EXACT/CLASS match from scoreL5Match itself, because a bare single-
+ * ingredient wildcard name can't tell "lidocaine + epinephrine" apart from
+ * "lidocaine + literally anything else". Two different substances can each
+ * carry their own "<substance>, combinations" wildcard entry under two
+ * unrelated L4s (e.g. both "lidocaine, combinations" and "epinephrine,
+ * combinations" match a lidocaine+epinephrine product), so this tier is kept
+ * strictly SEPARATE from, and subordinate to, real EXACT/CLASS matches — see
+ * `isPromotable` below and how the two tiers are used in resolveComboCode.
  */
-function scoreL5MatchForCombo(inputSet, parsed) {
-  const base = scoreL5Match(inputSet, parsed);
-  if (base >= SCORE_CLASS) return base;
-  if (
+// Restricted further to WHO's literal ", combinations" suffix shape
+// (parsed.wildcards === ["combinations"]) — NOT the broader "X and other
+// <descriptive phrase>" wildcard shape (e.g. R03AK01 "epinephrine and other
+// drugs for obstructive airway diseases"). Both parse to `type: "wildcard"`
+// with a single explicit ingredient, but only the bare ", combinations"
+// suffix is WHO's generic "this substance plus something unspecified"
+// bucket; a descriptive wildcard phrase names a specific *other* clinical
+// context (asthma/COPD drugs) that has nothing to do with an arbitrary
+// second ingredient the input happens to contain. Confirmed live: without
+// this restriction, a lidocaine+epinephrine local-anesthetic product's
+// promoted-tier search wrongly pulls in R03AK01 as a third tied candidate
+// alongside the correct N01BB52 and the anatomically-wrong S01EA51, and
+// R03AK01 also survives the injectable route tie-break (R03 isn't excluded
+// under the injectable route matrix), leaving TWO candidates tied instead of
+// resolving to the single correct one.
+function isPromotable(inputSet, parsed) {
+  return (
     parsed &&
     parsed.type === "wildcard" &&
+    parsed.wildcards.length === 1 &&
+    parsed.wildcards[0] === "combinations" &&
     parsed.explicit.length === 1 &&
     inputSet.has(parsed.explicit[0])
-  ) {
-    return SCORE_CLASS;
-  }
-  return base;
+  );
 }
 
 export function resolveComboCode({ ingredientNames = [], currentCodes = [], minAtcCodes = [], dfgs = [], route = null }) {
@@ -108,18 +123,53 @@ export function resolveComboCode({ ingredientNames = [], currentCodes = [], minA
   const curated = findCuratedCombination(ings);
   if (curated && curated.l5) return { code: curated.l5, provenance: "curated", candidates: [curated.l5] };
 
-  // S4 — WHO full-index name match, searching the L4s implied by the codes we already have
+  // S4 — WHO full-index name match. Always scores against the FULL universe
+  // of WHO combination codes (listAllCombinationL5s(), memoized, ~cheap) —
+  // NOT just the L4s implied by the row's own current codes. Restricting the
+  // pool first was the bug: a row's *current* code is exactly the thing this
+  // whole repair effort doesn't trust, so building the candidate search space
+  // from it can hand a lone, non-tied, wrong-domain match a free pass with no
+  // competing candidate to tie against. See the "strong vs promoted" split
+  // below for how a wide pool is kept safe.
   const inputSet = normSet(ings);
 
-  function scoreCandidates(l5List) {
-    const scored = [];
+  // Score every WHO combination L5 into two strictly separate tiers:
+  //   - strong:   scoreL5Match's own EXACT (100) or CLASS (80) tiers — a real
+  //     WHO-authored ingredient/class match, not a single-anchor promotion.
+  //   - promoted: scoreL5Match's WILDCARD tier (40), promoted to 80 only when
+  //     the wildcard's lone explicit ingredient is in the input (see
+  //     isPromotable). This is a WEAKER signal than "strong" even though the
+  //     promoted score number is the same 80 — a wildcard name like
+  //     "morphine, combinations" matches ANY product containing morphine,
+  //     regardless of what it's combined with, so two different substances in
+  //     a combo can each surface their OWN unrelated "<substance>,
+  //     combinations" entry under two different L4s (this is exactly how the
+  //     morphine+naltrexone false positive happened: A07DA52 "morphine,
+  //     combinations" — antidiarrheal domain — beat out nothing, because the
+  //     row's own wrong current code (A07DA03) put A07DA in the search pool
+  //     and no competing candidate was ever considered).
+  //
+  // A promoted candidate is NEVER allowed to compete or tie against a strong
+  // one: if ANY strong candidate exists anywhere in the wide universe, the
+  // promoted tier is not even consulted. Promoted candidates only compete
+  // against EACH OTHER (and then via the route tie-break) when the strong
+  // tier is completely empty.
+  function scoreAll(l5List) {
+    const strong = [];
+    const promoted = [];
     for (const l5 of l5List) {
       const parsed = parseAtcL5Name(getWhoName(l5) || "");
-      const score = scoreL5MatchForCombo(inputSet, parsed);
-      if (score >= MIN_SCORE) scored.push({ code: l5, score });
+      if (!parsed) continue;
+      const base = scoreL5Match(inputSet, parsed);
+      if (base >= MIN_SCORE) {
+        strong.push({ code: l5, score: base });
+      } else if (isPromotable(inputSet, parsed)) {
+        promoted.push({ code: l5, score: SCORE_CLASS });
+      }
     }
-    scored.sort((a, b) => b.score - a.score);
-    return scored;
+    strong.sort((a, b) => b.score - a.score);
+    promoted.sort((a, b) => b.score - a.score);
+    return { strong, promoted };
   }
 
   // Tie-break a same-score group by route when possible: a wildcard match like
@@ -157,46 +207,15 @@ export function resolveComboCode({ ingredientNames = [], currentCodes = [], minA
     return { code: null, provenance: "ambiguous", candidates: tied.map((s) => s.code) };
   }
 
-  // S4 — WHO full-index name match, searching the L4s implied by the codes
-  // we already have. Deliberately narrow first: this is a free, zero-cost
-  // signal when the row's current (possibly wrong-route) codes happen to
-  // already share an L4 with the real answer, and keeping it narrow avoids
-  // pulling in unrelated combination entries that would otherwise create
-  // spurious ties for common single-anchor wildcard names (e.g. searching
-  // the entire index for "epinephrine" pulls in R03AK01 "epinephrine and
-  // other drugs for obstructive airway diseases" alongside the correct
-  // local-anesthetic answer, even though the row has nothing to do with
-  // asthma inhalers).
-  const narrowL4s = new Set();
-  for (const c of [...currentCodes, ...minAtcCodes, ...minCombo]) {
-    if (c && c.length >= 5) narrowL4s.add(c.slice(0, 5).toUpperCase());
-  }
-  const narrowCandidates = [];
-  for (const l4 of narrowL4s) narrowCandidates.push(...listCombinationL5sInL4(l4));
-  const narrowScored = scoreCandidates(narrowCandidates);
-  if (narrowScored.length) return pickFrom(narrowScored, "who_index");
-
-  // S5 — widen to EVERY L4 in WHO's index that has at least one
-  // combination-shaped L5 underneath it (listAllCombinationL4s(), ~921 L4s
-  // total, cheap/offline). Only reached when the narrow search above found
-  // nothing at all -- i.e. the product's *current* codes (which may
-  // themselves be wrong-route pollution -- the exact defect this sweep
-  // exists to fix) don't share an L4 with WHO's real dedicated combination
-  // code at all. Example: a topical/oral-anesthetic combo (benzocaine +
-  // butamben + tetracaine) currently miscoded under C05AD/D04AB/R02AD,
-  // whose actual WHO code (N01BA53 "tetracaine, combinations") lives under
-  // N01BA -- never reachable from those L4s. Safe to widen because
-  // scoreL5MatchForCombo keys on the real RxNorm ingredient names, which are
-  // substance-specific: a wildcard/class/exact match anywhere else in the
-  // index is WHO's own dedicated code for that substance, not a
-  // cross-domain false positive. Gating this behind "narrow search found
-  // nothing" (rather than always searching wide) keeps the narrow search's
-  // tighter, less tie-prone candidate set as the default path whenever it
-  // has any signal at all.
-  const wideCandidates = [];
-  for (const l4 of listAllCombinationL4s()) wideCandidates.push(...listCombinationL5sInL4(l4));
-  const wideScored = scoreCandidates(wideCandidates);
-  if (wideScored.length) return pickFrom(wideScored, "who_index_wide");
+  // S4 — score against the full universe, then dispatch by tier. `strong`
+  // (real EXACT/CLASS matches) always wins outright when non-empty; the
+  // `promoted` wildcard tier is only ever consulted as a fallback when
+  // `strong` is completely empty, and even then only competes against other
+  // promoted candidates (never against a strong one, because there isn't
+  // one at this point).
+  const { strong, promoted } = scoreAll(listAllCombinationL5s());
+  if (strong.length) return pickFrom(strong, "who_index");
+  if (promoted.length) return pickFrom(promoted, "who_index_wildcard");
 
   return { code: null, provenance: "none", candidates: [] };
 }

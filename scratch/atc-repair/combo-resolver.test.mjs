@@ -46,26 +46,27 @@ r = resolveComboCode({
 assert.equal(r.code, "C09DA03");
 assert.equal(r.provenance, "curated");
 
-// S4 — WHO full-index name match within the L4s implied by the mono codes
+// S4 (redesigned, round 3) — WHO full-index name match now ALWAYS scores
+// against the full universe of WHO combination codes, not just the L4s
+// implied by the row's (possibly wrong) current codes. Without a route, a
+// lidocaine+epinephrine product genuinely ties between two equally-valid
+// single-anchor wildcard entries under two DIFFERENT L4s — N01BB52
+// ("lidocaine, combinations", local anesthetic) and S01EA51 ("epinephrine,
+// combinations", WHO's ophthalmic "Sensory organs" class) — because both
+// entries only name ONE of the two ingredients and say nothing about what
+// they're combined with. currentCodes here (C01CA24, N01BB02 — no S01EA01)
+// used to hide S01EA51 from consideration entirely under the old
+// narrow-first design; that was the bug (see the Critical review finding
+// re: morphine+naltrexone below). The redesigned resolver correctly refuses
+// to guess when no route is available to break the tie.
 r = resolveComboCode({
   ingredientNames: ["lidocaine", "epinephrine"],
   currentCodes: ["C01CA24", "N01BB02"],
   minAtcCodes: [],
 });
-assert.equal(r.code, "N01BB52");             // "lidocaine, combinations"
-assert.equal(r.provenance, "who_index");
-
-// S4 extension — WHO names a single-ingredient "combinations" wildcard bucket
-// (e.g. "lidocaine, combinations") rather than spelling out both ingredients.
-// scoreL5Match's WILDCARD tier (40) is below MIN_SCORE (80) by design (it's meant
-// to be a last-resort, low-confidence tier for cases with no other signal). But
-// when the wildcard's single explicit ingredient IS one of the input ingredients,
-// that's actually a solid, unambiguous signal — WHO is saying "lidocaine plus
-// something else" and our input genuinely is "lidocaine plus something else".
-// This assertion is the same case as the one above, made explicit: confirm the
-// promotion to CLASS-tier (80) is what lets N01BB52 clear the bar, and that it's
-// the sole candidate (no other N01BB or C01CA combination entry also matches).
-assert.deepEqual(r.candidates, ["N01BB52"]);
+assert.equal(r.code, null);
+assert.equal(r.provenance, "ambiguous");
+assert.deepEqual(r.candidates, ["N01BB52", "S01EA51"]);
 
 // no dedicated code exists -> null, never a guess
 r = resolveComboCode({
@@ -98,5 +99,41 @@ r = resolveComboCode({
   route: "topical",
 });
 assert.equal(r.code, "N01BA53");
+
+// Round-3 Critical fix regression test: morphine + naltrexone (Embeda-shape
+// abuse-deterrent opioid analgesic), currently miscoded under A07DA03
+// ("morphine" in the antidiarrheal/antipropulsive A07D class — itself a
+// row-level mis-mapping, exactly the kind of wrong-current-code case this
+// whole repair effort targets). Live-verified via getWhoName against the WHO
+// full index (scratch/atc-repair/who-full-index.mjs):
+//   - A07DA52 = "morphine, combinations"  (antidiarrheal domain, A07DA)
+//   - N02AA51 = "morphine, combinations"  (analgesic domain, N02AA)
+//   - No WHO L5 anywhere names "morphine and naltrexone" explicitly, and no
+//     class-tier entry covers this pair either (confirmed: grepping the raw
+//     WHO index for "naltrexone" surfaces only A06AH01 methylnaltrexone,
+//     A08AA62 bupropion+naltrexone, N02AA56 oxycodone+naltrexone, and the
+//     bare N07BB04 naltrexone entry — none of which name morphine).
+// Under the OLD narrow-first design, A07DA03 being in currentCodes put A07DA
+// in the (only) search pool; A07DA52's wildcard-promoted "morphine,
+// combinations" was the LONE match found there, so it was returned outright
+// as a confident (and WRONG) answer — a real WHO domain mismatch, not a
+// route problem (A07 isn't excluded under the oral route matrix, so route
+// filtering could never have caught this).
+// Under the redesigned resolver, the search is always wide: A07DA52 and
+// N02AA51 are BOTH found (same WHO display name, same promoted score), and
+// since neither is anatomically excluded from the oral route, they remain
+// tied. The resolver correctly refuses to guess between the two rather than
+// returning either one — this is the specific case the Critical finding
+// asked to be closed.
+r = resolveComboCode({
+  ingredientNames: ["morphine", "naltrexone"],
+  currentCodes: ["A07DA03"],
+  minAtcCodes: [],
+  route: "oral",
+});
+assert.notEqual(r.code, "A07DA52");
+assert.equal(r.code, null);
+assert.equal(r.provenance, "ambiguous");
+assert.deepEqual(r.candidates, ["A07DA52", "N02AA51"]);
 
 console.log("combo-resolver: all assertions passed");

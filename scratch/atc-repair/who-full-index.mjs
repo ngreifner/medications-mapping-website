@@ -52,30 +52,36 @@ export function listCombinationL5sInL4(l4) {
 }
 
 /** Every combination-shaped L5 in the whole WHO index, regardless of L4. Used
- *  by combo-resolver.mjs's widened S5 fallback for cases where the product's
- *  *current* (possibly wrong-route/polluted) codes don't share an L4 with
- *  WHO's actual dedicated combination code -- see combo-resolver.mjs for why
- *  this is safe to search unrestricted. */
+ *  by combo-resolver.mjs's wide search: the resolver now always scores against
+ *  the FULL universe of WHO combination codes (not just the L4s implied by a
+ *  row's own, possibly-wrong, current codes) — see combo-resolver.mjs for why
+ *  restricting the search space first was unsafe. Memoized at first call
+ *  (module-level cache) since the underlying NAMES map never changes at
+ *  runtime: a prior review flagged the previous per-call L4-then-filter scan
+ *  as an unmemoized ~34ms cost, and "always wide" makes that cost matter on
+ *  every single resolveComboCode() call instead of only on a fallback path. */
+let _wideL5sCache = null;
 export function listAllCombinationL5s() {
+  if (_wideL5sCache) return _wideL5sCache;
   const out = [];
   for (const code of NAMES.keys()) if (code.length === 7 && isCombinationCode(code)) out.push(code);
-  return out.sort();
+  out.sort();
+  _wideL5sCache = out;
+  return out;
 }
 
 /** Every L4 prefix (5-char code) that has at least one combination-shaped L5
- *  underneath it, across the *entire* WHO index — not just the L4s implied by
- *  some row's (possibly wrong) current codes. Used by combo-resolver.mjs's S4
- *  to make sure the candidate search space is never smaller than "every
- *  combination code WHO defines," so a correct answer under an L4 that a
- *  row's current mis-mapping never touched (e.g. N01BA for a product
- *  currently miscoded under C05AD/D04AB/R02AD) is still reachable. Cheap,
- *  pure, offline: ~921 L4s total in the index. */
+ *  underneath it, across the *entire* WHO index. Derived from the memoized
+ *  listAllCombinationL5s() (a simple prefix-slice + dedupe), not from a
+ *  separate per-L4 scan, so it inherits the same one-time cost. Cheap, pure,
+ *  offline: ~921 L4s total in the index. */
+let _wideL4sCache = null;
 export function listAllCombinationL4s() {
+  if (_wideL4sCache) return _wideL4sCache;
   const l4s = new Set();
-  for (const code of NAMES.keys()) if (code.length === 5) l4s.add(code);
-  const out = [];
-  for (const l4 of l4s) if (listCombinationL5sInL4(l4).length > 0) out.push(l4);
-  return out.sort();
+  for (const l5 of listAllCombinationL5s()) l4s.add(l5.slice(0, 5));
+  _wideL4sCache = [...l4s].sort();
+  return _wideL4sCache;
 }
 
 export function indexStats() {
