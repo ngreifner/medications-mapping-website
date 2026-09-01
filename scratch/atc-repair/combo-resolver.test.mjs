@@ -81,4 +81,22 @@ r = resolveComboCode({ ingredientNames: ["lidocaine"], currentCodes: ["N01BB02"]
 assert.equal(r.code, null);
 assert.equal(r.provenance, "not_combination");
 
+// Bug 1+2 fix: route-aware tie-break rejects the anatomically wrong candidate
+r = resolveComboCode({
+  ingredientNames: ["lidocaine", "epinephrine"],
+  currentCodes: ["C01CA24", "D04AB01", "N01BB02", "R02AD02", "S01EA01"],
+  minAtcCodes: [],
+  route: "injectable",
+});
+assert.equal(r.code, "N01BB52");
+
+// Bug 2 fix: correct L4 not implied by current wrong codes must still be found
+r = resolveComboCode({
+  ingredientNames: ["tetracaine", "benzocaine", "butamben"],
+  currentCodes: ["C05AD03", "D04AB04", "R02AD01"],
+  minAtcCodes: [],
+  route: "topical",
+});
+assert.equal(r.code, "N01BA53");
+
 console.log("combo-resolver: all assertions passed");

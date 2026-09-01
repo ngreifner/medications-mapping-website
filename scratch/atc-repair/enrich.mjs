@@ -20,7 +20,7 @@ let cache = {};
 if (fs.existsSync(CACHE)) { try { cache = JSON.parse(fs.readFileSync(CACHE, "utf8")); } catch { cache = {}; } }
 export function saveCache() { fs.writeFileSync(CACHE, JSON.stringify(cache)); }
 
-const { getProperties, getDfgs, getIngredientRxcuis, getMinRxcuis, getAtcPropertyValues } =
+const { getProperties, getDfgs, getIngredientRxcuis, getPinRxcuis, getMinRxcuis, getAtcPropertyValues } =
   await import("../../js/rxnav-client.js");
 
 const BASE = "https://rxnav.nlm.nih.gov/REST";
@@ -57,7 +57,24 @@ export async function enrichRxcui(rxcui) {
   let ingredientNames = [];
   for (const ingId of inIds) {
     const p = await getProperties(ingId).catch(() => null);
-    if (p && p.name) ingredientNames.push(p.name);
+    if (p && p.name && !ingredientNames.includes(p.name)) ingredientNames.push(p.name);
+  }
+
+  // Some drug classes only expose their ingredient relations at the PIN
+  // (Precise Ingredient) level, not IN -- insulin analogs are the documented
+  // example (see CLAUDE.md's "PIN-attributed L5 codes" / active-moiety-alias
+  // notes for the same pattern in the live resolver). When the IN-based
+  // lookup above comes up short of a real combination (<2 distinct names),
+  // also pull PIN relations and union their resolved names in by exact-name
+  // dedupe. Only fires as a top-up (not unconditionally) so it doesn't
+  // double-count ingredients for the common case where IN already carries
+  // >=2 names.
+  if (ingredientNames.length < 2) {
+    const pinIds = (await getPinRxcuis(rxcui).catch(() => [])).filter((x) => String(x) !== id);
+    for (const pinId of pinIds) {
+      const p = await getProperties(pinId).catch(() => null);
+      if (p && p.name && !ingredientNames.includes(p.name)) ingredientNames.push(p.name);
+    }
   }
 
   // Same shape caveat applies to getMinRxcuis (input rxcui is included).
@@ -78,7 +95,22 @@ export async function enrichRxcui(rxcui) {
       if (df && df.length) { dfgs = df.map((x) => x.doseFormGroupName); dfgSource = "history"; }
       const ing = hs.definitionalFeatures && hs.definitionalFeatures.ingredientAndStrength;
       if (ing && ing.length && !ingredientNames.length) {
-        ingredientNames = ing.map((x) => x.activeIngredientName).filter(Boolean);
+        // activeIngredientName is blank on a real share of historical (obsolete/
+        // remapped) multi-ingredient concepts -- confirmed live on RxCUI 1360383
+        // (NovoLog Mix), where both ingredientAndStrength entries have
+        // activeIngredientName: "" even though the concept genuinely has 2
+        // ingredients. baseName is the next-best field on the same object.
+        ingredientNames = ing.map((x) => x.activeIngredientName || x.baseName).filter(Boolean);
+      }
+      // Last-resort fallback: derivedConcepts.ingredientConcept is a sibling
+      // section of the same historystatus response and reliably carries
+      // ingredientName even when definitionalFeatures' own name fields are
+      // blank (both activeIngredientName and baseName empty).
+      if (!ingredientNames.length) {
+        const derived = hs.derivedConcepts && hs.derivedConcepts.ingredientConcept;
+        if (derived && derived.length) {
+          ingredientNames = derived.map((x) => x.ingredientName).filter(Boolean);
+        }
       }
     }
   }

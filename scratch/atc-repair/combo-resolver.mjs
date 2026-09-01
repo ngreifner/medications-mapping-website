@@ -2,9 +2,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { getWhoName, isCombinationCode, listCombinationL5sInL4 } from "./who-full-index.mjs";
+import { getWhoName, isCombinationCode, listCombinationL5sInL4, listAllCombinationL4s } from "./who-full-index.mjs";
 import { findCuratedCombination } from "../../js/atc-combinations-curated.js";
 import { parseAtcL5Name, scoreL5Match } from "../../js/who-atc-index.js";
+import { resolveRoute, classifyAtcForRoute } from "../../js/filter-engine.js";
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const SYNONYMS = JSON.parse(fs.readFileSync(path.join(REPO, "data/who-inn-synonyms.json"), "utf8"));
@@ -58,7 +59,7 @@ function scoreL5MatchForCombo(inputSet, parsed) {
   return base;
 }
 
-export function resolveComboCode({ ingredientNames = [], currentCodes = [], minAtcCodes = [] }) {
+export function resolveComboCode({ ingredientNames = [], currentCodes = [], minAtcCodes = [], dfgs = [], route = null }) {
   const ings = (ingredientNames || []).filter(Boolean);
   if (ings.length < 2) return { code: null, provenance: "not_combination", candidates: [] };
 
@@ -108,24 +109,94 @@ export function resolveComboCode({ ingredientNames = [], currentCodes = [], minA
   if (curated && curated.l5) return { code: curated.l5, provenance: "curated", candidates: [curated.l5] };
 
   // S4 — WHO full-index name match, searching the L4s implied by the codes we already have
-  const l4s = new Set();
-  for (const c of [...currentCodes, ...minAtcCodes, ...minCombo]) {
-    if (c && c.length >= 5) l4s.add(c.slice(0, 5).toUpperCase());
-  }
   const inputSet = normSet(ings);
-  const scored = [];
-  for (const l4 of l4s) {
-    for (const l5 of listCombinationL5sInL4(l4)) {
+
+  function scoreCandidates(l5List) {
+    const scored = [];
+    for (const l5 of l5List) {
       const parsed = parseAtcL5Name(getWhoName(l5) || "");
       const score = scoreL5MatchForCombo(inputSet, parsed);
       if (score >= MIN_SCORE) scored.push({ code: l5, score });
     }
+    scored.sort((a, b) => b.score - a.score);
+    return scored;
   }
-  scored.sort((a, b) => b.score - a.score);
-  const best = scored.filter((s) => s.score === (scored[0] && scored[0].score));
-  if (best.length === 1) return { code: best[0].code, provenance: "who_index", candidates: scored.map((s) => s.code) };
-  // ambiguous tie -> refuse to guess
-  if (best.length > 1) return { code: null, provenance: "ambiguous", candidates: best.map((s) => s.code) };
+
+  // Tie-break a same-score group by route when possible: a wildcard match like
+  // "epinephrine, combinations" (S01EA51, ophthalmic) and "lidocaine,
+  // combinations" (N01BB52, local anesthetic) can tie at the same score for an
+  // injectable local-anesthetic-with-epinephrine product whose *current*
+  // (wrong-route) codes carry both ingredients' unrelated formulations. Route
+  // is real evidence here, not a guess: an injectable product's WHO
+  // combination code cannot be an ophthalmic-only entry (S01 = WHO's
+  // "Sensory organs" anatomical class). `route` is the caller's resolved
+  // route string (e.g. "injectable", "topical") and takes priority; `dfgs`
+  // (raw DFG names) is kept for backward compatibility with callers that
+  // haven't been updated to pass `route` directly yet and is resolved via
+  // resolveRoute() only when `route` itself wasn't supplied. classifyAtcForRoute
+  // is applied per-candidate (not the bulk filterAtcByRoute helper) so a
+  // single anatomically-incompatible candidate can be dropped from a tie
+  // without any of filterAtcByRoute's "never return empty" bulk-safety
+  // fallback muddying a tie-break decision that's really about ONE bad
+  // candidate, not the whole list.
+  function pickFrom(scored, provenance) {
+    if (!scored.length) return null;
+    const topScore = scored[0].score;
+    let tied = scored.filter((s) => s.score === topScore);
+    if (tied.length > 1) {
+      const effectiveRoute = route || (dfgs && dfgs.length ? resolveRoute(dfgs) : null);
+      if (effectiveRoute) {
+        const routeOk = tied.filter((s) => classifyAtcForRoute(s.code, effectiveRoute).kept);
+        if (routeOk.length >= 1 && routeOk.length < tied.length) tied = routeOk;
+      }
+    }
+    if (tied.length === 1) {
+      return { code: tied[0].code, provenance, candidates: scored.map((s) => s.code) };
+    }
+    // still tied after route tie-break (or no route to try) -> refuse to guess
+    return { code: null, provenance: "ambiguous", candidates: tied.map((s) => s.code) };
+  }
+
+  // S4 — WHO full-index name match, searching the L4s implied by the codes
+  // we already have. Deliberately narrow first: this is a free, zero-cost
+  // signal when the row's current (possibly wrong-route) codes happen to
+  // already share an L4 with the real answer, and keeping it narrow avoids
+  // pulling in unrelated combination entries that would otherwise create
+  // spurious ties for common single-anchor wildcard names (e.g. searching
+  // the entire index for "epinephrine" pulls in R03AK01 "epinephrine and
+  // other drugs for obstructive airway diseases" alongside the correct
+  // local-anesthetic answer, even though the row has nothing to do with
+  // asthma inhalers).
+  const narrowL4s = new Set();
+  for (const c of [...currentCodes, ...minAtcCodes, ...minCombo]) {
+    if (c && c.length >= 5) narrowL4s.add(c.slice(0, 5).toUpperCase());
+  }
+  const narrowCandidates = [];
+  for (const l4 of narrowL4s) narrowCandidates.push(...listCombinationL5sInL4(l4));
+  const narrowScored = scoreCandidates(narrowCandidates);
+  if (narrowScored.length) return pickFrom(narrowScored, "who_index");
+
+  // S5 — widen to EVERY L4 in WHO's index that has at least one
+  // combination-shaped L5 underneath it (listAllCombinationL4s(), ~921 L4s
+  // total, cheap/offline). Only reached when the narrow search above found
+  // nothing at all -- i.e. the product's *current* codes (which may
+  // themselves be wrong-route pollution -- the exact defect this sweep
+  // exists to fix) don't share an L4 with WHO's real dedicated combination
+  // code at all. Example: a topical/oral-anesthetic combo (benzocaine +
+  // butamben + tetracaine) currently miscoded under C05AD/D04AB/R02AD,
+  // whose actual WHO code (N01BA53 "tetracaine, combinations") lives under
+  // N01BA -- never reachable from those L4s. Safe to widen because
+  // scoreL5MatchForCombo keys on the real RxNorm ingredient names, which are
+  // substance-specific: a wildcard/class/exact match anywhere else in the
+  // index is WHO's own dedicated code for that substance, not a
+  // cross-domain false positive. Gating this behind "narrow search found
+  // nothing" (rather than always searching wide) keeps the narrow search's
+  // tighter, less tie-prone candidate set as the default path whenever it
+  // has any signal at all.
+  const wideCandidates = [];
+  for (const l4 of listAllCombinationL4s()) wideCandidates.push(...listCombinationL5sInL4(l4));
+  const wideScored = scoreCandidates(wideCandidates);
+  if (wideScored.length) return pickFrom(wideScored, "who_index_wide");
 
   return { code: null, provenance: "none", candidates: [] };
 }
