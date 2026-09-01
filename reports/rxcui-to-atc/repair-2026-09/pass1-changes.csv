@@ -1,16 +1,4 @@
 rxcui,current,next,verdict,provenance,reason
-1347,A07EA07|D07AC15|R01AD01|R03BA01,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-1514,A07EA04|C05AA05|D07AC01|H02AB01|R01AD06|R03BA04|S01BA06|S02BA07|S03BA03,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-3443,C05AE03|C08DB01,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-4337,N01AH01|N02AB03,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-5224,B01AB01|C05BA03|S01XA14,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-5640,C01EB16|G02CC01|M01AE01|M02AA13|R02AX02,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-10759,A01AC01|C05AA12|D07AB09|H02AB08|R01AD11|R03BA06|S01BA05,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-25120,R01AD04|R03BA03,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-25255,R03AC13|R03CC15,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-41126,D07AC17|R01AD08|R03BA05,R03AK06,COLLAPSE_TO_COMBINATION,min_property,2 ingredients -> single WHO combination code
-51428,A10AB05|A10AD05,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
-108118,D07AC13|R01AD09|R03BA07,R03AK09,COLLAPSE_TO_COMBINATION,min_property,2 ingredients -> single WHO combination code
 203457,R06AA02|D04AA32,R06AA52,COLLAPSE_TO_COMBINATION,who_index_wildcard,2 ingredients -> single WHO combination code
 1245229,D04AB04|N01BA05,,BLANKED_NO_WHO_COMBO,none,WHO defines no dedicated combination code for this ingredient set
 1294253,D08AC02|D09AA12,D08AC52,COLLAPSE_TO_COMBINATION,who_index_wildcard,2 ingredients -> single WHO combination code

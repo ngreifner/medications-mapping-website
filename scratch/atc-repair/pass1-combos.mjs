@@ -41,6 +41,15 @@ for (const row of body) {
   if (codes.length < 2) { untouched++; continue; }   // only multi-code rows can carry a per-ingredient list
 
   const e = await enrichRxcui(rxcui);
+  // Bare ingredient/salt-form concepts (TTY IN/MIN/PIN) legitimately carry multiple
+  // mono ATC codes across every route they're formulated in. RxNorm's "related IN"
+  // query on an IN concept returns SALT-FORM SIBLINGS (e.g. beclomethasone dipropionate
+  // vs. 17-monopropionate), not co-formulated combination partners -- enrichRxcui has
+  // no way to tell these apart from a real multi-ingredient product's ingredient list,
+  // so this must never be treated as a combination candidate. See the 2026-09-01 defect
+  // (RxCUI 1347 et al. blanked from a legitimate 4-code multi-route list) for why this
+  // guard exists -- it mirrors Pass 3's existing TTY guard.
+  if (["IN", "MIN", "PIN"].includes(e.tty)) { untouched++; continue; }
   if (e.ingredientNames.length < 2) { untouched++; continue; }  // not a combination -> Pass 3's job
   scanned++;
 
