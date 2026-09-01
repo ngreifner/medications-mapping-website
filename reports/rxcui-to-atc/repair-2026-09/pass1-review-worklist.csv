@@ -1,0 +1,948 @@
+rxcui,name,current,proposed,provenance,reason
+1347,beclomethasone dipropionate + beclomethasone 17-monopropionate + beclomethasone dipropionate monohydrate,A07EA07|D07AC15|R01AD01|R03BA01,,none,no dedicated WHO combination code
+1514,"betamethasone acetate + betamethasone benzoate + betamethasone dipropionate + betamethasone sodium phosphate + betamethasone dipropionate, augmented + betamethasone valerate",A07EA04|C05AA05|D07AC01|H02AB01|R01AD06|R03BA04|S01BA06|S02BA07|S03BA03,,none,no dedicated WHO combination code
+3443,diltiazem hydrochloride + diltiazem malate,C05AE03|C08DB01,,none,no dedicated WHO combination code
+4337,fentanyl citrate + fentanyl hydrochloride,N01AH01|N02AB03,,none,no dedicated WHO combination code
+5224,"heparin, bovine + heparin calcium + heparin, porcine + heparin sodium, bovine + heparin sodium, porcine + heparin sodium",B01AB01|C05BA03|S01XA14,,none,no dedicated WHO combination code
+5640,"ibuprofen, sodium salt + ibuprofen lysine",C01EB16|G02CC01|M01AE01|M02AA13|R02AX02,,none,no dedicated WHO combination code
+10759,triamcinolone acetonide + triamcinolone diacetate + triamcinolone acetonide 21-dipotassium phosphate + triamcinolone hexacetonide,A01AC01|C05AA12|D07AB09|H02AB08|R01AD11|R03BA06|S01BA05,,none,no dedicated WHO combination code
+25120,flunisolide hemihydrate + flunisolide anhydrous,R01AD04|R03BA03,,none,no dedicated WHO combination code
+25255,formoterol fumarate + formoterol fumarate dihydrate,R03AC13|R03CC15,,none,no dedicated WHO combination code
+51428,insulin aspart-szjj + insulin aspart-xjhz,A10AB05|A10AD05,,none,no dedicated WHO combination code
+1245229,benzalkonium + benzocaine,D04AB04|N01BA05,,none,no dedicated WHO combination code
+1299895,clenbuterol + clenbuterol hydrochloride,R03AC14|R03CC13,,none,no dedicated WHO combination code
+1495160,benzalkonium chloride + benzyl alcohol,D08AJ01|D09AA11,,none,no dedicated WHO combination code
+197481,chlorpheniramine + guaifenesin + phenylpropanolamine hydrochloride,R01BA01|R05CA03|R06AB04,,none,no dedicated WHO combination code
+197483,chlorpheniramine maleate + phenindamine + phenylpropanolamine hydrochloride,R01BA01|R06AB04|R06AX04,,none,no dedicated WHO combination code
+198367,brompheniramine maleate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride,R01BA01|R06AB01,,none,no dedicated WHO combination code
+198841,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+199194,oxyquinoline sulfate + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+199864,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+200079,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+200123,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+200209,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+200215,bromelains + papain,B06AA11|D03BA03|M09AB03,,none,no dedicated WHO combination code
+200299,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+200334,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+204423,hydrocortisone + neomycin + polymyxin B,A01AC03|A07AA01|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+204539,chlorpheniramine + phenyltoloxamine citrate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+204675,chlorpheniramine maleate + phenylpropanolamine hydrochloride + methscopolamine nitrate,R01BA01|R06AB04,,none,no dedicated WHO combination code
+204676,chlorpheniramine + phenylephrine hydrochloride + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+204702,"estrogens, conjugated (USP) + meprobamate",G03CA57|N05BC01,,ambiguous,ambiguous: N05BC51|N05CX01
+204726,"estrogens, conjugated (USP) + meprobamate",G03CA57|N05BC01,,ambiguous,ambiguous: N05BC51|N05CX01
+204899,urea + cysteine + sodium propionate + inositol + methionine,A11HA07|S01AX10|V03AB26,,none,no dedicated WHO combination code
+205289,lactic acid + coal tar + salicylic acid,D01AE12|G01AD01|N02BA04,,none,no dedicated WHO combination code
+205347,chlorpheniramine + phenyltoloxamine citrate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+205349,chlorpheniramine maleate + phenyltoloxamine citrate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+205352,chlorpheniramine maleate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride + pyrilamine maleate,R01BA01|R06AB04,,none,no dedicated WHO combination code
+206511,hydrocortisone + neomycin + polymyxin B,A01AC03|A07AA01|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+209717,bacitracin + diperodon + neomycin sulfate,A07AA01|D06AX04|S01AA03,,none,no dedicated WHO combination code
+209769,bacitracin zinc + neomycin sulfate + polymyxin B sulfate,A07AA01|D06AX04|S01AA03,,none,no dedicated WHO combination code
+210577,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210578,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210580,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210581,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210584,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210587,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210588,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+210629,"estrogens, conjugated (USP) + meprobamate",G03CA57|N05BC01,,ambiguous,ambiguous: N05BC51|N05CX01
+210744,"estrogens, conjugated (USP) + meprobamate",G03CA57|N05BC01,,ambiguous,ambiguous: N05BC51|N05CX01
+211254,"sulfur, colloidal + coal tar + salicylic acid",D01AE12|N02BA04,,none,no dedicated WHO combination code
+211354,acetaminophen + pentazocine hydrochloride,N02AD01|N02BE01,,none,no dedicated WHO combination code
+211848,urea + cysteine + sodium propionate + inositol + methionine,A11HA07|S01AX10|V03AB26,,none,no dedicated WHO combination code
+214038,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+214040,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+214041,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+214042,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+237325,acetaminophen + chlorpheniramine maleate + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R06AB04,,none,no dedicated WHO combination code
+238015,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+241190,thiamine + vitamin B12,A11DA01|B03BA01,,none,no dedicated WHO combination code
+241907,brompheniramine maleate + guaifenesin + phenylephrine hydrochloride,R05CA03|R06AB01,,none,no dedicated WHO combination code
+242623,calcium carbonate + magnesium hydroxide,A02AA04|A12AA04,,none,no dedicated WHO combination code
+244309,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+244475,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+244573,benzocaine + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+245038,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+259844,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+259870,vitamin A + ergocalciferol,A11CA01|A11CC01,,none,no dedicated WHO combination code
+260088,carbetapentane + chlorpheniramine tannate + phenylephrine tannate,R05DB05|R06AB04,,none,no dedicated WHO combination code
+260495,chromous chloride + copper sulfate + manganese sulfate + selenious acid + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+261380,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+262197,chromic chloride + copper sulfate + manganese sulfate + selenious acid + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+283279,lactate + resorcinol + salicylic acid,D01AE12|G01AD01|N02BA04,,none,no dedicated WHO combination code
+283379,phenol + glycerin,A06AX01|D08AE03,,none,no dedicated WHO combination code
+307703,benzocaine + acetic acid,C05AD03|D04AB04|G01AD02|R02AD01|S02AA10,,none,no dedicated WHO combination code
+307710,acetic acid + desonide,G01AD02|S02AA10,,none,no dedicated WHO combination code
+308272,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+308282,acetaminophen + chlorpheniramine maleate + phenylephrine + salicylamide,N02BA05|N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+308304,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+308305,acetaminophen + chlorpheniramine maleate + phenylephrine hydrochloride + pyrilamine maleate,N02BE01|R06AB04,,none,no dedicated WHO combination code
+308374,vitamin A + ascorbic acid + niacinamide,A11CA01|A11GA01|A11HA01,,none,no dedicated WHO combination code
+308624,benzalkonium + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+308667,benzocaine + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+308668,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+308809,brompheniramine maleate + pseudoephedrine sulfate,R01BA02|R06AB01,,none,no dedicated WHO combination code
+308847,calcium gluconate + niacinamide + phenobarbital,A11HA01|N03AA02,,none,no dedicated WHO combination code
+308929,thiamine hydrochloride + calcium lactate,A11DA01|A12AA05,,none,no dedicated WHO combination code
+308997,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+308999,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+309000,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+309001,carbon dioxide + nitrogen,V03AN02|V03AN04,,none,no dedicated WHO combination code
+309002,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+309003,carbon dioxide + nitrogen,V03AN02|V03AN04,,none,no dedicated WHO combination code
+309236,chlorpheniramine maleate + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+309279,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+309317,citric acid + potassium citrate + sodium citrate,A09AB04|A12BA02|B05CB02,,none,no dedicated WHO combination code
+309390,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+309561,chlorpheniramine maleate + guaifenesin + phenylephrine hydrochloride,R05CA03|R06AB04,,none,no dedicated WHO combination code
+309874,diethylstilbestrol + methyltestosterone,G03BA02|L02AA01|L02AA04,,none,no dedicated WHO combination code
+310687,hydrocortisone + neomycin + polymyxin B,A01AC03|A07AA01|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+310691,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+310692,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+310910,hydrogen peroxide + povidone-iodine,A01AB02|D08AG02|D08AX01|D09AA09|D11AC06|G01AX11|R02AA15,,none,no dedicated WHO combination code
+311251,ammonium lactate + salicylic acid,D01AE12|G01AD01|N02BA04,,none,no dedicated WHO combination code
+311423,magnesium chloride + sodium chloride,A12CA01|A12CC01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+311948,thiamine + niacin + riboflavin,A11DA01|A11HA04,,none,no dedicated WHO combination code
+312104,belladonna alkaloids + opium,A03BA04|A07DA02,,none,no dedicated WHO combination code
+312106,belladonna alkaloids + opium,A03BA04|A07DA02,,none,no dedicated WHO combination code
+312107,belladonna alkaloids + opium,A03BA04|A07DA02,,none,no dedicated WHO combination code
+312124,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+312196,phenylephrine hydrochloride + phenylpropanolamine hydrochloride + pseudoephedrine hydrochloride,R01BA01|R01BA02,,none,no dedicated WHO combination code
+312288,acetaminophen + pentazocine,N02AD01|N02BE01,,none,no dedicated WHO combination code
+313629,vitamin E + ascorbic acid + zinc sulfate + magnesium sulfate,A11GA01|A11HA03|A12CB01,,none,no dedicated WHO combination code
+313635,vitamin A + vitamin E + ascorbic acid + zinc sulfate,A11CA01|A11GA01|A11HA03|A12CB01,,none,no dedicated WHO combination code
+314933,benzocaine + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+315004,benzocaine + licorice + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+315048,codeine + guaifenesin + phenylephrine,R05CA03|R05DA04,,ambiguous,ambiguous: R01BA53|S01GA55
+315195,dl-alpha tocopheryl acetate + quinine,A11HA03|P01BC01,,none,no dedicated WHO combination code
+346765,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+347047,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+347048,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+347109,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+347112,carbon dioxide + nitrogen,V03AN02|V03AN04,,none,no dedicated WHO combination code
+347114,carbon dioxide + helium,V03AN02|V03AN03,,none,no dedicated WHO combination code
+347115,carbon dioxide + nitrogen + oxygen,V03AN01|V03AN02|V03AN04,,none,no dedicated WHO combination code
+347132,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+347250,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+347681,acetaminophen + chlorpheniramine maleate + phenyltoloxamine + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R06AB04,,none,no dedicated WHO combination code
+347697,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+347741,carbon monoxide + helium + nitrogen + oxygen,V03AN01|V03AN03|V03AN04,,none,no dedicated WHO combination code
+347742,carbon monoxide + helium + nitrogen + oxygen,V03AN01|V03AN03|V03AN04,,none,no dedicated WHO combination code
+347743,acetylene + nitrogen + oxygen,V03AN01|V03AN04,,none,no dedicated WHO combination code
+347744,carbon dioxide + carbon monoxide + nitrogen + oxygen,V03AN01|V03AN02|V03AN04,,none,no dedicated WHO combination code
+347745,carbon monoxide + neon + nitrogen + oxygen,V03AN01|V03AN04,,none,no dedicated WHO combination code
+347835,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+347862,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+347963,helium + nitrogen + oxygen,V03AN01|V03AN03|V03AN04,,none,no dedicated WHO combination code
+347965,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348224,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+348320,carbon dioxide + hydrogen + nitrogen,V03AN02|V03AN04,,none,no dedicated WHO combination code
+348323,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348324,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348325,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348326,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348327,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348328,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348518,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+348519,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+348600,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+348603,helium + nitrogen + oxygen,V03AN01|V03AN03|V03AN04,,none,no dedicated WHO combination code
+349482,oxybate + sodium oxybate,N01AX11|N07XX04,,none,no dedicated WHO combination code
+352257,oxybate + sodium oxybate,N01AX11|N07XX04,,none,no dedicated WHO combination code
+359329,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+359719,vitamin E + ubidecarenone + levocarnitine,A11HA03|A16AA01|C01EB09,,none,no dedicated WHO combination code
+374862,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+375355,vitamin E + ascorbic acid,A11GA01|A11HA03,,none,no dedicated WHO combination code
+377234,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+377500,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+404200,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+410929,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+413104,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+413107,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+419995,dextromethorphan polistirex + guaifenesin,R05CA03|R05DA09,,none,no dedicated WHO combination code
+428898,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+428899,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+476628,vitamin B12 + folic acid,B03BA01|B03BB01,B03B,min_property,resolved code failed isValidAtcCode
+476845,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+484833,guaifenesin + phenylpropanolamine + pseudoephedrine,R01BA01|R01BA02|R05CA03,,ambiguous,ambiguous: R01BA51|R01BA52
+484980,guaifenesin + phenylpropanolamine + pseudoephedrine,R01BA01|R01BA02|R05CA03,,ambiguous,ambiguous: R01BA51|R01BA52
+485550,ergocalciferol + calcium citrate,A11CC01|A12AA13,,none,no dedicated WHO combination code
+541999,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+542035,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+542167,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+542169,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+543791,tetracaine hydrochloride + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+543873,oxyquinoline + acetic acid,G01AD02|S02AA10,,none,no dedicated WHO combination code
+543879,oxyquinoline + acetic acid,G01AD02|S02AA10,,none,no dedicated WHO combination code
+545074,ammonium lactate + salicylic acid,D01AE12|G01AD01|N02BA04,,none,no dedicated WHO combination code
+546606,hyoscyamine sulfate + cellulase + phenyltoloxamine + lipase + amylase + protease,A03BA03|A09AA01,,none,no dedicated WHO combination code
+562414,bacitracin + diperodon + neomycin sulfate,A07AA01|D06AX04|S01AA03,,none,no dedicated WHO combination code
+562507,"sulfur, colloidal + coal tar + salicylic acid",D01AE12|N02BA04,,none,no dedicated WHO combination code
+577055,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+577068,calcium phosphate + cholecalciferol,A11CC05|A12AA01,,none,no dedicated WHO combination code
+578355,betaine hydrochloride + iodine + papain + pepsin A,A09AA03|A16AA06|D08AG03,,none,no dedicated WHO combination code
+581395,vitamin A + vitamin E + lecithin,A11CA01|A11HA03,,none,no dedicated WHO combination code
+582608,nitric oxide + nitrogen,R07AX01|V03AN04,,none,no dedicated WHO combination code
+582615,nitric oxide + nitrogen,R07AX01|V03AN04,,none,no dedicated WHO combination code
+582819,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+584503,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+603589,carbetapentane tannate + chlorpheniramine tannate + phenylephrine,R05DB05|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+603738,carbetapentane + pseudoephedrine hydrochloride,R01BA02|R05DB05,,none,no dedicated WHO combination code
+603879,brompheniramine tannate + carbetapentane tannate + phenylephrine tannate,R05DB05|R06AB01,,none,no dedicated WHO combination code
+616551,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+616906,carbetapentane tannate + chlorpheniramine tannate + phenylephrine,R05DB05|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+629417,tetracaine hydrochloride + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+631644,brompheniramine tannate + pseudoephedrine tannate,R01BA02|R06AB01,,none,no dedicated WHO combination code
+636188,potassium bitartrate + sodium bicarbonate,B05CB04|B05XA02,,none,no dedicated WHO combination code
+636830,carbetapentane citrate + potassium guaiacolsulfonate + phenylephrine hydrochloride,R05CA09|R05DB05,,none,no dedicated WHO combination code
+642355,calcium carbonate + magnesium hydroxide,A02AA04|A12AA04,,none,no dedicated WHO combination code
+644134,brompheniramine maleate + carbetapentane citrate + phenylephrine hydrochloride,R05DB05|R06AB01,,none,no dedicated WHO combination code
+644287,tetracaine + lidocaine,D04AB01|N01BB02|R02AD02,,ambiguous,ambiguous: N01BA53|N01BB52
+644290,tetracaine + lidocaine,D04AB01|N01BB02|R02AD02,,ambiguous,ambiguous: N01BA53|N01BB52
+687443,tetracaine + lidocaine,D04AB01|N01BB02|R02AD02,,ambiguous,ambiguous: N01BA53|N01BB52
+687659,carbetapentane + guaifenesin + phenylephrine,R05CA03|R05DB05,,ambiguous,ambiguous: R01BA53|S01GA55
+700860,dexchlorpheniramine tannate + pseudoephedrine tannate,R01BA02|R06AB02,,none,no dedicated WHO combination code
+701734,vitamin A + ergocalciferol,A11CA01|A11CC01,,none,no dedicated WHO combination code
+705726,vitamin A + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+707268,brompheniramine maleate + carbetapentane citrate + phenylephrine hydrochloride,R05DB05|R06AB01,,none,no dedicated WHO combination code
+707302,methylsulfonylmethane + chondroitin sulfates + glucosamine hydrochloride,M01AX05|M01AX25,,none,no dedicated WHO combination code
+724411,vitamin A + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+725938,guaifenesin + guaiacolsulfonate,R05CA03|R05CA09,,none,no dedicated WHO combination code
+725942,guaifenesin + guaiacolsulfonate,R05CA03|R05CA09,,none,no dedicated WHO combination code
+726008,guaifenesin + guaiacolsulfonate,R05CA03|R05CA09,,none,no dedicated WHO combination code
+727505,chorionic gonadotropin + choriogonadotropin alfa,G03GA01|G03GA08,,none,no dedicated WHO combination code
+727507,chorionic gonadotropin + choriogonadotropin alfa,G03GA01|G03GA08,,none,no dedicated WHO combination code
+728126,tetracaine + lidocaine,D04AB01|N01BB02|R02AD02,,ambiguous,ambiguous: N01BA53|N01BB52
+729783,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+729908,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+731407,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+744790,benzocaine + glycerin,A06AX01|C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+748321,"thrombin + thrombin, human",B02BC06|B02BD30,,none,no dedicated WHO combination code
+748325,"thrombin + thrombin, human",B02BC06|B02BD30,,none,no dedicated WHO combination code
+748832,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+748865,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+748868,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+748869,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+748998,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+749565,ethinyl estradiol + ethinyl estradiol + levonorgestrel + levonorgestrel + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+749736,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+749737,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+749852,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+749853,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+749854,ethinyl estradiol + norethindrone + norethindrone + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+749855,ethinyl estradiol + norethindrone + norethindrone + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+750264,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+750268,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+751884,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+751885,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+752814,vitamin B6 + magnesium oxide,A02AA02|A02AA04|A11HA02,,none,no dedicated WHO combination code
+753476,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+753477,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+753485,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+753536,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+753544,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+755839,codeine + phenylephrine + pseudoephedrine,R01BA02|R05DA04,,ambiguous,ambiguous: R01BA52|R01BA53|S01GA55
+756250,chlorpheniramine maleate + codeine phosphate + ammonium chloride + phenylephrine hydrochloride,R05DA04|R06AB04,,none,no dedicated WHO combination code
+756277,chlorpheniramine maleate + codeine phosphate + iodinated glycerol,R05DA04|R06AB04,,none,no dedicated WHO combination code
+757665,"thrombin + thrombin, bovine",B02BC06|B02BD30,,none,no dedicated WHO combination code
+757667,"thrombin + thrombin, bovine",B02BC06|B02BD30,,none,no dedicated WHO combination code
+761977,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+762007,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+762332,ethinyl estradiol + ethinyl estradiol + levonorgestrel + levonorgestrel + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+762967,camphor + phenol + menthol + salicylic acid,D01AE12|D08AE03|N02BA04,,none,no dedicated WHO combination code
+763095,hydrocortisone + neomycin + polymyxin B,A01AC03|A07AA01|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+763390,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+763484,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+763597,vitamin B12 + folic acid,B03BA01|B03BB01,B03B,min_property,resolved code failed isValidAtcCode
+793770,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+794063,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+794071,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+794074,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+794078,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+794080,interferon alfa-2b + ribavirin,J05AP01|L03AB05,,none,no dedicated WHO combination code
+797238,vitamin B12 + cobamamide,B03BA01|B03BA04,,none,no dedicated WHO combination code
+798309,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+801168,vitamin B12 + pyridoxine hydrochloride,A11HA02|B03BA01,,none,no dedicated WHO combination code
+801177,thiamine + dexpanthenol + vitamin B6 + niacinamide + riboflavin,A11DA01|A11HA01|A11HA04,,none,no dedicated WHO combination code
+802559,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+803062,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+804183,"rubella virus vaccine live (Wistar RA 27-3 strain) + mumps virus vaccine live, Jeryl Lynn strain + measles virus vaccine live, Enders' attenuated Edmonston strain",J07BD01|J07BJ01,,none,no dedicated WHO combination code
+804186,"rubella virus vaccine live (Wistar RA 27-3 strain) + mumps virus vaccine live, Jeryl Lynn strain + measles virus vaccine live, Enders' attenuated Edmonston strain",J07BD01|J07BJ01,,none,no dedicated WHO combination code
+804614,cholecalciferol + calcium citrate + magnesium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+804919,thrombin + fibrinogen,B02BC06|B02BD30,,none,no dedicated WHO combination code
+805375,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + Haemophilus influenzae type b, capsular polysaccharide inactivated tetanus toxoid conjugate vaccine + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+805378,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + Haemophilus influenzae type b, capsular polysaccharide inactivated tetanus toxoid conjugate vaccine + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+806392,calcium chloride + sodium acetate + sodium citrate + magnesium chloride + potassium chloride + sodium chloride,B05CB02|B05XA08,,none,no dedicated WHO combination code
+806396,calcium chloride + sodium acetate + sodium citrate + magnesium chloride + potassium chloride + sodium chloride,B05CB02|B05XA08,,none,no dedicated WHO combination code
+806667,glycerin + sodium chloride,A06AX01|A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+806674,thiosulfate + sodium sulfite + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03|V03AB06,,none,no dedicated WHO combination code
+807790,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+808611,vitamin B12 + folic acid,B03BA01|B03BB01,B03B,min_property,resolved code failed isValidAtcCode
+823878,methylsulfonylmethane + chondroitin sulfates + glucosamine sulfate,M01AX05|M01AX25,,none,no dedicated WHO combination code
+823883,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+824574,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+825193,chlorpheniramine maleate + codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AB04,,none,no dedicated WHO combination code
+826818,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+827485,benzyl alcohol + zinc acetate,A16AX05|P03AX06,,none,no dedicated WHO combination code
+827671,resorcinol + petrolatum,D10AX02|S01AX06,,none,no dedicated WHO combination code
+827689,nitric oxide + nitrogen,R07AX01|V03AN04,,none,no dedicated WHO combination code
+827693,nitric oxide + nitrogen,R07AX01|V03AN04,,none,no dedicated WHO combination code
+828293,calcium carbonate + cholecalciferol + folic acid + hydroxocobalamin,A11CC05|B03BB01,,ambiguous,ambiguous: B03BA53|B03BB51
+828296,calcium carbonate + cholecalciferol + folic acid + hydroxocobalamin,A11CC05|B03BB01,,ambiguous,ambiguous: B03BA53|B03BB51
+828365,pramoxine + pramoxine hydrochloride,C05AD07|D04AB07,,none,no dedicated WHO combination code
+828367,pramoxine + pramoxine hydrochloride,C05AD07|D04AB07,,none,no dedicated WHO combination code
+828521,citric acid + potassium citrate + sodium citrate,A09AB04|A12BA02|B05CB02,,none,no dedicated WHO combination code
+828618,citric acid + potassium citrate + sodium citrate,A09AB04|A12BA02|B05CB02,,none,no dedicated WHO combination code
+829749,cholecalciferol + glucosamine hydrochloride,A11CC05|M01AX05,,none,no dedicated WHO combination code
+829758,calcium carbonate + cholecalciferol + vitamin K1,A11CC05|B02BA01,,none,no dedicated WHO combination code
+829759,calcium carbonate + cholecalciferol + vitamin K1,A11CC05|B02BA01,,none,no dedicated WHO combination code
+830552,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + Bordetella pertussis filamentous hemagglutinin vaccine, inactivated + Bordetella pertussis pertactin vaccine, inactivated + Bordetella pertussis toxoid vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+830557,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+846148,diltiazem hydrochloride + enalapril maleate,C08DB01|C09AA02,,none,no dedicated WHO combination code
+847121,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+847628,lactate + calcium chloride + potassium chloride + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|B05XA07|G01AD01|S01XA03,,none,no dedicated WHO combination code
+848060,guaifenesin + guaiacolsulfonate,R05CA03|R05CA09,,none,no dedicated WHO combination code
+849082,vitamin E + ubidecarenone + eicosapentaenoic acid + docosahexaenoic acid,A11HA03|C01EB09,,none,no dedicated WHO combination code
+854995,thonzonium bromide + colistin + hydrocortisone + neomycin,A01AC03|A07AA01|A07AA10|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+854997,thonzonium + colistin + hydrocortisone + neomycin,A01AC03|A07AA01|A07AA10|A07EA02|D06AX04|D07AA02|D07AB02|D07AB11|H02AB09|S01AA03|S01BA02,,ambiguous,ambiguous: A07AA51|R01AD60
+855162,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+855492,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+856955,acetaminophen + caffeine + chlorpheniramine maleate + hydrocodone bitartrate + phenylephrine hydrochloride,N02BE01|N06BC01|R05DA03|R06AB04,,none,no dedicated WHO combination code
+857389,aspirin + acetaminophen + caffeine + hydrocodone bitartrate,N02BE01|N06BC01|R05DA03,,none,no dedicated WHO combination code
+857523,aspirin + caffeine + hydrocodone bitartrate,N06BC01|R05DA03,,none,no dedicated WHO combination code
+857850,chlorpheniramine maleate + hydrocodone bitartrate + phenylephrine hydrochloride + pyrilamine,R05DA03|R06AB04,,none,no dedicated WHO combination code
+858334,vitamin B12 + folic acid,B03BA01|B03BB01,B03B,min_property,resolved code failed isValidAtcCode
+858664,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+858866,carbinoxamine + hydrocodone bitartrate + phenylephrine hydrochloride,R05DA03|R06AA08,,none,no dedicated WHO combination code
+858880,carbinoxamine + hydrocodone bitartrate + pseudoephedrine hydrochloride,R01BA02|R05DA03|R06AA08,,none,no dedicated WHO combination code
+858884,enalapril maleate + felodipine,C08CA02|C09AA02,,none,no dedicated WHO combination code
+858892,enalapril maleate + felodipine,C08CA02|C09AA02,,none,no dedicated WHO combination code
+858895,carbinoxamine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AA08,,ambiguous,ambiguous: R01BA53|S01GA55
+858897,carbinoxamine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AA08,,ambiguous,ambiguous: R01BA53|S01GA55
+858967,hydrocodone + guaiacolsulfonate,R05CA09|R05DA03,,none,no dedicated WHO combination code
+858969,hydrocodone + guaiacolsulfonate,R05CA09|R05DA03,,none,no dedicated WHO combination code
+858978,hydrocodone bitartrate + guaiacolsulfonate + pseudoephedrine hydrochloride,R01BA02|R05CA09|R05DA03,,none,no dedicated WHO combination code
+858984,hydrocodone bitartrate + guaiacolsulfonate + pseudoephedrine hydrochloride,R01BA02|R05CA09|R05DA03,,none,no dedicated WHO combination code
+858986,hydrocodone bitartrate + guaiacolsulfonate + pseudoephedrine hydrochloride,R01BA02|R05CA09|R05DA03,,none,no dedicated WHO combination code
+859031,chlorpheniramine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+859164,chlorpheniramine maleate + hydrocodone + phenylephrine hydrochloride,R05DA03|R06AB04,,none,no dedicated WHO combination code
+859230,chlorpheniramine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+859232,chlorpheniramine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+859383,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+859926,guaifenesin + hydrocodone + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA03,,none,no dedicated WHO combination code
+859928,guaifenesin + hydrocodone + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA03,,none,no dedicated WHO combination code
+859930,guaifenesin + hydrocodone + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA03,,none,no dedicated WHO combination code
+859931,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+859933,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+859934,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+859936,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+859938,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+860589,phenindamine + guaifenesin + hydrocodone bitartrate,R05CA03|R05DA03|R06AX04,,none,no dedicated WHO combination code
+861098,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+863843,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+865078,calcium ion + cholecalciferol + vitamin K1,A11CC05|B02BA01,,none,no dedicated WHO combination code
+866077,carbetapentane + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DB05,,none,no dedicated WHO combination code
+866433,methylsulfonylmethane + chondroitin sulfates + glucosamine sulfate,M01AX05|M01AX25,,none,no dedicated WHO combination code
+876858,thiamine + vitamin A + vitamin B12 + vitamin E + ascorbic acid + cholecalciferol + vitamin B6 + niacin + riboflavin,A11CA01|A11DA01|A11GA01|A11HA03|A11HA04|B03BA01,,none,no dedicated WHO combination code
+876861,thiamine + vitamin A + vitamin B12 + vitamin E + ascorbic acid + cholecalciferol + vitamin B6 + niacin + riboflavin,A11CA01|A11DA01|A11GA01|A11HA03|A11HA04|B03BA01,,none,no dedicated WHO combination code
+876863,thiamine + vitamin A + vitamin E + ascorbic acid + cholecalciferol + ferrous sulfate + vitamin B6 + niacin + riboflavin,A11CA01|A11DA01|A11GA01|A11HA03|A11HA04,,none,no dedicated WHO combination code
+876866,thiamine + vitamin A + vitamin E + ascorbic acid + cholecalciferol + ferrous sulfate + vitamin B6 + niacin + riboflavin,A11CA01|A11DA01|A11GA01|A11HA03|A11HA04,,none,no dedicated WHO combination code
+877318,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+885585,tetracaine hydrochloride + benzocaine + butamben,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+891153,miconazole + polymyxin B + prednisolone,A01AB09|A07EA01|D01AC02|G01AF04|H02AB06|S01BA04|S03BA02,,ambiguous,ambiguous: A01AC54|D01AC52|R01AD52
+891706,vitamin E + lutein + zinc oxide + ascorbic acid + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+891709,vitamin E + lutein + zinc oxide + ascorbic acid + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+891719,vitamin E + lutein + zinc oxide + ascorbic acid + beta carotene + cuprous oxide + sodium selenate,A11GA01|A11HA03|A12CE01,,none,no dedicated WHO combination code
+891793,vitamin E + zinc oxide + ascorbic acid + beta carotene + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+891812,vitamin E + zinc oxide + ascorbic acid + beta carotene + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+891815,vitamin E + zinc oxide + ascorbic acid + beta carotene + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+891820,vitamin E + lutein + zinc oxide + ascorbic acid + cuprous oxide,A11GA01|A11HA03,,none,no dedicated WHO combination code
+892097,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892099,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892101,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892309,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892316,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892327,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892330,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892331,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892336,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+892337,febantel + praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895040,antipyrine + benzocaine + acetic acid,C05AD03|D04AB04|G01AD02|R02AD01|S02AA10,,none,no dedicated WHO combination code
+895664,diphenhydramine + ibuprofen,D04AA32|M01AE01|M01AE14|M02AA13|R06AA02,,ambiguous,ambiguous: M01AE51|R06AA52
+895666,diphenhydramine + ibuprofen,D04AA32|M01AE01|M01AE14|M02AA13|R06AA02,,ambiguous,ambiguous: M01AE51|R06AA52
+895883,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895887,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895893,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895895,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895899,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895901,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895905,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+895907,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+897645,hydromorphone hydrochloride + guaifenesin,N02AA03|R05CA03,,none,no dedicated WHO combination code
+898694,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+899257,chlorpheniramine maleate + pseudoephedrine hydrochloride + methscopolamine,R01BA02|R06AB04,,none,no dedicated WHO combination code
+899301,carbon dioxide + nitrogen + oxygen,V03AN01|V03AN02|V03AN04,,none,no dedicated WHO combination code
+901792,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+901814,diphenhydramine + ibuprofen,D04AA32|M01AE01|M01AE14|M02AA13|R06AA02,,ambiguous,ambiguous: M01AE51|R06AA52
+901821,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+901824,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+904255,potassium chloride + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+904311,potassium chloride + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+905253,praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+905257,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+905306,praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+905310,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+966743,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+966747,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+968993,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+978070,oxyquinoline + acetic acid + glycerin + ricinoleic acid,A06AX01|G01AD02|S02AA10,,none,no dedicated WHO combination code
+978077,oxyquinoline + acetic acid + glycerin + ricinoleic acid,A06AX01|G01AD02|S02AA10,,none,no dedicated WHO combination code
+990982,physostigmine + physostigmine salicylate,S01EB05|V03AB19,,none,no dedicated WHO combination code
+991153,dicyclomine hydrochloride + phenobarbital,A03AA07|N03AA02,,none,no dedicated WHO combination code
+991154,dicyclomine hydrochloride + phenobarbital,A03AA07|N03AA02,,none,no dedicated WHO combination code
+991369,calamine + zinc oxide + phenol,C05AX04|D08AE03,,none,no dedicated WHO combination code
+991376,vitamin E + ascorbic acid + calcium carbonate + cholecalciferol,A11CC05|A11GA01|A11HA03,,none,no dedicated WHO combination code
+991456,vitamin A + ergocalciferol,A11CA01|A11CC01,,none,no dedicated WHO combination code
+991519,codeine phosphate + guaifenesin + promethazine hydrochloride,R05CA03|R05DA04,,none,no dedicated WHO combination code
+993257,lactic acid + hydrogen peroxide + benzenesulfonic acid,A01AB02|D08AX01|G01AD01,,none,no dedicated WHO combination code
+994014,acetaminophen + chlorpheniramine maleate + codeine phosphate,N02BE01|R05DA04|R06AB04,,none,no dedicated WHO combination code
+994226,aspirin + carisoprodol + codeine,M03BA02|R05DA04,,none,no dedicated WHO combination code
+994228,aspirin + carisoprodol + codeine phosphate,M03BA02|R05DA04,,none,no dedicated WHO combination code
+994291,brompheniramine maleate + codeine phosphate + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AB01,,none,no dedicated WHO combination code
+995026,caffeine + codeine phosphate + pheniramine + phenylephrine hydrochloride + salicylic acid,N06BC01|R05DA04,,none,no dedicated WHO combination code
+995034,chlorpheniramine + codeine phosphate + phenylephrine hydrochloride + potassium iodide,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995036,chlorpheniramine + codeine phosphate + phenylephrine hydrochloride + potassium iodide,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995038,chlorpheniramine + codeine phosphate + phenylephrine hydrochloride + potassium iodide,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995040,chlorpheniramine + codeine phosphate + phenylephrine hydrochloride + potassium iodide,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995064,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995070,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995073,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995084,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995095,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995118,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995125,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+995226,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995440,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995441,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995443,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995446,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+995455,codeine phosphate + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995483,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995868,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995872,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+995940,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+996023,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+996032,polysaccharide iron complex + calcium ascorbate + succinic acid + ferrous asparto glycinate,A11GA01|B03AB02,,none,no dedicated WHO combination code
+996049,praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+996060,praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+996105,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996107,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996131,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996208,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996251,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996255,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996512,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+996636,codeine phosphate + pseudoephedrine hydrochloride + pyrilamine,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996665,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996667,codeine + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04,,none,no dedicated WHO combination code
+996668,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996670,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996673,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996675,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996677,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996679,codeine + pseudoephedrine hydrochloride,R01BA02|R05DA04,,none,no dedicated WHO combination code
+996708,codeine + guaifenesin + phenylephrine,R05CA03|R05DA04,,ambiguous,ambiguous: R01BA53|S01GA55
+996736,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+996738,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+996927,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+997283,codeine phosphate + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DA04,,none,no dedicated WHO combination code
+997518,chlorpheniramine maleate + codeine + ammonium chloride + phenylephrine hydrochloride,R05DA04|R06AB04,,none,no dedicated WHO combination code
+999482,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999547,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999630,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999631,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999632,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999638,oxyquinoline + dodecyl sulfate,A01AB07|D08AH03|G01AC30|R02AA14,,none,no dedicated WHO combination code
+999640,oxyquinoline + dodecyl sulfate,A01AB07|D08AH03|G01AC30|R02AA14,,none,no dedicated WHO combination code
+999642,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999651,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999657,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+999685,tetracaine hydrochloride + benzocaine + butamben,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+999789,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+999793,vitamin A + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+1001593,thrombin + fibrinogen,B02BC06|B02BD30,,none,no dedicated WHO combination code
+1001643,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+1001691,calcium carbonate + cholecalciferol + vitamin K1,A11CC05|B02BA01,,none,no dedicated WHO combination code
+1001751,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+1001758,ergocalciferol + calcium citrate,A11CC01|A12AA13,,none,no dedicated WHO combination code
+1011825,epinephrine bitartrate + lidocaine hydrochloride,C01CA24|D04AB01|N01BB02|R02AD02|S01EA01,,none,no dedicated WHO combination code
+1012221,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012223,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012229,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012233,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012235,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012327,hydrocortisone + lidocaine,A01AC03|A07EA02|D04AB01|D07AA02|D07AB02|D07AB11|H02AB09|N01BB02|R02AD02|S01BA02,,ambiguous,ambiguous: N01BB52|R01AD60
+1012570,carbetapentane citrate + carbinoxamine maleate + phenylephrine hydrochloride,R05DB05|R06AA08,,none,no dedicated WHO combination code
+1012596,carbinoxamine + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AA08,,none,no dedicated WHO combination code
+1012622,carbinoxamine maleate + pseudoephedrine hydrochloride,R01BA02|R06AA08,,none,no dedicated WHO combination code
+1012645,carbinoxamine + dextromethorphan hydrobromide + phenylephrine hydrochloride,R05DA09|R06AA08,,none,no dedicated WHO combination code
+1012650,carbinoxamine + dextromethorphan hydrobromide + phenylephrine hydrochloride,R05DA09|R06AA08,,none,no dedicated WHO combination code
+1012727,carbinoxamine + hydrocodone bitartrate + pseudoephedrine hydrochloride,R01BA02|R05DA03|R06AA08,,none,no dedicated WHO combination code
+1012729,carbinoxamine + hydrocodone bitartrate + pseudoephedrine hydrochloride,R01BA02|R05DA03|R06AA08,,none,no dedicated WHO combination code
+1012775,carbinoxamine + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AA08,,none,no dedicated WHO combination code
+1012937,carbinoxamine maleate + dextromethorphan hydrobromide + phenylephrine,R05DA09|R06AA08,,ambiguous,ambiguous: R01BA53|S01GA55
+1012943,carbinoxamine maleate + hydrocodone bitartrate + phenylephrine,R05DA03|R06AA08,,ambiguous,ambiguous: R01BA53|S01GA55
+1012953,carbinoxamine maleate + dextromethorphan hydrobromide + phenylephrine hydrochloride,R05DA09|R06AA08,,none,no dedicated WHO combination code
+1012970,carbinoxamine + dextromethorphan hydrobromide + phenylephrine hydrochloride,R05DA09|R06AA08,,none,no dedicated WHO combination code
+1013017,carbinoxamine + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AA08,,none,no dedicated WHO combination code
+1013647,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1014305,thrombin + fibrinogen,B02BC06|B02BD30,,none,no dedicated WHO combination code
+1014577,cetirizine hydrochloride + pseudoephedrine hydrochloride,R01BA02|R06AE07,,none,no dedicated WHO combination code
+1037117,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1037121,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037153,carbetapentane citrate + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037241,carbetapentane + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037245,carbetapentane citrate + guaifenesin + phenylephrine,R05CA03|R05DB05,,ambiguous,ambiguous: R01BA53|S01GA55
+1037352,carbetapentane + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037358,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037367,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1037369,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1038947,dyclonine + menthol,N01BX02|R02AD04,,none,no dedicated WHO combination code
+1039073,benzocaine + glycerin,A06AX01|C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1039227,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1042692,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+1042693,chlorpheniramine + codeine + phenylephrine,R05DA04|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1042982,superoxide dismutase + catalase + cysteine + lysine + methionine,B05XB03|V03AB26,,none,no dedicated WHO combination code
+1044248,menthol + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1045344,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1045420,zinc oxide + benzethonium,D08AJ08|R02AA09,,none,no dedicated WHO combination code
+1046238,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1046242,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1046313,benzocaine + ethanol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1046351,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1046353,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1046534,dexpanthenol + levomenthol + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1046713,atropine sulfate + hyoscyamine sulfate + chlorpheniramine maleate + phenylephrine hydrochloride + phenylpropanolamine hydrochloride + scopolamine hydrobromide,A03BA03|R01BA01|R06AB04,,none,no dedicated WHO combination code
+1046781,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1047041,ethinyl estradiol + inert ingredients + norethindrone + norethindrone + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+1047765,atropine sulfate + hyoscyamine + phenobarbital + scopolamine hydrobromide,A03BA03|N03AA02,,none,no dedicated WHO combination code
+1047774,atropine sulfate + hyoscyamine + phenobarbital + scopolamine hydrobromide,A03BA03|N03AA02,,none,no dedicated WHO combination code
+1047786,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1047791,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1047795,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1047945,atropine + hyoscyamine + phenyl salicylate + methenamine + methylene blue + benzoic acid,A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1048075,chlophedianol + guaifenesin + phenylephrine,R05CA03|R05DB10,,ambiguous,ambiguous: R01BA53|S01GA55
+1048118,atropine sulfate + hyoscyamine sulfate + chlorpheniramine maleate + phenylephrine hydrochloride + scopolamine hydrobromide,A03BA03|R06AB04,,none,no dedicated WHO combination code
+1048126,atropine sulfate + hyoscyamine sulfate + phenylephrine hydrochloride + pseudoephedrine hydrochloride + scopolamine hydrobromide,A03BA03|R01BA02,,none,no dedicated WHO combination code
+1048132,dyclonine + dyclonine hydrochloride,N01BX02|R02AD04,,none,no dedicated WHO combination code
+1048134,dyclonine + dyclonine hydrochloride,N01BX02|R02AD04,,none,no dedicated WHO combination code
+1048276,atropine sulfate + hyoscyamine sulfate + chlorpheniramine maleate + pseudoephedrine hydrochloride + scopolamine hydrobromide,A03BA03|R01BA02|R06AB04,,none,no dedicated WHO combination code
+1048307,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1048336,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1048340,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1048873,hyoscyamine sulfate + methenamine mandelate,A03BA03|J01XX05,,none,no dedicated WHO combination code
+1049123,benzalkonium + pramoxine,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1049759,benzalkonium + piperonyl butoxide + pyrethrins,D08AJ01|D08AJ08|P03AC01|R02AA16,,none,no dedicated WHO combination code
+1050325,"hyoscyamine + sodium phosphate, monobasic + methenamine + methylene blue",A03BA03|J01XX05,,none,no dedicated WHO combination code
+1052679,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1053206,benzalkonium chloride + allantoin,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1085618,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+1086705,dextromethorphan hydrobromide + potassium guaiacolsulfonate,R05CA09|R05DA09,,none,no dedicated WHO combination code
+1086836,thiosulfate + sodium nitrite,V03AB06|V03AB08,,none,no dedicated WHO combination code
+1087335,alpha tocopherol + folic acid + hydroxocobalamin + magnesium oxide + pyridoxine hydrochloride,A11HA02|B03BB01,,ambiguous,ambiguous: B03BA53|B03BB51
+1087365,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1087367,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1087457,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1087459,chlorpheniramine + hydrocodone,R05DA03|R06AB04,,none,no dedicated WHO combination code
+1087463,chlorpheniramine + hydrocodone,R05DA03|R06AB04,,none,no dedicated WHO combination code
+1088432,calcium phosphate + cholecalciferol,A11CC05|A12AA01,,none,no dedicated WHO combination code
+1088447,6-O-palmitoylascorbic acid + ubidecarenone + alpha tocopherol + levocarnitine,A16AA01|C01EB09,,none,no dedicated WHO combination code
+1088599,"pregna-4,17-diene-3,16-dione + ascorbic acid + oat bran + chromium polynicotinate + niacinamide + phytosterols",A11GA01|A11HA01,,none,no dedicated WHO combination code
+1089087,glycerin + sodium chloride,A06AX01|A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1089090,glycerin + sodium chloride,A06AX01|A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1089103,bacitracin zinc + lidocaine hydrochloride + neomycin sulfate + polymyxin B,A07AA01|D04AB01|D06AX04|N01BB02|R02AD02|S01AA03,,none,no dedicated WHO combination code
+1089738,vitamin E + cholecalciferol + eicosapentaenoic acid + docosahexaenoic acid,A11CC05|A11HA03,,none,no dedicated WHO combination code
+1090824,vitamin E + zinc oxide + ascorbic acid + beta carotene + copper sulfate + selenite,A11GA01|A11HA03|V03AB20,,none,no dedicated WHO combination code
+1090972,thiamine + vitamin A + vitamin B12 + vitamin E + ascorbic acid + cholecalciferol + pyridoxine + niacinamide + riboflavin,A11CA01|A11CC05|A11DA01|A11GA01|A11HA01|A11HA02|A11HA03|A11HA04|B03BA01,,none,no dedicated WHO combination code
+1090975,vitamin E + lutein + zinc oxide + ascorbic acid + beta carotene + copper sulfate + selenite,A11GA01|A11HA03|V03AB20,,none,no dedicated WHO combination code
+1090992,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1090996,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1091020,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1091325,vitamin E + ubidecarenone + levocarnitine,A11HA03|A16AA01|C01EB09,,none,no dedicated WHO combination code
+1091434,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1092730,methylsulfonylmethane + chondroitin sulfates + glucosamine sulfate,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1094131,acetaminophen + dextromethorphan + diphenhydramine,N02BE01|R05DA09,,ambiguous,ambiguous: N07XX59|R06AA52
+1094350,dextromethorphan + doxylamine + pseudoephedrine,R01BA02|R05DA09|R06AA09,,ambiguous,ambiguous: N07XX59|R06AA59
+1094410,triprolidine hydrochloride + chlophedianol hydrochloride,R05DB10|R06AX07,,none,no dedicated WHO combination code
+1094543,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1094740,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1095227,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1095362,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1095618,triprolidine hydrochloride + chlophedianol hydrochloride + phenylephrine hydrochloride,R05DB10|R06AX07,,none,no dedicated WHO combination code
+1098219,ethanol + povidone-iodine,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15,,none,no dedicated WHO combination code
+1098881,triprolidine hydrochloride + chlophedianol hydrochloride + pseudoephedrine hydrochloride,R01BA02|R05DB10|R06AX07,,none,no dedicated WHO combination code
+1098893,brompheniramine maleate + codeine phosphate + guaifenesin,R05CA03|R05DA04|R06AB01,,none,no dedicated WHO combination code
+1098896,brompheniramine maleate + dextromethorphan hydrobromide + guaifenesin,R05CA03|R05DA09|R06AB01,,none,no dedicated WHO combination code
+1099033,biotin + dexpanthenol + zinc pyrithione + niacinamide,A11HA01|A11HA05|D11AX12,,none,no dedicated WHO combination code
+1099653,triprolidine hydrochloride + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AX07,,none,no dedicated WHO combination code
+1099706,triprolidine hydrochloride + codeine phosphate + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04|R06AX07,,none,no dedicated WHO combination code
+1099708,triprolidine + codeine phosphate + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA04|R06AX07,,none,no dedicated WHO combination code
+1099709,triprolidine + codeine phosphate + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AX07,,none,no dedicated WHO combination code
+1099746,triprolidine hydrochloride + hydrocodone bitartrate + pseudoephedrine hydrochloride,R01BA02|R05DA03|R06AX07,,none,no dedicated WHO combination code
+1100746,lactate + icodextrin + calcium chloride + magnesium chloride + sodium chloride,A12CA01|A12CC01|B05BB01|B05CB01|B05XA03|B05XA07|G01AD01|S01XA03,,none,no dedicated WHO combination code
+1100924,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1101555,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1101637,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1101738,carbetapentane citrate + guaifenesin + phenylephrine,R05CA03|R05DB05,,ambiguous,ambiguous: R01BA53|S01GA55
+1101852,phenol + glycerin,A06AX01|D08AE03,,none,no dedicated WHO combination code
+1101854,phenol + glycerin,A06AX01|D08AE03,,none,no dedicated WHO combination code
+1101947,carbetapentane citrate + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1101952,carbetapentane citrate + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1111697,carbinoxamine + pseudoephedrine hydrochloride + methscopolamine nitrate,R01BA02|R06AA08,,none,no dedicated WHO combination code
+1111750,thiamine + vitamin B12 + dexpanthenol + manganese sulfate + zinc sulfate + magnesium sulfate + pyridoxine + niacinamide + riboflavin,A11DA01|A11HA01|A11HA02|A11HA04|A12CB01|B03BA01,,none,no dedicated WHO combination code
+1111752,thiamine + vitamin B12 + dexpanthenol + manganese sulfate + zinc sulfate + magnesium sulfate + pyridoxine + niacinamide + riboflavin,A11DA01|A11HA01|A11HA02|A11HA04|A12CB01|B03BA01,,none,no dedicated WHO combination code
+1112813,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1113048,chlorcyclizine + codeine phosphate + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AE04,,none,no dedicated WHO combination code
+1113050,chlorcyclizine + codeine phosphate + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AE04,,none,no dedicated WHO combination code
+1113064,chlorcyclizine hydrochloride + codeine phosphate + phenylephrine hydrochloride,R05DA04|R06AE04,,none,no dedicated WHO combination code
+1115497,cholecalciferol + chondroitin sulfates + glucosamine sulfate potassium chloride,A11CC05|M01AX05|M01AX25,,none,no dedicated WHO combination code
+1115592,vitamin E + ubidecarenone + thioctate,A11HA03|C01EB09,,none,no dedicated WHO combination code
+1115594,vitamin E + ubidecarenone + thioctate,A11HA03|C01EB09,,none,no dedicated WHO combination code
+1115800,magnesium citrate + potassium citrate + magnesium oxide + pyridoxine,A11HA02|A12BA02,,none,no dedicated WHO combination code
+1116173,carbetapentane tannate + chlorpheniramine tannate + ephedrine tannate + phenylephrine tannate,R05DB05|R06AB04,,none,no dedicated WHO combination code
+1116361,tocopherol acetate + lutein + zinc oxide + ascorbic acid + copper gluconate + zeaxanthin + eicosapentaenoic acid + docosahexaenoic acid,A11GA01|A11HA03,,none,no dedicated WHO combination code
+1116454,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1116552,ethinyl estradiol + norethindrone acetate,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1119308,chloroquine phosphate + primaquine,P01BA01|P01BA03,,none,no dedicated WHO combination code
+1144964,ascorbate manganese + chondroitin sulfates + glucosamine hydrochloride,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1147029,chlorpheniramine maleate + dextromethorphan hydrobromide + guaifenesin,R05CA03|R05DA09|R06AB04,,none,no dedicated WHO combination code
+1148595,antipyrine + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1150067,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1150291,vitamin B12 + folic acid,B03BA01|B03BB01,B03B,min_property,resolved code failed isValidAtcCode
+1150310,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1188532,chlophedianol hydrochloride + chlorpheniramine maleate + pseudoephedrine hydrochloride,R01BA02|R05DB10|R06AB04,,none,no dedicated WHO combination code
+1189850,chlophedianol hydrochloride + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB10,,none,no dedicated WHO combination code
+1190319,chlophedianol hydrochloride + chlorcyclizine + phenylephrine hydrochloride,R05DB10|R06AE04,,none,no dedicated WHO combination code
+1190600,dexbrompheniramine + dextromethorphan + pseudoephedrine,R01BA02|R05DA09|R06AB06,,ambiguous,ambiguous: N07XX59|R06AB56
+1190750,atropine sulfate + edrophonium chloride,A03BA01|S01FA01,,none,no dedicated WHO combination code
+1190839,atropine + brompheniramine maleate + phenyltoloxamine citrate + pseudoephedrine hydrochloride,R01BA02|R06AB01,,none,no dedicated WHO combination code
+1190910,atropine + chlorpheniramine maleate + phenylpropanolamine hydrochloride,R01BA01|R06AB04,,none,no dedicated WHO combination code
+1192981,benzocaine + docusate,A06AA02|C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1192983,benzocaine + docusate,A06AA02|C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1193293,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1232712,tetrahydrozoline + tetrahydrozoline hydrochloride,R01AA06|R01AB03|S01GA02,,none,no dedicated WHO combination code
+1235467,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1235472,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1235477,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1235490,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1235569,tetrahydrozoline + polyvinyl alcohol + povidone,R01AA06|R01AB03|S01GA02,,none,no dedicated WHO combination code
+1235867,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+1235874,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1236073,dihydrocodeine bitartrate + chlorpheniramine maleate + phenylephrine + phenylpropanolamine,N02AA08|R01BA01|R06AB04,,ambiguous,ambiguous: R01BA51|R01BA53|S01GA55
+1236075,dihydrocodeine bitartrate + chlorpheniramine maleate + phenylephrine + phenylpropanolamine,N02AA08|R01BA01|R06AB04,,ambiguous,ambiguous: R01BA51|R01BA53|S01GA55
+1236081,dihydrocodeine bitartrate + chlorpheniramine maleate + phenylephrine,N02AA08|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1236083,dihydrocodeine bitartrate + chlorpheniramine maleate + phenylephrine,N02AA08|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1236086,dihydrocodeine bitartrate + chlorpheniramine maleate + phenylephrine,N02AA08|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1236148,tocopherol + methylsulfonylmethane + chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1236707,chlophedianol hydrochloride + chlorcyclizine hydrochloride + pseudoephedrine hydrochloride,R01BA02|R05DB10|R06AE04,,none,no dedicated WHO combination code
+1241901,ethinyl estradiol + ethinyl estradiol + levonorgestrel + levonorgestrel + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1242508,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+1242558,chlorcyclizine hydrochloride + codeine phosphate + pseudoephedrine hydrochloride,R01BA02|R05DA04|R06AE04,,none,no dedicated WHO combination code
+1242787,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+1243480,oxyquinoline + acetic acid,G01AD02|S02AA10,,none,no dedicated WHO combination code
+1243771,"thrombin + thrombin, bovine",B02BC06|B02BD30,,none,no dedicated WHO combination code
+1243772,acetaminophen + codeine phosphate + guaifenesin + phenylephrine hydrochloride,N02BE01|R05CA03|R05DA04,,none,no dedicated WHO combination code
+1243780,acetaminophen + codeine phosphate + guaifenesin + phenylephrine hydrochloride,N02BE01|R05CA03|R05DA04,,none,no dedicated WHO combination code
+1243786,"thrombin + thrombin, bovine",B02BC06|B02BD30,,none,no dedicated WHO combination code
+1244146,thiamine + vitamin B12 + pyridoxine,A11DA01|A11HA02|B03BA01,,none,no dedicated WHO combination code
+1244233,methohexital + methohexital sodium,N01AF01|N05CA15,,none,no dedicated WHO combination code
+1244638,methohexital + methohexital sodium,N01AF01|N05CA15,,none,no dedicated WHO combination code
+1245250,gentamicin sulfate + hydrocortisone aceponate + miconazole nitrate,A01AB09|A01AC03|A07EA02|D01AC02|D06AX07|D07AA02|D07AB02|D07AB11|G01AF04|H02AB09|S01BA02|S03AA06,,none,no dedicated WHO combination code
+1245383,calcium carbonate + magnesium chloride,A12AA04|A12CC01,,none,no dedicated WHO combination code
+1245389,calcium carbonate + magnesium chloride,A12AA04|A12CC01,,none,no dedicated WHO combination code
+1245530,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1245706,chlophedianol hydrochloride + chlorpheniramine maleate + phenylephrine hydrochloride,R05DB10|R06AB04,,none,no dedicated WHO combination code
+1245732,ferrous fumarate + docusate sodium,A06AA02|B03AA02,,none,no dedicated WHO combination code
+1246919,ferrous fumarate + docusate sodium,A06AA02|B03AA02,,none,no dedicated WHO combination code
+1247891,ferrous fumarate + docusate sodium,A06AA02|B03AA02,,none,no dedicated WHO combination code
+1248207,ferrous fumarate + docusate sodium,A06AA02|B03AA02,,none,no dedicated WHO combination code
+1248473,carbetapentane + chlorpheniramine maleate + phenylephrine hydrochloride,R05DB05|R06AB04,,none,no dedicated WHO combination code
+1248486,carbetapentane + chlorpheniramine maleate + phenylephrine hydrochloride,R05DB05|R06AB04,,none,no dedicated WHO combination code
+1248750,chlophedianol hydrochloride + chlorpheniramine maleate + phenylephrine hydrochloride,R05DB10|R06AB04,,none,no dedicated WHO combination code
+1249050,carbetapentane + chlorpheniramine tannate + phenylephrine tannate,R05DB05|R06AB04,,none,no dedicated WHO combination code
+1250478,phenol + diphenhydramine hydrochloride,D04AA32|D08AE03|R06AA02,,none,no dedicated WHO combination code
+1250631,benzalkonium chloride + allantoin,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1251039,chlorpheniramine maleate + dextromethorphan hydrobromide + phenylephrine,R05DA09|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1251321,chlorcyclizine hydrochloride + pseudoephedrine hydrochloride,R01BA02|R06AE04,,none,no dedicated WHO combination code
+1251323,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251325,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251327,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251334,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251335,ethinyl estradiol + norethindrone acetate,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251336,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251337,ethinyl estradiol + norethindrone acetate,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1251371,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1251505,brompheniramine maleate + hydrocodone + phenylephrine hydrochloride,R05DA03|R06AB01,,none,no dedicated WHO combination code
+1251608,benzocaine + cetylpyridinium,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1251617,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1251619,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1291158,benzocaine + cetylpyridinium,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1291363,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1291375,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1292314,zinc oxide + diphenhydramine hydrochloride,C05AX04|D04AA32|R06AA02,,none,no dedicated WHO combination code
+1292443,"varicella-zoster virus vaccine live (Oka-Merck) strain + rubella virus vaccine live (Wistar RA 27-3 strain) + mumps virus vaccine live, Jeryl Lynn strain + measles virus vaccine live, Enders' attenuated Edmonston strain",J07BD01|J07BJ01|J07BK01,,none,no dedicated WHO combination code
+1293446,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+1293466,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+1293629,pramoxine hydrochloride + allantoin,C05AD07|D04AB07,,none,no dedicated WHO combination code
+1293739,chromic chloride + copper sulfate + manganese sulfate + selenious acid + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+1293962,diphenhydramine hydrochloride + guaifenesin + sodium citrate + menthol,B05CB02|R05CA03,,none,no dedicated WHO combination code
+1293974,chloroxylenol + pramoxine hydrochloride + zinc acetate,A16AX05|D08AE05,,none,no dedicated WHO combination code
+1293987,calamine + camphor + pramoxine hydrochloride,C05AD07|D04AB07,,none,no dedicated WHO combination code
+1294268,chloroxylenol + pramoxine hydrochloride + zinc acetate,A16AX05|D08AE05,,none,no dedicated WHO combination code
+1294312,chloroxylenol + pramoxine hydrochloride + zinc acetate,A16AX05|D08AE05,,none,no dedicated WHO combination code
+1294315,benzalkonium chloride + allantoin,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1294356,bromodiphenhydramine + codeine,R05DA04|R06AA01,,none,no dedicated WHO combination code
+1294381,phenol + diphenhydramine hydrochloride,D04AA32|D08AE03|R06AA02,,none,no dedicated WHO combination code
+1294391,acetaminophen + chlorpheniramine maleate + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R06AB04,,none,no dedicated WHO combination code
+1294436,benzalkonium chloride + allantoin,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1294475,bacitracin zinc + neomycin sulfate + polymyxin B sulfate,A07AA01|D06AX04|S01AA03,,none,no dedicated WHO combination code
+1294616,tripelennamine hydrochloride + diphenhydramine hydrochloride,D04AA32|R06AA02,,none,no dedicated WHO combination code
+1298433,dexchlorpheniramine + dextromethorphan + pseudoephedrine,R01BA02|R05DA09|R06AB02,,ambiguous,ambiguous: N07XX59|R06AB52
+1298742,cetylpyridinium + menthol,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1300191,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300206,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300310,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300368,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300370,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300378,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300382,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300384,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300386,"Bordetella pertussis filamentous hemagglutinin vaccine, inactivated + Bordetella pertussis pertactin vaccine, inactivated + Bordetella pertussis toxoid vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300392,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300396,"acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300401,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1300438,carbetapentane + guaifenesin,R05CA03|R05DB05,,none,no dedicated WHO combination code
+1301152,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1302680,vitamin A + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+1303727,bacitracin + pramoxine,C05AD07|D04AB07|D06AX05|J01XX10|R02AB04,,none,no dedicated WHO combination code
+1303746,ubidecarenone + levocarnitine,A16AA01|C01EB09,,none,no dedicated WHO combination code
+1303777,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1303845,chlophedianol hydrochloride + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DB10,,none,no dedicated WHO combination code
+1304566,coal tar + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1304988,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1312496,ethanol + povidone-iodine,D08AG02|D09AA09|D11AC06|G01AX11|R02AA15,,none,no dedicated WHO combination code
+1313969,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1314399,thiamine + vitamin B12 + dexpanthenol + pyridoxine hydrochloride + niacinamide + riboflavin,A11DA01|A11HA01|A11HA02|A11HA04|B03BA01,,none,no dedicated WHO combination code
+1314626,thiamine + vitamin B12 + dexpanthenol + pyridoxine + niacinamide + riboflavin,A11DA01|A11HA01|A11HA02|A11HA04|B03BA01,,none,no dedicated WHO combination code
+1314636,thiamine + vitamin B12 + dexpanthenol + pyridoxine + niacinamide + riboflavin,A11DA01|A11HA01|A11HA02|A11HA04|B03BA01,,none,no dedicated WHO combination code
+1356330,zinc oxide + camphor + capsaicin + methyl salicylate + peppermint oil + menthol,C05AX04|N01BX04,,none,no dedicated WHO combination code
+1356495,benzocaine + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+1356500,benzocaine + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+1356524,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1356527,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1356529,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1356531,ivermectin + praziquantel + pyrantel pamoate,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1356775,acetaminophen + guaifenesin + pseudoephedrine hydrochloride,N02BE01|R01BA02|R05CA03,,none,no dedicated WHO combination code
+1357404,brompheniramine maleate + codeine phosphate + phenylpropanolamine hydrochloride,R01BA01|R05DA04|R06AB01,,none,no dedicated WHO combination code
+1357422,brompheniramine + dextromethorphan + phenylpropanolamine,R01BA01|R05DA09|R06AB01,,ambiguous,ambiguous: N07XX59|R06AB51
+1357548,acetaminophen + brompheniramine maleate + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,N02BE01|R01BA02|R05DA09|R06AB01,,none,no dedicated WHO combination code
+1357859,brompheniramine maleate + dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,R01BA01|R05DA09|R06AB01,,none,no dedicated WHO combination code
+1359013,brompheniramine maleate + codeine phosphate + phenylpropanolamine hydrochloride,R01BA01|R05DA04|R06AB01,,none,no dedicated WHO combination code
+1359015,brompheniramine maleate + codeine phosphate + phenylpropanolamine hydrochloride,R01BA01|R05DA04|R06AB01,,none,no dedicated WHO combination code
+1359017,brompheniramine maleate + codeine phosphate + phenylpropanolamine hydrochloride,R01BA01|R05DA04|R06AB01,,none,no dedicated WHO combination code
+1359359,bacitracin + pramoxine hydrochloride + polymyxin B sulfate,A07AA05|C05AD07|D04AB07|D06AX05|J01XB02|J01XX10|R02AB04|S01AA18|S02AA11|S03AA03,,none,no dedicated WHO combination code
+1361021,phentolamine + phentolamine mesylate,C04AB01|V03AB36,,none,no dedicated WHO combination code
+1361023,phentolamine + phentolamine mesylate,C04AB01|V03AB36,,none,no dedicated WHO combination code
+1361698,chlophedianol hydrochloride + chlorcyclizine hydrochloride + pseudoephedrine hydrochloride,R01BA02|R05DB10|R06AE04,,none,no dedicated WHO combination code
+1362704,benzocaine + cetylpyridinium + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1363507,acetaminophen + dexbrompheniramine maleate + phenylephrine hydrochloride,N02BE01|R06AB06,,none,no dedicated WHO combination code
+1366149,vitamin E + cholecalciferol,A11CC05|A11HA03,,none,no dedicated WHO combination code
+1366206,fluocinolone + dimethyl sulfoxide,G04BX13|M02AX03,,none,no dedicated WHO combination code
+1367211,acetaminophen + caffeine + phenylephrine hydrochloride,N02BE01|N06BC01,,none,no dedicated WHO combination code
+1367225,chlorpheniramine + guaifenesin + phenylephrine,R05CA03|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1367420,thrombin + thrombin alfa,B02BC06|B02BD30,,none,no dedicated WHO combination code
+1367691,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1367702,betamethasone valerate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1368280,triamcinolone acetonide + thiostrepton + neomycin + nystatin,A01AB11|A01AC01|A07AA01|A07AA02|D01AA01|D06AX04|H02AB08|R01AD11|S01AA03,,ambiguous,ambiguous: A07AA51|G01AA51
+1368963,chlophedianol hydrochloride + chlorpheniramine maleate + phenylephrine hydrochloride,R05DB10|R06AB04,,none,no dedicated WHO combination code
+1373011,helium + oxygen,V03AN01|V03AN03,,none,no dedicated WHO combination code
+1375110,carbetapentane citrate + dexchlorpheniramine maleate + phenylephrine hydrochloride,R05DB05|R06AB02,,none,no dedicated WHO combination code
+1375125,carbetapentane citrate + pseudoephedrine hydrochloride + pyrilamine maleate,R01BA02|R05DB05,,none,no dedicated WHO combination code
+1376380,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1420997,diphenhydramine hydrochloride + allantoin,D04AA32|R06AA02,,none,no dedicated WHO combination code
+1422892,dextromethorphan hydrobromide + guaifenesin + sodium citrate + pyrilamine maleate,B05CB02|R05CA03|R05DA09,,none,no dedicated WHO combination code
+1422893,dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,R01BA01|R05DA09,,none,no dedicated WHO combination code
+1424021,chlorhexidine gluconate + ketoconazole,A01AB03|D01AC08|D08AC02|J02AB02|R02AA05,,none,no dedicated WHO combination code
+1424065,dextromethorphan hydrobromide + guaiacolsulfonate + phenylephrine hydrochloride + pyrilamine,R05CA09|R05DA09,,none,no dedicated WHO combination code
+1424066,dextromethorphan hydrobromide + guaiacolsulfonate + phenylephrine hydrochloride,R05CA09|R05DA09,,none,no dedicated WHO combination code
+1424379,carbinoxamine maleate + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R06AA08,,none,no dedicated WHO combination code
+1424850,acetaminophen + dextromethorphan + diphenhydramine + guaifenesin + phenylephrine,N02BE01|R05CA03|R05DA09,,ambiguous,ambiguous: N07XX59|R06AA52
+1424872,chlophedianol + chlorpheniramine + phenylephrine,R05DB10|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1426687,benzocaine + cetylpyridinium + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1426694,methylsulfonylmethane + chondroitin sulfates + glucosamine + hyaluronate,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1427298,bacitracin zinc + neomycin sulfate + polymyxin B sulfate,A07AA01|D06AX04|S01AA03,,none,no dedicated WHO combination code
+1427301,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+1427379,benzalkonium chloride + camphor,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1428880,acetaminophen + dextromethorphan + diphenhydramine + phenylephrine,N02BE01|R05DA09,,ambiguous,ambiguous: N07XX59|R06AA52
+1428933,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1430071,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+1430115,betamethasone valerate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1432143,tannic acid + benzyl alcohol + picric acid + isopropyl alcohol,D08AX05|P03AX06,,none,no dedicated WHO combination code
+1432283,helium + nitrogen + oxygen,V03AN01|V03AN03|V03AN04,,none,no dedicated WHO combination code
+1433894,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1435262,benzocaine + camphor + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+1437300,benzalkonium chloride + menthol + petrolatum,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1437782,acetaminophen + dichloralphenazone + isometheptene mucate,A03AX10|N02BE01|N05CC04,,none,no dedicated WHO combination code
+1438107,calcium carbonate + magnesium hydroxide,A02AA04|A12AA04,,none,no dedicated WHO combination code
+1440185,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1440875,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1442155,benzocaine + camphor + phenol,C05AD03|D04AB04|D08AE03|R02AD01,,none,no dedicated WHO combination code
+1482656,chlorhexidine gluconate + ketoconazole,A01AB03|D01AC08|D08AC02|J02AB02|R02AA05,,none,no dedicated WHO combination code
+1483194,benzalkonium chloride + benzocaine + menthol,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1483224,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1484890,coal tar + menthol + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1484895,coal tar + menthol + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1485182,chlorhexidine gluconate + ketoconazole,A01AB03|D01AC08|D08AC02|J02AB02|R02AA05,,none,no dedicated WHO combination code
+1485227,benzocaine + cetylpyridinium + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1485332,ethinyl estradiol + inert ingredients + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1491618,zinc oxide + calcium carbonate + magnesium oxide,A02AA02|A02AA04|A12AA04|C05AX04,,none,no dedicated WHO combination code
+1536931,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1537235,vitamin A + ascorbic acid + cholecalciferol,A11CA01|A11GA01,,none,no dedicated WHO combination code
+1538130,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1540507,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1542919,sodium bicarbonate + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1543754,capsaicin + histamine dihydrochloride,N01BX04|V04CG03,,none,no dedicated WHO combination code
+1544281,nitric oxide + nitrogen,R07AX01|V03AN04,,none,no dedicated WHO combination code
+1545794,carbon dioxide + oxygen,V03AN01|V03AN02,,none,no dedicated WHO combination code
+1546194,betamethasone valerate + gentamicin sulfate,D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1547589,tetracaine hydrochloride + benzocaine,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1547767,benzocaine + cetylpyridinium + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1547952,"hyoscyamine + sodium phosphate, monobasic + phenyl salicylate + methenamine + methylene blue",A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1549539,betamethasone valerate + gentamicin sulfate,D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1549832,pentobarbital sodium + phenytoin sodium,N03AB02|N05CA01,,none,no dedicated WHO combination code
+1551498,betamethasone valerate + gentamicin sulfate,D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1552573,betamethasone valerate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1595214,codeine + guaifenesin,R05CA03|R05DA04,,none,no dedicated WHO combination code
+1596424,iodine + isopropyl alcohol + sodium iodide,D08AG03|D08AX05,,none,no dedicated WHO combination code
+1596455,betamethasone + gentamicin + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1596460,betamethasone valerate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1596940,benzalkonium + zinc chloride + hexylresorcinol,B05XA12|R02AA12,,none,no dedicated WHO combination code
+1597581,"hyoscyamine + sodium phosphate, monobasic + methenamine + methylene blue",A03BA03|J01XX05,,none,no dedicated WHO combination code
+1598027,benzalkonium chloride + ethanol,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1598284,guaifenesin + hydrocodone,R05CA03|R05DA03,,none,no dedicated WHO combination code
+1599135,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1599137,cetylpyridinium + cetylpyridinium chloride,B05CA01|D08AJ03|D09AA07|R02AA06,,none,no dedicated WHO combination code
+1606208,zinc gluconate + pyridoxine hydrochloride + salicylic acid,A11HA02|A12CB02,,none,no dedicated WHO combination code
+1607012,tetracaine hydrochloride + camphor + menthol,C05AD02|D04AB06|N01BA03|S01HA03,,none,no dedicated WHO combination code
+1607808,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1648132,chlorhexidine + hydrocortisone + ketoconazole,A01AB03|A01AC03|A07EA02|D01AC08|D07AA02|D07AB02|D07AB11|D08AC02|H02AB09|J02AB02|R02AA05|S01BA02,,ambiguous,ambiguous: D08AC52|R01AD60
+1648152,dexpanthenol + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1652093,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+1653134,choline salicylate + dextromethorphan hydrobromide + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DA09,,none,no dedicated WHO combination code
+1653440,lactate + salicylic acid,D01AE12|G01AD01|N02BA04,,none,no dedicated WHO combination code
+1653940,loratadine + levocetirizine dihydrochloride,R06AE09|R06AX13,,none,no dedicated WHO combination code
+1657469,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1657771,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1657874,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1657880,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1657881,"acellular pertussis vaccine, inactivated + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated",J07AF01|J07AM01,,none,no dedicated WHO combination code
+1658278,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1658672,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1658695,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1664543,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+1664658,choline salicylate + diphenhydramine hydrochloride,D04AA32|N02BA03|R06AA02,,none,no dedicated WHO combination code
+1665365,benzalkonium + benzalkonium chloride,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+1666116,brompheniramine + dextromethorphan + diphenhydramine + phenylephrine,R05DA09|R06AB01,,ambiguous,ambiguous: N07XX59|R06AA52|R06AB51
+1666758,betamethasone + gentamicin + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+1666954,pentobarbital sodium + phenytoin sodium,N03AB02|N05CA01,,none,no dedicated WHO combination code
+1667878,hyoscyamine sulfate + phenyl salicylate + methenamine + methylene blue + benzoic acid,A03BA03|G04BX12|J01XX05,,none,no dedicated WHO combination code
+1667909,isoproterenol + isoproterenol hydrochloride,C01CA02|R03AB02|R03CB01,,none,no dedicated WHO combination code
+1667911,isoproterenol + isoproterenol hydrochloride,C01CA02|R03AB02|R03CB01,,none,no dedicated WHO combination code
+1667915,isoproterenol + isoproterenol hydrochloride,C01CA02|R03AB02|R03CB01,,none,no dedicated WHO combination code
+1716031,vitamin A + alpha tocopherol + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+1716036,vitamin A + alpha tocopherol + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+1716042,vitamin A + alpha tocopherol + cholecalciferol,A11CA01|A11CC05,,none,no dedicated WHO combination code
+1720616,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1722245,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1728767,carbon dioxide + nitrogen,V03AN02|V03AN04,,none,no dedicated WHO combination code
+1733890,epinephrine + lidocaine,C01CA24|D04AB01|N01BB02|R02AD02|S01EA01,,ambiguous,ambiguous: N01BB52|S01EA51
+1734665,mometasone furoate monohydrate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC13|R03BA07|S03AA06,,none,no dedicated WHO combination code
+1736654,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1736656,ethinyl estradiol + norethindrone,G03CA01|G03DC02,,none,no dedicated WHO combination code
+1741529,acetaminophen + chlorpheniramine + phenylephrine,N02BE01|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+1793135,thrombin + fibrinogen,B02BC06|B02BD30,,none,no dedicated WHO combination code
+1793145,thrombin + fibrinogen,B02BC06|B02BD30,,none,no dedicated WHO combination code
+1795598,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1797851,cromolyn + cromolyn sodium,A07EB01|S01GX01,,none,no dedicated WHO combination code
+1797853,cromolyn + cromolyn sodium,A07EB01|S01GX01,,none,no dedicated WHO combination code
+1801689,phytosphingosine hydrochloride + salicylic acid,D01AE12|N02BA04,,none,no dedicated WHO combination code
+1802555,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1803669,acetaminophen + dextromethorphan + diphenhydramine + phenylephrine,N02BE01|R05DA09,,ambiguous,ambiguous: N07XX59|R06AA52
+1804375,sodium bicarbonate + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1805285,chlorhexidine gluconate + ketoconazole,A01AB03|D01AC08|D08AC02|J02AB02|R02AA05,,none,no dedicated WHO combination code
+1808849,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1808851,praziquantel + pyrantel,P02BA01|P02CC01,,none,no dedicated WHO combination code
+1856424,ethinyl estradiol + inert ingredients + norethindrone,G03AA05|G03FA01,,none,no dedicated WHO combination code
+1860414,ethinyl estradiol + levonorgestrel + inert ingredients,G03AC03|G03CA01,,none,no dedicated WHO combination code
+1864958,benzalkonium chloride + benzocaine + menthol,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1865199,benzyl alcohol + zinc chloride,B05XA12|P03AX06,,none,no dedicated WHO combination code
+1866164,sodium bicarbonate + sodium chloride,A12CA01|B05BB01|B05CB01|B05XA03|S01XA03,,none,no dedicated WHO combination code
+1866401,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1868461,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1874857,cholecalciferol + calcium citrate,A11CC05|A12AA13,,none,no dedicated WHO combination code
+1918453,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+1923481,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1923483,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+1940494,salicyloyl phytosphingosine + chlorhexidine gluconate + miconazole nitrate,A01AB03|A01AB09|D01AC02|D08AC02|G01AF04|R02AA05,,none,no dedicated WHO combination code
+1990881,dexchlorpheniramine + dextromethorphan + phenylephrine,R05DA09|R06AB02,,ambiguous,ambiguous: N07XX59|R06AB52
+1995288,cocaine + cocaine hydrochloride,N01BC01|S01HA01|S02DA02,,none,no dedicated WHO combination code
+1995293,cocaine + cocaine hydrochloride,N01BC01|S01HA01|S02DA02,,none,no dedicated WHO combination code
+1996098,acetaminophen + dextromethorphan + diphenhydramine + phenylephrine,N02BE01|R05DA09,,ambiguous,ambiguous: N07XX59|R06AA52
+1996972,chloroxylenol + isopropyl alcohol,D08AE05|D08AX05,,none,no dedicated WHO combination code
+1999026,ferrous bisglycinate + ethinyl estradiol + levonorgestrel,G03AC03|G03CA01,,none,no dedicated WHO combination code
+2001994,bacitracin zinc + lidocaine hydrochloride + neomycin sulfate + polymyxin B,A07AA01|D04AB01|D06AX04|N01BB02|R02AD02|S01AA03,,none,no dedicated WHO combination code
+2003131,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+2003344,chromic chloride + copper sulfate + manganese sulfate + zinc sulfate,A12CB01|V03AB20,,none,no dedicated WHO combination code
+2043455,benzalkonium chloride + benzocaine,C05AD03|D04AB04|D08AJ01|D08AJ08|R02AA16|R02AD01,,none,no dedicated WHO combination code
+2045892,miconazole nitrate + miconazole nitrate,A01AB09|D01AC02|G01AF04,,none,no dedicated WHO combination code
+2049407,brompheniramine maleate + dextromethorphan hydrobromide + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DA09|R06AB01,,none,no dedicated WHO combination code
+2049409,brompheniramine maleate + dextromethorphan hydrobromide + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA09|R06AB01,,none,no dedicated WHO combination code
+2049505,betamethasone valerate + gentamicin sulfate,D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+2049513,betamethasone + gentamicin + clotrimazole,D01AC01|D06AX07|D07AC01|H02AB01|S01BA06|S03AA06|S03BA03,,none,no dedicated WHO combination code
+2052925,dyclonine + menthol,N01BX02|R02AD04,,none,no dedicated WHO combination code
+2056893,chlorpheniramine + codeine + phenylephrine,R05DA04|R06AB04,,ambiguous,ambiguous: R01BA53|S01GA55
+2099286,chlorpheniramine + codeine,R05DA04|R06AB04,,none,no dedicated WHO combination code
+2109606,benzalkonium chloride + ethanol,D08AJ01|D08AJ08|R02AA16,,none,no dedicated WHO combination code
+2109620,"poliovirus vaccine inactivated, type 1 (Mahoney) + poliovirus vaccine inactivated, type 2 (MEF-1) + poliovirus vaccine inactivated, type 3 (Saukett) + hepatitis B surface antigen vaccine + acellular pertussis vaccine, inactivated + diphtheria toxoid vaccine, inactivated + tetanus toxoid vaccine, inactivated + Haemophilus influenzae b (Ross strain) capsular polysaccharide meningococcal protein conjugate vaccine",J07AF01|J07AM01,,none,no dedicated WHO combination code
+2110600,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+2117337,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+2121105,clorsulon + ivermectin,D11AX22|P02CF01,,none,no dedicated WHO combination code
+2122905,guaifenesin + hydrocodone bitartrate + phenylephrine,R05CA03|R05DA03,,ambiguous,ambiguous: R01BA53|S01GA55
+2122907,guaifenesin + hydrocodone bitartrate + phenylephrine,R05CA03|R05DA03,,ambiguous,ambiguous: R01BA53|S01GA55
+2122909,guaifenesin + hydrocodone bitartrate + phenylephrine,R05CA03|R05DA03,,ambiguous,ambiguous: R01BA53|S01GA55
+2166112,mometasone furoate monohydrate + gentamicin sulfate + clotrimazole,D01AC01|D06AX07|D07AC13|R03BA07|S03AA06,,none,no dedicated WHO combination code
+2166147,benzocaine + menthol,C05AD03|D04AB04|R02AD01,,none,no dedicated WHO combination code
+2168025,dextromethorphan hydrobromide + guaiacolsulfonate + phenylephrine hydrochloride,R05CA09|R05DA09,,none,no dedicated WHO combination code
+2168531,acetaminophen + dextromethorphan hydrobromide + phenylephrine + pyrilamine maleate,N02BE01|R05DA09,,ambiguous,ambiguous: R01BA53|S01GA55
+2168784,acetaminophen + dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R05DA09,,none,no dedicated WHO combination code
+2168785,acetaminophen + dextromethorphan hydrobromide + guaifenesin + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R05CA03|R05DA09,,none,no dedicated WHO combination code
+2170058,dextromethorphan hydrobromide + guaifenesin + guaiacolsulfonate,R05CA03|R05CA09|R05DA09,,none,no dedicated WHO combination code
+2173738,dextromethorphan hydrobromide + guaifenesin + phenylephrine,R05CA03|R05DA09,,ambiguous,ambiguous: R01BA53|S01GA55
+2173825,dextromethorphan hydrobromide + guaifenesin + phenylephrine,R05CA03|R05DA09,,ambiguous,ambiguous: R01BA53|S01GA55
+2173851,dextromethorphan hydrobromide + pseudoephedrine hydrochloride + pyrilamine,R01BA02|R05DA09,,none,no dedicated WHO combination code
+2173947,dexchlorpheniramine maleate + dextromethorphan hydrobromide + guaifenesin + phenylephrine hydrochloride,R05CA03|R05DA09|R06AB02,,none,no dedicated WHO combination code
+2174513,aspirin + brompheniramine maleate + dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,R01BA01|R05DA09|R06AB01,,none,no dedicated WHO combination code
+2174520,aspirin + chlorpheniramine maleate + dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,R01BA01|R05DA09|R06AB04,,none,no dedicated WHO combination code
+2174534,acetaminophen + dextromethorphan hydrobromide + phenylpropanolamine hydrochloride,N02BE01|R01BA01|R05DA09,,none,no dedicated WHO combination code
+2175104,acetaminophen + dextromethorphan hydrobromide + guaifenesin,N02BE01|R05CA03|R05DA09,,none,no dedicated WHO combination code
+2175997,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+2175998,chondroitin sulfates + glucosamine,M01AX05|M01AX25,,none,no dedicated WHO combination code
+2176461,brompheniramine maleate + dextromethorphan hydrobromide + guaifenesin + phenylpropanolamine hydrochloride,R01BA01|R05CA03|R05DA09|R06AB01,,none,no dedicated WHO combination code
+2177914,chlorpheniramine + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AB04,,none,no dedicated WHO combination code
+2178097,chlorpheniramine maleate + dextromethorphan hydrobromide + guaifenesin + pseudoephedrine hydrochloride,R01BA02|R05CA03|R05DA09|R06AB04,,none,no dedicated WHO combination code
+2178168,chlorpheniramine + dextromethorphan hydrobromide + pseudoephedrine hydrochloride,R01BA02|R05DA09|R06AB04,,none,no dedicated WHO combination code
+2181317,chlorpheniramine + phenylephrine + phenylpropanolamine + pyrilamine,R01BA01|R06AB04,,ambiguous,ambiguous: R01BA51|R01BA53|S01GA55
+2183676,chlorpheniramine tannate + pseudoephedrine tannate,R01BA02|R06AB04,,none,no dedicated WHO combination code
+2184131,acetaminophen + chlorpheniramine maleate + phenyltoloxamine citrate + phenylephrine hydrochloride,N02BE01|R06AB04,,none,no dedicated WHO combination code
+2184132,acetaminophen + chlorpheniramine maleate + phenyltoloxamine citrate + phenylephrine hydrochloride,N02BE01|R06AB04,,none,no dedicated WHO combination code
+2184177,chlorpheniramine + pseudoephedrine hydrochloride + methscopolamine nitrate,R01BA02|R06AB04,,none,no dedicated WHO combination code

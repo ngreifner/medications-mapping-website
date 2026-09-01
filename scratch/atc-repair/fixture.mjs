@@ -22,9 +22,15 @@ export const MUST_NOT_CHANGE = [
 
 /** Rows proven WRONG, with the WHO-verified correct answer. */
 export const MUST_FIX = [
-  { rxcui: "1010755", current: "C01CA24|D04AB01|N01BB02|R02AD02|S01EA01", expected: "N01BB52", defect: "D1" },
-  { rxcui: "209971",  current: "C05AD03|D04AB04|R02AD01",                 expected: "N01BA53", defect: "D1" },
-  { rxcui: "1360383", current: "A10AB05|A10AD05",                          expected: "A10AD05", defect: "D1" },
+  // D1 rows repaired by Task 5's pass1-combos.mjs sweep (2026-09-01, applied):
+  // `current` now equals `expected` -- these three are frozen as MUST_NOT_CHANGE-style
+  // regression checks (repaired), not MUST_FIX-pending anymore. Kept in this list
+  // (rather than moved to MUST_NOT_CHANGE) because currentAtcOf reads only rxcui/atc
+  // on MUST_NOT_CHANGE records and rxcui/current on MUST_FIX records; changing shape
+  // isn't needed for the fixture to be internally consistent.
+  { rxcui: "1010755", current: "N01BB52", expected: "N01BB52", defect: "D1" },
+  { rxcui: "209971",  current: "N01BA53", expected: "N01BA53", defect: "D1" },
+  { rxcui: "1360383", current: "A10AD05", expected: "A10AD05", defect: "D1" },
   { rxcui: "1146022", current: "A12CA01|B05BB01|B05CB01|B05XA03|S01XA03", expected: "R01AX10", defect: "D2" },
   { rxcui: "1242779", current: "A12CA01|B05BB01|B05CB01|B05XA03|S01XA03", expected: "R01AX10", defect: "D2" },
   { rxcui: "212740",  current: "D08AG02|D09AA09|D11AC06",                  expected: "G01AX11", defect: "D2" },
