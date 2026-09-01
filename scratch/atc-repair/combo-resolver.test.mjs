@@ -11,6 +11,23 @@ let r = resolveComboCode({
 assert.equal(r.code, "A10AD05");
 assert.equal(r.provenance, "min_property");
 
+// S1 adversarial — a MIN's own property lookup returns exactly one code, but that
+// code is genuinely NOT combination-shaped by name (J01CA04 = "amoxicillin" per WHO,
+// confirmed via getWhoName; isCombinationCode("J01CA04") === false). S1's current
+// logic trusts any single minAtcCodes entry outright (see the comment above S1 in
+// combo-resolver.mjs), so this asserts the CURRENT, ACCEPTED behavior: the resolver
+// still returns it as min_property. This makes the residual risk (a MIN's single ATC
+// property could in principle be a mono-ingredient code rather than the combination's
+// own classification) visible and intentional rather than an untested assumption. See
+// task-3-report.md "Fix round 1" for the accepted-risk rationale and mitigation.
+r = resolveComboCode({
+  ingredientNames: ["amoxicillin", "clavulanate"],
+  currentCodes: ["J01CA04", "J01CR02"],
+  minAtcCodes: ["J01CA04"],
+});
+assert.equal(r.code, "J01CA04");
+assert.equal(r.provenance, "min_property");
+
 // S2 — a combination code already sitting in the current cell wins over the mono codes
 r = resolveComboCode({
   ingredientNames: ["lidocaine", "epinephrine"],

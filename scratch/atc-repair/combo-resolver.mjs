@@ -77,6 +77,23 @@ export function resolveComboCode({ ingredientNames = [], currentCodes = [], minA
   // Requiring isCombinationCode on a single minAtcCodes entry would silently
   // drop a case exactly like that. Only fall back to the name heuristic when
   // there's more than one candidate and we need to pick among them.
+  //
+  // Deliberate trust decision (documented for the record, not a gap we're
+  // silently accepting): a MIN's own /property.json?propName=ATC could in
+  // principle return a single code that is a genuine mono-ingredient
+  // classification rather than the combination's own — NLM's curation of
+  // MIN properties isn't exhaustively auditable from here. We accept this
+  // risk rather than add new filtering, for two reasons. First, this exact
+  // trust shape already ships in production: js/atc-resolver.js's
+  // fetchMinAncestorL5 (~lines 131-151) takes the FIRST 7-character code
+  // from a MIN's raw property list with no isCombinationCode/name filter at
+  // all, so this resolver is already MORE conservative than what's live
+  // today, not a widening of risk. Second, every row this strategy touches
+  // is written to Task 5's pass1-changes.csv with provenance="min_property",
+  // so any mono-shaped false positive is auditable by a human later rather
+  // than trusted forever in silence. See scratch/atc-repair/combo-resolver.test.mjs
+  // for the adversarial case (J01CA04 "amoxicillin") that makes this behavior
+  // visible and intentional.
   const minCodes = (minAtcCodes || []).filter(Boolean);
   if (minCodes.length === 1) return { code: minCodes[0], provenance: "min_property", candidates: minCodes };
   const minCombo = minCodes.filter(isCombinationCode);
